@@ -1,0 +1,3546 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080909"
+  >
+
+  <meta
+    name="description"
+    content="Website Deals — Premium ready-made websites with hosting, SSL, Firebase and business solutions."
+  >
+
+  <meta
+    name="keywords"
+    content="ready made website, website Bangladesh, website deals, business website, ecommerce website, website subscription"
+  >
+
+  <meta name="author" content="Website Deals">
+
+  <title>Website Deals | Premium Ready-Made Websites</title>
+
+  <link rel="icon" href="logo.png">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       ROOT
+    ========================================================= */
+
+    :root {
+      --bg: #080909;
+      --bg-soft: #0d0f10;
+      --card: #111415;
+      --card-2: #151819;
+      --border: rgba(255,255,255,.09);
+
+      --text: #f5f7f7;
+      --muted: #9ca5a5;
+
+      --green: #18a957;
+      --green-light: #42e477;
+
+      --blue: #4b8cff;
+      --purple: #9b6cff;
+
+      --danger: #ff5d6c;
+
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+
+      --shadow:
+        0 25px 70px rgba(0,0,0,.35);
+
+      --container: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(24,169,87,.10),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(75,140,255,.08),
+          transparent 28%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        "Inter",
+        "Hind Siliguri",
+        sans-serif;
+
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        );
+
+      background-size: 45px 45px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 75%
+        );
+
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+
+      margin-inline: auto;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background:
+        rgba(8,9,9,.82);
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+
+      border-radius: 11px;
+
+      display: grid;
+      place-items: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          #0c713a
+        );
+
+      box-shadow:
+        0 10px 30px rgba(24,169,87,.22);
+
+      overflow: hidden;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-dot {
+      color: var(--green-light);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+
+      color: #c9cece;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    nav a {
+      transition: .25s ease;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+
+      border-radius: 10px;
+
+      background: white;
+      color: #080909;
+
+      font-weight: 700;
+    }
+
+    .mobile-menu {
+      display: none;
+
+      border: 1px solid var(--border);
+
+      background: var(--card);
+
+      color: white;
+
+      width: 42px;
+      height: 42px;
+
+      border-radius: 11px;
+
+      font-size: 20px;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+
+      padding:
+        100px 0
+        85px;
+
+      text-align: center;
+    }
+
+    .hero-glow {
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      left: 50%;
+      top: 0;
+
+      transform: translateX(-50%);
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(24,169,87,.16),
+          transparent 68%
+        );
+
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 13px;
+
+      border: 1px solid rgba(24,169,87,.28);
+
+      border-radius: 999px;
+
+      background:
+        rgba(24,169,87,.08);
+
+      color: #72eea1;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green-light);
+
+      box-shadow:
+        0 0 14px var(--green);
+    }
+
+    .hero h1 {
+      max-width: 900px;
+
+      margin: 25px auto 18px;
+
+      font-family:
+        "Space Grotesk",
+        "Hind Siliguri",
+        sans-serif;
+
+      font-size:
+        clamp(42px, 7vw, 78px);
+
+      line-height: .98;
+
+      letter-spacing: -.055em;
+    }
+
+    .hero h1 span {
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff,
+          #62e993
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+
+      margin: 0 auto;
+
+      color: var(--muted);
+
+      font-size:
+        clamp(16px, 2vw, 19px);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+
+      margin-top: 32px;
+
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      min-height: 50px;
+
+      padding: 0 21px;
+
+      border-radius: 12px;
+
+      border: 1px solid var(--border);
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #07100b;
+
+      background:
+        linear-gradient(
+          135deg,
+          #4be985,
+          #18a957
+        );
+
+      border-color: transparent;
+
+      box-shadow:
+        0 12px 30px rgba(24,169,87,.20);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      color: white;
+    }
+
+
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    .stats {
+      padding-bottom: 85px;
+    }
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: var(--radius-lg);
+
+      background:
+        rgba(255,255,255,.025);
+
+      overflow: hidden;
+    }
+
+    .stat {
+      padding: 27px 20px;
+
+      text-align: center;
+
+      border-right:
+        1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat strong {
+      display: block;
+
+      font-family: "Space Grotesk";
+
+      font-size: 26px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      text-align: center;
+
+      margin-bottom: 45px;
+    }
+
+    .section-kicker {
+      color: var(--green-light);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .section-head h2 {
+      margin-top: 10px;
+
+      font-family:
+        "Space Grotesk",
+        "Hind Siliguri",
+        sans-serif;
+
+      font-size:
+        clamp(30px, 5vw, 48px);
+
+      line-height: 1.05;
+
+      letter-spacing: -.04em;
+    }
+
+    .section-head p {
+      max-width: 650px;
+
+      margin: 14px auto 0;
+
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       CATEGORIES
+    ========================================================= */
+
+    .category-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, 1fr);
+
+      gap: 12px;
+    }
+
+    .category {
+      min-height: 110px;
+
+      padding: 18px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.015)
+        );
+
+      transition: .25s ease;
+    }
+
+    .category:hover {
+      transform: translateY(-4px);
+
+      border-color:
+        rgba(24,169,87,.35);
+    }
+
+    .category-icon {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      background:
+        rgba(24,169,87,.10);
+
+      color: var(--green-light);
+
+      font-size: 17px;
+    }
+
+    .category strong {
+      font-size: 14px;
+    }
+
+    .category small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       SEARCH
+    ========================================================= */
+
+    .market-toolbar {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 25px;
+    }
+
+    .search {
+      width: min(100%, 420px);
+
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+
+      height: 48px;
+
+      padding:
+        0 17px
+        0 44px;
+
+      color: white;
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 12px;
+
+      outline: none;
+    }
+
+    .search input:focus {
+      border-color:
+        rgba(24,169,87,.55);
+    }
+
+    .search-icon {
+      position: absolute;
+
+      left: 15px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #7d8585;
+    }
+
+    .market-count {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+
+    /* =========================================================
+       WEBSITE CARDS
+    ========================================================= */
+
+    .website-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .website-card {
+      overflow: hidden;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 20px;
+
+      background: var(--card);
+
+      transition: .3s ease;
+    }
+
+    .website-card:hover {
+      transform: translateY(-6px);
+
+      border-color:
+        rgba(255,255,255,.17);
+
+      box-shadow: var(--shadow);
+    }
+
+    .preview {
+      position: relative;
+
+      height: 215px;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          #171a1a,
+          #252a2a
+        );
+    }
+
+    .preview::after {
+      content: "LIVE PREVIEW";
+
+      position: absolute;
+
+      right: 13px;
+      top: 13px;
+
+      padding: 5px 8px;
+
+      border-radius: 7px;
+
+      background:
+        rgba(0,0,0,.65);
+
+      color: #fff;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+    }
+
+    .preview-window {
+      position: absolute;
+
+      inset: 20px;
+
+      border-radius: 12px;
+
+      background: white;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.25);
+    }
+
+    .browser-bar {
+      height: 23px;
+
+      background: #e9ecec;
+
+      display: flex;
+      align-items: center;
+
+      gap: 4px;
+
+      padding-left: 9px;
+    }
+
+    .browser-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #adb3b3;
+    }
+
+    .mock-site {
+      padding: 18px;
+
+      color: #151919;
+    }
+
+    .mock-logo {
+      width: 55px;
+      height: 8px;
+
+      border-radius: 4px;
+
+      background: #1ca75b;
+
+      margin-bottom: 22px;
+    }
+
+    .mock-title {
+      width: 72%;
+      height: 17px;
+
+      border-radius: 4px;
+
+      background: #222;
+
+      margin-bottom: 8px;
+    }
+
+    .mock-line {
+      width: 88%;
+      height: 7px;
+
+      border-radius: 4px;
+
+      background: #d7dddd;
+
+      margin-bottom: 6px;
+    }
+
+    .mock-buttons {
+      display: flex;
+      gap: 7px;
+
+      margin-top: 15px;
+    }
+
+    .mock-button {
+      width: 65px;
+      height: 20px;
+
+      border-radius: 5px;
+
+      background: #1ca75b;
+    }
+
+    .mock-button.alt {
+      background: #e9eded;
+    }
+
+    .website-info {
+      padding: 20px;
+    }
+
+    .website-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+
+      padding: 5px 8px;
+
+      border-radius: 7px;
+
+      background:
+        rgba(24,169,87,.10);
+
+      color: #72eea1;
+
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .website-price {
+      font-size: 13px;
+      font-weight: 800;
+
+      color: #fff;
+    }
+
+    .website-info h3 {
+      font-family: "Space Grotesk";
+
+      font-size: 20px;
+
+      margin-bottom: 6px;
+    }
+
+    .website-info p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 18px;
+    }
+
+    .website-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .website-actions .btn {
+      flex: 1;
+
+      min-height: 42px;
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       PRICING
+    ========================================================= */
+
+    .pricing-section {
+      position: relative;
+    }
+
+    .pricing-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+
+      padding: 31px 27px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(255,255,255,.05),
+          rgba(255,255,255,.018)
+        );
+
+      overflow: hidden;
+    }
+
+    .price-card.popular {
+      border-color:
+        rgba(24,169,87,.65);
+
+      box-shadow:
+        0 25px 80px rgba(24,169,87,.12);
+
+      transform: translateY(-8px);
+    }
+
+    .popular-label {
+      position: absolute;
+
+      right: 18px;
+      top: 18px;
+
+      padding: 6px 9px;
+
+      border-radius: 8px;
+
+      background:
+        var(--green);
+
+      color: #041108;
+
+      font-size: 9px;
+      font-weight: 900;
+
+      letter-spacing: .07em;
+    }
+
+    .price-icon {
+      width: 46px;
+      height: 46px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.06);
+
+      font-size: 20px;
+
+      margin-bottom: 20px;
+    }
+
+    .starter .price-icon {
+      color: var(--green-light);
+    }
+
+    .business .price-icon {
+      color: var(--blue);
+    }
+
+    .premium .price-icon {
+      color: var(--purple);
+    }
+
+    .price-card h3 {
+      font-family: "Space Grotesk";
+
+      font-size: 23px;
+
+      margin-bottom: 5px;
+    }
+
+    .price-description {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      min-height: 43px;
+    }
+
+    .price {
+      margin: 24px 0 5px;
+
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .price strong {
+      font-family: "Space Grotesk";
+
+      font-size: 42px;
+
+      letter-spacing: -.04em;
+    }
+
+    .price span {
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+    .price-note {
+      color: #777f7f;
+
+      font-size: 11px;
+
+      margin-bottom: 20px;
+    }
+
+    .price-btn {
+      width: 100%;
+
+      min-height: 48px;
+
+      border-radius: 11px;
+
+      border: 0;
+
+      font-weight: 800;
+
+      background: white;
+
+      color: #080909;
+    }
+
+    .business .price-btn {
+      background:
+        linear-gradient(
+          135deg,
+          #4b8cff,
+          #6b9eff
+        );
+
+      color: white;
+    }
+
+    .premium .price-btn {
+      background:
+        linear-gradient(
+          135deg,
+          #a777ff,
+          #7950d8
+        );
+
+      color: white;
+    }
+
+    .feature-title {
+      margin-top: 26px;
+
+      padding-top: 22px;
+
+      border-top:
+        1px solid var(--border);
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .features {
+      list-style: none;
+
+      margin-top: 13px;
+
+      display: grid;
+
+      gap: 9px;
+    }
+
+    .features li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #c6cccc;
+
+      font-size: 12px;
+    }
+
+    .features li::before {
+      content: "✓";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      color: var(--green-light);
+
+      font-weight: 900;
+    }
+
+    .premium-highlight {
+      margin-top: 19px;
+
+      padding: 12px;
+
+      border:
+        1px solid rgba(155,108,255,.22);
+
+      border-radius: 10px;
+
+      background:
+        rgba(155,108,255,.07);
+
+      color: #cdbaff;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      text-align: center;
+    }
+
+
+    /* =========================================================
+       PROCESS
+    ========================================================= */
+
+    .process-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 14px;
+    }
+
+    .process-card {
+      padding: 23px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 17px;
+
+      background:
+        rgba(255,255,255,.025);
+    }
+
+    .process-number {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      background:
+        rgba(24,169,87,.11);
+
+      color: var(--green-light);
+
+      font-size: 12px;
+      font-weight: 900;
+
+      margin-bottom: 17px;
+    }
+
+    .process-card h3 {
+      font-family: "Space Grotesk";
+
+      font-size: 17px;
+
+      margin-bottom: 6px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta-box {
+      position: relative;
+
+      padding: 65px 35px;
+
+      text-align: center;
+
+      border:
+        1px solid rgba(24,169,87,.25);
+
+      border-radius: 28px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(24,169,87,.15),
+          transparent 55%
+        ),
+        #101413;
+    }
+
+    .cta-box h2 {
+      font-family: "Space Grotesk";
+
+      font-size:
+        clamp(30px, 5vw, 48px);
+
+      line-height: 1.05;
+    }
+
+    .cta-box p {
+      max-width: 600px;
+
+      margin: 13px auto 25px;
+
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 55px 0 30px;
+
+      border-top:
+        1px solid var(--border);
+
+      background: #070808;
+    }
+
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+      gap: 35px;
+    }
+
+    .footer-brand p {
+      max-width: 310px;
+
+      margin-top: 13px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 13px;
+
+      font-size: 13px;
+    }
+
+    .footer-col a {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      transition: .2s;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid var(--border);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      color: #707878;
+
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    .toast {
+      position: fixed;
+
+      left: 50%;
+      bottom: 25px;
+
+      transform:
+        translate(-50%, 30px);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      padding: 12px 17px;
+
+      border:
+        1px solid rgba(24,169,87,.25);
+
+      border-radius: 10px;
+
+      background:
+        #111615;
+
+      color: white;
+
+      font-size: 12px;
+
+      transition: .3s ease;
+
+      z-index: 9999;
+    }
+
+    .toast.show {
+      opacity: 1;
+
+      transform:
+        translate(-50%, 0);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1050px) {
+
+      .category-grid {
+        grid-template-columns:
+          repeat(3, 1fr);
+      }
+
+      .website-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns:
+          repeat(3, 1fr);
+      }
+
+      .price-card {
+        padding: 25px 20px;
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      nav {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(-n+2) {
+        border-bottom:
+          1px solid var(--border);
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.popular {
+        transform: none;
+      }
+
+      .process-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .container {
+        width:
+          min(
+            calc(100% - 28px),
+            var(--container)
+          );
+      }
+
+      .hero {
+        padding:
+          75px 0
+          60px;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .stats {
+        padding-bottom: 60px;
+      }
+
+      .category-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .website-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .market-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .cta-box {
+        padding:
+          48px 20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       HEADER
+  ========================================================= -->
+
+  <header>
+
+    <div class="container nav">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <div class="brand-logo">
+
+          <img
+            src="logo.png"
+            alt="Website Deals"
+            onerror="this.style.display='none'"
+          >
+
+        </div>
+
+        <span>
+          Website<span class="brand-dot">Deals</span>
+        </span>
+
+      </a>
+
+
+      <nav>
+
+        <a href="#marketplace">
+          Websites
+        </a>
+
+        <a href="#categories">
+          Categories
+        </a>
+
+        <a href="#pricing">
+          Packages
+        </a>
+
+        <a href="#how-it-works">
+          How It Works
+        </a>
+
+        <a
+          href="admin.html"
+          class="nav-cta"
+        >
+          Admin
+        </a>
+
+      </nav>
+
+
+      <button
+        class="mobile-menu"
+        id="mobileMenu"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================================================
+       HERO
+  ========================================================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-glow"></div>
+
+      <div class="container">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-dot"></span>
+
+          Premium Website Marketplace
+
+        </div>
+
+
+        <h1>
+
+          Launch your
+          <span>business online.</span>
+
+        </h1>
+
+
+        <p>
+
+          Choose a complete ready-made website,
+          subscribe to a plan, connect your domain
+          and get your business online without
+          the complexity of building from scratch.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            href="#marketplace"
+            class="btn btn-primary"
+          >
+            Explore Websites →
+          </a>
+
+          <a
+            href="#pricing"
+            class="btn btn-secondary"
+          >
+            View Packages
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         STATS
+    ======================================================= -->
+
+    <section class="stats">
+
+      <div class="container">
+
+        <div class="stats-grid">
+
+          <div class="stat">
+
+            <strong>100+</strong>
+
+            <span>
+              Ready Websites
+            </span>
+
+          </div>
+
+
+          <div class="stat">
+
+            <strong>20+</strong>
+
+            <span>
+              Categories
+            </span>
+
+          </div>
+
+
+          <div class="stat">
+
+            <strong>100%</strong>
+
+            <span>
+              Responsive
+            </span>
+
+          </div>
+
+
+          <div class="stat">
+
+            <strong>24/7</strong>
+
+            <span>
+              Marketplace Access
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         CATEGORIES
+    ======================================================= -->
+
+    <section id="categories">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            Browse by category
+          </div>
+
+          <h2>
+            Find the right website
+          </h2>
+
+          <p>
+            Ready-made solutions for businesses,
+            creators, shops and professional services.
+          </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+          <a
+            href="#marketplace"
+            class="category"
+          >
+
+            <div class="category-icon">
+              🏢
+            </div>
+
+            <div>
+
+              <strong>
+                Business
+              </strong>
+
+              <small>
+                Professional sites
+              </small>
+
+            </div>
+
+          </a>
+
+
+          <a
+            href="#marketplace"
+            class="category"
+          >
+
+            <div class="category-icon">
+              🍽️
+            </div>
+
+            <div>
+
+              <strong>
+                Restaurant
+              </strong>
+
+              <small>
+                Food & dining
+              </small>
+
+            </div>
+
+          </a>
+
+
+          <a
+            href="#marketplace"
+            class="category"
+          >
+
+            <div class="category-icon">
+              🛒
+            </div>
+
+            <div>
+
+              <strong>
+                E-Commerce
+              </strong>
+
+              <small>
+                Online stores
+              </small>
+
+            </div>
+
+          </a>
+
+
+          <a
+            href="#marketplace"
+            class="category"
+          >
+
+            <div class="category-icon">
+              🎨
+            </div>
+
+            <div>
+
+              <strong>
+                Portfolio
+              </strong>
+
+              <small>
+                Personal brands
+              </small>
+
+            </div>
+
+          </a>
+
+
+          <a
+            href="#marketplace"
+            class="category"
+          >
+
+            <div class="category-icon">
+              🚀
+            </div>
+
+            <div>
+
+              <strong>
+                Agency
+              </strong>
+
+              <small>
+                Creative agencies
+              </small>
+
+            </div>
+
+          </a>
+
+
+          <a
+            href="#marketplace"
+            class="category"
+          >
+
+            <div class="category-icon">
+              📦
+            </div>
+
+            <div>
+
+              <strong>
+                Monthly Pack
+              </strong>
+
+              <small>
+                Subscription plans
+              </small>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         MARKETPLACE
+    ======================================================= -->
+
+    <section id="marketplace">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            Ready to launch
+          </div>
+
+          <h2>
+            Explore ready-made websites
+          </h2>
+
+          <p>
+            Select a website, choose your package
+            and launch your business faster.
+          </p>
+
+        </div>
+
+
+        <div class="market-toolbar">
+
+          <div class="search">
+
+            <span class="search-icon">
+              🔎
+            </span>
+
+            <input
+              type="search"
+              id="websiteSearch"
+              placeholder="Search websites..."
+              autocomplete="off"
+            >
+
+          </div>
+
+
+          <div
+            class="market-count"
+            id="marketCount"
+          >
+            Showing 6 websites
+          </div>
+
+        </div>
+
+
+        <div
+          class="website-grid"
+          id="websiteGrid"
+        >
+
+
+          <!-- WEBSITE 01 -->
+
+          <article
+            class="website-card"
+            data-search="restaurant food cafe restaurant website"
+          >
+
+            <div class="preview">
+
+              <div class="preview-window">
+
+                <div class="browser-bar">
+
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+
+                </div>
+
+                <div class="mock-site">
+
+                  <div class="mock-logo"></div>
+
+                  <div class="mock-title"></div>
+
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+
+                  <div class="mock-buttons">
+
+                    <div class="mock-button"></div>
+
+                    <div class="mock-button alt"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="website-info">
+
+              <div class="website-meta">
+
+                <span class="badge">
+                  RESTAURANT
+                </span>
+
+                <span class="website-price">
+                  From ৳549/mo
+                </span>
+
+              </div>
+
+              <h3>
+                Food & Restaurant
+              </h3>
+
+              <p>
+                Modern restaurant website
+                for menus, orders and contact.
+              </p>
+
+              <div class="website-actions">
+
+                <a
+                  href="#pricing"
+                  class="btn btn-primary"
+                >
+                  Get Website
+                </a>
+
+                <button
+                  class="btn btn-secondary"
+                  onclick="showToast('Live preview will be connected from admin.')"
+                >
+                  Preview
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- WEBSITE 02 -->
+
+          <article
+            class="website-card"
+            data-search="business corporate company business website"
+          >
+
+            <div class="preview">
+
+              <div class="preview-window">
+
+                <div class="browser-bar">
+
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+
+                </div>
+
+                <div class="mock-site">
+
+                  <div class="mock-logo"></div>
+
+                  <div class="mock-title"></div>
+
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+
+                  <div class="mock-buttons">
+
+                    <div class="mock-button"></div>
+
+                    <div class="mock-button alt"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="website-info">
+
+              <div class="website-meta">
+
+                <span class="badge">
+                  BUSINESS
+                </span>
+
+                <span class="website-price">
+                  From ৳549/mo
+                </span>
+
+              </div>
+
+              <h3>
+                Corporate Pro
+              </h3>
+
+              <p>
+                Clean professional website
+                for companies and services.
+              </p>
+
+              <div class="website-actions">
+
+                <a
+                  href="#pricing"
+                  class="btn btn-primary"
+                >
+                  Get Website
+                </a>
+
+                <button
+                  class="btn btn-secondary"
+                  onclick="showToast('Live preview will be connected from admin.')"
+                >
+                  Preview
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- WEBSITE 03 -->
+
+          <article
+            class="website-card"
+            data-search="ecommerce shop online store ecommerce website"
+          >
+
+            <div class="preview">
+
+              <div class="preview-window">
+
+                <div class="browser-bar">
+
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+
+                </div>
+
+                <div class="mock-site">
+
+                  <div class="mock-logo"></div>
+
+                  <div class="mock-title"></div>
+
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+
+                  <div class="mock-buttons">
+
+                    <div class="mock-button"></div>
+
+                    <div class="mock-button alt"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="website-info">
+
+              <div class="website-meta">
+
+                <span class="badge">
+                  E-COMMERCE
+                </span>
+
+                <span class="website-price">
+                  From ৳1,999/mo
+                </span>
+
+              </div>
+
+              <h3>
+                StorePro
+              </h3>
+
+              <p>
+                Complete online store with
+                products, orders and inventory.
+              </p>
+
+              <div class="website-actions">
+
+                <a
+                  href="#pricing"
+                  class="btn btn-primary"
+                >
+                  Get Website
+                </a>
+
+                <button
+                  class="btn btn-secondary"
+                  onclick="showToast('Live preview will be connected from admin.')"
+                >
+                  Preview
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- WEBSITE 04 -->
+
+          <article
+            class="website-card"
+            data-search="agency creative marketing digital agency website"
+          >
+
+            <div class="preview">
+
+              <div class="preview-window">
+
+                <div class="browser-bar">
+
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+
+                </div>
+
+                <div class="mock-site">
+
+                  <div class="mock-logo"></div>
+
+                  <div class="mock-title"></div>
+
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+
+                  <div class="mock-buttons">
+
+                    <div class="mock-button"></div>
+
+                    <div class="mock-button alt"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="website-info">
+
+              <div class="website-meta">
+
+                <span class="badge">
+                  AGENCY
+                </span>
+
+                <span class="website-price">
+                  From ৳549/mo
+                </span>
+
+              </div>
+
+              <h3>
+                Creative Agency
+              </h3>
+
+              <p>
+                Modern agency website for
+                creative and digital teams.
+              </p>
+
+              <div class="website-actions">
+
+                <a
+                  href="#pricing"
+                  class="btn btn-primary"
+                >
+                  Get Website
+                </a>
+
+                <button
+                  class="btn btn-secondary"
+                  onclick="showToast('Live preview will be connected from admin.')"
+                >
+                  Preview
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- WEBSITE 05 -->
+
+          <article
+            class="website-card"
+            data-search="portfolio personal designer developer portfolio website"
+          >
+
+            <div class="preview">
+
+              <div class="preview-window">
+
+                <div class="browser-bar">
+
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+
+                </div>
+
+                <div class="mock-site">
+
+                  <div class="mock-logo"></div>
+
+                  <div class="mock-title"></div>
+
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+
+                  <div class="mock-buttons">
+
+                    <div class="mock-button"></div>
+
+                    <div class="mock-button alt"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="website-info">
+
+              <div class="website-meta">
+
+                <span class="badge">
+                  PORTFOLIO
+                </span>
+
+                <span class="website-price">
+                  From ৳549/mo
+                </span>
+
+              </div>
+
+              <h3>
+                Personal Pro
+              </h3>
+
+              <p>
+                Premium portfolio website
+                for creators and professionals.
+              </p>
+
+              <div class="website-actions">
+
+                <a
+                  href="#pricing"
+                  class="btn btn-primary"
+                >
+                  Get Website
+                </a>
+
+                <button
+                  class="btn btn-secondary"
+                  onclick="showToast('Live preview will be connected from admin.')"
+                >
+                  Preview
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- WEBSITE 06 -->
+
+          <article
+            class="website-card"
+            data-search="service local service business website"
+          >
+
+            <div class="preview">
+
+              <div class="preview-window">
+
+                <div class="browser-bar">
+
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+
+                </div>
+
+                <div class="mock-site">
+
+                  <div class="mock-logo"></div>
+
+                  <div class="mock-title"></div>
+
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+
+                  <div class="mock-buttons">
+
+                    <div class="mock-button"></div>
+
+                    <div class="mock-button alt"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="website-info">
+
+              <div class="website-meta">
+
+                <span class="badge">
+                  SERVICES
+                </span>
+
+                <span class="website-price">
+                  From ৳549/mo
+                </span>
+
+              </div>
+
+              <h3>
+                Service Hub
+              </h3>
+
+              <p>
+                Local service website with
+                inquiry and contact features.
+              </p>
+
+              <div class="website-actions">
+
+                <a
+                  href="#pricing"
+                  class="btn btn-primary"
+                >
+                  Get Website
+                </a>
+
+                <button
+                  class="btn btn-secondary"
+                  onclick="showToast('Live preview will be connected from admin.')"
+                >
+                  Preview
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         PRICING
+    ======================================================= -->
+
+    <section
+      id="pricing"
+      class="pricing-section"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            Simple monthly subscription
+          </div>
+
+          <h2>
+            Choose your website package
+          </h2>
+
+          <p>
+            Get a complete website with hosting and
+            included services. Upgrade whenever your
+            business needs more.
+          </p>
+
+        </div>
+
+
+        <div class="pricing-grid">
+
+
+          <!-- STARTER -->
+
+          <article class="price-card starter">
+
+            <div class="price-icon">
+              🟢
+            </div>
+
+            <h3>
+              Starter
+            </h3>
+
+            <p class="price-description">
+              যারা দ্রুত একটি professional website
+              চান।
+            </p>
+
+            <div class="price">
+
+              <strong>
+                ৳549
+              </strong>
+
+              <span>
+                / month
+              </span>
+
+            </div>
+
+            <p class="price-note">
+              Monthly subscription • While active
+            </p>
+
+            <button
+              class="price-btn"
+              onclick="selectPlan('Starter', 549)"
+            >
+              Choose Starter
+            </button>
+
+
+            <div class="feature-title">
+              What's included
+            </div>
+
+            <ul class="features">
+
+              <li>
+                Complete ready-made website
+              </li>
+
+              <li>
+                Free hosting included
+              </li>
+
+              <li>
+                Free SSL
+              </li>
+
+              <li>
+                Firebase integration
+              </li>
+
+              <li>
+                Free basic logo
+              </li>
+
+              <li>
+                Mobile responsive
+              </li>
+
+              <li>
+                Custom domain connection
+              </li>
+
+              <li>
+                Contact form
+              </li>
+
+              <li>
+                Manual payment option
+              </li>
+
+              <li>
+                Basic SEO setup
+              </li>
+
+              <li>
+                Basic technical support
+              </li>
+
+              <li>
+                Website uptime monitoring
+              </li>
+
+            </ul>
+
+          </article>
+
+
+
+          <!-- BUSINESS -->
+
+          <article class="price-card business popular">
+
+            <div class="popular-label">
+              MOST POPULAR
+            </div>
+
+            <div class="price-icon">
+              🔵
+            </div>
+
+            <h3>
+              Business
+            </h3>
+
+            <p class="price-description">
+              যারা তাদের website দিয়ে নিয়মিত
+              business পরিচালনা করতে চান।
+            </p>
+
+            <div class="price">
+
+              <strong>
+                ৳999
+              </strong>
+
+              <span>
+                / month
+              </span>
+
+            </div>
+
+            <p class="price-note">
+              Monthly subscription • While active
+            </p>
+
+            <button
+              class="price-btn"
+              onclick="selectPlan('Business', 999)"
+            >
+              Choose Business
+            </button>
+
+
+            <div class="feature-title">
+              Everything in Starter +
+            </div>
+
+            <ul class="features">
+
+              <li>
+                Premium ready-made website
+              </li>
+
+              <li>
+                Advanced Firebase integration
+              </li>
+
+              <li>
+                Professional admin panel
+              </li>
+
+              <li>
+                Online payment gateway
+              </li>
+
+              <li>
+                bKash / Nagad / Bank payment
+              </li>
+
+              <li>
+                Product & service management
+              </li>
+
+              <li>
+                Customer inquiry management
+              </li>
+
+              <li>
+                Order management
+              </li>
+
+              <li>
+                WhatsApp / Messenger integration
+              </li>
+
+              <li>
+                Google Maps integration
+              </li>
+
+              <li>
+                Advanced SEO setup
+              </li>
+
+              <li>
+                Google Analytics
+              </li>
+
+              <li>
+                Search Console setup
+              </li>
+
+              <li>
+                Regular backup
+              </li>
+
+              <li>
+                Security configuration
+              </li>
+
+              <li>
+                Performance optimization
+              </li>
+
+              <li>
+                Content update support
+              </li>
+
+              <li>
+                Minor customization
+              </li>
+
+              <li>
+                Priority technical support
+              </li>
+
+            </ul>
+
+          </article>
+
+
+
+          <!-- PREMIUM -->
+
+          <article class="price-card premium">
+
+            <div class="price-icon">
+              🟣
+            </div>
+
+            <h3>
+              Premium
+            </h3>
+
+            <p class="price-description">
+              Complete e-commerce & business
+              management system.
+            </p>
+
+            <div class="price">
+
+              <strong>
+                ৳1,999
+              </strong>
+
+              <span>
+                / month
+              </span>
+
+            </div>
+
+            <p class="price-note">
+              Monthly subscription • While active
+            </p>
+
+            <button
+              class="price-btn"
+              onclick="selectPlan('Premium', 1999)"
+            >
+              Choose Premium
+            </button>
+
+
+            <div class="feature-title">
+              Everything in Business +
+            </div>
+
+            <ul class="features">
+
+              <li>
+                Shopify-style online store
+              </li>
+
+              <li>
+                Advanced Firebase / MongoDB backend
+              </li>
+
+              <li>
+                Advanced admin dashboard
+              </li>
+
+              <li>
+                Unlimited products*
+              </li>
+
+              <li>
+                Product categories & collections
+              </li>
+
+              <li>
+                Product variants
+              </li>
+
+              <li>
+                Size / Color / Weight options
+              </li>
+
+              <li>
+                SKU management
+              </li>
+
+              <li>
+                Shopping cart
+              </li>
+
+              <li>
+                Wishlist
+              </li>
+
+              <li>
+                Customer accounts
+              </li>
+
+              <li>
+                Advanced checkout
+              </li>
+
+              <li>
+                Order management
+              </li>
+
+              <li>
+                Customer management
+              </li>
+
+              <li>
+                Shipping & delivery settings
+              </li>
+
+              <li>
+                Discount & coupon system
+              </li>
+
+              <li>
+                Sales reports & analytics
+              </li>
+
+              <li>
+                API integration
+              </li>
+
+              <li>
+                Automated backup
+              </li>
+
+              <li>
+                Security monitoring
+              </li>
+
+              <li>
+                Custom feature development
+              </li>
+
+              <li>
+                Priority development support
+              </li>
+
+            </ul>
+
+
+            <div class="premium-highlight">
+
+              ⭐ FREE STOCK + INVENTORY MANAGEMENT INCLUDED
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <p
+          style="
+            margin-top:18px;
+            color:#707878;
+            font-size:11px;
+            text-align:center;
+          "
+        >
+          * Product limits may be subject to reasonable
+          storage, performance and fair-use requirements.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         HOW IT WORKS
+    ======================================================= -->
+
+    <section id="how-it-works">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="section-kicker">
+            Simple process
+          </div>
+
+          <h2>
+            Get online in 4 steps
+          </h2>
+
+          <p>
+            No complicated development process.
+            Choose, subscribe and launch.
+          </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+          <div class="process-card">
+
+            <div class="process-number">
+              01
+            </div>
+
+            <h3>
+              Choose
+            </h3>
+
+            <p>
+              Browse our ready-made websites
+              and select the one that fits your
+              business.
+            </p>
+
+          </div>
+
+
+          <div class="process-card">
+
+            <div class="process-number">
+              02
+            </div>
+
+            <h3>
+              Subscribe
+            </h3>
+
+            <p>
+              Select a monthly package that
+              matches your business requirements.
+            </p>
+
+          </div>
+
+
+          <div class="process-card">
+
+            <div class="process-number">
+              03
+            </div>
+
+            <h3>
+              Setup
+            </h3>
+
+            <p>
+              We configure your website,
+              branding, domain and included
+              services.
+            </p>
+
+          </div>
+
+
+          <div class="process-card">
+
+            <div class="process-number">
+              04
+            </div>
+
+            <h3>
+              Launch
+            </h3>
+
+            <p>
+              Your website goes live and your
+              business starts serving customers.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         CTA
+    ======================================================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="cta-box">
+
+          <div class="section-kicker">
+            Ready to launch?
+          </div>
+
+          <h2>
+            Your website is closer<br>
+            than you think.
+          </h2>
+
+          <p>
+            Choose a ready-made website and
+            start your online business today.
+          </p>
+
+          <a
+            href="#marketplace"
+            class="btn btn-primary"
+          >
+            Browse Websites →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+          <a
+            href="index.html"
+            class="brand"
+          >
+
+            <div class="brand-logo">
+
+              <img
+                src="logo.png"
+                alt="Website Deals"
+                onerror="this.style.display='none'"
+              >
+
+            </div>
+
+            <span>
+              Website<span class="brand-dot">Deals</span>
+            </span>
+
+          </a>
+
+
+          <p>
+            Premium ready-made websites for
+            businesses, creators and entrepreneurs.
+          </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Marketplace
+          </h4>
+
+          <a href="#marketplace">
+            All Websites
+          </a>
+
+          <a href="#categories">
+            Categories
+          </a>
+
+          <a href="#pricing">
+            Packages
+          </a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Support
+          </h4>
+
+          <a href="#">
+            Contact
+          </a>
+
+          <a href="#">
+            FAQ
+          </a>
+
+          <a href="#">
+            Terms
+          </a>
+
+          <a href="#">
+            Privacy
+          </a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Account
+          </h4>
+
+          <a href="admin.html">
+            Admin Login
+          </a>
+
+          <a href="#">
+            Customer Login
+          </a>
+
+          <a href="#">
+            My Website
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="year"></span> Website Deals.
+          All rights reserved.
+        </span>
+
+        <span>
+          Premium Website Marketplace
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =========================================================
+       TOAST
+  ========================================================= -->
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================= -->
+
+  <script>
+
+    /* =========================================================
+       YEAR
+    ========================================================= */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================================================
+       SEARCH
+    ========================================================= */
+
+    const searchInput =
+      document.getElementById("websiteSearch");
+
+    const websiteCards =
+      Array.from(
+        document.querySelectorAll(".website-card")
+      );
+
+    const marketCount =
+      document.getElementById("marketCount");
+
+
+    function updateWebsiteSearch() {
+
+      const query =
+        searchInput.value
+          .toLowerCase()
+          .trim();
+
+      let visible = 0;
+
+
+      websiteCards.forEach(card => {
+
+        const searchable =
+          card.dataset.search
+            .toLowerCase();
+
+        const matched =
+          searchable.includes(query);
+
+        card.style.display =
+          matched ? "" : "none";
+
+        if (matched) {
+          visible++;
+        }
+
+      });
+
+
+      marketCount.textContent =
+        `Showing ${visible} website${visible !== 1 ? "s" : ""}`;
+
+    }
+
+
+    searchInput.addEventListener(
+      "input",
+      updateWebsiteSearch
+    );
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    const toast =
+      document.getElementById("toast");
+
+
+    let toastTimer;
+
+
+    function showToast(message) {
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer =
+        setTimeout(() => {
+
+          toast.classList.remove("show");
+
+        }, 2800);
+
+    }
+
+
+    /* =========================================================
+       PACKAGE SELECTION
+    ========================================================= */
+
+    function selectPlan(plan, price) {
+
+      localStorage.setItem(
+        "websiteDealsSelectedPlan",
+        JSON.stringify({
+          plan: plan,
+          price: price,
+          selectedAt:
+            new Date().toISOString()
+        })
+      );
+
+
+      showToast(
+        `${plan} package selected — ৳${price}/month`
+      );
+
+
+      setTimeout(() => {
+
+        const message =
+          encodeURIComponent(
+            `Hello Website Deals, I want the ${plan} package at ৳${price}/month. Please help me choose a website.`
+          );
+
+
+        /*
+          Change this number to your official
+          WhatsApp business number.
+        */
+
+        const whatsappNumber =
+          "8801700000000";
+
+
+        window.open(
+          `https://wa.me/${whatsappNumber}?text=${message}`,
+          "_blank"
+        );
+
+      }, 900);
+
+    }
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    let mobileOpen = false;
+
+
+    mobileMenu.addEventListener(
+      "click",
+      () => {
+
+        mobileOpen =
+          !mobileOpen;
+
+
+        if (mobileOpen) {
+
+          const nav =
+            document.querySelector("nav");
+
+          nav.style.display =
+            "flex";
+
+          nav.style.position =
+            "absolute";
+
+          nav.style.top =
+            "76px";
+
+          nav.style.left =
+            "14px";
+
+          nav.style.right =
+            "14px";
+
+          nav.style.padding =
+            "18px";
+
+          nav.style.flexDirection =
+            "column";
+
+          nav.style.alignItems =
+            "stretch";
+
+          nav.style.gap =
+            "14px";
+
+          nav.style.background =
+            "#101212";
+
+          nav.style.border =
+            "1px solid rgba(255,255,255,.09)";
+
+          nav.style.borderRadius =
+            "16px";
+
+        } else {
+
+          const nav =
+            document.querySelector("nav");
+
+          nav.removeAttribute("style");
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       NAV LINK MOBILE CLOSE
+    ========================================================= */
+
+    document
+      .querySelectorAll("nav a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            if (
+              window.innerWidth <= 800
+            ) {
+
+              const nav =
+                document.querySelector("nav");
+
+              nav.removeAttribute("style");
+
+              mobileOpen = false;
+
+            }
+
+          }
+        );
+
+      });
+
+
+    /* =========================================================
+       ESC KEY
+    ========================================================= */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key === "Escape") {
+
+          const nav =
+            document.querySelector("nav");
+
+          nav.removeAttribute("style");
+
+          mobileOpen = false;
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
