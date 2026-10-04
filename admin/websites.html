@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Website Manager | Website Deals</title>
+
+  <meta
+    name="description"
+    content="Website Deals — Live website showcase manager."
+  />
+
+  <meta name="theme-color" content="#080909" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #080909;
+      --panel: #101313;
+      --panel-2: #141818;
+      --text: #f5f7f6;
+      --muted: #929b98;
+      --line: rgba(255,255,255,.09);
+      --lime: #b7ff00;
+      --lime-soft: rgba(183,255,0,.10);
+      --green: #4ade80;
+      --red: #ff5b5b;
+      --blue: #60a5fa;
+      --shadow: 0 30px 100px rgba(0,0,0,.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 15% 5%,
+          rgba(183,255,0,.06),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 90%,
+          rgba(96,165,250,.045),
+          transparent 25%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Hind Siliguri", sans-serif;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* =========================================
+       LOGIN
+    ========================================= */
+
+    .login-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.07),
+          transparent 35%
+        ),
+        #070808;
+    }
+
+    .login-card {
+      width: min(420px, 100%);
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.015)
+        ),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .login-logo {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      background: var(--lime);
+      color: #080909;
+      font-weight: 900;
+      box-shadow: 0 15px 45px rgba(183,255,0,.18);
+    }
+
+    .login-card h1 {
+      font-size: 27px;
+      letter-spacing: -.05em;
+    }
+
+    .login-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .demo-badge {
+      display: inline-flex;
+      margin-top: 18px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .login-form {
+      margin-top: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .input {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      outline: none;
+      border-radius: 13px;
+      background: rgba(255,255,255,.035);
+      color: var(--text);
+      transition: .2s ease;
+    }
+
+    .input:focus {
+      border-color: rgba(183,255,0,.45);
+      box-shadow: 0 0 0 4px rgba(183,255,0,.05);
+    }
+
+    .login-button {
+      width: 100%;
+      min-height: 50px;
+      margin-top: 15px;
+      border: 1px solid var(--lime);
+      border-radius: 13px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .login-error {
+      min-height: 20px;
+      margin-top: 10px;
+      color: var(--red);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* =========================================
+       APP
+    ========================================= */
+
+    .app {
+      display: none;
+    }
+
+    .app.active {
+      display: block;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,9,9,.82);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      width: min(1450px, calc(100% - 36px));
+      min-height: 76px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-button {
+      min-height: 40px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255,255,255,.035);
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav-button:hover {
+      border-color: rgba(183,255,0,.35);
+      background: var(--lime-soft);
+    }
+
+    .logout:hover {
+      border-color: rgba(255,91,91,.35);
+      color: var(--red);
+      background: rgba(255,91,91,.05);
+    }
+
+    /* =========================================
+       MAIN
+    ========================================= */
+
+    .container {
+      width: min(1450px, calc(100% - 36px));
+      margin: auto;
+      padding: 45px 0 80px;
+    }
+
+    .page-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .page-heading h1 {
+      margin-top: 13px;
+      font-size: clamp(35px, 5vw, 62px);
+      line-height: .95;
+      letter-spacing: -.065em;
+    }
+
+    .page-heading p {
+      max-width: 600px;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .add-button {
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid var(--lime);
+      border-radius: 13px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    /* =========================================
+       STATS
+    ========================================= */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .stat {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .stat small {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 27px;
+      letter-spacing: -.04em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    /* =========================================
+       TOOLBAR
+    ========================================= */
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 16px;
+    }
+
+    .search {
+      width: min(430px, 100%);
+      position: relative;
+    }
+
+    .search input {
+      padding-left: 42px;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .select {
+      min-height: 46px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 11px;
+    }
+
+    /* =========================================
+       WEBSITE GRID
+    ========================================= */
+
+    .website-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .website-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      transition: .3s ease;
+    }
+
+    .website-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(183,255,0,.24);
+      box-shadow: 0 25px 70px rgba(0,0,0,.3);
+    }
+
+    .website-preview {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #0c0e0e;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .website-preview iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: white;
+    }
+
+    .preview-label {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      z-index: 4;
+      padding: 6px 8px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      background: rgba(0,0,0,.65);
+      color: white;
+      font-size: 8px;
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-body {
+      padding: 17px;
+    }
+
+    .package {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .card-body h3 {
+      margin-top: 11px;
+      font-size: 17px;
+      letter-spacing: -.03em;
+    }
+
+    .url {
+      margin-top: 5px;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .animation {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--green);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 15px;
+    }
+
+    .card-button {
+      min-height: 39px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .card-button:hover {
+      border-color: rgba(183,255,0,.35);
+      background: var(--lime-soft);
+    }
+
+    .delete:hover {
+      color: var(--red);
+      border-color: rgba(255,91,91,.35);
+      background: rgba(255,91,91,.05);
+    }
+
+    /* =========================================
+       EMPTY
+    ========================================= */
+
+    .empty {
+      display: none;
+      padding: 70px 20px;
+      border: 1px dashed var(--line);
+      border-radius: 22px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--text);
+    }
+
+    /* =========================================
+       MODAL
+    ========================================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(16px);
+    }
+
+    .modal.open {
+      display: flex;
+      animation: modalIn .25s ease both;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .modal-card {
+      width: min(700px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 23px;
+    }
+
+    .modal-header h2 {
+      font-size: 22px;
+      letter-spacing: -.04em;
+    }
+
+    .close-button {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-field {
+      min-width: 0;
+    }
+
+    .help {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .form-button {
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .form-button.primary {
+      border-color: var(--lime);
+      background: var(--lime);
+      color: #080909;
+    }
+
+    /* =========================================
+       TOAST
+    ========================================= */
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9000;
+      min-width: 240px;
+      max-width: 380px;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #151919;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      font-size: 11px;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1100px) {
+      .website-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .stats {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .nav,
+      .container {
+        width: calc(100% - 22px);
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-button.dashboard-label {
+        display: none;
+      }
+
+      .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .page-heading h1 {
+        font-size: 43px;
+      }
+
+      .add-button {
+        width: 100%;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .website-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-field.full {
+        grid-column: auto;
+      }
+
+      .modal-card {
+        padding: 20px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       LOGIN SCREEN
+  ========================================= -->
+
+  <section
+    class="login-screen"
+    id="loginScreen"
+  >
+
+    <div class="login-card">
+
+      <div class="login-logo">
+        WD
+      </div>
+
+      <h1>Website Manager</h1>
+
+      <p>
+        Manage your real websites for the
+        Website Deals live presentation wall.
+      </p>
+
+      <span class="demo-badge">
+        Demo Admin
+      </span>
+
+      <form
+        class="login-form"
+        id="loginForm"
+      >
+
+        <label for="password">
+          Admin Password
+        </label>
+
+        <input
+          class="input"
+          id="password"
+          type="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required
+        />
+
+        <button
+          class="login-button"
+          type="submit"
+        >
+          Enter Website Manager
+        </button>
+
+        <div
+          class="login-error"
+          id="loginError"
+        ></div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       APP
+  ========================================= -->
+
+  <div
+    class="app"
+    id="app"
+  >
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <nav class="nav">
+
+        <a
+          class="brand"
+          href="../index.html"
+        >
+
+          <div class="brand-mark">
+            WD
+          </div>
+
+          <div class="brand-text">
+            <strong>Website Deals</strong>
+            <span>Live Website Manager</span>
+          </div>
+
+        </a>
+
+        <div class="nav-actions">
+
+          <button
+            class="nav-button dashboard-label"
+            type="button"
+            onclick="goToShowcase()"
+          >
+            ↗ Live Showcase
+          </button>
+
+          <button
+            class="nav-button logout"
+            type="button"
+            onclick="logout()"
+          >
+            Logout
+          </button>
+
+        </div>
+
+      </nav>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+      <section class="page-heading">
+
+        <div>
+
+          <span class="eyebrow">
+            Manage Real Websites
+          </span>
+
+          <h1>
+            Website<br />
+            <span style="color:var(--lime)">
+              Wall.
+            </span>
+          </h1>
+
+          <p>
+            শুধু আপনার real website-এর information manage করুন।
+            Save করার পর website automatically live showcase page-এ
+            card হিসেবে দেখা যাবে।
+          </p>
+
+        </div>
+
+        <button
+          class="add-button"
+          type="button"
+          onclick="openAddModal()"
+        >
+          + Add Website
+        </button>
+
+      </section>
+
+      <!-- STATS -->
+
+      <section class="stats">
+
+        <div class="stat">
+          <small>Total Websites</small>
+          <strong id="totalStat">0</strong>
+          <span>All saved websites</span>
+        </div>
+
+        <div class="stat">
+          <small>Active</small>
+          <strong id="activeStat">0</strong>
+          <span>Visible on showcase</span>
+        </div>
+
+        <div class="stat">
+          <small>Business</small>
+          <strong id="businessStat">0</strong>
+          <span>Business package</span>
+        </div>
+
+        <div class="stat">
+          <small>Premium</small>
+          <strong id="premiumStat">0</strong>
+          <span>Premium package</span>
+        </div>
+
+      </section>
+
+      <!-- TOOLBAR -->
+
+      <section class="toolbar">
+
+        <div class="search">
+
+          <span class="search-icon">
+            ⌕
+          </span>
+
+          <input
+            class="input"
+            id="searchInput"
+            type="search"
+            placeholder="Search website..."
+          />
+
+        </div>
+
+        <select
+          class="select"
+          id="packageFilter"
+        >
+          <option value="all">
+            All Packages
+          </option>
+
+          <option value="starter">
+            Starter
+          </option>
+
+          <option value="business">
+            Business
+          </option>
+
+          <option value="premium">
+            Premium
+          </option>
+        </select>
+
+      </section>
+
+      <!-- WEBSITE GRID -->
+
+      <section
+        class="website-grid"
+        id="websiteGrid"
+      ></section>
+
+      <section
+        class="empty"
+        id="emptyState"
+      >
+        <strong>No websites found</strong>
+        Add your first real website to the showcase wall.
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- =========================================
+       WEBSITE MODAL
+  ========================================= -->
+
+  <div
+    class="modal"
+    id="websiteModal"
+  >
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <h2 id="modalTitle">
+          Add Website
+        </h2>
+
+        <button
+          class="close-button"
+          type="button"
+          onclick="closeModal()"
+        >
+          ✕
+        </button>
+
+      </div>
+
+      <form id="websiteForm">
+
+        <input
+          type="hidden"
+          id="websiteId"
+        />
+
+        <div class="form-grid">
+
+          <div class="form-field full">
+
+            <label for="websiteName">
+              Website Name
+            </label>
+
+            <input
+              class="input"
+              id="websiteName"
+              type="text"
+              placeholder="Example: SNK IT Institute"
+              required
+            />
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="websitePackage">
+              Package
+            </label>
+
+            <select
+              class="select"
+              id="websitePackage"
+              style="width:100%"
+              required
+            >
+
+              <option value="starter">
+                Starter Package
+              </option>
+
+              <option value="business">
+                Business Package
+              </option>
+
+              <option value="premium">
+                Premium Package
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="websiteAnimation">
+              Presentation Animation
+            </label>
+
+            <select
+              class="select"
+              id="websiteAnimation"
+              style="width:100%"
+            >
+
+              <option value="zoom">
+                Scale / Zoom
+              </option>
+
+              <option value="slide">
+                Smooth Slide
+              </option>
+
+              <option value="float">
+                Floating
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-field full">
+
+            <label for="websiteUrl">
+              Real Website URL
+            </label>
+
+            <input
+              class="input"
+              id="websiteUrl"
+              type="url"
+              placeholder="https://example.com"
+              required
+            />
+
+            <div class="help">
+              আপনার real live website-এর complete HTTPS URL দিন।
+            </div>
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="websiteStatus">
+              Status
+            </label>
+
+            <select
+              class="select"
+              id="websiteStatus"
+              style="width:100%"
+            >
+
+              <option value="true">
+                Active — Show
+              </option>
+
+              <option value="false">
+                Inactive — Hide
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="websiteSort">
+              Sort Order
+            </label>
+
+            <input
+              class="input"
+              id="websiteSort"
+              type="number"
+              min="1"
+              value="1"
+            />
+
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+
+          <button
+            class="form-button"
+            type="button"
+            onclick="closeModal()"
+          >
+            Cancel
+          </button>
+
+          <button
+            class="form-button primary"
+            type="submit"
+          >
+            Save Website
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================
+       TOAST
+  ========================================= -->
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+  <script>
+    /* =========================================================
+       CONFIG
+    ========================================================= */
+
+    const ADMIN_PASSWORD = "123456";
+
+    const STORAGE_KEY =
+      "websiteDealsWebsites";
+
+    const DEFAULT_WEBSITES = [
+      {
+        id: "snk-it-institute",
+        name: "SNK IT Institute",
+        package: "business",
+        packageLabel: "Business Package",
+        url: "https://snkitinstitute.com",
+        animation: "zoom",
+        status: true,
+        sort: 1
+      }
+    ];
+
+    let websites = [];
+
+    /* =========================================================
+       DOM
+    ========================================================= */
+
+    const loginScreen =
+      document.getElementById("loginScreen");
+
+    const app =
+      document.getElementById("app");
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const loginError =
+      document.getElementById("loginError");
+
+    const websiteForm =
+      document.getElementById("websiteForm");
+
+    const modal =
+      document.getElementById("websiteModal");
+
+    /* =========================================================
+       ESCAPE HTML
+    ========================================================= */
+
+    function escapeHTML(value) {
+
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+    /* =========================================================
+       ID
+    ========================================================= */
+
+    function createId() {
+
+      return (
+        "website-" +
+        Date.now().toString(36) +
+        "-" +
+        Math.random()
+          .toString(36)
+          .slice(2, 8)
+      );
+
+    }
+
+    /* =========================================================
+       LOAD
+    ========================================================= */
+
+    function loadWebsites() {
+
+      try {
+
+        const saved =
+          localStorage.getItem(STORAGE_KEY);
+
+        if (saved) {
+
+          const parsed =
+            JSON.parse(saved);
+
+          if (Array.isArray(parsed)) {
+
+            websites = parsed;
+
+          } else {
+
+            websites = [...DEFAULT_WEBSITES];
+
+          }
+
+        } else {
+
+          websites = [...DEFAULT_WEBSITES];
+
+          saveWebsites();
+
+        }
+
+      } catch (error) {
+
+        websites = [...DEFAULT_WEBSITES];
+
+      }
+
+    }
+
+    /* =========================================================
+       SAVE
+    ========================================================= */
+
+    function saveWebsites() {
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(websites)
+      );
+
+    }
+
+    /* =========================================================
+       PACKAGE LABEL
+    ========================================================= */
+
+    function packageLabel(packageName) {
+
+      const labels = {
+        starter: "Starter Package",
+        business: "Business Package",
+        premium: "Premium Package"
+      };
+
+      return labels[packageName] ||
+        "Website Package";
+
+    }
+
+    /* =========================================================
+       ANIMATION LABEL
+    ========================================================= */
+
+    function animationLabel(animation) {
+
+      const labels = {
+        zoom: "Scale / Zoom",
+        slide: "Smooth Slide",
+        float: "Floating"
+      };
+
+      return labels[animation] ||
+        "Scale / Zoom";
+
+    }
+
+    /* =========================================================
+       RENDER
+    ========================================================= */
+
+    function renderWebsites() {
+
+      const grid =
+        document.getElementById("websiteGrid");
+
+      const empty =
+        document.getElementById("emptyState");
+
+      const search =
+        document.getElementById("searchInput")
+          .value
+          .trim()
+          .toLowerCase();
+
+      const filter =
+        document.getElementById("packageFilter")
+          .value;
+
+      let filtered =
+        websites.filter(site => {
+
+          const matchesSearch =
+            !search ||
+            site.name
+              .toLowerCase()
+              .includes(search) ||
+            site.url
+              .toLowerCase()
+              .includes(search);
+
+          const matchesPackage =
+            filter === "all" ||
+            site.package === filter;
+
+          return matchesSearch &&
+            matchesPackage;
+
+        });
+
+      filtered.sort((a,b) => {
+        return Number(a.sort || 0) -
+          Number(b.sort || 0);
+      });
+
+      if (!filtered.length) {
+
+        grid.innerHTML = "";
+
+        empty.style.display = "block";
+
+        return;
+
+      }
+
+      empty.style.display = "none";
+
+      grid.innerHTML =
+        filtered.map(site => {
+
+          return `
+            <article class="website-card">
+
+              <div class="website-preview">
+
+                <span class="preview-label">
+                  LIVE PREVIEW
+                </span>
+
+                <iframe
+                  src="${escapeHTML(site.url)}"
+                  title="${escapeHTML(site.name)}"
+                  loading="lazy"
+                  allow="fullscreen"
+                ></iframe>
+
+              </div>
+
+              <div class="card-body">
+
+                <span class="package">
+                  ${escapeHTML(
+                    site.packageLabel ||
+                    packageLabel(site.package)
+                  )}
+                </span>
+
+                <h3>
+                  ${escapeHTML(site.name)}
+                </h3>
+
+                <div class="url">
+                  ${escapeHTML(site.url)}
+                </div>
+
+                <div class="card-meta">
+
+                  <span class="animation">
+                    ✦ ${escapeHTML(
+                      animationLabel(site.animation)
+                    )}
+                  </span>
+
+                  <span class="status">
+
+                    <span class="status-dot"></span>
+
+                    ${site.status !== false
+                      ? "ACTIVE"
+                      : "HIDDEN"}
+
+                  </span>
+
+                </div>
+
+                <div class="card-actions">
+
+                  <button
+                    class="card-button"
+                    type="button"
+                    onclick="openLive('${escapeHTML(site.id)}')"
+                  >
+                    ↗ Open
+                  </button>
+
+                  <button
+                    class="card-button"
+                    type="button"
+                    onclick="editWebsite('${escapeHTML(site.id)}')"
+                  >
+                    ✎ Edit
+                  </button>
+
+                  <button
+                    class="card-button delete"
+                    type="button"
+                    onclick="deleteWebsite('${escapeHTML(site.id)}')"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </div>
+
+            </article>
+          `;
+
+        }).join("");
+
+      updateStats();
+
+    }
+
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    function updateStats() {
+
+      const total =
+        websites.length;
+
+      const active =
+        websites.filter(
+          site => site.status !== false
+        ).length;
+
+      const business =
+        websites.filter(
+          site => site.package === "business"
+        ).length;
+
+      const premium =
+        websites.filter(
+          site => site.package === "premium"
+        ).length;
+
+      document.getElementById(
+        "totalStat"
+      ).textContent = total;
+
+      document.getElementById(
+        "activeStat"
+      ).textContent = active;
+
+      document.getElementById(
+        "businessStat"
+      ).textContent = business;
+
+      document.getElementById(
+        "premiumStat"
+      ).textContent = premium;
+
+    }
+
+    /* =========================================================
+       LOGIN
+    ========================================================= */
+
+    loginForm.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+        const password =
+          document.getElementById(
+            "password"
+          ).value;
+
+        if (password === ADMIN_PASSWORD) {
+
+          sessionStorage.setItem(
+            "websiteDealsAdmin",
+            "true"
+          );
+
+          loginScreen.style.display =
+            "none";
+
+          app.classList.add("active");
+
+          loginError.textContent = "";
+
+          loadWebsites();
+          renderWebsites();
+
+        } else {
+
+          loginError.textContent =
+            "Incorrect password. Try the demo password.";
+
+        }
+
+      }
+    );
+
+    /* =========================================================
+       SESSION
+    ========================================================= */
+
+    function checkSession() {
+
+      const loggedIn =
+        sessionStorage.getItem(
+          "websiteDealsAdmin"
+        );
+
+      if (loggedIn === "true") {
+
+        loginScreen.style.display =
+          "none";
+
+        app.classList.add("active");
+
+        loadWebsites();
+        renderWebsites();
+
+      }
+
+    }
+
+    /* =========================================================
+       LOGOUT
+    ========================================================= */
+
+    function logout() {
+
+      sessionStorage.removeItem(
+        "websiteDealsAdmin"
+      );
+
+      location.reload();
+
+    }
+
+    /* =========================================================
+       OPEN SHOWCASE
+    ========================================================= */
+
+    function goToShowcase() {
+
+      window.location.href =
+        "../index.html";
+
+    }
+
+    /* =========================================================
+       OPEN ADD MODAL
+    ========================================================= */
+
+    function openAddModal() {
+
+      websiteForm.reset();
+
+      document.getElementById(
+        "websiteId"
+      ).value = "";
+
+      document.getElementById(
+        "websitePackage"
+      ).value = "business";
+
+      document.getElementById(
+        "websiteAnimation"
+      ).value = "zoom";
+
+      document.getElementById(
+        "websiteStatus"
+      ).value = "true";
+
+      document.getElementById(
+        "websiteSort"
+      ).value =
+        String(websites.length + 1);
+
+      document.getElementById(
+        "modalTitle"
+      ).textContent =
+        "Add Website";
+
+      modal.classList.add("open");
+
+      setTimeout(() => {
+
+        document.getElementById(
+          "websiteName"
+        ).focus();
+
+      }, 100);
+
+    }
+
+    /* =========================================================
+       CLOSE MODAL
+    ========================================================= */
+
+    function closeModal() {
+
+      modal.classList.remove("open");
+
+    }
+
+    /* =========================================================
+       EDIT
+    ========================================================= */
+
+    function editWebsite(id) {
+
+      const site =
+        websites.find(
+          item => item.id === id
+        );
+
+      if (!site) return;
+
+      document.getElementById(
+        "websiteId"
+      ).value = site.id;
+
+      document.getElementById(
+        "websiteName"
+      ).value = site.name || "";
+
+      document.getElementById(
+        "websitePackage"
+      ).value =
+        site.package || "business";
+
+      document.getElementById(
+        "websiteAnimation"
+      ).value =
+        site.animation || "zoom";
+
+      document.getElementById(
+        "websiteUrl"
+      ).value = site.url || "";
+
+      document.getElementById(
+        "websiteStatus"
+      ).value =
+        site.status === false
+          ? "false"
+          : "true";
+
+      document.getElementById(
+        "websiteSort"
+      ).value =
+        site.sort || 1;
+
+      document.getElementById(
+        "modalTitle"
+      ).textContent =
+        "Edit Website";
+
+      modal.classList.add("open");
+
+    }
+
+    /* =========================================================
+       SAVE FORM
+    ========================================================= */
+
+    websiteForm.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+        const id =
+          document.getElementById(
+            "websiteId"
+          ).value;
+
+        const name =
+          document.getElementById(
+            "websiteName"
+          ).value.trim();
+
+        const packageName =
+          document.getElementById(
+            "websitePackage"
+          ).value;
+
+        const animation =
+          document.getElementById(
+            "websiteAnimation"
+          ).value;
+
+        const url =
+          document.getElementById(
+            "websiteUrl"
+          ).value.trim();
+
+        const status =
+          document.getElementById(
+            "websiteStatus"
+          ).value === "true";
+
+        const sort =
+          Number(
+            document.getElementById(
+              "websiteSort"
+            ).value
+          ) || 1;
+
+        if (!name || !url) {
+
+          showToast(
+            "Please complete all required fields."
+          );
+
+          return;
+
+        }
+
+        try {
+
+          new URL(url);
+
+        } catch {
+
+          showToast(
+            "Please enter a valid website URL."
+          );
+
+          return;
+
+        }
+
+        const websiteData = {
+
+          id: id || createId(),
+
+          name,
+
+          package: packageName,
+
+          packageLabel:
+            packageLabel(packageName),
+
+          url,
+
+          animation,
+
+          status,
+
+          sort
+
+        };
+
+        if (id) {
+
+          const index =
+            websites.findIndex(
+              site => site.id === id
+            );
+
+          if (index !== -1) {
+
+            websites[index] =
+              websiteData;
+
+          }
+
+          showToast(
+            "Website updated successfully."
+          );
+
+        } else {
+
+          websites.push(
+            websiteData
+          );
+
+          showToast(
+            "Website added successfully."
+          );
+
+        }
+
+        saveWebsites();
+
+        renderWebsites();
+
+        closeModal();
+
+      }
+    );
+
+    /* =========================================================
+       DELETE
+    ========================================================= */
+
+    function deleteWebsite(id) {
+
+      const site =
+        websites.find(
+          item => item.id === id
+        );
+
+      if (!site) return;
+
+      const confirmed =
+        confirm(
+          `Delete "${site.name}" from your website wall?`
+        );
+
+      if (!confirmed) return;
+
+      websites =
+        websites.filter(
+          item => item.id !== id
+        );
+
+      saveWebsites();
+
+      renderWebsites();
+
+      showToast(
+        "Website removed from showcase."
+      );
+
+    }
+
+    /* =========================================================
+       OPEN LIVE
+    ========================================================= */
+
+    function openLive(id) {
+
+      const site =
+        websites.find(
+          item => item.id === id
+        );
+
+      if (!site) return;
+
+      window.open(
+        site.url,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+    }
+
+    /* =========================================================
+       SEARCH
+    ========================================================= */
+
+    document.getElementById(
+      "searchInput"
+    ).addEventListener(
+      "input",
+      renderWebsites
+    );
+
+    document.getElementById(
+      "packageFilter"
+    ).addEventListener(
+      "change",
+      renderWebsites
+    );
+
+    /* =========================================================
+       MODAL OUTSIDE CLICK
+    ========================================================= */
+
+    modal.addEventListener(
+      "click",
+      event => {
+
+        if (event.target === modal) {
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+    /* =========================================================
+       ESC CLOSE
+    ========================================================= */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape" &&
+          modal.classList.contains("open")
+        ) {
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    let toastTimer = null;
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer =
+        setTimeout(() => {
+
+          toast.classList.remove("show");
+
+        }, 2800);
+
+    }
+
+    /* =========================================================
+       INIT
+    ========================================================= */
+
+    checkSession();
+
+  </script>
+
+</body>
+</html>
