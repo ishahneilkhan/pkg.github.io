@@ -1,41 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
 
-  <title>Website Deals | Live Website Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Website Deals | Live Marketing Wall</title>
 
   <meta
     name="description"
-    content="Website Deals — Live website showcase and premium client presentation wall."
-  />
+    content="Website Deals — Your live website marketing wall. Explore premium ready-made websites anywhere."
+  >
 
-  <meta name="theme-color" content="#080909" />
+  <meta name="theme-color" content="#080909">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <style>
+    /* =========================================================
+       WEBSITE DEALS
+       LIVE MARKETING WALL
+       package/index.html
+       ========================================================= */
+
     :root {
       --bg: #080909;
-      --bg-soft: #101212;
-      --card: #111414;
-      --card-2: #151919;
+      --bg-soft: #0d0f0f;
+      --card: rgba(18, 21, 20, 0.86);
+      --card-strong: #111414;
       --text: #f5f7f6;
-      --muted: #9aa3a0;
+      --muted: #98a29e;
       --line: rgba(255,255,255,.09);
       --lime: #b7ff00;
-      --lime-soft: rgba(183,255,0,.12);
-      --green: #4ade80;
-      --danger: #ff5c5c;
-      --shadow: 0 30px 100px rgba(0,0,0,.45);
-      --radius: 28px;
+      --lime-soft: rgba(183,255,0,.10);
+      --lime-border: rgba(183,255,0,.24);
+      --danger: #ff5c67;
+      --warning: #ffca4d;
+      --shadow: 0 24px 80px rgba(0,0,0,.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --nav-height: 76px;
+    }
+
+    body.light {
+      --bg: #f4f6f3;
+      --bg-soft: #ffffff;
+      --card: rgba(255,255,255,.90);
+      --card-strong: #ffffff;
+      --text: #101412;
+      --muted: #68716d;
+      --line: rgba(16,20,18,.10);
+      --lime: #72a900;
+      --lime-soft: rgba(114,169,0,.10);
+      --lime-border: rgba(114,169,0,.25);
+      --shadow: 0 24px 70px rgba(28,38,31,.12);
     }
 
     * {
@@ -51,12 +80,34 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 15% 10%, rgba(183,255,0,.07), transparent 28%),
-        radial-gradient(circle at 85% 25%, rgba(80,255,170,.045), transparent 25%),
+        radial-gradient(circle at 10% 0%, rgba(183,255,0,.08), transparent 26%),
+        radial-gradient(circle at 90% 15%, rgba(0,255,180,.045), transparent 24%),
         var(--bg);
       color: var(--text);
-      font-family: Inter, "Hind Siliguri", sans-serif;
+      font-family: "Inter", "Hind Siliguri", sans-serif;
       overflow-x: hidden;
+      transition:
+        background .35s ease,
+        color .35s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     button,
@@ -69,436 +120,668 @@
       cursor: pointer;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
 
-    /* =========================
-       BACKGROUND
-    ========================= */
-
-    .ambient {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    .ambient::before,
-    .ambient::after {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: .08;
-    }
-
-    .ambient::before {
-      top: -180px;
-      left: -100px;
-      background: var(--lime);
-    }
-
-    .ambient::after {
-      right: -140px;
-      bottom: -180px;
-      background: #5eead4;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .topbar {
+    .navbar {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      height: var(--nav-height);
       border-bottom: 1px solid var(--line);
-      background: rgba(8,9,9,.82);
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
       backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
     }
 
-    .nav {
-      width: min(1400px, calc(100% - 36px));
-      min-height: 76px;
+    .nav-inner {
+      width: min(1440px, calc(100% - 32px));
+      height: 100%;
       margin: auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 22px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
+      min-width: max-content;
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
-      border-radius: 13px;
+      border-radius: 12px;
       background: var(--lime);
       color: #080909;
       font-weight: 900;
-      box-shadow: 0 0 35px rgba(183,255,0,.16);
+      box-shadow: 0 0 28px rgba(183,255,0,.16);
     }
 
-    .brand-text strong {
+    .brand-copy strong {
       display: block;
-      font-size: 15px;
-      letter-spacing: -.02em;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 16px;
+      line-height: 1;
+      letter-spacing: -.03em;
     }
 
-    .brand-text span {
+    .brand-copy span {
       display: block;
-      margin-top: 2px;
       color: var(--muted);
-      font-size: 11px;
+      font-size: 10px;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 10px;
+    }
+
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--lime-soft);
+    }
+
+    .nav-spacer {
+      flex: 1;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 7px;
     }
 
-    .clock {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 13px;
+    .icon-btn,
+    .pin-btn {
+      height: 42px;
       border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 12px rgba(74,222,128,.8);
-      animation: pulse 1.7s infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(.65);
-        opacity: .55;
-      }
+      background: var(--card);
+      color: var(--text);
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s ease;
     }
 
     .icon-btn {
       width: 42px;
-      height: 42px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: rgba(255,255,255,.025);
-      color: var(--text);
-      transition: .25s ease;
     }
 
-    .icon-btn:hover {
-      border-color: rgba(183,255,0,.35);
-      background: var(--lime-soft);
-      color: var(--lime);
-      transform: translateY(-2px);
+    .pin-btn {
+      gap: 7px;
+      padding: 0 13px;
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    /* =========================
+    .icon-btn:hover,
+    .pin-btn:hover {
+      border-color: var(--lime-border);
+      transform: translateY(-1px);
+    }
+
+    .pin-btn.active {
+      background: var(--lime);
+      color: #080909;
+      border-color: var(--lime);
+      box-shadow: 0 0 24px rgba(183,255,0,.18);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    /* =========================================================
        HERO
-    ========================= */
+       ========================================================= */
 
     .hero {
-      width: min(1400px, calc(100% - 36px));
-      margin: auto;
-      padding: 85px 0 45px;
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 68px 0 30px;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.25fr .75fr;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: 30px;
       align-items: end;
-      gap: 50px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid rgba(183,255,0,.18);
-      background: rgba(183,255,0,.06);
-      border-radius: 999px;
       color: var(--lime);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: .08em;
+      letter-spacing: .15em;
       text-transform: uppercase;
+      margin-bottom: 16px;
     }
 
-    h1 {
-      max-width: 900px;
-      margin-top: 20px;
-      font-size: clamp(48px, 7vw, 96px);
-      line-height: .91;
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 15px var(--lime);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: .35;
+        transform: scale(.72);
+      }
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(44px, 6vw, 86px);
+      line-height: .94;
       letter-spacing: -.065em;
+      margin-bottom: 20px;
     }
 
-    h1 span {
+    .hero h1 span {
       color: var(--lime);
     }
 
-    .hero-copy {
+    .hero p {
       max-width: 650px;
-      margin-top: 24px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.8;
     }
 
     .hero-side {
-      padding-bottom: 8px;
-    }
-
-    .hero-side-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.012)
+      );
+      border-radius: var(--radius-xl);
       padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .hero-side-card small {
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-    }
-
-    .hero-side-card strong {
-      display: block;
-      margin-top: 10px;
-      font-size: 25px;
-      letter-spacing: -.04em;
-    }
-
-    .hero-side-card p {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    /* =========================
-       FILTER BAR
-    ========================= */
-
-    .showcase {
-      width: min(1400px, calc(100% - 36px));
-      margin: auto;
-      padding-bottom: 100px;
-    }
-
-    .section-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-
-    .section-title h2 {
-      font-size: 25px;
-      letter-spacing: -.04em;
-    }
-
-    .section-title p {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .filters {
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-    }
-
-    .filter {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.025);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 12px;
-      transition: .2s ease;
-    }
-
-    .filter:hover,
-    .filter.active {
-      color: #080909;
-      border-color: var(--lime);
-      background: var(--lime);
-    }
-
-    /* =========================
-       WEBSITE GRID
-    ========================= */
-
-    .website-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 22px;
-    }
-
-    .website-card {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)),
-        var(--card);
-      box-shadow: 0 18px 60px rgba(0,0,0,.22);
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease;
-    }
-
-    .website-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(183,255,0,.25);
       box-shadow: var(--shadow);
     }
 
-    .preview {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #0d1010;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .preview::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(
-          120deg,
-          rgba(255,255,255,.08),
-          transparent 32%,
-          transparent 68%,
-          rgba(183,255,0,.04)
-        );
-    }
-
-    .browser-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 4;
-      height: 31px;
+    .wall-status {
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 0 10px;
-      border-bottom: 1px solid rgba(0,0,0,.12);
-      background: rgba(245,245,245,.94);
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 18px;
     }
 
-    .browser-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #bbb;
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .browser-address {
-      flex: 1;
-      height: 17px;
-      margin-left: 6px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #e8e8e8;
-      color: #666;
-      font-size: 7px;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .website-frame {
-      position: absolute;
-      top: 31px;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 31px);
-      border: 0;
-      background: white;
-      transform-origin: top center;
-    }
-
-    .preview-placeholder {
-      position: absolute;
-      inset: 31px 0 0;
+    .status-icon {
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
-      background:
-        radial-gradient(circle at center, rgba(183,255,0,.09), transparent 38%),
-        #0e1111;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .preview-placeholder strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 7px;
-    }
-
-    .card-content {
-      padding: 18px;
-    }
-
-    .package-badge {
-      display: inline-flex;
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: rgba(183,255,0,.08);
+      border-radius: 12px;
+      background: var(--lime-soft);
       color: var(--lime);
-      font-size: 9px;
+    }
+
+    .status-copy strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .status-copy span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .status-pill {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
 
-    .card-title {
-      margin-top: 12px;
-      font-size: 19px;
+    .clock {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 31px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 3px;
+    }
+
+    /* =========================================================
+       SEARCH / CONTROL BAR
+       ========================================================= */
+
+    .control-wrap {
+      width: min(1440px, calc(100% - 32px));
+      margin: 10px auto 0;
+    }
+
+    .control-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-box span {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 46px;
+      padding: 0 42px;
+      border: 1px solid transparent;
+      outline: none;
+      border-radius: 12px;
+      background: var(--bg-soft);
+      color: var(--text);
+    }
+
+    .search-box input:focus {
+      border-color: var(--lime-border);
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 8px;
+      top: 7px;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 8px;
+      display: none;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .filter-group::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-btn {
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: 11px 13px;
+      border-radius: 10px;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--text);
+      background: var(--lime-soft);
+      border-color: var(--lime-border);
+    }
+
+    /* =========================================================
+       SALAH REMINDER
+       ========================================================= */
+
+    .salah-section {
+      width: min(1440px, calc(100% - 32px));
+      margin: 22px auto 0;
+    }
+
+    .salah-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 20%, rgba(183,255,0,.09), transparent 30%),
+        var(--card);
+      overflow: hidden;
+    }
+
+    .salah-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .salah-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .salah-title-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 18px;
+    }
+
+    .salah-title strong {
+      display: block;
+      font-family: "Hind Siliguri", sans-serif;
+      font-size: 15px;
+    }
+
+    .salah-title span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 1px;
+    }
+
+    .next-prayer {
+      text-align: right;
+    }
+
+    .next-prayer small {
+      color: var(--muted);
+      display: block;
+      font-size: 10px;
+    }
+
+    .next-prayer strong {
+      color: var(--lime);
+      font-size: 14px;
+    }
+
+    .salah-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .salah-item {
+      padding: 16px 14px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+      transition: .2s ease;
+    }
+
+    .salah-item:last-child {
+      border-right: 0;
+    }
+
+    .salah-item.active {
+      background: var(--lime-soft);
+      box-shadow: inset 0 -2px 0 var(--lime);
+    }
+
+    .salah-item .arabic {
+      font-family: "Hind Siliguri", sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .salah-item .name {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      margin: 4px 0;
+    }
+
+    .salah-item .time {
+      color: var(--lime);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .salah-note {
+      padding: 11px 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: "Hind Siliguri", sans-serif;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* =========================================================
+       SHOWCASE
+       ========================================================= */
+
+    .showcase-section {
+      width: min(1440px, calc(100% - 32px));
+      margin: 42px auto 80px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+      letter-spacing: -.045em;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .website-count {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .website-count strong {
+      color: var(--lime);
+    }
+
+    .website-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .website-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      transition:
+        transform .3s ease,
+        border-color .3s ease;
+    }
+
+    .website-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--lime-border);
+    }
+
+    .preview {
+      position: relative;
+      height: 270px;
+      overflow: hidden;
+      background: #060707;
+    }
+
+    .preview iframe {
+      position: absolute;
+      width: 144%;
+      height: 144%;
+      left: -22%;
+      top: -3%;
+      border: 0;
+      transform: scale(.72);
+      transform-origin: top center;
+      pointer-events: none;
+      background: white;
+    }
+
+    .preview-shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 45%,
+        rgba(0,0,0,.7)
+      );
+      pointer-events: none;
+    }
+
+    .preview-top {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .package-badge,
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 9px;
+      border-radius: 8px;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .live-badge {
+      color: var(--lime);
+    }
+
+    .live-badge i {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 9px var(--lime);
+    }
+
+    .preview-bottom {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 17px;
+      z-index: 3;
+      color: white;
+    }
+
+    .preview-bottom small {
+      opacity: .7;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .preview-bottom h3 {
+      margin-top: 4px;
+      font-size: 20px;
       letter-spacing: -.035em;
     }
 
-    .card-url {
-      margin-top: 6px;
+    .website-content {
+      padding: 17px;
+    }
+
+    .website-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 13px;
+    }
+
+    .website-url {
       color: var(--muted);
-      font-size: 11px;
+      font-size: 10px;
       overflow: hidden;
+      white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .animation-label {
+      color: var(--lime);
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
       white-space: nowrap;
     }
 
@@ -506,216 +789,192 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin-top: 17px;
     }
 
-    .btn {
-      min-height: 43px;
+    .action-btn {
+      height: 42px;
+      border-radius: 11px;
       border: 1px solid var(--line);
-      border-radius: 13px;
-      background: rgba(255,255,255,.035);
+      background: transparent;
       color: var(--text);
-      font-weight: 700;
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 800;
       transition: .2s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(183,255,0,.35);
+    .action-btn:hover {
+      border-color: var(--lime-border);
+      background: var(--lime-soft);
     }
 
-    .btn-primary {
+    .action-btn.primary {
       border-color: var(--lime);
       background: var(--lime);
       color: #080909;
     }
 
-    .btn-primary:hover {
-      box-shadow: 0 12px 35px rgba(183,255,0,.18);
+    .action-btn.primary:hover {
+      box-shadow: 0 8px 24px rgba(183,255,0,.18);
+      transform: translateY(-1px);
     }
 
-    /* =========================
-       EMPTY
-    ========================= */
-
-    .empty {
+    .empty-state {
       display: none;
-      padding: 80px 20px;
-      border: 1px dashed var(--line);
-      border-radius: 25px;
       text-align: center;
+      padding: 70px 20px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-xl);
       color: var(--muted);
     }
 
-    .empty strong {
+    .empty-state.show {
       display: block;
-      margin-bottom: 7px;
-      color: var(--text);
     }
 
-    /* =========================
-       PRESENTATION
-    ========================= */
+    .empty-state strong {
+      display: block;
+      color: var(--text);
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 22px 0 35px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    /* =========================================================
+       PRESENTATION MODAL
+       ========================================================= */
 
     .presentation {
       position: fixed;
       inset: 0;
-      z-index: 9999;
+      z-index: 3000;
       display: none;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(183,255,0,.08), transparent 32%),
-        #050606;
-      overflow: hidden;
+      background: #030404;
     }
 
     .presentation.open {
       display: block;
-      animation: presentationIn .45s ease both;
     }
 
-    @keyframes presentationIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    .presentation-top {
+    .presentation-ui {
       position: absolute;
-      top: 0;
       left: 0;
       right: 0;
-      z-index: 30;
-      height: 76px;
+      top: 0;
+      z-index: 5;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 25px;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,.72),
-        transparent
-      );
+      gap: 9px;
+      padding: 14px;
+      background: linear-gradient(to bottom, rgba(0,0,0,.8), transparent);
       pointer-events: none;
     }
 
-    .presentation-top > * {
+    .presentation-ui > * {
       pointer-events: auto;
     }
 
-    .presentation-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .presentation-title {
+      flex: 1;
+      min-width: 0;
     }
 
-    .presentation-brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--lime);
-      color: #080909;
-      font-weight: 900;
-      font-size: 12px;
-    }
-
-    .presentation-brand-text strong {
+    .presentation-title strong {
       display: block;
-      font-size: 12px;
+      color: white;
+      font-size: 13px;
     }
 
-    .presentation-brand-text span {
-      display: block;
-      margin-top: 2px;
+    .presentation-title span {
       color: rgba(255,255,255,.5);
       font-size: 9px;
     }
 
-    .presentation-controls {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .presentation-btn {
+    .pres-btn {
+      width: 38px;
       height: 38px;
-      padding: 0 13px;
+      border-radius: 10px;
       border: 1px solid rgba(255,255,255,.12);
-      border-radius: 11px;
-      background: rgba(255,255,255,.055);
+      background: rgba(0,0,0,.4);
       color: white;
-      font-size: 11px;
-      font-weight: 700;
       backdrop-filter: blur(12px);
-      transition: .2s ease;
     }
 
-    .presentation-btn:hover {
-      background: rgba(255,255,255,.11);
-      border-color: rgba(183,255,0,.4);
-    }
-
-    .presentation-btn.lime {
-      background: var(--lime);
-      color: #080909;
-      border-color: var(--lime);
+    .pres-btn:hover {
+      background: rgba(255,255,255,.1);
     }
 
     .presentation-stage {
       position: absolute;
-      inset: 76px 30px 88px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      perspective: 1400px;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      perspective: 1200px;
     }
 
-    .desktop-device {
+    .device {
       position: relative;
-      width: min(1180px, 90vw);
-      aspect-ratio: 16 / 10;
-      padding: 12px 12px 38px;
-      border-radius: 20px;
-      background:
-        linear-gradient(145deg, #252a2a, #0b0d0d);
-      border: 1px solid rgba(255,255,255,.16);
+      width: min(1100px, 86vw);
+      height: min(690px, 74vh);
+      padding: 14px;
+      border-radius: 26px;
+      background: linear-gradient(145deg, #252928, #080909);
       box-shadow:
-        0 50px 120px rgba(0,0,0,.72),
-        0 0 0 1px rgba(255,255,255,.03);
-      transform-style: preserve-3d;
-      transition: transform .8s cubic-bezier(.2,.8,.2,1);
+        0 60px 120px rgba(0,0,0,.55),
+        0 0 0 1px rgba(255,255,255,.07);
+      transform:
+        translateY(10px)
+        scale(.96);
+      transition:
+        transform .75s cubic-bezier(.16,1,.3,1),
+        opacity .55s ease;
+      opacity: 0;
     }
 
-    .desktop-device.scale-in {
-      animation: deviceScale .8s cubic-bezier(.2,.8,.2,1);
+    .presentation.active .device {
+      transform:
+        translateY(0)
+        scale(1);
+      opacity: 1;
     }
 
-    @keyframes deviceScale {
-      0% {
-        transform: scale(.88) translateY(25px);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-      }
+    .device-camera {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #050505;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
     }
 
-    .desktop-screen {
-      position: relative;
+    .device-screen {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      border-radius: 11px;
+      border-radius: 17px;
       background: white;
+      position: relative;
     }
 
-    .desktop-screen iframe {
+    .device-screen iframe {
       width: 100%;
       height: 100%;
       border: 0;
@@ -723,281 +982,306 @@
       background: white;
     }
 
-    .device-camera {
+    .device-base {
       position: absolute;
-      top: 5px;
-      left: 50%;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #060707;
-      transform: translateX(-50%);
+      width: 26%;
+      height: 7px;
+      bottom: -11px;
+      left: 37%;
+      border-radius: 0 0 10px 10px;
+      background: #161818;
     }
 
-    .device-bottom {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 150px;
-      height: 23px;
-      transform: translateX(-50%);
-      display: grid;
-      place-items: center;
-      color: rgba(255,255,255,.18);
-      font-size: 7px;
-      letter-spacing: .12em;
-    }
-
-    .device-stand {
+    .pres-controls {
       position: absolute;
       left: 50%;
-      bottom: -55px;
-      width: 140px;
-      height: 60px;
       transform: translateX(-50%);
-      background: linear-gradient(90deg,#0d0f0f,#222626,#0d0f0f);
-      clip-path: polygon(35% 0,65% 0,78% 85%,100% 100%,0 100%,22% 85%);
-      z-index: -1;
-    }
-
-    .presentation-info {
-      position: absolute;
-      left: 30px;
-      right: 30px;
       bottom: 22px;
-      z-index: 30;
+      z-index: 7;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 7px;
+      padding: 7px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 15px;
+      background: rgba(0,0,0,.58);
+      backdrop-filter: blur(20px);
     }
 
-    .presentation-site {
-      min-width: 0;
+    .pres-control {
+      width: 39px;
+      height: 39px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: white;
     }
 
-    .presentation-site small {
-      display: block;
+    .pres-control:hover {
+      background: rgba(255,255,255,.1);
+    }
+
+    .pres-control.main {
+      background: var(--lime);
+      color: #080909;
+    }
+
+    .progress-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: rgba(255,255,255,.08);
+      z-index: 10;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: var(--lime);
+      box-shadow: 0 0 10px rgba(183,255,0,.6);
+    }
+
+    .pres-counter {
+      position: absolute;
+      right: 18px;
+      bottom: 24px;
+      color: rgba(255,255,255,.55);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 10px;
+      z-index: 6;
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 20px);
+      z-index: 5000;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      background: rgba(12,14,13,.92);
+      color: white;
+      border-radius: 12px;
+      font-size: 11px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* =========================================================
+       PIN MODE
+       ========================================================= */
+
+    body.pin-mode .navbar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+
+    body.pin-mode .hero {
+      padding-top: 125px;
+    }
+
+    body.pin-mode .pin-btn {
+      box-shadow: 0 0 0 3px rgba(183,255,0,.08);
+    }
+
+    .pin-indicator {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 1500;
+      display: none;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.62);
+      border: 1px solid rgba(183,255,0,.25);
+      backdrop-filter: blur(15px);
       color: var(--lime);
       font-size: 9px;
       font-weight: 800;
-      letter-spacing: .13em;
       text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
-    .presentation-site strong {
-      display: block;
-      margin-top: 4px;
-      font-size: 20px;
-      letter-spacing: -.035em;
+    body.pin-mode .pin-indicator {
+      display: inline-flex;
     }
 
-    .presentation-site span {
-      display: block;
-      margin-top: 3px;
-      max-width: 500px;
-      color: rgba(255,255,255,.4);
-      font-size: 10px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .presentation-progress {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .progress-line {
-      width: 130px;
-      height: 3px;
-      overflow: hidden;
-      border-radius: 99px;
-      background: rgba(255,255,255,.12);
-    }
-
-    .progress-fill {
-      width: 0%;
-      height: 100%;
+    .pin-indicator i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       background: var(--lime);
-      transition: width .2s linear;
+      box-shadow: 0 0 10px var(--lime);
     }
 
-    .counter {
-      color: rgba(255,255,255,.45);
-      font-size: 10px;
-      white-space: nowrap;
-    }
-
-    /* Presentation transitions */
-
-    .desktop-device.slide-next {
-      animation: slideNext .7s cubic-bezier(.2,.8,.2,1);
-    }
-
-    @keyframes slideNext {
-      0% {
-        opacity: 0;
-        transform: translateX(100px) scale(.96);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
-    }
-
-    .desktop-device.slide-prev {
-      animation: slidePrev .7s cubic-bezier(.2,.8,.2,1);
-    }
-
-    @keyframes slidePrev {
-      0% {
-        opacity: 0;
-        transform: translateX(-100px) scale(.96);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
-    }
-
-    .desktop-device.float-mode {
-      animation: floatDevice 5s ease-in-out infinite;
-    }
-
-    @keyframes floatDevice {
-      0%,100% {
-        transform: translateY(0) rotateX(0deg);
-      }
-      50% {
-        transform: translateY(-8px) rotateX(.4deg);
-      }
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      width: min(1400px, calc(100% - 36px));
-      margin: auto;
-      padding: 30px 0 50px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    footer strong {
-      color: var(--text);
-    }
-
-    /* =========================
+    /* =========================================================
        RESPONSIVE
-    ========================= */
+       ========================================================= */
 
-    @media (max-width: 1050px) {
-      .hero {
+    @media (max-width: 1100px) {
+      .hero-grid {
         grid-template-columns: 1fr;
-        padding-top: 65px;
+      }
+
+      .hero-side {
+        max-width: 500px;
       }
 
       .website-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-
-      .desktop-device {
-        width: min(900px, 92vw);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 700px) {
-      .nav {
-        width: min(100% - 22px, 1400px);
+    @media (max-width: 800px) {
+      .nav-links {
+        position: fixed;
+        top: calc(var(--nav-height) + 8px);
+        left: 16px;
+        right: 16px;
+        padding: 10px;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--card-strong);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: .25s ease;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        padding: 13px;
+      }
+
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .control-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .filter-group {
+        width: 100%;
+      }
+
+      .salah-list {
+        grid-template-columns: repeat(5, 150px);
+        overflow-x: auto;
+      }
+
+      .salah-item {
+        border-bottom: 0;
+      }
+
+      .salah-card {
+        overflow-x: auto;
+      }
+
+      .salah-top {
+        min-width: 680px;
+      }
+
+      .website-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner,
+      .hero,
+      .control-wrap,
+      .salah-section,
+      .showcase-section,
+      footer {
+        width: min(100% - 20px, 1440px);
+      }
+
+      .navbar {
+        --nav-height: 66px;
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+      }
+
+      .brand-copy strong {
+        font-size: 14px;
+      }
+
+      .pin-btn {
+        padding: 0 10px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero-side {
+        padding: 17px;
       }
 
       .clock {
-        display: none;
+        font-size: 27px;
       }
 
-      .hero,
-      .showcase,
-      footer {
-        width: calc(100% - 22px);
-      }
-
-      .hero {
-        padding: 55px 0 35px;
-      }
-
-      h1 {
-        font-size: 51px;
-      }
-
-      .website-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-bar {
-        align-items: flex-start;
+      .section-heading {
+        align-items: start;
         flex-direction: column;
       }
 
-      .presentation-top {
-        height: 65px;
-        padding: 0 12px;
+      .device {
+        width: 94vw;
+        height: 64vh;
+        padding: 7px;
+        border-radius: 18px;
       }
 
-      .presentation-stage {
-        inset: 65px 10px 115px;
+      .device-screen {
+        border-radius: 12px;
       }
 
-      .desktop-device {
-        width: 96vw;
-        border-radius: 13px;
-        padding: 7px 7px 25px;
-      }
-
-      .device-stand,
-      .device-bottom {
+      .pres-counter {
         display: none;
-      }
-
-      .presentation-info {
-        left: 12px;
-        right: 12px;
-        bottom: 14px;
-        align-items: flex-end;
-      }
-
-      .presentation-site strong {
-        font-size: 15px;
-      }
-
-      .presentation-site span {
-        max-width: 210px;
-      }
-
-      .presentation-progress {
-        flex-direction: column;
-        align-items: flex-end;
-      }
-
-      .progress-line {
-        width: 90px;
-      }
-
-      .presentation-btn.text-btn {
-        display: none;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
   </style>
@@ -1005,335 +1289,500 @@
 
 <body>
 
-  <div class="ambient"></div>
+  <!-- =======================================================
+       NAVBAR
+       ======================================================== -->
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+  <header class="navbar">
+    <div class="nav-inner">
 
-  <header class="topbar">
-    <nav class="nav">
-
-      <a class="brand" href="../index.html">
+      <a href="#" class="brand" aria-label="Website Deals Home">
         <div class="brand-mark">WD</div>
 
-        <div class="brand-text">
+        <div class="brand-copy">
           <strong>Website Deals</strong>
-          <span>Live Website Showcase</span>
+          <span>Live Marketing Wall</span>
         </div>
       </a>
 
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#packages">Packages</a>
+        <a href="#websites">Websites</a>
+        <a href="#salah">Salah</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="nav-spacer"></div>
+
       <div class="nav-actions">
 
-        <div class="clock">
-          <span class="live-dot"></span>
-          <span id="clockText">LIVE</span>
-        </div>
+        <button
+          class="icon-btn mobile-menu-btn"
+          id="mobileMenuBtn"
+          title="Menu"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
 
         <button
           class="icon-btn"
-          type="button"
-          title="Admin"
-          onclick="openAdmin()"
+          id="themeBtn"
+          title="Light / Dark"
+          aria-label="Toggle theme"
         >
-          ⚙
+          ☾
+        </button>
+
+        <button
+          class="pin-btn"
+          id="pinBtn"
+          title="Pin Marketing Wall"
+        >
+          📌 <span id="pinText">Pin</span>
         </button>
 
       </div>
 
-    </nav>
+    </div>
   </header>
 
-  <!-- =========================
-       HERO
-  ========================= -->
 
-  <main>
+  <!-- =======================================================
+       HERO
+       ======================================================== -->
+
+  <main id="home">
 
     <section class="hero">
 
-      <div>
+      <div class="hero-grid">
 
-        <div class="eyebrow">
-          <span class="live-dot"></span>
-          Personal Client Showcase
+        <div>
+
+          <div class="eyebrow">
+            <span class="live-dot"></span>
+            LIVE SHOWCASE
+          </div>
+
+          <h1>
+            Your websites.<br>
+            <span>Live. Anywhere.</span>
+          </h1>
+
+          <p>
+            One beautiful live wall for presenting your websites to clients.
+            Laptop, desktop or tablet — open it, explore it and start your
+            presentation instantly.
+          </p>
+
         </div>
 
-        <h1>
-          Your websites.<br />
-          <span>Live. Anywhere.</span>
-        </h1>
 
-        <p class="hero-copy">
-          আপনার সব real website এক জায়গায়। Client-এর সামনে laptop,
-          desktop অথবা tablet খুলেই Explore করুন — premium presentation
-          mode-এ website দেখান।
-        </p>
+        <aside class="hero-side">
+
+          <div class="wall-status">
+
+            <div class="status-left">
+
+              <div class="status-icon">
+                ✦
+              </div>
+
+              <div class="status-copy">
+                <strong>Marketing Wall</strong>
+                <span>Always ready for presentation</span>
+              </div>
+
+            </div>
+
+            <div class="status-pill">
+              Live
+            </div>
+
+          </div>
+
+          <div class="clock" id="clock">
+            00:00:00
+          </div>
+
+          <div class="date" id="date">
+            Loading date...
+          </div>
+
+        </aside>
 
       </div>
 
-      <div class="hero-side">
+    </section>
 
-        <div class="hero-side-card">
-          <small>Presentation Mode</small>
-          <strong>Explore → Full Screen</strong>
-          <p>
-            Smart sound, smooth scale, slide transition এবং live website
-            presentation — সব একসাথে।
-          </p>
+
+    <!-- =====================================================
+         SEARCH + FILTER
+         ====================================================== -->
+
+    <section class="control-wrap" id="packages">
+
+      <div class="control-bar">
+
+        <div class="search-box">
+
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search website..."
+            autocomplete="off"
+          >
+
+          <button
+            class="search-clear"
+            id="searchClear"
+            aria-label="Clear search"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <div class="filter-group">
+
+          <button
+            class="filter-btn active"
+            data-filter="all"
+          >
+            All
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="starter"
+          >
+            Starter · ৳549
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="business"
+          >
+            Business · ৳999
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="premium"
+          >
+            Premium · ৳1,999
+          </button>
+
         </div>
 
       </div>
 
     </section>
 
-    <!-- =========================
-         SHOWCASE
-    ========================= -->
 
-    <section class="showcase">
+    <!-- =====================================================
+         SALAH REMINDER
+         ====================================================== -->
 
-      <div class="section-bar">
+    <section class="salah-section" id="salah">
 
-        <div class="section-title">
-          <h2>Live Website Wall</h2>
-          <p id="websiteCount">0 websites available</p>
+      <div class="salah-card">
+
+        <div class="salah-top">
+
+          <div class="salah-title">
+
+            <div class="salah-title-icon">
+              🕌
+            </div>
+
+            <div>
+              <strong>আজকের সালাত</strong>
+              <span>Prayer Reminder · Dhaka</span>
+            </div>
+
+          </div>
+
+          <div class="next-prayer">
+
+            <small>পরবর্তী সালাত</small>
+            <strong id="nextPrayer">
+              Loading...
+            </strong>
+
+          </div>
+
         </div>
 
-        <div class="filters">
 
-          <button
-            class="filter active"
-            data-filter="all"
-            type="button"
-          >
-            All
-          </button>
+        <div class="salah-list">
 
-          <button
-            class="filter"
-            data-filter="starter"
-            type="button"
-          >
-            Starter
-          </button>
+          <div class="salah-item" data-prayer="fajr">
+            <span class="arabic">ফজর</span>
+            <span class="name">Fajr</span>
+            <span class="time">04:45</span>
+          </div>
 
-          <button
-            class="filter"
-            data-filter="business"
-            type="button"
-          >
-            Business
-          </button>
+          <div class="salah-item" data-prayer="dhuhr">
+            <span class="arabic">যোহর</span>
+            <span class="name">Dhuhr</span>
+            <span class="time">12:05</span>
+          </div>
 
-          <button
-            class="filter"
-            data-filter="premium"
-            type="button"
-          >
-            Premium
-          </button>
+          <div class="salah-item" data-prayer="asr">
+            <span class="arabic">আসর</span>
+            <span class="name">Asr</span>
+            <span class="time">16:15</span>
+          </div>
 
+          <div class="salah-item" data-prayer="maghrib">
+            <span class="arabic">মাগরিব</span>
+            <span class="name">Maghrib</span>
+            <span class="time">18:00</span>
+          </div>
+
+          <div class="salah-item" data-prayer="isha">
+            <span class="arabic">এশা</span>
+            <span class="name">Isha</span>
+            <span class="time">19:20</span>
+          </div>
+
+        </div>
+
+        <div class="salah-note">
+          সময়গুলো বর্তমানে Dhaka-এর জন্য demo/reference time।
+          পরে চাইলে live prayer-time API যোগ করা যাবে।
         </div>
 
       </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WEBSITE SHOWCASE
+         ====================================================== -->
+
+    <section class="showcase-section" id="websites">
+
+      <div class="section-heading">
+
+        <div>
+          <h2>Explore Websites</h2>
+          <p>
+            আপনার real websites এক জায়গা থেকে client-কে দেখান।
+          </p>
+        </div>
+
+        <div class="website-count">
+          <strong id="visibleCount">0</strong>
+          websites
+        </div>
+
+      </div>
+
 
       <div
         class="website-grid"
         id="websiteGrid"
       ></div>
 
+
       <div
-        class="empty"
+        class="empty-state"
         id="emptyState"
       >
-        <strong>No websites found</strong>
-        No website has been added to this package yet.
+        <strong>No website found</strong>
+        Search বা package filter পরিবর্তন করে আবার চেষ্টা করুন।
       </div>
 
     </section>
 
   </main>
 
-  <footer>
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================== -->
+
+  <footer id="about">
 
     <div>
-      <strong>Website Deals</strong>
-      — Live Client Presentation Wall
+      © <span id="year"></span> Website Deals
     </div>
 
     <div>
-      Explore • Present • Sell
+      Live websites · Client presentation · Marketing wall
     </div>
 
   </footer>
 
-  <!-- =========================
-       PRESENTATION
-  ========================= -->
 
-  <section
+  <!-- =======================================================
+       PIN INDICATOR
+       ======================================================== -->
+
+  <div class="pin-indicator">
+    <i></i>
+    Pinned Marketing Wall
+  </div>
+
+
+  <!-- =======================================================
+       PRESENTATION MODAL
+       ======================================================== -->
+
+  <div
     class="presentation"
     id="presentation"
     aria-hidden="true"
   >
 
-    <div class="presentation-top">
+    <div class="presentation-ui">
 
-      <div class="presentation-brand">
-
-        <div class="presentation-brand-mark">
-          WD
-        </div>
-
-        <div class="presentation-brand-text">
-          <strong>Website Deals</strong>
-          <span>LIVE PRESENTATION</span>
-        </div>
-
-      </div>
-
-      <div class="presentation-controls">
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="previousWebsite()"
-          title="Previous website"
-        >
-          ←
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="toggleAutoPlay()"
-          id="autoButton"
-        >
-          ▶ Auto
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="toggleSound()"
-          id="soundButton"
-        >
-          🔊 Sound
-        </button>
-
-        <button
-          class="presentation-btn text-btn"
-          type="button"
-          onclick="openCurrentWebsite()"
-        >
-          Open Live
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="toggleFullscreen()"
-        >
-          ⛶
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="closePresentation()"
-        >
-          ✕
-        </button>
-
-        <button
-          class="presentation-btn"
-          type="button"
-          onclick="nextWebsite()"
-          title="Next website"
-        >
-          →
-        </button>
-
-      </div>
-
-    </div>
-
-    <div class="presentation-stage">
-
-      <div
-        class="desktop-device"
-        id="desktopDevice"
-      >
-
-        <div class="device-camera"></div>
-
-        <div class="desktop-screen">
-
-          <iframe
-            id="presentationFrame"
-            title="Live Website Presentation"
-            allow="autoplay; fullscreen"
-          ></iframe>
-
-        </div>
-
-        <div class="device-bottom">
-          WEBSITE DEALS
-        </div>
-
-        <div class="device-stand"></div>
-
-      </div>
-
-    </div>
-
-    <div class="presentation-info">
-
-      <div class="presentation-site">
-
-        <small id="presentationPackage">
-          BUSINESS PACKAGE
-        </small>
-
-        <strong id="presentationName">
+      <div class="presentation-title">
+        <strong id="presTitle">
           Website
         </strong>
 
-        <span id="presentationUrl">
-          https://example.com
+        <span id="presPackage">
+          Package
         </span>
-
       </div>
 
-      <div class="presentation-progress">
+      <button
+        class="pres-btn"
+        id="soundBtn"
+        title="Sound"
+      >
+        🔇
+      </button>
 
-        <div class="progress-line">
-          <div
-            class="progress-fill"
-            id="progressFill"
-          ></div>
+      <button
+        class="pres-btn"
+        id="autoBtn"
+        title="Auto Play"
+      >
+        ▶
+      </button>
+
+      <button
+        class="pres-btn"
+        id="fullscreenBtn"
+        title="Fullscreen"
+      >
+        ⛶
+      </button>
+
+      <button
+        class="pres-btn"
+        id="closePresentation"
+        title="Close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="presentation-stage">
+
+      <div class="device">
+
+        <div class="device-camera"></div>
+
+        <div class="device-screen">
+          <iframe
+            id="presentationFrame"
+            title="Live Website Presentation"
+            loading="eager"
+          ></iframe>
         </div>
 
-        <div
-          class="counter"
-          id="presentationCounter"
-        >
-          1 / 1
-        </div>
+        <div class="device-base"></div>
 
       </div>
 
     </div>
 
-  </section>
+
+    <div class="pres-controls">
+
+      <button
+        class="pres-control"
+        id="prevBtn"
+        title="Previous"
+      >
+        ←
+      </button>
+
+      <button
+        class="pres-control main"
+        id="playBtn"
+        title="Play / Pause"
+      >
+        ▶
+      </button>
+
+      <button
+        class="pres-control"
+        id="nextBtn"
+        title="Next"
+      >
+        →
+      </button>
+
+      <button
+        class="pres-control"
+        id="liveBtn"
+        title="Open Live Website"
+      >
+        ↗
+      </button>
+
+    </div>
+
+
+    <div class="pres-counter">
+      <span id="presCounter">1 / 1</span>
+    </div>
+
+
+    <div class="progress-wrap">
+      <div
+        class="progress"
+        id="progress"
+      ></div>
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       TOAST
+       ======================================================== -->
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
 
   <script>
     /* =========================================================
-       WEBSITE DATA
+       WEBSITE DEALS
+       LIVE MARKETING WALL
+       package/index.html
        ========================================================= */
 
-    const DEFAULT_WEBSITES = [
+    const STORAGE_KEY = "websiteDealsWebsites";
+
+    const defaultWebsites = [
       {
         id: "snk-it-institute",
         name: "SNK IT Institute",
@@ -1346,67 +1795,669 @@
       }
     ];
 
-    const STORAGE_KEY = "websiteDealsWebsites";
+
+    /* =========================================================
+       STATE
+       ========================================================= */
 
     let websites = [];
     let currentFilter = "all";
+    let searchTerm = "";
 
-    let presentationWebsites = [];
-    let currentIndex = 0;
+    let presentationList = [];
+    let presentationIndex = 0;
 
     let autoPlay = false;
+    let soundEnabled = false;
+
     let autoTimer = null;
     let progressTimer = null;
 
-    let soundEnabled = true;
-
-    let audioContext = null;
-
+    let progressStart = 0;
     const AUTO_DURATION = 8000;
 
+
     /* =========================================================
-       LOAD DATA
+       DOM
+       ========================================================= */
+
+    const body = document.body;
+
+    const websiteGrid =
+      document.getElementById("websiteGrid");
+
+    const emptyState =
+      document.getElementById("emptyState");
+
+    const visibleCount =
+      document.getElementById("visibleCount");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const searchClear =
+      document.getElementById("searchClear");
+
+    const themeBtn =
+      document.getElementById("themeBtn");
+
+    const pinBtn =
+      document.getElementById("pinBtn");
+
+    const pinText =
+      document.getElementById("pinText");
+
+    const mobileMenuBtn =
+      document.getElementById("mobileMenuBtn");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+    const presentation =
+      document.getElementById("presentation");
+
+    const presentationFrame =
+      document.getElementById("presentationFrame");
+
+    const presTitle =
+      document.getElementById("presTitle");
+
+    const presPackage =
+      document.getElementById("presPackage");
+
+    const presCounter =
+      document.getElementById("presCounter");
+
+    const progress =
+      document.getElementById("progress");
+
+    const soundBtn =
+      document.getElementById("soundBtn");
+
+    const autoBtn =
+      document.getElementById("autoBtn");
+
+    const fullscreenBtn =
+      document.getElementById("fullscreenBtn");
+
+    const playBtn =
+      document.getElementById("playBtn");
+
+    const prevBtn =
+      document.getElementById("prevBtn");
+
+    const nextBtn =
+      document.getElementById("nextBtn");
+
+    const liveBtn =
+      document.getElementById("liveBtn");
+
+    const closePresentation =
+      document.getElementById("closePresentation");
+
+    const nextPrayer =
+      document.getElementById("nextPrayer");
+
+    const clock =
+      document.getElementById("clock");
+
+    const date =
+      document.getElementById("date");
+
+    const toast =
+      document.getElementById("toast");
+
+
+    /* =========================================================
+       INIT
+       ========================================================= */
+
+    function init() {
+
+      loadWebsites();
+
+      loadPreferences();
+
+      renderWebsites();
+
+      updateClock();
+
+      setInterval(updateClock, 1000);
+
+      updatePrayer();
+
+      setInterval(updatePrayer, 30000);
+
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    }
+
+
+    /* =========================================================
+       LOAD WEBSITE DATA
        ========================================================= */
 
     function loadWebsites() {
 
       try {
 
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved =
+          localStorage.getItem(STORAGE_KEY);
 
         if (saved) {
 
-          const parsed = JSON.parse(saved);
+          const parsed =
+            JSON.parse(saved);
 
           if (Array.isArray(parsed)) {
-            websites = parsed;
-          } else {
-            websites = [...DEFAULT_WEBSITES];
+
+            websites = parsed.filter(
+              item => item && item.status !== false
+            );
+
           }
 
-        } else {
-
-          websites = [...DEFAULT_WEBSITES];
-
-          localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(websites)
-          );
         }
 
       } catch (error) {
 
-        websites = [...DEFAULT_WEBSITES];
+        console.warn(
+          "Website data could not be loaded.",
+          error
+        );
 
       }
 
-      websites = websites
-        .filter(site => site && site.status !== false)
-        .sort((a,b) => {
-          return Number(a.sort || 0) - Number(b.sort || 0);
+      if (!websites.length) {
+        websites = [...defaultWebsites];
+      }
+
+      websites.sort(
+        (a, b) =>
+          Number(a.sort || 0) -
+          Number(b.sort || 0)
+      );
+    }
+
+
+    /* =========================================================
+       FILTERED WEBSITES
+       ========================================================= */
+
+    function getFilteredWebsites() {
+
+      return websites.filter(site => {
+
+        const matchesFilter =
+          currentFilter === "all" ||
+          String(site.package).toLowerCase() ===
+          currentFilter;
+
+        const haystack = [
+          site.name,
+          site.url,
+          site.package,
+          site.packageLabel
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        const matchesSearch =
+          !searchTerm ||
+          haystack.includes(
+            searchTerm.toLowerCase()
+          );
+
+        return matchesFilter && matchesSearch;
+
+      });
+
+    }
+
+
+    /* =========================================================
+       RENDER WEBSITE CARDS
+       ========================================================= */
+
+    function renderWebsites() {
+
+      const list =
+        getFilteredWebsites();
+
+      websiteGrid.innerHTML = "";
+
+      visibleCount.textContent =
+        list.length;
+
+      if (!list.length) {
+
+        emptyState.classList.add("show");
+
+        return;
+
+      }
+
+      emptyState.classList.remove("show");
+
+
+      list.forEach((site, index) => {
+
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "website-card";
+
+        card.dataset.index = index;
+
+
+        const safeName =
+          escapeHTML(
+            site.name ||
+            "Untitled Website"
+          );
+
+        const safePackage =
+          escapeHTML(
+            site.packageLabel ||
+            `${site.package || "Package"} Package`
+          );
+
+        const safeUrl =
+          escapeHTML(
+            site.url ||
+            "#"
+          );
+
+        const animation =
+          escapeHTML(
+            site.animation ||
+            "zoom"
+          );
+
+
+        card.innerHTML = `
+
+          <div class="preview">
+
+            <iframe
+              src="${safeUrl}"
+              title="${safeName}"
+              loading="lazy"
+              sandbox="allow-forms allow-modals allow-popups allow-scripts allow-same-origin"
+            ></iframe>
+
+            <div class="preview-shade"></div>
+
+            <div class="preview-top">
+
+              <div class="package-badge">
+                ${safePackage}
+              </div>
+
+              <div class="live-badge">
+                <i></i>
+                Live
+              </div>
+
+            </div>
+
+            <div class="preview-bottom">
+
+              <small>Website Showcase</small>
+
+              <h3>${safeName}</h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="website-content">
+
+            <div class="website-meta">
+
+              <div class="website-url">
+                ${safeUrl}
+              </div>
+
+              <div class="animation-label">
+                ${animation}
+              </div>
+
+            </div>
+
+
+            <div class="card-actions">
+
+              <button
+                class="action-btn primary explore-btn"
+                data-id="${escapeAttr(site.id)}"
+              >
+                ✦ Explore
+              </button>
+
+              <button
+                class="action-btn live-open-btn"
+                data-url="${escapeAttr(site.url)}"
+              >
+                ↗ Live
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+
+        websiteGrid.appendChild(card);
+
+      });
+
+
+      bindCardButtons();
+
+    }
+
+
+    /* =========================================================
+       CARD BUTTONS
+       ========================================================= */
+
+    function bindCardButtons() {
+
+      document
+        .querySelectorAll(".explore-btn")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const id =
+                button.dataset.id;
+
+              openPresentationById(id);
+
+            }
+          );
+
+        });
+
+
+      document
+        .querySelectorAll(".live-open-btn")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const url =
+                button.dataset.url;
+
+              if (url) {
+                window.open(
+                  url,
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              }
+
+            }
+          );
+
         });
 
     }
+
+
+    /* =========================================================
+       SEARCH
+       ========================================================= */
+
+    searchInput.addEventListener(
+      "input",
+      event => {
+
+        searchTerm =
+          event.target.value.trim();
+
+        searchClear.style.display =
+          searchTerm
+            ? "block"
+            : "none";
+
+        renderWebsites();
+
+      }
+    );
+
+
+    searchClear.addEventListener(
+      "click",
+      () => {
+
+        searchInput.value = "";
+
+        searchTerm = "";
+
+        searchClear.style.display =
+          "none";
+
+        renderWebsites();
+
+        searchInput.focus();
+
+      }
+    );
+
+
+    /* =========================================================
+       PACKAGE FILTER
+       ========================================================= */
+
+    document
+      .querySelectorAll(".filter-btn")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            document
+              .querySelectorAll(".filter-btn")
+              .forEach(btn =>
+                btn.classList.remove("active")
+              );
+
+            button.classList.add("active");
+
+            currentFilter =
+              button.dataset.filter;
+
+            renderWebsites();
+
+          }
+        );
+
+      });
+
+
+    /* =========================================================
+       THEME
+       ========================================================= */
+
+    function loadPreferences() {
+
+      const savedTheme =
+        localStorage.getItem(
+          "websiteDealsTheme"
+        );
+
+      if (savedTheme === "light") {
+
+        body.classList.add("light");
+
+      }
+
+      updateThemeIcon();
+
+
+      const savedPin =
+        localStorage.getItem(
+          "websiteDealsPinned"
+        );
+
+      if (savedPin === "true") {
+
+        enablePin(false);
+
+      }
+
+    }
+
+
+    function updateThemeIcon() {
+
+      themeBtn.textContent =
+        body.classList.contains("light")
+          ? "☀"
+          : "☾";
+
+    }
+
+
+    themeBtn.addEventListener(
+      "click",
+      () => {
+
+        body.classList.toggle("light");
+
+        const isLight =
+          body.classList.contains("light");
+
+        localStorage.setItem(
+          "websiteDealsTheme",
+          isLight
+            ? "light"
+            : "dark"
+        );
+
+        updateThemeIcon();
+
+      }
+    );
+
+
+    /* =========================================================
+       PIN MODE
+       ========================================================= */
+
+    function enablePin(showToastMessage = true) {
+
+      body.classList.add("pin-mode");
+
+      pinBtn.classList.add("active");
+
+      pinText.textContent =
+        "Pinned";
+
+      localStorage.setItem(
+        "websiteDealsPinned",
+        "true"
+      );
+
+      if (showToastMessage) {
+
+        showToast(
+          "📌 Marketing Wall pinned"
+        );
+
+      }
+
+    }
+
+
+    function disablePin(showToastMessage = true) {
+
+      body.classList.remove("pin-mode");
+
+      pinBtn.classList.remove("active");
+
+      pinText.textContent =
+        "Pin";
+
+      localStorage.setItem(
+        "websiteDealsPinned",
+        "false"
+      );
+
+      if (showToastMessage) {
+
+        showToast(
+          "Pin mode off"
+        );
+
+      }
+
+    }
+
+
+    pinBtn.addEventListener(
+      "click",
+      () => {
+
+        if (
+          body.classList.contains(
+            "pin-mode"
+          )
+        ) {
+
+          disablePin();
+
+        } else {
+
+          enablePin();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    mobileMenuBtn.addEventListener(
+      "click",
+      () => {
+
+        navLinks.classList.toggle("open");
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove(
+              "open"
+            );
+
+          }
+        );
+
+      });
+
 
     /* =========================================================
        CLOCK
@@ -1414,787 +2465,763 @@
 
     function updateClock() {
 
-      const el = document.getElementById("clockText");
+      const now =
+        new Date();
 
-      if (!el) return;
+      clock.textContent =
+        now.toLocaleTimeString(
+          "en-BD",
+          {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+          }
+        );
 
-      const now = new Date();
+      date.textContent =
+        now.toLocaleDateString(
+          "en-BD",
+          {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }
+        );
 
-      const time = now.toLocaleTimeString(
-        "en-BD",
-        {
-          hour: "2-digit",
-          minute: "2-digit"
+    }
+
+
+    /* =========================================================
+       SALAH REMINDER
+       ========================================================= */
+
+    const prayers = [
+      {
+        id: "fajr",
+        name: "Fajr",
+        bn: "ফজর",
+        time: "04:45"
+      },
+      {
+        id: "dhuhr",
+        name: "Dhuhr",
+        bn: "যোহর",
+        time: "12:05"
+      },
+      {
+        id: "asr",
+        name: "Asr",
+        bn: "আসর",
+        time: "16:15"
+      },
+      {
+        id: "maghrib",
+        name: "Maghrib",
+        bn: "মাগরিব",
+        time: "18:00"
+      },
+      {
+        id: "isha",
+        name: "Isha",
+        bn: "এশা",
+        time: "19:20"
+      }
+    ];
+
+
+    function updatePrayer() {
+
+      const now =
+        new Date();
+
+      const currentMinutes =
+        now.getHours() * 60 +
+        now.getMinutes();
+
+
+      let next = null;
+
+
+      prayers.forEach(
+        prayer => {
+
+          const [hours, minutes] =
+            prayer.time.split(":")
+              .map(Number);
+
+          const prayerMinutes =
+            hours * 60 + minutes;
+
+          if (
+            prayerMinutes >
+            currentMinutes &&
+            !next
+          ) {
+
+            next = prayer;
+
+          }
+
         }
       );
 
-      el.textContent = time;
 
-    }
+      document
+        .querySelectorAll(".salah-item")
+        .forEach(item =>
+          item.classList.remove("active")
+        );
 
-    setInterval(updateClock, 1000);
-    updateClock();
 
-    /* =========================================================
-       PACKAGE HELPERS
-       ========================================================= */
+      if (!next) {
 
-    function getPackageLabel(packageName) {
+        nextPrayer.textContent =
+          "Fajr · 04:45";
 
-      const labels = {
-        starter: "Starter Package",
-        business: "Business Package",
-        premium: "Premium Package"
-      };
-
-      return labels[packageName] || "Website Package";
-
-    }
-
-    function escapeHTML(value) {
-
-      return String(value || "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    }
-
-    /* =========================================================
-       RENDER
-       ========================================================= */
-
-    function renderWebsites() {
-
-      const grid = document.getElementById("websiteGrid");
-      const empty = document.getElementById("emptyState");
-      const count = document.getElementById("websiteCount");
-
-      if (!grid) return;
-
-      const filtered = websites.filter(site => {
-
-        if (currentFilter === "all") {
-          return true;
-        }
-
-        return site.package === currentFilter;
-
-      });
-
-      count.textContent =
-        `${filtered.length} website${filtered.length === 1 ? "" : "s"} available`;
-
-      if (!filtered.length) {
-
-        grid.innerHTML = "";
-
-        empty.style.display = "block";
+        document
+          .querySelector(
+            '[data-prayer="fajr"]'
+          )
+          ?.classList.add("active");
 
         return;
 
       }
 
-      empty.style.display = "none";
 
-      grid.innerHTML = filtered.map((site, index) => {
+      nextPrayer.textContent =
+        `${next.bn} · ${next.time}`;
 
-        return `
-          <article class="website-card">
-
-            <div class="preview">
-
-              <div class="browser-bar">
-
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-
-                <div class="browser-address">
-                  ${escapeHTML(site.url)}
-                </div>
-
-              </div>
-
-              <iframe
-                class="website-frame"
-                src="${escapeHTML(site.url)}"
-                title="${escapeHTML(site.name)}"
-                loading="lazy"
-                allow="fullscreen"
-              ></iframe>
-
-            </div>
-
-            <div class="card-content">
-
-              <span class="package-badge">
-                ${escapeHTML(site.packageLabel || getPackageLabel(site.package))}
-              </span>
-
-              <h3 class="card-title">
-                ${escapeHTML(site.name)}
-              </h3>
-
-              <div class="card-url">
-                ${escapeHTML(site.url)}
-              </div>
-
-              <div class="card-actions">
-
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  onclick="exploreWebsite('${escapeHTML(site.id)}')"
-                >
-                  ✦ Explore
-                </button>
-
-                <button
-                  class="btn"
-                  type="button"
-                  onclick="openWebsite('${escapeHTML(site.id)}')"
-                >
-                  ↗ Open Live
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-        `;
-
-      }).join("");
+      document
+        .querySelector(
+          `[data-prayer="${next.id}"]`
+        )
+        ?.classList.add("active");
 
     }
 
-    /* =========================================================
-       FILTER
-       ========================================================= */
-
-    document.querySelectorAll(".filter").forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        document
-          .querySelectorAll(".filter")
-          .forEach(btn => btn.classList.remove("active"));
-
-        button.classList.add("active");
-
-        currentFilter = button.dataset.filter;
-
-        renderWebsites();
-
-      });
-
-    });
 
     /* =========================================================
-       FIND WEBSITE
+       PRESENTATION
        ========================================================= */
 
-    function findWebsite(id) {
+    function openPresentationById(id) {
 
-      return websites.find(site => site.id === id);
+      presentationList =
+        getFilteredWebsites();
+
+      const index =
+        presentationList.findIndex(
+          site =>
+            String(site.id) === String(id)
+        );
+
+
+      if (index < 0) {
+
+        presentationList =
+          websites;
+
+        presentationIndex =
+          presentationList.findIndex(
+            site =>
+              String(site.id) === String(id)
+          );
+
+      } else {
+
+        presentationIndex =
+          index;
+
+      }
+
+
+      if (
+        presentationIndex < 0
+      ) {
+
+        presentationIndex = 0;
+
+      }
+
+
+      openPresentation();
 
     }
 
-    /* =========================================================
-       OPEN LIVE WEBSITE
-       ========================================================= */
 
-    function openWebsite(id) {
+    function openPresentation() {
 
-      const site = findWebsite(id);
+      if (!presentationList.length) {
+
+        presentationList =
+          websites;
+
+      }
+
+      const site =
+        presentationList[
+          presentationIndex
+        ];
+
 
       if (!site) return;
 
-      window.open(
-        site.url,
-        "_blank",
-        "noopener,noreferrer"
+
+      presentation.classList.add(
+        "open"
       );
 
-      playSound("open");
-
-    }
-
-    /* =========================================================
-       AUDIO ENGINE
-       ========================================================= */
-
-    function initAudio() {
-
-      if (audioContext) return;
-
-      try {
-
-        audioContext =
-          new (window.AudioContext || window.webkitAudioContext)();
-
-      } catch (error) {
-
-        audioContext = null;
-
-      }
-
-    }
-
-    function playSound(type = "transition") {
-
-      if (!soundEnabled) return;
-
-      initAudio();
-
-      if (!audioContext) return;
-
-      if (audioContext.state === "suspended") {
-        audioContext.resume();
-      }
-
-      const now = audioContext.currentTime;
-
-      const oscillator =
-        audioContext.createOscillator();
-
-      const gain =
-        audioContext.createGain();
-
-      oscillator.connect(gain);
-      gain.connect(audioContext.destination);
-
-      let frequency = 520;
-      let duration = .13;
-
-      if (type === "open") {
-        frequency = 620;
-        duration = .18;
-      }
-
-      if (type === "next") {
-        frequency = 740;
-        duration = .12;
-      }
-
-      if (type === "previous") {
-        frequency = 430;
-        duration = .12;
-      }
-
-      if (type === "close") {
-        frequency = 300;
-        duration = .16;
-      }
-
-      oscillator.type = "sine";
-
-      oscillator.frequency.setValueAtTime(
-        frequency,
-        now
+      presentation.classList.add(
+        "active"
       );
-
-      oscillator.frequency.exponentialRampToValueAtTime(
-        frequency * .72,
-        now + duration
-      );
-
-      gain.gain.setValueAtTime(
-        0.0001,
-        now
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.035,
-        now + .025
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        now + duration
-      );
-
-      oscillator.start(now);
-      oscillator.stop(now + duration + .02);
-
-    }
-
-    /* =========================================================
-       EXPLORE
-    ========================================================= */
-
-    function exploreWebsite(id) {
-
-      const index =
-        websites.findIndex(site => site.id === id);
-
-      if (index === -1) return;
-
-      presentationWebsites = [...websites];
-
-      currentIndex = index;
-
-      const presentation =
-        document.getElementById("presentation");
-
-      presentation.classList.add("open");
 
       presentation.setAttribute(
         "aria-hidden",
         "false"
       );
 
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow =
+        "hidden";
 
-      initAudio();
-      playSound("open");
 
-      showPresentationWebsite("next");
+      presTitle.textContent =
+        site.name ||
+        "Website";
 
-      setTimeout(() => {
 
-        requestFullscreenPresentation();
-
-      }, 180);
-
-    }
-
-    /* =========================================================
-       SHOW PRESENTATION WEBSITE
-    ========================================================= */
-
-    function showPresentationWebsite(direction = "next") {
-
-      if (!presentationWebsites.length) return;
-
-      const site =
-        presentationWebsites[currentIndex];
-
-      const frame =
-        document.getElementById("presentationFrame");
-
-      const device =
-        document.getElementById("desktopDevice");
-
-      const name =
-        document.getElementById("presentationName");
-
-      const url =
-        document.getElementById("presentationUrl");
-
-      const packageLabel =
-        document.getElementById("presentationPackage");
-
-      const counter =
-        document.getElementById("presentationCounter");
-
-      frame.src = site.url;
-
-      name.textContent = site.name || "Website";
-
-      url.textContent = site.url || "";
-
-      packageLabel.textContent =
+      presPackage.textContent =
         site.packageLabel ||
-        getPackageLabel(site.package);
+        `${site.package || ""} Package`;
 
-      counter.textContent =
-        `${currentIndex + 1} / ${presentationWebsites.length}`;
 
-      device.classList.remove(
-        "scale-in",
-        "slide-next",
-        "slide-prev",
-        "float-mode"
-      );
+      presentationFrame.src =
+        site.url;
 
-      void device.offsetWidth;
 
-      const animation =
-        site.animation || "zoom";
+      presCounter.textContent =
+        `${presentationIndex + 1} / ${presentationList.length}`;
 
-      if (animation === "slide") {
-
-        device.classList.add(
-          direction === "previous"
-            ? "slide-prev"
-            : "slide-next"
-        );
-
-      } else if (animation === "float") {
-
-        device.classList.add("float-mode");
-
-      } else {
-
-        device.classList.add("scale-in");
-
-      }
-
-      playSound(
-        direction === "previous"
-          ? "previous"
-          : "next"
-      );
 
       resetProgress();
 
+
+      playBtn.textContent =
+        autoPlay
+          ? "Ⅱ"
+          : "▶";
+
+
       if (autoPlay) {
-        startProgress();
+        startAutoPlay();
       }
 
     }
 
+
+    function closePres() {
+
+      presentation.classList.remove(
+        "active"
+      );
+
+      setTimeout(
+        () => {
+
+          presentation.classList.remove(
+            "open"
+          );
+
+          presentationFrame.src =
+            "about:blank";
+
+          presentation.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+        },
+        300
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+      stopAutoPlay();
+
+    }
+
+
+    closePresentation.addEventListener(
+      "click",
+      closePres
+    );
+
+
     /* =========================================================
-       NEXT
-    ========================================================= */
+       NEXT / PREVIOUS
+       ========================================================= */
 
     function nextWebsite() {
 
-      if (!presentationWebsites.length) return;
+      if (!presentationList.length)
+        return;
 
-      currentIndex++;
+      presentationIndex =
+        (
+          presentationIndex + 1
+        ) %
+        presentationList.length;
 
-      if (currentIndex >= presentationWebsites.length) {
-        currentIndex = 0;
-      }
+      openPresentation();
 
-      showPresentationWebsite("next");
+      playSound("next");
 
     }
 
-    /* =========================================================
-       PREVIOUS
-    ========================================================= */
 
     function previousWebsite() {
 
-      if (!presentationWebsites.length) return;
+      if (!presentationList.length)
+        return;
 
-      currentIndex--;
+      presentationIndex =
+        (
+          presentationIndex -
+          1 +
+          presentationList.length
+        ) %
+        presentationList.length;
 
-      if (currentIndex < 0) {
-        currentIndex =
-          presentationWebsites.length - 1;
-      }
+      openPresentation();
 
-      showPresentationWebsite("previous");
+      playSound("next");
 
     }
+
+
+    nextBtn.addEventListener(
+      "click",
+      nextWebsite
+    );
+
+
+    prevBtn.addEventListener(
+      "click",
+      previousWebsite
+    );
+
 
     /* =========================================================
-       AUTO PLAY
-    ========================================================= */
+       LIVE OPEN
+       ========================================================= */
 
-    function toggleAutoPlay() {
+    liveBtn.addEventListener(
+      "click",
+      () => {
 
-      autoPlay = !autoPlay;
+        const site =
+          presentationList[
+            presentationIndex
+          ];
 
-      const button =
-        document.getElementById("autoButton");
+        if (
+          site &&
+          site.url
+        ) {
 
-      if (autoPlay) {
+          window.open(
+            site.url,
+            "_blank",
+            "noopener,noreferrer"
+          );
 
-        button.textContent = "Ⅱ Auto";
-
-        startAutoPlay();
-
-      } else {
-
-        button.textContent = "▶ Auto";
-
-        stopAutoPlay();
+        }
 
       }
+    );
 
-    }
+
+    /* =========================================================
+       AUTOPLAY
+       ========================================================= */
 
     function startAutoPlay() {
 
       stopAutoPlay();
 
-      startProgress();
+      autoPlay = true;
 
-      autoTimer = setInterval(() => {
+      autoBtn.textContent =
+        "Ⅱ";
 
-        nextWebsite();
+      playBtn.textContent =
+        "Ⅱ";
 
-      }, AUTO_DURATION);
+
+      progressStart =
+        Date.now();
+
+
+      progressTimer =
+        setInterval(
+          updateProgress,
+          40
+        );
+
+
+      autoTimer =
+        setTimeout(
+          () => {
+
+            nextWebsite();
+
+          },
+          AUTO_DURATION
+        );
 
     }
+
 
     function stopAutoPlay() {
 
-      if (autoTimer) {
-
-        clearInterval(autoTimer);
-        autoTimer = null;
-
-      }
-
-      if (progressTimer) {
-
-        clearInterval(progressTimer);
-        progressTimer = null;
-
-      }
-
-      const fill =
-        document.getElementById("progressFill");
-
-      if (fill) {
-        fill.style.width = "0%";
-      }
-
-    }
-
-    /* =========================================================
-       PROGRESS
-    ========================================================= */
-
-    function resetProgress() {
-
-      const fill =
-        document.getElementById("progressFill");
-
-      if (!fill) return;
-
-      fill.style.width = "0%";
-
-    }
-
-    function startProgress() {
-
-      if (!autoPlay) return;
-
-      if (progressTimer) {
-        clearInterval(progressTimer);
-      }
-
-      const fill =
-        document.getElementById("progressFill");
-
-      const started = Date.now();
-
-      progressTimer = setInterval(() => {
-
-        const elapsed =
-          Date.now() - started;
-
-        const percent =
-          Math.min(
-            100,
-            (elapsed / AUTO_DURATION) * 100
-          );
-
-        fill.style.width =
-          `${percent}%`;
-
-      }, 60);
-
-    }
-
-    /* =========================================================
-       SOUND
-    ========================================================= */
-
-    function toggleSound() {
-
-      soundEnabled = !soundEnabled;
-
-      const button =
-        document.getElementById("soundButton");
-
-      button.textContent =
-        soundEnabled
-          ? "🔊 Sound"
-          : "🔇 Muted";
-
-      if (soundEnabled) {
-
-        initAudio();
-        playSound("open");
-
-      }
-
-    }
-
-    /* =========================================================
-       OPEN CURRENT WEBSITE
-    ========================================================= */
-
-    function openCurrentWebsite() {
-
-      const site =
-        presentationWebsites[currentIndex];
-
-      if (!site) return;
-
-      window.open(
-        site.url,
-        "_blank",
-        "noopener,noreferrer"
+      clearTimeout(
+        autoTimer
       );
 
-      playSound("open");
-
-    }
-
-    /* =========================================================
-       CLOSE PRESENTATION
-    ========================================================= */
-
-    function closePresentation() {
-
-      stopAutoPlay();
-
-      autoPlay = false;
-
-      document.getElementById(
-        "autoButton"
-      ).textContent = "▶ Auto";
-
-      const presentation =
-        document.getElementById("presentation");
-
-      presentation.classList.remove("open");
-
-      presentation.setAttribute(
-        "aria-hidden",
-        "true"
+      clearInterval(
+        progressTimer
       );
 
-      document.body.style.overflow = "";
+      autoTimer = null;
+      progressTimer = null;
 
-      playSound("close");
-
-      exitFullscreen();
-
-    }
-
-    /* =========================================================
-       FULLSCREEN
-    ========================================================= */
-
-    function requestFullscreenPresentation() {
-
-      const element =
-        document.getElementById("presentation");
-
-      if (!document.fullscreenElement) {
-
-        if (element.requestFullscreen) {
-
-          element.requestFullscreen().catch(() => {});
-
-        }
-
-      }
+      progress.style.width =
+        "0%";
 
     }
 
-    function toggleFullscreen() {
 
-      if (!document.fullscreenElement) {
+    function toggleAutoPlay() {
 
-        requestFullscreenPresentation();
+      autoPlay =
+        !autoPlay;
+
+      if (autoPlay) {
+
+        startAutoPlay();
+
+        showToast(
+          "▶ Auto Play ON"
+        );
 
       } else {
 
-        exitFullscreen();
+        stopAutoPlay();
+
+        autoBtn.textContent =
+          "▶";
+
+        playBtn.textContent =
+          "▶";
+
+        showToast(
+          "Ⅱ Auto Play OFF"
+        );
 
       }
 
     }
 
-    function exitFullscreen() {
 
-      if (document.fullscreenElement) {
+    autoBtn.addEventListener(
+      "click",
+      toggleAutoPlay
+    );
 
-        document.exitFullscreen().catch(() => {});
+
+    playBtn.addEventListener(
+      "click",
+      toggleAutoPlay
+    );
+
+
+    function resetProgress() {
+
+      progress.style.width =
+        "0%";
+
+      if (autoPlay) {
+
+        startAutoPlay();
 
       }
 
     }
+
+
+    function updateProgress() {
+
+      const elapsed =
+        Date.now() -
+        progressStart;
+
+      const percent =
+        Math.min(
+          100,
+          (elapsed /
+            AUTO_DURATION) *
+          100
+        );
+
+      progress.style.width =
+        percent + "%";
+
+    }
+
+
+    /* =========================================================
+       FULLSCREEN
+       ========================================================= */
+
+    fullscreenBtn.addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          if (
+            !document.fullscreenElement
+          ) {
+
+            await presentation.requestFullscreen();
+
+          } else {
+
+            await document.exitFullscreen();
+
+          }
+
+        } catch (error) {
+
+          showToast(
+            "Fullscreen unavailable"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       SOUND
+       ========================================================= */
+
+    let audioContext = null;
+
+
+    function playSound(type = "click") {
+
+      if (!soundEnabled)
+        return;
+
+
+      try {
+
+        if (!audioContext) {
+
+          audioContext =
+            new (
+              window.AudioContext ||
+              window.webkitAudioContext
+            )();
+
+        }
+
+
+        const oscillator =
+          audioContext.createOscillator();
+
+        const gain =
+          audioContext.createGain();
+
+
+        oscillator.connect(
+          gain
+        );
+
+        gain.connect(
+          audioContext.destination
+        );
+
+
+        oscillator.type =
+          "sine";
+
+
+        oscillator.frequency.value =
+          type === "next"
+            ? 680
+            : 520;
+
+
+        gain.gain.setValueAtTime(
+          0.0001,
+          audioContext.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+          0.035,
+          audioContext.currentTime + .01
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          audioContext.currentTime + .15
+        );
+
+
+        oscillator.start();
+
+        oscillator.stop(
+          audioContext.currentTime + .16
+        );
+
+      } catch (error) {
+
+        console.warn(
+          "Sound unavailable."
+        );
+
+      }
+
+    }
+
+
+    soundBtn.addEventListener(
+      "click",
+      () => {
+
+        soundEnabled =
+          !soundEnabled;
+
+        soundBtn.textContent =
+          soundEnabled
+            ? "🔊"
+            : "🔇";
+
+        if (soundEnabled) {
+
+          playSound();
+
+          showToast(
+            "🔊 Presentation sound ON"
+          );
+
+        } else {
+
+          showToast(
+            "🔇 Presentation sound OFF"
+          );
+
+        }
+
+      }
+    );
+
 
     /* =========================================================
        KEYBOARD CONTROLS
-    ========================================================= */
+       ========================================================= */
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener(
+      "keydown",
+      event => {
 
-      const presentation =
-        document.getElementById("presentation");
+        if (
+          !presentation.classList.contains(
+            "open"
+          )
+        ) {
 
-      const isOpen =
-        presentation.classList.contains("open");
+          return;
 
-      if (!isOpen) return;
+        }
 
-      if (event.key === "Escape") {
 
-        closePresentation();
+        if (
+          event.key === "Escape"
+        ) {
+
+          closePres();
+
+        }
+
+
+        if (
+          event.key === "ArrowRight"
+        ) {
+
+          nextWebsite();
+
+        }
+
+
+        if (
+          event.key === "ArrowLeft"
+        ) {
+
+          previousWebsite();
+
+        }
+
+
+        if (
+          event.key.toLowerCase() === "f"
+        ) {
+
+          fullscreenBtn.click();
+
+        }
+
+
+        if (
+          event.key.toLowerCase() === "s"
+        ) {
+
+          soundBtn.click();
+
+        }
+
+
+        if (
+          event.code === "Space"
+        ) {
+
+          event.preventDefault();
+
+          toggleAutoPlay();
+
+        }
 
       }
+    );
 
-      if (event.key === "ArrowRight") {
-
-        nextWebsite();
-
-      }
-
-      if (event.key === "ArrowLeft") {
-
-        previousWebsite();
-
-      }
-
-      if (
-        event.key.toLowerCase() === "f"
-      ) {
-
-        toggleFullscreen();
-
-      }
-
-      if (
-        event.key.toLowerCase() === "s"
-      ) {
-
-        toggleSound();
-
-      }
-
-      if (
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-
-        toggleAutoPlay();
-
-      }
-
-    });
 
     /* =========================================================
        TOUCH SWIPE
-    ========================================================= */
+       ========================================================= */
 
     let touchStartX = 0;
 
-    document.addEventListener(
+
+    presentation.addEventListener(
       "touchstart",
       event => {
-
-        if (!document
-          .getElementById("presentation")
-          .classList.contains("open")) {
-          return;
-        }
 
         touchStartX =
           event.changedTouches[0].screenX;
@@ -2203,53 +3230,127 @@
       { passive: true }
     );
 
-    document.addEventListener(
+
+    presentation.addEventListener(
       "touchend",
       event => {
-
-        if (!document
-          .getElementById("presentation")
-          .classList.contains("open")) {
-          return;
-        }
 
         const touchEndX =
           event.changedTouches[0].screenX;
 
         const difference =
-          touchEndX - touchStartX;
+          touchEndX -
+          touchStartX;
 
-        if (Math.abs(difference) < 60) {
+
+        if (
+          Math.abs(difference) < 60
+        ) {
+
           return;
+
         }
 
+
         if (difference < 0) {
+
           nextWebsite();
+
         } else {
+
           previousWebsite();
+
         }
 
       },
       { passive: true }
     );
 
+
     /* =========================================================
-       ADMIN
-    ========================================================= */
+       TOAST
+       ========================================================= */
 
-    function openAdmin() {
+    let toastTimer = null;
 
-      window.location.href =
-        "admin/websites.html";
+
+    function showToast(message) {
+
+      toast.textContent =
+        message;
+
+      toast.classList.add(
+        "show"
+      );
+
+
+      clearTimeout(
+        toastTimer
+      );
+
+
+      toastTimer =
+        setTimeout(
+          () => {
+
+            toast.classList.remove(
+              "show"
+            );
+
+          },
+          2200
+        );
 
     }
 
-    /* =========================================================
-       INIT
-    ========================================================= */
 
-    loadWebsites();
-    renderWebsites();
+    /* =========================================================
+       SAFE HTML
+       ========================================================= */
+
+    function escapeHTML(value) {
+
+      return String(
+        value ?? ""
+      )
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
+    }
+
+
+    function escapeAttr(value) {
+
+      return escapeHTML(
+        value
+      );
+
+    }
+
+
+    /* =========================================================
+       START
+       ========================================================= */
+
+    init();
 
   </script>
 
