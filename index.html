@@ -15,34 +15,34 @@
 
   <meta
     name="description"
-    content="Package by Website Deals — Premium design library for social media content, business creatives and AI-powered video creation."
+    content="Website Deals — Premium ready-made website packages and live website showcase."
   >
 
-  <title>Package | Design Library & Gemini Content Hub</title>
+  <title>Website Deals | Premium Website Packages</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
   <style>
-
     :root{
       --bg:#080909;
-      --bg-soft:#0d0f10;
-      --panel:#111415;
-      --panel-2:#151819;
-      --border:rgba(255,255,255,.09);
+      --bg2:#0d0f10;
+      --card:#111415;
+      --card2:#151819;
+      --line:rgba(255,255,255,.09);
       --text:#f5f7f6;
-      --muted:#929998;
+      --muted:#9aa29f;
+      --green:#18a957;
+      --green2:#34d477;
       --lime:#b7ff00;
-      --lime-soft:rgba(183,255,0,.12);
       --white:#ffffff;
-      --danger:#ff5f57;
-      --shadow:0 24px 80px rgba(0,0,0,.38);
+      --danger:#ff5c5c;
+      --shadow:0 30px 80px rgba(0,0,0,.45);
       --radius:24px;
     }
 
@@ -59,21 +59,16 @@
     body{
       min-height:100vh;
       background:
-        radial-gradient(circle at 15% 0%,rgba(183,255,0,.07),transparent 28%),
-        radial-gradient(circle at 85% 20%,rgba(0,170,255,.06),transparent 28%),
+        radial-gradient(circle at 10% 0%,rgba(24,169,87,.12),transparent 28%),
+        radial-gradient(circle at 90% 10%,rgba(183,255,0,.07),transparent 25%),
         var(--bg);
       color:var(--text);
-      font-family:"Inter","Hind Siliguri",sans-serif;
+      font-family:Inter,"Hind Siliguri",sans-serif;
       overflow-x:hidden;
     }
 
     body.modal-open{
       overflow:hidden;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
     }
 
     button,
@@ -85,1534 +80,1724 @@
       cursor:pointer;
     }
 
-    img{
-      max-width:100%;
-      display:block;
+    a{
+      color:inherit;
+      text-decoration:none;
     }
 
-    /* =========================================
+    /* =========================
        HEADER
-    ========================================= */
+    ========================= */
 
-    .header{
+    header{
       position:sticky;
       top:0;
-      z-index:1000;
-      border-bottom:1px solid var(--border);
-      background:rgba(8,9,9,.84);
+      z-index:100;
+      height:76px;
+      border-bottom:1px solid var(--line);
+      background:rgba(8,9,9,.82);
       backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
     }
 
-    .header-inner{
-      width:min(1440px,calc(100% - 36px));
-      height:76px;
+    .nav{
+      width:min(1180px,92%);
+      height:100%;
       margin:auto;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:24px;
+      gap:20px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width:max-content;
+      font-weight:900;
+      letter-spacing:-.6px;
     }
 
     .brand-mark{
-      width:42px;
-      height:42px;
-      border-radius:13px;
-      background:var(--lime);
-      color:#080909;
+      width:38px;
+      height:38px;
+      border-radius:12px;
       display:grid;
       place-items:center;
-      font-family:"Space Grotesk";
-      font-weight:800;
-      font-size:18px;
-      box-shadow:0 0 28px rgba(183,255,0,.16);
+      background:linear-gradient(135deg,var(--lime),var(--green));
+      color:#061006;
+      font-size:17px;
+      box-shadow:0 10px 35px rgba(183,255,0,.14);
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
     }
 
     .brand-text strong{
-      display:block;
-      font-family:"Space Grotesk";
       font-size:15px;
-      letter-spacing:-.3px;
     }
 
     .brand-text span{
-      display:block;
       color:var(--muted);
-      font-size:11px;
-      margin-top:2px;
+      font-size:9px;
+      letter-spacing:1.8px;
+      margin-top:5px;
+      text-transform:uppercase;
     }
 
-    .nav{
+    .nav-actions{
       display:flex;
       align-items:center;
-      gap:6px;
+      gap:9px;
     }
 
-    .nav a{
-      padding:10px 13px;
-      border-radius:10px;
-      color:#b7bcba;
-      font-size:13px;
-      font-weight:600;
-      transition:.2s ease;
-    }
-
-    .nav a:hover,
-    .nav a.active{
+    .nav-btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
       color:var(--text);
-      background:rgba(255,255,255,.05);
-    }
-
-    .website-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:11px 15px;
       border-radius:12px;
-      background:var(--lime);
-      color:#080909;
+      padding:10px 14px;
       font-size:12px;
-      font-weight:800;
-      white-space:nowrap;
-      transition:.2s ease;
+      font-weight:700;
+      transition:.25s;
     }
 
-    .website-btn:hover{
-      transform:translateY(-2px);
-      box-shadow:0 10px 28px rgba(183,255,0,.15);
+    .nav-btn:hover{
+      border-color:rgba(183,255,0,.35);
+      transform:translateY(-1px);
     }
 
-    .menu-btn{
-      display:none;
-      width:42px;
-      height:42px;
-      border:1px solid var(--border);
-      background:var(--panel);
-      color:white;
-      border-radius:12px;
-      font-size:20px;
-    }
-
-    /* =========================================
-       MINI SLIDER
-    ========================================= */
-
-    .mini-banner{
-      width:min(1440px,calc(100% - 36px));
-      margin:14px auto 0;
-      border:1px solid var(--border);
-      background:linear-gradient(
-        100deg,
-        rgba(183,255,0,.09),
-        rgba(255,255,255,.025)
-      );
-      border-radius:15px;
-      overflow:hidden;
-      position:relative;
-    }
-
-    .slider-track{
-      display:flex;
-      transition:transform .5s ease;
-    }
-
-    .slide{
-      min-width:100%;
-      padding:11px 52px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      text-align:center;
-      font-size:12px;
-      color:#dfe4e2;
-    }
-
-    .slide strong{
-      color:var(--lime);
-    }
-
-    .slider-controls{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      pointer-events:none;
-    }
-
-    .slider-arrow{
-      pointer-events:auto;
-      border:0;
-      background:rgba(0,0,0,.18);
-      color:#aeb4b1;
-      width:34px;
-      height:100%;
-      font-size:15px;
-    }
-
-    .slider-dots{
-      position:absolute;
-      left:50%;
-      bottom:4px;
-      transform:translateX(-50%);
-      display:flex;
-      gap:4px;
-    }
-
-    .slider-dot{
-      width:5px;
-      height:5px;
-      border:0;
-      border-radius:99px;
-      background:#555;
-      padding:0;
-    }
-
-    .slider-dot.active{
+    .nav-btn.primary{
       background:var(--lime);
-      width:14px;
+      color:#081006;
+      border-color:var(--lime);
     }
 
-    /* =========================================
+    /* =========================
        HERO
-    ========================================= */
+    ========================= */
 
     .hero{
-      width:min(1440px,calc(100% - 36px));
+      width:min(1180px,92%);
       margin:0 auto;
-      padding:92px 0 65px;
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:70px;
-      align-items:center;
+      padding:92px 0 64px;
+      text-align:center;
+      position:relative;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:8px 11px;
+      padding:8px 13px;
       border:1px solid rgba(183,255,0,.18);
-      background:var(--lime-soft);
       border-radius:999px;
+      background:rgba(183,255,0,.05);
       color:var(--lime);
       font-size:11px;
       font-weight:800;
-      letter-spacing:.3px;
+      letter-spacing:.5px;
       margin-bottom:22px;
     }
 
     .eyebrow-dot{
-      width:6px;
-      height:6px;
+      width:7px;
+      height:7px;
       border-radius:50%;
       background:var(--lime);
-      box-shadow:0 0 12px var(--lime);
+      box-shadow:0 0 15px var(--lime);
+      animation:pulse 1.7s infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{opacity:.45;transform:scale(.8)}
+      50%{opacity:1;transform:scale(1.15)}
     }
 
     .hero h1{
-      max-width:850px;
-      font-family:"Space Grotesk";
-      font-size:clamp(48px,6.2vw,88px);
-      line-height:.95;
+      max-width:900px;
+      margin:auto;
+      font-size:clamp(42px,7vw,82px);
+      line-height:.98;
       letter-spacing:-4px;
-      margin-bottom:26px;
+      font-weight:900;
     }
 
     .hero h1 span{
-      color:var(--lime);
+      background:linear-gradient(
+        90deg,
+        #fff,
+        var(--lime),
+        #fff
+      );
+      background-size:200% auto;
+      color:transparent;
+      background-clip:text;
+      -webkit-background-clip:text;
+      animation:textShine 5s linear infinite;
     }
 
-    .hero-copy{
-      max-width:670px;
-      color:#a8aeac;
-      font-family:"Hind Siliguri";
-      font-size:18px;
-      line-height:1.7;
-      margin-bottom:28px;
+    @keyframes textShine{
+      to{background-position:200% center}
     }
 
-    .hero-copy strong{
-      color:#e7ebe9;
+    .hero p{
+      max-width:680px;
+      margin:24px auto 0;
+      color:var(--muted);
+      font-family:Inter,"Hind Siliguri",sans-serif;
+      font-size:16px;
+      line-height:1.8;
     }
 
     .hero-actions{
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .primary-btn,
-    .secondary-btn{
-      border-radius:13px;
-      padding:13px 18px;
-      display:inline-flex;
-      align-items:center;
       justify-content:center;
-      gap:9px;
-      font-size:13px;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:30px;
+    }
+
+    .hero-btn{
+      padding:14px 19px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#111;
+      color:#fff;
       font-weight:800;
-      border:1px solid var(--border);
-      transition:.2s ease;
+      font-size:13px;
+      transition:.25s;
     }
 
-    .primary-btn{
-      background:var(--lime);
-      color:#080909;
-      border-color:var(--lime);
-    }
-
-    .secondary-btn{
-      background:rgba(255,255,255,.035);
-      color:#eef1f0;
-    }
-
-    .primary-btn:hover,
-    .secondary-btn:hover{
+    .hero-btn:hover{
       transform:translateY(-2px);
     }
 
-    .hero-visual{
-      position:relative;
+    .hero-btn.primary{
+      color:#061006;
+      background:var(--lime);
+      border-color:var(--lime);
+      box-shadow:0 14px 35px rgba(183,255,0,.12);
     }
 
-    .hero-card{
-      min-height:470px;
-      border:1px solid var(--border);
-      border-radius:32px;
-      padding:18px;
-      background:
-        linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),
-        #101213;
-      box-shadow:var(--shadow);
-      transform:rotate(2deg);
-    }
+    /* =========================
+       STATS
+    ========================= */
 
-    .hero-card-inner{
-      height:430px;
-      border-radius:23px;
-      overflow:hidden;
-      position:relative;
-      background:
-        radial-gradient(circle at 25% 20%,rgba(183,255,0,.42),transparent 25%),
-        radial-gradient(circle at 80% 75%,rgba(86,70,255,.55),transparent 32%),
-        linear-gradient(135deg,#181c1c,#070808);
-      display:flex;
-      align-items:flex-end;
-      padding:32px;
-    }
-
-    .hero-art{
-      position:absolute;
-      width:210px;
-      height:210px;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.17);
-      right:15%;
-      top:15%;
-      box-shadow:
-        0 0 0 22px rgba(255,255,255,.025),
-        0 0 0 45px rgba(255,255,255,.018);
-    }
-
-    .hero-art::before,
-    .hero-art::after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      border:1px solid rgba(183,255,0,.4);
-    }
-
-    .hero-art::before{
-      inset:28px;
-    }
-
-    .hero-art::after{
-      inset:60px;
-    }
-
-    .hero-card-content{
-      position:relative;
-      z-index:2;
-    }
-
-    .hero-card-content small{
-      color:var(--lime);
-      font-size:10px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:1.5px;
-    }
-
-    .hero-card-content h3{
-      font-family:"Space Grotesk";
-      font-size:34px;
-      line-height:1;
-      margin-top:8px;
-    }
-
-    .hero-card-content p{
-      color:#b0b5b3;
-      font-size:12px;
-      margin-top:10px;
-    }
-
-    .floating-tag{
-      position:absolute;
-      background:#151918;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:11px 13px;
-      box-shadow:var(--shadow);
-      font-size:11px;
-      font-weight:700;
-    }
-
-    .floating-tag.one{
-      left:-28px;
-      top:55px;
-    }
-
-    .floating-tag.two{
-      right:-18px;
-      bottom:65px;
-    }
-
-    .floating-tag span{
-      color:var(--lime);
-    }
-
-    /* =========================================
-       SEARCH
-    ========================================= */
-
-    .library-wrap{
-      width:min(1440px,calc(100% - 36px));
-      margin:auto;
-    }
-
-    .search-box{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.025);
-      border-radius:18px;
-      padding:8px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:20px;
-    }
-
-    .search-icon{
-      width:44px;
-      height:44px;
-      border-radius:12px;
+    .stats{
+      width:min(1000px,92%);
+      margin:0 auto 70px;
       display:grid;
-      place-items:center;
-      color:var(--lime);
-      background:rgba(183,255,0,.07);
-      font-size:17px;
+      grid-template-columns:repeat(4,1fr);
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      background:rgba(255,255,255,.025);
     }
 
-    .search-box input{
-      width:100%;
-      background:transparent;
-      border:0;
-      outline:0;
-      color:white;
-      font-size:14px;
+    .stat{
+      padding:22px;
+      text-align:center;
+      border-right:1px solid var(--line);
     }
 
-    .search-box input::placeholder{
-      color:#6f7673;
+    .stat:last-child{
+      border-right:0;
     }
 
-    /* =========================================
-       SECTION HEAD
-    ========================================= */
+    .stat strong{
+      display:block;
+      font-size:23px;
+      margin-bottom:5px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:11px;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    .section{
+      width:min(1180px,92%);
+      margin:0 auto;
+      padding:30px 0 80px;
+    }
 
     .section-head{
       display:flex;
-      align-items:flex-end;
       justify-content:space-between;
+      align-items:end;
       gap:20px;
-      margin:68px 0 22px;
+      margin-bottom:25px;
     }
 
     .section-head h2{
-      font-family:"Space Grotesk";
-      font-size:32px;
-      letter-spacing:-1.3px;
+      font-size:31px;
+      letter-spacing:-1.5px;
     }
 
     .section-head p{
       color:var(--muted);
-      font-family:"Hind Siliguri";
-      font-size:14px;
-      margin-top:5px;
+      font-size:13px;
+      max-width:520px;
+      line-height:1.6;
     }
 
-    .section-note{
-      color:#777e7b;
-      font-size:11px;
-    }
+    /* =========================
+       PACKAGE TABS
+    ========================= */
 
-    /* =========================================
-       CATEGORIES
-    ========================================= */
-
-    .categories{
+    .package-tabs{
       display:flex;
       flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:28px;
+      gap:9px;
+      margin-bottom:26px;
     }
 
-    .category{
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.025);
-      color:#9da3a1;
+    .package-tab{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:#cfd4d2;
+      padding:10px 15px;
       border-radius:999px;
-      padding:9px 14px;
-      font-size:11px;
-      font-weight:700;
-      transition:.2s ease;
+      font-size:12px;
+      font-weight:800;
+      transition:.25s;
     }
 
-    .category:hover,
-    .category.active{
-      color:#080909;
+    .package-tab:hover{
+      border-color:rgba(183,255,0,.3);
+    }
+
+    .package-tab.active{
       background:var(--lime);
+      border-color:var(--lime);
+      color:#071006;
+    }
+
+    /* =========================
+       PACKAGE CARDS
+    ========================= */
+
+    .plans{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-bottom:70px;
+    }
+
+    .plan{
+      position:relative;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:25px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+      overflow:hidden;
+      transition:.35s;
+    }
+
+    .plan:hover{
+      transform:translateY(-5px);
+      border-color:rgba(183,255,0,.24);
+      box-shadow:var(--shadow);
+    }
+
+    .plan.featured{
+      border-color:rgba(183,255,0,.32);
+      box-shadow:0 20px 60px rgba(183,255,0,.06);
+    }
+
+    .plan-badge{
+      position:absolute;
+      top:16px;
+      right:16px;
+      padding:6px 9px;
+      border-radius:999px;
+      background:var(--lime);
+      color:#071006;
+      font-size:9px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .plan-icon{
+      width:43px;
+      height:43px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(183,255,0,.08);
+      color:var(--lime);
+      margin-bottom:20px;
+      font-size:18px;
+    }
+
+    .plan h3{
+      font-size:21px;
+      margin-bottom:8px;
+    }
+
+    .plan-desc{
+      min-height:43px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    .price{
+      margin:20px 0;
+      font-size:33px;
+      font-weight:900;
+      letter-spacing:-1.5px;
+    }
+
+    .price span{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:0;
+    }
+
+    .features{
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+
+    .features li{
+      display:flex;
+      gap:9px;
+      align-items:flex-start;
+      color:#dce1df;
+      font-size:11px;
+      line-height:1.5;
+    }
+
+    .features li::before{
+      content:"✓";
+      color:var(--lime);
+      font-weight:900;
+    }
+
+    .plan-btn{
+      width:100%;
+      margin-top:23px;
+      padding:13px;
+      border-radius:13px;
+      border:1px solid var(--line);
+      background:#171a1b;
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .plan.featured .plan-btn{
+      background:var(--lime);
+      color:#071006;
       border-color:var(--lime);
     }
 
-    /* =========================================
-       DESIGN GRID
-    ========================================= */
+    /* =========================
+       WEBSITE SHOWCASE
+    ========================= */
 
-    .design-grid{
+    .showcase-toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:18px;
+    }
+
+    .results{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .search{
+      width:260px;
+      border:1px solid var(--line);
+      background:#0f1112;
+      border-radius:13px;
+      padding:12px 14px;
+      color:#fff;
+      outline:none;
+    }
+
+    .search:focus{
+      border-color:rgba(183,255,0,.4);
+    }
+
+    .websites{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
     }
 
-    .design-card{
-      border:1px solid var(--border);
-      background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.018)
-      );
-      border-radius:22px;
+    .website-card{
+      border:1px solid var(--line);
+      border-radius:24px;
       overflow:hidden;
-      transition:.25s ease;
+      background:#101213;
+      transition:.35s;
     }
 
-    .design-card:hover{
+    .website-card:hover{
       transform:translateY(-5px);
-      border-color:rgba(183,255,0,.2);
-      box-shadow:0 22px 60px rgba(0,0,0,.28);
+      border-color:rgba(183,255,0,.26);
+      box-shadow:var(--shadow);
     }
 
-    .design-preview{
-      height:300px;
+    .website-preview{
       position:relative;
+      height:250px;
       overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      background:#171a1b;
     }
 
-    .design-preview.square{
-      background:
-        radial-gradient(circle at 20% 20%,rgba(183,255,0,.5),transparent 25%),
-        linear-gradient(145deg,#171a1a,#090a0a);
-    }
-
-    .design-preview.food{
-      background:
-        radial-gradient(circle at 80% 25%,rgba(255,175,70,.45),transparent 30%),
-        linear-gradient(145deg,#24150d,#0d0a08);
-    }
-
-    .design-preview.agency{
-      background:
-        radial-gradient(circle at 65% 20%,rgba(105,92,255,.55),transparent 28%),
-        linear-gradient(145deg,#141224,#08090f);
-    }
-
-    .design-preview.sale{
-      background:
-        radial-gradient(circle at 30% 30%,rgba(255,83,83,.45),transparent 30%),
-        linear-gradient(145deg,#260f13,#0d090b);
-    }
-
-    .design-preview.business{
-      background:
-        radial-gradient(circle at 75% 20%,rgba(80,200,255,.4),transparent 28%),
-        linear-gradient(145deg,#0c1820,#080a0b);
-    }
-
-    .design-preview.free{
-      background:
-        radial-gradient(circle at 25% 20%,rgba(183,255,0,.35),transparent 26%),
-        linear-gradient(145deg,#121b11,#080a08);
-    }
-
-    .preview-art{
-      width:78%;
-      height:78%;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:18px;
-      padding:24px;
-      position:relative;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      box-shadow:0 18px 45px rgba(0,0,0,.28);
-    }
-
-    .preview-art::before{
+    .website-preview::after{
       content:"";
       position:absolute;
-      width:150px;
-      height:150px;
-      border-radius:50%;
-      right:-50px;
-      top:-50px;
-      border:28px solid rgba(255,255,255,.04);
+      inset:0;
+      background:linear-gradient(
+        to bottom,
+        transparent 55%,
+        rgba(0,0,0,.55)
+      );
+      pointer-events:none;
     }
 
-    .preview-art small{
-      color:var(--lime);
-      font-size:8px;
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-      font-weight:800;
-      position:relative;
-      z-index:2;
-    }
-
-    .preview-art h3{
-      position:relative;
-      z-index:2;
-      font-family:"Space Grotesk";
-      font-size:26px;
-      line-height:1;
-      max-width:230px;
-      margin-top:7px;
-    }
-
-    .preview-art p{
-      position:relative;
-      z-index:2;
-      color:#b4b9b7;
-      font-size:9px;
-      margin-top:9px;
-      max-width:220px;
-      line-height:1.5;
-    }
-
-    .design-badge{
+    .mock-browser{
       position:absolute;
-      top:13px;
-      left:13px;
-      z-index:4;
-      padding:6px 9px;
-      border-radius:999px;
-      background:rgba(8,9,9,.7);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.1);
-      color:#dce1df;
-      font-size:9px;
-      font-weight:800;
+      width:92%;
+      height:92%;
+      left:4%;
+      top:7%;
+      border-radius:13px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 18px 50px rgba(0,0,0,.45);
+      transform-origin:center;
+      transition:.4s;
     }
 
-    .design-badge.free{
-      color:var(--lime);
+    .website-card:hover .mock-browser{
+      transform:scale(1.015);
     }
 
-    .design-info{
-      padding:17px;
-    }
-
-    .design-info h3{
-      font-family:"Space Grotesk";
-      font-size:17px;
-      letter-spacing:-.3px;
-    }
-
-    .design-info p{
-      color:var(--muted);
-      font-family:"Hind Siliguri";
-      font-size:12px;
-      line-height:1.6;
-      margin-top:6px;
-      min-height:39px;
-    }
-
-    .design-meta{
+    .browser-bar{
+      height:27px;
       display:flex;
       align-items:center;
+      gap:5px;
+      padding:0 9px;
+      background:#e9eceb;
+    }
+
+    .browser-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#8f9794;
+    }
+
+    .browser-url{
+      height:13px;
+      flex:1;
+      margin-left:5px;
+      border-radius:7px;
+      background:#d4d9d7;
+    }
+
+    .fake-site{
+      height:calc(100% - 27px);
+      overflow:hidden;
+      position:relative;
+      font-family:Inter,sans-serif;
+    }
+
+    .fake-site .fake-nav{
+      height:34px;
+      padding:0 13px;
+      display:flex;
       justify-content:space-between;
-      gap:8px;
-      margin-top:13px;
-      padding-top:12px;
-      border-top:1px solid var(--border);
-    }
-
-    .design-type{
-      color:#767d7a;
-      font-size:9px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.6px;
-    }
-
-    .design-actions{
-      display:flex;
-      gap:6px;
-    }
-
-    .icon-btn{
-      min-width:35px;
-      height:34px;
-      padding:0 10px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.035);
-      color:#dfe3e1;
-      border-radius:10px;
-      font-size:10px;
-      font-weight:800;
-      transition:.2s ease;
-    }
-
-    .icon-btn:hover{
-      border-color:rgba(183,255,0,.3);
-      color:var(--lime);
-    }
-
-    .icon-btn.gemini{
-      color:#080909;
-      background:var(--lime);
-      border-color:var(--lime);
-    }
-
-    /* =========================================
-       GEMINI WORKFLOW
-    ========================================= */
-
-    .workflow{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-    }
-
-    .workflow-card{
-      padding:22px;
-      border:1px solid var(--border);
-      border-radius:19px;
-      background:rgba(255,255,255,.025);
-    }
-
-    .workflow-number{
-      width:34px;
-      height:34px;
-      display:grid;
-      place-items:center;
-      border-radius:10px;
-      background:var(--lime-soft);
-      color:var(--lime);
-      font-family:"Space Grotesk";
-      font-weight:800;
-      font-size:12px;
-      margin-bottom:18px;
-    }
-
-    .workflow-card h3{
-      font-size:14px;
-      margin-bottom:7px;
-    }
-
-    .workflow-card p{
-      color:var(--muted);
-      font-family:"Hind Siliguri";
-      font-size:12px;
-      line-height:1.6;
-    }
-
-    /* =========================================
-       AI CONTENT LAB
-    ========================================= */
-
-    .lab{
-      margin-top:70px;
-      padding:28px;
-      border:1px solid rgba(183,255,0,.13);
-      border-radius:26px;
-      background:
-        radial-gradient(circle at 90% 10%,rgba(183,255,0,.08),transparent 30%),
-        rgba(183,255,0,.025);
-    }
-
-    .lab-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:25px;
       align-items:center;
+      background:#fff;
+      border-bottom:1px solid #eee;
     }
 
-    .lab h2{
-      font-family:"Space Grotesk";
-      font-size:34px;
-      letter-spacing:-1.2px;
+    .fake-logo{
+      width:48px;
+      height:8px;
+      border-radius:5px;
+      background:#151719;
     }
 
-    .lab h2 span{
-      color:var(--lime);
+    .fake-links{
+      display:flex;
+      gap:7px;
     }
 
-    .lab p{
-      color:#9da3a1;
-      font-family:"Hind Siliguri";
-      font-size:14px;
-      line-height:1.7;
-      margin-top:10px;
+    .fake-links i{
+      width:17px;
+      height:5px;
+      border-radius:5px;
+      background:#d0d4d2;
     }
 
-    .lab-box{
-      border:1px solid var(--border);
-      background:#0b0d0d;
-      border-radius:18px;
-      padding:18px;
+    .fake-hero{
+      height:105px;
+      padding:17px;
+      background:
+        linear-gradient(
+          135deg,
+          #f4f7f5,
+          #dfe9e3
+        );
     }
 
-    .lab-box-title{
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      color:#737976;
-      font-weight:800;
+    .fake-hero h4{
+      width:75%;
+      height:13px;
+      background:#121515;
+      border-radius:5px;
+      margin-bottom:9px;
+    }
+
+    .fake-hero p{
+      width:60%;
+      height:7px;
+      background:#b9c1bd;
+      border-radius:5px;
       margin-bottom:12px;
     }
 
-    .prompt-line{
-      padding:12px;
-      border-radius:12px;
-      background:#111515;
-      border:1px solid var(--border);
-      color:#aeb5b2;
-      font-size:11px;
-      line-height:1.6;
+    .fake-button{
+      width:52px;
+      height:14px;
+      border-radius:5px;
+      background:#18a957;
     }
 
-    /* =========================================
-       FOOTER
-    ========================================= */
-
-    footer{
-      margin-top:90px;
-      border-top:1px solid var(--border);
+    .fake-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:7px;
+      padding:10px;
     }
 
-    .footer-inner{
-      width:min(1440px,calc(100% - 36px));
-      margin:auto;
-      padding:32px 0;
+    .fake-box{
+      height:65px;
+      border-radius:7px;
+      background:#eef1ef;
+    }
+
+    .fake-box:nth-child(2){
+      background:#e4eee8;
+    }
+
+    .fake-box:nth-child(3){
+      background:#f1f2f1;
+    }
+
+    .preview-label{
+      position:absolute;
+      left:13px;
+      bottom:13px;
+      z-index:3;
+      padding:6px 9px;
+      border-radius:8px;
+      background:rgba(0,0,0,.7);
+      backdrop-filter:blur(10px);
+      color:#fff;
+      font-size:9px;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+
+    .website-info{
+      padding:18px;
+    }
+
+    .website-top{
       display:flex;
       justify-content:space-between;
-      align-items:center;
-      gap:20px;
+      gap:10px;
+      align-items:flex-start;
     }
 
-    .footer-brand{
-      font-family:"Space Grotesk";
-      font-size:14px;
-      font-weight:700;
+    .website-top h3{
+      font-size:16px;
+      letter-spacing:-.5px;
     }
 
-    .footer-brand span{
+    .package-chip{
+      white-space:nowrap;
+      padding:5px 8px;
+      border-radius:7px;
+      background:rgba(183,255,0,.08);
       color:var(--lime);
+      font-size:8px;
+      font-weight:900;
+      text-transform:uppercase;
     }
 
-    .footer-copy{
-      color:#666d6a;
+    .website-url{
+      color:#727b77;
+      margin-top:6px;
       font-size:10px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    /* =========================================
-       MODALS
-    ========================================= */
+    .website-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:15px;
+    }
+
+    .site-btn{
+      padding:11px 8px;
+      border-radius:11px;
+      border:1px solid var(--line);
+      background:#181b1c;
+      color:#fff;
+      font-size:10px;
+      font-weight:800;
+    }
+
+    .site-btn.presentation{
+      background:var(--lime);
+      border-color:var(--lime);
+      color:#071006;
+    }
+
+    /* =========================
+       EMPTY
+    ========================= */
+
+    .empty{
+      display:none;
+      text-align:center;
+      padding:70px 20px;
+      border:1px dashed var(--line);
+      border-radius:20px;
+      color:var(--muted);
+    }
+
+    /* =========================
+       PRESENTATION MODAL
+    ========================= */
 
     .modal{
       position:fixed;
       inset:0;
-      z-index:3000;
+      z-index:1000;
       display:none;
-      align-items:center;
-      justify-content:center;
+      background:rgba(0,0,0,.82);
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
       padding:20px;
-      background:rgba(0,0,0,.78);
-      backdrop-filter:blur(14px);
     }
 
-    .modal.show{
+    .modal.active{
       display:flex;
+      animation:fadeIn .25s ease;
     }
 
-    .modal-card{
-      width:min(1000px,100%);
-      max-height:92vh;
-      overflow:auto;
-      border:1px solid var(--border);
-      background:#0d1010;
+    @keyframes fadeIn{
+      from{opacity:0}
+      to{opacity:1}
+    }
+
+    .presentation{
+      width:min(1400px,100%);
+      height:min(900px,96vh);
+      margin:auto;
+      border:1px solid rgba(255,255,255,.12);
       border-radius:25px;
-      box-shadow:0 40px 120px rgba(0,0,0,.65);
-      position:relative;
+      background:#0d0f10;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 40px 120px rgba(0,0,0,.7);
     }
 
-    .modal-close{
-      position:absolute;
-      top:15px;
-      right:15px;
-      z-index:10;
-      width:38px;
-      height:38px;
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.5);
-      color:white;
-      border-radius:12px;
-      font-size:18px;
-    }
-
-    .preview-modal-grid{
-      display:grid;
-      grid-template-columns:1fr .75fr;
-      min-height:620px;
-    }
-
-    .modal-preview-area{
-      min-height:620px;
-      padding:45px;
+    .presentation-head{
+      min-height:65px;
       display:flex;
       align-items:center;
-      justify-content:center;
-      background:#080909;
+      justify-content:space-between;
+      gap:15px;
+      padding:12px 15px;
+      border-bottom:1px solid var(--line);
+      background:#0d0f10;
     }
 
-    .modal-design{
-      width:min(480px,100%);
-      aspect-ratio:1/1;
-      border-radius:22px;
-      padding:35px;
-      display:flex;
-      align-items:flex-end;
-      position:relative;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.1);
+    .presentation-title{
+      min-width:0;
     }
 
-    .modal-design h3{
-      font-family:"Space Grotesk";
-      font-size:42px;
-      line-height:.95;
-      max-width:320px;
-      position:relative;
-      z-index:2;
-    }
-
-    .modal-design small{
-      position:absolute;
-      left:35px;
-      top:35px;
-      color:var(--lime);
-      font-size:9px;
-      font-weight:800;
-      letter-spacing:1.5px;
-    }
-
-    .modal-design::after{
-      content:"";
-      position:absolute;
-      width:280px;
-      height:280px;
-      border-radius:50%;
-      right:-80px;
-      top:-80px;
-      border:55px solid rgba(255,255,255,.035);
-    }
-
-    .modal-side{
-      padding:35px;
-      border-left:1px solid var(--border);
-    }
-
-    .modal-side small{
-      color:var(--lime);
-      font-size:9px;
-      font-weight:800;
-      letter-spacing:1px;
-      text-transform:uppercase;
-    }
-
-    .modal-side h2{
-      font-family:"Space Grotesk";
-      font-size:28px;
-      margin-top:7px;
-      letter-spacing:-.8px;
-    }
-
-    .modal-side p{
-      color:#969d9a;
-      font-family:"Hind Siliguri";
+    .presentation-title strong{
+      display:block;
       font-size:13px;
-      line-height:1.7;
-      margin-top:10px;
     }
 
-    .modal-buttons{
-      display:grid;
-      gap:8px;
-      margin-top:22px;
+    .presentation-title span{
+      display:block;
+      color:var(--muted);
+      font-size:9px;
+      margin-top:4px;
     }
 
-    .modal-buttons button{
-      width:100%;
-      justify-content:center;
-    }
-
-    .mobile-toggle{
+    .presentation-controls{
       display:flex;
-      gap:5px;
-      margin-top:20px;
-      padding:4px;
-      background:#111414;
-      border:1px solid var(--border);
-      border-radius:12px;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .toggle-btn{
-      flex:1;
-      padding:9px;
-      border:0;
-      border-radius:8px;
-      background:transparent;
-      color:#777e7b;
+    .control{
+      border:1px solid var(--line);
+      background:#151819;
+      color:#fff;
+      border-radius:10px;
+      padding:9px 11px;
       font-size:10px;
       font-weight:800;
     }
 
-    .toggle-btn.active{
-      color:#080909;
+    .control.active{
       background:var(--lime);
+      color:#071006;
+      border-color:var(--lime);
     }
 
-    .mobile-demo{
-      display:none;
-      width:220px;
-      aspect-ratio:9/16;
-      border:7px solid #1d2120;
-      border-radius:30px;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 30% 20%,rgba(183,255,0,.4),transparent 25%),
-        linear-gradient(145deg,#171a1a,#090a0a);
-      padding:24px 18px;
-      align-items:flex-end;
+    .close{
+      width:37px;
+      height:37px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:#191c1d;
+      color:#fff;
+      font-size:17px;
+    }
+
+    .presentation-stage{
+      flex:1;
       position:relative;
-    }
-
-    .mobile-demo h3{
-      font-family:"Space Grotesk";
-      font-size:25px;
-      line-height:1;
-    }
-
-    /* =========================================
-       GEMINI MODAL
-    ========================================= */
-
-    .gemini-modal{
-      width:min(720px,100%);
-      padding:30px;
-    }
-
-    .gemini-header{
+      overflow:hidden;
       display:flex;
       align-items:center;
-      gap:13px;
+      justify-content:center;
+      padding:30px;
+      background:
+        radial-gradient(circle at center,rgba(183,255,0,.055),transparent 45%),
+        #090b0b;
     }
 
-    .gemini-icon{
-      width:46px;
-      height:46px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:var(--lime);
-      color:#080909;
-      font-weight:900;
+    .stage-grid{
+      position:absolute;
+      inset:0;
+      opacity:.12;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+      background-size:40px 40px;
+      mask-image:radial-gradient(circle,black,transparent 75%);
     }
 
-    .gemini-header h2{
-      font-family:"Space Grotesk";
-      font-size:24px;
+    /* Desktop */
+
+    .device.desktop{
+      width:min(950px,90%);
+      height:min(620px,82%);
+      border-radius:18px;
+      padding:9px;
+      background:#202324;
+      border:1px solid #383d3b;
+      box-shadow:
+        0 50px 100px rgba(0,0,0,.65),
+        0 0 0 8px rgba(255,255,255,.015);
+      position:relative;
+      z-index:2;
+      animation:deviceIn .6s ease;
     }
 
-    .gemini-header p{
-      color:#737a77;
-      font-size:11px;
-      margin-top:3px;
+    @keyframes deviceIn{
+      from{
+        opacity:0;
+        transform:translateY(25px) scale(.95);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
     }
 
-    .prompt-area{
-      margin-top:24px;
+    .device-screen{
+      width:100%;
+      height:100%;
+      border-radius:11px;
+      overflow:hidden;
+      background:#fff;
       position:relative;
     }
 
-    .prompt-area textarea{
+    .device-screen iframe{
       width:100%;
-      min-height:260px;
-      resize:vertical;
-      border:1px solid var(--border);
-      background:#090b0b;
+      height:100%;
+      border:0;
+      background:#fff;
+    }
+
+    /* Mobile */
+
+    .device.mobile{
+      width:300px;
+      height:610px;
+      border-radius:42px;
+      padding:10px;
+      background:#171a1b;
+      border:1px solid #3d4340;
+      box-shadow:
+        0 45px 100px rgba(0,0,0,.7),
+        0 0 0 8px rgba(255,255,255,.015);
+      position:relative;
+      z-index:2;
+      animation:phoneIn .6s cubic-bezier(.2,.8,.2,1);
+    }
+
+    @keyframes phoneIn{
+      from{
+        opacity:0;
+        transform:translateY(40px) rotate(2deg) scale(.9);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    .device.mobile .device-screen{
+      border-radius:32px;
+    }
+
+    .device.mobile iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .phone-notch{
+      position:absolute;
+      top:15px;
+      left:50%;
+      transform:translateX(-50%);
+      width:90px;
+      height:20px;
+      border-radius:20px;
+      background:#111;
+      z-index:5;
+      pointer-events:none;
+    }
+
+    /* Split */
+
+    .split-stage{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:35px;
+      width:100%;
+      height:100%;
+      position:relative;
+      z-index:2;
+    }
+
+    .split-desktop{
+      width:min(720px,65%);
+      height:70%;
       border-radius:16px;
-      padding:18px;
-      color:#d9dddb;
-      outline:0;
-      font-family:Inter;
-      font-size:12px;
+      padding:8px;
+      background:#202324;
+      box-shadow:0 35px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+      animation:splitDesktop .65s ease;
+    }
+
+    @keyframes splitDesktop{
+      from{
+        opacity:0;
+        transform:translateX(-35px);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    .split-desktop iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      border-radius:10px;
+      background:#fff;
+    }
+
+    .split-mobile{
+      width:220px;
+      height:500px;
+      padding:7px;
+      border-radius:31px;
+      background:#181b1c;
+      border:1px solid #3b403e;
+      box-shadow:0 35px 80px rgba(0,0,0,.6);
+      animation:splitPhone .65s ease;
+    }
+
+    @keyframes splitPhone{
+      from{
+        opacity:0;
+        transform:translateX(35px);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    .split-mobile iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      border-radius:25px;
+      background:#fff;
+    }
+
+    .auto-scroll-indicator{
+      position:absolute;
+      left:50%;
+      bottom:15px;
+      transform:translateX(-50%);
+      z-index:5;
+      display:none;
+      padding:7px 11px;
+      border-radius:999px;
+      background:rgba(0,0,0,.7);
+      border:1px solid rgba(255,255,255,.1);
+      color:#dce2df;
+      font-size:9px;
+      font-weight:800;
+    }
+
+    /* =========================
+       PRESENTATION FOOT
+    ========================= */
+
+    .presentation-foot{
+      min-height:52px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      padding:10px 15px;
+      color:var(--muted);
+      font-size:9px;
+    }
+
+    .sound{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .sound-toggle{
+      border:1px solid var(--line);
+      background:#151819;
+      color:#fff;
+      border-radius:9px;
+      padding:7px 10px;
+      font-size:9px;
+      font-weight:800;
+    }
+
+    .sound-toggle.on{
+      color:#071006;
+      background:var(--lime);
+      border-color:var(--lime);
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta{
+      width:min(1180px,92%);
+      margin:20px auto 90px;
+      padding:50px;
+      border-radius:30px;
+      border:1px solid rgba(183,255,0,.16);
+      background:
+        radial-gradient(circle at 80% 20%,rgba(183,255,0,.09),transparent 30%),
+        linear-gradient(135deg,#111514,#0b0d0d);
+      text-align:center;
+    }
+
+    .cta h2{
+      font-size:clamp(28px,5vw,45px);
+      letter-spacing:-2px;
+    }
+
+    .cta p{
+      max-width:580px;
+      margin:14px auto 22px;
+      color:var(--muted);
+      font-size:13px;
       line-height:1.7;
     }
 
-    .prompt-area textarea:focus{
-      border-color:rgba(183,255,0,.35);
-    }
-
-    .prompt-actions{
-      display:flex;
-      gap:8px;
-      margin-top:10px;
-    }
-
-    /* =========================================
-       TOAST
-    ========================================= */
-
-    .toast{
-      position:fixed;
-      z-index:5000;
-      left:50%;
-      bottom:25px;
-      transform:translate(-50%,20px);
-      opacity:0;
-      pointer-events:none;
-      background:#f4f6f5;
-      color:#080909;
-      padding:12px 17px;
+    .cta a{
+      display:inline-flex;
+      padding:13px 18px;
       border-radius:12px;
-      font-size:11px;
-      font-weight:800;
-      box-shadow:0 20px 50px rgba(0,0,0,.4);
-      transition:.3s ease;
+      background:var(--lime);
+      color:#071006;
+      font-weight:900;
+      font-size:12px;
     }
 
-    .toast.show{
-      opacity:1;
-      transform:translate(-50%,0);
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:25px 0;
+      color:#6f7774;
+      font-size:10px;
+      text-align:center;
     }
 
-    /* =========================================
+    /* =========================
        RESPONSIVE
-    ========================================= */
+    ========================= */
 
-    @media(max-width:1050px){
+    @media(max-width:900px){
 
-      .hero{
-        grid-template-columns:1fr;
-        gap:45px;
-      }
-
-      .hero-visual{
-        max-width:700px;
-        width:100%;
-        margin:auto;
-      }
-
-      .design-grid{
+      .plans,
+      .websites{
         grid-template-columns:repeat(2,1fr);
       }
 
-      .workflow{
+      .stats{
         grid-template-columns:repeat(2,1fr);
       }
 
+      .stat:nth-child(2){
+        border-right:0;
+      }
+
+      .stat:nth-child(-n+2){
+        border-bottom:1px solid var(--line);
+      }
+
+      .hero h1{
+        letter-spacing:-2.5px;
+      }
+
+      .split-stage{
+        gap:15px;
+      }
+
+      .split-desktop{
+        width:62%;
+      }
+
+      .split-mobile{
+        width:170px;
+        height:390px;
+      }
     }
 
-    @media(max-width:760px){
+    @media(max-width:650px){
 
-      .header-inner{
+      header{
         height:68px;
       }
 
       .nav{
+        width:94%;
+      }
+
+      .nav-btn:not(.primary){
         display:none;
-        position:absolute;
-        top:68px;
-        left:18px;
-        right:18px;
-        padding:10px;
-        border:1px solid var(--border);
-        border-radius:17px;
-        background:#0d1010;
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .nav.show{
-        display:flex;
-      }
-
-      .nav a{
-        padding:13px;
-      }
-
-      .website-btn{
-        display:none;
-      }
-
-      .menu-btn{
-        display:block;
-      }
-
-      .mini-banner{
-        width:calc(100% - 20px);
-        margin-top:10px;
-      }
-
-      .slide{
-        padding:11px 42px;
-        font-size:10px;
-      }
-
-      .hero,
-      .library-wrap,
-      .footer-inner{
-        width:calc(100% - 20px);
       }
 
       .hero{
-        padding:65px 0 45px;
+        padding:65px 0 50px;
       }
 
       .hero h1{
-        font-size:48px;
-        letter-spacing:-2.7px;
+        font-size:44px;
+        letter-spacing:-2.5px;
       }
 
-      .hero-copy{
-        font-size:16px;
+      .hero p{
+        font-size:13px;
       }
 
-      .hero-card{
-        min-height:390px;
-        padding:12px;
+      .stats{
+        width:94%;
       }
 
-      .hero-card-inner{
-        height:365px;
+      .stat{
+        padding:18px 10px;
       }
 
-      .floating-tag.one{
-        left:0;
+      .plans,
+      .websites{
+        grid-template-columns:1fr;
       }
 
-      .floating-tag.two{
-        right:0;
+      .section{
+        width:94%;
       }
 
       .section-head{
-        margin-top:48px;
         display:block;
       }
 
-      .section-note{
+      .section-head p{
+        margin-top:8px;
+      }
+
+      .showcase-toolbar{
         display:block;
-        margin-top:7px;
       }
 
-      .design-grid{
-        grid-template-columns:1fr;
-      }
-
-      .design-preview{
-        height:340px;
-      }
-
-      .workflow{
-        grid-template-columns:1fr;
-      }
-
-      .lab{
-        padding:20px;
-      }
-
-      .lab-grid{
-        grid-template-columns:1fr;
-      }
-
-      .footer-inner{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .preview-modal-grid{
-        grid-template-columns:1fr;
-      }
-
-      .modal-preview-area{
-        min-height:440px;
-        padding:25px;
-      }
-
-      .modal-side{
-        border-left:0;
-        border-top:1px solid var(--border);
-        padding:25px;
-      }
-
-      .modal-design{
-        width:min(390px,100%);
-      }
-
-    }
-
-    @media(max-width:480px){
-
-      .brand-text span{
-        display:none;
-      }
-
-      .brand-mark{
-        width:39px;
-        height:39px;
-      }
-
-      .hero h1{
-        font-size:42px;
-      }
-
-      .hero-actions{
-        display:grid;
-        grid-template-columns:1fr;
-      }
-
-      .primary-btn,
-      .secondary-btn{
+      .search{
         width:100%;
+        margin-top:12px;
       }
 
-      .design-preview{
-        height:320px;
-      }
-
-      .design-actions{
-        flex-wrap:wrap;
-      }
-
-      .icon-btn{
-        flex:1;
+      .website-preview{
+        height:270px;
       }
 
       .modal{
         padding:8px;
       }
 
-      .gemini-modal{
-        padding:22px 16px;
+      .presentation{
+        height:calc(100vh - 16px);
+        border-radius:18px;
       }
 
-    }
+      .presentation-head{
+        align-items:flex-start;
+      }
 
+      .presentation-controls{
+        max-width:210px;
+      }
+
+      .presentation-stage{
+        padding:15px;
+      }
+
+      .device.desktop{
+        width:100%;
+        height:65%;
+      }
+
+      .device.mobile{
+        width:235px;
+        height:500px;
+      }
+
+      .split-stage{
+        gap:8px;
+      }
+
+      .split-desktop{
+        width:63%;
+        height:55%;
+      }
+
+      .split-mobile{
+        width:125px;
+        height:300px;
+      }
+
+      .cta{
+        width:94%;
+        padding:35px 20px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================================
+  <!-- =========================
        HEADER
-  ========================================== -->
+  ========================== -->
 
-  <header class="header">
+  <header>
+    <div class="nav">
 
-    <div class="header-inner">
-
-      <a
-        class="brand"
-        href="#top"
-      >
+      <a href="#" class="brand">
         <div class="brand-mark">WD</div>
 
         <div class="brand-text">
-          <strong>Package</strong>
-          <span>by Website Deals</span>
+          <strong>Website Deals</strong>
+          <span>Premium Marketplace</span>
         </div>
       </a>
 
-      <nav
-        class="nav"
-        id="mainNav"
-      >
-        <a
-          href="#designs"
-          class="active"
+      <div class="nav-actions">
+        <button
+          class="nav-btn"
+          onclick="scrollToShowcase()"
         >
-          Designs
-        </a>
+          Live Websites
+        </button>
 
-        <a href="#workflow">
-          Workflow
-        </a>
-
-        <a href="#ai-lab">
-          AI Content Lab
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-      </nav>
-
-      <a
-        class="website-btn"
-        href="https://websitedeals.com/"
-        target="_blank"
-        rel="noopener"
-      >
-        Website Deals ↗
-      </a>
-
-      <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open menu"
-      >
-        ☰
-      </button>
+        <button
+          class="nav-btn primary"
+          onclick="scrollToPlans()"
+        >
+          Packages
+        </button>
+      </div>
 
     </div>
-
   </header>
 
 
-  <!-- =========================================
-       MINI SLIDER
-  ========================================== -->
-
-  <div class="mini-banner">
-
-    <div
-      class="slider-track"
-      id="sliderTrack"
-    >
-
-      <div class="slide">
-        🔥 <strong>New Design Added</strong>
-        — Ready to download and create content
-      </div>
-
-      <div class="slide">
-        ✨ <strong>Make Video with Gemini</strong>
-        — Download → Give it to Gemini → Animate
-      </div>
-
-      <div class="slide">
-        🎨 <strong>Free Design Collection</strong>
-        — Explore ready-to-use creatives
-      </div>
-
-      <div class="slide">
-        📱 <strong>Mobile Ready</strong>
-        — Preview your creative before downloading
-      </div>
-
-    </div>
-
-    <div class="slider-controls">
-
-      <button
-        class="slider-arrow"
-        id="prevSlide"
-      >
-        ‹
-      </button>
-
-      <button
-        class="slider-arrow"
-        id="nextSlide"
-      >
-        ›
-      </button>
-
-    </div>
-
-    <div
-      class="slider-dots"
-      id="sliderDots"
-    ></div>
-
-  </div>
-
-
-  <!-- =========================================
+  <!-- =========================
        HERO
-  ========================================== -->
+  ========================== -->
 
-  <main id="top">
+  <main>
 
     <section class="hero">
 
-      <div>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        LIVE WEBSITE SHOWCASE
+      </div>
 
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          DESIGN LIBRARY • AI CONTENT HUB
+      <h1>
+        Choose a package.<br>
+        <span>Show the website.</span>
+      </h1>
+
+      <p>
+        Ready-made premium websites presented in an interactive
+        desktop, mobile and animated mockup experience —
+        built for showing clients exactly what they can get.
+      </p>
+
+      <div class="hero-actions">
+
+        <button
+          class="hero-btn primary"
+          onclick="scrollToShowcase()"
+        >
+          Explore Websites →
+        </button>
+
+        <button
+          class="hero-btn"
+          onclick="scrollToPlans()"
+        >
+          View Packages
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         STATS
+    ========================== -->
+
+    <section class="stats">
+
+      <div class="stat">
+        <strong>100+</strong>
+        <span>Ready Websites</span>
+      </div>
+
+      <div class="stat">
+        <strong>20+</strong>
+        <span>Categories</span>
+      </div>
+
+      <div class="stat">
+        <strong>100%</strong>
+        <span>Responsive</span>
+      </div>
+
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>Marketplace</span>
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PACKAGES
+    ========================== -->
+
+    <section
+      class="section"
+      id="plans"
+    >
+
+      <div class="section-head">
+
+        <div>
+          <h2>Choose your package</h2>
         </div>
 
-        <h1>
-          Create.
-          <span>Download.</span>
-          Animate.
-        </h1>
-
-        <p class="hero-copy">
-          আপনার প্রয়োজনীয় <strong>ready-made design</strong> এখান থেকে
-          দেখুন, mobile view check করুন, download করুন — তারপর
-          <strong>Gemini দিয়ে professional animation video</strong>
-          তৈরি করুন।
+        <p>
+          Select a package to explore the websites available
+          for that plan.
         </p>
 
-        <div class="hero-actions">
+      </div>
 
-          <a
-            href="#designs"
-            class="primary-btn"
-          >
-            🎨 Explore Designs
-          </a>
+
+      <div class="plans">
+
+        <!-- STARTER -->
+
+        <article class="plan">
+
+          <div class="plan-icon">S</div>
+
+          <h3>Starter</h3>
+
+          <p class="plan-desc">
+            A clean, professional website for individuals
+            and small businesses.
+          </p>
+
+          <div class="price">
+            ৳549 <span>/ month</span>
+          </div>
+
+          <ul class="features">
+            <li>Complete ready-made website</li>
+            <li>Free hosting</li>
+            <li>Free SSL</li>
+            <li>Firebase integration</li>
+            <li>Basic logo</li>
+            <li>Responsive design</li>
+            <li>Custom domain connection</li>
+            <li>Contact form</li>
+            <li>Basic SEO</li>
+            <li>Basic support</li>
+          </ul>
 
           <button
-            class="secondary-btn"
-            onclick="scrollToGemini()"
+            class="plan-btn"
+            onclick="selectPackage('Starter')"
           >
-            ✨ Gemini Workflow
+            Explore Starter →
+          </button>
+
+        </article>
+
+
+        <!-- BUSINESS -->
+
+        <article class="plan featured">
+
+          <div class="plan-badge">
+            Most Popular
+          </div>
+
+          <div class="plan-icon">B</div>
+
+          <h3>Business</h3>
+
+          <p class="plan-desc">
+            Advanced business websites with admin,
+            analytics and powerful integrations.
+          </p>
+
+          <div class="price">
+            ৳999 <span>/ month</span>
+          </div>
+
+          <ul class="features">
+            <li>Everything in Starter</li>
+            <li>Premium website</li>
+            <li>Advanced Firebase</li>
+            <li>Admin panel</li>
+            <li>Online payment gateway</li>
+            <li>Product/service management</li>
+            <li>Inquiry/order management</li>
+            <li>Advanced SEO</li>
+            <li>Analytics + Search Console</li>
+            <li>Priority support</li>
+          </ul>
+
+          <button
+            class="plan-btn"
+            onclick="selectPackage('Business')"
+          >
+            Explore Business →
+          </button>
+
+        </article>
+
+
+        <!-- PREMIUM -->
+
+        <article class="plan">
+
+          <div class="plan-icon">P</div>
+
+          <h3>Premium</h3>
+
+          <p class="plan-desc">
+            A complete Shopify-style e-commerce and
+            business management experience.
+          </p>
+
+          <div class="price">
+            ৳1,999 <span>/ month</span>
+          </div>
+
+          <ul class="features">
+            <li>Shopify-style website</li>
+            <li>Firebase / MongoDB backend</li>
+            <li>Advanced admin dashboard</li>
+            <li>Unlimited products*</li>
+            <li>FREE inventory management</li>
+            <li>Stock in/out + low-stock alerts</li>
+            <li>Variants + SKU</li>
+            <li>Cart + wishlist</li>
+            <li>Checkout + payment</li>
+            <li>Priority support</li>
+          </ul>
+
+          <button
+            class="plan-btn"
+            onclick="selectPackage('Premium')"
+          >
+            Explore Premium →
+          </button>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         WEBSITE SHOWCASE
+    ========================== -->
+
+    <section
+      class="section"
+      id="showcase"
+    >
+
+      <div class="section-head">
+
+        <div>
+          <h2>Live Website Showcase</h2>
+        </div>
+
+        <p>
+          See how the websites look before choosing your package.
+          Open the live site or launch the presentation mode.
+        </p>
+
+      </div>
+
+
+      <div class="package-tabs">
+
+        <button
+          class="package-tab active"
+          data-package="All"
+          onclick="filterPackage('All')"
+        >
+          All Websites
+        </button>
+
+        <button
+          class="package-tab"
+          data-package="Starter"
+          onclick="filterPackage('Starter')"
+        >
+          Starter
+        </button>
+
+        <button
+          class="package-tab"
+          data-package="Business"
+          onclick="filterPackage('Business')"
+        >
+          Business
+        </button>
+
+        <button
+          class="package-tab"
+          data-package="Premium"
+          onclick="filterPackage('Premium')"
+        >
+          Premium
+        </button>
+
+      </div>
+
+
+      <div class="showcase-toolbar">
+
+        <div
+          class="results"
+          id="resultText"
+        >
+          Showing all websites
+        </div>
+
+        <input
+          class="search"
+          id="searchInput"
+          type="search"
+          placeholder="Search website..."
+          oninput="renderWebsites()"
+        >
+
+      </div>
+
+
+      <div
+        class="websites"
+        id="websiteGrid"
+      ></div>
+
+
+      <div
+        class="empty"
+        id="emptyState"
+      >
+        No websites found.
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta">
+
+      <h2>
+        Need a website for your business?
+      </h2>
+
+      <p>
+        Choose a ready-made website, select your package,
+        connect your domain and start building your online presence.
+      </p>
+
+      <a href="mailto:info@websitedeals.com">
+        Talk to Website Deals →
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       PRESENTATION MODAL
+  ========================== -->
+
+  <div
+    class="modal"
+    id="presentationModal"
+  >
+
+    <div class="presentation">
+
+      <div class="presentation-head">
+
+        <div class="presentation-title">
+          <strong id="presentationName">
+            Website Presentation
+          </strong>
+
+          <span id="presentationUrl">
+            Live website preview
+          </span>
+        </div>
+
+
+        <div class="presentation-controls">
+
+          <button
+            class="control active"
+            id="desktopBtn"
+            onclick="setView('desktop')"
+          >
+            🖥 Desktop
+          </button>
+
+          <button
+            class="control"
+            id="mobileBtn"
+            onclick="setView('mobile')"
+          >
+            📱 Mobile
+          </button>
+
+          <button
+            class="control"
+            id="splitBtn"
+            onclick="setView('split')"
+          >
+            ◐ Split
+          </button>
+
+          <button
+            class="control"
+            id="scrollBtn"
+            onclick="toggleAutoScroll()"
+          >
+            ↓ Auto Scroll
+          </button>
+
+          <button
+            class="close"
+            onclick="closePresentation()"
+            aria-label="Close"
+          >
+            ×
           </button>
 
         </div>
@@ -1620,1014 +1805,54 @@
       </div>
 
 
-      <div class="hero-visual">
+      <div
+        class="presentation-stage"
+        id="presentationStage"
+      >
 
-        <div class="floating-tag one">
-          📱 <span>Mobile Ready</span>
-        </div>
+        <div class="stage-grid"></div>
 
-        <div class="hero-card">
-
-          <div class="hero-card-inner">
-
-            <div class="hero-art"></div>
-
-            <div class="hero-card-content">
-
-              <small>
-                Website Deals Package
-              </small>
-
-              <h3>
-                Design<br>
-                → Content
-              </h3>
-
-              <p>
-                Download a design and turn it
-                into an animated social video.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="floating-tag two">
-          ✨ <span>Gemini Ready</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================
-         LIBRARY
-    ========================================== -->
-
-    <section
-      class="library-wrap"
-      id="designs"
-    >
-
-      <div class="search-box">
-
-        <div class="search-icon">
-          ⌕
-        </div>
-
-        <input
-          type="search"
-          id="searchInput"
-          placeholder="Search designs — restaurant, business, sale, agency..."
-          autocomplete="off"
+        <div
+          class="auto-scroll-indicator"
+          id="autoScrollIndicator"
         >
-
-      </div>
-
-
-      <div class="section-head">
-
-        <div>
-          <h2>
-            Design Library
-          </h2>
-
-          <p>
-            View → Mobile Preview → Download → Animate with Gemini
-          </p>
+          ↓ Auto Scrolling
         </div>
 
         <div
-          class="section-note"
-          id="resultCount"
+          class="device desktop"
+          id="desktopDevice"
         >
-          6 designs
+          <div class="device-screen">
+            <iframe
+              id="desktopFrame"
+              title="Desktop Website Preview"
+            ></iframe>
+          </div>
         </div>
 
       </div>
 
 
-      <!-- CATEGORIES -->
-
-      <div class="categories">
-
-        <button
-          class="category active"
-          data-category="all"
-        >
-          All
-        </button>
-
-        <button
-          class="category"
-          data-category="business"
-        >
-          Business
-        </button>
-
-        <button
-          class="category"
-          data-category="restaurant"
-        >
-          Restaurant
-        </button>
-
-        <button
-          class="category"
-          data-category="agency"
-        >
-          Agency
-        </button>
-
-        <button
-          class="category"
-          data-category="sale"
-        >
-          Sale & Offer
-        </button>
-
-        <button
-          class="category"
-          data-category="social"
-        >
-          Social Media
-        </button>
-
-        <button
-          class="category"
-          data-category="free"
-        >
-          Free
-        </button>
-
-      </div>
-
-
-      <!-- DESIGN GRID -->
-
-      <div
-        class="design-grid"
-        id="designGrid"
-      >
-
-        <!-- DESIGN 01 -->
-
-        <article
-          class="design-card"
-          data-category="business social"
-          data-title="Modern Business Social Pack"
-        >
-
-          <div class="design-preview square">
-
-            <span class="design-badge">
-              PREMIUM
-            </span>
-
-            <div class="preview-art">
-
-              <small>
-                BUSINESS SOLUTION
-              </small>
-
-              <h3>
-                Grow Your
-                Business.
-              </h3>
-
-              <p>
-                Smart digital solutions
-                for modern businesses.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="design-info">
-
-            <h3>
-              Modern Business Social Pack
-            </h3>
-
-            <p>
-              Premium business creative for
-              Facebook, Instagram and social campaigns.
-            </p>
-
-            <div class="design-meta">
-
-              <span class="design-type">
-                Business • Social
-              </span>
-
-              <div class="design-actions">
-
-                <button
-                  class="icon-btn"
-                  onclick="openPreview(this)"
-                >
-                  👁 View
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="mobilePreview(this)"
-                >
-                  📱
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="downloadDesign(this)"
-                >
-                  ↓
-                </button>
-
-                <button
-                  class="icon-btn gemini"
-                  onclick="openGemini(this)"
-                >
-                  ✨
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- DESIGN 02 -->
-
-        <article
-          class="design-card"
-          data-category="restaurant social"
-          data-title="Restaurant Promo Collection"
-        >
-
-          <div class="design-preview food">
-
-            <span class="design-badge">
-              PREMIUM
-            </span>
-
-            <div class="preview-art">
-
-              <small>
-                SPECIAL MENU
-              </small>
-
-              <h3>
-                Taste
-                Something
-                Special.
-              </h3>
-
-              <p>
-                Restaurant promotional
-                social media creative.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="design-info">
-
-            <h3>
-              Restaurant Promo Collection
-            </h3>
-
-            <p>
-              Food promotion creative designed
-              for modern restaurant campaigns.
-            </p>
-
-            <div class="design-meta">
-
-              <span class="design-type">
-                Restaurant • Social
-              </span>
-
-              <div class="design-actions">
-
-                <button
-                  class="icon-btn"
-                  onclick="openPreview(this)"
-                >
-                  👁 View
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="mobilePreview(this)"
-                >
-                  📱
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="downloadDesign(this)"
-                >
-                  ↓
-                </button>
-
-                <button
-                  class="icon-btn gemini"
-                  onclick="openGemini(this)"
-                >
-                  ✨
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- DESIGN 03 -->
-
-        <article
-          class="design-card"
-          data-category="agency social"
-          data-title="Creative Agency Social Kit"
-        >
-
-          <div class="design-preview agency">
-
-            <span class="design-badge">
-              PREMIUM
-            </span>
-
-            <div class="preview-art">
-
-              <small>
-                CREATIVE STUDIO
-              </small>
-
-              <h3>
-                Ideas
-                Become
-                Impact.
-              </h3>
-
-              <p>
-                Bold creative agency
-                social media concept.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="design-info">
-
-            <h3>
-              Creative Agency Social Kit
-            </h3>
-
-            <p>
-              Modern visual system for agency,
-              studio and creative service brands.
-            </p>
-
-            <div class="design-meta">
-
-              <span class="design-type">
-                Agency • Social
-              </span>
-
-              <div class="design-actions">
-
-                <button
-                  class="icon-btn"
-                  onclick="openPreview(this)"
-                >
-                  👁 View
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="mobilePreview(this)"
-                >
-                  📱
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="downloadDesign(this)"
-                >
-                  ↓
-                </button>
-
-                <button
-                  class="icon-btn gemini"
-                  onclick="openGemini(this)"
-                >
-                  ✨
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- DESIGN 04 -->
-
-        <article
-          class="design-card"
-          data-category="sale social"
-          data-title="Flash Sale Creative Pack"
-        >
-
-          <div class="design-preview sale">
-
-            <span class="design-badge">
-              PREMIUM
-            </span>
-
-            <div class="preview-art">
-
-              <small>
-                LIMITED OFFER
-              </small>
-
-              <h3>
-                FLASH
-                SALE
-              </h3>
-
-              <p>
-                High-impact promotional
-                sale creative.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="design-info">
-
-            <h3>
-              Flash Sale Creative Pack
-            </h3>
-
-            <p>
-              Attention-grabbing promotional
-              design for offers and campaigns.
-            </p>
-
-            <div class="design-meta">
-
-              <span class="design-type">
-                Sale • Offer
-              </span>
-
-              <div class="design-actions">
-
-                <button
-                  class="icon-btn"
-                  onclick="openPreview(this)"
-                >
-                  👁 View
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="mobilePreview(this)"
-                >
-                  📱
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="downloadDesign(this)"
-                >
-                  ↓
-                </button>
-
-                <button
-                  class="icon-btn gemini"
-                  onclick="openGemini(this)"
-                >
-                  ✨
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- DESIGN 05 -->
-
-        <article
-          class="design-card"
-          data-category="business social"
-          data-title="Corporate Business Pack"
-        >
-
-          <div class="design-preview business">
-
-            <span class="design-badge">
-              PREMIUM
-            </span>
-
-            <div class="preview-art">
-
-              <small>
-                CORPORATE
-              </small>
-
-              <h3>
-                Built For
-                Better Business.
-              </h3>
-
-              <p>
-                Professional corporate
-                communication creative.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="design-info">
-
-            <h3>
-              Corporate Business Pack
-            </h3>
-
-            <p>
-              Clean corporate visuals for
-              professional business communication.
-            </p>
-
-            <div class="design-meta">
-
-              <span class="design-type">
-                Business • Corporate
-              </span>
-
-              <div class="design-actions">
-
-                <button
-                  class="icon-btn"
-                  onclick="openPreview(this)"
-                >
-                  👁 View
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="mobilePreview(this)"
-                >
-                  📱
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="downloadDesign(this)"
-                >
-                  ↓
-                </button>
-
-                <button
-                  class="icon-btn gemini"
-                  onclick="openGemini(this)"
-                >
-                  ✨
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- DESIGN 06 -->
-
-        <article
-          class="design-card"
-          data-category="free social"
-          data-title="Starter Social Media Pack"
-        >
-
-          <div class="design-preview free">
-
-            <span class="design-badge free">
-              FREE
-            </span>
-
-            <div class="preview-art">
-
-              <small>
-                SOCIAL MEDIA
-              </small>
-
-              <h3>
-                Start
-                Creating.
-              </h3>
-
-              <p>
-                Free creative starter
-                for social media content.
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="design-info">
-
-            <h3>
-              Starter Social Media Pack
-            </h3>
-
-            <p>
-              Free ready-to-use design for
-              quick social media content creation.
-            </p>
-
-            <div class="design-meta">
-
-              <span class="design-type">
-                Free • Social
-              </span>
-
-              <div class="design-actions">
-
-                <button
-                  class="icon-btn"
-                  onclick="openPreview(this)"
-                >
-                  👁 View
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="mobilePreview(this)"
-                >
-                  📱
-                </button>
-
-                <button
-                  class="icon-btn"
-                  onclick="downloadDesign(this)"
-                >
-                  ↓
-                </button>
-
-                <button
-                  class="icon-btn gemini"
-                  onclick="openGemini(this)"
-                >
-                  ✨
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
-
-
-      <!-- =========================================
-           WORKFLOW
-      ========================================== -->
-
-      <div
-        class="section-head"
-        id="workflow"
-      >
+      <div class="presentation-foot">
 
         <div>
-
-          <h2>
-            From Design to Video
-          </h2>
-
-          <p>
-            আপনার content তৈরির simple workflow
-          </p>
-
+          Website Deals • Client Presentation Mode
         </div>
 
-      </div>
+        <div class="sound">
 
+          <span>
+            Presentation Sound
+          </span>
 
-      <div class="workflow">
-
-        <div class="workflow-card">
-
-          <div class="workflow-number">
-            01
-          </div>
-
-          <h3>
-            Choose Design
-          </h3>
-
-          <p>
-            আপনার business বা campaign অনুযায়ী
-            ready-made design বেছে নিন।
-          </p>
-
-        </div>
-
-
-        <div class="workflow-card">
-
-          <div class="workflow-number">
-            02
-          </div>
-
-          <h3>
-            Download
-          </h3>
-
-          <p>
-            Design-এর full preview দেখুন,
-            mobile view check করুন এবং download করুন।
-          </p>
-
-        </div>
-
-
-        <div class="workflow-card">
-
-          <div class="workflow-number">
-            03
-          </div>
-
-          <h3>
-            Give to Gemini
-          </h3>
-
-          <p>
-            Download করা design Gemini-তে দিন এবং
-            ready-made animation prompt ব্যবহার করুন।
-          </p>
-
-        </div>
-
-
-        <div class="workflow-card">
-
-          <div class="workflow-number">
-            04
-          </div>
-
-          <h3>
-            Post Your Video
-          </h3>
-
-          <p>
-            Animated creative ব্যবহার করুন Facebook,
-            Instagram, Reels বা অন্য social platform-এ।
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- =========================================
-           AI CONTENT LAB
-      ========================================== -->
-
-      <section
-        class="lab"
-        id="ai-lab"
-      >
-
-        <div class="lab-grid">
-
-          <div>
-
-            <div class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              AI CONTENT WORKFLOW
-            </div>
-
-            <h2>
-              Design থেকে
-              <span>Video.</span>
-            </h2>
-
-            <p>
-              আপনাকে আলাদা করে animation idea বা prompt
-              লিখতে হবে না। Design-এর context অনুযায়ী
-              ready prompt ব্যবহার করে Gemini-তে animation
-              তৈরি করতে পারবেন।
-            </p>
-
-          </div>
-
-
-          <div class="lab-box">
-
-            <div class="lab-box-title">
-              Gemini Prompt Preview
-            </div>
-
-            <div class="prompt-line">
-              Animate this design while preserving the
-              original layout, typography, colors, logo
-              and text. Add smooth premium motion,
-              subtle transitions and mobile-friendly
-              composition. Do not redesign the artwork.
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =========================================
-           ABOUT
-      ========================================== -->
-
-      <div
-        class="section-head"
-        id="about"
-      >
-
-        <div>
-
-          <h2>
-            Built for Fast Content Creation
-          </h2>
-
-          <p>
-            Design খুঁজতে কম সময়, content বানাতে বেশি সময়।
-          </p>
-
-        </div>
-
-      </div>
-
-      <div
-        style="
-          border:1px solid var(--border);
-          background:rgba(255,255,255,.025);
-          border-radius:22px;
-          padding:24px;
-          color:#969d9a;
-          font-family:'Hind Siliguri';
-          font-size:14px;
-          line-height:1.8;
-        "
-      >
-        <strong style="color:#eef1ef;">
-          Package by Website Deals
-        </strong>
-        একটি practical design resource hub —
-        যেখানে ready-made creative পাওয়া যাবে এবং
-        সেগুলোকে AI-powered content workflow-এর মাধ্যমে
-        animated social content-এ রূপান্তর করা যাবে।
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================================
-       PREVIEW MODAL
-  ========================================== -->
-
-  <div
-    class="modal"
-    id="previewModal"
-  >
-
-    <div class="modal-card">
-
-      <button
-        class="modal-close"
-        onclick="closeModal('previewModal')"
-      >
-        ×
-      </button>
-
-      <div class="preview-modal-grid">
-
-        <div class="modal-preview-area">
-
-          <div
-            class="modal-design square"
-            id="modalDesign"
+          <button
+            class="sound-toggle"
+            id="soundToggle"
+            onclick="toggleSound()"
           >
-
-            <small id="modalDesignType">
-              BUSINESS SOLUTION
-            </small>
-
-            <h3 id="modalDesignTitle">
-              Grow Your Business.
-            </h3>
-
-          </div>
-
-          <div
-            class="mobile-demo"
-            id="mobileDemo"
-          >
-            <h3 id="mobileDemoTitle">
-              Grow Your Business.
-            </h3>
-          </div>
-
-        </div>
-
-
-        <div class="modal-side">
-
-          <small>
-            Design Preview
-          </small>
-
-          <h2 id="modalTitle">
-            Modern Business Social Pack
-          </h2>
-
-          <p id="modalDescription">
-            Premium business creative for
-            social media campaigns.
-          </p>
-
-          <div class="mobile-toggle">
-
-            <button
-              class="toggle-btn active"
-              id="desktopToggle"
-              onclick="setPreviewMode('desktop')"
-            >
-              🖥 Desktop
-            </button>
-
-            <button
-              class="toggle-btn"
-              id="mobileToggle"
-              onclick="setPreviewMode('mobile')"
-            >
-              📱 Mobile
-            </button>
-
-          </div>
-
-          <div class="modal-buttons">
-
-            <button
-              class="primary-btn"
-              onclick="downloadCurrentDesign()"
-            >
-              ↓ Download Design
-            </button>
-
-            <button
-              class="secondary-btn"
-              onclick="openGeminiFromPreview()"
-            >
-              ✨ Animate with Gemini
-            </button>
-
-            <button
-              class="secondary-btn"
-              onclick="copyCurrentCaption()"
-            >
-              📝 Copy Caption
-            </button>
-
-          </div>
+            🔇 OFF
+          </button>
 
         </div>
 
@@ -2638,787 +1863,880 @@
   </div>
 
 
-  <!-- =========================================
-       GEMINI MODAL
-  ========================================== -->
-
-  <div
-    class="modal"
-    id="geminiModal"
-  >
-
-    <div class="modal-card gemini-modal">
-
-      <button
-        class="modal-close"
-        onclick="closeModal('geminiModal')"
-      >
-        ×
-      </button>
-
-      <div class="gemini-header">
-
-        <div class="gemini-icon">
-          ✨
-        </div>
-
-        <div>
-
-          <h2>
-            Animate with Gemini
-          </h2>
-
-          <p>
-            Ready-made animation prompt
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="prompt-area">
-
-        <textarea
-          id="geminiPrompt"
-          spellcheck="false"
-        ></textarea>
-
-      </div>
-
-
-      <div class="prompt-actions">
-
-        <button
-          class="primary-btn"
-          onclick="copyGeminiPrompt()"
-        >
-          📋 Copy Prompt
-        </button>
-
-        <button
-          class="secondary-btn"
-          onclick="closeModal('geminiModal')"
-        >
-          Done
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================================
-       TOAST
-  ========================================== -->
-
-  <div
-    class="toast"
-    id="toast"
-  >
-    Done
-  </div>
-
-
-  <!-- =========================================
+  <!-- =========================
        JAVASCRIPT
-  ========================================== -->
+  ========================== -->
 
   <script>
 
-    /* =========================================
-       MOBILE MENU
-    ========================================== */
+    /*
+      =========================================================
+      WEBSITE DATA
 
-    const menuBtn = document.getElementById("menuBtn");
-    const mainNav = document.getElementById("mainNav");
+      Later Firebase Admin will replace/update this data.
 
-    menuBtn.addEventListener("click", function(){
+      Fields:
+      - id
+      - name
+      - package
+      - url
+      - description
+      =========================================================
+    */
 
-      mainNav.classList.toggle("show");
+    const websites = [
 
-      menuBtn.textContent =
-        mainNav.classList.contains("show")
-        ? "×"
-        : "☰";
+      {
+        id: 1,
+        name: "Restaurant Pro",
+        package: "Starter",
+        url: "https://example.com",
+        description: "Modern restaurant website"
+      },
 
-    });
+      {
+        id: 2,
+        name: "Business Elite",
+        package: "Business",
+        url: "https://example.com",
+        description: "Premium corporate business website"
+      },
 
+      {
+        id: 3,
+        name: "ShopX Commerce",
+        package: "Premium",
+        url: "https://example.com",
+        description: "Modern e-commerce website"
+      },
 
-    document.querySelectorAll(".nav a").forEach(link => {
+      {
+        id: 4,
+        name: "Creative Agency",
+        package: "Business",
+        url: "https://example.com",
+        description: "Creative agency landing page"
+      },
 
-      link.addEventListener("click", () => {
+      {
+        id: 5,
+        name: "Personal Portfolio",
+        package: "Starter",
+        url: "https://example.com",
+        description: "Professional personal portfolio"
+      },
 
-        mainNav.classList.remove("show");
-        menuBtn.textContent = "☰";
+      {
+        id: 6,
+        name: "Fashion Store",
+        package: "Premium",
+        url: "https://example.com",
+        description: "Fashion e-commerce storefront"
+      }
 
-      });
-
-    });
-
-
-    /* =========================================
-       SLIDER
-    ========================================== */
-
-    const sliderTrack =
-      document.getElementById("sliderTrack");
-
-    const slides =
-      document.querySelectorAll(".slide");
-
-    const sliderDots =
-      document.getElementById("sliderDots");
-
-    let currentSlide = 0;
-
-    slides.forEach((_, index) => {
-
-      const dot =
-        document.createElement("button");
-
-      dot.className =
-        "slider-dot" +
-        (index === 0 ? " active" : "");
-
-      dot.addEventListener("click", () => {
-        goToSlide(index);
-      });
-
-      sliderDots.appendChild(dot);
-
-    });
+    ];
 
 
-    function goToSlide(index){
+    let activePackage = "All";
+    let activeWebsite = null;
+    let currentView = "desktop";
+    let autoScrolling = false;
+    let soundEnabled = false;
+    let scrollTimer = null;
+    let audioContext = null;
 
-      currentSlide =
-        (index + slides.length) %
-        slides.length;
 
-      sliderTrack.style.transform =
-        `translateX(-${currentSlide * 100}%)`;
+    /* =========================
+       RENDER WEBSITES
+    ========================== */
 
-      document
-        .querySelectorAll(".slider-dot")
-        .forEach((dot, i) => {
+    function renderWebsites(){
 
-          dot.classList.toggle(
-            "active",
-            i === currentSlide
-          );
+      const grid =
+        document.getElementById("websiteGrid");
+
+      const empty =
+        document.getElementById("emptyState");
+
+      const search =
+        document
+          .getElementById("searchInput")
+          .value
+          .toLowerCase()
+          .trim();
+
+      let filtered =
+        websites.filter(site => {
+
+          const packageMatch =
+            activePackage === "All" ||
+            site.package === activePackage;
+
+          const searchMatch =
+            !search ||
+            site.name.toLowerCase().includes(search) ||
+            site.package.toLowerCase().includes(search) ||
+            site.description.toLowerCase().includes(search);
+
+          return packageMatch && searchMatch;
 
         });
 
-    }
+
+      grid.innerHTML = "";
 
 
-    document
-      .getElementById("nextSlide")
-      .addEventListener("click", () => {
+      filtered.forEach(site => {
 
-        goToSlide(currentSlide + 1);
-
-      });
-
-
-    document
-      .getElementById("prevSlide")
-      .addEventListener("click", () => {
-
-        goToSlide(currentSlide - 1);
-
-      });
-
-
-    let sliderTimer =
-      setInterval(() => {
-
-        goToSlide(currentSlide + 1);
-
-      },4200);
-
-
-    document
-      .querySelector(".mini-banner")
-      .addEventListener("mouseenter", () => {
-
-        clearInterval(sliderTimer);
-
-      });
-
-
-    document
-      .querySelector(".mini-banner")
-      .addEventListener("mouseleave", () => {
-
-        sliderTimer =
-          setInterval(() => {
-
-            goToSlide(currentSlide + 1);
-
-          },4200);
-
-      });
-
-
-    /* =========================================
-       SEARCH + FILTER
-    ========================================== */
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const cards =
-      [...document.querySelectorAll(".design-card")];
-
-    const categories =
-      [...document.querySelectorAll(".category")];
-
-    const resultCount =
-      document.getElementById("resultCount");
-
-    let activeCategory = "all";
-
-
-    function filterCards(){
-
-      const query =
-        searchInput.value
-          .trim()
-          .toLowerCase();
-
-      let visible = 0;
-
-      cards.forEach(card => {
-
-        const title =
-          card.dataset.title.toLowerCase();
-
-        const cardCategory =
-          card.dataset.category.toLowerCase();
-
-        const matchesSearch =
-          !query ||
-          title.includes(query) ||
-          cardCategory.includes(query);
-
-        const matchesCategory =
-          activeCategory === "all" ||
-          cardCategory.includes(activeCategory);
-
-        const show =
-          matchesSearch &&
-          matchesCategory;
-
-        card.style.display =
-          show ? "" : "none";
-
-        if(show){
-          visible++;
-        }
-
-      });
-
-      resultCount.textContent =
-        `${visible} design${visible !== 1 ? "s" : ""}`;
-
-    }
-
-
-    searchInput.addEventListener(
-      "input",
-      filterCards
-    );
-
-
-    categories.forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        categories.forEach(item =>
-          item.classList.remove("active")
+        grid.appendChild(
+          createWebsiteCard(site)
         );
 
-        button.classList.add("active");
-
-        activeCategory =
-          button.dataset.category;
-
-        filterCards();
-
       });
 
-    });
+
+      empty.style.display =
+        filtered.length ? "none" : "block";
 
 
-    /* =========================================
-       TOAST
-    ========================================== */
-
-    let toastTimer;
-
-    function showToast(message){
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent = message;
-
-      toast.classList.add("show");
-
-      clearTimeout(toastTimer);
-
-      toastTimer =
-        setTimeout(() => {
-
-          toast.classList.remove("show");
-
-        },2200);
+      document.getElementById("resultText").textContent =
+        filtered.length === 1
+          ? "Showing 1 website"
+          : `Showing ${filtered.length} websites`;
 
     }
 
 
-    /* =========================================
-       MODAL
-    ========================================== */
+    /* =========================
+       CREATE WEBSITE CARD
+    ========================== */
 
-    function openModal(id){
+    function createWebsiteCard(site){
+
+      const article =
+        document.createElement("article");
+
+      article.className =
+        "website-card";
+
+
+      article.innerHTML = `
+
+        <div class="website-preview">
+
+          <div class="mock-browser">
+
+            <div class="browser-bar">
+
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+
+              <div class="browser-url"></div>
+
+            </div>
+
+            <div class="fake-site">
+
+              <div class="fake-nav">
+
+                <div class="fake-logo"></div>
+
+                <div class="fake-links">
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
+
+              </div>
+
+              <div class="fake-hero">
+
+                <h4></h4>
+
+                <p></p>
+
+                <div class="fake-button"></div>
+
+              </div>
+
+              <div class="fake-grid">
+
+                <div class="fake-box"></div>
+                <div class="fake-box"></div>
+                <div class="fake-box"></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="preview-label">
+            LIVE WEBSITE
+          </div>
+
+        </div>
+
+
+        <div class="website-info">
+
+          <div class="website-top">
+
+            <div>
+              <h3>${escapeHtml(site.name)}</h3>
+
+              <div class="website-url">
+                ${escapeHtml(site.url)}
+              </div>
+            </div>
+
+            <span class="package-chip">
+              ${escapeHtml(site.package)}
+            </span>
+
+          </div>
+
+
+          <div class="website-actions">
+
+            <button
+              class="site-btn presentation"
+              onclick="openPresentation(${site.id})"
+            >
+              ▶ Presentation
+            </button>
+
+            <button
+              class="site-btn"
+              onclick="openWebsite(${site.id})"
+            >
+              ↗ Live Website
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+      return article;
+    }
+
+
+    /* =========================
+       ESCAPE HTML
+    ========================== */
+
+    function escapeHtml(value){
+
+      return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+    }
+
+
+    /* =========================
+       PACKAGE FILTER
+    ========================== */
+
+    function filterPackage(packageName){
+
+      activePackage = packageName;
+
 
       document
-        .getElementById(id)
-        .classList.add("show");
+        .querySelectorAll(".package-tab")
+        .forEach(button => {
 
-      document.body.classList.add("modal-open");
-
-    }
-
-
-    function closeModal(id){
-
-      document
-        .getElementById(id)
-        .classList.remove("show");
-
-      document.body.classList.remove("modal-open");
-
-    }
-
-
-    document
-      .querySelectorAll(".modal")
-      .forEach(modal => {
-
-        modal.addEventListener("click", function(e){
-
-          if(e.target === modal){
-
-            modal.classList.remove("show");
-
-            document.body.classList.remove(
-              "modal-open"
-            );
-
-          }
+          button.classList.toggle(
+            "active",
+            button.dataset.package === packageName
+          );
 
         });
 
-      });
+
+      renderWebsites();
 
 
-    document.addEventListener(
-      "keydown",
-      function(e){
-
-        if(e.key === "Escape"){
-
-          document
-            .querySelectorAll(".modal.show")
-            .forEach(modal => {
-
-              modal.classList.remove("show");
-
-            });
-
-          document.body.classList.remove(
-            "modal-open"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =========================================
-       CURRENT DESIGN
-    ========================================== */
-
-    let currentDesign = {
-      title:"",
-      description:"",
-      type:"",
-      style:"square"
-    };
-
-
-    function getDesignData(button){
-
-      const card =
-        button.closest(".design-card");
-
-      const preview =
-        card.querySelector(".design-preview");
-
-      const art =
-        card.querySelector(".preview-art");
-
-      return {
-
-        title:
-          card.dataset.title,
-
-        description:
-          card.querySelector(".design-info p")
-            .textContent.trim(),
-
-        type:
-          card.querySelector(".design-type")
-            .textContent.trim(),
-
-        style:
-          [...preview.classList]
-            .find(item =>
-              [
-                "square",
-                "food",
-                "agency",
-                "sale",
-                "business",
-                "free"
-              ].includes(item)
-            ) || "square",
-
-        artTitle:
-          art.querySelector("h3")
-            .textContent.trim(),
-
-        artType:
-          art.querySelector("small")
-            .textContent.trim()
-
-      };
-
-    }
-
-
-    /* =========================================
-       FULL PREVIEW
-    ========================================== */
-
-    function openPreview(button){
-
-      currentDesign =
-        getDesignData(button);
-
-      document
-        .getElementById("modalTitle")
-        .textContent =
-        currentDesign.title;
-
-      document
-        .getElementById("modalDescription")
-        .textContent =
-        currentDesign.description;
-
-      document
-        .getElementById("modalDesignTitle")
-        .textContent =
-        currentDesign.artTitle;
-
-      document
-        .getElementById("modalDesignType")
-        .textContent =
-        currentDesign.artType;
-
-      const modalDesign =
-        document.getElementById("modalDesign");
-
-      modalDesign.className =
-        `modal-design ${currentDesign.style}`;
-
-      setPreviewMode("desktop");
-
-      openModal("previewModal");
-
-    }
-
-
-    /* =========================================
-       MOBILE PREVIEW
-    ========================================== */
-
-    function mobilePreview(button){
-
-      currentDesign =
-        getDesignData(button);
-
-      document
-        .getElementById("modalTitle")
-        .textContent =
-        currentDesign.title;
-
-      document
-        .getElementById("modalDescription")
-        .textContent =
-        currentDesign.description;
-
-      document
-        .getElementById("modalDesignTitle")
-        .textContent =
-        currentDesign.artTitle;
-
-      document
-        .getElementById("modalDesignType")
-        .textContent =
-        currentDesign.artType;
-
-      setPreviewMode("mobile");
-
-      openModal("previewModal");
-
-    }
-
-
-    function setPreviewMode(mode){
-
-      const desktop =
-        document.getElementById("modalDesign");
-
-      const mobile =
-        document.getElementById("mobileDemo");
-
-      const desktopToggle =
-        document.getElementById("desktopToggle");
-
-      const mobileToggle =
-        document.getElementById("mobileToggle");
-
-      if(mode === "mobile"){
-
-        desktop.style.display = "none";
-        mobile.style.display = "flex";
-
-        mobileToggle.classList.add("active");
-        desktopToggle.classList.remove("active");
+      if(packageName !== "All"){
 
         document
-          .getElementById("mobileDemoTitle")
-          .textContent =
-          currentDesign.artTitle;
-
-      }else{
-
-        desktop.style.display = "flex";
-        mobile.style.display = "none";
-
-        desktopToggle.classList.add("active");
-        mobileToggle.classList.remove("active");
+          .getElementById("showcase")
+          .scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
 
       }
 
     }
 
 
-    /* =========================================
-       DOWNLOAD
-    ========================================== */
+    function selectPackage(packageName){
 
-    function downloadDesign(button){
+      filterPackage(packageName);
 
-      currentDesign =
-        getDesignData(button);
-
-      downloadCurrentDesign();
+      document
+        .getElementById("showcase")
+        .scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
 
     }
 
 
-    function downloadCurrentDesign(){
+    /* =========================
+       OPEN LIVE WEBSITE
+    ========================== */
 
-      showToast(
-        "Download system will connect to Firebase storage."
+    function openWebsite(id){
+
+      const site =
+        websites.find(item => item.id === id);
+
+      if(!site) return;
+
+      playSound("click");
+
+      window.open(
+        site.url,
+        "_blank",
+        "noopener,noreferrer"
       );
 
     }
 
 
-    /* =========================================
-       GEMINI PROMPT
-    ========================================== */
+    /* =========================
+       PRESENTATION
+    ========================== */
 
-    function buildGeminiPrompt(){
+    function openPresentation(id){
 
-      return `
-Animate this design into a premium short-form social media video.
+      const site =
+        websites.find(item => item.id === id);
 
-IMPORTANT:
-- Preserve the exact original design.
-- Do NOT redesign the artwork.
-- Do NOT change the logo.
-- Do NOT replace the text.
-- Do NOT change the brand colors.
-- Do NOT change the typography.
-- Keep the original visual hierarchy.
-- Keep every important element readable.
+      if(!site) return;
 
-ANIMATION:
-- Add smooth premium motion.
-- Use subtle entrance animations.
-- Add elegant text reveal.
-- Add gentle image/object movement where appropriate.
-- Use smooth transitions.
-- Avoid excessive effects.
-- Keep the animation professional and modern.
-- Make the first 1–2 seconds visually engaging.
 
-MOBILE:
-- Optimize the composition for mobile viewing.
-- Keep all important content inside a safe mobile area.
-- Maintain readability on a smartphone screen.
-- Avoid cropping important text or logos.
+      activeWebsite = site;
 
-FORMAT:
-- Short social-media-ready video.
-- Vertical/mobile-first composition.
-- Clean professional pacing.
-- Premium business/marketing aesthetic.
+      document
+        .getElementById("presentationName")
+        .textContent = site.name;
 
-DESIGN:
-${currentDesign.title}
+      document
+        .getElementById("presentationUrl")
+        .textContent = site.url;
 
-CATEGORY:
-${currentDesign.type}
 
-The final animation should feel like the original static design has naturally come to life, without changing its identity or content.
-      `.trim();
+      document
+        .getElementById("desktopFrame")
+        .src = site.url;
+
+
+      document
+        .getElementById("presentationModal")
+        .classList.add("active");
+
+      document.body.classList.add("modal-open");
+
+
+      currentView = "desktop";
+
+      updateControls();
+
+      playSound("open");
 
     }
 
 
-    function openGemini(button){
+    /* =========================
+       CLOSE PRESENTATION
+    ========================== */
 
-      currentDesign =
-        getDesignData(button);
+    function closePresentation(){
 
-      document
-        .getElementById("geminiPrompt")
-        .value =
-        buildGeminiPrompt();
+      stopAutoScroll();
 
-      openModal("geminiModal");
+      const modal =
+        document.getElementById("presentationModal");
 
-    }
+      modal.classList.remove("active");
 
+      document.body.classList.remove("modal-open");
 
-    function openGeminiFromPreview(){
-
-      document
-        .getElementById("geminiPrompt")
-        .value =
-        buildGeminiPrompt();
-
-      closeModal("previewModal");
 
       setTimeout(() => {
 
-        openModal("geminiModal");
-
-      },120);
-
-    }
-
-
-    function copyGeminiPrompt(){
-
-      const prompt =
         document
-          .getElementById("geminiPrompt")
-          .value;
+          .getElementById("presentationStage")
+          .querySelectorAll(
+            ".split-stage"
+          )
+          .forEach(item => item.remove());
 
-      navigator.clipboard
-        .writeText(prompt)
-        .then(() => {
+      },300);
 
-          showToast(
-            "Gemini prompt copied!"
-          );
 
-        })
-        .catch(() => {
-
-          showToast(
-            "Please copy the prompt manually."
-          );
-
-        });
+      playSound("close");
 
     }
 
 
-    /* =========================================
-       CAPTION
-    ========================================== */
+    /* =========================
+       VIEW MODE
+    ========================== */
 
-    function getCaption(){
+    function setView(view){
 
-      return `✨ ${currentDesign.title}
+      if(!activeWebsite) return;
 
-Ready-made creative for your brand.
+      stopAutoScroll();
 
-Use this design, add your own content, and turn it into a premium animated video with AI.
+      currentView = view;
 
-🎨 Design: ${currentDesign.title}
-📱 Mobile-ready workflow
-✨ Gemini animation ready
 
-#WebsiteDeals #Design #AIDesign #Gemini #ContentCreation`;
+      const stage =
+        document.getElementById("presentationStage");
+
+      const desktop =
+        document.getElementById("desktopDevice");
+
+
+      stage
+        .querySelectorAll(".split-stage")
+        .forEach(item => item.remove());
+
+
+      desktop.style.display = "none";
+
+
+      if(view === "desktop"){
+
+        desktop.style.display = "block";
+
+        desktop.className =
+          "device desktop";
+
+      }
+
+
+      if(view === "mobile"){
+
+        desktop.style.display = "block";
+
+        desktop.className =
+          "device mobile";
+
+        document.getElementById("desktopFrame").style.width =
+          "100%";
+
+      }
+
+
+      if(view === "split"){
+
+        const split =
+          document.createElement("div");
+
+        split.className =
+          "split-stage";
+
+
+        split.innerHTML = `
+
+          <div class="split-desktop">
+
+            <iframe
+              src="${escapeAttribute(activeWebsite.url)}"
+              title="Desktop Split Preview"
+            ></iframe>
+
+          </div>
+
+          <div class="split-mobile">
+
+            <iframe
+              src="${escapeAttribute(activeWebsite.url)}"
+              title="Mobile Split Preview"
+            ></iframe>
+
+          </div>
+
+        `;
+
+
+        stage.appendChild(split);
+
+      }
+
+
+      updateControls();
+
+      playSound("switch");
 
     }
 
 
-    function copyCurrentCaption(){
+    function escapeAttribute(value){
 
-      navigator.clipboard
-        .writeText(getCaption())
-        .then(() => {
-
-          showToast(
-            "Caption copied!"
-          );
-
-        })
-        .catch(() => {
-
-          showToast(
-            "Please copy manually."
-          );
-
-        });
+      return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;");
 
     }
 
 
-    /* =========================================
-       SCROLL TO GEMINI
-    ========================================== */
+    /* =========================
+       CONTROL STATE
+    ========================== */
 
-    function scrollToGemini(){
+    function updateControls(){
 
       document
-        .getElementById("ai-lab")
+        .getElementById("desktopBtn")
+        .classList.toggle(
+          "active",
+          currentView === "desktop"
+        );
+
+      document
+        .getElementById("mobileBtn")
+        .classList.toggle(
+          "active",
+          currentView === "mobile"
+        );
+
+      document
+        .getElementById("splitBtn")
+        .classList.toggle(
+          "active",
+          currentView === "split"
+        );
+
+    }
+
+
+    /* =========================
+       AUTO SCROLL
+    ========================== */
+
+    function toggleAutoScroll(){
+
+      if(autoScrolling){
+
+        stopAutoScroll();
+
+      }else{
+
+        startAutoScroll();
+
+      }
+
+    }
+
+
+    function startAutoScroll(){
+
+      if(!activeWebsite) return;
+
+      autoScrolling = true;
+
+
+      const frame =
+        document.getElementById("desktopFrame");
+
+
+      /*
+        Cross-origin websites cannot normally be
+        controlled from the parent page.
+
+        We still enable presentation state here.
+        For same-origin pages, scrolling can work.
+      */
+
+      try{
+
+        scrollTimer =
+          setInterval(() => {
+
+            try{
+
+              frame.contentWindow.scrollBy({
+                top:1,
+                behavior:"smooth"
+              });
+
+            }catch(error){
+
+              stopAutoScroll();
+
+            }
+
+          },45);
+
+      }catch(error){
+
+        console.log(error);
+
+      }
+
+
+      document
+        .getElementById("scrollBtn")
+        .classList.add("active");
+
+
+      document
+        .getElementById("scrollBtn")
+        .textContent =
+        "■ Stop Scroll";
+
+
+      document
+        .getElementById("autoScrollIndicator")
+        .style.display =
+        "block";
+
+
+      playSound("switch");
+
+    }
+
+
+    function stopAutoScroll(){
+
+      autoScrolling = false;
+
+
+      if(scrollTimer){
+
+        clearInterval(scrollTimer);
+
+        scrollTimer = null;
+
+      }
+
+
+      document
+        .getElementById("scrollBtn")
+        .classList.remove("active");
+
+
+      document
+        .getElementById("scrollBtn")
+        .textContent =
+        "↓ Auto Scroll";
+
+
+      document
+        .getElementById("autoScrollIndicator")
+        .style.display =
+        "none";
+
+    }
+
+
+    /* =========================
+       SOUND ENGINE
+    ========================== */
+
+    function initAudio(){
+
+      if(!audioContext){
+
+        const AudioCtx =
+          window.AudioContext ||
+          window.webkitAudioContext;
+
+        if(AudioCtx){
+
+          audioContext =
+            new AudioCtx();
+
+        }
+
+      }
+
+    }
+
+
+    function playSound(type){
+
+      if(!soundEnabled) return;
+
+      initAudio();
+
+      if(!audioContext) return;
+
+
+      const oscillator =
+        audioContext.createOscillator();
+
+      const gain =
+        audioContext.createGain();
+
+
+      oscillator.connect(gain);
+
+      gain.connect(
+        audioContext.destination
+      );
+
+
+      const now =
+        audioContext.currentTime;
+
+
+      if(type === "click"){
+
+        oscillator.frequency.setValueAtTime(
+          620,
+          now
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+          420,
+          now + .08
+        );
+
+      }
+
+
+      else if(type === "open"){
+
+        oscillator.frequency.setValueAtTime(
+          360,
+          now
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+          760,
+          now + .18
+        );
+
+      }
+
+
+      else if(type === "close"){
+
+        oscillator.frequency.setValueAtTime(
+          520,
+          now
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+          260,
+          now + .12
+        );
+
+      }
+
+
+      else{
+
+        oscillator.frequency.setValueAtTime(
+          500,
+          now
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+          680,
+          now + .08
+        );
+
+      }
+
+
+      gain.gain.setValueAtTime(
+        .0001,
+        now
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        .035,
+        now + .015
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        now + .16
+      );
+
+
+      oscillator.start(now);
+
+      oscillator.stop(
+        now + .18
+      );
+
+    }
+
+
+    function toggleSound(){
+
+      soundEnabled =
+        !soundEnabled;
+
+
+      const button =
+        document.getElementById(
+          "soundToggle"
+        );
+
+
+      if(soundEnabled){
+
+        initAudio();
+
+        if(
+          audioContext &&
+          audioContext.state === "suspended"
+        ){
+
+          audioContext.resume();
+
+        }
+
+
+        button.classList.add("on");
+
+        button.textContent =
+          "🔊 ON";
+
+
+        playSound("click");
+
+      }else{
+
+        button.classList.remove("on");
+
+        button.textContent =
+          "🔇 OFF";
+
+      }
+
+    }
+
+
+    /* =========================
+       SCROLL HELPERS
+    ========================== */
+
+    function scrollToPlans(){
+
+      document
+        .getElementById("plans")
         .scrollIntoView({
           behavior:"smooth"
         });
@@ -3426,28 +2744,63 @@ Use this design, add your own content, and turn it into a premium animated video
     }
 
 
-    /* =========================================
-       KEYBOARD SLIDER
-    ========================================== */
+    function scrollToShowcase(){
+
+      document
+        .getElementById("showcase")
+        .scrollIntoView({
+          behavior:"smooth"
+        });
+
+    }
+
+
+    /* =========================
+       ESC KEY
+    ========================== */
 
     document.addEventListener(
       "keydown",
-      function(e){
+      event => {
 
-        if(e.key === "ArrowRight"){
+        if(event.key === "Escape"){
 
-          goToSlide(currentSlide + 1);
-
-        }
-
-        if(e.key === "ArrowLeft"){
-
-          goToSlide(currentSlide - 1);
+          closePresentation();
 
         }
 
       }
     );
+
+
+    /* =========================
+       MODAL BACKDROP CLOSE
+    ========================== */
+
+    document
+      .getElementById("presentationModal")
+      .addEventListener(
+        "click",
+        event => {
+
+          if(
+            event.target.id ===
+            "presentationModal"
+          ){
+
+            closePresentation();
+
+          }
+
+        }
+      );
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================== */
+
+    renderWebsites();
 
   </script>
 
