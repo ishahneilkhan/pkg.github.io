@@ -197,7 +197,8 @@
   sec.innerHTML = `<div class="container"><div class="about-card reveal">
     <div class="section-kicker">Salah · Dhaka</div>
     <h3 id="salahNext" style="margin-top:8px;font-size:22px">Prayer times</h3>
-    <div class="salah-grid" id="salahGrid"></div></div></div>`;
+    <div class="salah-grid" id="salahGrid"></div>
+    <a class="package-wa" href="./salah/" style="text-align:left;margin-top:18px">Full Salah page with live countdown →</a></div></div>`;
   $("#about")?.before(sec);
   revealIO.observe($(".about-card", sec));
   if (typeof observer !== "undefined") observer.observe(sec);
