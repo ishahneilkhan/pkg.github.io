@@ -5,46 +5,20 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    content="width=device-width, initial-scale=1.0"
   >
 
-  <meta name="theme-color" content="#080909">
+  <meta
+    name="theme-color"
+    content="#080909"
+  >
 
   <meta
     name="description"
-    content="Website Deals — Premium ready-made websites, monthly website packages and live website presentation."
+    content="Website Deals — Premium ready-made websites with monthly plans for businesses, creators and growing brands."
   >
 
-  <meta
-    name="keywords"
-    content="Website Deals, ready made website, website package Bangladesh, business website, premium website, website subscription"
-  >
-
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent"
-  >
-  <meta
-    name="apple-mobile-web-app-title"
-    content="Website Deals"
-  >
-
-  <link rel="manifest" href="./manifest.json">
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="./icons/icon-192.png"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="./icons/icon-192.png"
-  >
-
-  <title>Website Deals | Premium Websites</title>
+  <title>Website Deals | Premium Ready-Made Websites</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,34 +31,28 @@
   <style>
     :root {
       --bg: #080909;
-      --bg-soft: #0c0f0f;
-      --card: #111414;
-      --card-2: #151919;
-
-      --text: #f7f8f8;
-      --muted: #919999;
-
-      --line: rgba(255,255,255,.08);
-      --line-strong: rgba(255,255,255,.15);
-
+      --bg-soft: #0d0f0f;
+      --panel: #111414;
+      --panel-2: #151818;
+      --border: rgba(255,255,255,.09);
+      --border-strong: rgba(255,255,255,.16);
+      --text: #f5f7f6;
+      --muted: #969e9a;
+      --muted-2: #6f7773;
       --lime: #b7ff00;
       --lime-soft: rgba(183,255,0,.10);
-
-      --green: #35d07f;
-      --danger: #ff6262;
-
-      --shadow:
-        0 30px 100px rgba(0,0,0,.42);
-
+      --lime-border: rgba(183,255,0,.25);
+      --white: #ffffff;
+      --danger: #ff6464;
+      --shadow: 0 30px 80px rgba(0,0,0,.38);
       --radius: 24px;
-
-      --max: 1380px;
+      --max: 1240px;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -93,69 +61,40 @@
 
     body {
       min-height: 100vh;
-
       background:
         radial-gradient(
-          circle at 10% 0%,
-          rgba(183,255,0,.09),
-          transparent 28%
+          circle at 50% -10%,
+          rgba(183,255,0,.08),
+          transparent 32%
         ),
-        radial-gradient(
-          circle at 92% 8%,
-          rgba(255,255,255,.05),
-          transparent 23%
-        ),
-        linear-gradient(
-          180deg,
-          #080909 0%,
-          #080909 55%,
-          #0b0d0d 100%
-        );
-
+        var(--bg);
       color: var(--text);
-
-      font-family:
-        Inter,
-        "Hind Siliguri",
-        sans-serif;
-
+      font-family: "Inter", "Hind Siliguri", sans-serif;
       overflow-x: hidden;
     }
 
     body::before {
       content: "";
-
       position: fixed;
       inset: 0;
-
       pointer-events: none;
-
       z-index: -1;
-
       background-image:
         linear-gradient(
-          rgba(255,255,255,.016) 1px,
+          rgba(255,255,255,.018) 1px,
           transparent 1px
         ),
         linear-gradient(
           90deg,
-          rgba(255,255,255,.016) 1px,
+          rgba(255,255,255,.018) 1px,
           transparent 1px
         );
-
-      background-size: 42px 42px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 78%
-        );
-    }
-
-    ::selection {
-      background: var(--lime);
-      color: #080909;
+      background-size: 60px 60px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+      );
     }
 
     a {
@@ -163,8 +102,9 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     img {
@@ -173,129 +113,2338 @@
     }
 
     .container {
-      width:
-        min(
-          var(--max),
-          calc(100% - 40px)
-        );
-
-      margin-inline: auto;
+      width: min(
+        calc(100% - 40px),
+        var(--max)
+      );
+      margin: 0 auto;
     }
 
-    /* ==================================================
+    /* =========================
        TOP BAR
-    ================================================== */
+    ========================= */
 
     .topbar {
-      min-height: 42px;
-
-      display: flex;
-      align-items: center;
-
-      border-bottom:
-        1px solid var(--line);
-
-      background:
-        rgba(8,9,9,.84);
-
-      backdrop-filter:
-        blur(18px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,9,9,.82);
+      backdrop-filter: blur(18px);
     }
 
     .topbar-inner {
-      width:
-        min(
-          var(--max),
-          calc(100% - 40px)
-        );
-
-      margin-inline: auto;
-
+      min-height: 38px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 20px;
-    }
-
-    .top-message {
       color: var(--muted);
-
-      font-size: 11px;
-      font-weight: 600;
-
-      white-space: nowrap;
+      font-size: 12px;
     }
 
-    .top-message strong {
-      color: var(--lime);
-    }
-
-    .online-status {
-      display: inline-flex;
+    .topbar-left {
+      display: flex;
       align-items: center;
-      gap: 7px;
-
-      color: #aeb6b6;
-
-      font-size: 10px;
-      font-weight: 700;
+      gap: 8px;
     }
 
-    .online-dot {
+    .topbar-dot {
       width: 7px;
       height: 7px;
-
       border-radius: 50%;
-
-      background: var(--green);
-
-      box-shadow:
-        0 0 12px rgba(53,208,127,.65);
+      background: var(--lime);
+      box-shadow: 0 0 12px rgba(183,255,0,.8);
     }
 
-    .online-dot.offline {
-      background: var(--danger);
-
-      box-shadow:
-        0 0 12px rgba(255,98,98,.55);
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* ==================================================
+    /* =========================
        NAVBAR
-    ================================================== */
+    ========================= */
 
     .navbar {
       position: sticky;
       top: 0;
-
       z-index: 1000;
-
-      border-bottom:
-        1px solid var(--line);
-
-      background:
-        rgba(8,9,9,.78);
-
-      backdrop-filter:
-        blur(25px);
+      background: rgba(8,9,9,.82);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(22px);
     }
 
     .nav-inner {
       min-height: 76px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      gap: 25px;
+      gap: 30px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--lime);
+      color: #080909;
+      font-weight: 900;
+      font-size: 17px;
+      box-shadow:
+        0 0 0 1px rgba(183,255,0,.2),
+        0 10px 30px rgba(183,255,0,.12);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+    }
+
+    .brand-sub {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      color: #aeb5b1;
+      padding: 10px 13px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+      background: rgba(255,255,255,.05);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav-cta {
+      min-height: 42px;
+      padding: 0 17px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 12px;
+      font-weight: 900;
+      transition: .2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(183,255,0,.16);
+    }
+
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      display: none;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      padding: 95px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: 50%;
+      top: -220px;
+      transform: translateX(-50%);
+      background: rgba(183,255,0,.08);
+      filter: blur(120px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border: 1px solid var(--lime-border);
+      border-radius: 999px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-top: 23px;
+      font-size: clamp(
+        46px,
+        7vw,
+        82px
+      );
+      line-height: .95;
+      letter-spacing: -.065em;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: var(--lime);
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-description strong {
+      color: #dfe4e1;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 31px;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--lime);
+      color: #080909;
+      box-shadow: 0 15px 35px rgba(183,255,0,.12);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px rgba(183,255,0,.2);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border-strong);
+      background: rgba(255,255,255,.025);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.25);
+      transform: translateY(-3px);
+    }
+
+    .hero-note {
+      margin-top: 17px;
+      color: var(--muted-2);
+      font-size: 11px;
+    }
+
+    /* =========================
+       HERO VISUAL
+    ========================= */
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .browser {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-strong);
+      border-radius: 24px;
+      background: #0d0f0f;
+      box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
+    }
+
+    .browser::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          125deg,
+          rgba(255,255,255,.06),
+          transparent 35%
+        );
+    }
+
+    .browser-top {
+      height: 45px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 1px solid var(--border);
+      background: #111313;
+    }
+
+    .browser-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #555;
+    }
+
+    .browser-url {
+      flex: 1;
+      margin-left: 8px;
+      padding: 7px 11px;
+      border-radius: 8px;
+      background: #090a0a;
+      color: #68716c;
+      font-size: 9px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .browser-content {
+      padding: 25px;
+      min-height: 410px;
+    }
+
+    .fake-site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .fake-logo {
+      width: 82px;
+      height: 12px;
+      border-radius: 5px;
+      background: var(--lime);
+    }
+
+    .fake-nav-items {
+      display: flex;
+      gap: 7px;
+    }
+
+    .fake-nav-item {
+      width: 38px;
+      height: 6px;
+      border-radius: 3px;
+      background: #2b302e;
+    }
+
+    .fake-hero {
+      margin-top: 43px;
+      display: grid;
+      grid-template-columns: 1fr .7fr;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .fake-title {
+      width: 90%;
+      height: 28px;
+      border-radius: 8px;
+      background: #e9edea;
+    }
+
+    .fake-title.second {
+      width: 65%;
+      height: 18px;
+      margin-top: 9px;
+      background: #a9b1ad;
+    }
+
+    .fake-copy {
+      width: 88%;
+      height: 8px;
+      margin-top: 20px;
+      border-radius: 4px;
+      background: #343a37;
+    }
+
+    .fake-copy.small {
+      width: 72%;
+      margin-top: 7px;
+    }
+
+    .fake-button {
+      width: 100px;
+      height: 34px;
+      margin-top: 22px;
+      border-radius: 8px;
+      background: var(--lime);
+    }
+
+    .fake-image {
+      min-height: 170px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.18),
+          rgba(255,255,255,.03)
+        );
+    }
+
+    .fake-cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .fake-card {
+      height: 80px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #121615;
+    }
+
+    .hero-float {
+      position: absolute;
+      right: -25px;
+      bottom: -24px;
+      min-width: 190px;
+      padding: 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: 17px;
+      background: rgba(17,20,20,.92);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    }
+
+    .float-label {
+      color: var(--muted);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .float-price {
+      margin-top: 5px;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .float-price span {
+      color: var(--lime);
+    }
+
+    .float-status {
+      margin-top: 6px;
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      padding: 5px 0 35px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,.018);
+    }
+
+    .stat {
+      min-height: 105px;
+      padding: 23px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      scroll-margin-top: 95px;
+    }
+
+    .section {
+      padding: 105px 0;
+    }
+
+    .section-heading {
+      max-width: 750px;
+      margin-bottom: 45px;
+    }
+
+    .section-kicker {
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin-top: 12px;
+      font-size: clamp(34px,5vw,57px);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .section-heading p {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       PACKAGE CARDS
+    ========================= */
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .package-card {
+      position: relative;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+      transition: .25s ease;
+      overflow: hidden;
+    }
+
+    .package-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .package-card.featured {
+      border-color: var(--lime-border);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.075),
+          rgba(255,255,255,.015)
+        );
+    }
+
+    .popular {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .package-number {
+      color: var(--muted-2);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .package-card h3 {
+      margin-top: 14px;
+      font-size: 23px;
+      letter-spacing: -.04em;
+    }
+
+    .package-price {
+      margin-top: 22px;
+      font-size: 39px;
+      font-weight: 900;
+      letter-spacing: -.06em;
+    }
+
+    .package-price small {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .package-description {
+      min-height: 55px;
+      margin-top: 11px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .package-features {
+      margin-top: 23px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      list-style: none;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 11px 0;
+      color: #c5cbc7;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .check {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      display: grid;
+      place-items: center;
+      margin-top: 1px;
+      border-radius: 50%;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .package-button {
+      width: 100%;
+      margin-top: 22px;
+    }
+
+    /* =========================
+       WORKFLOW
+    ========================= */
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 14px;
+    }
+
+    .workflow-card {
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255,255,255,.018);
+    }
+
+    .workflow-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--lime);
+      background: var(--lime-soft);
+      font-weight: 900;
+    }
+
+    .workflow-card h3 {
+      margin-top: 21px;
+      font-size: 15px;
+    }
+
+    .workflow-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       SHOWCASE
+    ========================= */
+
+    .showcase {
+      position: relative;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(183,255,0,.08),
+          transparent 35%
+        ),
+        #0d0f0f;
+      overflow: hidden;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .showcase h2 {
+      margin-top: 12px;
+      max-width: 650px;
+      font-size: clamp(32px,5vw,56px);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .showcase p {
+      max-width: 620px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .showcase-list {
+      margin-top: 25px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .showcase-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #cdd3cf;
+      font-size: 12px;
+    }
+
+    .showcase-item b {
+      color: var(--lime);
+    }
+
+    .showcase-visual {
+      min-height: 300px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .showcase-screen {
+      width: 100%;
+      max-width: 430px;
+      padding: 11px;
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      background: #080909;
+      box-shadow: 0 25px 70px rgba(0,0,0,.4);
+      transform: rotate(-2deg);
+    }
+
+    .screen-inner {
+      min-height: 250px;
+      padding: 16px;
+      border-radius: 11px;
+      background: #111414;
+    }
+
+    .screen-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .screen-brand {
+      width: 70px;
+      height: 9px;
+      border-radius: 5px;
+      background: var(--lime);
+    }
+
+    .screen-menu {
+      display: flex;
+      gap: 5px;
+    }
+
+    .screen-menu span {
+      width: 22px;
+      height: 5px;
+      border-radius: 3px;
+      background: #343b37;
+    }
+
+    .screen-hero {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr .7fr;
+      gap: 12px;
+    }
+
+    .screen-copy div {
+      height: 10px;
+      margin-bottom: 7px;
+      border-radius: 5px;
+      background: #454c48;
+    }
+
+    .screen-copy div:first-child {
+      width: 90%;
+      height: 19px;
+      background: #e9eeeb;
+    }
+
+    .screen-copy div:nth-child(2) {
+      width: 70%;
+    }
+
+    .screen-copy div:nth-child(3) {
+      width: 82%;
+    }
+
+    .screen-photo {
+      min-height: 105px;
+      border-radius: 10px;
+      background:
+        linear-gradient(
+          140deg,
+          rgba(183,255,0,.3),
+          rgba(255,255,255,.04)
+        );
+    }
+
+    .screen-bottom {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 7px;
+      margin-top: 15px;
+    }
+
+    .screen-bottom div {
+      height: 45px;
+      border-radius: 7px;
+      background: #1a1e1c;
+      border: 1px solid var(--border);
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-title {
+      font-size: clamp(32px,4vw,48px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+
+    .about-copy {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .about-copy + .about-copy {
+      margin-top: 17px;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
       gap: 11px;
+      margin-top: 25px;
+    }
 
-      flex: 0 0 auto;
+    .about-point {
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(255,255,255,.018);
+    }
 
-     
+    .about-point strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .about-point span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       SUPPORT
+    ========================= */
+
+    .support {
+      padding-bottom: 110px;
+    }
+
+    .support-box {
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(183,255,0,.08),
+          rgba(255,255,255,.018)
+        );
+    }
+
+    .support-box h2 {
+      font-size: clamp(29px,4vw,45px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .support-box p {
+      max-width: 600px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #060707;
+    }
+
+    .footer-inner {
+      min-height: 120px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .footer-copy {
+      color: var(--muted-2);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: #858d88;
+      font-size: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--lime);
+    }
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+
+    .back-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+      z-index: 900;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 13px;
+      background: rgba(17,20,20,.88);
+      color: var(--lime);
+      backdrop-filter: blur(15px);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: .25s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      padding: 12px 20px 20px;
+      background: rgba(8,9,9,.97);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      color: #c2c8c4;
+      font-size: 13px;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: 0;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 1050px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        max-width: 760px;
+      }
+
+      .package-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .package-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 520px;
+      }
+
+      .workflow-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase-visual {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .nav-links,
+      .nav-actions .nav-cta {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .support-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(
+          calc(100% - 28px),
+          var(--max)
+        );
+      }
+
+      .topbar-right {
+        display: none;
+      }
+
+      .hero {
+        padding: 65px 0 55px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-float {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 14px auto 0;
+        width: fit-content;
+      }
+
+      .browser-content {
+        min-height: 330px;
+        padding: 18px;
+      }
+
+      .fake-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .fake-image {
+        display: none;
+      }
+
+      .fake-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        min-height: 90px;
+        padding: 17px;
+      }
+
+      .stat strong {
+        font-size: 22px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-card:last-child {
+        grid-column: auto;
+        max-width: none;
+      }
+
+      .workflow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase {
+        padding: 23px;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+      }
+
+      .support-box {
+        padding: 28px 22px;
+      }
+
+      .footer-inner {
+        padding: 25px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       TOP BAR
+  ========================= -->
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+
+      <div class="topbar-left">
+        <span class="topbar-dot"></span>
+        <span>Premium ready-made websites • Monthly plans</span>
+      </div>
+
+      <div class="topbar-right">
+        <span>Bangladesh</span>
+        <span>•</span>
+        <span>Online</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <header class="navbar">
+
+    <div class="container nav-inner">
+
+      <a
+        href="./home.html"
+        class="brand"
+        aria-label="Website Deals Home"
+      >
+        <span class="brand-mark">WD</span>
+
+        <span class="brand-text">
+          <span class="brand-name">Website Deals</span>
+          <span class="brand-sub">Premium Marketplace</span>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="./home.html" class="active">Home</a>
+        <a href="./index.html#packages">Package</a>
+        <a href="./index.html#websites">Websites</a>
+        <a href="./index.html#salah">Salah</a>
+        <a href="#about">About</a>
+        <a href="https://support.websitedeals.com">Support</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a
+          href="./index.html#websites"
+          class="nav-cta"
+        >
+          Explore Websites ↗
+        </a>
+
+        <button
+          type="button"
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
+
+    </div>
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+    >
+      <a href="./home.html">Home</a>
+      <a href="./index.html#packages">Package</a>
+      <a href="./index.html#websites">Websites</a>
+      <a href="./index.html#salah">Salah</a>
+      <a href="#about">About</a>
+      <a href="https://support.websitedeals.com">
+        Support
+      </a>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Ready-made websites
+          </div>
+
+          <h1>
+            Your website.
+            <br>
+            <span>Ready to grow.</span>
+          </h1>
+
+          <p class="hero-description">
+            Launch a professional online presence without
+            starting everything from zero. Choose a ready-made
+            website, select your monthly package and get your
+            business online faster.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a
+              href="./index.html#packages"
+              class="btn btn-primary"
+            >
+              View Packages
+              <span>→</span>
+            </a>
+
+            <a
+              href="./index.html#websites"
+              class="btn btn-secondary"
+            >
+              Explore Websites
+              <span>↗</span>
+            </a>
+
+          </div>
+
+          <p class="hero-note">
+            Starting from ৳549/month • Hosting • SSL • Support
+          </p>
+
+        </div>
+
+        <div class="hero-visual">
+
+          <div class="browser">
+
+            <div class="browser-top">
+
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+
+              <div class="browser-url">
+                your-business.com
+              </div>
+
+            </div>
+
+            <div class="browser-content">
+
+              <div class="fake-site-nav">
+
+                <div class="fake-logo"></div>
+
+                <div class="fake-nav-items">
+                  <span class="fake-nav-item"></span>
+                  <span class="fake-nav-item"></span>
+                  <span class="fake-nav-item"></span>
+                  <span class="fake-nav-item"></span>
+                </div>
+
+              </div>
+
+              <div class="fake-hero">
+
+                <div>
+
+                  <div class="fake-title"></div>
+                  <div class="fake-title second"></div>
+
+                  <div class="fake-copy"></div>
+                  <div class="fake-copy small"></div>
+
+                  <div class="fake-button"></div>
+
+                </div>
+
+                <div class="fake-image"></div>
+
+              </div>
+
+              <div class="fake-cards">
+                <div class="fake-card"></div>
+                <div class="fake-card"></div>
+                <div class="fake-card"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="hero-float">
+
+            <div class="float-label">
+              Starting from
+            </div>
+
+            <div class="float-price">
+              ৳<span>549</span>
+              <small>/month</small>
+            </div>
+
+            <div class="float-status">
+              ● Ready to launch
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         STATS
+    ========================= -->
+
+    <section class="stats">
+
+      <div class="container">
+
+        <div class="stats-grid">
+
+          <div class="stat">
+            <strong>100+</strong>
+            <span>Ready Websites</span>
+          </div>
+
+          <div class="stat">
+            <strong>20+</strong>
+            <span>Website Categories</span>
+          </div>
+
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Responsive Design</span>
+          </div>
+
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Marketplace Access</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         PACKAGES
+    ========================= -->
+
+    <section
+      class="section"
+      id="packages"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            Choose your plan
+          </div>
+
+          <h2>
+            Simple monthly packages.
+            Powerful websites.
+          </h2>
+
+          <p>
+            Start small or build a complete digital business
+            system. Upgrade whenever your business grows.
+          </p>
+
+        </div>
+
+        <div class="package-grid">
+
+          <!-- STARTER -->
+
+          <article class="package-card">
+
+            <div class="package-number">
+              01 / STARTER
+            </div>
+
+            <h3>Starter</h3>
+
+            <div class="package-price">
+              ৳549
+              <small>/month</small>
+            </div>
+
+            <p class="package-description">
+              A clean professional website for individuals,
+              small businesses and new brands.
+            </p>
+
+            <ul class="package-features">
+
+              <li>
+                <span class="check">✓</span>
+                Complete ready-made website
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Free hosting & SSL
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Responsive design
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Basic logo
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Contact form
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Basic SEO
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Basic support
+              </li>
+
+            </ul>
+
+            <a
+              href="./starter/index.html"
+              class="btn btn-secondary package-button"
+            >
+              View Starter
+              <span>→</span>
+            </a>
+
+          </article>
+
+          <!-- BUSINESS -->
+
+          <article class="package-card featured">
+
+            <span class="popular">
+              Most Popular
+            </span>
+
+            <div class="package-number">
+              02 / BUSINESS
+            </div>
+
+            <h3>Business</h3>
+
+            <div class="package-price">
+              ৳999
+              <small>/month</small>
+            </div>
+
+            <p class="package-description">
+              A stronger business website with admin tools,
+              inquiries, analytics and advanced integrations.
+            </p>
+
+            <ul class="package-features">
+
+              <li>
+                <span class="check">✓</span>
+                Everything in Starter
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Premium website design
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Admin panel
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Product/service management
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Inquiry & order management
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                WhatsApp / Messenger
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Analytics & advanced SEO
+              </li>
+
+            </ul>
+
+            <a
+              href="./business/index.html"
+              class="btn btn-primary package-button"
+            >
+              View Business
+              <span>→</span>
+            </a>
+
+          </article>
+
+          <!-- PREMIUM -->
+
+          <article class="package-card">
+
+            <div class="package-number">
+              03 / PREMIUM
+            </div>
+
+            <h3>Premium</h3>
+
+            <div class="package-price">
+              ৳1,999
+              <small>/month</small>
+            </div>
+
+            <p class="package-description">
+              A complete Shopify-style e-commerce and business
+              system for brands ready to scale.
+            </p>
+
+            <ul class="package-features">
+
+              <li>
+                <span class="check">✓</span>
+                Shopify-style system
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Product & inventory management
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Orders & customers
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Cart & checkout
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Coupons & discounts
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Analytics & automation
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Priority support
+              </li>
+
+            </ul>
+
+            <a
+              href="./premium/index.html"
+              class="btn btn-secondary package-button"
+            >
+              View Premium
+              <span>→</span>
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         WORKFLOW
+    ========================= -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            How it works
+          </div>
+
+          <h2>
+            From idea to online
+            in a few simple steps.
+          </h2>
+
+          <p>
+            No complicated process. Pick a website,
+            choose your plan and let us handle the technical
+            setup.
+          </p>
+
+        </div>
+
+        <div class="workflow-grid">
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              01
+            </div>
+
+            <h3>Choose a Website</h3>
+
+            <p>
+              Explore the available real websites and
+              select the design that fits your business.
+            </p>
+
+          </article>
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              02
+            </div>
+
+            <h3>Select a Package</h3>
+
+            <p>
+              Choose Starter, Business or Premium based
+              on your current business needs.
+            </p>
+
+          </article>
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              03
+            </div>
+
+            <h3>Connect Your Domain</h3>
+
+            <p>
+              Use your own domain or connect a new domain
+              to your selected website.
+            </p>
+
+          </article>
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              04
+            </div>
+
+            <h3>Go Live</h3>
+
+            <p>
+              Your website is prepared for launch with
+              hosting, SSL and the selected features.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         LIVE SHOWCASE
+    ========================= -->
+
+    <section
+      class="section"
+      id="websites"
+    >
+
+      <div class="container">
+
+        <div class="showcase">
+
+          <div class="showcase-grid">
+
+            <div>
+
+              <div class="section-kicker">
+                Live website showcase
+              </div>
+
+              <h2>
+                See the real website
+                before you decide.
+              </h2>
+
+              <p>
+                Website Deals includes a dedicated live
+                showcase where real website demos can be
+                presented to clients in a clean, premium
+                card-based experience.
+              </p>
+
+              <div class="showcase-list">
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Real website links
+                </div>
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Live presentation
+                </div>
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Fixed premium cards
+                </div>
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Automatic website preview
+                </div>
+
+              </div>
+
+              <div class="hero-buttons">
+
+                <a
+                  href="./index.html#websites"
+                  class="btn btn-primary"
+                >
+                  Explore Live Websites
+                  <span>↗</span>
+                </a>
+
+                <a
+                  href="./admin/websites.html"
+                  class="btn btn-secondary"
+                >
+                  Manage Websites
+                </a>
+
+              </div>
+
+            </div>
+
+            <div class="showcase-visual">
+
+              <div class="showcase-screen">
+
+                <div class="screen-inner">
+
+                  <div class="screen-head">
+
+                    <div class="screen-brand"></div>
+
+                    <div class="screen-menu">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+
+                  </div>
+
+                  <div class="screen-hero">
+
+                    <div class="screen-copy">
+
+                      <div></div>
+                      <div></div>
+                      <div></div>
+
+                    </div>
+
+                    <div class="screen-photo"></div>
+
+                  </div>
+
+                  <div class="screen-bottom">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section
+      class="section"
+      id="about"
+    >
+
+      <div class="container about-grid">
+
+        <div>
+
+          <div class="section-kicker">
+            About Website Deals
+          </div>
+
+          <h2 class="about-title">
+            A simpler way to
+            launch websites.
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p class="about-copy">
+            Website Deals is built around one simple idea:
+            businesses should not need to start from zero
+            every time they need a website.
+          </p>
+
+          <p class="about-copy">
+            Instead, choose a ready-made website, select
+            the right monthly package and focus on your
+            customers while the technical side is managed
+            as part of the service.
+          </p>
+
+          <div class="about-points">
+
+            <div class="about-point">
+              <strong>Ready-made</strong>
+              <span>
+                Start from proven website structures.
+              </span>
+            </div>
+
+            <div class="about-point">
+              <strong>Responsive</strong>
+              <span>
+                Designed for modern screens and devices.
+              </span>
+            </div>
+
+            <div class="about-point">
+              <strong>Managed</strong>
+              <span>
+                Hosting, SSL and support options included.
+              </span>
+            </div>
+
+            <div class="about-point">
+              <strong>Scalable</strong>
+              <span>
+                Upgrade your package as your business grows.
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         SUPPORT
+    ========================= -->
+
+    <section class="support">
+
+      <div class="container">
+
+        <div class="support-box">
+
+          <div>
+
+            <div class="section-kicker">
+              Need help?
+            </div>
+
+            <h2>
+              Let's get your website online.
+            </h2>
+
+            <p>
+              Need help choosing a website, package,
+              domain or setup? Contact the Website Deals
+              support team.
+            </p>
+
+          </div>
+
+          <a
+            href="https://support.websitedeals.com"
+            class="btn btn-primary"
+          >
+            Open Support
+            <span>↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-copy">
+        © <span id="year"></span> Website Deals.
+        Premium ready-made websites.
+      </div>
+
+      <div class="footer-links">
+
+        <a href="./home.html">
+          Home
+        </a>
+
+        <a href="./index.html#packages">
+          Packages
+        </a>
+
+        <a href="./index.html#websites">
+          Websites
+        </a>
+
+        <a href="./starter/index.html">
+          Starter
+        </a>
+
+        <a href="./business/index.html">
+          Business
+        </a>
+
+        <a href="./premium/index.html">
+          Premium
+        </a>
+
+        <a href="https://support.websitedeals.com">
+          Support
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- BACK TO TOP -->
+
+  <button
+    type="button"
+    class="back-top"
+    id="backTop"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
+
+  <script>
+    /* =========================
+       YEAR
+    ========================= */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+
+      const isOpen =
+        mobileMenu.classList.toggle("open");
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      menuBtn.textContent =
+        isOpen ? "×" : "☰";
+    });
+
+
+    /* Close mobile menu after click */
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.remove("open");
+
+          menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuBtn.textContent = "☰";
+
+        });
+
+      });
+
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+
+    const backTop =
+      document.getElementById("backTop");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.scrollY > 550) {
+
+          backTop.classList.add("show");
+
+        } else {
+
+          backTop.classList.remove("show");
+
+        }
+
+      },
+      { passive: true }
+    );
+
+    backTop.addEventListener(
+      "click",
+      () => {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+
+    /* =========================
+       ACTIVE NAV
+    ========================= */
+
+    const navLinks =
+      document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.forEach(item => {
+          item.classList.remove("active");
+        });
+
+        if (
+          link.getAttribute("href") ===
+          "./home.html"
+        ) {
+          link.classList.add("active");
+        }
+
+      });
+
+    });
+  </script>
+
+</body>
+</html>
