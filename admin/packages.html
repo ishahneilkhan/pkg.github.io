@@ -1102,7 +1102,7 @@
         <span>Public Showcase</span>
       </a>
 
-      <a href="../../index.html">
+      <a href="../index.html">
         <span class="nav-icon">⌘</span>
         <span>Main Website</span>
       </a>
@@ -1440,6 +1440,8 @@
             </button>
 
           </div>
+
+          <div class="field full"><label>Image URL (optional, direct https link)</label><input type="url" id="editImage" placeholder="https://raw.githubusercontent.com/ishahneilkhan/pkg.github.io/main/images/package.jpg"></div>
 
           <div class="field">
 
@@ -2032,6 +2034,7 @@
 
     document.getElementById("editSort").value =
       pkg.sort || 1;
+    document.getElementById("editImage").value = pkg.image || "";
 
     currentFeatures =
       Array.isArray(pkg.features)
@@ -2238,6 +2241,7 @@
             .getElementById("editSort")
             .value
         ) || 1,
+      image: document.getElementById("editImage").value.trim(),
 
       features:
         currentFeatures
@@ -2454,7 +2458,7 @@
       () => {
 
         sessionStorage.removeItem(
-          "websiteDealsAdminLoggedIn"
+          "websiteDealsAdminAuth"
         );
 
         window.location.href =
@@ -2517,5 +2521,6 @@
 
 </script>
 
+<script src="../shared/data.js"></script><script src="../shared/admin-publish.js"></script>
 </body>
 </html>

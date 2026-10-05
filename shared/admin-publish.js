@@ -1,0 +1,9 @@
+/* Floating Publish box for every admin page */
+(function(){
+var s=document.createElement("style");s.textContent=".wdp{position:fixed;left:16px;bottom:16px;z-index:4000;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:calc(100vw - 32px);padding:10px;border:1px solid rgba(183,255,0,.3);border-radius:16px;background:rgba(10,12,11,.94);backdrop-filter:blur(14px);box-shadow:0 20px 50px rgba(0,0,0,.5);font:700 11px Inter,Arial,sans-serif;color:#cfd5cb}.wdp button{min-height:36px;padding:0 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff;font:800 11px Inter,Arial,sans-serif;cursor:pointer}.wdp button.p{background:#b7ff00;border-color:#b7ff00;color:#080909}.wdp small{display:none;max-width:260px;font-weight:600;line-height:1.5;color:#9aa296}.wdp:hover small,.wdp.msg small{display:block}";document.head.appendChild(s);
+var d=document.createElement("div");d.className="wdp";d.innerHTML='<button class="p" id="wdpExp" type="button">⬇ Export site data</button><button id="wdpLoad" type="button">↻ Load published</button><small id="wdpMsg">Export → upload the file as <b>data/site-data.json</b> on GitHub. Then every device shows your banners, packages and homepage.</small>';
+document.body.appendChild(d);
+function say(t){var m=document.getElementById("wdpMsg");m.textContent=t;d.classList.add("msg");setTimeout(function(){d.classList.remove("msg")},7000)}
+document.getElementById("wdpExp").onclick=function(){WDData.download();say("Downloaded site-data.json. Upload it to the data/ folder on GitHub (replace the old one).")};
+document.getElementById("wdpLoad").onclick=function(){if(!confirm("Replace this browser's banners, packages, homepage and settings with the published data?"))return;WDData.seedLocal().then(function(ok){if(ok){say("Loaded. Reloading…");setTimeout(function(){location.reload()},600)}else say("No published data/site-data.json found yet.")})};
+})();

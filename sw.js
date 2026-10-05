@@ -1,6 +1,6 @@
 /* Website Deals service worker — network first, so edits show up immediately.
    Falls back to the cache when offline. data/websites.json is never served stale. */
-const CACHE_NAME = "website-deals-v4";
+const CACHE_NAME = "website-deals-v6";
 
 const APP_SHELL = [
   "./",
@@ -10,6 +10,7 @@ const APP_SHELL = [
   "./packages.html",
   "./shared/site.css",
   "./shared/packages.js",
+  "./shared/data.js",
   "./shared/store.js",
   "./presentation/index.html",
   "./package/index.html",

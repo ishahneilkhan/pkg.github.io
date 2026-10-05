@@ -28,7 +28,7 @@ h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.95;letter-spacing:-.06em;font-w
 </style></head><body>
 <div class="salah"><div class="container"><div class="times" id="times"></div><div class="next" id="next"></div></div></div>
 <header class="nav"><div class="container"><a href="#home" class="brand"><span class="logo">WD</span><span><b id="brand">Website Deals</b><small>Premium Website Showcase</small></span></a>
-<nav class="links"><a href="#home" class="on">Home</a><a href="#websites">Website</a><a href="./packages.html">Packages</a><a href="#support">Support</a><a href="./wallpaper.html" class="pill">▶ Present</a></nav></div></header>
+<nav class="links"><a href="#home" class="on">Home</a><a href="#websites">Website</a><a href="./packages.html">Packages</a><a href="./home/index.html">About</a><a href="#support">Support</a><a href="./wallpaper.html" class="pill">▶ Present</a></nav></div></header>
 <main id="home">
 <section class="hero"><div class="container"><div>
 <span class="tag"><i></i><span id="eyebrow">Live website showcase</span></span>
@@ -48,14 +48,16 @@ h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.95;letter-spacing:-.06em;font-w
 </main>
 <footer><div class="container"><div><b>Website Deals</b><br><span id="foot">Premium ready-made websites for modern businesses.</span></div><div><span id="copy">© 2026 Website Deals</span> · <a href="./admin/login.html">Admin</a></div></div></footer>
 <a class="wa" id="waf" target="_blank" rel="noopener" href="#">💬 WhatsApp</a>
-<script src="./shared/store.js"></script><script src="./shared/packages.js"></script><script src="./shared/salah.js"></script>
+<script src="./shared/store.js"></script><script src="./shared/data.js"></script><script src="./shared/packages.js"></script><script src="./shared/salah.js"></script>
 <script>
 (function(){
 var S=window.WDStore,$=function(i){return document.getElementById(i)};
-function jget(k,d){try{var v=JSON.parse(localStorage.getItem(k)||"null");return v==null?d:v}catch(e){return d}}
-var HP=jget("websiteDealsHomepage",{}),ST=jget("websiteDealsSettings",{});
-var WA=String(ST.whatsapp||"").replace(/\D/g,"")||"8801705633700";
+function jget(k,d){try{var v=window.WDData?WDData.get(k,null):JSON.parse(localStorage.getItem(k)||"null");return v==null?d:v}catch(e){return d}}
+var HP={},ST={},WA="8801705633700";
 function wa(t){return"https://wa.me/"+WA+"?text="+encodeURIComponent("Hello, I want: "+t)}
+function applyContent(){
+HP=jget("websiteDealsHomepage",{});ST=jget("websiteDealsSettings",{});
+WA=String(ST.whatsapp||"").replace(/\D/g,"")||"8801705633700";
 /* homepage manager content */
 if(HP.heroTitle){$("h1").textContent=HP.heroTitle}
 if(HP.heroDescription)$("lead").textContent=HP.heroDescription;if(HP.heroEyebrow)$("eyebrow").textContent=HP.heroEyebrow;
@@ -69,6 +71,8 @@ $("supbtn").href=wa("a website");$("waf").href=wa("a website");
 var BN=jget("websiteDealsBanners",[]).filter(function(b){return b&&b.active!==false}).sort(function(a,b){return(a.priority||1)-(b.priority||1)});
 $("banners").innerHTML=BN.length?'<div class="container">'+BN.map(function(b){var img=S.safeUrl(b.imageUrl||"");return'<div class="bn"'+(img?' style="background-image:url(\''+S.esc(img)+'\')"':'')+'>'+(b.badge?'<small>'+S.esc(b.badge)+'</small>':'')+'<h3>'+S.esc(b.title)+'</h3><p>'+S.esc(b.subtitle||"")+'</p><a class="btn lime sm" href="'+S.esc((b.ctaUrl||"#websites").replace(/^\.\.\//,"./"))+'">'+S.esc(b.ctaText||"Explore")+'</a></div>'}).join("")+'</div>':"";
 WDPackages.render($("pks"),WA);
+}
+applyContent();addEventListener("wd:data-ready",function(){applyContent();if(typeof cards==="function"&&sites&&sites.length)cards()});
 /* sites */
 var sites=[],cur=0,pinned=false,timer=null,sig="";
 function pkg(s){return S.packageLabel?S.packageLabel(s.package):(s.packageLabel||s.package||"Website")}
@@ -91,4 +95,5 @@ $("grid").addEventListener("click",function(e){var b=e.target.closest("[data-pin
 build(S.list());
 window.addEventListener("wd:sites-changed",function(){build(S.list())});window.addEventListener("storage",function(){build(S.list())});
 })();
+if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(){})});
 </script></body></html>

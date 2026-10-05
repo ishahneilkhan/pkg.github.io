@@ -2,8 +2,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./shared/site.css"></head><body>
 <div class="salah"><div class="container"><div class="times" id="times"></div><div class="next" id="next"></div></div></div>
 <header class="nav"><div class="container"><a href="./index.html" class="brand"><span class="logo">WD</span><span><b>Website Deals</b><small>Premium Website Showcase</small></span></a>
-<nav class="links"><a href="./index.html">Home</a><a href="./index.html#websites">Website</a><a href="./packages.html" class="on">Packages</a><a href="./wallpaper.html" class="pill">▶ Present</a></nav></div></header>
+<nav class="links"><a href="./index.html">Home</a><a href="./index.html#websites">Website</a><a href="./packages.html" class="on">Packages</a><a href="./package/index.html">Live examples</a><a href="./wallpaper.html" class="pill">▶ Present</a></nav></div></header>
 <section class="s"><div class="container"><h2>Subscription packages</h2><p class="sub">Monthly plans with hosting, SSL and support included. Pay by bKash, Nagad or bank.</p><div class="pks" id="pks"></div></div></section>
 <footer><div class="container"><div><b>Website Deals</b><br>Premium website showcase</div><div>WhatsApp: 01705633700</div></div></footer>
-<script src="./shared/packages.js"></script><script src="./shared/salah.js"></script>
-<script>WDPackages.render(document.getElementById("pks"),"8801705633700")</script></body></html>
+<script src="./shared/data.js"></script><script src="./shared/packages.js"></script><script src="./shared/salah.js"></script>
+<script>function r(){WDPackages.render(document.getElementById("pks"),"8801705633700")}r();addEventListener("wd:data-ready",r)</script></body></html>
