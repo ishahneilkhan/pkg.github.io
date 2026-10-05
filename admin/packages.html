@@ -1,0 +1,704 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<title>Packages | Website Deals Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070808;
+  --panel:#101212;
+  --panel2:#151818;
+  --border:rgba(255,255,255,.08);
+  --text:#f5f7f6;
+  --muted:#929a96;
+  --lime:#b7ff00;
+  --lime2:#d6ff67;
+  --danger:#ff5d6c;
+  --blue:#6ea8ff;
+  --shadow:0 24px 70px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(183,255,0,.08),transparent 28%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+}
+button,input,textarea,select{font:inherit}
+a{color:inherit;text-decoration:none}
+
+.layout{display:flex;min-height:100vh}
+
+.sidebar{
+  width:255px;
+  position:fixed;
+  inset:0 auto 0 0;
+  background:rgba(10,11,11,.96);
+  border-right:1px solid var(--border);
+  padding:24px 16px;
+  z-index:20;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:4px 10px 25px;
+}
+.logo-mark{
+  width:38px;height:38px;
+  border-radius:12px;
+  background:var(--lime);
+  color:#070808;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+.logo strong{font-family:"Space Grotesk";font-size:16px}
+.logo small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+
+.nav-title{
+  color:#616965;
+  text-transform:uppercase;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+  padding:16px 11px 8px;
+}
+.nav a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 13px;
+  border-radius:12px;
+  color:#aeb5b1;
+  font-size:13px;
+  font-weight:600;
+  margin:3px 0;
+}
+.nav a:hover{background:#171a1a;color:#fff}
+.nav a.active{
+  background:rgba(183,255,0,.11);
+  color:var(--lime);
+}
+.nav-icon{
+  width:19px;
+  text-align:center;
+  font-size:14px;
+}
+
+.main{
+  width:100%;
+  margin-left:255px;
+  min-width:0;
+}
+
+.topbar{
+  height:72px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 34px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(7,8,8,.84);
+  backdrop-filter:blur(18px);
+}
+.topbar-left h1{
+  font-family:"Space Grotesk";
+  font-size:19px;
+  margin:0;
+}
+.topbar-left p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:11px;
+}
+.top-actions{display:flex;gap:9px}
+.btn{
+  border:1px solid var(--border);
+  background:#141717;
+  color:#fff;
+  border-radius:11px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:12px;
+}
+.btn:hover{border-color:rgba(183,255,0,.4)}
+.btn.primary{
+  background:var(--lime);
+  color:#070808;
+  border-color:var(--lime);
+}
+.btn.danger{
+  color:#ff8993;
+  border-color:rgba(255,93,108,.2);
+}
+.content{padding:34px}
+
+.hero{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:25px;
+  margin-bottom:28px;
+}
+.hero h2{
+  margin:0;
+  font-family:"Space Grotesk";
+  font-size:34px;
+  letter-spacing:-.04em;
+}
+.hero p{
+  color:var(--muted);
+  max-width:650px;
+  line-height:1.7;
+  font-size:13px;
+  margin:9px 0 0;
+}
+
+.package-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.package{
+  position:relative;
+  background:linear-gradient(180deg,#141818,#0e1010);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.package.featured{
+  border-color:rgba(183,255,0,.42);
+}
+.package.featured:before{
+  content:"MOST POPULAR";
+  position:absolute;
+  top:16px;
+  right:16px;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.1em;
+  background:var(--lime);
+  color:#070808;
+  padding:6px 8px;
+  border-radius:999px;
+}
+.package-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.package-icon{
+  width:46px;height:46px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:#1b1f1f;
+  font-size:20px;
+}
+.package h3{
+  font-family:"Space Grotesk";
+  font-size:24px;
+  margin:22px 0 4px;
+}
+.package .desc{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+  min-height:40px;
+}
+.price{
+  margin:21px 0;
+  display:flex;
+  align-items:flex-end;
+  gap:7px;
+}
+.price strong{
+  font-family:"Space Grotesk";
+  font-size:36px;
+}
+.price span{
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:7px;
+}
+.features{
+  border-top:1px solid var(--border);
+  padding-top:16px;
+}
+.feature{
+  display:flex;
+  gap:9px;
+  align-items:flex-start;
+  color:#c9cfcc;
+  font-size:12px;
+  line-height:1.5;
+  margin:10px 0;
+}
+.feature i{
+  color:var(--lime);
+  font-style:normal;
+  font-weight:900;
+}
+.package-actions{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+.package-actions .btn{flex:1}
+
+.note{
+  margin-top:22px;
+  padding:17px;
+  background:#101414;
+  border:1px solid var(--border);
+  border-radius:15px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(10px);
+  display:none;
+  place-items:center;
+  z-index:50;
+  padding:20px;
+}
+.modal.show{display:grid}
+.modal-box{
+  width:min(600px,100%);
+  background:#111414;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 35px 100px rgba(0,0,0,.5);
+}
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+.modal-head h3{
+  margin:0;
+  font-family:"Space Grotesk";
+}
+.close{
+  width:34px;height:34px;
+  border:1px solid var(--border);
+  background:#171a1a;
+  color:#fff;
+  border-radius:10px;
+  cursor:pointer;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.field.full{grid-column:1/-1}
+label{
+  display:block;
+  color:#aab1ad;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+input,textarea,select{
+  width:100%;
+  background:#0b0d0d;
+  border:1px solid var(--border);
+  color:#fff;
+  border-radius:11px;
+  padding:12px;
+  outline:none;
+}
+textarea{min-height:100px;resize:vertical}
+input:focus,textarea:focus,select:focus{
+  border-color:rgba(183,255,0,.55);
+}
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:20px;
+}
+
+.toast{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  background:#eaffb0;
+  color:#101300;
+  padding:13px 16px;
+  border-radius:12px;
+  font-size:12px;
+  font-weight:800;
+  transform:translateY(20px);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:100;
+}
+.toast.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+@media(max-width:1050px){
+  .package-grid{grid-template-columns:1fr}
+}
+@media(max-width:800px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .topbar{padding:0 18px}
+  .content{padding:22px 16px}
+  .menu-btn{display:block!important}
+}
+.menu-btn{display:none}
+@media(max-width:560px){
+  .hero{display:block}
+  .hero h2{font-size:28px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+}
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+<aside class="sidebar" id="sidebar">
+  <div class="logo">
+    <div class="logo-mark">WD</div>
+    <div>
+      <strong>Website Deals</strong>
+      <small>ADMIN PANEL</small>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-title">Workspace</div>
+    <a href="./dashboard.html"><span class="nav-icon">⌂</span>Dashboard</a>
+    <a href="./websites.html"><span class="nav-icon">◫</span>Websites</a>
+    <a href="./packages.html" class="active"><span class="nav-icon">◇</span>Packages</a>
+    <a href="./presentation.html"><span class="nav-icon">▶</span>Presentation</a>
+
+    <div class="nav-title">Public</div>
+    <a href="../index.html#websites"><span class="nav-icon">↗</span>Public Showcase</a>
+    <a href="../index.html#packages"><span class="nav-icon">▦</span>Main Website</a>
+    <a href="https://support.websitedeals.com" target="_blank" rel="noopener">
+      <span class="nav-icon">?</span>Support
+    </a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <h1>Package Management</h1>
+    <p>Control the public Starter, Business and Premium offers.</p>
+  </div>
+
+  <div class="top-actions">
+    <button class="btn menu-btn" onclick="toggleSidebar()">☰</button>
+    <a class="btn" href="../index.html#packages">View Public</a>
+    <button class="btn primary" onclick="openModal()">Edit Packages</button>
+  </div>
+</header>
+
+<section class="content">
+
+  <div class="hero">
+    <div>
+      <h2>Packages</h2>
+      <p>
+        Keep your three subscription plans clear, premium and easy for clients
+        to understand before they explore the live websites.
+      </p>
+    </div>
+  </div>
+
+  <div class="package-grid" id="packageGrid"></div>
+
+  <div class="note">
+    <strong style="color:#fff">Admin principle:</strong>
+    This page controls package presentation only. Real website links remain
+    managed from <b>Websites</b>. This keeps the package system simple and
+    prevents unnecessary CMS complexity.
+  </div>
+
+</section>
+</main>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Edit Package</h3>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+
+    <form id="packageForm">
+      <input type="hidden" id="packageId">
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Package Name</label>
+          <input id="packageName" required>
+        </div>
+
+        <div class="field">
+          <label>Price / Month</label>
+          <input id="packagePrice" type="number" required>
+        </div>
+
+        <div class="field full">
+          <label>Description</label>
+          <textarea id="packageDesc" required></textarea>
+        </div>
+
+        <div class="field full">
+          <label>Features — one per line</label>
+          <textarea id="packageFeatures" required></textarea>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn primary">Save Package</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STORAGE_KEY = "websiteDealsPackages";
+
+const defaults = [
+  {
+    id:"starter",
+    name:"Starter",
+    price:"549",
+    description:"A clean, professional website package for individuals and small businesses.",
+    icon:"✦",
+    featured:false,
+    features:[
+      "Complete ready-made website",
+      "Free hosting",
+      "Free SSL",
+      "Firebase integration",
+      "Basic logo",
+      "Responsive design",
+      "Custom domain connection",
+      "Contact form",
+      "Manual payment support",
+      "Basic SEO",
+      "Basic support",
+      "Uptime monitoring"
+    ]
+  },
+  {
+    id:"business",
+    name:"Business",
+    price:"999",
+    description:"A stronger business system with admin tools, analytics and advanced integrations.",
+    icon:"◆",
+    featured:true,
+    features:[
+      "Everything in Starter",
+      "Premium website",
+      "Advanced Firebase",
+      "Admin panel",
+      "Online gateway",
+      "bKash / Nagad / Bank",
+      "Product & service management",
+      "Inquiry / order management",
+      "WhatsApp / Messenger",
+      "Google Maps",
+      "Advanced SEO",
+      "Analytics & Search Console",
+      "Backup & security",
+      "Performance optimization",
+      "Minor customization",
+      "Priority support"
+    ]
+  },
+  {
+    id:"premium",
+    name:"Premium",
+    price:"1999",
+    description:"A powerful Shopify-style business and e-commerce system for serious growth.",
+    icon:"◇",
+    featured:false,
+    features:[
+      "Shopify-style business system",
+      "Free hosting & SSL",
+      "Firebase / MongoDB-ready backend",
+      "Advanced admin dashboard",
+      "High-capacity product management",
+      "FREE stock & inventory management",
+      "Stock in / out & adjustments",
+      "Low-stock alerts",
+      "Variants & SKU",
+      "Coupons & discounts",
+      "Cart & wishlist",
+      "Customer accounts",
+      "Checkout & order tracking",
+      "Shipping & delivery",
+      "Analytics & notifications",
+      "SEO & Search Console",
+      "Backup & security monitoring",
+      "API integration",
+      "Custom workflows",
+      "Dedicated priority support"
+    ]
+  }
+];
+
+function getPackages(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(saved)&&saved.length ? saved : defaults;
+  }catch{
+    return defaults;
+  }
+}
+
+function savePackages(data){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+}
+
+function render(){
+  const grid=document.getElementById("packageGrid");
+  grid.innerHTML=getPackages().map(p=>`
+    <article class="package ${p.featured?"featured":""}">
+      <div class="package-top">
+        <div class="package-icon">${p.icon||"◇"}</div>
+      </div>
+
+      <h3>${escapeHtml(p.name)}</h3>
+      <div class="desc">${escapeHtml(p.description)}</div>
+
+      <div class="price">
+        <strong>৳${Number(p.price).toLocaleString("en-BD")}</strong>
+        <span>/ month</span>
+      </div>
+
+      <div class="features">
+        ${p.features.map(f=>`
+          <div class="feature">
+            <i>✓</i>
+            <span>${escapeHtml(f)}</span>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="package-actions">
+        <button class="btn primary" onclick="editPackage('${p.id}')">Edit</button>
+        <a class="btn" href="../index.html#packages">Preview</a>
+      </div>
+    </article>
+  `).join("");
+}
+
+function editPackage(id){
+  const p=getPackages().find(x=>x.id===id);
+  if(!p)return;
+
+  document.getElementById("packageId").value=p.id;
+  document.getElementById("packageName").value=p.name;
+  document.getElementById("packagePrice").value=p.price;
+  document.getElementById("packageDesc").value=p.description;
+  document.getElementById("packageFeatures").value=p.features.join("\n");
+
+  openModal();
+}
+
+function openModal(){
+  document.getElementById("modal").classList.add("show");
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("show");
+}
+
+document.getElementById("packageForm").addEventListener("submit",e=>{
+  e.preventDefault();
+
+  const id=document.getElementById("packageId").value;
+  const data=getPackages();
+
+  const item=data.find(p=>p.id===id);
+  if(!item)return;
+
+  item.name=document.getElementById("packageName").value.trim();
+  item.price=document.getElementById("packagePrice").value;
+  item.description=document.getElementById("packageDesc").value.trim();
+  item.features=document.getElementById("packageFeatures").value
+    .split("\n")
+    .map(x=>x.trim())
+    .filter(Boolean);
+
+  savePackages(data);
+  closeModal();
+  render();
+  toast("Package saved successfully");
+});
+
+function escapeHtml(value){
+  return String(value??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.add("show");
+  setTimeout(()=>el.classList.remove("show"),2200);
+}
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+}
+
+render();
+</script>
+
+</body>
+</html>
+```
