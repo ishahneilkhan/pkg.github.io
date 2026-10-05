@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta name="theme-color" content="#080909">
+
+  <meta
+    name="description"
+    content="Website Deals — Premium ready-made websites, package plans and live website presentation."
+  >
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Website Deals"
+  >
+
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link
+    rel="apple-touch-icon"
+    href="./icons/icon-192.png"
+  >
+
+  <title>Website Deals | Live Marketing Wall</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #080909;
+      --bg-soft: #0d0f0f;
+      --card: #111414;
+      --card-2: #151919;
+      --line: rgba(255,255,255,.09);
+      --line-strong: rgba(255,255,255,.16);
+      --text: #f6f7f7;
+      --muted: #929a9a;
+      --lime: #b7ff00;
+      --lime-soft: rgba(183,255,0,.10);
+      --green: #35d07f;
+      --danger: #ff6262;
+      --shadow: 0 25px 80px rgba(0,0,0,.35);
+      --radius: 24px;
+      --max: 1380px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(183,255,0,.08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(255,255,255,.045),
+          transparent 25%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Hind Siliguri", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        );
+      background-size: 40px 40px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+      );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* =========================================
+       TOP STATUS BAR
+    ========================================= */
+
+    .status-bar {
+      min-height: 42px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,9,9,.82);
+      backdrop-filter: blur(18px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .status-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .salah-list {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .salah-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .salah-item strong {
+      color: #fff;
+      margin-right: 5px;
+    }
+
+    .system-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(53,208,127,.7);
+    }
+
+    .status-dot.offline {
+      background: var(--danger);
+      box-shadow: 0 0 12px rgba(255,98,98,.5);
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,9,9,.78);
+      backdrop-filter: blur(24px);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--lime);
+      color: #080909;
+      font-size: 18px;
+      box-shadow: 0 0 30px rgba(183,255,0,.15);
+    }
+
+    .brand-text {
+      font-size: 17px;
+    }
+
+    .brand-text span {
+      color: var(--lime);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #aeb4b4;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .install-btn,
+    .menu-btn {
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,.04);
+      color: #fff;
+      cursor: pointer;
+      border-radius: 13px;
+      min-height: 42px;
+      padding: 0 15px;
+      font-size: 12px;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .install-btn {
+      border-color: rgba(183,255,0,.35);
+      background: var(--lime-soft);
+      color: var(--lime);
+    }
+
+    .install-btn:hover {
+      background: var(--lime);
+      color: #080909;
+      transform: translateY(-2px);
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero {
+      position: relative;
+      padding: 95px 0 85px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(183,255,0,.25);
+      background: rgba(183,255,0,.07);
+      color: var(--lime);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge i {
+      width: 6px;
+      height: 6px;
+      background: var(--lime);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--lime);
+    }
+
+    .hero h1 {
+      max-width: 920px;
+      margin: 0 auto;
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: .95;
+      letter-spacing: -.065em;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: var(--lime);
+    }
+
+    .hero p {
+      max-width: 690px;
+      margin: 25px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      min-height: 48px;
+      border-radius: 14px;
+      padding: 0 21px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .primary-btn {
+      background: var(--lime);
+      color: #080909;
+      box-shadow: 0 12px 35px rgba(183,255,0,.13);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(183,255,0,.22);
+    }
+
+    .secondary-btn {
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,.035);
+      color: #fff;
+    }
+
+    .secondary-btn:hover {
+      background: rgba(255,255,255,.08);
+      transform: translateY(-3px);
+    }
+
+    /* =========================================
+       SECTION
+    ========================================= */
+
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1;
+      letter-spacing: -.05em;
+      font-weight: 900;
+    }
+
+    .section-copy {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* =========================================
+       PACKAGE CARDS
+    ========================================= */
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .package-card {
+      position: relative;
+      padding: 28px;
+      min-height: 460px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.015)
+        );
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: .3s ease;
+    }
+
+    .package-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -100px;
+      top: -100px;
+      background: var(--lime);
+      opacity: .045;
+      border-radius: 50%;
+      filter: blur(15px);
+    }
+
+    .package-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(183,255,0,.28);
+      box-shadow: var(--shadow);
+    }
+
+    .package-card.featured {
+      border-color: rgba(183,255,0,.38);
+      box-shadow:
+        0 0 0 1px rgba(183,255,0,.06),
+        0 30px 80px rgba(183,255,0,.06);
+    }
+
+    .package-tag {
+      display: inline-flex;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      color: #aaa;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .package-card.featured .package-tag {
+      color: #080909;
+      background: var(--lime);
+    }
+
+    .package-name {
+      margin-top: 20px;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .package-price {
+      margin-top: 8px;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -.05em;
+    }
+
+    .package-price small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .package-desc {
+      margin-top: 12px;
+      min-height: 48px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 25px;
+      display: grid;
+      gap: 11px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: #c5caca;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      flex: 0 0 auto;
+      color: var(--lime);
+      font-weight: 900;
+    }
+
+    .package-btn {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 25px;
+      min-height: 45px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      font-size: 12px;
+      font-weight: 900;
+      transition: .25s ease;
+    }
+
+    .package-card.featured .package-btn {
+      background: var(--lime);
+      color: #080909;
+      border-color: var(--lime);
+    }
+
+    .package-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* =========================================
+       WEBSITE SHOWCASE
+    ========================================= */
+
+    .website-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .website-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      background: #0e1111;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+      transition: .3s ease;
+    }
+
+    .website-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(183,255,0,.25);
+    }
+
+    .website-top {
+      min-height: 72px;
+      padding: 15px 17px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .website-name {
+      min-width: 0;
+    }
+
+    .website-name strong {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 13px;
+    }
+
+    .website-name span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .live-badge {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(53,208,127,.09);
+      color: var(--green);
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .live-badge::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px rgba(53,208,127,.7);
+    }
+
+    /*
+      IMPORTANT:
+      The card itself remains fixed.
+
+      The camera wrapper moves vertically inside
+      the fixed viewport to create a human-like
+      live website browsing effect.
+
+      This avoids cross-origin iframe DOM access.
+    */
+
+    .preview-viewport {
+      position: relative;
+      height: 310px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .preview-camera {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      will-change: transform;
+      transform: translate3d(0,0,0);
+    }
+
+    .preview-frame {
+      display: block;
+      width: 100%;
+      height: 1900px;
+      border: 0;
+      background: #fff;
+    }
+
+    .preview-shade {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,.06),
+          transparent 12%,
+          transparent 85%,
+          rgba(0,0,0,.10)
+        );
+    }
+
+    .fake-cursor {
+      position: absolute;
+      z-index: 5;
+      width: 13px;
+      height: 18px;
+      opacity: .9;
+      pointer-events: none;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,.45));
+      transition:
+        left 1.2s ease,
+        top 1.2s ease;
+    }
+
+    .fake-cursor::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 7px solid #fff;
+      border-top: 10px solid transparent;
+      border-bottom: 4px solid transparent;
+      transform: rotate(-15deg);
+    }
+
+    .website-bottom {
+      padding: 14px 15px 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .website-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .website-package {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .website-url {
+      max-width: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #8e9797;
+      font-size: 9px;
+    }
+
+    .explore-btn {
+      min-height: 40px;
+      width: 100%;
+      border-radius: 11px;
+      border: 1px solid rgba(183,255,0,.28);
+      background: rgba(183,255,0,.07);
+      color: var(--lime);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 900;
+      transition: .25s ease;
+    }
+
+    .explore-btn:hover {
+      background: var(--lime);
+      color: #080909;
+    }
+
+    /* =========================================
+       ABOUT / SUPPORT
+    ========================================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 32px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+      border-radius: var(--radius);
+    }
+
+    .info-card h3 {
+      font-size: 24px;
+      margin-bottom: 13px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 13px;
+    }
+
+    .support-link {
+      display: inline-flex;
+      margin-top: 20px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    /* =========================================
+       INSTALL PANEL
+    ========================================= */
+
+    .install-panel {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+      width: min(370px, calc(100% - 30px));
+      padding: 18px;
+      border: 1px solid rgba(183,255,0,.24);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(22,25,25,.97),
+          rgba(9,10,10,.97)
+        );
+      backdrop-filter: blur(22px);
+      border-radius: 20px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.5);
+      transform: translateY(150%);
+      opacity: 0;
+      pointer-events: none;
+      transition: .45s ease;
+    }
+
+    .install-panel.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .install-panel h3 {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .install-panel p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .install-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .install-actions button {
+      flex: 1;
+      min-height: 39px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .install-now {
+      border: 0;
+      background: var(--lime);
+      color: #080909;
+    }
+
+    .install-later {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: #fff;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      margin-top: 30px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: #737b7b;
+      font-size: 10px;
+    }
+
+    /* =========================================
+       MOBILE NAV
+    ========================================= */
+
+    .mobile-menu {
+      display: none;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,9,9,.97);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--line);
+      color: #bbb;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: 0;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1100px) {
+      .website-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-card {
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container,
+      .status-inner {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .status-inner {
+        justify-content: flex-start;
+      }
+
+      .system-status {
+        display: none;
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .brand-text {
+        font-size: 15px;
+      }
+
+      .install-btn {
+        display: none;
+      }
+
+      .hero {
+        padding: 58px 0 55px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .website-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-viewport {
+        height: 290px;
+      }
+
+      .preview-frame {
+        height: 1800px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-copy {
+        margin-top: 15px;
+      }
+
+      .info-card {
+        padding: 23px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       SALAH / STATUS BAR
+  ========================================== -->
+
+  <div class="status-bar">
+    <div class="status-inner">
+
+      <div class="salah-list">
+        <div class="salah-item">
+          <strong>Fajr</strong> 04:45
+        </div>
+
+        <div class="salah-item">
+          <strong>Dhuhr</strong> 12:05
+        </div>
+
+        <div class="salah-item">
+          <strong>Asr</strong> 16:15
+        </div>
+
+        <div class="salah-item">
+          <strong>Maghrib</strong> 18:00
+        </div>
+
+        <div class="salah-item">
+          <strong>Isha</strong> 19:20
+        </div>
+      </div>
+
+      <div class="system-status">
+        <span id="networkDot" class="status-dot"></span>
+        <span id="networkText">Online</span>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =========================================
+       NAVBAR
+  ========================================== -->
+
+  <header class="navbar">
+
+    <div class="container nav-inner">
+
+      <a href="./index.html" class="brand">
+        <span class="brand-mark">W</span>
+
+        <span class="brand-text">
+          Website <span>Deals</span>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#package">Package</a>
+        <a href="#websites">Websites</a>
+        <a href="#salah">Salah</a>
+        <a href="#about">About</a>
+        <a href="#support">Support</a>
+      </nav>
+
+      <div class="nav-actions">
+
+        <button
+          type="button"
+          class="install-btn"
+          id="installTopBtn"
+          hidden
+        >
+          Install App
+        </button>
+
+        <button
+          type="button"
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+
+      <a href="#home">Home</a>
+      <a href="#package">Package</a>
+      <a href="#websites">Websites</a>
+      <a href="#salah">Salah</a>
+      <a href="#about">About</a>
+      <a href="#support">Support</a>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section id="home" class="hero">
+
+      <div class="container">
+
+        <div class="hero-badge">
+          <i></i>
+          LIVE WEBSITE MARKETING WALL
+        </div>
+
+        <h1>
+          Your website.<br>
+          <span>Ready to grow.</span>
+        </h1>
+
+        <p>
+          Premium ready-made websites, flexible monthly packages
+          and a live website presentation system built for
+          showing clients real websites instantly.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            href="#websites"
+            class="primary-btn"
+          >
+            Explore Websites ↗
+          </a>
+
+          <a
+            href="#package"
+            class="secondary-btn"
+          >
+            View Packages
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         PACKAGE
+    ========================================== -->
+
+    <section id="package" class="section">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+            <div class="eyebrow">Packages</div>
+
+            <h2 class="section-title">
+              Choose your level.
+            </h2>
+          </div>
+
+          <p class="section-copy">
+            Start simple, grow professionally or build a
+            complete Shopify-style business system.
+          </p>
+
+        </div>
+
+
+        <div class="package-grid">
+
+          <!-- STARTER -->
+
+          <article class="package-card">
+
+            <span class="package-tag">
+              Starter
+            </span>
+
+            <h3 class="package-name">
+              Starter
+            </h3>
+
+            <div class="package-price">
+              ৳549
+              <small>/month</small>
+            </div>
+
+            <p class="package-desc">
+              A clean, professional website for getting
+              your business online quickly.
+            </p>
+
+            <ul class="feature-list">
+              <li>Complete ready-made website</li>
+              <li>Free hosting + SSL</li>
+              <li>Responsive design</li>
+              <li>Basic logo</li>
+              <li>Contact form</li>
+              <li>Custom domain connection</li>
+              <li>Basic SEO</li>
+              <li>Basic support</li>
+            </ul>
+
+            <a
+              href="./starter/index.html"
+              class="package-btn"
+            >
+              View Starter Details →
+            </a>
+
+          </article>
+
+
+          <!-- BUSINESS -->
+
+          <article class="package-card featured">
+
+            <span class="package-tag">
+              Most Popular
+            </span>
+
+            <h3 class="package-name">
+              Business
+            </h3>
+
+            <div class="package-price">
+              ৳999
+              <small>/month</small>
+            </div>
+
+            <p class="package-desc">
+              Advanced website tools for businesses ready
+              to manage leads, content and growth.
+            </p>
+
+            <ul class="feature-list">
+              <li>Premium ready-made website</li>
+              <li>Advanced backend integration</li>
+              <li>Admin panel</li>
+              <li>Product/service management</li>
+              <li>Inquiry & order management</li>
+              <li>Payment integration</li>
+              <li>Advanced SEO + Analytics</li>
+              <li>Priority support</li>
+            </ul>
+
+            <a
+              href="./business/index.html"
+              class="package-btn"
+            >
+              View Business Details →
+            </a>
+
+          </article>
+
+
+          <!-- PREMIUM -->
+
+          <article class="package-card">
+
+            <span class="package-tag">
+              Advanced
+            </span>
+
+            <h3 class="package-name">
+              Premium
+            </h3>
+
+            <div class="package-price">
+              ৳1,999
+              <small>/month</small>
+            </div>
+
+            <p class="package-desc">
+              A complete e-commerce and business management
+              ecosystem for serious growth.
+            </p>
+
+            <ul class="feature-list">
+              <li>Shopify-style system</li>
+              <li>Product + inventory management</li>
+              <li>Orders + customers</li>
+              <li>Coupons + discounts</li>
+              <li>Cart + wishlist + checkout</li>
+              <li>Shipping & delivery</li>
+              <li>Analytics + SEO</li>
+              <li>Priority dedicated support</li>
+            </ul>
+
+            <a
+              href="./premium/index.html"
+              class="package-btn"
+            >
+              View Premium Details →
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         WEBSITES
+    ========================================== -->
+
+    <section id="websites" class="section">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+            <div class="eyebrow">Live Showcase</div>
+
+            <h2 class="section-title">
+              Real websites.
+            </h2>
+          </div>
+
+          <p class="section-copy">
+            Every card stays fixed while the live website
+            inside automatically moves through the page
+            like a human browsing it.
+          </p>
+
+        </div>
+
+        <div
+          id="websiteGrid"
+          class="website-grid"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SALAH
+    ========================================== -->
+
+    <section id="salah" class="section">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+            <div class="eyebrow">Daily Salah</div>
+
+            <h2 class="section-title">
+              Salah times.
+            </h2>
+          </div>
+
+          <p class="section-copy">
+            Current display times configured for the
+            Website Deals marketing wall.
+          </p>
+
+        </div>
+
+
+        <div class="package-grid">
+
+          <div class="info-card">
+            <h3>Fajr</h3>
+            <p>04:45 AM</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Dhuhr</h3>
+            <p>12:05 PM</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Asr</h3>
+            <p>04:15 PM</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ABOUT + SUPPORT
+    ========================================== -->
+
+    <section class="section">
+
+      <div class="container info-grid">
+
+        <div id="about" class="info-card">
+
+          <div class="eyebrow">
+            About
+          </div>
+
+          <h3>
+            Website Deals
+          </h3>
+
+          <p>
+            Website Deals is a premium ready-made website
+            marketplace and presentation platform. The goal
+            is simple: make it easier to show professional
+            websites to clients, choose a package and launch
+            without unnecessary complexity.
+          </p>
+
+          <p style="margin-top:12px;">
+            The Live Marketing Wall turns the platform into
+            a portable client presentation system where real
+            websites can be displayed continuously.
+          </p>
+
+        </div>
+
+
+        <div id="support" class="info-card">
+
+          <div class="eyebrow">
+            Support
+          </div>
+
+          <h3>
+            Need help?
+          </h3>
+
+          <p>
+            For support, setup assistance, website changes
+            and service requests, visit the Website Deals
+            support center.
+          </p>
+
+          <a
+            href="https://support.websitedeals.com"
+            class="support-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Support Center ↗
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       INSTALL PANEL
+  ========================================== -->
+
+  <div
+    class="install-panel"
+    id="installPanel"
+  >
+
+    <h3>
+      Install Website Deals
+    </h3>
+
+    <p>
+      Install this live marketing wall as an app on
+      your laptop or tablet for faster client presentations.
+    </p>
+
+    <div class="install-actions">
+
+      <button
+        type="button"
+        class="install-now"
+        id="installNowBtn"
+      >
+        Install App
+      </button>
+
+      <button
+        type="button"
+        class="install-later"
+        id="installLaterBtn"
+      >
+        Later
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 Website Deals. All rights reserved.
+      </div>
+
+      <div>
+        Premium Website Marketplace
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    /* =========================================
+       WEBSITE DATA
+    ========================================== */
+
+    const STORAGE_KEY = "websiteDealsWebsites";
+
+    const defaultWebsites = [
+      {
+        id: "snk-it-institute",
+        name: "SNK IT Institute",
+        package: "business",
+        packageLabel: "Business Package",
+        url: "https://snkitinstitute.com",
+        status: true,
+        sort: 1
+      },
+      {
+        id: "website-deals",
+        name: "Website Deals",
+        package: "premium",
+        packageLabel: "Premium Package",
+        url: "https://websitedeals.com",
+        status: true,
+        sort: 2
+      }
+    ];
+
+
+    function getWebsites() {
+
+      try {
+
+        const saved =
+          JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+          );
+
+        if (
+          Array.isArray(saved) &&
+          saved.length
+        ) {
+          return saved;
+        }
+
+      } catch (error) {
+        console.warn(
+          "Could not read website data.",
+          error
+        );
+      }
+
+      return defaultWebsites;
+
+    }
+
+
+    /* =========================================
+       WEBSITE CARD
+    ========================================== */
+
+    const websiteGrid =
+      document.getElementById("websiteGrid");
+
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    function renderWebsites() {
+
+      const websites =
+        getWebsites()
+          .filter(site => site.status !== false)
+          .sort(
+            (a, b) =>
+              Number(a.sort || 999) -
+              Number(b.sort || 999)
+          );
+
+
+      if (!websites.length) {
+
+        websiteGrid.innerHTML = `
+          <div class="info-card">
+            <h3>No websites yet</h3>
+            <p>
+              Add real website links from the admin panel.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+
+      websiteGrid.innerHTML =
+        websites.map((site, index) => {
+
+          const siteId =
+            escapeHTML(site.id || `site-${index}`);
+
+          const siteName =
+            escapeHTML(
+              site.name || "Website"
+            );
+
+          const packageLabel =
+            escapeHTML(
+              site.packageLabel ||
+              "Website Package"
+            );
+
+          const siteUrl =
+            escapeHTML(
+              site.url || "#"
+            );
+
+
+          return `
+            <article
+              class="website-card"
+              data-site-id="${siteId}"
+            >
+
+              <div class="website-top">
+
+                <div class="website-name">
+
+                  <strong>
+                    ${siteName}
+                  </strong>
+
+                  <span>
+                    ${packageLabel}
+                  </span>
+
+                </div>
+
+                <span class="live-badge">
+                  Live
+                </span>
+
+              </div>
+
+
+              <div class="preview-viewport">
+
+                <div class="preview-camera">
+
+                  <iframe
+                    class="preview-frame"
+                    src="${siteUrl}"
+                    title="${siteName} live website preview"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+
+                </div>
+
+
+                <div class="fake-cursor"></div>
+
+                <div class="preview-shade"></div>
+
+              </div>
+
+
+              <div class="website-bottom">
+
+                <div class="website-meta">
+
+                  <span class="website-package">
+                    ${packageLabel}
+                  </span>
+
+                  <span class="website-url">
+                    ${siteUrl}
+                  </span>
+
+                </div>
+
+                <a
+                  href="./presentation/index.html?site=${encodeURIComponent(site.id || "")}"
+                  class="explore-btn"
+                >
+                  Explore Live Website ↗
+                </a>
+
+              </div>
+
+            </article>
+          `;
+
+        }).join("");
+
+
+      initializeWebsiteCameras();
+
+    }
+
+
+    /* =========================================
+       HUMAN-LIKE CAMERA
+    ========================================== */
+
+    function initializeWebsiteCameras() {
+
+      const cards =
+        document.querySelectorAll(".website-card");
+
+
+      cards.forEach((card, index) => {
+
+        const viewport =
+          card.querySelector(".preview-viewport");
+
+        const camera =
+          card.querySelector(".preview-camera");
+
+        const cursor =
+          card.querySelector(".fake-cursor");
+
+        const iframe =
+          card.querySelector(".preview-frame");
+
+
+        if (!viewport || !camera || !cursor) {
+          return;
+        }
+
+
+        let timer = null;
+        let stopped = false;
+        let position = 0;
+
+
+        const viewportHeight =
+          viewport.clientHeight;
+
+        const pageHeight = 1900;
+
+        const maxPosition =
+          Math.max(
+            0,
+            pageHeight - viewportHeight
+          );
+
+
+        function random(min, max) {
+
+          return Math.floor(
+            Math.random() *
+            (max - min + 1)
+          ) + min;
+
+        }
+
+
+        function moveCursor() {
+
+          const x =
+            random(
+              18,
+              Math.max(
+                20,
+                viewport.clientWidth - 35
+              )
+            );
+
+          const y =
+            random(
+              35,
+              Math.max(
+                45,
+                viewportHeight - 45
+              )
+            );
+
+          cursor.style.left = `${x}px`;
+          cursor.style.top = `${y}px`;
+
+        }
+
+
+        function applyPosition() {
+
+          camera.style.transform =
+            `translate3d(0, -${position}px, 0)`;
+
+        }
+
+
+        function scheduleNext() {
+
+          clearTimeout(timer);
+
+
+          if (stopped) {
+            return;
+          }
+
+
+          /*
+            Small natural reading pauses.
+          */
+
+          if (Math.random() < .24) {
+
+            timer =
+              setTimeout(
+                scheduleNext,
+                random(1200, 3000)
+              );
+
+            moveCursor();
+
+            return;
+          }
+
+
+          if (position >= maxPosition) {
+
+            timer =
+              setTimeout(
+                () => {
+
+                  if (stopped) {
+                    return;
+                  }
+
+                  position = 0;
+
+                  camera.style.transition =
+                    "transform 1800ms cubic-bezier(.22,.61,.36,1)";
+
+                  applyPosition();
+                  moveCursor();
+
+
+                  timer =
+                    setTimeout(
+                      scheduleNext,
+                      random(900, 1700)
+                    );
+
+                },
+                random(1800, 4200)
+              );
+
+            return;
+          }
+
+
+          const chunk =
+            random(95, 245);
+
+          position =
+            Math.min(
+              maxPosition,
+              position + chunk
+            );
+
+
+          const duration =
+            random(1100, 2100);
+
+
+          camera.style.transition =
+            `transform ${duration}ms cubic-bezier(.22,.61,.36,1)`;
+
+
+          /*
+            Tiny horizontal cursor drift
+            makes the preview feel more human.
+          */
+
+          moveCursor();
+
+          applyPosition();
+
+
+          timer =
+            setTimeout(
+              scheduleNext,
+              duration + random(250, 900)
+            );
+
+        }
+
+
+        function start() {
+
+          stopped = false;
+
+          clearTimeout(timer);
+
+          /*
+            Each card gets a slightly different
+            starting delay.
+          */
+
+          timer =
+            setTimeout(
+              scheduleNext,
+              random(
+                1000 + index * 350,
+                3000 + index * 600
+              )
+            );
+
+        }
+
+
+        function stop() {
+
+          stopped = true;
+
+          clearTimeout(timer);
+
+        }
+
+
+        /*
+          Pause when client hovers the card.
+          This lets them inspect the website.
+        */
+
+        card.addEventListener(
+          "mouseenter",
+          stop
+        );
+
+
+        card.addEventListener(
+          "mouseleave",
+          start
+        );
+
+
+        /*
+          If iframe refuses framing, the card
+          still remains usable through Explore.
+        */
+
+        if (iframe) {
+
+          iframe.addEventListener(
+            "load",
+            () => {
+              moveCursor();
+            }
+          );
+
+        }
+
+
+        start();
+
+      });
+
+    }
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================== */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        mobileMenu.classList.toggle("open");
+
+      }
+    );
+
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+            mobileMenu.classList.remove("open");
+          }
+        );
+
+      });
+
+
+    /* =========================================
+       NETWORK STATUS
+    ========================================== */
+
+    const networkDot =
+      document.getElementById("networkDot");
+
+    const networkText =
+      document.getElementById("networkText");
+
+
+    function updateNetworkStatus() {
+
+      const online =
+        navigator.onLine;
+
+
+      networkDot.classList.toggle(
+        "offline",
+        !online
+      );
+
+
+      networkText.textContent =
+        online
+          ? "Online"
+          : "Offline";
+
+    }
+
+
+    window.addEventListener(
+      "online",
+      updateNetworkStatus
+    );
+
+    window.addEventListener(
+      "offline",
+      updateNetworkStatus
+    );
+
+    updateNetworkStatus();
+
+
+    /* =========================================
+       PWA INSTALL
+    ========================================== */
+
+    let deferredInstallPrompt = null;
+
+
+    const installTopBtn =
+      document.getElementById("installTopBtn");
+
+    const installPanel =
+      document.getElementById("installPanel");
+
+    const installNowBtn =
+      document.getElementById("installNowBtn");
+
+    const installLaterBtn =
+      document.getElementById("installLaterBtn");
+
+
+    window.addEventListener(
+      "beforeinstallprompt",
+      (event) => {
+
+        event.preventDefault();
+
+        deferredInstallPrompt = event;
+
+        installTopBtn.hidden = false;
+
+        setTimeout(
+          () => {
+            installPanel.classList.add("show");
+          },
+          3500
+        );
+
+      }
+    );
+
+
+    async function installApp() {
+
+      if (!deferredInstallPrompt) {
+        return;
+      }
+
+
+      deferredInstallPrompt.prompt();
+
+
+      try {
+
+        await deferredInstallPrompt.userChoice;
+
+      } catch (error) {
+
+        console.warn(
+          "Install prompt closed.",
+          error
+        );
+
+      }
+
+
+      deferredInstallPrompt = null;
+
+      installTopBtn.hidden = true;
+
+      installPanel.classList.remove("show");
+
+    }
+
+
+    installTopBtn.addEventListener(
+      "click",
+      installApp
+    );
+
+
+    installNowBtn.addEventListener(
+      "click",
+      installApp
+    );
+
+
+    installLaterBtn.addEventListener(
+      "click",
+      () => {
+        installPanel.classList.remove("show");
+      }
+    );
+
+
+    window.addEventListener(
+      "appinstalled",
+      () => {
+
+        deferredInstallPrompt = null;
+
+        installTopBtn.hidden = true;
+
+        installPanel.classList.remove("show");
+
+      }
+    );
+
+
+    /* =========================================
+       SERVICE WORKER
+    ========================================== */
+
+    if (
+      "serviceWorker" in navigator
+    ) {
+
+      window.addEventListener(
+        "load",
+        async () => {
+
+          try {
+
+            const registration =
+              await navigator.serviceWorker.register(
+                "./sw.js",
+                {
+                  scope: "./"
+                }
+              );
+
+
+            console.log(
+              "Website Deals PWA registered.",
+              registration.scope
+            );
+
+          } catch (error) {
+
+            console.warn(
+              "PWA registration failed:",
+              error
+            );
+
+          }
+
+        }
+      );
+
+    }
+
+
+    /* =========================================
+       INITIAL RENDER
+    ========================================== */
+
+    renderWebsites();
+
+  </script>
+
+</body>
+</html>
