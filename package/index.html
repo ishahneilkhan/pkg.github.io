@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<meta name="description" content="Website Deals packages — Starter, Business and Premium — with live website examples for each.">
+<title>Packages | Website Deals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080909;--surface:#111414;--surface-2:#161919;--text:#f5f7f7;--muted:#9ba4a4;--muted-2:#707979;
+    --lime:#b7ff00;--lime-soft:rgba(183,255,0,.12);--lime-border:rgba(183,255,0,.28);--border:rgba(255,255,255,.09)}
+  body.light{--bg:#f6f8f8;--surface:#fff;--surface-2:#f1f4f4;--text:#101313;--muted:#667070;--muted-2:#879090;--border:rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{min-height:100vh;font-family:Inter,sans-serif;color:var(--text);background:radial-gradient(circle at 15% 0,rgba(183,255,0,.07),transparent 30%),var(--bg)}
+  a{color:inherit;text-decoration:none} button{font:inherit;cursor:pointer;border:0}
+  .wrap{width:min(1180px,calc(100% - 32px));margin:0 auto}
+  header{border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;backdrop-filter:blur(20px);background:color-mix(in srgb,var(--bg) 80%,transparent)}
+  .bar{height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:-.03em}
+  .mark{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:var(--lime);color:#000;font-weight:900;font-size:14px}
+  .back{padding:9px 14px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--muted);font-size:12px;font-weight:700}
+  .back:hover{border-color:var(--lime-border);color:var(--text)}
+  .hero{padding:60px 0 26px}
+  .kicker{color:var(--lime);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+  h1{margin-top:10px;font-size:clamp(34px,6vw,58px);letter-spacing:-.05em;line-height:1}
+  .lead{margin-top:14px;max-width:580px;color:var(--muted);font-size:14px;line-height:1.8}
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 8px;position:sticky;top:68px;z-index:15;padding:10px 0}
+  .tab{min-height:38px;padding:0 16px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--muted);font-size:11px;font-weight:800;transition:.2s}
+  .tab:hover{color:var(--text);border-color:var(--lime-border)}
+  .tab.on{background:var(--lime-soft);border-color:var(--lime-border);color:var(--lime)}
+  .pkg{padding:36px 0 10px}
+  .pkg-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:14px;margin-bottom:20px}
+  .pkg-head h2{font-size:clamp(26px,4vw,40px);letter-spacing:-.05em}
+  .price{color:var(--lime);font-weight:900;font-size:22px;letter-spacing:-.04em}.price small{color:var(--muted);font-size:11px;font-weight:600}
+  .pkg-desc{max-width:520px;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.75}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .card{min-width:0;border:1px solid var(--border);border-radius:24px;background:var(--surface);overflow:hidden;transition:.3s}
+  .card:hover{transform:translateY(-6px);border-color:var(--lime-border);box-shadow:0 30px 70px rgba(0,0,0,.3)}
+  .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 18px;border-bottom:1px solid var(--border)}
+  .card-top strong{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .live{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--lime-border);border-radius:999px;background:var(--lime-soft);color:var(--lime);font-size:8px;font-weight:900;letter-spacing:.08em}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pulse 1.8s infinite}
+  @keyframes pulse{50%{opacity:.4;transform:scale(.75)}}
+  .view{position:relative;height:320px;overflow:hidden;background:#fff;isolation:isolate}
+  .cam{position:absolute;left:0;top:0;width:100%;height:1200px;will-change:transform;animation:scroll var(--dur,15s) ease-in-out infinite}
+  .cam iframe{display:block;width:100%;height:1200px;border:0;background:#fff;pointer-events:none}
+  .card:hover .cam{animation-play-state:paused}
+  .card.off .cam{animation-play-state:paused}
+  @keyframes scroll{0%,12%{transform:translate3d(0,0,0)}78%,90%{transform:translate3d(0,-880px,0)}100%{transform:translate3d(0,0,0)}}
+  .view.float .cam{--dur:19s}.view.slide .cam{--dur:12s}
+  .shim{position:absolute;inset:0;z-index:3;display:grid;place-items:center;padding:16px;text-align:center;color:#9ba4a4;font-size:10px;
+    background:linear-gradient(110deg,#171a1a 30%,#222727 50%,#171a1a 70%) 0 0/200% 100%;animation:sh 1.4s linear infinite}
+  .shim.hide{display:none}.shim a{color:var(--lime);font-weight:800}
+  @keyframes sh{to{background-position:-200% 0}}
+  .card-bot{display:flex;align-items:center;justify-content:flex-end;gap:7px;padding:14px 18px}
+  .sb{min-height:34px;padding:0 12px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:800;display:inline-flex;align-items:center;transition:.2s}
+  .sb:hover{border-color:var(--lime-border);color:var(--lime)} .sb.p{background:var(--lime);border-color:var(--lime);color:#000}.sb.p:hover{color:#000}
+  .none{grid-column:1/-1;padding:44px 20px;text-align:center;border:1px dashed var(--border);border-radius:22px;color:var(--muted);font-size:12px;line-height:1.8}
+  .none a{color:var(--lime);font-weight:800}
+  footer{margin-top:70px;padding:30px 0;border-top:1px solid var(--border);color:var(--muted-2);font-size:10px;text-align:center}
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}.view{height:290px}}
+  @media(prefers-reduced-motion:reduce){.cam,.dot,.shim{animation:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><span class="mark">WD</span>Website Deals</a>
+  <a class="back" href="../">← Back to site</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">Packages</div>
+    <h1>Pick a plan. See it live.</h1>
+    <p class="lead">Every package comes with real websites you can watch in action. Tap Present to see one full-screen, or Order to start on WhatsApp.</p>
+  </section>
+
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-p="all">All</button>
+    <button class="tab" data-p="starter">Starter</button>
+    <button class="tab" data-p="business">Business</button>
+    <button class="tab" data-p="premium">Premium</button>
+  </div>
+
+  <div id="packages"></div>
+</main>
+<footer>© <span id="y"></span> Website Deals · Websites update automatically when added in the admin panel.</footer>
+
+<script src="../shared/store.js"></script>
+<script>
+(() => {
+  const S = window.WDStore, $ = (s, r = document) => r.querySelector(s);
+  try { if (localStorage.getItem("websiteDealsTheme") === "light") document.body.classList.add("light"); } catch (e) {}
+  $("#y").textContent = new Date().getFullYear();
+
+  const PKG = [
+    { id: "starter",  name: "Starter",  price: "৳549",   desc: "A professional ready-made website for individuals and small businesses." },
+    { id: "business", name: "Business", price: "৳999",   desc: "Premium website with admin tools, inquiries and advanced integrations." },
+    { id: "premium",  name: "Premium",  price: "৳1,999", desc: "A complete Shopify-style system for serious businesses and online stores." }
+  ];
+  let sites = [], current = (new URLSearchParams(location.search).get("type") || location.hash.slice(1) || "all").toLowerCase();
+  if (!["all", ...PKG.map((p) => p.id)].includes(current)) current = "all";
+
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("off", !e.isIntersecting)), { threshold: .05 });
+
+  function card(s) {
+    const url = S.safeUrl(s.url);
+    return `<article class="card">
+      <div class="card-top"><strong>${S.esc(s.name)}</strong><span class="live"><span class="dot"></span>LIVE</span></div>
+      <div class="view ${S.esc(s.animation)}">
+        <div class="shim">Loading live website…</div>
+        <div class="cam"><iframe src="${S.esc(url)}" title="${S.esc(s.name)}" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms" referrerpolicy="no-referrer"></iframe></div>
+      </div>
+      <div class="card-bot">
+        <a class="sb" target="_blank" rel="noopener" href="${S.esc(url)}">Live ↗</a>
+        <a class="sb" target="_blank" rel="noopener" href="${S.esc(S.wa(`Hello Website Deals, I'm interested in "${s.name}" (${s.packageLabel}).`))}">Order</a>
+        <a class="sb p" href="../presentation/?id=${encodeURIComponent(s.id)}">Present ▶</a>
+      </div></article>`;
+  }
+
+  function render() {
+    const list = S.active(sites);
+    const show = PKG.filter((p) => current === "all" || p.id === current);
+    $("#packages").innerHTML = show.map((p) => {
+      const items = list.filter((s) => s.package === p.id);
+      return `<section class="pkg" id="${p.id}">
+        <div class="pkg-head"><div><h2>${p.name}</h2><p class="pkg-desc">${p.desc}</p></div>
+          <div class="price">${p.price} <small>/ month</small></div></div>
+        <div class="grid">${items.length ? items.map(card).join("") :
+          `<div class="none">No live ${p.name} websites yet.<br><a target="_blank" rel="noopener" href="${S.esc(S.wa(`Hello Website Deals, I want the ${p.name} package.`))}">Ask about ${p.name} on WhatsApp →</a></div>`}</div>
+      </section>`;
+    }).join("");
+
+    document.querySelectorAll(".card").forEach((c) => {
+      io.observe(c);
+      const shim = $(".shim", c), f = $("iframe", c);
+      const t = setTimeout(() => { shim.innerHTML = `Taking a while — this site may block previews.<br><a target="_blank" rel="noopener" href="${f.src}">Open website ↗</a>`; }, 12000);
+      f.addEventListener("load", () => { clearTimeout(t); shim.classList.add("hide"); }, { once: true });
+    });
+    document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("on", t.dataset.p === current));
+  }
+
+  $("#tabs").addEventListener("click", (e) => {
+    const b = e.target.closest(".tab"); if (!b) return;
+    current = b.dataset.p; history.replaceState(null, "", current === "all" ? location.pathname : `?type=${current}`);
+    render();
+  });
+
+  async function load() { sites = (await S.load()).sites; render(); }
+  S.onChange(load);
+  load();
+})();
+</script>
+</body>
+</html>

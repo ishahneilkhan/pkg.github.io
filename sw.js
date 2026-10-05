@@ -1,82 +1,51 @@
-const CACHE_NAME = "website-deals-wall-v2";
+/* Website Deals service worker — network first, so edits show up immediately.
+   Falls back to the cache when offline. data/websites.json is never served stale. */
+const CACHE_NAME = "website-deals-v3";
 
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./live.html",
   "./enhance.js",
+  "./shared/store.js",
+  "./presentation/index.html",
+  "./package/index.html",
   "./icons/icon-192.png"
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(APP_SHELL);
-    })
+    caches.open(CACHE_NAME).then((cache) =>
+      Promise.all(APP_SHELL.map((url) => cache.add(url).catch(() => {})))
+    )
   );
-
   self.skipWaiting();
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      );
-    })
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+    )
   );
-
   self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
-  const request = event.request;
-
-  if (request.method !== "GET") {
-    return;
-  }
-
-  const url = new URL(request.url);
-
-  /*
-    Do not try to cache external live websites.
-    The website preview iframes should remain live.
-  */
-  if (url.origin !== self.location.origin) {
-    return;
-  }
+  const req = event.request;
+  if (req.method !== "GET") return;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;   // live website previews stay live
 
   event.respondWith(
-    caches.match(request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(request)
-        .then((networkResponse) => {
-          if (
-            !networkResponse ||
-            networkResponse.status !== 200 ||
-            networkResponse.type === "opaque"
-          ) {
-            return networkResponse;
-          }
-
-          const responseClone = networkResponse.clone();
-
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
-
-          return networkResponse;
-        })
-        .catch(() => {
-          return caches.match("./index.html");
-        });
-    })
+    fetch(req)
+      .then((res) => {
+        if (res && res.status === 200 && !url.pathname.includes("/data/")) {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+        }
+        return res;
+      })
+      .catch(() => caches.match(req).then((hit) => hit || caches.match("./index.html")))
   );
 });

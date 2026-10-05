@@ -1,0 +1,12 @@
+[
+  {
+    "id": "snk-it-institute",
+    "name": "SNK IT Institute",
+    "package": "business",
+    "packageLabel": "Business Package",
+    "url": "https://snkitinstitute.com",
+    "animation": "zoom",
+    "status": true,
+    "sort": 1
+  }
+]

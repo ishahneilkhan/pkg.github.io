@@ -70,7 +70,9 @@
 
   /* ---------- SAFER DATA (admin values can't inject odd URLs) ---------- */
   const rawGet = window.getWebsites;
-  window.getWebsites = () => rawGet()
+  let published = null;                       // data/websites.json (what visitors see)
+  const hasLocal = () => { try { return !!localStorage.getItem("websiteDealsWebsites"); } catch (e) { return false; } };
+  window.getWebsites = () => ((!hasLocal() && published) ? published : rawGet())
     .filter((s) => s && s.status !== false && s.status !== "false" && okUrl(s.url));
 
   // sandbox every preview frame (stops sites from navigating your page away) + tag with package
@@ -158,6 +160,7 @@
     const name = $(".package-name", card).textContent.trim();
     const btn = $(".package-btn", card);
     btn.addEventListener("click", () => setFilter(name.toLowerCase()));
+    btn.title = "See " + name + " websites";
     const link = document.createElement("a");
     link.className = "package-wa"; link.target = "_blank"; link.rel = "noopener";
     link.href = wa(`Hello Website Deals, I want the ${name} package. Please guide me.`);
@@ -336,6 +339,19 @@
 
   /* ---------- SUPPORT LINKS → local support page ---------- */
   $$('a[href*="support.websitedeals.com"]').forEach((a) => { a.href = "./support/"; a.removeAttribute("target"); a.removeAttribute("rel"); });
+
+  /* ---------- SHARED DATA: published list + presentation link ---------- */
+  if (!hasLocal()) {
+    fetch("./data/websites.json", { cache: "no-store" }).then((r) => r.json()).then((j) => {
+      if (Array.isArray(j)) { published = j; window.renderWebsites(); }
+    }).catch(() => {});
+  }
+  const heroActions = $(".hero-actions");
+  if (heroActions && !$('a[href="./presentation/"]')) {
+    const a = document.createElement("a");
+    a.className = "btn btn-secondary"; a.href = "./presentation/"; a.textContent = "▶ Live Presentation";
+    heroActions.appendChild(a);
+  }
 
   /* ---------- START ---------- */
   loadSalah();
