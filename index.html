@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#080909" />
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta name="theme-color" content="#080909">
+
   <meta
     name="description"
-    content="Website Deals — Premium ready-made websites, live website showcase and monthly website packages."
-  />
+    content="Website Deals — Premium ready-made websites, package plans and live website presentation."
+  >
 
-  <title>Website Deals | Premium Website Marketplace</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Website Deals"
+  >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.png">
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="apple-touch-icon"
+    href="./icons/icon-192.png"
+  >
+
+  <title>Website Deals | Live Marketing Wall</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <style>
     :root {
       --bg: #080909;
-      --bg-soft: #0d0f10;
-      --card: #111415;
-      --card-2: #151819;
-      --text: #f5f7f7;
-      --muted: #929a9a;
+      --bg-soft: #0d0f0f;
+      --card: #111414;
+      --card-2: #151919;
       --line: rgba(255,255,255,.09);
-      --accent: #b7ff00;
-      --accent-dark: #8fc900;
-      --danger: #ff5d6c;
-      --shadow: 0 24px 70px rgba(0,0,0,.38);
+      --line-strong: rgba(255,255,255,.16);
+      --text: #f6f7f7;
+      --muted: #929a9a;
+      --lime: #b7ff00;
+      --lime-soft: rgba(183,255,0,.10);
+      --green: #35d07f;
+      --danger: #ff6262;
+      --shadow: 0 25px 80px rgba(0,0,0,.35);
       --radius: 24px;
-    }
-
-    body.light {
-      --bg: #f5f7f6;
-      --bg-soft: #ffffff;
-      --card: #ffffff;
-      --card-2: #f1f4f2;
-      --text: #101414;
-      --muted: #687171;
-      --line: rgba(0,0,0,.09);
-      --shadow: 0 20px 60px rgba(0,0,0,.10);
+      --max: 1380px;
     }
 
     * {
@@ -58,13 +75,44 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 10% 0%, rgba(183,255,0,.08), transparent 30%),
-        radial-gradient(circle at 90% 15%, rgba(183,255,0,.05), transparent 28%),
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(183,255,0,.08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(255,255,255,.045),
+          transparent 25%
+        ),
         var(--bg);
       color: var(--text);
       font-family: Inter, "Hind Siliguri", sans-serif;
       overflow-x: hidden;
-      transition: background .3s ease, color .3s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        );
+      background-size: 40px 40px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+      );
     }
 
     a {
@@ -76,71 +124,89 @@
       font: inherit;
     }
 
-    /* =========================
-       TOP SALAH BAR
-    ========================== */
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
 
-    .salah-bar {
-      width: 100%;
+    /* =========================================
+       TOP STATUS BAR
+    ========================================= */
+
+    .status-bar {
+      min-height: 42px;
       border-bottom: 1px solid var(--line);
-      background: rgba(8,9,9,.76);
+      background: rgba(8,9,9,.82);
       backdrop-filter: blur(18px);
-      position: relative;
-      z-index: 1000;
-    }
-
-    body.light .salah-bar {
-      background: rgba(255,255,255,.78);
-    }
-
-    .salah-inner {
-      width: min(1180px, calc(100% - 32px));
-      min-height: 38px;
-      margin: auto;
       display: flex;
-      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .status-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .salah-list {
+      display: flex;
       align-items: center;
       gap: 20px;
+      white-space: nowrap;
       overflow-x: auto;
       scrollbar-width: none;
     }
 
-    .salah-inner::-webkit-scrollbar {
+    .salah-list::-webkit-scrollbar {
       display: none;
     }
 
-    .salah-item {
-      white-space: nowrap;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
     .salah-item strong {
-      color: var(--text);
-      margin-right: 4px;
+      color: #fff;
+      margin-right: 5px;
     }
 
-    /* =========================
+    .system-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(53,208,127,.7);
+    }
+
+    .status-dot.offline {
+      background: var(--danger);
+      box-shadow: 0 0 12px rgba(255,98,98,.5);
+    }
+
+    /* =========================================
        NAVBAR
-    ========================== */
+    ========================================= */
 
     .navbar {
       position: sticky;
       top: 0;
-      z-index: 900;
+      z-index: 1000;
       border-bottom: 1px solid var(--line);
-      background: rgba(8,9,9,.74);
-      backdrop-filter: blur(22px);
-    }
-
-    body.light .navbar {
-      background: rgba(255,255,255,.78);
+      background: rgba(8,9,9,.78);
+      backdrop-filter: blur(24px);
     }
 
     .nav-inner {
-      width: min(1180px, calc(100% - 32px));
-      min-height: 72px;
-      margin: auto;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -148,10 +214,11 @@
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 11px;
-      flex-shrink: 0;
+      font-weight: 900;
+      letter-spacing: -.04em;
     }
 
     .brand-mark {
@@ -160,192 +227,179 @@
       border-radius: 12px;
       display: grid;
       place-items: center;
-      background: var(--accent);
+      background: var(--lime);
       color: #080909;
-      font-weight: 900;
-      box-shadow: 0 0 35px rgba(183,255,0,.18);
+      font-size: 18px;
+      box-shadow: 0 0 30px rgba(183,255,0,.15);
     }
 
-    .brand-name {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      letter-spacing: -.4px;
+    .brand-text {
+      font-size: 17px;
     }
 
-    .brand-name span {
-      color: var(--accent);
+    .brand-text span {
+      color: var(--lime);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 28px;
     }
 
     .nav-links a {
-      padding: 10px 13px;
-      border-radius: 10px;
+      color: #aeb4b4;
       font-size: 13px;
-      color: var(--muted);
-      transition: .2s ease;
+      font-weight: 700;
+      transition: .25s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-      background: var(--card);
+    .nav-links a:hover {
+      color: #fff;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .icon-btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--card);
-      color: var(--text);
+    .install-btn,
+    .menu-btn {
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,.04);
+      color: #fff;
       cursor: pointer;
-      transition: .2s ease;
+      border-radius: 13px;
+      min-height: 42px;
+      padding: 0 15px;
+      font-size: 12px;
+      font-weight: 800;
+      transition: .25s ease;
     }
 
-    .icon-btn:hover {
-      border-color: rgba(183,255,0,.45);
-      transform: translateY(-1px);
+    .install-btn {
+      border-color: rgba(183,255,0,.35);
+      background: var(--lime-soft);
+      color: var(--lime);
     }
 
-    .mobile-menu-btn {
+    .install-btn:hover {
+      background: var(--lime);
+      color: #080909;
+      transform: translateY(-2px);
+    }
+
+    .menu-btn {
       display: none;
     }
 
-    /* =========================
+    /* =========================================
        HERO
-    ========================== */
+    ========================================= */
 
     .hero {
-      width: min(1180px, calc(100% - 32px));
-      min-height: 650px;
-      margin: auto;
-      display: grid;
-      place-items: center;
+      position: relative;
+      padding: 95px 0 85px;
       text-align: center;
-      position: relative;
-      padding: 100px 0 80px;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: rgba(183,255,0,.07);
-      filter: blur(80px);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 850px;
-    }
-
-    .eyebrow {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid rgba(183,255,0,.22);
+      border: 1px solid rgba(183,255,0,.25);
+      background: rgba(183,255,0,.07);
+      color: var(--lime);
       border-radius: 999px;
-      color: var(--accent);
-      background: rgba(183,255,0,.05);
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 22px;
+      padding: 8px 13px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 24px;
     }
 
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
+    .hero-badge i {
+      width: 6px;
+      height: 6px;
+      background: var(--lime);
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 14px var(--accent);
+      box-shadow: 0 0 10px var(--lime);
     }
 
     .hero h1 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(46px, 8vw, 92px);
-      line-height: .94;
-      letter-spacing: -5px;
-      margin-bottom: 25px;
+      max-width: 920px;
+      margin: 0 auto;
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: .95;
+      letter-spacing: -.065em;
+      font-weight: 900;
     }
 
     .hero h1 span {
-      color: var(--accent);
+      color: var(--lime);
     }
 
     .hero p {
-      max-width: 680px;
-      margin: auto;
+      max-width: 690px;
+      margin: 25px auto 0;
       color: var(--muted);
-      font-size: 17px;
+      font-size: 16px;
       line-height: 1.8;
     }
 
-    .hero-buttons {
+    .hero-actions {
+      margin-top: 32px;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 34px;
+      flex-wrap: wrap;
     }
 
-    .btn {
+    .primary-btn,
+    .secondary-btn {
       min-height: 48px;
-      padding: 0 19px;
-      border-radius: 13px;
+      border-radius: 14px;
+      padding: 0 21px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      border: 1px solid var(--line);
-      cursor: pointer;
-      transition: .25s ease;
-      font-weight: 700;
       font-size: 13px;
+      font-weight: 800;
+      transition: .25s ease;
     }
 
-    .btn-primary {
-      background: var(--accent);
+    .primary-btn {
+      background: var(--lime);
       color: #080909;
-      border-color: var(--accent);
+      box-shadow: 0 12px 35px rgba(183,255,0,.13);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(183,255,0,.16);
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(183,255,0,.22);
     }
 
-    .btn-secondary {
-      background: var(--card);
-      color: var(--text);
+    .secondary-btn {
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,.035);
+      color: #fff;
     }
 
-    .btn-secondary:hover {
-      border-color: rgba(183,255,0,.35);
+    .secondary-btn:hover {
+      background: rgba(255,255,255,.08);
+      transform: translateY(-3px);
     }
 
-    /* =========================
+    /* =========================================
        SECTION
-    ========================== */
+    ========================================= */
+
+    section {
+      scroll-margin-top: 100px;
+    }
 
     .section {
-      width: min(1180px, calc(100% - 32px));
-      margin: auto;
-      padding: 100px 0;
+      padding: 80px 0;
     }
 
     .section-head {
@@ -353,34 +407,35 @@
       justify-content: space-between;
       align-items: end;
       gap: 30px;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
-    .section-kicker {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    .eyebrow {
+      color: var(--lime);
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .18em;
       margin-bottom: 10px;
     }
 
-    .section h2 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(30px, 5vw, 54px);
-      letter-spacing: -2px;
+    .section-title {
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1;
+      letter-spacing: -.05em;
+      font-weight: 900;
     }
 
-    .section-desc {
-      max-width: 500px;
+    .section-copy {
+      max-width: 560px;
       color: var(--muted);
-      line-height: 1.75;
       font-size: 14px;
+      line-height: 1.8;
     }
 
-    /* =========================
+    /* =========================================
        PACKAGE CARDS
-    ========================== */
+    ========================================= */
 
     .package-grid {
       display: grid;
@@ -391,588 +446,602 @@
     .package-card {
       position: relative;
       padding: 28px;
-      min-height: 470px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.035), transparent 45%),
-        var(--card);
+      min-height: 460px;
       border: 1px solid var(--line);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.015)
+        );
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
       overflow: hidden;
       transition: .3s ease;
     }
 
+    .package-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -100px;
+      top: -100px;
+      background: var(--lime);
+      opacity: .045;
+      border-radius: 50%;
+      filter: blur(15px);
+    }
+
     .package-card:hover {
       transform: translateY(-7px);
-      border-color: rgba(183,255,0,.30);
+      border-color: rgba(183,255,0,.28);
+      box-shadow: var(--shadow);
     }
 
     .package-card.featured {
-      border-color: rgba(183,255,0,.4);
-      box-shadow: 0 25px 80px rgba(183,255,0,.08);
+      border-color: rgba(183,255,0,.38);
+      box-shadow:
+        0 0 0 1px rgba(183,255,0,.06),
+        0 30px 80px rgba(183,255,0,.06);
     }
 
-    .popular {
-      position: absolute;
-      top: 18px;
-      right: 18px;
+    .package-tag {
+      display: inline-flex;
       padding: 6px 9px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #080909;
-      font-size: 9px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      color: #aaa;
+      font-size: 10px;
       font-weight: 900;
       text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .package-card.featured .package-tag {
+      color: #080909;
+      background: var(--lime);
     }
 
     .package-name {
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
+      margin-top: 20px;
+      font-size: 25px;
+      font-weight: 900;
     }
 
-    .price {
-      margin: 16px 0 5px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -3px;
+    .package-price {
+      margin-top: 8px;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -.05em;
     }
 
-    .price small {
-      font-size: 14px;
+    .package-price small {
       color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
       letter-spacing: 0;
     }
 
     .package-desc {
-      min-height: 52px;
+      margin-top: 12px;
+      min-height: 48px;
       color: var(--muted);
-      line-height: 1.65;
       font-size: 13px;
+      line-height: 1.7;
     }
 
-    .features {
+    .feature-list {
       list-style: none;
-      margin: 25px 0;
+      margin-top: 25px;
       display: grid;
       gap: 11px;
     }
 
-    .features li {
+    .feature-list li {
       display: flex;
+      align-items: flex-start;
       gap: 9px;
-      color: var(--muted);
+      color: #c5caca;
       font-size: 12px;
       line-height: 1.5;
     }
 
-    .features li::before {
+    .feature-list li::before {
       content: "✓";
-      color: var(--accent);
+      flex: 0 0 auto;
+      color: var(--lime);
       font-weight: 900;
     }
 
-    .package-card .btn {
-      width: 100%;
+    .package-btn {
       position: absolute;
       left: 28px;
       right: 28px;
-      bottom: 28px;
-      width: calc(100% - 56px);
-    }
-
-    /* =========================
-       LIVE WEBSITES
-    ========================== */
-
-    .websites-section {
-      position: relative;
-    }
-
-    .showcase-note {
-      padding: 14px 16px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(183,255,0,.15);
-      border-radius: 14px;
-      background: rgba(183,255,0,.035);
-      color: var(--muted);
+      bottom: 25px;
+      min-height: 45px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
       font-size: 12px;
-      line-height: 1.7;
+      font-weight: 900;
+      transition: .25s ease;
     }
 
-    .showcase-note strong {
-      color: var(--accent);
+    .package-card.featured .package-btn {
+      background: var(--lime);
+      color: #080909;
+      border-color: var(--lime);
     }
 
-    /*
-      IMPORTANT:
-      Cards remain FIXED.
-      Only the tall iframe camera moves inside .preview-viewport.
-    */
+    .package-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* =========================================
+       WEBSITE SHOWCASE
+    ========================================= */
 
     .website-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      gap: 18px;
     }
 
     .website-card {
       min-width: 0;
-      background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 22px;
+      background: #0e1111;
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: border-color .25s ease, transform .25s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+      transition: .3s ease;
     }
 
     .website-card:hover {
-      border-color: rgba(183,255,0,.28);
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      border-color: rgba(183,255,0,.25);
     }
 
     .website-top {
-      padding: 18px 18px 15px;
+      min-height: 72px;
+      padding: 15px 17px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 12px;
-    }
-
-    .website-info {
-      min-width: 0;
+      align-items: center;
+      gap: 15px;
+      border-bottom: 1px solid var(--line);
     }
 
     .website-name {
-      font-size: 14px;
-      font-weight: 800;
+      min-width: 0;
+    }
+
+    .website-name strong {
+      display: block;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: 13px;
     }
 
-    .website-package {
-      margin-top: 5px;
+    .website-name span {
+      display: block;
+      margin-top: 4px;
       color: var(--muted);
       font-size: 10px;
     }
 
     .live-badge {
-      flex-shrink: 0;
+      flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 8px;
-      border: 1px solid rgba(183,255,0,.18);
-      background: rgba(183,255,0,.05);
+      gap: 5px;
+      padding: 5px 8px;
       border-radius: 999px;
-      color: var(--accent);
+      background: rgba(53,208,127,.09);
+      color: var(--green);
       font-size: 9px;
       font-weight: 900;
-      letter-spacing: .7px;
+      text-transform: uppercase;
     }
 
-    .live-dot {
-      width: 6px;
-      height: 6px;
+    .live-badge::before {
+      content: "";
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 9px var(--accent);
-      animation: livePulse 1.6s infinite;
+      background: var(--green);
+      box-shadow: 0 0 8px rgba(53,208,127,.7);
     }
 
-    @keyframes livePulse {
-      50% {
-        opacity: .35;
-        transform: scale(.7);
-      }
-    }
+    /*
+      IMPORTANT:
+      The card itself remains fixed.
 
-    /* Preview camera */
+      The camera wrapper moves vertically inside
+      the fixed viewport to create a human-like
+      live website browsing effect.
+
+      This avoids cross-origin iframe DOM access.
+    */
 
     .preview-viewport {
-      height: 410px;
       position: relative;
-      margin: 0 14px;
+      height: 310px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 15px;
       background: #fff;
-      isolation: isolate;
     }
 
     .preview-camera {
       position: absolute;
-      top: 0;
       left: 0;
-      width: 100%;
-      transform: translate3d(0, 0, 0);
+      right: 0;
+      top: 0;
       will-change: transform;
+      transform: translate3d(0,0,0);
     }
 
     .preview-frame {
       display: block;
       width: 100%;
-      height: 1800px;
+      height: 1900px;
       border: 0;
       background: #fff;
-      pointer-events: none;
     }
 
-    /*
-      Fake human mouse cursor.
-      This moves over the website preview, not the user's real cursor.
-    */
-
-    .human-cursor {
+    .preview-shade {
       position: absolute;
-      z-index: 20;
-      width: 17px;
-      height: 24px;
+      inset: 0;
       pointer-events: none;
-      opacity: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,.06),
+          transparent 12%,
+          transparent 85%,
+          rgba(0,0,0,.10)
+        );
+    }
+
+    .fake-cursor {
+      position: absolute;
+      z-index: 5;
+      width: 13px;
+      height: 18px;
+      opacity: .9;
+      pointer-events: none;
       filter: drop-shadow(0 2px 3px rgba(0,0,0,.45));
       transition:
-        left 1.1s cubic-bezier(.22,.61,.36,1),
-        top 1.1s cubic-bezier(.22,.61,.36,1),
-        opacity .35s ease;
+        left 1.2s ease,
+        top 1.2s ease;
     }
 
-    .human-cursor::before {
+    .fake-cursor::before {
       content: "";
       position: absolute;
-      left: 1px;
+      left: 0;
       top: 0;
       width: 0;
       height: 0;
-      border-top: 22px solid #111;
-      border-right: 11px solid transparent;
-    }
-
-    .human-cursor::after {
-      content: "";
-      position: absolute;
-      left: 3px;
-      top: 2px;
-      width: 0;
-      height: 0;
-      border-top: 18px solid #fff;
-      border-right: 9px solid transparent;
-    }
-
-    .scroll-hint {
-      position: absolute;
-      z-index: 25;
-      left: 50%;
-      bottom: 13px;
-      transform: translateX(-50%);
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.72);
-      color: #fff;
-      font-size: 8px;
-      letter-spacing: .8px;
-      font-weight: 800;
-      opacity: .75;
-      pointer-events: none;
+      border-left: 7px solid #fff;
+      border-top: 10px solid transparent;
+      border-bottom: 4px solid transparent;
+      transform: rotate(-15deg);
     }
 
     .website-bottom {
-      padding: 15px 18px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .status-text {
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    .website-actions {
-      display: flex;
-      gap: 7px;
-    }
-
-    .mini-btn {
-      height: 34px;
-      padding: 0 11px;
-      border-radius: 9px;
-      border: 1px solid var(--line);
-      background: var(--card-2);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 10px;
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .mini-btn:hover {
-      border-color: rgba(183,255,0,.35);
-    }
-
-    .mini-btn.primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #080909;
-    }
-
-    /* =========================
-       ABOUT / MARKETING WALL
-    ========================== */
-
-    .about-box {
-      padding: 55px;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at 90% 10%, rgba(183,255,0,.08), transparent 30%),
-        var(--card);
-    }
-
-    .about-box h2 {
-      max-width: 750px;
-      margin-bottom: 20px;
-    }
-
-    .about-box p {
-      max-width: 720px;
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 14px;
-    }
-
-    .wall-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 35px;
-    }
-
-    .stat {
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--bg-soft);
-    }
-
-    .stat strong {
-      display: block;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 28px;
-      margin-bottom: 5px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    footer {
+      padding: 14px 15px 16px;
       border-top: 1px solid var(--line);
-      padding: 40px 0;
     }
 
-    .footer-inner {
-      width: min(1180px, calc(100% - 32px));
-      margin: auto;
+    .website-meta {
       display: flex;
       justify-content: space-between;
-      gap: 30px;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .website-package {
       color: var(--muted);
-      font-size: 11px;
+      font-size: 10px;
+      font-weight: 700;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 18px;
+    .website-url {
+      max-width: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #8e9797;
+      font-size: 9px;
     }
 
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    /* =========================
-       PRESENTATION MODAL
-    ========================== */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 5000;
-      display: none;
-      padding: 22px;
-      background: rgba(0,0,0,.82);
-      backdrop-filter: blur(18px);
-    }
-
-    .modal.show {
+    .explore-btn {
+      min-height: 40px;
+      width: 100%;
+      border-radius: 11px;
+      border: 1px solid rgba(183,255,0,.28);
+      background: rgba(183,255,0,.07);
+      color: var(--lime);
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 900;
+      transition: .25s ease;
     }
 
-    .modal-box {
-      width: min(1300px, 100%);
-      height: min(90vh, 900px);
-      background: var(--card);
+    .explore-btn:hover {
+      background: var(--lime);
+      color: #080909;
+    }
+
+    /* =========================================
+       ABOUT / SUPPORT
+    ========================================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 32px;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 30px 100px rgba(0,0,0,.6);
-      display: flex;
-      flex-direction: column;
+      background: rgba(255,255,255,.025);
+      border-radius: var(--radius);
     }
 
-    .modal-head {
-      min-height: 60px;
-      padding: 10px 14px 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      border-bottom: 1px solid var(--line);
+    .info-card h3 {
+      font-size: 24px;
+      margin-bottom: 13px;
     }
 
-    .modal-title {
+    .info-card p {
+      color: var(--muted);
+      line-height: 1.9;
       font-size: 13px;
+    }
+
+    .support-link {
+      display: inline-flex;
+      margin-top: 20px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    /* =========================================
+       INSTALL PANEL
+    ========================================= */
+
+    .install-panel {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+      width: min(370px, calc(100% - 30px));
+      padding: 18px;
+      border: 1px solid rgba(183,255,0,.24);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(22,25,25,.97),
+          rgba(9,10,10,.97)
+        );
+      backdrop-filter: blur(22px);
+      border-radius: 20px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.5);
+      transform: translateY(150%);
+      opacity: 0;
+      pointer-events: none;
+      transition: .45s ease;
+    }
+
+    .install-panel.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .install-panel h3 {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .install-panel p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .install-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .install-actions button {
+      flex: 1;
+      min-height: 39px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .install-now {
+      border: 0;
+      background: var(--lime);
+      color: #080909;
+    }
+
+    .install-later {
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: #fff;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 30px 0;
+      margin-top: 30px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      color: #737b7b;
+      font-size: 10px;
+    }
+
+    /* =========================================
+       MOBILE NAV
+    ========================================= */
+
+    .mobile-menu {
+      display: none;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,9,9,.97);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--line);
+      color: #bbb;
+      font-size: 12px;
       font-weight: 800;
     }
 
-    .modal-actions {
-      display: flex;
-      gap: 7px;
+    .mobile-menu a:last-child {
+      border-bottom: 0;
     }
 
-    .modal-frame {
-      flex: 1;
-      border: 0;
-      width: 100%;
-      background: #fff;
-    }
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
 
-    /* =========================
-       LOADING
-    ========================== */
+    @media (max-width: 1100px) {
+      .website-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-    .loader {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      z-index: 10;
-      background: #fff;
-    }
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .loader-ring {
-      width: 30px;
-      height: 30px;
-      border: 3px solid #ddd;
-      border-top-color: #111;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+      .package-card {
+        min-height: 420px;
       }
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================== */
-
-    @media (max-width: 1000px) {
+    @media (max-width: 800px) {
       .nav-links {
         display: none;
       }
 
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .package-grid,
-      .website-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .wall-stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 680px) {
-      .salah-inner {
-        justify-content: flex-start;
-      }
-
-      .nav-inner {
-        min-height: 64px;
-      }
-
-      .brand-name {
-        font-size: 13px;
+      .menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .hero {
-        min-height: 570px;
         padding: 70px 0;
       }
 
+      .section {
+        padding: 60px 0;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container,
+      .status-inner {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .status-inner {
+        justify-content: flex-start;
+      }
+
+      .system-status {
+        display: none;
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .brand-text {
+        font-size: 15px;
+      }
+
+      .install-btn {
+        display: none;
+      }
+
+      .hero {
+        padding: 58px 0 55px;
+      }
+
       .hero h1 {
-        letter-spacing: -3px;
-        font-size: clamp(42px, 14vw, 65px);
+        font-size: 48px;
       }
 
       .hero p {
         font-size: 14px;
       }
 
-      .section {
-        padding: 70px 0;
+      .website-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-viewport {
+        height: 290px;
+      }
+
+      .preview-frame {
+        height: 1800px;
       }
 
       .section-head {
         display: block;
       }
 
-      .section-desc {
+      .section-copy {
         margin-top: 15px;
       }
 
-      .package-grid,
-      .website-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-box {
-        padding: 30px 22px;
-      }
-
-      .wall-stats {
-        grid-template-columns: 1fr 1fr;
+      .info-card {
+        padding: 23px;
       }
 
       .footer-inner {
-        display: block;
-      }
-
-      .footer-links {
-        margin-top: 18px;
-        flex-wrap: wrap;
-      }
-
-      .preview-viewport {
-        height: 380px;
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
 
@@ -994,320 +1063,464 @@
 
 <body>
 
-  <!-- =========================
-       SALAH
-  ========================== -->
+  <!-- =========================================
+       SALAH / STATUS BAR
+  ========================================== -->
 
-  <div class="salah-bar">
-    <div class="salah-inner">
-      <div class="salah-item"><strong>Fajr</strong>04:45</div>
-      <div class="salah-item"><strong>Dhuhr</strong>12:05</div>
-      <div class="salah-item"><strong>Asr</strong>16:15</div>
-      <div class="salah-item"><strong>Maghrib</strong>18:00</div>
-      <div class="salah-item"><strong>Isha</strong>19:20</div>
+  <div class="status-bar">
+    <div class="status-inner">
+
+      <div class="salah-list">
+        <div class="salah-item">
+          <strong>Fajr</strong> 04:45
+        </div>
+
+        <div class="salah-item">
+          <strong>Dhuhr</strong> 12:05
+        </div>
+
+        <div class="salah-item">
+          <strong>Asr</strong> 16:15
+        </div>
+
+        <div class="salah-item">
+          <strong>Maghrib</strong> 18:00
+        </div>
+
+        <div class="salah-item">
+          <strong>Isha</strong> 19:20
+        </div>
+      </div>
+
+      <div class="system-status">
+        <span id="networkDot" class="status-dot"></span>
+        <span id="networkText">Online</span>
+      </div>
+
     </div>
   </div>
 
-  <!-- =========================
+
+  <!-- =========================================
        NAVBAR
-  ========================== -->
+  ========================================== -->
 
   <header class="navbar">
-    <div class="nav-inner">
 
-      <a href="#home" class="brand">
-        <div class="brand-mark">WD</div>
-        <div class="brand-name">Website<span>Deals</span></div>
+    <div class="container nav-inner">
+
+      <a href="./index.html" class="brand">
+        <span class="brand-mark">W</span>
+
+        <span class="brand-text">
+          Website <span>Deals</span>
+        </span>
       </a>
 
       <nav class="nav-links">
-        <a href="#home" class="active">Home</a>
+        <a href="#home">Home</a>
         <a href="#package">Package</a>
         <a href="#websites">Websites</a>
         <a href="#salah">Salah</a>
         <a href="#about">About</a>
-        <a href="https://support.websitedeals.com" target="_blank" rel="noopener">Support</a>
+        <a href="#support">Support</a>
       </nav>
 
       <div class="nav-actions">
-        <button class="icon-btn mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+
+        <button
+          type="button"
+          class="install-btn"
+          id="installTopBtn"
+          hidden
+        >
+          Install App
+        </button>
+
+        <button
+          type="button"
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+        >
           ☰
         </button>
 
-        <button class="icon-btn" onclick="toggleTheme()" aria-label="Toggle theme">
-          ◐
-        </button>
       </div>
 
     </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+
+      <a href="#home">Home</a>
+      <a href="#package">Package</a>
+      <a href="#websites">Websites</a>
+      <a href="#salah">Salah</a>
+      <a href="#about">About</a>
+      <a href="#support">Support</a>
+
+    </div>
+
   </header>
 
-  <!-- =========================
-       HERO
-  ========================== -->
 
-  <main id="home">
+  <main>
 
-    <section class="hero">
-      <div class="hero-content">
+    <!-- =========================================
+         HERO
+    ========================================== -->
 
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          PREMIUM WEBSITE MARKETPLACE
+    <section id="home" class="hero">
+
+      <div class="container">
+
+        <div class="hero-badge">
+          <i></i>
+          LIVE WEBSITE MARKETING WALL
         </div>
 
         <h1>
-          Your websites.<br />
-          <span>Live. Anywhere.</span>
+          Your website.<br>
+          <span>Ready to grow.</span>
         </h1>
 
         <p>
-          Ready-made premium websites with live presentation,
-          monthly packages and professional digital support.
+          Premium ready-made websites, flexible monthly packages
+          and a live website presentation system built for
+          showing clients real websites instantly.
         </p>
 
-        <div class="hero-buttons">
-          <a href="#package" class="btn btn-primary">
-            Explore Packages →
+        <div class="hero-actions">
+
+          <a
+            href="#websites"
+            class="primary-btn"
+          >
+            Explore Websites ↗
           </a>
 
-          <a href="#websites" class="btn btn-secondary">
-            View Live Websites
+          <a
+            href="#package"
+            class="secondary-btn"
+          >
+            View Packages
           </a>
+
         </div>
 
       </div>
+
     </section>
 
-    <!-- =========================
+
+    <!-- =========================================
          PACKAGE
-    ========================== -->
+    ========================================== -->
 
-    <section class="section" id="package">
+    <section id="package" class="section">
 
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Packages</div>
-          <h2>Choose your website.</h2>
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+            <div class="eyebrow">Packages</div>
+
+            <h2 class="section-title">
+              Choose your level.
+            </h2>
+          </div>
+
+          <p class="section-copy">
+            Start simple, grow professionally or build a
+            complete Shopify-style business system.
+          </p>
+
         </div>
 
-        <p class="section-desc">
-          Start simple, grow professionally or build a complete
-          e-commerce experience.
-        </p>
-      </div>
 
-      <div class="package-grid">
+        <div class="package-grid">
 
-        <!-- STARTER -->
+          <!-- STARTER -->
 
-        <article class="package-card">
+          <article class="package-card">
 
-          <div class="package-name">Starter</div>
+            <span class="package-tag">
+              Starter
+            </span>
 
-          <div class="price">
-            ৳549 <small>/ month</small>
-          </div>
+            <h3 class="package-name">
+              Starter
+            </h3>
 
-          <p class="package-desc">
-            A professional ready-made website for individuals,
-            small businesses and simple services.
-          </p>
+            <div class="package-price">
+              ৳549
+              <small>/month</small>
+            </div>
 
-          <ul class="features">
-            <li>Complete ready-made website</li>
-            <li>Free hosting & SSL</li>
-            <li>Firebase integration</li>
-            <li>Basic logo</li>
-            <li>Responsive design</li>
-            <li>Custom domain connection</li>
-            <li>Contact form</li>
-            <li>Basic SEO</li>
-            <li>Basic support</li>
-          </ul>
+            <p class="package-desc">
+              A clean, professional website for getting
+              your business online quickly.
+            </p>
 
-          <a href="./starter/" class="btn btn-secondary">
-            View Starter →
-          </a>
+            <ul class="feature-list">
+              <li>Complete ready-made website</li>
+              <li>Free hosting + SSL</li>
+              <li>Responsive design</li>
+              <li>Basic logo</li>
+              <li>Contact form</li>
+              <li>Custom domain connection</li>
+              <li>Basic SEO</li>
+              <li>Basic support</li>
+            </ul>
 
-        </article>
+            <a
+              href="./starter/index.html"
+              class="package-btn"
+            >
+              View Starter Details →
+            </a>
 
-        <!-- BUSINESS -->
+          </article>
 
-        <article class="package-card featured">
 
-          <div class="popular">Most Popular</div>
+          <!-- BUSINESS -->
 
-          <div class="package-name">Business</div>
+          <article class="package-card featured">
 
-          <div class="price">
-            ৳999 <small>/ month</small>
-          </div>
+            <span class="package-tag">
+              Most Popular
+            </span>
 
-          <p class="package-desc">
-            A premium business website with admin tools,
-            analytics, inquiries and advanced integrations.
-          </p>
+            <h3 class="package-name">
+              Business
+            </h3>
 
-          <ul class="features">
-            <li>Premium website</li>
-            <li>Advanced Firebase</li>
-            <li>Admin panel</li>
-            <li>Online payment gateway</li>
-            <li>Product/service management</li>
-            <li>Inquiry/order management</li>
-            <li>WhatsApp & Messenger</li>
-            <li>Advanced SEO & Analytics</li>
-            <li>Backup & security</li>
-            <li>Priority support</li>
-          </ul>
+            <div class="package-price">
+              ৳999
+              <small>/month</small>
+            </div>
 
-          <a href="./business/" class="btn btn-primary">
-            View Business →
-          </a>
+            <p class="package-desc">
+              Advanced website tools for businesses ready
+              to manage leads, content and growth.
+            </p>
 
-        </article>
+            <ul class="feature-list">
+              <li>Premium ready-made website</li>
+              <li>Advanced backend integration</li>
+              <li>Admin panel</li>
+              <li>Product/service management</li>
+              <li>Inquiry & order management</li>
+              <li>Payment integration</li>
+              <li>Advanced SEO + Analytics</li>
+              <li>Priority support</li>
+            </ul>
 
-        <!-- PREMIUM -->
+            <a
+              href="./business/index.html"
+              class="package-btn"
+            >
+              View Business Details →
+            </a>
 
-        <article class="package-card">
+          </article>
 
-          <div class="package-name">Premium</div>
 
-          <div class="price">
-            ৳1,999 <small>/ month</small>
-          </div>
+          <!-- PREMIUM -->
 
-          <p class="package-desc">
-            A complete Shopify-style website system for
-            serious businesses and online stores.
-          </p>
+          <article class="package-card">
 
-          <ul class="features">
-            <li>Shopify-style e-commerce system</li>
-            <li>Firebase / MongoDB backend</li>
-            <li>Admin dashboard</li>
-            <li>Unlimited products*</li>
-            <li>FREE stock & inventory management</li>
-            <li>Orders & customers</li>
-            <li>Coupons & discounts</li>
-            <li>Checkout & payment</li>
-            <li>Shipping & delivery</li>
-            <li>Analytics & SEO</li>
-            <li>Custom features</li>
-            <li>Priority / dedicated support</li>
-          </ul>
+            <span class="package-tag">
+              Advanced
+            </span>
 
-          <a href="./premium/" class="btn btn-secondary">
-            View Premium →
-          </a>
+            <h3 class="package-name">
+              Premium
+            </h3>
 
-        </article>
+            <div class="package-price">
+              ৳1,999
+              <small>/month</small>
+            </div>
 
-      </div>
-    </section>
+            <p class="package-desc">
+              A complete e-commerce and business management
+              ecosystem for serious growth.
+            </p>
 
-    <!-- =========================
-         LIVE WEBSITES
-    ========================== -->
+            <ul class="feature-list">
+              <li>Shopify-style system</li>
+              <li>Product + inventory management</li>
+              <li>Orders + customers</li>
+              <li>Coupons + discounts</li>
+              <li>Cart + wishlist + checkout</li>
+              <li>Shipping & delivery</li>
+              <li>Analytics + SEO</li>
+              <li>Priority dedicated support</li>
+            </ul>
 
-    <section class="section websites-section" id="websites">
+            <a
+              href="./premium/index.html"
+              class="package-btn"
+            >
+              View Premium Details →
+            </a>
 
-      <div class="section-head">
+          </article>
 
-        <div>
-          <div class="section-kicker">Live Showcase</div>
-          <h2>Real websites. Live.</h2>
         </div>
 
-        <p class="section-desc">
-          Every card stays fixed while the real website
-          automatically travels through the page like a human browsing it.
-        </p>
-
-      </div>
-
-      <div class="showcase-note">
-        <strong>LIVE PRESENTATION:</strong>
-        No click required. The website preview automatically
-        moves from top to bottom using human-like scrolling,
-        pauses, speed changes and natural movement.
-      </div>
-
-      <div class="website-grid" id="websiteGrid">
-        <!-- Cards generated by JavaScript -->
       </div>
 
     </section>
 
-    <!-- =========================
-         SALAH SECTION
-    ========================== -->
 
-    <section class="section" id="salah">
+    <!-- =========================================
+         WEBSITES
+    ========================================== -->
 
-      <div class="about-box">
+    <section id="websites" class="section">
 
-        <div class="section-kicker">Salah</div>
+      <div class="container">
 
-        <h2>
-          Build your digital presence without forgetting
-          what matters.
-        </h2>
+        <div class="section-head">
 
-        <p>
-          Website Deals keeps a simple Salah reminder visible
-          while you explore packages and live websites.
-          Prayer times shown here are placeholder display values
-          and can later be connected to a proper prayer-time API.
-        </p>
+          <div>
+            <div class="eyebrow">Live Showcase</div>
+
+            <h2 class="section-title">
+              Real websites.
+            </h2>
+          </div>
+
+          <p class="section-copy">
+            Every card stays fixed while the live website
+            inside automatically moves through the page
+            like a human browsing it.
+          </p>
+
+        </div>
+
+        <div
+          id="websiteGrid"
+          class="website-grid"
+        ></div>
 
       </div>
 
     </section>
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
 
-    <section class="section" id="about">
+    <!-- =========================================
+         SALAH
+    ========================================== -->
 
-      <div class="about-box">
+    <section id="salah" class="section">
 
-        <div class="section-kicker">About Website Deals</div>
+      <div class="container">
 
-        <h2>
-          A portable showcase for ready-made websites.
-        </h2>
+        <div class="section-head">
 
-        <p>
-          Website Deals is designed to make website presentation
-          simple. Instead of sending clients a long list of links,
-          you can open one showcase page and let your real websites
-          present themselves automatically.
-        </p>
+          <div>
+            <div class="eyebrow">Daily Salah</div>
 
-        <div class="wall-stats">
-
-          <div class="stat">
-            <strong>100+</strong>
-            <span>Ready Websites</span>
+            <h2 class="section-title">
+              Salah times.
+            </h2>
           </div>
 
-          <div class="stat">
-            <strong>20+</strong>
-            <span>Categories</span>
+          <p class="section-copy">
+            Current display times configured for the
+            Website Deals marketing wall.
+          </p>
+
+        </div>
+
+
+        <div class="package-grid">
+
+          <div class="info-card">
+            <h3>Fajr</h3>
+            <p>04:45 AM</p>
           </div>
 
-          <div class="stat">
-            <strong>100%</strong>
-            <span>Responsive</span>
+          <div class="info-card">
+            <h3>Dhuhr</h3>
+            <p>12:05 PM</p>
           </div>
 
-          <div class="stat">
-            <strong>24/7</strong>
-            <span>Marketplace</span>
+          <div class="info-card">
+            <h3>Asr</h3>
+            <p>04:15 PM</p>
           </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ABOUT + SUPPORT
+    ========================================== -->
+
+    <section class="section">
+
+      <div class="container info-grid">
+
+        <div id="about" class="info-card">
+
+          <div class="eyebrow">
+            About
+          </div>
+
+          <h3>
+            Website Deals
+          </h3>
+
+          <p>
+            Website Deals is a premium ready-made website
+            marketplace and presentation platform. The goal
+            is simple: make it easier to show professional
+            websites to clients, choose a package and launch
+            without unnecessary complexity.
+          </p>
+
+          <p style="margin-top:12px;">
+            The Live Marketing Wall turns the platform into
+            a portable client presentation system where real
+            websites can be displayed continuously.
+          </p>
+
+        </div>
+
+
+        <div id="support" class="info-card">
+
+          <div class="eyebrow">
+            Support
+          </div>
+
+          <h3>
+            Need help?
+          </h3>
+
+          <p>
+            For support, setup assistance, website changes
+            and service requests, visit the Website Deals
+            support center.
+          </p>
+
+          <a
+            href="https://support.websitedeals.com"
+            class="support-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Support Center ↗
+          </a>
 
         </div>
 
@@ -1317,79 +1530,75 @@
 
   </main>
 
-  <!-- =========================
+
+  <!-- =========================================
+       INSTALL PANEL
+  ========================================== -->
+
+  <div
+    class="install-panel"
+    id="installPanel"
+  >
+
+    <h3>
+      Install Website Deals
+    </h3>
+
+    <p>
+      Install this live marketing wall as an app on
+      your laptop or tablet for faster client presentations.
+    </p>
+
+    <div class="install-actions">
+
+      <button
+        type="button"
+        class="install-now"
+        id="installNowBtn"
+      >
+        Install App
+      </button>
+
+      <button
+        type="button"
+        class="install-later"
+        id="installLaterBtn"
+      >
+        Later
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
        FOOTER
-  ========================== -->
+  ========================================== -->
 
   <footer>
 
-    <div class="footer-inner">
+    <div class="container footer-inner">
 
       <div>
-        © <span id="year"></span> Website Deals. All rights reserved.
+        © 2026 Website Deals. All rights reserved.
       </div>
 
-      <div class="footer-links">
-        <a href="#package">Packages</a>
-        <a href="#websites">Websites</a>
-        <a href="#about">About</a>
-        <a
-          href="https://support.websitedeals.com"
-          target="_blank"
-          rel="noopener"
-        >
-          Support
-        </a>
+      <div>
+        Premium Website Marketplace
       </div>
 
     </div>
 
   </footer>
 
-  <!-- =========================
-       PRESENTATION MODAL
-  ========================== -->
-
-  <div class="modal" id="presentationModal">
-
-    <div class="modal-box">
-
-      <div class="modal-head">
-
-        <div class="modal-title" id="modalTitle">
-          Live Website Presentation
-        </div>
-
-        <div class="modal-actions">
-
-          <button class="mini-btn" onclick="openCurrentWebsite()">
-            Open Live ↗
-          </button>
-
-          <button class="mini-btn" onclick="closePresentation()">
-            Close
-          </button>
-
-        </div>
-
-      </div>
-
-      <iframe
-        class="modal-frame"
-        id="modalFrame"
-        title="Live Website Presentation"
-      ></iframe>
-
-    </div>
-
-  </div>
 
   <script>
-    /* =========================================================
+    /* =========================================
        WEBSITE DATA
-       Admin will later control this list through:
-       package/admin/websites.html
-    ========================================================= */
+    ========================================== */
+
+    const STORAGE_KEY = "websiteDealsWebsites";
 
     const defaultWebsites = [
       {
@@ -1402,7 +1611,7 @@
         sort: 1
       },
       {
-        id: "website-deals-demo",
+        id: "website-deals",
         name: "Website Deals",
         package: "premium",
         packageLabel: "Premium Package",
@@ -1412,770 +1621,44 @@
       }
     ];
 
-    const STORAGE_KEY = "websiteDealsWebsites";
 
-    let websites = [];
-    let currentWebsiteUrl = "";
+    function getWebsites() {
 
-    /* =========================================================
-       LOAD WEBSITE DATA
-    ========================================================= */
-
-    function loadWebsites() {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
 
-        if (saved) {
-          const parsed = JSON.parse(saved);
+        const saved =
+          JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+          );
 
-          if (Array.isArray(parsed) && parsed.length) {
-            websites = parsed
-              .filter(site => site.status !== false)
-              .sort((a, b) => Number(a.sort || 0) - Number(b.sort || 0));
-          } else {
-            websites = defaultWebsites;
-          }
-        } else {
-          websites = defaultWebsites;
+        if (
+          Array.isArray(saved) &&
+          saved.length
+        ) {
+          return saved;
         }
 
       } catch (error) {
-        console.warn("Website data could not be loaded.", error);
-        websites = defaultWebsites;
-      }
-
-      renderWebsites();
-    }
-
-    /* =========================================================
-       CREATE WEBSITE CARD
-    ========================================================= */
-
-    function renderWebsites() {
-
-      const grid = document.getElementById("websiteGrid");
-
-      if (!grid) return;
-
-      if (!websites.length) {
-        grid.innerHTML = `
-          <div style="
-            grid-column:1/-1;
-            padding:50px;
-            border:1px solid var(--line);
-            border-radius:20px;
-            text-align:center;
-            color:var(--muted);
-          ">
-            No live websites available yet.
-          </div>
-        `;
-
-        return;
-      }
-
-      grid.innerHTML = websites.map((site, index) => {
-
-        const packageName =
-          site.packageLabel ||
-          `${capitalize(site.package || "Website")} Package`;
-
-        return `
-          <article class="website-card">
-
-            <div class="website-top">
-
-              <div class="website-info">
-                <div class="website-name">
-                  ${escapeHtml(site.name || "Untitled Website")}
-                </div>
-
-                <div class="website-package">
-                  ${escapeHtml(packageName)}
-                </div>
-              </div>
-
-              <div class="live-badge">
-                <span class="live-dot"></span>
-                LIVE
-              </div>
-
-            </div>
-
-            <div
-              class="preview-viewport"
-              data-index="${index}"
-            >
-
-              <div class="loader">
-                <div class="loader-ring"></div>
-              </div>
-
-              <div
-                class="preview-camera"
-                id="camera-${index}"
-              >
-
-                <iframe
-                  class="preview-frame"
-                  src="${safeUrl(site.url)}"
-                  title="${escapeHtml(site.name || "Live Website")}"
-                  loading="${index === 0 ? "eager" : "lazy"}"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onload="websiteLoaded(${index})"
-                  onerror="websiteFailed(${index})"
-                ></iframe>
-
-              </div>
-
-              <div
-                class="human-cursor"
-                id="cursor-${index}"
-              ></div>
-
-              <div class="scroll-hint">
-                LIVE BROWSING
-              </div>
-
-            </div>
-
-            <div class="website-bottom">
-
-              <div class="status-text" id="status-${index}">
-                ● Auto browsing
-              </div>
-
-              <div class="website-actions">
-
-                <button
-                  class="mini-btn"
-                  onclick="openLive('${escapeAttribute(site.url)}')"
-                >
-                  Live ↗
-                </button>
-
-                <button
-                  class="mini-btn primary"
-                  onclick="openPresentation(${index})"
-                >
-                  Explore
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-        `;
-      }).join("");
-
-      /*
-        Give browser one paint cycle before starting movement.
-      */
-      requestAnimationFrame(() => {
-        websites.forEach((site, index) => {
-          startHumanBrowsing(index);
-        });
-      });
-    }
-
-    /* =========================================================
-       HUMAN-LIKE BROWSING ENGINE
-       
-       This intentionally behaves more like a human than
-       a constant CSS marquee.
-    ========================================================= */
-
-    const activeBrowsers = new Map();
-
-    function startHumanBrowsing(index) {
-
-      const camera = document.getElementById(`camera-${index}`);
-      const cursor = document.getElementById(`cursor-${index}`);
-      const viewport = document.querySelector(
-        `.preview-viewport[data-index="${index}"]`
-      );
-
-      if (!camera || !cursor || !viewport) return;
-
-      /*
-        Small random delay means all cards don't start together.
-      */
-
-      const initialDelay =
-        1200 +
-        Math.floor(Math.random() * 3500);
-
-      setTimeout(() => {
-
-        const browser = {
-          running: true,
-          paused: false,
-          direction: 1,
-          position: 0,
-          maxDistance: 1000,
-          viewportHeight: viewport.clientHeight
-        };
-
-        activeBrowsers.set(index, browser);
-
-        runHumanCycle(index);
-
-      }, initialDelay);
-    }
-
-    function runHumanCycle(index) {
-
-      const browser = activeBrowsers.get(index);
-
-      if (!browser || !browser.running) return;
-
-      const camera = document.getElementById(`camera-${index}`);
-      const cursor = document.getElementById(`cursor-${index}`);
-      const viewport = document.querySelector(
-        `.preview-viewport[data-index="${index}"]`
-      );
-
-      if (!camera || !cursor || !viewport) return;
-
-      /*
-        The iframe is deliberately taller than the visible card.
-        The camera moves over it.
-      */
-
-      const iframeHeight = 1800;
-      const viewportHeight = viewport.clientHeight;
-
-      browser.maxDistance =
-        Math.max(250, iframeHeight - viewportHeight);
-
-      /*
-        Randomly choose a human-like scroll chunk.
-      */
-
-      const chunkOptions = [
-        120,
-        160,
-        190,
-        230,
-        270,
-        310,
-        360
-      ];
-
-      const chunk =
-        chunkOptions[
-          Math.floor(Math.random() * chunkOptions.length)
-        ];
-
-      let nextPosition =
-        browser.position +
-        (chunk * browser.direction);
-
-      /*
-        Near bottom:
-        stay there before returning.
-      */
-
-      if (
-        browser.direction === 1 &&
-        nextPosition >= browser.maxDistance
-      ) {
-
-        nextPosition = browser.maxDistance;
-
-        browser.position = nextPosition;
-
-        moveCamera(
-          camera,
-          nextPosition,
-          randomScrollDuration()
+        console.warn(
+          "Could not read website data.",
+          error
         );
-
-        moveFakeCursor(cursor, viewport, true);
-
-        const bottomPause =
-          1800 +
-          Math.floor(Math.random() * 2500);
-
-        setTimeout(() => {
-
-          browser.direction = -1;
-
-          runHumanCycle(index);
-
-        }, bottomPause);
-
-        return;
       }
 
-      /*
-        At top:
-        pause before starting another visit.
-      */
+      return defaultWebsites;
 
-      if (
-        browser.direction === -1 &&
-        nextPosition <= 0
-      ) {
-
-        nextPosition = 0;
-
-        browser.position = 0;
-
-        moveCamera(
-          camera,
-          0,
-          1300
-        );
-
-        moveFakeCursor(cursor, viewport, false);
-
-        const topPause =
-          1800 +
-          Math.floor(Math.random() * 3000);
-
-        setTimeout(() => {
-
-          browser.direction = 1;
-
-          runHumanCycle(index);
-
-        }, topPause);
-
-        return;
-      }
-
-      browser.position = nextPosition;
-
-      /*
-        Human scrolling uses different durations.
-      */
-
-      const duration =
-        randomScrollDuration();
-
-      moveCamera(
-        camera,
-        nextPosition,
-        duration
-      );
-
-      /*
-        Cursor movement happens at almost the same time.
-      */
-
-      moveFakeCursor(
-        cursor,
-        viewport,
-        false
-      );
-
-      /*
-        Sometimes human "reads" a section.
-      */
-
-      const shouldPause =
-        Math.random() < 0.22;
-
-      const pauseTime =
-        shouldPause
-          ? 1000 + Math.floor(Math.random() * 2300)
-          : 80 + Math.floor(Math.random() * 250);
-
-      setTimeout(() => {
-
-        if (!browser.running) return;
-
-        runHumanCycle(index);
-
-      }, duration + pauseTime);
     }
 
-    /* =========================================================
-       CAMERA MOVEMENT
-    ========================================================= */
 
-    function moveCamera(camera, position, duration) {
+    /* =========================================
+       WEBSITE CARD
+    ========================================== */
 
-      camera.style.transition =
-        `transform ${duration}ms cubic-bezier(.22,.61,.36,1)`;
+    const websiteGrid =
+      document.getElementById("websiteGrid");
 
-      camera.style.transform =
-        `translate3d(0, -${position}px, 0)`;
-    }
 
-    function randomScrollDuration() {
-
-      const values = [
-        900,
-        1100,
-        1250,
-        1450,
-        1650,
-        1900
-      ];
-
-      return values[
-        Math.floor(Math.random() * values.length)
-      ];
-    }
-
-    /* =========================================================
-       FAKE HUMAN CURSOR
-    ========================================================= */
-
-    function moveFakeCursor(cursor, viewport, atBottom) {
-
-      cursor.style.opacity = ".82";
-
-      const width = viewport.clientWidth;
-      const height = viewport.clientHeight;
-
-      const positions = [
-        {
-          x: width * .22,
-          y: height * .26
-        },
-        {
-          x: width * .72,
-          y: height * .30
-        },
-        {
-          x: width * .48,
-          y: height * .52
-        },
-        {
-          x: width * .78,
-          y: height * .68
-        },
-        {
-          x: width * .25,
-          y: height * .74
-        }
-      ];
-
-      let position;
-
-      if (atBottom) {
-
-        position = {
-          x: width * (.35 + Math.random() * .3),
-          y: height * .5
-        };
-
-      } else {
-
-        position =
-          positions[
-            Math.floor(Math.random() * positions.length)
-          ];
-      }
-
-      cursor.style.left =
-        `${Math.max(8, position.x)}px`;
-
-      cursor.style.top =
-        `${Math.max(8, position.y)}px`;
-    }
-
-    /* =========================================================
-       PAUSE ON HOVER
-       
-       This gives a natural interaction:
-       if client puts mouse over card, auto browsing pauses.
-    ========================================================= */
-
-    document.addEventListener("mouseover", event => {
-
-      const card =
-        event.target.closest(".website-card");
-
-      if (!card) return;
-
-      const viewport =
-        card.querySelector(".preview-viewport");
-
-      if (!viewport) return;
-
-      const index =
-        Number(viewport.dataset.index);
-
-      const browser =
-        activeBrowsers.get(index);
-
-      if (browser) {
-        browser.running = false;
-      }
-
-      const status =
-        document.getElementById(`status-${index}`);
-
-      if (status) {
-        status.textContent =
-          "● Paused on hover";
-      }
-    });
-
-    document.addEventListener("mouseout", event => {
-
-      const card =
-        event.target.closest(".website-card");
-
-      if (!card) return;
-
-      if (card.contains(event.relatedTarget)) return;
-
-      const viewport =
-        card.querySelector(".preview-viewport");
-
-      if (!viewport) return;
-
-      const index =
-        Number(viewport.dataset.index);
-
-      const oldBrowser =
-        activeBrowsers.get(index);
-
-      if (oldBrowser) {
-        oldBrowser.running = false;
-      }
-
-      /*
-        Restart with a fresh cycle.
-      */
-
-      const browser = {
-        running: true,
-        paused: false,
-        direction: 1,
-        position: 0
-      };
-
-      activeBrowsers.set(index, browser);
-
-      const camera =
-        document.getElementById(`camera-${index}`);
-
-      if (camera) {
-
-        const currentTransform =
-          getComputedStyle(camera).transform;
-
-        /*
-          Keep current position visually rather than jumping.
-        */
-
-        if (currentTransform !== "none") {
-          // Browser continues from current camera position.
-        }
-      }
-
-      setTimeout(() => {
-        runHumanCycle(index);
-      }, 700);
-
-      const status =
-        document.getElementById(`status-${index}`);
-
-      if (status) {
-        status.textContent =
-          "● Auto browsing";
-      }
-    });
-
-    /* =========================================================
-       IFRAME STATUS
-    ========================================================= */
-
-    function websiteLoaded(index) {
-
-      const viewport =
-        document.querySelector(
-          `.preview-viewport[data-index="${index}"]`
-        );
-
-      if (!viewport) return;
-
-      const loader =
-        viewport.querySelector(".loader");
-
-      if (loader) {
-        loader.style.display = "none";
-      }
-    }
-
-    function websiteFailed(index) {
-
-      const viewport =
-        document.querySelector(
-          `.preview-viewport[data-index="${index}"]`
-        );
-
-      if (!viewport) return;
-
-      const loader =
-        viewport.querySelector(".loader");
-
-      if (loader) {
-        loader.innerHTML = `
-          <div style="
-            text-align:center;
-            padding:20px;
-            color:#555;
-            font-family:Inter,sans-serif;
-            font-size:12px;
-          ">
-            <strong style="display:block;margin-bottom:7px;">
-              Preview unavailable
-            </strong>
-            The live website may not allow iframe preview.
-          </div>
-        `;
-      }
-    }
-
-    /* =========================================================
-       EXPLORE / PRESENTATION
-    ========================================================= */
-
-    function openPresentation(index) {
-
-      const site = websites[index];
-
-      if (!site) return;
-
-      currentWebsiteUrl = site.url;
-
-      const modal =
-        document.getElementById("presentationModal");
-
-      const frame =
-        document.getElementById("modalFrame");
-
-      const title =
-        document.getElementById("modalTitle");
-
-      title.textContent =
-        `${site.name} — Live Website`;
-
-      frame.src = safeUrl(site.url);
-
-      modal.classList.add("show");
-
-      document.body.style.overflow = "hidden";
-    }
-
-    function closePresentation() {
-
-      const modal =
-        document.getElementById("presentationModal");
-
-      const frame =
-        document.getElementById("modalFrame");
-
-      modal.classList.remove("show");
-
-      frame.src = "about:blank";
-
-      document.body.style.overflow = "";
-    }
-
-    function openCurrentWebsite() {
-
-      if (!currentWebsiteUrl) return;
-
-      window.open(
-        safeUrl(currentWebsiteUrl),
-        "_blank",
-        "noopener,noreferrer"
-      );
-    }
-
-    function openLive(url) {
-
-      if (!url) return;
-
-      window.open(
-        safeUrl(url),
-        "_blank",
-        "noopener,noreferrer"
-      );
-    }
-
-    /* =========================================================
-       THEME
-    ========================================================== */
-
-    const THEME_KEY = "websiteDealsTheme";
-
-    function loadTheme() {
-
-      const saved =
-        localStorage.getItem(THEME_KEY);
-
-      if (saved === "light") {
-        document.body.classList.add("light");
-      }
-    }
-
-    function toggleTheme() {
-
-      document.body.classList.toggle("light");
-
-      localStorage.setItem(
-        THEME_KEY,
-        document.body.classList.contains("light")
-          ? "light"
-          : "dark"
-      );
-    }
-
-    /* =========================================================
-       MOBILE MENU
-    ========================================================== */
-
-    function toggleMobileMenu() {
-
-      const nav =
-        document.querySelector(".nav-links");
-
-      if (!nav) return;
-
-      const isOpen =
-        nav.style.display === "flex";
-
-      nav.style.display =
-        isOpen ? "" : "flex";
-
-      if (!isOpen) {
-
-        nav.style.position = "absolute";
-        nav.style.top = "64px";
-        nav.style.left = "16px";
-        nav.style.right = "16px";
-        nav.style.padding = "10px";
-        nav.style.flexDirection = "column";
-        nav.style.alignItems = "stretch";
-        nav.style.background = "var(--card)";
-        nav.style.border = "1px solid var(--line)";
-        nav.style.borderRadius = "16px";
-      }
-    }
-
-    /* =========================================================
-       HELPERS
-    ========================================================== */
-
-    function capitalize(value) {
-
-      if (!value) return "";
-
-      return value.charAt(0).toUpperCase() +
-        value.slice(1);
-    }
-
-    function escapeHtml(value) {
+    function escapeHTML(value) {
 
       return String(value ?? "")
         .replace(/&/g, "&amp;")
@@ -2183,123 +1666,640 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
     }
 
-    function escapeAttribute(value) {
 
-      return String(value ?? "")
-        .replace(/\\/g, "\\\\")
-        .replace(/'/g, "\\'");
+    function renderWebsites() {
+
+      const websites =
+        getWebsites()
+          .filter(site => site.status !== false)
+          .sort(
+            (a, b) =>
+              Number(a.sort || 999) -
+              Number(b.sort || 999)
+          );
+
+
+      if (!websites.length) {
+
+        websiteGrid.innerHTML = `
+          <div class="info-card">
+            <h3>No websites yet</h3>
+            <p>
+              Add real website links from the admin panel.
+            </p>
+          </div>
+        `;
+
+        return;
+      }
+
+
+      websiteGrid.innerHTML =
+        websites.map((site, index) => {
+
+          const siteId =
+            escapeHTML(site.id || `site-${index}`);
+
+          const siteName =
+            escapeHTML(
+              site.name || "Website"
+            );
+
+          const packageLabel =
+            escapeHTML(
+              site.packageLabel ||
+              "Website Package"
+            );
+
+          const siteUrl =
+            escapeHTML(
+              site.url || "#"
+            );
+
+
+          return `
+            <article
+              class="website-card"
+              data-site-id="${siteId}"
+            >
+
+              <div class="website-top">
+
+                <div class="website-name">
+
+                  <strong>
+                    ${siteName}
+                  </strong>
+
+                  <span>
+                    ${packageLabel}
+                  </span>
+
+                </div>
+
+                <span class="live-badge">
+                  Live
+                </span>
+
+              </div>
+
+
+              <div class="preview-viewport">
+
+                <div class="preview-camera">
+
+                  <iframe
+                    class="preview-frame"
+                    src="${siteUrl}"
+                    title="${siteName} live website preview"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                  ></iframe>
+
+                </div>
+
+
+                <div class="fake-cursor"></div>
+
+                <div class="preview-shade"></div>
+
+              </div>
+
+
+              <div class="website-bottom">
+
+                <div class="website-meta">
+
+                  <span class="website-package">
+                    ${packageLabel}
+                  </span>
+
+                  <span class="website-url">
+                    ${siteUrl}
+                  </span>
+
+                </div>
+
+                <a
+                  href="./presentation/index.html?site=${encodeURIComponent(site.id || "")}"
+                  class="explore-btn"
+                >
+                  Explore Live Website ↗
+                </a>
+
+              </div>
+
+            </article>
+          `;
+
+        }).join("");
+
+
+      initializeWebsiteCameras();
+
     }
 
-    function safeUrl(value) {
+
+    /* =========================================
+       HUMAN-LIKE CAMERA
+    ========================================== */
+
+    function initializeWebsiteCameras() {
+
+      const cards =
+        document.querySelectorAll(".website-card");
+
+
+      cards.forEach((card, index) => {
+
+        const viewport =
+          card.querySelector(".preview-viewport");
+
+        const camera =
+          card.querySelector(".preview-camera");
+
+        const cursor =
+          card.querySelector(".fake-cursor");
+
+        const iframe =
+          card.querySelector(".preview-frame");
+
+
+        if (!viewport || !camera || !cursor) {
+          return;
+        }
+
+
+        let timer = null;
+        let stopped = false;
+        let position = 0;
+
+
+        const viewportHeight =
+          viewport.clientHeight;
+
+        const pageHeight = 1900;
+
+        const maxPosition =
+          Math.max(
+            0,
+            pageHeight - viewportHeight
+          );
+
+
+        function random(min, max) {
+
+          return Math.floor(
+            Math.random() *
+            (max - min + 1)
+          ) + min;
+
+        }
+
+
+        function moveCursor() {
+
+          const x =
+            random(
+              18,
+              Math.max(
+                20,
+                viewport.clientWidth - 35
+              )
+            );
+
+          const y =
+            random(
+              35,
+              Math.max(
+                45,
+                viewportHeight - 45
+              )
+            );
+
+          cursor.style.left = `${x}px`;
+          cursor.style.top = `${y}px`;
+
+        }
+
+
+        function applyPosition() {
+
+          camera.style.transform =
+            `translate3d(0, -${position}px, 0)`;
+
+        }
+
+
+        function scheduleNext() {
+
+          clearTimeout(timer);
+
+
+          if (stopped) {
+            return;
+          }
+
+
+          /*
+            Small natural reading pauses.
+          */
+
+          if (Math.random() < .24) {
+
+            timer =
+              setTimeout(
+                scheduleNext,
+                random(1200, 3000)
+              );
+
+            moveCursor();
+
+            return;
+          }
+
+
+          if (position >= maxPosition) {
+
+            timer =
+              setTimeout(
+                () => {
+
+                  if (stopped) {
+                    return;
+                  }
+
+                  position = 0;
+
+                  camera.style.transition =
+                    "transform 1800ms cubic-bezier(.22,.61,.36,1)";
+
+                  applyPosition();
+                  moveCursor();
+
+
+                  timer =
+                    setTimeout(
+                      scheduleNext,
+                      random(900, 1700)
+                    );
+
+                },
+                random(1800, 4200)
+              );
+
+            return;
+          }
+
+
+          const chunk =
+            random(95, 245);
+
+          position =
+            Math.min(
+              maxPosition,
+              position + chunk
+            );
+
+
+          const duration =
+            random(1100, 2100);
+
+
+          camera.style.transition =
+            `transform ${duration}ms cubic-bezier(.22,.61,.36,1)`;
+
+
+          /*
+            Tiny horizontal cursor drift
+            makes the preview feel more human.
+          */
+
+          moveCursor();
+
+          applyPosition();
+
+
+          timer =
+            setTimeout(
+              scheduleNext,
+              duration + random(250, 900)
+            );
+
+        }
+
+
+        function start() {
+
+          stopped = false;
+
+          clearTimeout(timer);
+
+          /*
+            Each card gets a slightly different
+            starting delay.
+          */
+
+          timer =
+            setTimeout(
+              scheduleNext,
+              random(
+                1000 + index * 350,
+                3000 + index * 600
+              )
+            );
+
+        }
+
+
+        function stop() {
+
+          stopped = true;
+
+          clearTimeout(timer);
+
+        }
+
+
+        /*
+          Pause when client hovers the card.
+          This lets them inspect the website.
+        */
+
+        card.addEventListener(
+          "mouseenter",
+          stop
+        );
+
+
+        card.addEventListener(
+          "mouseleave",
+          start
+        );
+
+
+        /*
+          If iframe refuses framing, the card
+          still remains usable through Explore.
+        */
+
+        if (iframe) {
+
+          iframe.addEventListener(
+            "load",
+            () => {
+              moveCursor();
+            }
+          );
+
+        }
+
+
+        start();
+
+      });
+
+    }
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================== */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    menuBtn.addEventListener(
+      "click",
+      () => {
+
+        mobileMenu.classList.toggle("open");
+
+      }
+    );
+
+
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+            mobileMenu.classList.remove("open");
+          }
+        );
+
+      });
+
+
+    /* =========================================
+       NETWORK STATUS
+    ========================================== */
+
+    const networkDot =
+      document.getElementById("networkDot");
+
+    const networkText =
+      document.getElementById("networkText");
+
+
+    function updateNetworkStatus() {
+
+      const online =
+        navigator.onLine;
+
+
+      networkDot.classList.toggle(
+        "offline",
+        !online
+      );
+
+
+      networkText.textContent =
+        online
+          ? "Online"
+          : "Offline";
+
+    }
+
+
+    window.addEventListener(
+      "online",
+      updateNetworkStatus
+    );
+
+    window.addEventListener(
+      "offline",
+      updateNetworkStatus
+    );
+
+    updateNetworkStatus();
+
+
+    /* =========================================
+       PWA INSTALL
+    ========================================== */
+
+    let deferredInstallPrompt = null;
+
+
+    const installTopBtn =
+      document.getElementById("installTopBtn");
+
+    const installPanel =
+      document.getElementById("installPanel");
+
+    const installNowBtn =
+      document.getElementById("installNowBtn");
+
+    const installLaterBtn =
+      document.getElementById("installLaterBtn");
+
+
+    window.addEventListener(
+      "beforeinstallprompt",
+      (event) => {
+
+        event.preventDefault();
+
+        deferredInstallPrompt = event;
+
+        installTopBtn.hidden = false;
+
+        setTimeout(
+          () => {
+            installPanel.classList.add("show");
+          },
+          3500
+        );
+
+      }
+    );
+
+
+    async function installApp() {
+
+      if (!deferredInstallPrompt) {
+        return;
+      }
+
+
+      deferredInstallPrompt.prompt();
+
 
       try {
 
-        const url =
-          new URL(String(value));
+        await deferredInstallPrompt.userChoice;
 
-        if (
-          url.protocol === "https:" ||
-          url.protocol === "http:"
-        ) {
-          return url.href;
-        }
+      } catch (error) {
 
-      } catch (error) {}
+        console.warn(
+          "Install prompt closed.",
+          error
+        );
 
-      return "about:blank";
+      }
+
+
+      deferredInstallPrompt = null;
+
+      installTopBtn.hidden = true;
+
+      installPanel.classList.remove("show");
+
     }
 
-    /* =========================================================
-       CLOSE MODAL ON BACKDROP
-    ========================================================== */
 
-    document
-      .getElementById("presentationModal")
-      .addEventListener("click", event => {
+    installTopBtn.addEventListener(
+      "click",
+      installApp
+    );
 
-        if (
-          event.target.id === "presentationModal"
-        ) {
-          closePresentation();
-        }
-      });
 
-    /* ESC = CLOSE */
+    installNowBtn.addEventListener(
+      "click",
+      installApp
+    );
 
-    document.addEventListener("keydown", event => {
 
-      if (event.key === "Escape") {
-        closePresentation();
+    installLaterBtn.addEventListener(
+      "click",
+      () => {
+        installPanel.classList.remove("show");
       }
-    });
+    );
 
-    /* =========================================================
-       ACTIVE NAV
-    ========================================================== */
 
-    const sections =
-      document.querySelectorAll("main section[id]");
+    window.addEventListener(
+      "appinstalled",
+      () => {
 
-    const navItems =
-      document.querySelectorAll(".nav-links a[href^='#']");
+        deferredInstallPrompt = null;
 
-    const observer =
-      new IntersectionObserver(
-        entries => {
+        installTopBtn.hidden = true;
 
-          entries.forEach(entry => {
+        installPanel.classList.remove("show");
 
-            if (!entry.isIntersecting) return;
+      }
+    );
 
-            navItems.forEach(link => {
 
-              link.classList.remove("active");
+    /* =========================================
+       SERVICE WORKER
+    ========================================== */
 
-              if (
-                link.getAttribute("href") ===
-                `#${entry.target.id}`
-              ) {
-                link.classList.add("active");
-              }
-            });
+    if (
+      "serviceWorker" in navigator
+    ) {
 
-          });
+      window.addEventListener(
+        "load",
+        async () => {
 
-        },
-        {
-          threshold: .25
+          try {
+
+            const registration =
+              await navigator.serviceWorker.register(
+                "./sw.js",
+                {
+                  scope: "./"
+                }
+              );
+
+
+            console.log(
+              "Website Deals PWA registered.",
+              registration.scope
+            );
+
+          } catch (error) {
+
+            console.warn(
+              "PWA registration failed:",
+              error
+            );
+
+          }
+
         }
       );
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    }
 
-    /* =========================================================
-       RESIZE
-    ========================================================== */
 
-    window.addEventListener("resize", () => {
+    /* =========================================
+       INITIAL RENDER
+    ========================================== */
 
-      /*
-        No horizontal movement.
-        Cards remain fixed.
-        Camera movement automatically adapts.
-      */
-
-    });
-
-    /* =========================================================
-       START
-    ========================================================== */
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    loadTheme();
-    loadWebsites();
+    renderWebsites();
 
   </script>
 
