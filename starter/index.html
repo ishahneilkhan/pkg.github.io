@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080909"
+  >
+
+  <meta
+    name="description"
+    content="Website Deals Starter Package — Complete ready-made website with hosting, SSL, Firebase integration, responsive design and custom domain connection."
+  >
+
+  <title>Starter Package — Website Deals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #080909;
+      --bg-soft: #0d0f0f;
+      --card: #111313;
+      --card-2: #151818;
+      --line: rgba(255,255,255,.09);
+      --line-strong: rgba(255,255,255,.15);
+      --text: #f5f7f6;
+      --muted: #9da5a2;
+      --lime: #b7ff00;
+      --lime-soft: rgba(183,255,0,.10);
+      --lime-border: rgba(183,255,0,.28);
+      --danger: #ff6b6b;
+      --shadow: 0 30px 80px rgba(0,0,0,.38);
+      --radius: 26px;
+      --max: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(183,255,0,.07),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(255,255,255,.035),
+          transparent 28%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Hind Siliguri", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .025;
+      background-image:
+        linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 80%
+      );
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max)
+      );
+      margin-inline: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,9,9,.78);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: var(--lime);
+      color: #080909;
+      font-size: 16px;
+      font-weight: 1000;
+      box-shadow:
+        0 0 0 6px rgba(183,255,0,.06),
+        0 12px 30px rgba(183,255,0,.12);
+    }
+
+    .brand-text {
+      font-size: 17px;
+    }
+
+    .brand-text span {
+      color: var(--lime);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 10px 13px;
+      color: var(--muted);
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+    }
+
+    .nav-cta {
+      padding: 11px 17px !important;
+      background: var(--lime) !important;
+      color: #080909 !important;
+      font-weight: 900 !important;
+    }
+
+    /* =========================
+       BREADCRUMB
+    ========================= */
+
+    .breadcrumb-wrap {
+      padding-top: 34px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--lime);
+    }
+
+    .breadcrumb .current {
+      color: var(--text);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      padding: 42px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid var(--lime-border);
+      border-radius: 999px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 12px var(--lime);
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--lime);
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 900;
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--lime);
+      color: #080909;
+      border-color: var(--lime);
+      box-shadow: 0 16px 35px rgba(183,255,0,.12);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.07);
+      border-color: var(--line-strong);
+    }
+
+    /* =========================
+       PRICE CARD
+    ========================= */
+
+    .price-card {
+      position: relative;
+      border: 1px solid var(--lime-border);
+      border-radius: 32px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.09),
+          rgba(255,255,255,.025) 40%,
+          rgba(255,255,255,.015)
+        ),
+        var(--card);
+      padding: 30px;
+      box-shadow:
+        var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,.05);
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(183,255,0,.08);
+      filter: blur(50px);
+      right: -100px;
+      top: -120px;
+    }
+
+    .price-label {
+      position: relative;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+
+    .price {
+      position: relative;
+      margin: 12px 0 8px;
+      font-size: 58px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.055em;
+    }
+
+    .price small {
+      font-size: 16px;
+      color: var(--muted);
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .price-note {
+      position: relative;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .included {
+      position: relative;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      display: grid;
+      gap: 13px;
+    }
+
+    .included-item {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .check {
+      flex: 0 0 20px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--lime-soft);
+      color: var(--lime);
+      border: 1px solid var(--lime-border);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    /* =========================
+       TRUST STRIP
+    ========================= */
+
+    .trust-strip {
+      border-block: 1px solid var(--line);
+      background: rgba(255,255,255,.018);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .trust-item {
+      padding: 25px 20px;
+      text-align: center;
+      border-right: 1px solid var(--line);
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-value {
+      display: block;
+      color: var(--lime);
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 3px;
+    }
+
+    .trust-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 45px;
+    }
+
+    .section-kicker {
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .feature {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.025);
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: var(--lime-border);
+      background: rgba(183,255,0,.035);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: var(--lime);
+      background: var(--lime-soft);
+      border: 1px solid var(--lime-border);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .feature h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       WHAT YOU GET
+    ========================= */
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .details-card {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--card);
+      padding: 30px;
+    }
+
+    .details-card.highlight {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.09),
+          transparent 55%
+        ),
+        var(--card);
+      border-color: var(--lime-border);
+    }
+
+    .details-card h3 {
+      font-size: 21px;
+      margin-bottom: 18px;
+    }
+
+    .details-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .details-list li {
+      list-style: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #dfe4e2;
+      font-size: 14px;
+    }
+
+    .details-list li::before {
+      content: "✓";
+      flex: 0 0 21px;
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--lime);
+      background: var(--lime-soft);
+      border: 1px solid var(--lime-border);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    /* =========================
+       PROCESS
+    ========================= */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .step {
+      position: relative;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card);
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    .faq {
+      max-width: 900px;
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.025);
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 22px;
+      font-size: 14px;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--lime);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      padding: 0 22px 21px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      margin-bottom: 90px;
+    }
+
+    .cta-card {
+      position: relative;
+      overflow: hidden;
+      padding: 55px;
+      border-radius: 30px;
+      border: 1px solid var(--lime-border);
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(183,255,0,.18),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.09),
+          rgba(255,255,255,.025)
+        ),
+        var(--card);
+      text-align: center;
+    }
+
+    .cta-card h2 {
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .cta-card p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 35px 0;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 17px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--lime);
+    }
+
+    .copyright {
+      font-size: 11px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(
+          calc(100% - 28px),
+          var(--max)
+        );
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(43px, 14vw, 65px);
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .price-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .trust-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .feature-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .cta-card {
+        padding: 35px 22px;
+        border-radius: 24px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="topbar">
+    <div class="container nav">
+
+      <a
+        class="brand"
+        href="../index.html"
+        aria-label="Website Deals Home"
+      >
+        <span class="brand-mark">WD</span>
+
+        <span class="brand-text">
+          Website <span>Deals</span>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#packages">Packages</a>
+        <a href="../index.html#websites">Websites</a>
+        <a href="../index.html#about">About</a>
+        <a
+          class="nav-cta"
+          href="https://support.websitedeals.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Support
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       BREADCRUMB
+  ========================== -->
+
+  <main>
+
+    <div class="container breadcrumb-wrap">
+      <div class="breadcrumb">
+        <a href="../index.html">Website Deals</a>
+        <span>›</span>
+        <a href="../index.html#packages">Packages</a>
+        <span>›</span>
+        <span class="current">Starter</span>
+      </div>
+    </div>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Starter Package
+          </div>
+
+          <h1>
+            Your website,
+            <span>ready to launch.</span>
+          </h1>
+
+          <p class="hero-copy">
+            A complete ready-made website package for businesses,
+            professionals and growing brands. Get your website online
+            with hosting, SSL, responsive design, Firebase integration
+            and custom domain connection.
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              class="btn btn-primary"
+              href="mailto:hello@websitedeals.com?subject=Starter%20Package%20Request"
+            >
+              Get This Website
+              <span>↗</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="../index.html#websites"
+            >
+              Explore Websites
+              <span>→</span>
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <aside class="price-card">
+
+          <div class="price-label">
+            Starter Package
+          </div>
+
+          <div class="price">
+            ৳549
+            <small>/month</small>
+          </div>
+
+          <div class="price-note">
+            Simple monthly website service for businesses and individuals.
+          </div>
+
+          <div class="included">
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Complete ready-made website
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Free hosting & SSL
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Firebase integration
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Custom domain connection
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Responsive mobile design
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Basic SEO & support
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         TRUST STRIP
+    ========================== -->
+
+    <div class="trust-strip">
+
+      <div class="container trust-grid">
+
+        <div class="trust-item">
+          <span class="trust-value">100%</span>
+          <span class="trust-label">Responsive</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-value">SSL</span>
+          <span class="trust-label">Included</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-value">24/7</span>
+          <span class="trust-label">Online Website</span>
+        </div>
+
+        <div class="trust-item">
+          <span class="trust-value">৳549</span>
+          <span class="trust-label">Per Month</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">
+            What's Included
+          </div>
+
+          <h2>
+            Everything you need
+            to go online.
+          </h2>
+
+          <p>
+            Starter is designed to remove the technical hassle.
+            Choose a ready-made website, connect your domain and
+            start presenting your business professionally.
+          </p>
+        </div>
+
+
+        <div class="feature-grid">
+
+          <article class="feature">
+            <div class="feature-icon">01</div>
+            <h3>Ready-Made Website</h3>
+            <p>
+              Select from our professionally designed ready-made
+              website collection.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">02</div>
+            <h3>Free Hosting</h3>
+            <p>
+              Your website stays online through the managed hosting
+              service included with your active subscription.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">03</div>
+            <h3>Free SSL</h3>
+            <p>
+              HTTPS security is included so your visitors can browse
+              with confidence.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">04</div>
+            <h3>Firebase Integration</h3>
+            <p>
+              Basic Firebase integration can be used for supported
+              forms, data and website functionality.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">05</div>
+            <h3>Custom Domain</h3>
+            <p>
+              Connect your own domain and build a professional
+              branded web presence.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">06</div>
+            <h3>Responsive Design</h3>
+            <p>
+              The website adapts beautifully across desktop,
+              tablet and mobile devices.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">07</div>
+            <h3>Contact Form</h3>
+            <p>
+              Give visitors a simple way to contact your business
+              through your website.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">08</div>
+            <h3>Basic SEO</h3>
+            <p>
+              Essential on-page SEO structure helps your website
+              establish a better search presence.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">09</div>
+            <h3>Basic Support</h3>
+            <p>
+              Get basic assistance for website-related issues while
+              your monthly service remains active.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         DETAILS
+    ========================== -->
+
+    <section class="section" id="details">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">
+            Package Details
+          </div>
+
+          <h2>
+            A simple package.
+            A serious website.
+          </h2>
+
+          <p>
+            Starter focuses on the essentials without unnecessary
+            complexity.
+          </p>
+        </div>
+
+
+        <div class="details-grid">
+
+          <div class="details-card highlight">
+
+            <h3>
+              Perfect for
+            </h3>
+
+            <ul class="details-list">
+
+              <li>
+                Small businesses
+              </li>
+
+              <li>
+                Personal brands
+              </li>
+
+              <li>
+                Freelancers
+              </li>
+
+              <li>
+                Local services
+              </li>
+
+              <li>
+                Restaurants & shops
+              </li>
+
+              <li>
+                Professionals
+              </li>
+
+              <li>
+                New businesses launching online
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="details-card">
+
+            <h3>
+              Service includes
+            </h3>
+
+            <ul class="details-list">
+
+              <li>
+                Ready-made website design
+              </li>
+
+              <li>
+                Managed hosting
+              </li>
+
+              <li>
+                SSL / HTTPS
+              </li>
+
+              <li>
+                Firebase integration where applicable
+              </li>
+
+              <li>
+                Custom domain connection
+              </li>
+
+              <li>
+                Contact form
+              </li>
+
+              <li>
+                Responsive layout
+              </li>
+
+              <li>
+                Basic SEO setup
+              </li>
+
+              <li>
+                Basic support
+              </li>
+
+              <li>
+                Uptime monitoring
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">
+            How It Works
+          </div>
+
+          <h2>
+            From selection
+            to live website.
+          </h2>
+
+          <p>
+            No complicated setup. Pick a website, provide your
+            business information and let the setup process begin.
+          </p>
+        </div>
+
+
+        <div class="process-grid">
+
+          <article class="step">
+
+            <div class="step-number">
+              01
+            </div>
+
+            <h3>
+              Choose
+            </h3>
+
+            <p>
+              Browse the Website Deals showcase and select a
+              ready-made website you like.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              02
+            </div>
+
+            <h3>
+              Request
+            </h3>
+
+            <p>
+              Contact Website Deals and provide your preferred
+              website, business name and domain details.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              03
+            </div>
+
+            <h3>
+              Setup
+            </h3>
+
+            <p>
+              Your selected website is prepared and connected to
+              the managed hosting service.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              04
+            </div>
+
+            <h3>
+              Go Live
+            </h3>
+
+            <p>
+              Connect your custom domain and start sharing your
+              professional website with customers.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAQ
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-kicker">
+            FAQ
+          </div>
+
+          <h2>
+            Starter questions,
+            answered.
+          </h2>
+        </div>
+
+
+        <div class="faq">
+
+          <details open>
+            <summary>
+              Is ৳549 a one-time payment?
+            </summary>
+
+            <p>
+              No. Starter is a monthly subscription at ৳549/month.
+              The website service, hosting and included support remain
+              active while the subscription is active.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Can I use my own domain?
+            </summary>
+
+            <p>
+              Yes. A custom domain can be connected to your selected
+              website. Domain registration itself may be a separate
+              cost depending on the domain.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Is hosting included?
+            </summary>
+
+            <p>
+              Yes. Managed hosting is included with the active
+              Starter subscription.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Is SSL included?
+            </summary>
+
+            <p>
+              Yes. SSL / HTTPS is included as part of the managed
+              website service.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Can the website be customized?
+            </summary>
+
+            <p>
+              Basic setup and content adjustments can be discussed.
+              Larger custom features or extensive design changes may
+              require an additional service.
+            </p>
+          </details>
+
+
+          <details>
+            <summary>
+              Can I upgrade later?
+            </summary>
+
+            <p>
+              Yes. You can move to the Business or Premium package
+              when your website needs more advanced functionality.
+            </p>
+          </details>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="cta-card">
+
+          <div class="section-kicker">
+            Ready to Start?
+          </div>
+
+          <h2>
+            Get your website
+            online for ৳549/month.
+          </h2>
+
+          <p>
+            Choose a ready-made design, connect your domain and
+            start building your professional online presence.
+          </p>
+
+          <div class="cta-actions">
+
+            <a
+              class="btn btn-primary"
+              href="mailto:hello@websitedeals.com?subject=Starter%20Package%20Request"
+            >
+              Get Starter Package
+              <span>↗</span>
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="https://support.websitedeals.com"
+              target="_blank"
+              rel="noopener"
+            >
+              Contact Support
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="../index.html#websites"
+            >
+              Explore Live Websites
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        <div class="footer-brand">
+          Website Deals
+        </div>
+
+        <div class="copyright">
+          Premium ready-made websites for modern businesses.
+        </div>
+      </div>
+
+      <div class="footer-links">
+
+        <a href="../index.html">
+          Home
+        </a>
+
+        <a href="../index.html#packages">
+          Packages
+        </a>
+
+        <a href="../index.html#websites">
+          Websites
+        </a>
+
+        <a
+          href="https://support.websitedeals.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Support
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
