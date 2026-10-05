@@ -1,1 +1,3134 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080909"
+  >
+
+  <meta
+    name="description"
+    content="Website Deals Business Package — Premium website with advanced Firebase, admin panel, payments, analytics, SEO, backup, security and priority support."
+  >
+
+  <title>Business Package — Website Deals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #080909;
+      --bg-soft: #0d0f0f;
+      --card: #111313;
+      --card-2: #151818;
+
+      --line: rgba(255,255,255,.09);
+      --line-strong: rgba(255,255,255,.15);
+
+      --text: #f5f7f6;
+      --muted: #9da5a2;
+
+      --lime: #b7ff00;
+      --lime-soft: rgba(183,255,0,.10);
+      --lime-border: rgba(183,255,0,.28);
+
+      --blue: #69a7ff;
+      --blue-soft: rgba(105,167,255,.09);
+      --blue-border: rgba(105,167,255,.25);
+
+      --shadow: 0 30px 80px rgba(0,0,0,.38);
+
+      --radius: 26px;
+      --max: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(183,255,0,.07),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 18%,
+          rgba(105,167,255,.055),
+          transparent 28%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        "Hind Siliguri",
+        sans-serif;
+
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .025;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.5) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.5) 1px,
+          transparent 1px
+        );
+
+      background-size: 70px 70px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 80%
+        );
+
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max)
+      );
+
+      margin-inline: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      border-bottom: 1px solid var(--line);
+
+      background:
+        rgba(8,9,9,.78);
+
+      backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      background: var(--lime);
+      color: #080909;
+
+      font-size: 16px;
+      font-weight: 1000;
+
+      box-shadow:
+        0 0 0 6px rgba(183,255,0,.06),
+        0 12px 30px rgba(183,255,0,.12);
+    }
+
+    .brand-text {
+      font-size: 17px;
+    }
+
+    .brand-text span {
+      color: var(--lime);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 10px 13px;
+
+      color: var(--muted);
+
+      border-radius: 12px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+    }
+
+    .nav-cta {
+      padding: 11px 17px !important;
+
+      background: var(--lime) !important;
+      color: #080909 !important;
+
+      font-weight: 900 !important;
+    }
+
+    /* =========================
+       BREADCRUMB
+    ========================== */
+
+    .breadcrumb-wrap {
+      padding-top: 34px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+      align-items: center;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--lime);
+    }
+
+    .breadcrumb .current {
+      color: var(--text);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      padding: 42px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.08fr
+        .92fr;
+
+      gap: 60px;
+
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 8px 12px;
+
+      border: 1px solid var(--lime-border);
+
+      border-radius: 999px;
+
+      background: var(--lime-soft);
+
+      color: var(--lime);
+
+      font-size: 11px;
+      font-weight: 900;
+
+      text-transform: uppercase;
+      letter-spacing: .12em;
+
+      margin-bottom: 22px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--lime);
+
+      box-shadow:
+        0 0 12px var(--lime);
+    }
+
+    h1 {
+      max-width: 780px;
+
+      font-size:
+        clamp(
+          44px,
+          7vw,
+          82px
+        );
+
+      line-height: .98;
+
+      letter-spacing: -.065em;
+
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--lime);
+    }
+
+    .hero-copy {
+      max-width: 690px;
+
+      color: var(--muted);
+
+      font-size: 18px;
+
+      line-height: 1.75;
+
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 50px;
+
+      padding: 0 20px;
+
+      border-radius: 14px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      border: 1px solid var(--line);
+
+      font-size: 13px;
+      font-weight: 900;
+
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--lime);
+
+      color: #080909;
+
+      border-color: var(--lime);
+
+      box-shadow:
+        0 16px 35px
+        rgba(183,255,0,.12);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.07);
+
+      border-color:
+        var(--line-strong);
+    }
+
+    /* =========================
+       PRICE CARD
+    ========================== */
+
+    .price-card {
+      position: relative;
+
+      border:
+        1px solid
+        var(--lime-border);
+
+      border-radius: 32px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.09),
+          rgba(105,167,255,.035) 35%,
+          rgba(255,255,255,.015)
+        ),
+        var(--card);
+
+      padding: 30px;
+
+      box-shadow:
+        var(--shadow),
+        inset 0 1px 0
+        rgba(255,255,255,.05);
+
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(183,255,0,.08);
+
+      filter: blur(55px);
+
+      right: -110px;
+      top: -130px;
+    }
+
+    .popular {
+      position: absolute;
+
+      top: 18px;
+      right: 18px;
+
+      padding: 7px 10px;
+
+      border-radius: 999px;
+
+      background: var(--lime);
+
+      color: #080909;
+
+      font-size: 9px;
+      font-weight: 1000;
+
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .price-label {
+      position: relative;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+
+    .price {
+      position: relative;
+
+      margin: 12px 0 8px;
+
+      font-size: 58px;
+
+      line-height: 1;
+
+      font-weight: 900;
+
+      letter-spacing: -.055em;
+    }
+
+    .price small {
+      font-size: 16px;
+
+      color: var(--muted);
+
+      letter-spacing: 0;
+
+      font-weight: 700;
+    }
+
+    .price-note {
+      position: relative;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 25px;
+    }
+
+    .included {
+      position: relative;
+
+      border-top:
+        1px solid
+        var(--line);
+
+      padding-top: 20px;
+
+      display: grid;
+
+      gap: 13px;
+    }
+
+    .included-item {
+      display: flex;
+
+      gap: 11px;
+
+      align-items: flex-start;
+
+      font-size: 13px;
+
+      font-weight: 650;
+    }
+
+    .check {
+      flex: 0 0 20px;
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--lime-soft);
+
+      color: var(--lime);
+
+      border:
+        1px solid
+        var(--lime-border);
+
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    /* =========================
+       TRUST STRIP
+    ========================== */
+
+    .trust-strip {
+      border-block:
+        1px solid
+        var(--line);
+
+      background:
+        rgba(255,255,255,.018);
+    }
+
+    .trust-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+    }
+
+    .trust-item {
+      padding: 25px 20px;
+
+      text-align: center;
+
+      border-right:
+        1px solid
+        var(--line);
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-value {
+      display: block;
+
+      color: var(--lime);
+
+      font-size: 20px;
+
+      font-weight: 900;
+
+      margin-bottom: 3px;
+    }
+
+    .trust-label {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      font-weight: 700;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+
+      margin-bottom: 45px;
+    }
+
+    .section-kicker {
+      color: var(--lime);
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 13px;
+    }
+
+    h2 {
+      font-size:
+        clamp(
+          34px,
+          5vw,
+          54px
+        );
+
+      line-height: 1.02;
+
+      letter-spacing: -.055em;
+
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+
+      font-size: 16px;
+
+      line-height: 1.75;
+    }
+
+    /* =========================
+       FEATURE GRID
+    ========================== */
+
+    .feature-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+    }
+
+    .feature {
+      padding: 25px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 22px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+
+      border-color:
+        var(--lime-border);
+
+      background:
+        rgba(183,255,0,.035);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+
+      border-radius: 14px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 18px;
+
+      color: var(--lime);
+
+      background:
+        var(--lime-soft);
+
+      border:
+        1px solid
+        var(--lime-border);
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .feature h3 {
+      font-size: 16px;
+
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    /* =========================
+       SYSTEM SHOWCASE
+    ========================== */
+
+    .system {
+      padding: 32px;
+
+      border:
+        1px solid
+        var(--lime-border);
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.07),
+          rgba(105,167,255,.035)
+        ),
+        var(--card);
+
+      box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.04);
+    }
+
+    .system-top {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 25px;
+    }
+
+    .system-title h3 {
+      font-size: 21px;
+
+      margin-bottom: 4px;
+    }
+
+    .system-title p {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .system-badge {
+      padding: 8px 11px;
+
+      border-radius: 999px;
+
+      color: var(--lime);
+
+      background:
+        var(--lime-soft);
+
+      border:
+        1px solid
+        var(--lime-border);
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+    .dashboard {
+      display: grid;
+
+      grid-template-columns:
+        180px
+        1fr;
+
+      min-height: 330px;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 20px;
+
+      background:
+        #0a0c0c;
+    }
+
+    .dashboard-side {
+      padding: 18px;
+
+      border-right:
+        1px solid
+        var(--line);
+
+      background:
+        rgba(255,255,255,.018);
+    }
+
+    .side-logo {
+      width: 30px;
+      height: 30px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 22px;
+
+      border-radius: 9px;
+
+      background:
+        var(--lime);
+
+      color: #080909;
+
+      font-size: 9px;
+
+      font-weight: 1000;
+    }
+
+    .side-item {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 9px 10px;
+
+      margin-bottom: 4px;
+
+      border-radius: 9px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      font-weight: 700;
+    }
+
+    .side-item.active {
+      color: var(--lime);
+
+      background:
+        var(--lime-soft);
+    }
+
+    .dashboard-main {
+      padding: 20px;
+    }
+
+    .dash-head {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      margin-bottom: 20px;
+    }
+
+    .dash-head h4 {
+      font-size: 14px;
+    }
+
+    .dash-head span {
+      color: var(--muted);
+
+      font-size: 9px;
+    }
+
+    .dash-stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 10px;
+
+      margin-bottom: 15px;
+    }
+
+    .dash-stat {
+      padding: 16px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.02);
+    }
+
+    .dash-stat small {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 8px;
+
+      margin-bottom: 7px;
+    }
+
+    .dash-stat strong {
+      font-size: 20px;
+    }
+
+    .dash-stat strong span {
+      color: var(--lime);
+
+      font-size: 9px;
+
+      margin-left: 3px;
+    }
+
+    .chart {
+      height: 130px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      gap: 7px;
+
+      padding: 18px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.02);
+    }
+
+    .bar {
+      flex: 1;
+
+      min-width: 5px;
+
+      border-radius:
+        5px 5px 2px 2px;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(183,255,0,.28),
+          var(--lime)
+        );
+
+      animation:
+        chartPulse 3s
+        ease-in-out
+        infinite
+        alternate;
+    }
+
+    .bar:nth-child(1) { height: 30%; }
+    .bar:nth-child(2) { height: 45%; }
+    .bar:nth-child(3) { height: 35%; }
+    .bar:nth-child(4) { height: 60%; }
+    .bar:nth-child(5) { height: 52%; }
+    .bar:nth-child(6) { height: 75%; }
+    .bar:nth-child(7) { height: 68%; }
+    .bar:nth-child(8) { height: 88%; }
+    .bar:nth-child(9) { height: 73%; }
+    .bar:nth-child(10) { height: 95%; }
+    .bar:nth-child(11) { height: 82%; }
+    .bar:nth-child(12) { height: 100%; }
+
+    @keyframes chartPulse {
+      from {
+        opacity: .65;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* =========================
+       DETAILS
+    ========================== */
+
+    .details-grid {
+      display: grid;
+
+      grid-template-columns:
+        .9fr
+        1.1fr;
+
+      gap: 25px;
+
+      align-items: stretch;
+    }
+
+    .details-card {
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 26px;
+
+      background:
+        var(--card);
+
+      padding: 30px;
+    }
+
+    .details-card.highlight {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.09),
+          transparent 55%
+        ),
+        var(--card);
+
+      border-color:
+        var(--lime-border);
+    }
+
+    .details-card h3 {
+      font-size: 21px;
+
+      margin-bottom: 18px;
+    }
+
+    .details-list {
+      display: grid;
+
+      gap: 12px;
+    }
+
+    .details-list li {
+      list-style: none;
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+
+      color: #dfe4e2;
+
+      font-size: 14px;
+    }
+
+    .details-list li::before {
+      content: "✓";
+
+      flex: 0 0 21px;
+
+      width: 21px;
+      height: 21px;
+
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--lime);
+
+      background:
+        var(--lime-soft);
+
+      border:
+        1px solid
+        var(--lime-border);
+
+      font-size: 10px;
+
+      font-weight: 900;
+    }
+
+    /* =========================
+       ADVANTAGE TABLE
+    ========================== */
+
+    .comparison {
+      overflow: hidden;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 22px;
+
+      background:
+        var(--card);
+    }
+
+    .comparison-row {
+      display: grid;
+
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+      border-bottom:
+        1px solid
+        var(--line);
+    }
+
+    .comparison-row:last-child {
+      border-bottom: 0;
+    }
+
+    .comparison-cell {
+      min-height: 52px;
+
+      display: flex;
+
+      align-items: center;
+
+      padding: 13px 17px;
+
+      border-right:
+        1px solid
+        var(--line);
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+    .comparison-cell:last-child {
+      border-right: 0;
+    }
+
+    .comparison-row.header {
+      background:
+        rgba(255,255,255,.035);
+    }
+
+    .comparison-row.header
+    .comparison-cell {
+      color: var(--text);
+
+      font-weight: 900;
+    }
+
+    .comparison-row.header
+    .comparison-cell:nth-child(3) {
+      color: var(--lime);
+    }
+
+    .yes {
+      color: var(--lime);
+
+      font-size: 15px;
+
+      font-weight: 900;
+    }
+
+    .no {
+      color: #666d69;
+
+      font-size: 15px;
+    }
+
+    /* =========================
+       PROCESS
+    ========================== */
+
+    .process-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 15px;
+    }
+
+    .step {
+      padding: 25px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 22px;
+
+      background:
+        var(--card);
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 11px;
+
+      background:
+        var(--lime);
+
+      color: #080909;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 16px;
+
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.65;
+    }
+
+    /* =========================
+       FAQ
+    ========================== */
+
+    .faq {
+      max-width: 900px;
+
+      display: grid;
+
+      gap: 10px;
+    }
+
+    details {
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 17px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+
+      list-style: none;
+
+      padding: 20px 22px;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+
+      color: var(--lime);
+
+      font-size: 20px;
+
+      line-height: 1;
+    }
+
+    details[open]
+    summary::after {
+      content: "−";
+    }
+
+    details p {
+      padding:
+        0 22px 21px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.75;
+    }
+
+    /* =========================
+       CTA
+    ========================== */
+
+    .cta {
+      margin-bottom: 90px;
+    }
+
+    .cta-card {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 55px;
+
+      border-radius: 30px;
+
+      border:
+        1px solid
+        var(--lime-border);
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(183,255,0,.18),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.09),
+          rgba(255,255,255,.025)
+        ),
+        var(--card);
+
+      text-align: center;
+    }
+
+    .cta-card h2 {
+      max-width: 720px;
+
+      margin-inline: auto;
+    }
+
+    .cta-card p {
+      max-width: 650px;
+
+      margin:
+        0 auto 25px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .cta-actions {
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      border-top:
+        1px solid
+        var(--line);
+
+      padding: 35px 0;
+
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      color: var(--text);
+
+      font-size: 14px;
+
+      font-weight: 900;
+    }
+
+    .footer-links {
+      display: flex;
+
+      gap: 17px;
+
+      flex-wrap: wrap;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--lime);
+    }
+
+    .copyright {
+      font-size: 11px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 980px) {
+
+      .hero-grid,
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 720px) {
+
+      .container {
+        width:
+          min(
+            calc(100% - 28px),
+            var(--max)
+          );
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        font-size:
+          clamp(
+            43px,
+            14vw,
+            65px
+          );
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .price-card {
+        padding: 24px;
+
+        border-radius: 24px;
+      }
+
+      .trust-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .trust-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .trust-item:nth-child(-n+2) {
+        border-bottom:
+          1px solid
+          var(--line);
+      }
+
+      .feature-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .system {
+        padding: 20px;
+      }
+
+      .system-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-side {
+        display: none;
+      }
+
+      .dash-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison {
+        overflow-x: auto;
+      }
+
+      .comparison-inner {
+        min-width: 680px;
+      }
+
+      .cta-card {
+        padding: 35px 22px;
+
+        border-radius: 24px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="topbar">
+
+    <div class="container nav">
+
+      <a
+        class="brand"
+        href="../index.html"
+        aria-label="Website Deals Home"
+      >
+        <span class="brand-mark">
+          WD
+        </span>
+
+        <span class="brand-text">
+          Website <span>Deals</span>
+        </span>
+      </a>
+
+      <nav class="nav-links">
+
+        <a href="../index.html">
+          Home
+        </a>
+
+        <a href="../index.html#packages">
+          Packages
+        </a>
+
+        <a href="../index.html#websites">
+          Websites
+        </a>
+
+        <a href="../index.html#about">
+          About
+        </a>
+
+        <a
+          class="nav-cta"
+          href="https://support.websitedeals.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Support
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         BREADCRUMB
+    ========================== -->
+
+    <div class="container breadcrumb-wrap">
+
+      <div class="breadcrumb">
+
+        <a href="../index.html">
+          Website Deals
+        </a>
+
+        <span>›</span>
+
+        <a href="../index.html#packages">
+          Packages
+        </a>
+
+        <span>›</span>
+
+        <span class="current">
+          Business
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+
+            <span class="eyebrow-dot"></span>
+
+            Business Package
+
+          </div>
+
+
+          <h1>
+
+            More control.
+            <span>More growth.</span>
+
+          </h1>
+
+
+          <p class="hero-copy">
+
+            A powerful managed website package for businesses that
+            need more than a simple online presence. Get a premium
+            website with an admin panel, advanced integrations,
+            payments, analytics, security and priority support.
+
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              class="btn btn-primary"
+              href="mailto:hello@websitedeals.com?subject=Business%20Package%20Request"
+            >
+
+              Get This Package
+
+              <span>↗</span>
+
+            </a>
+
+
+            <a
+              class="btn btn-secondary"
+              href="../index.html#websites"
+            >
+
+              Explore Websites
+
+              <span>→</span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- PRICE CARD -->
+
+        <aside class="price-card">
+
+          <div class="popular">
+            Most Popular
+          </div>
+
+
+          <div class="price-label">
+            Business Package
+          </div>
+
+
+          <div class="price">
+
+            ৳999
+
+            <small>
+              /month
+            </small>
+
+          </div>
+
+
+          <div class="price-note">
+
+            A complete business website system
+            with advanced features and management tools.
+
+          </div>
+
+
+          <div class="included">
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Everything in Starter
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Premium website design
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Advanced Firebase integration
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Admin panel
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Payment integration
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Analytics & advanced SEO
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Backup & security
+            </div>
+
+            <div class="included-item">
+              <span class="check">✓</span>
+              Priority support
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TRUST
+    ========================== -->
+
+    <div class="trust-strip">
+
+      <div class="container trust-grid">
+
+        <div class="trust-item">
+
+          <span class="trust-value">
+            ৳999
+          </span>
+
+          <span class="trust-label">
+            Per Month
+          </span>
+
+        </div>
+
+
+        <div class="trust-item">
+
+          <span class="trust-value">
+            Admin
+          </span>
+
+          <span class="trust-label">
+            Panel Included
+          </span>
+
+        </div>
+
+
+        <div class="trust-item">
+
+          <span class="trust-value">
+            SEO+
+          </span>
+
+          <span class="trust-label">
+            Advanced SEO
+          </span>
+
+        </div>
+
+
+        <div class="trust-item">
+
+          <span class="trust-value">
+            Priority
+          </span>
+
+          <span class="trust-label">
+            Support
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            Business Features
+          </div>
+
+          <h2>
+            Built for businesses
+            that are ready to grow.
+          </h2>
+
+          <p>
+            Business gives you the tools to manage content,
+            products, services, inquiries and website performance
+            without relying on a basic static page.
+          </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              01
+            </div>
+
+            <h3>
+              Premium Website
+            </h3>
+
+            <p>
+              A polished ready-made website experience designed
+              for professional businesses and brands.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              02
+            </div>
+
+            <h3>
+              Admin Panel
+            </h3>
+
+            <p>
+              Manage supported website content and business
+              information through a dedicated admin interface.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              03
+            </div>
+
+            <h3>
+              Advanced Firebase
+            </h3>
+
+            <p>
+              Use Firebase-backed functionality for supported
+              forms, content, data and application features.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              04
+            </div>
+
+            <h3>
+              Payment Integration
+            </h3>
+
+            <p>
+              Payment workflows can support online gateway
+              integration as well as bKash, Nagad and bank payment
+              methods where applicable.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              05
+            </div>
+
+            <h3>
+              Product & Service Management
+            </h3>
+
+            <p>
+              Present and manage business products or services
+              through the supported website management system.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              06
+            </div>
+
+            <h3>
+              Inquiry & Order Management
+            </h3>
+
+            <p>
+              Organize customer inquiries and supported order
+              workflows from your website system.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              07
+            </div>
+
+            <h3>
+              WhatsApp & Messenger
+            </h3>
+
+            <p>
+              Give visitors direct communication options for
+              faster business conversations.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              08
+            </div>
+
+            <h3>
+              Maps Integration
+            </h3>
+
+            <p>
+              Help customers find your physical business location
+              with map integration.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              09
+            </div>
+
+            <h3>
+              Advanced SEO
+            </h3>
+
+            <p>
+              Improve technical and on-page search visibility with
+              a stronger SEO foundation.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              10
+            </div>
+
+            <h3>
+              Analytics
+            </h3>
+
+            <p>
+              Connect supported analytics tools to understand
+              website traffic and visitor behaviour.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              11
+            </div>
+
+            <h3>
+              Search Console
+            </h3>
+
+            <p>
+              Search Console integration can help monitor search
+              visibility and indexing performance.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <div class="feature-icon">
+              12
+            </div>
+
+            <h3>
+              Backup & Security
+            </h3>
+
+            <p>
+              Backup, security and performance practices help keep
+              your managed website reliable.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ADMIN SHOWCASE
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            Business Control
+          </div>
+
+          <h2>
+            Your website.
+            Your business dashboard.
+          </h2>
+
+          <p>
+            Business is designed around a more manageable website
+            experience, giving your team a central place for supported
+            business operations.
+          </p>
+
+        </div>
+
+
+        <div class="system">
+
+          <div class="system-top">
+
+            <div class="system-title">
+
+              <h3>
+                Business Admin Dashboard
+              </h3>
+
+              <p>
+                A visual example of the management experience.
+              </p>
+
+            </div>
+
+
+            <div class="system-badge">
+              BUSINESS SYSTEM
+            </div>
+
+          </div>
+
+
+          <div class="dashboard">
+
+            <aside class="dashboard-side">
+
+              <div class="side-logo">
+                WD
+              </div>
+
+              <div class="side-item active">
+                ▦ Dashboard
+              </div>
+
+              <div class="side-item">
+                ◫ Products
+              </div>
+
+              <div class="side-item">
+                ◉ Services
+              </div>
+
+              <div class="side-item">
+                ▤ Orders
+              </div>
+
+              <div class="side-item">
+                ◎ Customers
+              </div>
+
+              <div class="side-item">
+                ◇ Analytics
+              </div>
+
+              <div class="side-item">
+                ⚙ Settings
+              </div>
+
+            </aside>
+
+
+            <div class="dashboard-main">
+
+              <div class="dash-head">
+
+                <h4>
+                  Business Overview
+                </h4>
+
+                <span>
+                  Live system
+                </span>
+
+              </div>
+
+
+              <div class="dash-stats">
+
+                <div class="dash-stat">
+
+                  <small>
+                    WEBSITE VISITS
+                  </small>
+
+                  <strong>
+                    12.8K
+                    <span>
+                      +18%
+                    </span>
+                  </strong>
+
+                </div>
+
+
+                <div class="dash-stat">
+
+                  <small>
+                    INQUIRIES
+                  </small>
+
+                  <strong>
+                    284
+                    <span>
+                      +12%
+                    </span>
+                  </strong>
+
+                </div>
+
+
+                <div class="dash-stat">
+
+                  <small>
+                    ORDERS
+                  </small>
+
+                  <strong>
+                    146
+                    <span>
+                      +21%
+                    </span>
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <div class="chart">
+
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         DETAILS
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            Package Details
+          </div>
+
+          <h2>
+            Everything in Starter,
+            plus business power.
+          </h2>
+
+          <p>
+            Business keeps the simplicity of Starter while adding
+            the management, marketing and operational features that
+            growing businesses need.
+          </p>
+
+        </div>
+
+
+        <div class="details-grid">
+
+          <div class="details-card highlight">
+
+            <h3>
+              Best for
+            </h3>
+
+
+            <ul class="details-list">
+
+              <li>
+                Growing local businesses
+              </li>
+
+              <li>
+                Agencies
+              </li>
+
+              <li>
+                Restaurants
+              </li>
+
+              <li>
+                Professional services
+              </li>
+
+              <li>
+                Product businesses
+              </li>
+
+              <li>
+                Service providers
+              </li>
+
+              <li>
+                Businesses needing an admin panel
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <div class="details-card">
+
+            <h3>
+              Business service stack
+            </h3>
+
+
+            <ul class="details-list">
+
+              <li>
+                Premium website
+              </li>
+
+              <li>
+                Managed hosting & SSL
+              </li>
+
+              <li>
+                Advanced Firebase integration
+              </li>
+
+              <li>
+                Admin panel
+              </li>
+
+              <li>
+                Payment gateway integration
+              </li>
+
+              <li>
+                bKash / Nagad / Bank payment options
+              </li>
+
+              <li>
+                Product and service management
+              </li>
+
+              <li>
+                Inquiry and order management
+              </li>
+
+              <li>
+                WhatsApp / Messenger integration
+              </li>
+
+              <li>
+                Maps integration
+              </li>
+
+              <li>
+                Advanced SEO
+              </li>
+
+              <li>
+                Analytics & Search Console
+              </li>
+
+              <li>
+                Backup and security
+              </li>
+
+              <li>
+                Performance optimization
+              </li>
+
+              <li>
+                Content updates
+              </li>
+
+              <li>
+                Minor customization
+              </li>
+
+              <li>
+                Priority support
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMPARISON
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            Package Comparison
+          </div>
+
+          <h2>
+            Why move to Business?
+          </h2>
+
+          <p>
+            Business adds the tools you need when a basic website
+            is no longer enough.
+          </p>
+
+        </div>
+
+
+        <div class="comparison">
+
+          <div class="comparison-inner">
+
+            <div class="comparison-row header">
+
+              <div class="comparison-cell">
+                Feature
+              </div>
+
+              <div class="comparison-cell">
+                Starter
+              </div>
+
+              <div class="comparison-cell">
+                Business
+              </div>
+
+              <div class="comparison-cell">
+                Premium
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Ready-made website
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Managed hosting
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Custom domain
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Admin panel
+              </div>
+
+              <div class="comparison-cell">
+                <span class="no">—</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Payment integration
+              </div>
+
+              <div class="comparison-cell">
+                <span class="no">—</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Advanced SEO
+              </div>
+
+              <div class="comparison-cell">
+                <span class="no">—</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Analytics
+              </div>
+
+              <div class="comparison-cell">
+                <span class="no">—</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+
+            <div class="comparison-row">
+
+              <div class="comparison-cell">
+                Priority support
+              </div>
+
+              <div class="comparison-cell">
+                <span class="no">—</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+              <div class="comparison-cell">
+                <span class="yes">✓</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROCESS
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            How It Works
+          </div>
+
+          <h2>
+            Launch your business
+            website in four steps.
+          </h2>
+
+        </div>
+
+
+        <div class="process-grid">
+
+          <article class="step">
+
+            <div class="step-number">
+              01
+            </div>
+
+            <h3>
+              Explore
+            </h3>
+
+            <p>
+              Browse the live Website Deals showcase and find a
+              website that matches your business.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              02
+            </div>
+
+            <h3>
+              Select
+            </h3>
+
+            <p>
+              Choose the website and Business package that fits
+              your operational needs.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              03
+            </div>
+
+            <h3>
+              Configure
+            </h3>
+
+            <p>
+              Provide your business information, domain,
+              communication and payment requirements.
+            </p>
+
+          </article>
+
+
+          <article class="step">
+
+            <div class="step-number">
+              04
+            </div>
+
+            <h3>
+              Grow
+            </h3>
+
+            <p>
+              Manage your supported website features while the
+              Website Deals team handles the managed service layer.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAQ
+    ========================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            FAQ
+          </div>
+
+          <h2>
+            Business package,
+            clarified.
+          </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+          <details open>
+
+            <summary>
+              Is ৳999 a monthly subscription?
+            </summary>
+
+            <p>
+              Yes. Business is a recurring monthly subscription
+              priced at ৳999/month. Included managed services remain
+              active while the subscription is active.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Does Business include an admin panel?
+            </summary>
+
+            <p>
+              Yes. Business is designed to include a dedicated
+              admin panel for supported website management features.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Can I accept payments?
+            </summary>
+
+            <p>
+              Payment workflows can be integrated depending on the
+              website and selected payment provider. Manual payment
+              methods such as bKash, Nagad and bank transfer can also
+              be supported where appropriate.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Is payment gateway setup always included?
+            </summary>
+
+            <p>
+              Gateway integration depends on the selected provider,
+              merchant requirements and technical availability.
+              Provider-specific fees or merchant charges may apply.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Can I connect WhatsApp and Messenger?
+            </summary>
+
+            <p>
+              Yes. Business supports communication integrations such
+              as WhatsApp and Messenger where the selected website
+              supports them.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Is advanced SEO guaranteed to rank my website?
+            </summary>
+
+            <p>
+              No package can guarantee a specific search ranking.
+              Advanced SEO means the website receives a stronger
+              technical and on-page SEO foundation.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Can I upgrade to Premium later?
+            </summary>
+
+            <p>
+              Yes. If your business eventually needs a more advanced
+              e-commerce or business management system, you can move
+              to the Premium package.
+            </p>
+
+          </details>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="cta-card">
+
+          <div class="section-kicker">
+            Business Ready
+          </div>
+
+
+          <h2>
+            Build a website
+            that works for your business.
+          </h2>
+
+
+          <p>
+            Get the Business package with premium design,
+            management tools, payments, analytics and priority
+            support — all under one monthly service.
+          </p>
+
+
+          <div class="cta-actions">
+
+            <a
+              class="btn btn-primary"
+              href="mailto:hello@websitedeals.com?subject=Business%20Package%20Request"
+            >
+              Get Business Package
+              <span>↗</span>
+            </a>
+
+
+            <a
+              class="btn btn-secondary"
+              href="../index.html#websites"
+            >
+              Explore Live Websites
+            </a>
+
+
+            <a
+              class="btn btn-secondary"
+              href="https://support.websitedeals.com"
+              target="_blank"
+              rel="noopener"
+            >
+              Contact Support
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+
+        <div class="footer-brand">
+          Website Deals
+        </div>
+
+        <div class="copyright">
+          Premium ready-made websites for modern businesses.
+        </div>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="../index.html">
+          Home
+        </a>
+
+        <a href="../index.html#packages">
+          Packages
+        </a>
+
+        <a href="../index.html#websites">
+          Websites
+        </a>
+
+        <a
+          href="https://support.websitedeals.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Support
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    /* =========================
+       BUSINESS PAGE MICRO-INTERACTION
+    ========================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        const bars =
+          document.querySelectorAll(".bar");
+
+        bars.forEach((bar, index) => {
+
+          const base =
+            parseFloat(
+              getComputedStyle(bar)
+                .height
+            );
+
+          bar.style.animationDelay =
+            `${index * 0.08}s`;
+
+        });
+
+      }
+    );
+  </script>
+
+</body>
+</html>
