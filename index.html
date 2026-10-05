@@ -1,210 +1,253 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Website Deals – Ready-made websites from ৳999</title>
-<meta name="description" content="Ready-made websites for your business. Pick a design, send us your details on WhatsApp, go live fast.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Website Deals – Premium Website Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --lime:#b7ff00;--lime-dark:#91cf00;--ink:#10120f;--ink-soft:#171a15;
-  --paper:#f7f8f4;--paper-2:#eef1eb;--white:#fff;--muted:#687067;
-  --line:#dfe4dc;--success:#138a48;
-  --shadow-sm:0 8px 25px rgba(16,18,15,.06);--shadow-md:0 20px 60px rgba(16,18,15,.10);
-  --radius-sm:12px;--radius-md:18px;--radius-lg:28px;
-  --container:1240px;--nav-height:72px;
-}
+:root{--lime:#b7ff00;--lime-dark:#91cf00;--ink:#10120f;--ink-soft:#171a15;--paper:#f7f8f4;--paper-2:#eef1eb;--white:#fff;--muted:#687067;--muted-2:#8a9289;--line:#dfe4dc;--success:#138a48;--shadow-sm:0 8px 25px rgba(16,18,15,.06);--shadow-md:0 20px 60px rgba(16,18,15,.10);--shadow-lg:0 35px 100px rgba(16,18,15,.14);--radius-sm:12px;--radius-md:18px;--radius-lg:28px;--container:1240px;--nav-height:72px;--salah-height:44px}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 10% 5%,rgba(183,255,0,.10),transparent 25%),
-    radial-gradient(circle at 90% 30%,rgba(183,255,0,.07),transparent 28%),
-    var(--paper);
-  color:var(--ink);
-  font-family:Inter,"Hind Siliguri",Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-  line-height:1.6;
-}
-a{color:inherit;text-decoration:none}
-.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+body{min-height:100vh;background:radial-gradient(circle at 10% 5%,rgba(183,255,0,.10),transparent 25%),radial-gradient(circle at 90% 30%,rgba(183,255,0,.07),transparent 28%),var(--paper);color:var(--ink);font-family:Inter,"Hind Siliguri",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+/* salah bar */
+.salah{height:var(--salah-height);background:var(--ink-soft);color:#e8ece5;font-size:.78rem;font-weight:600}
+.salah .container{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.salah .times{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+.salah .times::-webkit-scrollbar{display:none}
+.salah .lbl{color:var(--lime);font-weight:800;letter-spacing:.04em;margin-right:10px;white-space:nowrap}
+.pt{padding:6px 12px;border-radius:999px;white-space:nowrap;color:#cfd5cb}
+.pt span{color:#9aa296;font-weight:500;margin-left:4px}
+.pt.now{background:var(--lime);color:var(--ink)}.pt.now span{color:var(--ink)}
+.next{white-space:nowrap;color:#9aa296}.next b{color:var(--lime)}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:50;height:var(--nav-height);background:rgba(247,248,244,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{height:var(--nav-height);border-bottom:1px solid var(--line);background:rgba(247,248,244,.88);backdrop-filter:blur(12px);position:sticky;top:0;z-index:40}
 .nav .container{height:100%;display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:800;font-size:1.2rem;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
-.brand i{width:14px;height:14px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(183,255,0,.3)}
-.nav nav{display:flex;gap:26px;font-weight:500;color:var(--muted)}
-.nav nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:700;border:2px solid var(--ink);background:var(--ink);color:var(--white);cursor:pointer;font:inherit;font-weight:700;transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.lime{background:var(--lime);color:var(--ink);border-color:var(--lime)}
-.btn.ghost{background:transparent;color:var(--ink)}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:38px;height:38px;border-radius:12px;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-weight:800;font-size:.95rem;box-shadow:var(--shadow-sm)}
+.brand b{display:block;font-size:.95rem;line-height:1.1}
+.brand small{display:block;font-size:.58rem;letter-spacing:.14em;color:var(--muted);font-weight:700;text-transform:uppercase}
+.links{display:flex;align-items:center;gap:6px}
+.links a{padding:9px 16px;border-radius:999px;font-size:.8rem;font-weight:700;color:#3a3f38;text-transform:uppercase}
+.links a.active,.links a:hover{background:var(--paper-2)}
+.links a.pill{background:var(--lime);color:var(--ink);margin-left:6px}
 
 /* hero */
-.hero{padding:90px 0 70px}
-.hero h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;max-width:15ch}
-.hero p{margin-top:22px;max-width:52ch;color:var(--muted);font-size:1.15rem}
-.hero .cta{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
-.price-tag{display:inline-block;margin-top:34px;background:var(--lime);padding:10px 20px;border-radius:var(--radius-sm);font-weight:800;font-size:1.1rem}
+.hero{padding:70px 0 40px}
+.hero .container{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;background:rgba(183,255,0,.28);padding:7px 14px;border-radius:999px;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#2c3a00}
+.tag i{width:8px;height:8px;border-radius:50%;background:var(--success)}
+h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.95;letter-spacing:-.06em;font-weight:800;margin:22px 0}
+h1 em{font-style:normal;color:var(--muted-2)}
+.lead{color:var(--muted);font-size:1.12rem;max-width:34em;line-height:1.75}
+.cta{display:flex;gap:12px;margin:34px 0 20px;flex-wrap:wrap}
+.btn{padding:15px 24px;border-radius:14px;font-weight:700;font-size:.9rem;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--white);box-shadow:var(--shadow-sm)}
+.btn.dark{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.btn.lime{background:var(--lime);border-color:var(--lime)}
+.note{font-size:.78rem;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:8px}
+.note i{width:10px;height:10px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(19,138,72,.15)}
+
+/* laptop */
+.laptop{position:relative;max-width:660px;margin-left:auto;width:100%}
+.screen{background:#e6e8e3;border:1px solid #cfd3cb;border-radius:22px 22px 8px 8px;padding:10px;box-shadow:var(--shadow-lg)}
+.display{background:var(--white);border:3px solid var(--ink);border-radius:14px;height:400px;overflow:hidden;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:4px}.dots i{width:6px;height:6px;border-radius:50%;background:#c3c8bf}
+.url{flex:1;height:12px;border-radius:99px;background:var(--paper-2);font-size:.6rem;color:var(--muted);padding:0 8px;line-height:12px;overflow:hidden;white-space:nowrap}
+.view{flex:1;position:relative;background:radial-gradient(circle at 50% 30%,rgba(183,255,0,.16),transparent 55%)}
+.view iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;gap:6px}
+.empty .logo{width:46px;height:46px;margin-bottom:10px}
+.empty h3{font-size:1rem}.empty p{font-size:.78rem;color:var(--muted);max-width:30em}
+.base{height:18px;background:linear-gradient(#e4e6e1,#bfc3bb);border-radius:0 0 22px 22px;width:106%;margin-left:-3%;box-shadow:0 20px 30px rgba(16,18,15,.12)}
+.float{position:absolute;right:-14px;bottom:42px;background:var(--white);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow-md);border:1px solid var(--line);font-size:.7rem}
+.float small{display:flex;align-items:center;gap:6px;font-weight:800;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;font-size:.58rem}
+.float small i{width:8px;height:8px;border-radius:50%;background:var(--success)}
+.float b{display:block;font-size:.85rem;margin-top:4px}.float span{color:var(--muted-2)}
+
+/* stats */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:20px}
+.stats .container{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:26px 20px;border-left:1px solid var(--line)}.stat:first-child{border-left:0;padding-left:0}
+.stat b{font-size:1.5rem;letter-spacing:-.03em;display:block}.stat span{font-size:.75rem;color:var(--muted);font-weight:600}
 
 /* sections */
-section{padding:70px 0}
-h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.025em;line-height:1.15;margin-bottom:12px}
-.sub{color:var(--muted);max-width:55ch;margin-bottom:36px}
-
-/* products */
+section.s{padding:80px 0}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.04em;line-height:1.08;margin-bottom:12px}
+.sub{color:var(--muted);max-width:50ch;margin-bottom:36px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
 .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
-.thumb{height:170px;display:flex;align-items:flex-end;padding:18px;font-weight:800;font-size:1.3rem;letter-spacing:-.02em}
-.t1{background:linear-gradient(135deg,var(--lime),#e8ffa8)}
-.t2{background:linear-gradient(135deg,var(--ink),#2b3128);color:var(--lime)}
-.t3{background:linear-gradient(135deg,var(--paper-2),#d9e3cf)}
-.t4{background:linear-gradient(135deg,#d6f56b,var(--lime-dark))}
-.card .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card h3{font-size:1.15rem}
-.card p{color:var(--muted);font-size:.95rem;flex:1}
-.price{font-weight:800;font-size:1.4rem}
-.price small{font-weight:500;color:var(--muted);font-size:.8rem}
-.card .btn{width:100%}
+.th{height:150px;display:flex;align-items:flex-end;padding:18px;font-weight:800;font-size:1.25rem;letter-spacing:-.03em}
+.c0{background:linear-gradient(135deg,var(--lime),#e8ffa8)}.c1{background:linear-gradient(135deg,var(--ink),#2b3128);color:var(--lime)}.c2{background:linear-gradient(135deg,var(--paper-2),#d3dec8)}
+.card .b{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card p{color:var(--muted);font-size:.9rem;flex:1}
+.card .row{display:flex;gap:8px}.card .row .btn{flex:1;justify-content:center;padding:12px;box-shadow:none}
+.price{font-size:1.5rem;font-weight:800;letter-spacing:-.03em}.price small{font-size:.75rem;color:var(--muted);font-weight:500}
+.pk.hot{border:2px solid var(--ink)}
+.pk ul{list-style:none;color:var(--muted);font-size:.9rem;display:grid;gap:6px}.pk li::before{content:"✓ ";color:var(--success);font-weight:800}
+footer{background:var(--ink);color:#c9cfc6;padding:44px 0;margin-top:30px}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}footer b{color:var(--lime)}
 
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.step{background:var(--paper-2);border-radius:var(--radius-md);padding:24px}
-.step b{display:block;margin-bottom:6px}
-.step span{color:var(--muted);font-size:.95rem}
+/* modal + whatsapp */
+.modal{position:fixed;inset:0;background:rgba(16,18,15,.7);z-index:80;display:none;padding:24px}.modal.open{display:flex}
+.mbox{margin:auto;width:min(1100px,100%);height:min(80vh,760px);background:var(--white);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.mtop{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);font-weight:700}
+.mbox iframe{flex:1;border:0;width:100%}.mbox .empty{position:static;flex:1}
+.wa{position:fixed;right:18px;bottom:18px;z-index:70;background:#25d366;color:#fff;border-radius:999px;padding:14px 20px;font-weight:700;box-shadow:var(--shadow-md)}
 
-/* footer */
-footer{background:var(--ink);color:#c9cfc6;padding:48px 0;margin-top:40px}
-footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
-footer b{color:var(--lime)}
-
-/* whatsapp */
-.wa{position:fixed;right:18px;bottom:18px;z-index:60;background:#25d366;color:#fff;border-radius:999px;padding:14px 20px;font-weight:700;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:8px}
-.wa:hover{transform:translateY(-2px)}
-
-@media(max-width:720px){.nav nav{display:none}.hero{padding:60px 0 40px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:900px){.hero .container{grid-template-columns:1fr}.laptop{margin:0}.links a:not(.pill){display:none}.stats .container{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0;padding-left:0}.display{height:300px}.float{right:0}.salah .next{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="container">
-    <a href="#top" class="brand"><i></i>Website Deals</a>
-    <nav>
-      <a href="#templates">Websites</a>
-      <a href="#how">How it works</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn lime" href="https://wa.me/8801705633700?text=Hello%2C%20I%20want%20to%20buy%20a%20website" target="_blank" rel="noopener">WhatsApp us</a>
+<div class="salah"><div class="container">
+  <div class="times" id="times"><span class="lbl">🕌 SALAH</span></div>
+  <div class="next" id="next"></div>
+</div></div>
+
+<header class="nav"><div class="container">
+  <a href="#home" class="brand"><span class="logo">WD</span><span><b>Website Deals</b><small>Premium Website Showcase</small></span></a>
+  <nav class="links">
+    <a href="#home" class="active">Home</a><a href="#websites">Website</a><a href="#about">About</a><a href="#support">Support</a>
+    <a href="#times" class="pill">🕌 Salah</a>
+  </nav>
+</div></header>
+
+<main id="home">
+<section class="hero"><div class="container">
+  <div>
+    <span class="tag"><i></i>Live website showcase</span>
+    <h1>See the website. <em>Before you choose it.</em></h1>
+    <p class="lead">Website Deals is a premium digital showroom for ready-made websites. Explore real website experiences through live previews without repeatedly opening new windows.</p>
+    <div class="cta"><a class="btn dark" href="#websites">Explore Websites &nbsp;→</a><a class="btn" href="#packages">View Packages</a></div>
+    <p class="note"><i></i>Live previews • Medium-speed human-like presentation</p>
   </div>
-</header>
-
-<main id="top">
-  <div class="container hero">
-    <h1>Your business website, ready this week.</h1>
-    <p>Choose a ready-made design, send us your logo and details on WhatsApp, and we set it up for you. No coding, no waiting months.</p>
-    <div class="cta">
-      <a class="btn" href="#templates">See websites</a>
-      <a class="btn ghost" href="https://wa.me/8801705633700" target="_blank" rel="noopener">Ask a question</a>
-    </div>
-    <div class="price-tag">Starting from ৳999</div>
+  <div class="laptop">
+    <div class="screen"><div class="display">
+      <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url" id="url"></div></div>
+      <div class="view" id="view">
+        <div class="empty"><span class="logo">WD</span><h3>Live Preview</h3><p>Add an active showcase website from the admin panel to display it here.</p></div>
+      </div>
+    </div></div>
+    <div class="base"></div>
+    <div class="float"><small><i></i>Live showcase</small><b id="fl">No showcase selected</b><span id="fl2">Add a live website from Admin</span></div>
   </div>
+</div>
+<div class="stats"><div class="container">
+  <div class="stat"><b>100+</b><span>Ready Website Concepts</span></div>
+  <div class="stat"><b>20+</b><span>Business Categories</span></div>
+  <div class="stat"><b>100%</b><span>Responsive Experience</span></div>
+  <div class="stat"><b>24/7</b><span>Digital Showcase Access</span></div>
+</div></div>
+</section>
 
-  <section id="templates">
-    <div class="container">
-      <h2>Pick a website</h2>
-      <p class="sub">Every website is mobile-friendly and can be customised with your name, logo and colours.</p>
-      <div class="grid" id="products">
-        <!-- products are written directly in HTML so the page never shows blank -->
-        <article class="card">
-          <div class="thumb t1">Business</div>
-          <div class="body">
-            <h3>Business Starter</h3>
-            <p>Home, services, about and contact pages for a small company.</p>
-            <div class="price">৳999 <small>one-time</small></div>
-            <a class="btn" data-order="Business Starter (৳999)" href="#">Order on WhatsApp</a>
-          </div>
-        </article>
-        <article class="card">
-          <div class="thumb t2">Portfolio</div>
-          <div class="body">
-            <h3>Personal Portfolio</h3>
-            <p>Show your work, skills and contact details in one clean page.</p>
-            <div class="price">৳1,499 <small>one-time</small></div>
-            <a class="btn" data-order="Personal Portfolio (৳1,499)" href="#">Order on WhatsApp</a>
-          </div>
-        </article>
-        <article class="card">
-          <div class="thumb t3">Institute</div>
-          <div class="body">
-            <h3>Coaching &amp; Institute</h3>
-            <p>Courses, admission form, teachers and notice board.</p>
-            <div class="price">৳2,499 <small>one-time</small></div>
-            <a class="btn" data-order="Coaching & Institute (৳2,499)" href="#">Order on WhatsApp</a>
-          </div>
-        </article>
-        <article class="card">
-          <div class="thumb t4">Shop</div>
-          <div class="body">
-            <h3>Online Shop</h3>
-            <p>Product catalogue where customers order through WhatsApp.</p>
-            <div class="price">৳2,999 <small>one-time</small></div>
-            <a class="btn" data-order="Online Shop (৳2,999)" href="#">Order on WhatsApp</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+<section class="s" id="websites"><div class="container">
+  <h2>Websites ready to go live</h2>
+  <p class="sub">Open any website in the live preview. When you like one, order it on WhatsApp.</p>
+  <div class="grid" id="grid"></div>
+</div></section>
 
-  <section id="how">
-    <div class="container">
-      <h2>How it works</h2>
-      <p class="sub">Three steps from message to live website.</p>
-      <div class="steps">
-        <div class="step"><b>1. Choose</b><span>Pick the website that fits your business.</span></div>
-        <div class="step"><b>2. Send details</b><span>Message us your name, logo, phone and address.</span></div>
-        <div class="step"><b>3. Go live</b><span>We set it up and share your website link.</span></div>
-      </div>
-    </div>
-  </section>
+<section class="s" id="packages"><div class="container">
+  <h2>Packages</h2>
+  <p class="sub">Simple one-time prices. Customised with your name, logo and colours.</p>
+  <div class="grid">
+    <div class="card pk"><div class="b"><h3>Starter</h3><div class="price">৳999 <small>one-time</small></div><ul><li>1 ready-made website</li><li>Your name and logo</li><li>Mobile friendly</li></ul><a class="btn lime" data-order="Starter package (৳999)" href="#">Order on WhatsApp</a></div></div>
+    <div class="card pk hot"><div class="b"><h3>Business</h3><div class="price">৳2,499 <small>one-time</small></div><ul><li>Everything in Starter</li><li>Custom colours and text</li><li>Contact and WhatsApp button</li></ul><a class="btn dark" data-order="Business package (৳2,499)" href="#">Order on WhatsApp</a></div></div>
+    <div class="card pk"><div class="b"><h3>Premium</h3><div class="price">৳4,999 <small>one-time</small></div><ul><li>Everything in Business</li><li>Extra pages</li><li>Priority support</li></ul><a class="btn lime" data-order="Premium package (৳4,999)" href="#">Order on WhatsApp</a></div></div>
+  </div>
+</div></section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Ready to start?</h2>
-      <p class="sub">Message us on WhatsApp: 01705633700</p>
-      <a class="btn lime" data-order="a website" href="#">Chat on WhatsApp</a>
-    </div>
-  </section>
+<section class="s" id="about"><div class="container">
+  <h2>About Website Deals</h2>
+  <p class="sub">We build ready-made websites for small businesses, institutes and shops, so you can see the real thing first and go live fast.</p>
+</div></section>
+
+<section class="s" id="support"><div class="container">
+  <h2>Need help choosing?</h2>
+  <p class="sub">Message us on WhatsApp: 01705633700</p>
+  <a class="btn lime" data-order="a website" href="#">Chat on WhatsApp</a>
+</div></section>
 </main>
 
-<footer>
-  <div class="container">
-    <div><b>Website Deals</b><br>Ready-made websites from ৳999</div>
-    <div>WhatsApp: 01705633700</div>
-  </div>
-</footer>
+<footer><div class="container"><div><b>Website Deals</b><br>Premium website showcase</div><div>WhatsApp: 01705633700</div></div></footer>
 
-<a class="wa" id="waFloat" href="https://wa.me/8801705633700" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬 WhatsApp</a>
+<div class="modal" id="modal"><div class="mbox">
+  <div class="mtop"><span id="mt">Preview</span><button id="mc" aria-label="Close">✕</button></div>
+  <div id="mb" style="flex:1;display:flex"></div>
+</div></div>
+<a class="wa" id="waf" href="#" target="_blank" rel="noopener" data-order="a website">💬 WhatsApp</a>
 
 <script>
-(function () {
-  var NUMBER = "8801705633700";
-  var links = document.querySelectorAll("[data-order]");
-  for (var i = 0; i < links.length; i++) {
-    var item = links[i].getAttribute("data-order");
-    var msg = "Hello, I want to order: " + item;
-    links[i].href = "https://wa.me/" + NUMBER + "?text=" + encodeURIComponent(msg);
-    links[i].target = "_blank";
-    links[i].rel = "noopener";
+(function(){
+  var NUMBER="8801705633700";
+
+  /* ---- EDIT HERE: add your real websites. url = live link ---- */
+  var SITES=[
+    {name:"Business Starter",cat:"Business",price:"৳999",url:"",desc:"Home, services, about and contact pages."},
+    {name:"Coaching & Institute",cat:"Education",price:"৳2,499",url:"",desc:"Courses, admission form and notice board."},
+    {name:"Online Shop",cat:"Shop",price:"৳2,999",url:"",desc:"Product catalogue with WhatsApp ordering."}
+  ];
+
+  /* ---- EDIT HERE: prayer times (24h) ---- */
+  var PRAYERS=[["Fajr","04:45","🌙"],["Dhuhr","12:05","☀️"],["Asr","16:15","🌤"],["Maghrib","18:00","🌇"],["Isha","19:20","🌙"]];
+
+  function $(i){return document.getElementById(i)}
+  function wa(t){return "https://wa.me/"+NUMBER+"?text="+encodeURIComponent("Hello, I want to order: "+t)}
+  function mins(s){var p=s.split(":");return +p[0]*60+ +p[1]}
+
+  /* salah bar */
+  function salah(){
+    var d=new Date(),n=d.getHours()*60+d.getMinutes(),cur=PRAYERS.length-1,nx=0;
+    for(var i=0;i<PRAYERS.length;i++){if(mins(PRAYERS[i][1])<=n)cur=i}
+    if(mins(PRAYERS[0][1])>n)cur=PRAYERS.length-1;
+    nx=(cur+1)%PRAYERS.length;
+    var h='<span class="lbl">🕌 SALAH</span>';
+    PRAYERS.forEach(function(p,i){h+='<span class="pt'+(i===cur?' now':'')+'">'+p[2]+' <b>'+p[0]+'</b><span>'+p[1]+'</span></span>'});
+    $("times").innerHTML=h;
+    $("next").innerHTML='Next: <b>'+PRAYERS[nx][0]+'</b> · '+PRAYERS[nx][1];
   }
+  salah();setInterval(salah,60000);
+
+  /* website cards */
+  var g=$("grid"),html="";
+  SITES.forEach(function(s,i){
+    html+='<article class="card"><div class="th c'+(i%3)+'">'+s.cat+'</div><div class="b"><h3>'+s.name+'</h3><p>'+s.desc+'</p><div class="price">'+s.price+' <small>one-time</small></div><div class="row"><button class="btn" data-prev="'+i+'">Live preview</button><a class="btn lime" data-order="'+s.name+' ('+s.price+')" href="#">Order</a></div></div></article>';
+  });
+  g.innerHTML=html;
+
+  function emptyHTML(t){return '<div class="empty"><span class="logo">WD</span><h3>Live Preview</h3><p>'+t+'</p></div>'}
+
+  function show(i,target){
+    var s=SITES[i];
+    if(target==="hero"){
+      $("fl").textContent=s.name;$("fl2").textContent=s.url?"Live now":"No link added yet";
+      $("url").textContent=s.url||"";
+      $("view").innerHTML=s.url?'<iframe src="'+s.url+'" title="'+s.name+'" loading="lazy"></iframe>':emptyHTML("Add this website's link in the SITES list to see it here.");
+    }else{
+      $("mt").textContent=s.name;
+      $("mb").innerHTML=s.url?'<iframe src="'+s.url+'" title="'+s.name+'"></iframe>':emptyHTML("Add this website's link in the SITES list to see it here.");
+      $("modal").classList.add("open");
+    }
+  }
+  g.addEventListener("click",function(e){
+    var b=e.target.closest("[data-prev]");if(!b)return;
+    var i=+b.getAttribute("data-prev");show(i,"hero");show(i,"modal");
+  });
+  $("mc").onclick=function(){$("modal").classList.remove("open");$("mb").innerHTML=""};
+  $("modal").addEventListener("click",function(e){if(e.target===this)$("mc").onclick()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")$("mc").onclick()});
+
+  /* first showcase site with a link loads in the laptop */
+  for(var k=0;k<SITES.length;k++){if(SITES[k].url){show(k,"hero");break}}
+
+  /* whatsapp links */
+  document.querySelectorAll("[data-order]").forEach(function(a){a.href=wa(a.getAttribute("data-order"));a.target="_blank";a.rel="noopener"});
 })();
 </script>
 </body>
