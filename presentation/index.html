@@ -5,12 +5,12 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
   <meta
     name="theme-color"
-    content="#080a08"
+    content="#090b09"
   >
 
   <meta
@@ -20,32 +20,36 @@
 
   <title>Live Presentation | Website Deals</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
   <style>
     :root{
       --lime:#b7ff00;
-      --lime-soft:#d8ff75;
-      --black:#070907;
-      --black-2:#0b0d0b;
-      --panel:#101310;
-      --panel-2:#151815;
-      --line:rgba(255,255,255,.09);
+      --lime-soft:#d7ff72;
+      --ink:#090b09;
+      --ink-2:#10130f;
+      --ink-3:#171b15;
+      --white:#ffffff;
+      --muted:#9ba49a;
+      --line:rgba(255,255,255,.10);
       --line-strong:rgba(255,255,255,.16);
-      --white:#f8faf5;
-      --muted:#9da59b;
-      --muted-2:#6f776d;
       --danger:#ff6b6b;
-      --shadow:0 35px 100px rgba(0,0,0,.55);
-      --radius:24px;
-      --topbar:42px;
-      --nav:68px;
+      --success:#73ff9c;
+      --shadow:0 30px 100px rgba(0,0,0,.45);
     }
 
     *{
@@ -56,18 +60,27 @@
 
     html{
       scroll-behavior:smooth;
-      background:var(--black);
+      background:var(--ink);
     }
 
     body{
       min-height:100vh;
       overflow-x:hidden;
-      color:var(--white);
       background:
-        radial-gradient(circle at 50% 18%, rgba(183,255,0,.07), transparent 28%),
-        radial-gradient(circle at 15% 85%, rgba(183,255,0,.035), transparent 25%),
-        linear-gradient(180deg,#060806 0%,#090b09 48%,#060806 100%);
-      font-family:"DM Sans",Arial,sans-serif;
+        radial-gradient(
+          circle at 50% 15%,
+          rgba(183,255,0,.07),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 10% 80%,
+          rgba(255,255,255,.035),
+          transparent 28%
+        ),
+        var(--ink);
+      color:var(--white);
+      font-family:Inter,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
     }
 
     button,
@@ -77,7 +90,6 @@
 
     button{
       border:0;
-      cursor:pointer;
     }
 
     a{
@@ -85,162 +97,109 @@
       text-decoration:none;
     }
 
-    ::selection{
-      color:#000;
-      background:var(--lime);
-    }
-
-    /* =========================================================
-       BACKGROUND
-    ========================================================= */
-
-    .ambient{
-      position:fixed;
-      inset:0;
-      z-index:-5;
-      pointer-events:none;
-      overflow:hidden;
-    }
-
-    .ambient::before{
-      content:"";
-      position:absolute;
-      width:600px;
-      height:600px;
-      left:50%;
-      top:10%;
-      transform:translateX(-50%);
-      border-radius:50%;
-      background:rgba(183,255,0,.035);
-      filter:blur(100px);
-    }
-
-    .ambient::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      opacity:.22;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-      background-size:48px 48px;
-      mask-image:linear-gradient(to bottom,black,transparent 85%);
-    }
-
-    /* =========================================================
+    /* =========================================
        SALAH BAR
-    ========================================================= */
+    ========================================= */
 
     .salah-bar{
       position:fixed;
-      z-index:1000;
       top:0;
       left:0;
       right:0;
-      height:var(--topbar);
+      z-index:1000;
+
+      min-height:42px;
+      padding:8px 18px;
+
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:0 16px;
-      border-bottom:1px solid rgba(255,255,255,.07);
-      background:rgba(5,7,5,.88);
+      gap:10px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(183,255,0,.12),
+          rgba(183,255,0,.04),
+          rgba(183,255,0,.12)
+        );
+
+      border-bottom:1px solid rgba(183,255,0,.16);
       backdrop-filter:blur(18px);
       -webkit-backdrop-filter:blur(18px);
-    }
 
-    .salah-inner{
-      width:min(1200px,100%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:7px;
-      overflow-x:auto;
-      scrollbar-width:none;
-    }
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.04em;
 
-    .salah-inner::-webkit-scrollbar{
-      display:none;
+      white-space:nowrap;
+      overflow:hidden;
     }
 
     .salah-label{
-      display:inline-flex;
+      color:var(--lime);
+      display:flex;
       align-items:center;
       gap:7px;
-      flex:0 0 auto;
-      margin-right:6px;
-      color:var(--lime);
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+      flex-shrink:0;
     }
 
-    .salah-dot{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:var(--lime);
-      box-shadow:0 0 14px rgba(183,255,0,.65);
+    .mosque{
+      font-size:15px;
+    }
+
+    .prayer-list{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      overflow:auto;
+      scrollbar-width:none;
+    }
+
+    .prayer-list::-webkit-scrollbar{
+      display:none;
     }
 
     .prayer{
-      min-width:84px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:5px;
       padding:5px 9px;
-      border:1px solid transparent;
       border-radius:999px;
-      color:#858d83;
-      font-size:10px;
-      white-space:nowrap;
+      color:#aeb6aa;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.055);
       transition:.25s ease;
     }
 
-    .prayer strong{
-      color:#b7beb5;
-      font-weight:600;
-    }
-
     .prayer.active{
-      color:#061000;
+      color:var(--ink);
       background:var(--lime);
       border-color:var(--lime);
-      box-shadow:0 0 20px rgba(183,255,0,.14);
+      box-shadow:0 0 22px rgba(183,255,0,.18);
     }
 
-    .prayer.active strong{
-      color:#061000;
-    }
-
-    /* =========================================================
+    /* =========================================
        HEADER
-    ========================================================= */
+    ========================================= */
 
-    .header{
+    .top-header{
       position:fixed;
-      top:var(--topbar);
+      top:42px;
       left:0;
       right:0;
       z-index:900;
-      height:var(--nav);
-      display:flex;
-      align-items:center;
-      padding:0 22px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-      background:rgba(7,9,7,.72);
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
-    }
 
-    .header-inner{
-      width:min(1380px,100%);
-      margin:auto;
+      height:68px;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+
+      padding:0 28px;
+
+      background:rgba(9,11,9,.78);
+      border-bottom:1px solid var(--line);
+
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
     }
 
     .brand{
@@ -253,34 +212,37 @@
     .brand-mark{
       width:34px;
       height:34px;
+
       display:grid;
       place-items:center;
-      flex:0 0 auto;
-      border-radius:11px;
-      color:#060806;
+
+      border-radius:10px;
+
       background:var(--lime);
-      font-family:"Space Grotesk",sans-serif;
-      font-size:13px;
-      font-weight:700;
-      box-shadow:0 8px 30px rgba(183,255,0,.13);
+      color:var(--ink);
+
+      font-size:15px;
+      font-weight:900;
+
+      box-shadow:0 0 25px rgba(183,255,0,.14);
     }
 
-    .brand-text{
+    .brand-copy{
       min-width:0;
     }
 
-    .brand-name{
-      font-family:"Space Grotesk",sans-serif;
-      font-size:14px;
-      font-weight:700;
+    .brand-title{
+      font-size:13px;
+      font-weight:900;
       letter-spacing:-.02em;
     }
 
-    .brand-sub{
-      margin-top:1px;
-      color:#737b72;
+    .brand-subtitle{
+      margin-top:2px;
+      color:var(--muted);
       font-size:9px;
-      letter-spacing:.08em;
+      font-weight:600;
+      letter-spacing:.10em;
       text-transform:uppercase;
     }
 
@@ -291,677 +253,835 @@
     }
 
     .header-btn{
+      min-height:38px;
+      padding:0 14px;
+
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      min-height:38px;
-      padding:0 14px;
+      gap:7px;
+
       border:1px solid var(--line);
-      border-radius:999px;
-      color:#cbd0c9;
+      border-radius:11px;
+
+      color:#dce2da;
       background:rgba(255,255,255,.035);
-      font-size:11px;
-      font-weight:600;
-      transition:.25s ease;
+
+      cursor:pointer;
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
     }
 
     .header-btn:hover{
-      color:var(--white);
-      border-color:var(--line-strong);
-      background:rgba(255,255,255,.07);
       transform:translateY(-1px);
+      background:rgba(255,255,255,.07);
+      border-color:var(--line-strong);
     }
 
     .header-btn.primary{
-      color:#060806;
+      color:var(--ink);
       background:var(--lime);
       border-color:var(--lime);
+      font-weight:900;
     }
 
-    .header-btn.primary:hover{
-      background:#c9ff43;
-      border-color:#c9ff43;
-    }
-
-    /* =========================================================
-       MAIN STAGE
-    ========================================================= */
+    /* =========================================
+       MAIN
+    ========================================= */
 
     main{
-      min-height:100vh;
-      padding-top:calc(var(--topbar) + var(--nav));
+      padding-top:110px;
     }
 
-    .stage{
-      width:min(1500px,100%);
-      min-height:calc(100vh - var(--topbar) - var(--nav));
-      margin:auto;
-      padding:40px 28px 55px;
-      display:flex;
-      flex-direction:column;
+    .presentation-wrap{
+      width:min(1500px,calc(100% - 32px));
+      margin:0 auto;
+      padding:34px 0 80px;
     }
 
     .stage-head{
-      width:min(1250px,100%);
-      margin:0 auto 28px;
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
       gap:24px;
+
+      margin-bottom:24px;
     }
 
     .eyebrow{
       display:flex;
       align-items:center;
       gap:8px;
-      margin-bottom:11px;
+
       color:var(--lime);
       font-size:10px;
-      font-weight:700;
-      letter-spacing:.15em;
+      font-weight:900;
+      letter-spacing:.14em;
       text-transform:uppercase;
     }
 
-    .eyebrow-line{
-      width:25px;
-      height:1px;
+    .eyebrow-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
       background:var(--lime);
-      opacity:.7;
+      box-shadow:0 0 16px rgba(183,255,0,.7);
     }
 
     h1{
-      font-family:"Space Grotesk",sans-serif;
-      font-size:clamp(32px,4vw,62px);
-      line-height:.96;
-      letter-spacing:-.055em;
-      font-weight:700;
-    }
+      margin-top:9px;
 
-    h1 span{
-      color:var(--lime);
+      font-size:
+        clamp(30px,5vw,66px);
+
+      line-height:.95;
+      letter-spacing:-.055em;
+      font-weight:900;
     }
 
     .stage-description{
-      max-width:510px;
-      color:#8f978d;
+      max-width:620px;
+      margin-top:13px;
+
+      color:#9da69c;
       font-size:13px;
       line-height:1.7;
     }
 
-    /* =========================================================
-       DEVICE PRESENTATION
-    ========================================================= */
+    .live-status{
+      flex-shrink:0;
 
-    .presentation-wrap{
-      width:min(1250px,100%);
-      margin:auto;
+      display:flex;
+      align-items:center;
+      gap:8px;
+
+      padding:9px 12px;
+
+      border:1px solid var(--line);
+      border-radius:999px;
+
+      color:#b8c0b6;
+      background:rgba(255,255,255,.025);
+
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+
+    .status-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#777;
+    }
+
+    .live-status.ready .status-dot{
+      background:var(--success);
+      box-shadow:0 0 14px rgba(115,255,156,.7);
+    }
+
+    .live-status.error .status-dot{
+      background:var(--danger);
+      box-shadow:0 0 14px rgba(255,107,107,.55);
+    }
+
+    /* =========================================
+       DEVICE
+    ========================================= */
+
+    .device-area{
+      position:relative;
+
+      width:100%;
+      min-height:650px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:24px 0 28px;
+
+      border-radius:34px;
+
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(183,255,0,.08),
+          transparent 31%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+
+      border:1px solid var(--line);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03),
+        var(--shadow);
+
+      overflow:hidden;
+    }
+
+    .ambient{
+      position:absolute;
+      inset:auto 12% -30%;
+
+      height:45%;
+
+      background:radial-gradient(
+        ellipse,
+        rgba(183,255,0,.09),
+        transparent 65%
+      );
+
+      pointer-events:none;
+      filter:blur(30px);
     }
 
     .device-shell{
       position:relative;
-      width:100%;
-      aspect-ratio:16 / 10;
-      min-height:470px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:3.8% 5.8% 8%;
-      border-radius:32px;
-      background:
-        linear-gradient(145deg,#343834 0%,#181b18 24%,#090b09 62%,#292d29 100%);
-      border:1px solid rgba(255,255,255,.13);
-      box-shadow:
-        0 45px 100px rgba(0,0,0,.65),
-        0 0 0 1px rgba(255,255,255,.025) inset,
-        0 0 90px rgba(183,255,0,.045);
+      z-index:2;
+
+      width:min(1180px,92%);
     }
 
-    .device-shell::before{
-      content:"";
-      position:absolute;
-      left:7%;
-      right:7%;
-      top:3.3%;
-      height:1px;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+    .device-frame{
+      position:relative;
+
+      padding:12px;
+
+      border-radius:27px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #31362f,
+          #111410 42%,
+          #080a08
+        );
+
+      border:1px solid rgba(255,255,255,.16);
+
+      box-shadow:
+        0 50px 120px rgba(0,0,0,.55),
+        0 0 0 1px rgba(0,0,0,.4),
+        inset 0 1px 0 rgba(255,255,255,.10);
     }
 
     .camera-dot{
       position:absolute;
-      z-index:4;
-      top:1.55%;
+      z-index:20;
+
+      top:6px;
       left:50%;
-      width:7px;
-      height:7px;
+
+      width:6px;
+      height:6px;
+
       transform:translateX(-50%);
+
       border-radius:50%;
-      background:#030403;
-      border:1px solid rgba(255,255,255,.13);
-      box-shadow:0 0 8px rgba(0,0,0,.8);
+
+      background:#020202;
+      box-shadow:
+        0 0 0 2px rgba(255,255,255,.03),
+        inset 0 1px 2px rgba(255,255,255,.15);
     }
 
     .screen{
       position:relative;
+
       width:100%;
-      height:100%;
+      height:
+        clamp(420px,60vw,690px);
+
       overflow:hidden;
-      border-radius:10px;
+
+      border-radius:17px;
+
       background:#fff;
+
       box-shadow:
-        0 0 0 1px rgba(0,0,0,.75),
-        0 0 0 3px rgba(255,255,255,.035);
+        inset 0 0 0 1px rgba(0,0,0,.18),
+        0 0 0 1px rgba(255,255,255,.04);
     }
 
     .screen::after{
       content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      z-index:20;
-      background:
-        linear-gradient(115deg,rgba(255,255,255,.07),transparent 22%,transparent 72%,rgba(255,255,255,.035)),
-        radial-gradient(circle at 50% 0%,rgba(255,255,255,.05),transparent 42%);
-      mix-blend-mode:screen;
-    }
 
-    .site-camera{
       position:absolute;
       inset:0;
-      overflow:hidden;
-      background:#fff;
+      z-index:15;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,.055),
+          transparent 23%,
+          transparent 75%,
+          rgba(255,255,255,.025)
+        );
+
+      mix-blend-mode:screen;
     }
 
     #siteFrame{
       position:absolute;
+
       left:0;
       top:0;
+
       width:100%;
-      height:7000px;
+
+      /*
+        Cross-origin websites cannot have their real document
+        height measured by the parent page.
+
+        This virtual canvas gives the presentation camera
+        enough room to travel without relying on 7000px.
+      */
+      height:5600px;
+
       border:0;
+
       display:block;
+
       background:#fff;
-      transform:translate3d(0,0,0);
+
+      transform:
+        translate3d(0,0,0);
+
       transform-origin:top left;
+
       will-change:transform;
-    }
 
-    .device-base{
-      position:absolute;
-      left:18%;
-      right:18%;
-      bottom:-7.5%;
-      height:7%;
-      min-height:22px;
-      border-radius:0 0 24px 24px;
-      background:
-        linear-gradient(180deg,#373b37,#161916 55%,#080a08);
-      border:1px solid rgba(255,255,255,.11);
-      border-top:0;
-      box-shadow:0 24px 45px rgba(0,0,0,.55);
-    }
-
-    .device-base::after{
-      content:"";
-      position:absolute;
-      left:42%;
-      right:42%;
-      top:0;
-      height:4px;
-      border-radius:0 0 5px 5px;
-      background:rgba(255,255,255,.1);
-    }
-
-    .device-logo{
-      position:absolute;
-      left:50%;
-      bottom:-4.9%;
-      transform:translate(-50%,50%);
-      z-index:5;
-      width:28px;
-      height:28px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      color:#0a0d09;
-      background:var(--lime);
-      font-family:"Space Grotesk",sans-serif;
-      font-size:9px;
-      font-weight:800;
-      box-shadow:0 5px 20px rgba(0,0,0,.5);
-    }
-
-    /* =========================================================
-       CURSOR
-    ========================================================= */
-
-    .cursor{
-      position:absolute;
-      z-index:50;
-      width:17px;
-      height:17px;
-      pointer-events:none;
       opacity:0;
-      transform:translate3d(0,0,0);
-      transition:opacity .35s ease;
+
+      transition:opacity .5s ease;
     }
 
-    .cursor::before{
-      content:"";
+    #siteFrame.loaded{
+      opacity:1;
+    }
+
+    /* =========================================
+       LOADER
+    ========================================= */
+
+    .preview-loader{
       position:absolute;
-      left:0;
-      top:0;
-      width:0;
-      height:0;
-      border-top:14px solid #fff;
-      border-right:7px solid transparent;
-      filter:drop-shadow(0 1px 2px rgba(0,0,0,.8));
-      transform:rotate(-7deg);
-    }
+      inset:0;
+      z-index:30;
 
-    .cursor::after{
-      content:"";
-      position:absolute;
-      left:-3px;
-      top:-3px;
-      width:22px;
-      height:22px;
-      border:1px solid rgba(183,255,0,.7);
-      border-radius:50%;
-      opacity:.65;
-      animation:cursorPulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes cursorPulse{
-      0%,100%{transform:scale(.72);opacity:.15}
-      50%{transform:scale(1);opacity:.7}
-    }
-
-    /* =========================================================
-       CONTROL BAR
-    ========================================================= */
-
-    .control-panel{
-      position:relative;
-      width:min(1120px,100%);
-      margin:26px auto 0;
-      padding:13px;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:15px;
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:rgba(16,19,16,.82);
-      box-shadow:0 20px 55px rgba(0,0,0,.28);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-    }
-
-    .controls-left{
       display:flex;
-      align-items:center;
-      gap:7px;
-    }
-
-    .control-btn{
-      min-width:40px;
-      height:40px;
-      padding:0 13px;
-      display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      border:1px solid var(--line);
-      border-radius:12px;
-      color:#d5dad3;
-      background:rgba(255,255,255,.035);
-      font-size:11px;
-      font-weight:700;
-      transition:.22s ease;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(183,255,0,.055),
+          rgba(9,11,9,.96)
+        );
+
+      transition:
+        opacity .45s ease,
+        visibility .45s ease;
     }
 
-    .control-btn:hover{
-      color:#fff;
-      border-color:var(--line-strong);
-      background:rgba(255,255,255,.075);
+    .preview-loader.hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
     }
 
-    .control-btn.primary{
-      color:#071000;
-      background:var(--lime);
-      border-color:var(--lime);
-    }
-
-    .control-btn.primary:hover{
-      background:#caff46;
-      border-color:#caff46;
-    }
-
-    .progress-area{
-      min-width:0;
-    }
-
-    .progress-meta{
-      display:flex;
-      justify-content:space-between;
-      gap:15px;
-      margin-bottom:7px;
-      color:#727a71;
-      font-size:9px;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-
-    .progress-meta strong{
-      color:#b8c0b6;
-    }
-
-    .progress-track{
-      height:4px;
-      overflow:hidden;
-      border-radius:999px;
-      background:#242824;
-    }
-
-    .progress-fill{
-      width:0%;
-      height:100%;
-      border-radius:inherit;
-      background:var(--lime);
-      box-shadow:0 0 14px rgba(183,255,0,.3);
-      transition:width .15s linear;
-    }
-
-    .controls-right{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:8px;
-    }
-
-    /* =========================================================
-       SITE INFO
-    ========================================================= */
-
-    .site-info{
-      width:min(1120px,100%);
-      margin:18px auto 0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-
-    .site-meta{
-      min-width:0;
-    }
-
-    .site-package{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      margin-bottom:6px;
-      color:var(--lime);
-      font-size:9px;
-      font-weight:800;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-
-    .site-package::before{
-      content:"";
-      width:5px;
-      height:5px;
-      border-radius:50%;
-      background:var(--lime);
-    }
-
-    .site-name{
-      font-family:"Space Grotesk",sans-serif;
-      font-size:20px;
-      font-weight:700;
-      letter-spacing:-.025em;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .site-url{
-      margin-top:3px;
-      color:#6f776e;
-      font-size:10px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .site-status{
-      flex:0 0 auto;
-      display:flex;
-      align-items:center;
-      gap:7px;
-      color:#7d857b;
-      font-size:10px;
-    }
-
-    .status-light{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:var(--lime);
-      box-shadow:0 0 12px rgba(183,255,0,.55);
-    }
-
-    /* =========================================================
-       NOTICE
-    ========================================================= */
-
-    .notice{
-      width:min(1120px,100%);
-      margin:18px auto 0;
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-      padding:13px 15px;
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:14px;
-      color:#737b72;
-      background:rgba(255,255,255,.022);
-      font-size:10px;
-      line-height:1.65;
-    }
-
-    .notice-icon{
-      flex:0 0 auto;
-      width:20px;
-      height:20px;
-      display:grid;
-      place-items:center;
-      border-radius:7px;
-      color:var(--lime);
-      background:rgba(183,255,0,.08);
-      font-size:10px;
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    footer{
-      width:min(1250px,100%);
-      margin:35px auto 0;
-      padding-top:22px;
-      border-top:1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      color:#60685f;
-      font-size:9px;
-    }
-
-    .footer-shortcuts{
-      display:flex;
-      align-items:center;
-      gap:7px;
-    }
-
-    kbd{
-      min-width:23px;
-      height:22px;
-      display:inline-grid;
-      place-items:center;
-      padding:0 6px;
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:6px;
-      color:#9ca39a;
-      background:rgba(255,255,255,.035);
-      font-size:9px;
-      font-family:inherit;
-    }
-
-    /* =========================================================
-       EMPTY / ERROR
-    ========================================================= */
-
-    .empty-state{
-      min-height:550px;
-      display:grid;
-      place-items:center;
-      padding:40px;
+    .loader-inner{
+      width:min(360px,80%);
       text-align:center;
-      border:1px solid var(--line);
-      border-radius:28px;
-      background:rgba(255,255,255,.025);
     }
 
-    .empty-inner{
-      max-width:520px;
+    .loader-ring{
+      width:44px;
+      height:44px;
+
+      margin:0 auto 16px;
+
+      border-radius:50%;
+
+      border:2px solid rgba(255,255,255,.10);
+      border-top-color:var(--lime);
+
+      animation:spin .9s linear infinite;
+    }
+
+    @keyframes spin{
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    .loader-title{
+      font-size:14px;
+      font-weight:900;
+    }
+
+    .loader-text{
+      margin-top:7px;
+
+      color:#899288;
+
+      font-size:11px;
+      line-height:1.6;
+    }
+
+    /* =========================================
+       INLINE EMPTY / ERROR STATE
+    ========================================= */
+
+    .preview-empty{
+      position:absolute;
+      inset:0;
+      z-index:40;
+
+      display:none;
+      align-items:center;
+      justify-content:center;
+
+      padding:30px;
+
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(183,255,0,.055),
+          rgba(9,11,9,.97)
+        );
+
+      text-align:center;
+    }
+
+    .preview-empty.show{
+      display:flex;
+    }
+
+    .empty-box{
+      width:min(520px,100%);
     }
 
     .empty-icon{
-      width:70px;
-      height:70px;
-      margin:0 auto 20px;
+      width:58px;
+      height:58px;
+
+      margin:0 auto 18px;
+
       display:grid;
       place-items:center;
-      border:1px solid rgba(183,255,0,.18);
-      border-radius:22px;
+
+      border-radius:18px;
+
       color:var(--lime);
-      background:rgba(183,255,0,.055);
-      font-size:26px;
+      background:rgba(183,255,0,.08);
+      border:1px solid rgba(183,255,0,.16);
+
+      font-size:23px;
     }
 
-    .empty-state h2{
-      margin-bottom:10px;
-      font-family:"Space Grotesk",sans-serif;
-      font-size:28px;
+    .empty-title{
+      font-size:22px;
+      font-weight:900;
       letter-spacing:-.035em;
     }
 
-    .empty-state p{
-      color:#7c847a;
+    .empty-text{
+      margin-top:9px;
+
+      color:#929a91;
+
       font-size:12px;
       line-height:1.7;
     }
 
-    .loading{
-      position:absolute;
-      z-index:100;
-      inset:0;
+    .empty-actions{
+      margin-top:18px;
+
       display:flex;
-      align-items:center;
       justify-content:center;
-      background:#fff;
-      transition:opacity .5s ease;
+      flex-wrap:wrap;
+      gap:8px;
     }
 
-    .loading.hidden{
+    /* =========================================
+       CURSOR
+    ========================================= */
+
+    .human-cursor{
+      position:absolute;
+      z-index:50;
+
+      width:17px;
+      height:17px;
+
+      pointer-events:none;
+
       opacity:0;
+
+      transform:
+        translate3d(-50%,-50%,0);
+
+      transition:opacity .35s ease;
+    }
+
+    .human-cursor.visible{
+      opacity:1;
+    }
+
+    .human-cursor::before{
+      content:"";
+
+      position:absolute;
+      left:0;
+      top:0;
+
+      width:0;
+      height:0;
+
+      border-left:9px solid #fff;
+      border-top:12px solid transparent;
+      border-bottom:2px solid transparent;
+
+      filter:
+        drop-shadow(0 1px 2px rgba(0,0,0,.65));
+    }
+
+    .human-cursor::after{
+      content:"";
+
+      position:absolute;
+
+      left:3px;
+      top:7px;
+
+      width:9px;
+      height:9px;
+
+      border-radius:50%;
+
+      background:rgba(183,255,0,.22);
+
+      animation:cursorPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes cursorPulse{
+      0%,100%{
+        transform:scale(.8);
+        opacity:.35;
+      }
+      50%{
+        transform:scale(1.25);
+        opacity:.85;
+      }
+    }
+
+    /* =========================================
+       PROGRESS
+    ========================================= */
+
+    .camera-progress{
+      position:absolute;
+      z-index:55;
+
+      left:20px;
+      right:20px;
+      bottom:20px;
+
+      height:3px;
+
+      border-radius:999px;
+
+      background:rgba(0,0,0,.20);
+
+      overflow:hidden;
+
       pointer-events:none;
     }
 
-    .loader{
-      width:34px;
-      height:34px;
-      border:3px solid #e8ece7;
-      border-top-color:#101410;
-      border-radius:50%;
-      animation:spin .75s linear infinite;
+    .camera-progress-bar{
+      width:0;
+      height:100%;
+
+      border-radius:inherit;
+
+      background:var(--lime);
+
+      box-shadow:0 0 14px rgba(183,255,0,.5);
+
+      transition:width .12s linear;
     }
 
-    @keyframes spin{
-      to{transform:rotate(360deg)}
+    /* =========================================
+       CONTROLS
+    ========================================= */
+
+    .controls{
+      margin-top:18px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+
+      padding:12px;
+
+      border:1px solid var(--line);
+      border-radius:18px;
+
+      background:rgba(255,255,255,.025);
     }
 
-    /* =========================================================
+    .control-left,
+    .control-right{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      flex-wrap:wrap;
+    }
+
+    .control-btn{
+      min-height:40px;
+      padding:0 13px;
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+
+      border-radius:11px;
+
+      color:#dbe1d9;
+      background:rgba(255,255,255,.045);
+      border:1px solid var(--line);
+
+      cursor:pointer;
+
+      font-size:11px;
+      font-weight:800;
+
+      transition:.2s ease;
+    }
+
+    .control-btn:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.08);
+      border-color:var(--line-strong);
+    }
+
+    .control-btn.active{
+      color:var(--ink);
+      background:var(--lime);
+      border-color:var(--lime);
+    }
+
+    .control-btn.disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
+    /* =========================================
+       SITE INFO
+    ========================================= */
+
+    .site-info{
+      margin-top:18px;
+
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:20px;
+      align-items:center;
+
+      padding:20px;
+
+      border:1px solid var(--line);
+      border-radius:20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.015)
+        );
+    }
+
+    .site-label{
+      color:var(--lime);
+
+      font-size:9px;
+      font-weight:900;
+
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+
+    .site-name{
+      margin-top:7px;
+
+      font-size:21px;
+      font-weight:900;
+
+      letter-spacing:-.035em;
+    }
+
+    .site-meta{
+      margin-top:6px;
+
+      color:#8d968c;
+
+      font-size:11px;
+    }
+
+    .site-url{
+      margin-top:7px;
+
+      max-width:100%;
+
+      color:#697168;
+
+      font-size:10px;
+
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    .site-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    /* =========================================
+       NOTICE
+    ========================================= */
+
+    .notice{
+      margin-top:14px;
+
+      padding:15px 17px;
+
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+
+      color:#8f988f;
+
+      background:rgba(255,255,255,.02);
+
+      font-size:10px;
+      line-height:1.7;
+    }
+
+    .notice strong{
+      color:#d5ddd2;
+    }
+
+    .notice.warning{
+      border-color:rgba(255,107,107,.18);
+      background:rgba(255,107,107,.025);
+    }
+
+    .notice.warning strong{
+      color:#ff9b9b;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer{
+      padding:30px 18px 50px;
+
+      text-align:center;
+
+      color:#555d55;
+
+      font-size:10px;
+      line-height:1.7;
+    }
+
+    /* =========================================
        RESPONSIVE
-    ========================================================= */
+    ========================================= */
 
     @media(max-width:900px){
 
-      :root{
-        --nav:62px;
+      .top-header{
+        padding:0 16px;
       }
 
-      .header{
-        padding:0 14px;
-      }
-
-      .brand-sub{
+      .header-actions .optional{
         display:none;
       }
 
-      .header-btn span{
-        display:none;
-      }
-
-      .header-btn{
-        width:38px;
-        padding:0;
-      }
-
-      .stage{
-        padding:28px 14px 40px;
+      .presentation-wrap{
+        width:min(100% - 20px,1500px);
+        padding-top:25px;
       }
 
       .stage-head{
-        display:block;
-        margin-bottom:22px;
+        align-items:flex-start;
+        flex-direction:column;
       }
 
-      .stage-description{
-        margin-top:15px;
+      .device-area{
+        min-height:530px;
+        padding:15px 0 20px;
+        border-radius:24px;
       }
 
       .device-shell{
-        min-height:390px;
-        border-radius:23px;
+        width:96%;
       }
 
-      .control-panel{
-        grid-template-columns:1fr;
+      .device-frame{
+        padding:8px;
+        border-radius:19px;
       }
 
-      .controls-left,
-      .controls-right{
-        justify-content:center;
+      .screen{
+        height:58vw;
+        min-height:350px;
+        max-height:590px;
+        border-radius:12px;
       }
 
-      .progress-area{
-        order:-1;
+      .controls{
+        align-items:stretch;
+        flex-direction:column;
+      }
+
+      .control-left,
+      .control-right{
+        width:100%;
+      }
+
+      .control-btn{
+        flex:1;
       }
 
       .site-info{
-        align-items:flex-start;
-        flex-direction:column;
+        grid-template-columns:1fr;
       }
 
-      footer{
-        flex-direction:column;
-        align-items:flex-start;
+      .site-actions{
+        width:100%;
+      }
+
+      .site-actions .control-btn{
+        flex:1;
       }
     }
 
@@ -971,83 +1091,63 @@
         justify-content:flex-start;
       }
 
-      .salah-inner{
-        justify-content:flex-start;
+      .top-header{
+        height:60px;
+        top:42px;
       }
 
-      .salah-label{
+      main{
+        padding-top:102px;
+      }
+
+      .brand-subtitle{
         display:none;
       }
 
-      .prayer{
-        min-width:78px;
-        padding:5px 8px;
-      }
-
-      .brand-name{
-        font-size:13px;
-      }
-
-      .header-actions{
-        gap:5px;
+      .brand-title{
+        font-size:12px;
       }
 
       .header-btn{
-        min-height:35px;
-        height:35px;
+        padding:0 10px;
+      }
+
+      .header-btn .label{
+        display:none;
       }
 
       h1{
-        font-size:35px;
+        font-size:38px;
       }
 
       .stage-description{
         font-size:12px;
       }
 
-      .device-shell{
-        aspect-ratio:4 / 3;
-        min-height:260px;
-        padding:5% 6% 10%;
-        border-radius:18px;
+      .device-area{
+        min-height:390px;
       }
 
       .screen{
-        border-radius:6px;
+        height:64vw;
+        min-height:270px;
+        max-height:430px;
       }
 
-      .device-base{
-        bottom:-6%;
-        min-height:14px;
-      }
-
-      .device-logo{
-        width:22px;
-        height:22px;
-        font-size:7px;
-      }
-
-      .control-btn{
-        min-width:38px;
-        height:38px;
-        padding:0 10px;
-      }
-
-      .control-btn.labelled{
-        flex:1;
-      }
-
-      .controls-left,
-      .controls-right{
-        width:100%;
+      #siteFrame{
+        height:4800px;
       }
 
       .site-name{
-        font-size:17px;
+        font-size:18px;
       }
 
-      .notice{
-        font-size:9px;
+      .site-actions{
+        flex-direction:column;
+      }
+
+      .site-actions .control-btn{
+        width:100%;
       }
     }
   </style>
@@ -1055,134 +1155,159 @@
 
 <body>
 
-  <div class="ambient"></div>
+  <!-- =========================================
+       SALAH BAR
+  ========================================== -->
 
-  <!-- =======================================================
-       SALAH TOP BAR
-  ======================================================== -->
   <div class="salah-bar">
-    <div class="salah-inner">
 
-      <div class="salah-label">
-        <span class="salah-dot"></span>
-        Salah
-      </div>
+    <div class="salah-label">
+      <span class="mosque">🕌</span>
+      <span>SALAH</span>
+    </div>
+
+    <div class="prayer-list">
 
       <div class="prayer" data-prayer="Fajr">
-        <span>Fajr</span>
-        <strong>04:45</strong>
+        Fajr 04:45
       </div>
 
       <div class="prayer" data-prayer="Dhuhr">
-        <span>Dhuhr</span>
-        <strong>12:05</strong>
+        Dhuhr 12:05
       </div>
 
       <div class="prayer" data-prayer="Asr">
-        <span>Asr</span>
-        <strong>16:15</strong>
+        Asr 16:15
       </div>
 
       <div class="prayer" data-prayer="Maghrib">
-        <span>Maghrib</span>
-        <strong>18:00</strong>
+        Maghrib 18:00
       </div>
 
       <div class="prayer" data-prayer="Isha">
-        <span>Isha</span>
-        <strong>19:20</strong>
+        Isha 19:20
       </div>
 
     </div>
+
   </div>
 
-  <!-- =======================================================
+
+  <!-- =========================================
        HEADER
-  ======================================================== -->
-  <header class="header">
-    <div class="header-inner">
+  ========================================== -->
 
-      <a
-        class="brand"
-        href="../index.html"
-        aria-label="Back to Website Deals"
-      >
-        <div class="brand-mark">WD</div>
+  <header class="top-header">
 
-        <div class="brand-text">
-          <div class="brand-name">Website Deals</div>
-          <div class="brand-sub">Live Website Presentation</div>
-        </div>
-      </a>
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Website Deals Home"
+    >
 
-      <div class="header-actions">
-
-        <a
-          class="header-btn"
-          href="../index.html#websites"
-          title="Back to Showcase"
-        >
-          ← <span>Showcase</span>
-        </a>
-
-        <button
-          class="header-btn primary"
-          id="openLiveTop"
-          type="button"
-          title="Open Live Website"
-        >
-          ↗ <span>Open Live</span>
-        </button>
-
+      <div class="brand-mark">
+        WD
       </div>
 
+      <div class="brand-copy">
+        <div class="brand-title">
+          Website Deals
+        </div>
+
+        <div class="brand-subtitle">
+          Premium Live Presentation
+        </div>
+      </div>
+
+    </a>
+
+
+    <div class="header-actions">
+
+      <button
+        class="header-btn optional"
+        id="restartTopBtn"
+        type="button"
+      >
+        ↻
+        <span class="label">Restart</span>
+      </button>
+
+      <button
+        class="header-btn primary"
+        id="openTopBtn"
+        type="button"
+      >
+        ↗
+        <span class="label">Open Live</span>
+      </button>
+
     </div>
+
   </header>
 
-  <!-- =======================================================
+
+  <!-- =========================================
        MAIN
-  ======================================================== -->
+  ========================================== -->
+
   <main>
 
-    <section class="stage">
+    <section class="presentation-wrap">
+
+      <!-- STAGE HEADER -->
 
       <div class="stage-head">
 
         <div>
+
           <div class="eyebrow">
-            <span class="eyebrow-line"></span>
-            Live Presentation
+            <span class="eyebrow-dot"></span>
+            <span>Live Website Showcase</span>
           </div>
 
           <h1>
-            See it.<br>
-            <span>Feel it.</span>
+            Explore the<br>
+            experience.
           </h1>
+
+          <p class="stage-description">
+            Browse the live website inside the device frame.
+            The presentation camera moves naturally through
+            the page with reading pauses and a smooth return.
+          </p>
+
         </div>
 
-        <p class="stage-description">
-          Explore the website exactly as a real visitor would.
-          The presentation camera moves naturally through the page,
-          pauses for reading, reaches the bottom, then smoothly returns
-          to the top for another cycle.
-        </p>
+
+        <div
+          class="live-status"
+          id="liveStatus"
+        >
+          <span class="status-dot"></span>
+          <span id="liveStatusText">Preparing</span>
+        </div>
 
       </div>
 
-      <div class="presentation-wrap" id="presentationWrap">
 
-        <!-- DEVICE -->
+      <!-- DEVICE AREA -->
+
+      <div class="device-area">
+
+        <div class="ambient"></div>
+
         <div class="device-shell">
 
-          <div class="camera-dot"></div>
+          <div class="device-frame">
 
-          <div class="screen">
+            <div class="camera-dot"></div>
 
-            <div class="site-camera">
+            <div class="screen" id="screen">
 
-              <div class="loading" id="loading">
-                <div class="loader"></div>
-              </div>
+              <!-- IMPORTANT:
+                   load/error handlers are attached BEFORE src
+              -->
 
               <iframe
                 id="siteFrame"
@@ -1192,315 +1317,435 @@
                 sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
               ></iframe>
 
+
+              <!-- LOADING -->
+
               <div
-                class="cursor"
-                id="cursor"
-                aria-hidden="true"
+                class="preview-loader"
+                id="previewLoader"
+              >
+
+                <div class="loader-inner">
+
+                  <div class="loader-ring"></div>
+
+                  <div class="loader-title">
+                    Loading live website
+                  </div>
+
+                  <div class="loader-text">
+                    Preparing the website presentation...
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- EMPTY / ERROR -->
+
+              <div
+                class="preview-empty"
+                id="previewEmpty"
+              >
+
+                <div class="empty-box">
+
+                  <div class="empty-icon">
+                    ◌
+                  </div>
+
+                  <div
+                    class="empty-title"
+                    id="emptyTitle"
+                  >
+                    Website unavailable
+                  </div>
+
+                  <div
+                    class="empty-text"
+                    id="emptyText"
+                  >
+                    No valid showcase website was found.
+                  </div>
+
+                  <div class="empty-actions">
+
+                    <button
+                      class="control-btn"
+                      id="retryBtn"
+                      type="button"
+                    >
+                      ↻ Retry
+                    </button>
+
+                    <button
+                      class="control-btn active"
+                      id="emptyOpenBtn"
+                      type="button"
+                    >
+                      ↗ Open Live
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- CURSOR -->
+
+              <div
+                class="human-cursor"
+                id="humanCursor"
               ></div>
 
+
+              <!-- CAMERA PROGRESS -->
+
+              <div class="camera-progress">
+
+                <div
+                  class="camera-progress-bar"
+                  id="cameraProgress"
+                ></div>
+
+              </div>
+
             </div>
 
-          </div>
-
-          <div class="device-base"></div>
-
-          <div class="device-logo">WD</div>
-
-        </div>
-
-        <!-- CONTROLS -->
-        <div class="control-panel">
-
-          <div class="controls-left">
-
-            <button
-              class="control-btn primary labelled"
-              id="playPause"
-              type="button"
-            >
-              <span id="playIcon">Ⅱ</span>
-              <span id="playText">Pause</span>
-            </button>
-
-            <button
-              class="control-btn"
-              id="restart"
-              type="button"
-              title="Restart presentation"
-            >
-              ↻
-            </button>
-
-          </div>
-
-          <div class="progress-area">
-
-            <div class="progress-meta">
-              <span>Presentation Progress</span>
-              <strong id="progressText">0%</strong>
-            </div>
-
-            <div class="progress-track">
-              <div
-                class="progress-fill"
-                id="progressFill"
-              ></div>
-            </div>
-
-          </div>
-
-          <div class="controls-right">
-
-            <button
-              class="control-btn"
-              id="openLive"
-              type="button"
-            >
-              ↗ Open Live
-            </button>
-
-          </div>
-
-        </div>
-
-        <!-- SITE INFO -->
-        <div class="site-info">
-
-          <div class="site-meta">
-
-            <div
-              class="site-package"
-              id="sitePackage"
-            >
-              Website
-            </div>
-
-            <div
-              class="site-name"
-              id="siteName"
-            >
-              Loading website…
-            </div>
-
-            <div
-              class="site-url"
-              id="siteUrl"
-            >
-              Preparing live presentation
-            </div>
-
-          </div>
-
-          <div class="site-status">
-            <span class="status-light"></span>
-            <span id="statusText">Presentation ready</span>
-          </div>
-
-        </div>
-
-        <!-- NOTICE -->
-        <div class="notice">
-
-          <div class="notice-icon">i</div>
-
-          <div>
-            <strong>Live preview note:</strong>
-            Some websites may prevent embedding through
-            <b>X-Frame-Options</b> or Content Security Policy.
-            When that happens, use <b>Open Live</b> to view the
-            website directly. The presentation never attempts to
-            bypass those browser security protections.
           </div>
 
         </div>
 
       </div>
 
-      <footer>
+
+      <!-- CONTROLS -->
+
+      <div class="controls">
+
+        <div class="control-left">
+
+          <button
+            class="control-btn active"
+            id="pauseBtn"
+            type="button"
+          >
+            ⏸ Pause
+          </button>
+
+          <button
+            class="control-btn"
+            id="restartBtn"
+            type="button"
+          >
+            ↻ Restart
+          </button>
+
+        </div>
+
+
+        <div class="control-right">
+
+          <button
+            class="control-btn"
+            id="cursorBtn"
+            type="button"
+          >
+            ✦ Cursor On
+          </button>
+
+          <button
+            class="control-btn"
+            id="openBtn"
+            type="button"
+          >
+            ↗ Open Live
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- SITE INFO -->
+
+      <div class="site-info">
 
         <div>
-          Website Deals · Premium Ready-Made Websites
+
+          <div class="site-label">
+            Currently presenting
+          </div>
+
+          <div
+            class="site-name"
+            id="siteName"
+          >
+            Preparing website...
+          </div>
+
+          <div
+            class="site-meta"
+            id="siteMeta"
+          >
+            Website Deals Showcase
+          </div>
+
+          <div
+            class="site-url"
+            id="siteUrl"
+          >
+            —
+          </div>
+
         </div>
 
-        <div class="footer-shortcuts">
-          <span>Shortcuts</span>
-          <kbd>Space</kbd>
-          <kbd>R</kbd>
-          <kbd>Esc</kbd>
+
+        <div class="site-actions">
+
+          <button
+            class="control-btn"
+            id="previousBtn"
+            type="button"
+          >
+            ← Previous
+          </button>
+
+          <button
+            class="control-btn"
+            id="nextBtn"
+            type="button"
+          >
+            Next →
+          </button>
+
         </div>
 
-      </footer>
+      </div>
+
+
+      <!-- NOTICE -->
+
+      <div
+        class="notice"
+        id="notice"
+      >
+        <strong>Live preview:</strong>
+        Some websites may block iframe embedding through
+        X-Frame-Options or Content-Security-Policy.
+        This presentation does not bypass those security rules.
+        If embedding is blocked, use <strong>Open Live</strong>
+        to view the website directly.
+      </div>
 
     </section>
 
   </main>
 
-  <!-- =======================================================
+
+  <footer>
+    Website Deals · Premium Ready-Made Websites · Live Showcase
+  </footer>
+
+
+  <!-- =========================================
        STORE
-  ======================================================== -->
+  ========================================== -->
+
   <script src="../shared/store.js"></script>
+
 
   <script>
     (() => {
+
       "use strict";
 
-      /* =====================================================
+
+      /* =========================================
          CONFIG
-      ===================================================== */
-
-      const DEFAULT_ORDER_URL =
-        "https://orders.websitedeals.com";
-
-      const DEFAULT_SITE =
-        "https://snkitinstitute.github.io";
-
-      /*
-        Medium-speed human-like presentation.
-
-        The iframe itself is intentionally tall.
-        Because cross-origin iframe DOM scrolling cannot be
-        directly controlled safely, the parent camera moves
-        the iframe with transform().
-      */
+      ========================================== */
 
       const CONFIG = {
-        speed: 1.18,
+
+        /*
+          Medium-speed human-like movement.
+        Lower = slower.
+        */
+
+        speed: 0.72,
+
         readingPause: 2600,
+
         topPause: 1800,
-        bottomPause: 3200,
-        returnSpeed: 2.25,
+
+        bottomPause: 3000,
+
+        returnSpeed: 1.75,
+
         cursorEnabled: true,
-        restartDelay: 500
+
+        restartDelay: 700,
+
+        virtualDesktopHeight: 5600,
+
+        mobileDesktopHeight: 4800
+
       };
 
-      /* =====================================================
+
+      const ORDER_URL =
+        "https://orders.websitedeals.com";
+
+
+      /* =========================================
          DOM
-      ===================================================== */
+      ========================================== */
 
       const frame =
         document.getElementById("siteFrame");
 
-      const loading =
-        document.getElementById("loading");
+      const screen =
+        document.getElementById("screen");
 
-      const cursor =
-        document.getElementById("cursor");
+      const loader =
+        document.getElementById("previewLoader");
 
-      const playPause =
-        document.getElementById("playPause");
+      const empty =
+        document.getElementById("previewEmpty");
 
-      const playIcon =
-        document.getElementById("playIcon");
+      const emptyTitle =
+        document.getElementById("emptyTitle");
 
-      const playText =
-        document.getElementById("playText");
-
-      const restart =
-        document.getElementById("restart");
-
-      const openLive =
-        document.getElementById("openLive");
-
-      const openLiveTop =
-        document.getElementById("openLiveTop");
-
-      const progressFill =
-        document.getElementById("progressFill");
-
-      const progressText =
-        document.getElementById("progressText");
+      const emptyText =
+        document.getElementById("emptyText");
 
       const siteName =
         document.getElementById("siteName");
 
+      const siteMeta =
+        document.getElementById("siteMeta");
+
       const siteUrl =
         document.getElementById("siteUrl");
 
-      const sitePackage =
-        document.getElementById("sitePackage");
+      const notice =
+        document.getElementById("notice");
 
-      const statusText =
-        document.getElementById("statusText");
+      const progress =
+        document.getElementById("cameraProgress");
 
-      /* =====================================================
+      const cursor =
+        document.getElementById("humanCursor");
+
+      const liveStatus =
+        document.getElementById("liveStatus");
+
+      const liveStatusText =
+        document.getElementById("liveStatusText");
+
+      const pauseBtn =
+        document.getElementById("pauseBtn");
+
+      const restartBtn =
+        document.getElementById("restartBtn");
+
+      const restartTopBtn =
+        document.getElementById("restartTopBtn");
+
+      const openBtn =
+        document.getElementById("openBtn");
+
+      const openTopBtn =
+        document.getElementById("openTopBtn");
+
+      const emptyOpenBtn =
+        document.getElementById("emptyOpenBtn");
+
+      const retryBtn =
+        document.getElementById("retryBtn");
+
+      const cursorBtn =
+        document.getElementById("cursorBtn");
+
+      const previousBtn =
+        document.getElementById("previousBtn");
+
+      const nextBtn =
+        document.getElementById("nextBtn");
+
+
+      /* =========================================
          STATE
-      ===================================================== */
+      ========================================== */
 
       let currentSite = null;
 
-      let running = true;
+      let showcaseSites = [];
+
+      let currentIndex = -1;
+
+      let running = false;
 
       let destroyed = false;
 
-      let animationFrame = null;
+      let animationFrame = 0;
 
       let lastTime = 0;
 
       let cameraY = 0;
 
+      let maxCameraY = 0;
+
+      let viewportHeight = 0;
+
+      let virtualHeight = CONFIG.virtualDesktopHeight;
+
       let phase = "topPause";
 
-      let phaseStarted = performance.now();
+      let phaseStarted = 0;
 
-      let returnStarted = false;
+      let returnStarted = 0;
 
-      let cursorX = 42;
+      let cursorVisible =
+        CONFIG.cursorEnabled;
 
-      let cursorY = 38;
+      let cursorX = 50;
 
-      let targetCursorX = 42;
+      let cursorY = 48;
 
-      let targetCursorY = 38;
+      let cursorTargetX = 50;
+
+      let cursorTargetY = 48;
 
       let cursorTimer = null;
 
-      let availableHeight = 5000;
-
-      let viewportHeight = 500;
-
-      let maxCameraY = 4500;
-
-      let presentationCycle = 0;
+      let currentLoadToken = 0;
 
       let hiddenBeforePause = false;
 
-      /* =====================================================
-         STORE HELPERS
-      ===================================================== */
+      let initialized = false;
 
-      function getStore(){
-        return window.WDStore || null;
-      }
 
-      function safeReadSites(){
+      /* =========================================
+         SAFE HELPERS
+      ========================================== */
 
-        const store = getStore();
-
-        if(store && typeof store.load === "function"){
-          try{
-            return store.load() || [];
-          }catch(error){
-            console.warn("WDStore load failed:", error);
-          }
-        }
-
-        try{
-          return JSON.parse(
-            localStorage.getItem("websiteDealsWebsites") || "[]"
-          );
-        }catch(error){
-          return [];
-        }
-      }
-
-      function validUrl(value){
+      function isValidUrl(value){
 
         if(!value){
           return false;
         }
 
         try{
-          const url = new URL(value);
+
+          const url =
+            new URL(
+              String(value),
+              window.location.href
+            );
 
           return (
             url.protocol === "http:" ||
@@ -1508,84 +1753,166 @@
           );
 
         }catch(error){
+
           return false;
+
         }
+
       }
 
-      function normalizeSite(site){
 
-        if(!site){
-          return null;
+      function safeText(value){
+
+        return String(
+          value ?? ""
+        ).trim();
+
+      }
+
+
+      function getPackageLabel(site){
+
+        if(
+          window.WDStore &&
+          typeof WDStore.packageLabel === "function"
+        ){
+
+          try{
+
+            return WDStore.packageLabel(
+              site?.package
+            );
+
+          }catch(error){}
+
         }
 
-        return {
-          id:
-            String(site.id || ""),
-
-          name:
-            site.name ||
-            "Premium Website",
-
-          package:
-            site.package ||
-            site.packageLabel ||
-            "website",
-
-          packageLabel:
-            site.packageLabel ||
-            site.package ||
-            "Website",
-
-          url:
-            site.url ||
-            "",
-
-          status:
-            site.status !== false,
-
-          showcase:
-            site.showcase !== false,
-
-          sort:
-            Number.isFinite(Number(site.sort))
-              ? Number(site.sort)
-              : 9999,
-
-          note:
-            site.note ||
-            ""
+        const labels = {
+          starter:"Starter",
+          business:"Business",
+          premium:"Premium"
         };
+
+        return (
+          labels[
+            String(
+              site?.package || ""
+            ).toLowerCase()
+          ] ||
+          "Website"
+        );
+
       }
+
+
+      /* =========================================
+         STORAGE
+      ========================================== */
+
+      function getRawSites(){
+
+        try{
+
+          if(
+            window.WDStore &&
+            typeof WDStore.load === "function"
+          ){
+
+            const list =
+              WDStore.load();
+
+            if(
+              Array.isArray(list)
+            ){
+
+              return list;
+
+            }
+
+          }
+
+        }catch(error){
+
+          console.warn(
+            "WDStore load failed:",
+            error
+          );
+
+        }
+
+
+        try{
+
+          const raw =
+            localStorage.getItem(
+              "websiteDealsWebsites"
+            );
+
+          if(!raw){
+            return [];
+          }
+
+          const parsed =
+            JSON.parse(raw);
+
+          return Array.isArray(parsed)
+            ? parsed
+            : [];
+
+        }catch(error){
+
+          console.warn(
+            "Local website data failed:",
+            error
+          );
+
+          return [];
+
+        }
+
+      }
+
 
       function getShowcaseSites(){
 
-        const list =
-          safeReadSites()
-            .map(normalizeSite)
-            .filter(Boolean)
-            .filter(site =>
-              site.status &&
-              site.showcase &&
-              validUrl(site.url)
-            )
-            .sort((a,b) =>
-              a.sort - b.sort
+        const raw =
+          getRawSites();
+
+        return raw
+          .filter(site => {
+
+            return (
+              site &&
+              site.status !== false &&
+              site.showcase !== false &&
+              isValidUrl(site.url)
             );
 
-        return list;
+          })
+          .sort((a,b) => {
+
+            const aSort =
+              Number.isFinite(
+                Number(a.sort)
+              )
+                ? Number(a.sort)
+                : 9999;
+
+            const bSort =
+              Number.isFinite(
+                Number(b.sort)
+              )
+                ? Number(b.sort)
+                : 9999;
+
+            return (
+              aSort - bSort
+            );
+
+          });
+
       }
 
-      function getHeroSite(){
-
-        const sites =
-          getShowcaseSites();
-
-        if(!sites.length){
-          return null;
-        }
-
-        return sites[0];
-      }
 
       function findSiteById(id){
 
@@ -1593,44 +1920,22 @@
           return null;
         }
 
-        const store = getStore();
-
-        if(
-          store &&
-          typeof store.find === "function"
-        ){
-
-          try{
-
-            const found =
-              store.find(id);
-
-            if(found){
-              return normalizeSite(found);
-            }
-
-          }catch(error){
-            console.warn(
-              "WDStore find failed:",
-              error
-            );
-          }
-        }
-
         const sites =
-          safeReadSites();
+          getShowcaseSites();
 
-        const found =
-          sites.find(site =>
-            String(site.id || "") === String(id)
-          );
+        const match =
+          sites.find(site => {
 
-        return normalizeSite(found);
+            return String(
+              site.id
+            ) === String(id);
+
+          });
+
+        return match || null;
+
       }
 
-      /* =====================================================
-         QUERY PARAM
-      ===================================================== */
 
       function getRequestedSite(){
 
@@ -1644,336 +1949,538 @@
 
         if(requestedId){
 
-          const found =
-            findSiteById(requestedId);
+          const requested =
+            findSiteById(
+              requestedId
+            );
 
-          if(
-            found &&
-            validUrl(found.url)
-          ){
-            return found;
+          if(requested){
+            return requested;
           }
+
         }
 
-        return getHeroSite();
+        const sites =
+          getShowcaseSites();
+
+        return sites[0] || null;
+
       }
 
-      /* =====================================================
-         UI
-      ===================================================== */
+
+      /* =========================================
+         UI STATUS
+      ========================================== */
+
+      function setStatus(
+        type,
+        text
+      ){
+
+        liveStatus.classList.remove(
+          "ready",
+          "error"
+        );
+
+        if(type){
+          liveStatus.classList.add(
+            type
+          );
+        }
+
+        liveStatusText.textContent =
+          text;
+
+      }
+
+
+      function showLoader(){
+
+        loader.classList.remove(
+          "hidden"
+        );
+
+        frame.classList.remove(
+          "loaded"
+        );
+
+      }
+
+
+      function hideLoader(){
+
+        loader.classList.add(
+          "hidden"
+        );
+
+        frame.classList.add(
+          "loaded"
+        );
+
+      }
+
+
+      function showEmptyState(
+        title,
+        message
+      ){
+
+        /*
+          IMPORTANT:
+          Never replace .presentation-wrap.
+          We only show the inline state.
+        */
+
+        emptyTitle.textContent =
+          title ||
+          "Website unavailable";
+
+        emptyText.textContent =
+          message ||
+          "No valid showcase website was found.";
+
+        empty.classList.add(
+          "show"
+        );
+
+        loader.classList.add(
+          "hidden"
+        );
+
+        frame.classList.remove(
+          "loaded"
+        );
+
+        setStatus(
+          "error",
+          "No website"
+        );
+
+        running = false;
+
+        updatePauseButton();
+
+      }
+
+
+      function hideEmptyState(){
+
+        empty.classList.remove(
+          "show"
+        );
+
+      }
+
+
+      /* =========================================
+         SITE INFO
+      ========================================== */
 
       function setSiteInfo(site){
 
         if(!site){
 
           siteName.textContent =
-            "No showcase website available";
+            "No showcase website";
+
+          siteMeta.textContent =
+            "Add an active showcase website from Admin → Websites.";
 
           siteUrl.textContent =
-            "Add an active showcase website from Admin → Websites";
-
-          sitePackage.textContent =
-            "Presentation unavailable";
-
-          statusText.textContent =
-            "Waiting for website";
+            "No valid URL available.";
 
           return;
+
         }
+
+        const name =
+          safeText(site.name) ||
+          "Untitled Website";
+
+        const packageLabel =
+          getPackageLabel(site);
 
         siteName.textContent =
-          site.name;
+          name;
+
+        siteMeta.textContent =
+          packageLabel +
+          " · Live Showcase";
 
         siteUrl.textContent =
-          site.url;
-
-        sitePackage.textContent =
-          site.packageLabel ||
-          site.package ||
-          "Website";
-
-        statusText.textContent =
-          "Live presentation ready";
-      }
-
-      /* =====================================================
-         LOAD FRAME
-      ===================================================== */
-
-      function loadSite(site){
-
-        currentSite =
-          site;
-
-        setSiteInfo(site);
-
-        if(!site || !validUrl(site.url)){
-
-          showEmptyState();
-
-          return;
-        }
-
-        loading.classList.remove("hidden");
-
-        statusText.textContent =
-          "Loading live website…";
-
-        frame.src =
-          site.url;
-
-        frame.addEventListener(
-          "load",
-          handleFrameLoad,
-          { once:true }
-        );
-
-        frame.addEventListener(
-          "error",
-          () => {
-
-            loading.classList.add(
-              "hidden"
-            );
-
-            statusText.textContent =
-              "Preview could not load";
-
-          },
-          { once:true }
-        );
+          safeText(site.url);
 
       }
 
-      function handleFrameLoad(){
 
-        window.setTimeout(() => {
-
-          loading.classList.add(
-            "hidden"
-          );
-
-          statusText.textContent =
-            "Live presentation running";
-
-          recalculateCamera();
-
-        }, 500);
-
-      }
-
-      function showEmptyState(){
-
-        const parent =
-          document.querySelector(
-            ".presentation-wrap"
-          );
-
-        if(!parent){
-          return;
-        }
-
-        parent.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-inner">
-              <div class="empty-icon">◈</div>
-              <h2>No showcase website yet</h2>
-              <p>
-                Add an active website with
-                <strong>Showcase</strong> enabled from
-                Admin → Websites, then return here.
-              </p>
-              <br>
-              <a
-                class="header-btn primary"
-                href="../index.html#websites"
-                style="display:inline-flex;"
-              >
-                Back to Showcase
-              </a>
-            </div>
-          </div>
-        `;
-      }
-
-      /* =====================================================
+      /* =========================================
          CAMERA
-      ===================================================== */
+      ========================================== */
+
+      function calculateVirtualHeight(){
+
+        const mobile =
+          window.innerWidth <= 600;
+
+        virtualHeight =
+          mobile
+            ? CONFIG.mobileDesktopHeight
+            : CONFIG.virtualDesktopHeight;
+
+        /*
+          Keep iframe large enough for the camera.
+
+          We intentionally do not try to inspect
+          cross-origin iframe document height.
+        */
+
+        frame.style.height =
+          virtualHeight + "px";
+
+      }
+
 
       function recalculateCamera(){
-
-        const screen =
-          document.querySelector(
-            ".screen"
-          );
 
         if(!screen){
           return;
         }
 
         viewportHeight =
-          screen.clientHeight;
-
-        /*
-          The iframe has a fixed virtual page height.
-          The camera range is the iframe height minus
-          the visible device viewport.
-        */
-
-        availableHeight =
           Math.max(
-            5000,
-            frame.offsetHeight ||
-            7000
+            1,
+            screen.clientHeight
           );
+
+        calculateVirtualHeight();
 
         maxCameraY =
           Math.max(
-            300,
-            availableHeight -
+            0,
+            virtualHeight -
             viewportHeight
           );
 
+        cameraY =
+          Math.max(
+            0,
+            Math.min(
+              cameraY,
+              maxCameraY
+            )
+          );
+
         applyCamera();
+
       }
+
 
       function applyCamera(){
 
+        if(!frame){
+          return;
+        }
+
         frame.style.transform =
-          `translate3d(0,${-cameraY}px,0)`;
+          "translate3d(0," +
+          (-cameraY) +
+          "px,0)";
 
-        const progress =
-          maxCameraY > 0
-            ? Math.min(
-                100,
-                Math.max(
-                  0,
-                  (cameraY / maxCameraY) * 100
-                )
-              )
-            : 0;
 
-        progressFill.style.width =
-          `${progress}%`;
+        const percentage =
+          maxCameraY <= 0
+            ? 0
+            : (
+                cameraY /
+                maxCameraY
+              ) * 100;
 
-        progressText.textContent =
-          `${Math.round(progress)}%`;
+        progress.style.width =
+          Math.max(
+            0,
+            Math.min(
+              100,
+              percentage
+            )
+          ) + "%";
+
       }
 
-      /* =====================================================
-         HUMAN-LIKE MOTION
-      ===================================================== */
 
-      function startPresentation(){
-
-        running = true;
-
-        playIcon.textContent = "Ⅱ";
-        playText.textContent = "Pause";
-
-        statusText.textContent =
-          "Live presentation running";
-
-        lastTime =
-          performance.now();
-
-        phaseStarted =
-          performance.now();
-
-        if(!animationFrame){
-          animationFrame =
-            requestAnimationFrame(
-              animate
-            );
-        }
-
-        startCursor();
-      }
-
-      function pausePresentation(){
-
-        running = false;
-
-        playIcon.textContent = "▶";
-        playText.textContent = "Resume";
-
-        statusText.textContent =
-          "Presentation paused";
-
-        stopCursor();
-      }
-
-      function togglePresentation(){
-
-        if(running){
-          pausePresentation();
-        }else{
-          startPresentation();
-        }
-      }
-
-      function restartPresentation(){
-
-        running = false;
+      function resetCamera(){
 
         cameraY = 0;
 
-        phase = "topPause";
+        phase =
+          "topPause";
 
         phaseStarted =
           performance.now();
 
-        presentationCycle++;
+        returnStarted = 0;
 
         applyCamera();
 
-        statusText.textContent =
-          "Restarting presentation…";
-
-        setTimeout(() => {
-
-          if(destroyed){
-            return;
-          }
-
-          running = true;
-
-          playIcon.textContent = "Ⅱ";
-          playText.textContent = "Pause";
-
-          statusText.textContent =
-            "Live presentation running";
-
-          lastTime =
-            performance.now();
-
-          phaseStarted =
-            performance.now();
-
-          startCursor();
-
-        }, CONFIG.restartDelay);
       }
 
-      function animate(now){
 
-        if(destroyed){
+      /* =========================================
+         HUMAN-LIKE CURSOR
+      ========================================== */
+
+      function updateCursorTarget(){
+
+        if(!cursorVisible){
+
+          cursor.classList.remove(
+            "visible"
+          );
+
+          return;
+
+        }
+
+        const points = [
+
+          [27,32],
+
+          [72,38],
+
+          [60,56],
+
+          [34,65],
+
+          [76,73],
+
+          [48,45]
+
+        ];
+
+        const index =
+          Math.floor(
+            Date.now() / 3600
+          ) %
+          points.length;
+
+        cursorTargetX =
+          points[index][0];
+
+        cursorTargetY =
+          points[index][1];
+
+        cursor.classList.add(
+          "visible"
+        );
+
+      }
+
+
+      function animateCursor(){
+
+        if(!cursorVisible){
+
+          cursor.classList.remove(
+            "visible"
+          );
+
+          return;
+
+        }
+
+        cursorX +=
+          (
+            cursorTargetX -
+            cursorX
+          ) * .035;
+
+        cursorY +=
+          (
+            cursorTargetY -
+            cursorY
+          ) * .035;
+
+        cursor.style.left =
+          cursorX + "%";
+
+        cursor.style.top =
+          cursorY + "%";
+
+      }
+
+
+      function startCursorLoop(){
+
+        clearInterval(
+          cursorTimer
+        );
+
+        if(!cursorVisible){
           return;
         }
+
+        updateCursorTarget();
+
+        cursorTimer =
+          setInterval(
+            updateCursorTarget,
+            3600
+          );
+
+      }
+
+
+      function toggleCursor(){
+
+        cursorVisible =
+          !cursorVisible;
+
+        cursorBtn.textContent =
+          cursorVisible
+            ? "✦ Cursor On"
+            : "✦ Cursor Off";
+
+        cursorBtn.classList.toggle(
+          "active",
+          cursorVisible
+        );
+
+        if(cursorVisible){
+
+          startCursorLoop();
+
+        }else{
+
+          cursor.classList.remove(
+            "visible"
+          );
+
+        }
+
+      }
+
+
+      /* =========================================
+         PRESENTATION
+      ========================================== */
+
+      function startPresentation(){
+
+        if(
+          destroyed ||
+          !currentSite ||
+          empty.classList.contains("show")
+        ){
+
+          return;
+
+        }
+
+        running = true;
+
+        lastTime = 0;
+
+        phaseStarted =
+          performance.now();
+
+        phase =
+          "topPause";
+
+        updatePauseButton();
+
+        cancelAnimationFrame(
+          animationFrame
+        );
 
         animationFrame =
           requestAnimationFrame(
             animate
           );
 
-        if(!running){
-          lastTime = now;
+      }
+
+
+      function pausePresentation(){
+
+        running = false;
+
+        cancelAnimationFrame(
+          animationFrame
+        );
+
+        updatePauseButton();
+
+      }
+
+
+      function togglePresentation(){
+
+        if(running){
+
+          pausePresentation();
+
+        }else{
+
+          startPresentation();
+
+        }
+
+      }
+
+
+      function restartPresentation(){
+
+        pausePresentation();
+
+        resetCamera();
+
+        setTimeout(() => {
+
+          if(!destroyed){
+
+            startPresentation();
+
+          }
+
+        }, CONFIG.restartDelay);
+
+      }
+
+
+      function updatePauseButton(){
+
+        pauseBtn.textContent =
+          running
+            ? "⏸ Pause"
+            : "▶ Resume";
+
+        pauseBtn.classList.toggle(
+          "active",
+          running
+        );
+
+      }
+
+
+      function animate(now){
+
+        if(
+          destroyed ||
+          !running
+        ){
+
           return;
+
+        }
+
+        if(!lastTime){
+
+          lastTime = now;
+
         }
 
         const delta =
           Math.min(
-            50,
+            34,
             Math.max(
               0,
               now - lastTime
@@ -1982,13 +2489,18 @@
 
         lastTime = now;
 
-        const elapsed =
-          now - phaseStarted;
 
-        if(phase === "topPause"){
+        /*
+          Top pause
+        */
+
+        if(
+          phase === "topPause"
+        ){
 
           if(
-            elapsed >=
+            now -
+            phaseStarted >=
             CONFIG.topPause
           ){
 
@@ -1997,29 +2509,40 @@
 
             phaseStarted =
               now;
+
           }
 
-        }else if(phase === "scroll"){
+        }
 
-          /*
-            Smooth variable speed creates a less robotic
-            movement than a constant pixel jump.
-          */
 
-          const wave =
+        /*
+          Main scrolling phase
+        */
+
+        else if(
+          phase === "scroll"
+        ){
+
+          const gentleWave =
             Math.sin(
-              now / 850
-            ) * 0.16;
+              now / 900
+            ) * .10;
 
-          const speed =
-            CONFIG.speed +
-            wave;
+          const currentSpeed =
+            Math.max(
+              .25,
+              CONFIG.speed +
+              gentleWave
+            );
 
           cameraY +=
-            speed *
+            currentSpeed *
             delta;
 
-          if(cameraY >= maxCameraY){
+          if(
+            cameraY >=
+            maxCameraY
+          ){
 
             cameraY =
               maxCameraY;
@@ -2030,357 +2553,651 @@
             phaseStarted =
               now;
 
-            statusText.textContent =
-              "Reading the bottom section…";
           }
 
-        }else if(phase === "bottomPause"){
+        }
+
+
+        /*
+          Bottom reading pause
+        */
+
+        else if(
+          phase === "bottomPause"
+        ){
 
           if(
-            elapsed >=
+            now -
+            phaseStarted >=
             CONFIG.bottomPause
           ){
 
             phase =
               "return";
 
-            phaseStarted =
+            returnStarted =
               now;
 
-            returnStarted =
-              true;
-
-            statusText.textContent =
-              "Returning to top…";
           }
 
-        }else if(phase === "return"){
+        }
 
-          /*
-            Return is intentionally faster than the reading
-            journey but still smooth.
-          */
 
-          cameraY -=
+        /*
+          Smooth return to top
+        */
+
+        else if(
+          phase === "return"
+        ){
+
+          const returnAmount =
             CONFIG.returnSpeed *
             delta;
 
-          if(cameraY <= 0){
+          cameraY -=
+            returnAmount;
+
+          if(
+            cameraY <= 0
+          ){
 
             cameraY = 0;
 
             phase =
-              "topPause";
+              "readingTop";
 
             phaseStarted =
               now;
 
-            presentationCycle++;
-
-            returnStarted =
-              false;
-
-            statusText.textContent =
-              "Live presentation running";
           }
 
         }
+
 
         /*
-          Reading pauses every cycle at natural sections.
-          The movement itself remains continuous but gentle.
+          Small reading pause after return
         */
 
-        if(
-          phase === "scroll" &&
-          cameraY > 0 &&
-          cameraY < maxCameraY
+        else if(
+          phase === "readingTop"
         ){
 
-          const sectionSize =
-            maxCameraY / 5;
-
-          const sectionIndex =
-            Math.floor(
-              cameraY / sectionSize
-            );
-
-          const sectionProgress =
-            cameraY %
-            sectionSize;
-
           if(
-            sectionProgress < 2 &&
-            sectionIndex > 0 &&
-            sectionIndex < 5
+            now -
+            phaseStarted >=
+            CONFIG.readingPause
           ){
 
-            /*
-              Tiny natural slowdown.
-            */
-            cameraY +=
-              speedPause(delta);
+            phase =
+              "scroll";
+
+            phaseStarted =
+              now;
+
           }
+
         }
+
 
         applyCamera();
 
-        animateCursor(now);
-      }
+        animateCursor();
 
-      function speedPause(delta){
-
-        /*
-          Small damping movement during section transitions.
-          Keeps the presentation from feeling mechanically fast.
-        */
-
-        return delta * 0.16;
-      }
-
-      /* =====================================================
-         CURSOR
-      ===================================================== */
-
-      function startCursor(){
-
-        if(!CONFIG.cursorEnabled){
-          return;
-        }
-
-        cursor.style.opacity =
-          "1";
-
-        if(cursorTimer){
-          return;
-        }
-
-        cursorTimer =
-          setInterval(() => {
-
-            targetCursorX =
-              18 +
-              Math.random() * 64;
-
-            targetCursorY =
-              20 +
-              Math.random() * 62;
-
-          }, 2100);
-      }
-
-      function stopCursor(){
-
-        cursor.style.opacity =
-          "0";
-
-        if(cursorTimer){
-
-          clearInterval(
-            cursorTimer
+        animationFrame =
+          requestAnimationFrame(
+            animate
           );
 
-          cursorTimer = null;
-        }
       }
 
-      function animateCursor(){
+
+      /* =========================================
+         LOAD WEBSITE
+      ========================================== */
+
+      function loadSite(site){
+
+        const token =
+          ++currentLoadToken;
+
+        pausePresentation();
+
+        hideEmptyState();
+
+        currentSite =
+          site || null;
+
+        setSiteInfo(
+          currentSite
+        );
+
+        resetCamera();
 
         if(
-          !CONFIG.cursorEnabled ||
-          !running
+          !site ||
+          !isValidUrl(site.url)
         ){
+
+          showEmptyState(
+            "No website selected",
+            "No active showcase website with a valid URL is available. Add one from Admin → Websites."
+          );
+
           return;
+
         }
 
-        cursorX +=
-          (targetCursorX - cursorX) *
-          0.035;
 
-        cursorY +=
-          (targetCursorY - cursorY) *
-          0.035;
+        showLoader();
 
-        cursor.style.left =
-          `${cursorX}%`;
+        setStatus(
+          null,
+          "Loading"
+        );
 
-        cursor.style.top =
-          `${cursorY}%`;
+
+        notice.classList.remove(
+          "warning"
+        );
+
+        notice.innerHTML =
+          "<strong>Live preview:</strong> " +
+          "Some websites may block iframe embedding through " +
+          "X-Frame-Options or Content-Security-Policy. " +
+          "This presentation does not bypass those security rules. " +
+          "If embedding is blocked, use <strong>Open Live</strong> " +
+          "to view the website directly.";
+
+
+        /*
+          IMPORTANT FIX:
+          Listeners are attached BEFORE frame.src.
+        */
+
+        const handleLoad = () => {
+
+          if(
+            token !==
+            currentLoadToken
+          ){
+
+            return;
+
+          }
+
+          hideLoader();
+
+          recalculateCamera();
+
+          setStatus(
+            "ready",
+            "Live"
+          );
+
+          /*
+            The load event confirms that the iframe
+            loaded something, but it does NOT guarantee
+            that the target website allows embedding.
+          */
+
+          setTimeout(() => {
+
+            if(
+              token ===
+              currentLoadToken
+            ){
+
+              startPresentation();
+
+            }
+
+          }, 350);
+
+        };
+
+
+        const handleError = () => {
+
+          if(
+            token !==
+            currentLoadToken
+          ){
+
+            return;
+
+          }
+
+          showEmptyState(
+            "Preview could not load",
+            "The website could not be loaded inside the presentation frame. It may be offline or may block iframe embedding."
+          );
+
+          notice.classList.add(
+            "warning"
+          );
+
+          notice.innerHTML =
+            "<strong>Preview blocked:</strong> " +
+            "The website may be protected by X-Frame-Options " +
+            "or Content-Security-Policy. " +
+            "Use <strong>Open Live</strong> to open it directly.";
+
+        };
+
+
+        frame.addEventListener(
+          "load",
+          handleLoad,
+          {
+            once:true
+          }
+        );
+
+
+        frame.addEventListener(
+          "error",
+          handleError,
+          {
+            once:true
+          }
+        );
+
+
+        /*
+          Finally assign src.
+        */
+
+        try{
+
+          frame.src =
+            site.url;
+
+        }catch(error){
+
+          console.error(
+            "Iframe src failed:",
+            error
+          );
+
+          showEmptyState(
+            "Invalid website URL",
+            "The selected showcase website has an invalid URL."
+          );
+
+        }
+
       }
 
-      /* =====================================================
+
+      /* =========================================
          OPEN LIVE
-      ===================================================== */
+      ========================================== */
 
-      function openCurrentSite(){
+      function openLive(){
 
         if(
-          !currentSite ||
-          !validUrl(currentSite.url)
+          currentSite &&
+          isValidUrl(
+            currentSite.url
+          )
         ){
+
+          window.open(
+            currentSite.url,
+            "_blank",
+            "noopener,noreferrer"
+          );
+
           return;
+
         }
+
+
+        /*
+          If no site is selected,
+          go to the real order/showcase site
+          only as a safe fallback.
+        */
 
         window.open(
-          currentSite.url,
-          "_blank",
-          "noopener,noreferrer"
+          "../index.html",
+          "_self"
         );
+
       }
 
-      openLive.addEventListener(
-        "click",
-        openCurrentSite
-      );
 
-      openLiveTop.addEventListener(
-        "click",
-        openCurrentSite
-      );
+      /* =========================================
+         NEXT / PREVIOUS
+      ========================================== */
 
-      /* =====================================================
-         CONTROLS
-      ===================================================== */
+      function refreshShowcaseList(){
 
-      playPause.addEventListener(
+        showcaseSites =
+          getShowcaseSites();
+
+        if(
+          currentSite
+        ){
+
+          currentIndex =
+            showcaseSites.findIndex(
+              site =>
+                String(site.id) ===
+                String(currentSite.id)
+            );
+
+        }
+
+      }
+
+
+      function showSiteAtIndex(index){
+
+        refreshShowcaseList();
+
+        if(
+          showcaseSites.length === 0
+        ){
+
+          showEmptyState(
+            "No showcase websites",
+            "There are currently no active showcase websites. Go to Admin → Websites and enable Showcase."
+          );
+
+          return;
+
+        }
+
+        if(
+          index < 0
+        ){
+
+          index =
+            showcaseSites.length - 1;
+
+        }
+
+        if(
+          index >=
+          showcaseSites.length
+        ){
+
+          index = 0;
+
+        }
+
+        currentIndex =
+          index;
+
+        const site =
+          showcaseSites[
+            currentIndex
+          ];
+
+        if(!site){
+          return;
+        }
+
+        const url =
+          new URL(
+            window.location.href
+          );
+
+        url.searchParams.set(
+          "site",
+          site.id
+        );
+
+        window.history.replaceState(
+          {},
+          "",
+          url
+        );
+
+        loadSite(
+          site
+        );
+
+      }
+
+
+      function nextSite(){
+
+        refreshShowcaseList();
+
+        if(
+          !showcaseSites.length
+        ){
+
+          showSiteAtIndex(0);
+
+          return;
+
+        }
+
+        showSiteAtIndex(
+          currentIndex + 1
+        );
+
+      }
+
+
+      function previousSite(){
+
+        refreshShowcaseList();
+
+        if(
+          !showcaseSites.length
+        ){
+
+          showSiteAtIndex(0);
+
+          return;
+
+        }
+
+        showSiteAtIndex(
+          currentIndex - 1
+        );
+
+      }
+
+
+      /* =========================================
+         EVENTS
+      ========================================== */
+
+      pauseBtn.addEventListener(
         "click",
         togglePresentation
       );
 
-      restart.addEventListener(
+      restartBtn.addEventListener(
         "click",
         restartPresentation
       );
 
-      /* =====================================================
-         KEYBOARD SHORTCUTS
-      ===================================================== */
+      restartTopBtn.addEventListener(
+        "click",
+        restartPresentation
+      );
+
+      openBtn.addEventListener(
+        "click",
+        openLive
+      );
+
+      openTopBtn.addEventListener(
+        "click",
+        openLive
+      );
+
+      emptyOpenBtn.addEventListener(
+        "click",
+        openLive
+      );
+
+      retryBtn.addEventListener(
+        "click",
+        () => {
+
+          const site =
+            getRequestedSite();
+
+          if(site){
+
+            loadSite(site);
+
+          }else{
+
+            showEmptyState(
+              "No website selected",
+              "No active showcase website with a valid URL is available."
+            );
+
+          }
+
+        }
+      );
+
+      cursorBtn.addEventListener(
+        "click",
+        toggleCursor
+      );
+
+      nextBtn.addEventListener(
+        "click",
+        nextSite
+      );
+
+      previousBtn.addEventListener(
+        "click",
+        previousSite
+      );
+
+
+      /* =========================================
+         KEYBOARD
+      ========================================== */
 
       document.addEventListener(
         "keydown",
         event => {
 
-          /*
-            Do not intercept typing when an input or textarea
-            is focused.
-          */
-
-          const tag =
-            event.target &&
-            event.target.tagName
-              ? event.target.tagName.toLowerCase()
-              : "";
-
           if(
-            tag === "input" ||
-            tag === "textarea" ||
-            tag === "select"
+            event.key === " " &&
+            event.target.tagName !== "INPUT" &&
+            event.target.tagName !== "TEXTAREA"
           ){
-            return;
-          }
-
-          if(event.code === "Space"){
 
             event.preventDefault();
 
             togglePresentation();
 
-            return;
           }
 
-          if(
-            event.key.toLowerCase() === "r"
-          ){
 
-            event.preventDefault();
+          if(
+            event.key === "r" ||
+            event.key === "R"
+          ){
 
             restartPresentation();
 
-            return;
           }
 
+
           if(
-            event.key === "Escape"
+            event.key === "ArrowRight"
           ){
 
-            event.preventDefault();
+            nextSite();
 
-            pausePresentation();
+          }
+
+
+          if(
+            event.key === "ArrowLeft"
+          ){
+
+            previousSite();
 
           }
 
         }
       );
 
-      /* =====================================================
-         VISIBILITY HANDLING
-      ===================================================== */
+
+      /* =========================================
+         VISIBILITY
+      ========================================== */
 
       document.addEventListener(
         "visibilitychange",
         () => {
 
-          if(document.hidden){
+          if(
+            document.hidden
+          ){
 
             hiddenBeforePause =
               running;
 
-            if(running){
-              pausePresentation();
-            }
-
-            statusText.textContent =
-              "Presentation paused while page is hidden";
+            pausePresentation();
 
           }else{
 
-            /*
-              Browser tabs/windows may be throttled while
-              backgrounded or minimized. We intentionally
-              resume only after the page becomes visible.
-            */
-
-            if(hiddenBeforePause){
+            if(
+              hiddenBeforePause &&
+              currentSite &&
+              !empty.classList.contains(
+                "show"
+              )
+            ){
 
               startPresentation();
 
-            }else{
-
-              statusText.textContent =
-                running
-                  ? "Live presentation running"
-                  : "Presentation paused";
             }
 
-            hiddenBeforePause =
-              false;
-
-            lastTime =
-              performance.now();
-
-            phaseStarted =
-              performance.now();
           }
 
         }
       );
 
-      /* =====================================================
+
+      /* =========================================
          RESIZE
-      ===================================================== */
+      ========================================== */
+
+      let resizeTimer = null;
 
       window.addEventListener(
         "resize",
         () => {
 
-          recalculateCamera();
+          clearTimeout(
+            resizeTimer
+          );
+
+          resizeTimer =
+            setTimeout(
+              () => {
+
+                recalculateCamera();
+
+              },
+              180
+            );
 
         }
       );
 
-      /* =====================================================
-         STORAGE CHANGES
-      ===================================================== */
+
+      /* =========================================
+         STORE CHANGES
+      ========================================== */
 
       window.addEventListener(
         "storage",
@@ -2394,25 +3211,33 @@
             const requested =
               getRequestedSite();
 
-            if(
-              requested &&
-              currentSite &&
-              String(requested.id) !==
-              String(currentSite.id)
-            ){
+            if(requested){
 
-              loadSite(
-                requested
+              refreshShowcaseList();
+
+              if(
+                !currentSite ||
+                String(
+                  requested.id
+                ) !==
+                String(
+                  currentSite.id
+                )
+              ){
+
+                loadSite(
+                  requested
+                );
+
+              }
+
+            }else{
+
+              showEmptyState(
+                "No showcase website",
+                "The current showcase list is empty or the selected website is no longer available."
               );
 
-            }else if(
-              requested &&
-              !currentSite
-            ){
-
-              loadSite(
-                requested
-              );
             }
 
           }
@@ -2420,84 +3245,250 @@
         }
       );
 
-      /* =====================================================
-         STORE CHANGE SUPPORT
-      ===================================================== */
 
-      try{
+      if(
+        window.WDStore &&
+        typeof WDStore.onChange ===
+        "function"
+      ){
 
-        const store =
-          getStore();
+        try{
 
-        if(
-          store &&
-          typeof store.onChange === "function"
-        ){
+          WDStore.onChange(
+            () => {
 
-          store.onChange(() => {
+              const requested =
+                getRequestedSite();
 
-            const requested =
-              getRequestedSite();
+              refreshShowcaseList();
 
-            if(
-              requested &&
-              (
-                !currentSite ||
-                String(requested.id) !==
-                String(currentSite.id)
-              )
-            ){
+              if(
+                requested &&
+                (
+                  !currentSite ||
+                  String(
+                    requested.id
+                  ) !==
+                  String(
+                    currentSite.id
+                  )
+                )
+              ){
 
-              loadSite(
-                requested
-              );
+                loadSite(
+                  requested
+                );
+
+              }
 
             }
+          );
 
-          });
+        }catch(error){
+
+          console.warn(
+            "WDStore change listener failed:",
+            error
+          );
 
         }
 
-      }catch(error){
+      }
 
-        console.warn(
-          "Store listener unavailable:",
-          error
+
+      /* =========================================
+         SALAH
+      ========================================== */
+
+      const prayers = [
+
+        {
+          name:"Fajr",
+          time:"04:45"
+        },
+
+        {
+          name:"Dhuhr",
+          time:"12:05"
+        },
+
+        {
+          name:"Asr",
+          time:"16:15"
+        },
+
+        {
+          name:"Maghrib",
+          time:"18:00"
+        },
+
+        {
+          name:"Isha",
+          time:"19:20"
+        }
+
+      ];
+
+
+      function minutesFromTime(
+        value
+      ){
+
+        const parts =
+          value.split(":");
+
+        return (
+          Number(parts[0]) * 60 +
+          Number(parts[1])
         );
 
       }
 
-      /* =====================================================
+
+      function updateSalah(){
+
+        const now =
+          new Date();
+
+        const current =
+          now.getHours() * 60 +
+          now.getMinutes();
+
+        let activeName =
+          "Isha";
+
+
+        for(
+          let i = 0;
+          i < prayers.length;
+          i++
+        ){
+
+          const start =
+            minutesFromTime(
+              prayers[i].time
+            );
+
+          const next =
+            i <
+            prayers.length - 1
+              ? minutesFromTime(
+                  prayers[i + 1].time
+                )
+              : 24 * 60 +
+                minutesFromTime(
+                  prayers[0].time
+                );
+
+          if(
+            current >= start &&
+            current < next
+          ){
+
+            activeName =
+              prayers[i].name;
+
+            break;
+
+          }
+
+        }
+
+
+        document
+          .querySelectorAll(
+            ".prayer"
+          )
+          .forEach(
+            item => {
+
+              item.classList.toggle(
+                "active",
+                item.dataset.prayer ===
+                activeName
+              );
+
+            }
+          );
+
+      }
+
+
+      /* =========================================
          INITIALIZE
-      ===================================================== */
+      ========================================== */
 
       function init(){
+
+        if(initialized){
+          return;
+        }
+
+        initialized = true;
+
+        calculateVirtualHeight();
+
+        recalculateCamera();
+
+        cursorBtn.classList.toggle(
+          "active",
+          cursorVisible
+        );
+
+        startCursorLoop();
+
+        updateSalah();
+
+        setInterval(
+          updateSalah,
+          30000
+        );
+
+
+        showcaseSites =
+          getShowcaseSites();
 
         const requested =
           getRequestedSite();
 
+
         if(!requested){
 
-          showEmptyState();
+          setSiteInfo(null);
+
+          showEmptyState(
+            "No showcase website",
+            "No active showcase website with a valid URL is available. Add a website from Admin → Websites and enable Showcase."
+          );
 
           return;
+
         }
+
+
+        currentIndex =
+          showcaseSites.findIndex(
+            site =>
+              String(site.id) ===
+              String(requested.id)
+          );
+
+
+        /*
+          loadSite() will start the
+          presentation only after iframe load.
+        */
 
         loadSite(
           requested
         );
 
-        recalculateCamera();
-
-        startPresentation();
-
       }
 
-      init();
 
-      /* =====================================================
+      /* =========================================
          CLEANUP
-      ===================================================== */
+      ========================================== */
 
       window.addEventListener(
         "beforeunload",
@@ -2505,20 +3496,42 @@
 
           destroyed = true;
 
-          if(animationFrame){
-            cancelAnimationFrame(
-              animationFrame
-            );
-          }
+          running = false;
 
-          if(cursorTimer){
-            clearInterval(
-              cursorTimer
-            );
-          }
+          clearInterval(
+            cursorTimer
+          );
+
+          cancelAnimationFrame(
+            animationFrame
+          );
 
         }
       );
+
+
+      /* =========================================
+         START
+      ========================================== */
+
+      if(
+        document.readyState ===
+        "loading"
+      ){
+
+        document.addEventListener(
+          "DOMContentLoaded",
+          init,
+          {
+            once:true
+          }
+        );
+
+      }else{
+
+        init();
+
+      }
 
     })();
   </script>
