@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<title>Settings | Website Deals Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070808;
+  --panel:#101313;
+  --panel2:#151818;
+  --border:rgba(255,255,255,.08);
+  --text:#f4f7f5;
+  --muted:#929a96;
+  --lime:#b7ff00;
+  --red:#ff5d6c;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 75% 0%,rgba(183,255,0,.08),transparent 30%),
+    var(--bg);
+  font-family:Inter,Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+
+.sidebar{
+  position:fixed;
+  left:0;top:0;bottom:0;
+  width:255px;
+  background:#0a0b0b;
+  border-right:1px solid var(--border);
+  padding:24px 16px;
+  z-index:20;
+}
+.logo{
+  display:flex;
+  gap:11px;
+  align-items:center;
+  padding:4px 10px 25px;
+}
+.logo-mark{
+  width:38px;height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:var(--lime);
+  color:#070808;
+  font-weight:900;
+}
+.logo strong{font-family:"Space Grotesk"}
+.logo small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:3px;
+}
+.nav-title{
+  color:#5f6863;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:.13em;
+  font-weight:800;
+  padding:16px 11px 8px;
+}
+.nav a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#aeb5b1;
+  padding:12px;
+  margin:3px 0;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:600;
+}
+.nav a:hover{background:#171a1a;color:#fff}
+.nav a.active{
+  color:var(--lime);
+  background:rgba(183,255,0,.1);
+}
+.nav-icon{width:18px;text-align:center}
+
+.main{
+  margin-left:255px;
+  min-height:100vh;
+}
+.topbar{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 34px;
+  border-bottom:1px solid var(--border);
+  background:rgba(7,8,8,.84);
+  backdrop-filter:blur(18px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.topbar h1{
+  font-family:"Space Grotesk";
+  margin:0;
+  font-size:19px;
+}
+.topbar p{
+  color:var(--muted);
+  margin:4px 0 0;
+  font-size:11px;
+}
+.actions{display:flex;gap:8px}
+.btn{
+  border:1px solid var(--border);
+  background:#141717;
+  color:#fff;
+  border-radius:11px;
+  padding:10px 14px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+.btn.primary{
+  background:var(--lime);
+  color:#080909;
+  border-color:var(--lime);
+}
+.btn.danger{
+  color:#ff8791;
+  border-color:rgba(255,93,108,.2);
+}
+
+.content{
+  padding:34px;
+  max-width:1050px;
+}
+.hero h2{
+  margin:0;
+  font-family:"Space Grotesk";
+  font-size:34px;
+  letter-spacing:-.04em;
+}
+.hero p{
+  margin:9px 0 27px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.settings-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.panel{
+  background:linear-gradient(180deg,#131717,#0e1010);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:21px;
+}
+.panel.full{grid-column:1/-1}
+.panel-head{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  margin-bottom:20px;
+}
+.panel-icon{
+  width:39px;height:39px;
+  border-radius:12px;
+  background:#1a1e1e;
+  display:grid;
+  place-items:center;
+  color:var(--lime);
+}
+.panel h3{
+  font-family:"Space Grotesk";
+  font-size:16px;
+  margin:0;
+}
+.panel p{
+  color:var(--muted);
+  font-size:11px;
+  margin:4px 0 0;
+}
+.field{margin-bottom:15px}
+label{
+  display:block;
+  color:#aeb5b1;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+input{
+  width:100%;
+  border:1px solid var(--border);
+  background:#0b0d0d;
+  color:#fff;
+  border-radius:11px;
+  padding:12px;
+  outline:none;
+}
+input:focus{
+  border-color:rgba(183,255,0,.55);
+}
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:13px 0;
+  border-top:1px solid var(--border);
+}
+.row:first-of-type{border-top:0}
+.row strong{
+  display:block;
+  font-size:12px;
+}
+.row span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:3px;
+  line-height:1.5;
+}
+.switch{
+  position:relative;
+  width:44px;height:25px;
+  flex:none;
+}
+.switch input{display:none}
+.slider{
+  position:absolute;
+  inset:0;
+  background:#292e2e;
+  border-radius:999px;
+  cursor:pointer;
+  transition:.2s;
+}
+.slider:before{
+  content:"";
+  position:absolute;
+  width:19px;height:19px;
+  left:3px;top:3px;
+  border-radius:50%;
+  background:#fff;
+  transition:.2s;
+}
+.switch input:checked + .slider{
+  background:var(--lime);
+}
+.switch input:checked + .slider:before{
+  transform:translateX(19px);
+  background:#080909;
+}
+
+.domain{
+  display:flex;
+  gap:8px;
+}
+.domain input{flex:1}
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:var(--lime);
+  font-size:10px;
+  font-weight:800;
+}
+.dot{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--lime);
+}
+.footer-actions{
+  margin-top:20px;
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+}
+
+.danger-box{
+  border-color:rgba(255,93,108,.16);
+}
+.danger-box .panel-icon{color:#ff6875}
+
+.toast{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  background:#eaffb0;
+  color:#101300;
+  padding:13px 16px;
+  border-radius:12px;
+  font-size:12px;
+  font-weight:800;
+  opacity:0;
+  transform:translateY(15px);
+  pointer-events:none;
+  transition:.25s;
+  z-index:100;
+}
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:900px){
+  .settings-grid{grid-template-columns:1fr}
+  .panel.full{grid-column:auto}
+}
+@media(max-width:800px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .topbar{padding:0 18px}
+  .content{padding:22px 16px}
+  .menu-btn{display:block!important}
+}
+.menu-btn{display:none}
+@media(max-width:560px){
+  .domain{display:block}
+  .domain .btn{margin-top:8px;width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="logo">
+    <div class="logo-mark">WD</div>
+    <div>
+      <strong>Website Deals</strong>
+      <small>ADMIN PANEL</small>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-title">Workspace</div>
+    <a href="./dashboard.html"><span class="nav-icon">⌂</span>Dashboard</a>
+    <a href="./websites.html"><span class="nav-icon">◫</span>Websites</a>
+    <a href="./packages.html"><span class="nav-icon">◇</span>Packages</a>
+    <a href="./presentation.html"><span class="nav-icon">▶</span>Presentation</a>
+
+    <div class="nav-title">Public</div>
+    <a href="../index.html#websites"><span class="nav-icon">↗</span>Public Showcase</a>
+    <a href="../index.html"><span class="nav-icon">▦</span>Main Website</a>
+    <a href="https://support.websitedeals.com" target="_blank" rel="noopener">
+      <span class="nav-icon">?</span>Support
+    </a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+  <div>
+    <h1>Settings</h1>
+    <p>Control the presentation wall and admin preferences.</p>
+  </div>
+
+  <div class="actions">
+    <button class="btn menu-btn" onclick="toggleSidebar()">☰</button>
+    <a class="btn" href="../index.html">Main Website</a>
+    <button class="btn primary" onclick="saveSettings()">Save Changes</button>
+  </div>
+</header>
+
+<section class="content">
+
+<div class="hero">
+  <h2>System Settings</h2>
+  <p>
+    Simple controls for the Website Deals presentation system.
+    Website links and package content remain managed from their own admin pages.
+  </p>
+</div>
+
+<div class="settings-grid">
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="panel-icon">◉</div>
+      <div>
+        <h3>Marketplace Identity</h3>
+        <p>Basic public information.</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Marketplace Name</label>
+      <input id="siteName">
+    </div>
+
+    <div class="field">
+      <label>Tagline</label>
+      <input id="tagline">
+    </div>
+
+    <div class="field">
+      <label>Support URL</label>
+      <input id="supportUrl">
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="panel-icon">◌</div>
+      <div>
+        <h3>Presentation Behaviour</h3>
+        <p>Control the live website showcase.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Auto Presentation</strong>
+        <span>Automatically move website previews.</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="autoPresentation">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Human-like Cursor</strong>
+        <span>Show subtle cursor movement in previews.</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="humanCursor">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Loop Presentation</strong>
+        <span>Return to the top after reaching the bottom.</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="loopPresentation">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="panel-icon">↗</div>
+      <div>
+        <h3>Live Website Behaviour</h3>
+        <p>Default actions for client presentation.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Open Live in New Tab</strong>
+        <span>Use the real website URL when Explore is clicked.</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="openLive">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Show LIVE Badge</strong>
+        <span>Display live status on website cards.</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="liveBadge">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Pause When Tab Hidden</strong>
+        <span>Reduce presentation activity when the page is hidden.</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="pauseHidden">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div class="panel-icon">▣</div>
+      <div>
+        <h3>Domain</h3>
+        <p>Primary public package address.</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Package Domain</label>
+      <div class="domain">
+        <input id="domain">
+        <button class="btn" type="button" onclick="openDomain()">Open</button>
+      </div>
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>
+      Settings are stored locally
+    </div>
+  </section>
+
+  <section class="panel full danger-box">
+    <div class="panel-head">
+      <div class="panel-icon">!</div>
+      <div>
+        <h3>Local Data</h3>
+        <p>Manage locally saved Website Deals admin data.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Reset Package Settings</strong>
+        <span>Restore the default package-management settings.</span>
+      </div>
+      <button class="btn danger" onclick="resetSettings()">Reset</button>
+    </div>
+
+    <div class="row">
+      <div>
+        <strong>Clear Saved Website Data</strong>
+        <span>Removes locally stored website records from this browser.</span>
+      </div>
+      <button class="btn danger" onclick="clearWebsites()">Clear</button>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer-actions">
+  <button class="btn" onclick="loadSettings()">Discard Changes</button>
+  <button class="btn primary" onclick="saveSettings()">Save Settings</button>
+</div>
+
+</section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SETTINGS_KEY="websiteDealsSettings";
+
+const defaults={
+  siteName:"Website Deals",
+  tagline:"Premium Ready-Made Websites",
+  supportUrl:"https://support.websitedeals.com",
+  domain:"https://package.websitedeals.com",
+  autoPresentation:true,
+  humanCursor:true,
+  loopPresentation:true,
+  openLive:true,
+  liveBadge:true,
+  pauseHidden:true
+};
+
+function getSettings(){
+  try{
+    const data=JSON.parse(localStorage.getItem(SETTINGS_KEY));
+    return {...defaults,...(data||{})};
+  }catch{
+    return {...defaults};
+  }
+}
+
+function loadSettings(){
+  const s=getSettings();
+
+  document.getElementById("siteName").value=s.siteName;
+  document.getElementById("tagline").value=s.tagline;
+  document.getElementById("supportUrl").value=s.supportUrl;
+  document.getElementById("domain").value=s.domain;
+
+  document.getElementById("autoPresentation").checked=!!s.autoPresentation;
+  document.getElementById("humanCursor").checked=!!s.humanCursor;
+  document.getElementById("loopPresentation").checked=!!s.loopPresentation;
+  document.getElementById("openLive").checked=!!s.openLive;
+  document.getElementById("liveBadge").checked=!!s.liveBadge;
+  document.getElementById("pauseHidden").checked=!!s.pauseHidden;
+}
+
+function saveSettings(){
+  const data={
+    siteName:document.getElementById("siteName").value.trim(),
+    tagline:document.getElementById("tagline").value.trim(),
+    supportUrl:document.getElementById("supportUrl").value.trim(),
+    domain:document.getElementById("domain").value.trim(),
+
+    autoPresentation:document.getElementById("autoPresentation").checked,
+    humanCursor:document.getElementById("humanCursor").checked,
+    loopPresentation:document.getElementById("loopPresentation").checked,
+    openLive:document.getElementById("openLive").checked,
+    liveBadge:document.getElementById("liveBadge").checked,
+    pauseHidden:document.getElementById("pauseHidden").checked
+  };
+
+  localStorage.setItem(SETTINGS_KEY,JSON.stringify(data));
+  toast("Settings saved successfully");
+}
+
+function resetSettings(){
+  if(!confirm("Restore default settings?"))return;
+  localStorage.setItem(SETTINGS_KEY,JSON.stringify(defaults));
+  loadSettings();
+  toast("Settings restored");
+}
+
+function clearWebsites(){
+  if(!confirm("Clear all locally saved website records?"))return;
+
+  localStorage.removeItem("websiteDealsWebsites");
+  toast("Website data cleared");
+}
+
+function openDomain(){
+  const value=document.getElementById("domain").value.trim();
+  if(!value)return;
+  window.open(value,"_blank","noopener");
+}
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+}
+
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.add("show");
+  setTimeout(()=>el.classList.remove("show"),2200);
+}
+
+loadSettings();
+</script>
+
+</body>
+</html>
