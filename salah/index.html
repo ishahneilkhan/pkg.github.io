@@ -1,1 +1,146 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<meta name="description" content="Daily Salah times for Bangladesh with live countdown to the next prayer — Website Deals.">
+<title>Salah Times | Website Deals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080909;--surface:#111414;--surface-2:#161919;--text:#f5f7f7;--muted:#9ba4a4;--muted-2:#707979;
+    --lime:#b7ff00;--lime-soft:rgba(183,255,0,.12);--lime-border:rgba(183,255,0,.28);--border:rgba(255,255,255,.09)}
+  body.light{--bg:#f6f8f8;--surface:#fff;--surface-2:#f1f4f4;--text:#101313;--muted:#667070;--muted-2:#879090;--border:rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;font-family:Inter,sans-serif;color:var(--text);
+    background:radial-gradient(circle at 15% 0,rgba(183,255,0,.07),transparent 30%),var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(900px,calc(100% - 32px));margin:0 auto}
+  header{border-bottom:1px solid var(--border);backdrop-filter:blur(20px);position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 80%,transparent)}
+  .bar{height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:-.03em}
+  .mark{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:var(--lime);color:#000;font-weight:900;font-size:14px}
+  .back{padding:9px 14px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--muted);font-size:12px;font-weight:700}
+  .back:hover{border-color:var(--lime-border);color:var(--text)}
+  .hero{padding:60px 0 28px;text-align:center}
+  .kicker{color:var(--lime);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+  h1{margin-top:10px;font-size:clamp(34px,7vw,60px);letter-spacing:-.05em;line-height:1}
+  .date{margin-top:14px;color:var(--muted);font-size:13px}
+  .next{margin:30px auto 0;max-width:520px;padding:26px;border:1px solid var(--lime-border);border-radius:24px;
+    background:linear-gradient(145deg,rgba(183,255,0,.10),rgba(255,255,255,.015))}
+  .next small{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .next b{display:block;margin-top:6px;font-size:28px;letter-spacing:-.04em}
+  .count{margin-top:10px;font-size:clamp(34px,9vw,52px);font-weight:900;letter-spacing:-.05em;color:var(--lime);font-variant-numeric:tabular-nums}
+  .tools{display:flex;justify-content:center;margin:26px 0 18px}
+  select{padding:11px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);font:600 12px Inter,sans-serif}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:70px}
+  .tile{padding:20px 16px;text-align:center;border:1px solid var(--border);border-radius:18px;background:var(--surface);transition:.25s}
+  .tile span{display:block;color:var(--muted-2);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .tile strong{display:block;margin-top:8px;font-size:26px;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+  .tile.next{border-color:var(--lime-border);background:var(--lime-soft)}
+  .tile.next span,.tile.next strong{color:var(--lime)}
+  .tile.past{opacity:.55}
+  .note{padding-bottom:50px;text-align:center;color:var(--muted-2);font-size:10px;line-height:1.7}
+  .err{display:none;margin:0 auto 18px;max-width:520px;padding:12px;border:1px solid var(--border);border-radius:12px;color:var(--muted);font-size:11px;text-align:center}
+  @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr)}.tile strong{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><span class="mark">WD</span>Website Deals</a>
+  <a class="back" href="../#websites">← Back to site</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">Salah Times</div>
+    <h1 id="city">Dhaka</h1>
+    <p class="date" id="date">Loading…</p>
+    <div class="next">
+      <small>Next prayer</small>
+      <b id="nextName">—</b>
+      <div class="count" id="count">--:--:--</div>
+    </div>
+  </section>
+
+  <div class="tools">
+    <select id="citySel" aria-label="City">
+      <option>Dhaka</option><option>Chattogram</option><option>Sylhet</option>
+      <option>Rajshahi</option><option>Khulna</option><option>Barishal</option>
+      <option>Rangpur</option><option>Mymensingh</option>
+    </select>
+  </div>
+
+  <div class="err" id="err">Live times unavailable right now — showing approximate Dhaka times.</div>
+  <div class="grid" id="grid"></div>
+  <p class="note">Calculated with the University of Islamic Sciences, Karachi method (Hanafi Asr). Times may differ by a minute or two from your local mosque — please follow your local jama'ah time.</p>
+</main>
+
+<script>
+(() => {
+  const ORDER = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
+  const PRAYERS = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
+  const FALLBACK = { Fajr: "04:45", Sunrise: "06:00", Dhuhr: "12:05", Asr: "16:15", Maghrib: "18:00", Isha: "19:20" };
+  const $ = (id) => document.getElementById(id);
+  let times = FALLBACK, city = "Dhaka";
+
+  try { if (localStorage.getItem("websiteDealsTheme") === "light") document.body.classList.add("light"); } catch (e) {}
+
+  const dhaka = () => new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" }));
+  const toSec = (t) => { const [h, m] = t.split(":").map(Number); return h * 3600 + m * 60; };
+  const pad = (n) => String(n).padStart(2, "0");
+
+  function nextPrayer() {
+    const d = dhaka(), now = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+    let name = PRAYERS.find((n) => toSec(times[n]) > now), diff;
+    if (name) diff = toSec(times[name]) - now;
+    else { name = "Fajr"; diff = 86400 - now + toSec(times.Fajr); }
+    return { name, diff, now };
+  }
+
+  function render() {
+    const { name, diff, now } = nextPrayer();
+    $("grid").innerHTML = ORDER.map((n) => {
+      const cls = n === name ? "next" : (toSec(times[n]) <= now && n !== "Sunrise" ? "past" : "");
+      return `<div class="tile ${cls}"><span>${n}</span><strong>${times[n]}</strong></div>`;
+    }).join("");
+    $("nextName").textContent = name;
+    tick();
+  }
+
+  function tick() {
+    const { diff } = nextPrayer();
+    $("count").textContent = `${pad(Math.floor(diff / 3600))}:${pad(Math.floor(diff % 3600 / 60))}:${pad(diff % 60)}`;
+  }
+
+  async function load() {
+    const key = `salahPage:${city}`, day = dhaka().toDateString();
+    $("city").textContent = city;
+    try { const c = JSON.parse(localStorage.getItem(key)); if (c && c.day === day) { times = c.times; $("date").textContent = c.label; $("err").style.display = "none"; return render(); } } catch (e) {}
+    try {
+      const r = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city)}&country=Bangladesh&method=1&school=1`);
+      const j = (await r.json()).data;
+      times = Object.fromEntries(ORDER.map((n) => [n, String(j.timings[n]).slice(0, 5)]));
+      const h = j.date.hijri;
+      const label = `${j.date.gregorian.weekday.en}, ${j.date.readable} · ${h.day} ${h.month.en} ${h.year} AH`;
+      $("date").textContent = label;
+      $("err").style.display = "none";
+      try { localStorage.setItem(key, JSON.stringify({ day, times, label })); } catch (e) {}
+    } catch (e) {
+      times = FALLBACK;
+      $("date").textContent = dhaka().toDateString();
+      $("err").style.display = "block";
+    }
+    render();
+  }
+
+  $("citySel").addEventListener("change", (e) => { city = e.target.value; load(); });
+  setInterval(tick, 1000);
+  setInterval(render, 30000);
+  load();
+})();
+</script>
+</body>
+</html>
