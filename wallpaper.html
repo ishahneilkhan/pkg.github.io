@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Live Wallpaper | Website Deals</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;background:#10120f;overflow:hidden;font-family:Inter,Arial,sans-serif;color:#fff}
+.slide{position:fixed;inset:0;opacity:0;transition:opacity 1.2s ease}.slide.on{opacity:1}.cam{width:100%;height:3600px;animation:cam var(--d,70s) ease-in-out infinite alternate;will-change:transform}.slide:not(.on) .cam{animation-play-state:paused}
+.paused .cam{animation-play-state:paused!important}.cam iframe{width:100%;height:100%;border:0;background:#fff;pointer-events:none}@keyframes cam{0%,5%{transform:translateY(0)}95%,100%{transform:translateY(calc(-3600px + 100vh))}}
+.hud{position:fixed;left:24px;bottom:24px;z-index:9;display:flex;gap:12px;align-items:center;background:rgba(16,18,15,.72);backdrop-filter:blur(14px);padding:12px 18px;border-radius:18px;border:1px solid rgba(255,255,255,.1);transition:opacity .5s}
+.hud b{display:block;font-size:.95rem}.hud small{color:#9aa296;font-size:.7rem}.dot{width:9px;height:9px;border-radius:50%;background:#b7ff00;box-shadow:0 0 12px #b7ff00}.hide .hud{opacity:0}.hide{cursor:none}
+.clock{position:fixed;right:24px;bottom:24px;z-index:9;font-size:2rem;font-weight:800;letter-spacing:-.04em;text-shadow:0 2px 20px #000;transition:opacity .5s}.hide .clock{opacity:.0}
+.help{position:fixed;top:18px;right:18px;z-index:9;font-size:.7rem;color:#c9cfc6;background:rgba(16,18,15,.7);padding:8px 12px;border-radius:10px;transition:opacity .5s}.hide .help{opacity:0}
+.none{position:fixed;inset:0;display:grid;place-items:center;text-align:center;color:#9aa296;padding:30px}.none a{color:#b7ff00}</style></head><body>
+<div class="hud"><span class="dot"></span><div><b id="n">Loading…</b><small id="m"></small></div></div><div class="clock" id="c"></div>
+<div class="help">Space pin · ← → switch · F fullscreen · H hide HUD</div>
+<script src="./shared/store.js"></script>
+<script>
+(function(){var S=WDStore,q=new URLSearchParams(location.search),sec=+(q.get("interval")||60),sites=[],cur=0,pinned=!!q.get("pin"),t=null,sig="";
+function $(i){return document.getElementById(i)}
+function build(list){var n=S.showcase(list),s=n.map(function(x){return x.id+x.url}).join("|");if(s===sig)return;sig=s;sites=n;
+ [].forEach.call(document.querySelectorAll(".slide,.none"),function(e){e.remove()});
+ if(!n.length){var d=document.createElement("div");d.className="none";d.innerHTML='<div>No showcase websites yet.<br><a href="./admin/websites.html">Add one in Admin → Websites</a></div>';document.body.appendChild(d);$("n").textContent="Website Deals";return}
+ n.forEach(function(x,i){var d=document.createElement("div");d.className="slide";d.style.setProperty("--d",(sec*1.4)+"s");d.innerHTML='<div class="cam"><iframe src="'+S.esc(x.url)+'" title="'+S.esc(x.name)+'"></iframe></div>';document.body.appendChild(d)});
+ var pid=q.get("pin")||q.get("site"),k=n.findIndex(function(x){return x.id===pid});go(k>-1?k:0);loop()}
+function go(i){cur=(i+sites.length)%sites.length;[].forEach.call(document.querySelectorAll(".slide"),function(e,k){e.classList.toggle("on",k===cur)});$("n").textContent=sites[cur].name;$("m").textContent=(pinned?"Pinned · ":"Live · ")+(cur+1)+"/"+sites.length}
+function loop(){clearInterval(t);if(!pinned&&sites.length>1)t=setInterval(function(){go(cur+1)},sec*1000)}
+document.addEventListener("keydown",function(e){if(!sites.length&&e.key!=="f"&&e.key!=="h")return;
+ if(e.key===" "){e.preventDefault();pinned=!pinned;document.body.classList.toggle("paused",pinned);go(cur);loop()}
+ else if(e.key==="ArrowRight"){go(cur+1);loop()}else if(e.key==="ArrowLeft"){go(cur-1);loop()}
+ else if(e.key==="f"||e.key==="F"){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+ else if(e.key==="h"||e.key==="H"){document.body.classList.toggle("hide")}});
+var idle;function wake(){document.body.classList.remove("hide");clearTimeout(idle);idle=setTimeout(function(){document.body.classList.add("hide")},4000)}
+["mousemove","keydown","click"].forEach(function(ev){document.addEventListener(ev,wake)});wake();
+function tick(){var d=new Date();$("c").textContent=("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2)}tick();setInterval(tick,15000);
+try{navigator.wakeLock&&navigator.wakeLock.request("screen")}catch(e){}
+build(S.list());window.addEventListener("wd:sites-changed",function(){build(S.list())});window.addEventListener("storage",function(){build(S.list())});
+setTimeout(function(){location.reload()},6*3600*1000)})();
+</script></body></html>

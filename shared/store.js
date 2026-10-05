@@ -1081,7 +1081,17 @@
      PUBLIC API
   ========================================================= */
 
+  /* SYNC LIST: admin data -> cached published data -> defaults */
+  let _pub=null;
+  readPublished().then(function(l){if(Array.isArray(l)&&l.length){_pub=l;try{window.dispatchEvent(new CustomEvent("wd:sites-changed",{detail:{published:true}}))}catch(e){}}});
+  function list(){
+    const local=readLocal();
+    if(Array.isArray(local))return local;
+    return _pub||normalizeList(DEFAULTS);
+  }
+
   window.WDStore = {
+    list,
 
     KEY,
 
