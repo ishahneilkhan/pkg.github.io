@@ -1,1332 +1,1184 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="theme-color"
-    content="#0b0d0c"
-  >
+  <title>Dashboard | Website Deals Admin</title>
 
   <meta
     name="description"
-    content="Website Deals Admin Dashboard — Premium Ready-Made Websites Management"
+    content="Website Deals premium admin dashboard."
   >
 
-  <title>Admin Dashboard | Website Deals</title>
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <meta name="theme-color" content="#090b0a">
 
   <style>
-    :root {
-      --bg: #070908;
-      --panel: #0d100f;
-      --panel-2: #111513;
-      --panel-3: #151a17;
-      --border: rgba(255,255,255,.09);
-      --border-strong: rgba(255,255,255,.15);
-      --text: #f4f7f5;
-      --muted: #8f9993;
-      --muted-2: #69726d;
-      --lime: #b7ff00;
-      --lime-dark: #8fc700;
-      --danger: #ff5d69;
-      --warning: #ffc857;
-      --success: #4ade80;
-      --blue: #60a5fa;
-      --radius: 22px;
-      --sidebar: 260px;
-      --shadow: 0 25px 80px rgba(0,0,0,.35);
+    :root{
+      --bg:#070908;
+      --panel:#0d110f;
+      --panel2:#111612;
+      --panel3:#151b17;
+      --line:rgba(255,255,255,.085);
+      --line2:rgba(183,255,0,.22);
+      --text:#f4f7f3;
+      --muted:#929b95;
+      --muted2:#68716b;
+      --lime:#b7ff00;
+      --lime2:#d9ff79;
+      --danger:#ff6872;
+      --warning:#ffc857;
+      --shadow:0 24px 70px rgba(0,0,0,.34);
+      --radius:24px;
+      --radius2:17px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html{
+      scroll-behavior:smooth;
     }
 
-    body {
-      min-height: 100vh;
+    body{
+      min-height:100vh;
+      color:var(--text);
       background:
         radial-gradient(
-          circle at 75% -10%,
-          rgba(183,255,0,.07),
-          transparent 28%
+          circle at 85% 0%,
+          rgba(183,255,0,.065),
+          transparent 27%
         ),
         radial-gradient(
-          circle at 15% 20%,
-          rgba(255,255,255,.025),
+          circle at 8% 85%,
+          rgba(183,255,0,.035),
           transparent 25%
         ),
         var(--bg);
-      color: var(--text);
-      font-family: "Inter", "Hind Siliguri", sans-serif;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,.018) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.018) 1px,
-          transparent 1px
-        );
-      background-size: 40px 40px;
-      mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 75%
-      );
-      opacity: .35;
-      z-index: -1;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
     }
 
     button,
-    a {
-      -webkit-tap-highlight-color: transparent;
+    input,
+    select{
+      font:inherit;
     }
 
-    button {
-      font: inherit;
+    button{
+      cursor:pointer;
     }
 
-    .app {
-      min-height: 100vh;
+    a{
+      color:inherit;
+      text-decoration:none;
     }
 
-    /* =========================
+    /* =========================================================
+       APP
+    ========================================================= */
+
+    .app{
+      min-height:100vh;
+    }
+
+    /* =========================================================
        SIDEBAR
-    ========================= */
+    ========================================================= */
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: var(--sidebar);
-      padding: 22px 16px;
+    .sidebar{
+      position:fixed;
+      z-index:100;
+      inset:0 auto 0 0;
+      width:270px;
+      padding:24px 16px;
+      overflow-y:auto;
+      border-right:1px solid var(--line);
       background:
         linear-gradient(
           180deg,
-          rgba(15,18,16,.98),
-          rgba(8,10,9,.98)
-        );
-      border-right: 1px solid var(--border);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 10px 24px;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: var(--lime);
-      color: #071000;
-      display: grid;
-      place-items: center;
-      font-size: 17px;
-      font-weight: 900;
-      box-shadow:
-        0 0 0 5px rgba(183,255,0,.06),
-        0 10px 35px rgba(183,255,0,.12);
-    }
-
-    .brand-copy strong {
-      display: block;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: -.02em;
-    }
-
-    .brand-copy span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .13em;
-    }
-
-    .nav-label {
-      padding: 8px 12px;
-      margin-top: 4px;
-      margin-bottom: 8px;
-      color: var(--muted-2);
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-    }
-
-    .nav {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .nav-link {
-      min-height: 45px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 0 13px;
-      border: 1px solid transparent;
-      border-radius: 13px;
-      color: #aeb7b2;
-      font-size: 13px;
-      font-weight: 600;
-      transition:
-        background .2s ease,
-        color .2s ease,
-        border-color .2s ease,
-        transform .2s ease;
-    }
-
-    .nav-link:hover {
-      color: #fff;
-      background: rgba(255,255,255,.045);
-      border-color: var(--border);
-      transform: translateX(2px);
-    }
-
-    .nav-link.active {
-      color: #081000;
-      background: var(--lime);
-      border-color: var(--lime);
-      box-shadow: 0 10px 30px rgba(183,255,0,.10);
-    }
-
-    .nav-icon {
-      width: 18px;
-      text-align: center;
-      font-size: 15px;
-    }
-
-    .nav-spacer {
-      flex: 1;
-    }
-
-    .sidebar-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-    }
-
-    .support-mini {
-      padding: 13px;
-      margin-bottom: 10px;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .support-mini small {
-      color: var(--muted-2);
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-    }
-
-    .support-mini strong {
-      display: block;
-      margin-top: 5px;
-      font-size: 12px;
-    }
-
-    .logout-btn {
-      width: 100%;
-      min-height: 43px;
-      border: 1px solid rgba(255,93,105,.18);
-      border-radius: 13px;
-      background: rgba(255,93,105,.05);
-      color: #ff8b94;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 700;
-      transition: .2s ease;
-    }
-
-    .logout-btn:hover {
-      background: rgba(255,93,105,.1);
-      border-color: rgba(255,93,105,.35);
-    }
-
-    /* =========================
-       MOBILE HEADER
-    ========================= */
-
-    .mobile-header {
-      display: none;
-      position: sticky;
-      top: 0;
-      height: 66px;
-      padding: 0 16px;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(7,9,8,.9);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-      z-index: 900;
-    }
-
-    .mobile-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .mobile-brand .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      font-size: 13px;
-    }
-
-    .mobile-brand strong {
-      font-size: 13px;
-    }
-
-    .menu-btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      background: var(--panel);
-      color: #fff;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    .main {
-      margin-left: var(--sidebar);
-      min-height: 100vh;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 500;
-      min-height: 72px;
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      background: rgba(7,9,8,.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .topbar-left small {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .topbar-left strong {
-      display: block;
-      margin-top: 3px;
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-    .topbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .top-btn {
-      min-height: 38px;
-      padding: 0 13px;
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      background: rgba(255,255,255,.025);
-      color: #d8dedb;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      font-size: 11px;
-      font-weight: 700;
-      transition: .2s ease;
-    }
-
-    .top-btn:hover {
-      border-color: var(--border-strong);
-      background: rgba(255,255,255,.05);
-    }
-
-    .top-btn.primary {
-      background: var(--lime);
-      color: #081000;
-      border-color: var(--lime);
-    }
-
-    .content {
-      padding: 32px;
-      max-width: 1500px;
-      margin: 0 auto;
-    }
-
-    /* =========================
-       WELCOME
-    ========================= */
-
-    .welcome {
-      position: relative;
-      overflow: hidden;
-      min-height: 230px;
-      padding: 34px;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background:
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(183,255,0,.12),
-          transparent 27%
+          rgba(255,255,255,.025),
+          transparent
         ),
+        #090c0a;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:4px 10px 26px;
+      margin-bottom:18px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      border-radius:13px;
+      color:#071000;
+      background:var(--lime);
+      font-size:13px;
+      font-weight:950;
+      box-shadow:
+        0 10px 30px
+        rgba(183,255,0,.17);
+    }
+
+    .brand-copy strong{
+      display:block;
+      font-size:15px;
+      letter-spacing:-.025em;
+    }
+
+    .brand-copy span{
+      display:block;
+      margin-top:3px;
+      color:var(--muted);
+      font-size:10px;
+    }
+
+    .nav-label{
+      padding:8px 12px;
+      color:#626b65;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .nav{
+      display:grid;
+      gap:5px;
+    }
+
+    .nav a{
+      min-height:44px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:0 13px;
+      border-radius:13px;
+      color:#aab2ad;
+      font-size:13px;
+      font-weight:750;
+      transition:.2s ease;
+    }
+
+    .nav a:hover{
+      color:#fff;
+      background:rgba(255,255,255,.045);
+    }
+
+    .nav a.active{
+      color:var(--lime);
+      background:rgba(183,255,0,.10);
+      box-shadow:
+        inset 0 0 0 1px
+        rgba(183,255,0,.075);
+    }
+
+    .nav-icon{
+      width:22px;
+      text-align:center;
+      font-size:15px;
+    }
+
+    .sidebar-status{
+      margin-top:26px;
+      padding:15px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .status-dot{
+      display:inline-block;
+      width:7px;
+      height:7px;
+      margin-right:6px;
+      border-radius:50%;
+      background:var(--lime);
+      box-shadow:0 0 12px rgba(183,255,0,.5);
+    }
+
+    .sidebar-status small{
+      color:var(--muted);
+      font-size:10px;
+    }
+
+    .sidebar-status strong{
+      display:block;
+      margin-top:7px;
+      font-size:12px;
+    }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    .main{
+      width:calc(100% - 270px);
+      min-height:100vh;
+      margin-left:270px;
+      padding:30px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:25px;
+    }
+
+    .eyebrow{
+      margin-bottom:8px;
+      color:var(--lime);
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.17em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:
+        clamp(
+          29px,
+          3.5vw,
+          46px
+        );
+      line-height:1;
+      letter-spacing:-.055em;
+    }
+
+    .top-copy p{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .top-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      min-height:42px;
+      padding:0 15px;
+      border:1px solid var(--line);
+      border-radius:13px;
+      color:#fff;
+      background:rgba(255,255,255,.035);
+      font-size:11px;
+      font-weight:850;
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.07);
+    }
+
+    .btn-primary{
+      color:#071000;
+      background:var(--lime);
+      border-color:var(--lime);
+    }
+
+    .btn-primary:hover{
+      background:#c9ff45;
+    }
+
+    /* =========================================================
+       HERO STATUS
+    ========================================================= */
+
+    .welcome{
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:24px;
+      align-items:center;
+      margin-bottom:20px;
+      padding:26px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:
         linear-gradient(
           135deg,
-          #111612,
-          #0a0d0b
+          rgba(183,255,0,.075),
+          rgba(255,255,255,.02) 45%,
+          rgba(255,255,255,.012)
         );
-      box-shadow: var(--shadow);
+      box-shadow:var(--shadow);
     }
 
-    .welcome::after {
-      content: "";
-      position: absolute;
-      width: 270px;
-      height: 270px;
-      right: -90px;
-      bottom: -130px;
-      border-radius: 50%;
-      border: 1px solid rgba(183,255,0,.08);
-      box-shadow:
-        0 0 0 40px rgba(183,255,0,.025),
-        0 0 0 80px rgba(183,255,0,.015);
+    .welcome::before{
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      right:-110px;
+      top:-130px;
+      border-radius:50%;
+      background:rgba(183,255,0,.08);
+      filter:blur(4px);
+      pointer-events:none;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 9px;
-      border: 1px solid rgba(183,255,0,.16);
-      border-radius: 999px;
-      background: rgba(183,255,0,.05);
-      color: var(--lime);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+    .welcome-copy{
+      position:relative;
+      z-index:1;
     }
 
-    .live-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 10px rgba(183,255,0,.7);
+    .welcome-copy span{
+      color:var(--lime);
+      font-size:10px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.14em;
     }
 
-    .welcome h1 {
-      max-width: 650px;
-      margin-top: 17px;
-      font-size: clamp(28px, 4vw, 46px);
-      line-height: 1.05;
-      letter-spacing: -.055em;
+    .welcome-copy h2{
+      margin-top:8px;
+      font-size:24px;
+      letter-spacing:-.04em;
     }
 
-    .welcome h1 span {
-      color: var(--lime);
+    .welcome-copy p{
+      max-width:650px;
+      margin-top:8px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.6;
     }
 
-    .welcome p {
-      max-width: 680px;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
+    .welcome-actions{
+      position:relative;
+      z-index:1;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    /* =========================
-       STAT CARDS
-    ========================= */
+    /* =========================================================
+       STATS
+    ========================================================= */
 
-    .section {
-      margin-top: 28px;
+    .stats{
+      display:grid;
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+      gap:13px;
+      margin-bottom:20px;
     }
 
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 13px;
+    .stat{
+      position:relative;
+      overflow:hidden;
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+      box-shadow:var(--shadow);
     }
 
-    .section-head h2 {
-      font-size: 17px;
-      letter-spacing: -.025em;
+    .stat::after{
+      content:"";
+      position:absolute;
+      right:-30px;
+      bottom:-50px;
+      width:100px;
+      height:100px;
+      border-radius:50%;
+      background:rgba(183,255,0,.045);
     }
 
-    .section-head p {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 11px;
+    .stat-label{
+      position:relative;
+      z-index:1;
+      color:var(--muted);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
     }
 
-    .section-link {
-      color: var(--lime);
-      font-size: 11px;
-      font-weight: 700;
+    .stat-number{
+      position:relative;
+      z-index:1;
+      display:block;
+      margin-top:9px;
+      font-size:31px;
+      font-weight:900;
+      line-height:1;
+      letter-spacing:-.05em;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 13px;
+    .stat-note{
+      position:relative;
+      z-index:1;
+      display:block;
+      margin-top:7px;
+      color:var(--muted2);
+      font-size:10px;
     }
 
-    .stat {
-      position: relative;
-      overflow: hidden;
-      min-height: 145px;
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: rgba(255,255,255,.025);
-      transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease;
+    /* =========================================================
+       CONTENT GRID
+    ========================================================= */
+
+    .grid{
+      display:grid;
+      grid-template-columns:
+        minmax(0,1.25fr)
+        minmax(300px,.75fr);
+      gap:20px;
     }
 
-    .stat:hover {
-      transform: translateY(-3px);
-      border-color: var(--border-strong);
-      background: rgba(255,255,255,.04);
+    .panel{
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+      box-shadow:var(--shadow);
     }
 
-    .stat::after {
-      content: "";
-      position: absolute;
-      right: -25px;
-      bottom: -25px;
-      width: 95px;
-      height: 95px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.04);
+    .panel-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      padding:20px 22px;
+      border-bottom:1px solid var(--line);
     }
 
-    .stat-icon {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      background: rgba(255,255,255,.05);
-      color: #dce3df;
-      font-size: 14px;
+    .panel-head h2{
+      font-size:15px;
+      letter-spacing:-.025em;
     }
 
-    .stat-label {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      font-weight: 700;
+    .panel-head p{
+      margin-top:4px;
+      color:var(--muted);
+      font-size:10px;
     }
 
-    .stat-value {
-      margin-top: 4px;
-      font-size: 30px;
-      line-height: 1;
-      font-weight: 800;
-      letter-spacing: -.045em;
+    .panel-body{
+      padding:20px;
     }
 
-    .stat-meta {
-      margin-top: 8px;
-      color: var(--muted-2);
-      font-size: 10px;
+    /* =========================================================
+       HERO WEBSITE CARD
+    ========================================================= */
+
+    .hero-site{
+      display:grid;
+      grid-template-columns:
+        190px
+        minmax(0,1fr);
+      gap:17px;
+      align-items:center;
     }
 
-    .stat.lime .stat-icon {
-      color: var(--lime);
-      background: rgba(183,255,0,.07);
+    .hero-preview{
+      position:relative;
+      height:145px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#080b09;
     }
 
-    .stat.success .stat-icon {
-      color: var(--success);
-      background: rgba(74,222,128,.07);
+    .hero-preview::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          180deg,
+          transparent 45%,
+          rgba(0,0,0,.45)
+        );
+      pointer-events:none;
     }
 
-    .stat.warning .stat-icon {
-      color: var(--warning);
-      background: rgba(255,200,87,.07);
+    .hero-preview iframe{
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:1400px;
+      border:0;
+      transform-origin:top left;
+      transform:scale(.17);
+      width:588%;
     }
 
-    .stat.danger .stat-icon {
-      color: var(--danger);
-      background: rgba(255,93,105,.07);
+    .hero-preview.no-preview{
+      display:grid;
+      place-items:center;
+      color:var(--muted);
+      font-size:11px;
     }
 
-    /* =========================
-       TWO COLUMN
-    ========================= */
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr);
-      gap: 15px;
+    .hero-info{
+      min-width:0;
     }
 
-    .panel {
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(255,255,255,.025);
-      overflow: hidden;
+    .hero-badge{
+      display:inline-flex;
+      min-height:25px;
+      align-items:center;
+      padding:0 9px;
+      border:1px solid rgba(183,255,0,.25);
+      border-radius:999px;
+      color:var(--lime);
+      background:rgba(183,255,0,.07);
+      font-size:9px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
-    .panel-head {
-      min-height: 65px;
-      padding: 16px 19px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      border-bottom: 1px solid var(--border);
+    .hero-info h3{
+      margin-top:11px;
+      font-size:21px;
+      letter-spacing:-.04em;
     }
 
-    .panel-title {
-      font-size: 13px;
-      font-weight: 800;
+    .hero-info p{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.55;
+      word-break:break-word;
     }
 
-    .panel-subtitle {
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 10px;
+    .hero-meta{
+      display:flex;
+      gap:7px;
+      flex-wrap:wrap;
+      margin-top:12px;
     }
 
-    /* =========================
-       HERO WEBSITE
-    ========================= */
-
-    .hero-site {
-      padding: 19px;
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      min-height:25px;
+      padding:0 9px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:#aab2ad;
+      background:rgba(255,255,255,.025);
+      font-size:9px;
+      font-weight:850;
     }
 
-    .hero-preview {
-      position: relative;
-      overflow: hidden;
-      height: 255px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: #050605;
+    .hero-actions{
+      display:flex;
+      gap:7px;
+      flex-wrap:wrap;
+      margin-top:15px;
     }
 
-    .browser-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 0 12px;
-      background: #111411;
-      border-bottom: 1px solid var(--border);
-      z-index: 3;
+    .small-btn{
+      min-height:35px;
+      padding:0 11px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      color:#fff;
+      background:rgba(255,255,255,.035);
+      font-size:10px;
+      font-weight:850;
     }
 
-    .browser-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #555;
+    .small-btn:hover{
+      background:rgba(255,255,255,.075);
     }
 
-    .browser-address {
-      flex: 1;
-      height: 19px;
-      margin-left: 6px;
-      border-radius: 6px;
-      background: rgba(255,255,255,.045);
+    /* =========================================================
+       PACKAGE CARDS
+    ========================================================= */
+
+    .package-list{
+      display:grid;
+      gap:9px;
     }
 
-    .hero-frame {
-      position: absolute;
-      top: 34px;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 34px);
-      overflow: hidden;
+    .package{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      min-height:65px;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.018);
     }
 
-    .hero-frame iframe {
-      width: 100%;
-      height: 900px;
-      border: 0;
-      display: block;
-      transform-origin: top left;
-      background: #fff;
+    .package-left{
+      min-width:0;
     }
 
-    .hero-empty {
-      height: 100%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 30px;
-      color: var(--muted);
+    .package-name{
+      font-size:12px;
+      font-weight:900;
     }
 
-    .hero-empty strong {
-      display: block;
-      color: #fff;
-      font-size: 14px;
-      margin-bottom: 7px;
+    .package-left small{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:9px;
     }
 
-    .hero-empty span {
-      font-size: 11px;
-      line-height: 1.6;
+    .package-count{
+      min-width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:11px;
+      color:var(--lime);
+      background:rgba(183,255,0,.075);
+      border:1px solid rgba(183,255,0,.13);
+      font-size:13px;
+      font-weight:950;
     }
 
-    .hero-info {
-      margin-top: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .site-name {
-      font-size: 15px;
-      font-weight: 800;
-    }
-
-    .site-url {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 10px;
-      max-width: 500px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-    }
-
-    .small-btn {
-      min-height: 35px;
-      padding: 0 11px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: rgba(255,255,255,.035);
-      color: #dfe5e1;
-      cursor: pointer;
-      font-size: 10px;
-      font-weight: 700;
-      transition: .2s ease;
-    }
-
-    .small-btn:hover {
-      background: rgba(255,255,255,.07);
-      border-color: var(--border-strong);
-    }
-
-    .small-btn.primary {
-      color: #081000;
-      background: var(--lime);
-      border-color: var(--lime);
-    }
-
-    /* =========================
-       PACKAGE SUMMARY
-    ========================= */
-
-    .package-list {
-      padding: 7px 19px 15px;
-    }
-
-    .package-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,.055);
-    }
-
-    .package-row:last-child {
-      border-bottom: 0;
-    }
-
-    .package-badge {
-      width: 39px;
-      height: 39px;
-      border-radius: 11px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,.045);
-      color: var(--lime);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .package-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .package-info strong {
-      display: block;
-      font-size: 12px;
-    }
-
-    .package-info span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 9px;
-    }
-
-    .package-count {
-      min-width: 38px;
-      text-align: right;
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    /* =========================
-       QUICK ACTIONS
-    ========================= */
-
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 9px;
-      padding: 15px 19px 19px;
-    }
-
-    .quick {
-      min-height: 90px;
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(255,255,255,.02);
-      transition: .2s ease;
-    }
-
-    .quick:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,.045);
-      border-color: var(--border-strong);
-    }
-
-    .quick-icon {
-      width: 29px;
-      height: 29px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
-      background: rgba(183,255,0,.06);
-      color: var(--lime);
-      font-size: 12px;
-    }
-
-    .quick strong {
-      display: block;
-      margin-top: 9px;
-      font-size: 11px;
-    }
-
-    .quick span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 9px;
-    }
-
-    /* =========================
+    /* =========================================================
        RECENT WEBSITES
-    ========================= */
+    ========================================================= */
 
-    .recent-list {
-      padding: 5px 19px 12px;
+    .recent-list{
+      display:grid;
+      gap:8px;
     }
 
-    .recent-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,.055);
+    .recent{
+      display:grid;
+      grid-template-columns:42px minmax(0,1fr) auto;
+      gap:11px;
+      align-items:center;
+      padding:11px;
+      border:1px solid var(--line);
+      border-radius:13px;
+      background:rgba(255,255,255,.016);
     }
 
-    .recent-row:last-child {
-      border-bottom: 0;
+    .recent-thumb{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border-radius:10px;
+      background:#090c0a;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:9px;
+      font-weight:900;
     }
 
-    .recent-number {
-      width: 28px;
-      height: 28px;
-      border-radius: 9px;
-      background: rgba(255,255,255,.045);
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      font-size: 9px;
-      font-weight: 800;
+    .recent-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
-    .recent-info {
-      flex: 1;
-      min-width: 0;
+    .recent-name{
+      min-width:0;
+      overflow:hidden;
+      color:#eef1ef;
+      font-size:11px;
+      font-weight:850;
+      white-space:nowrap;
+      text-overflow:ellipsis;
     }
 
-    .recent-info strong {
-      display: block;
-      font-size: 11px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .recent-package{
+      margin-top:4px;
+      color:var(--muted);
+      font-size:9px;
     }
 
-    .recent-info span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 9px;
+    .recent-status{
+      display:inline-flex;
+      min-height:23px;
+      align-items:center;
+      padding:0 8px;
+      border-radius:999px;
+      font-size:8px;
+      font-weight:950;
+      text-transform:uppercase;
     }
 
-    .status-pill {
-      padding: 5px 8px;
-      border-radius: 999px;
-      font-size: 8px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      white-space: nowrap;
+    .recent-status.active{
+      color:#071000;
+      background:var(--lime);
     }
 
-    .status-pill.active {
-      color: var(--success);
-      background: rgba(74,222,128,.07);
+    .recent-status.hidden{
+      color:#ffb0b5;
+      background:rgba(255,93,103,.08);
+      border:1px solid rgba(255,93,103,.17);
     }
 
-    .status-pill.hidden {
-      color: var(--danger);
-      background: rgba(255,93,105,.07);
+    /* =========================================================
+       QUICK ACTIONS
+    ========================================================= */
+
+    .quick-grid{
+      display:grid;
+      grid-template-columns:
+        repeat(2,minmax(0,1fr));
+      gap:9px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .footer {
-      margin-top: 30px;
-      padding: 20px 0 10px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      color: var(--muted-2);
-      font-size: 10px;
+    .quick{
+      min-height:74px;
+      padding:13px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.018);
+      transition:.2s ease;
     }
 
-    .footer strong {
-      color: #aeb7b2;
+    .quick:hover{
+      transform:translateY(-2px);
+      border-color:rgba(183,255,0,.18);
+      background:rgba(183,255,0,.04);
     }
 
-    /* =========================
-       TOAST
-    ========================= */
-
-    .toast {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 3000;
-      min-width: 250px;
-      max-width: calc(100vw - 40px);
-      padding: 14px 16px;
-      border: 1px solid var(--border-strong);
-      border-radius: 14px;
-      background: rgba(16,19,17,.96);
-      box-shadow: var(--shadow);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      opacity: 0;
-      transform: translateY(12px);
-      pointer-events: none;
-      transition: .25s ease;
+    .quick-icon{
+      color:var(--lime);
+      font-size:16px;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
+    .quick strong{
+      display:block;
+      margin-top:7px;
+      font-size:10px;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 1150px) {
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .two-col {
-        grid-template-columns: 1fr;
-      }
+    .quick span{
+      display:block;
+      margin-top:3px;
+      color:var(--muted);
+      font-size:8px;
+      line-height:1.35;
     }
 
-    @media (max-width: 820px) {
-      :root {
-        --sidebar: 0px;
-      }
+    /* =========================================================
+       SYSTEM PANEL
+    ========================================================= */
 
-      .sidebar {
-        width: 260px;
-        transform: translateX(-100%);
-        transition: transform .25s ease;
-        box-shadow: 20px 0 60px rgba(0,0,0,.4);
-      }
-
-      .sidebar.open {
-        transform: translateX(0);
-      }
-
-      .mobile-header {
-        display: flex;
-      }
-
-      .main {
-        margin-left: 0;
-      }
-
-      .topbar {
-        display: none;
-      }
-
-      .content {
-        padding: 18px;
-      }
-
-      .welcome {
-        padding: 25px;
-        border-radius: 22px;
-      }
+    .system-list{
+      display:grid;
+      gap:8px;
     }
 
-    @media (max-width: 560px) {
-      .stats {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
-      }
-
-      .stat {
-        min-height: 125px;
-        padding: 15px;
-      }
-
-      .stat-value {
-        font-size: 25px;
-      }
-
-      .stat-label {
-        font-size: 8px;
-      }
-
-      .hero-preview {
-        height: 205px;
-      }
-
-      .hero-info {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .hero-actions {
-        width: 100%;
-      }
-
-      .small-btn {
-        flex: 1;
-      }
-
-      .quick-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .footer {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+    .system-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:11px 12px;
+      border:1px solid var(--line);
+      border-radius:13px;
+      background:rgba(255,255,255,.016);
     }
 
-    @media (max-width: 380px) {
-      .stats {
-        grid-template-columns: 1fr;
+    .system-left{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      min-width:0;
+    }
+
+    .system-icon{
+      width:30px;
+      height:30px;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      border-radius:9px;
+      color:var(--lime);
+      background:rgba(183,255,0,.065);
+      font-size:12px;
+    }
+
+    .system-left strong{
+      display:block;
+      font-size:10px;
+    }
+
+    .system-left small{
+      display:block;
+      margin-top:3px;
+      color:var(--muted);
+      font-size:8px;
+    }
+
+    .system-ok{
+      color:var(--lime);
+      font-size:9px;
+      font-weight:950;
+      text-transform:uppercase;
+    }
+
+    /* =========================================================
+       EMPTY
+    ========================================================= */
+
+    .empty{
+      padding:35px 18px;
+      border:1px dashed rgba(255,255,255,.12);
+      border-radius:15px;
+      text-align:center;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.55;
+    }
+
+    .empty strong{
+      display:block;
+      margin-bottom:6px;
+      color:#fff;
+      font-size:12px;
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    .mobile-top{
+      display:none;
+    }
+
+    @media(max-width:1120px){
+
+      .stats{
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
       }
 
-      .quick-grid {
-        grid-template-columns: 1fr;
+      .grid{
+        grid-template-columns:1fr;
       }
+
+    }
+
+    @media(max-width:800px){
+
+      .sidebar{
+        display:none;
+      }
+
+      .mobile-top{
+        position:fixed;
+        z-index:200;
+        inset:0 0 auto 0;
+        height:60px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 16px;
+        border-bottom:1px solid var(--line);
+        background:rgba(7,9,8,.92);
+        backdrop-filter:blur(18px);
+      }
+
+      .mobile-brand{
+        display:flex;
+        align-items:center;
+        gap:9px;
+        font-size:12px;
+        font-weight:900;
+      }
+
+      .mobile-mark{
+        width:30px;
+        height:30px;
+        display:grid;
+        place-items:center;
+        border-radius:9px;
+        color:#071000;
+        background:var(--lime);
+        font-size:9px;
+        font-weight:950;
+      }
+
+      .mobile-site{
+        color:var(--lime);
+        font-size:9px;
+        font-weight:950;
+      }
+
+      .main{
+        width:100%;
+        margin-left:0;
+        padding:76px 17px 25px;
+      }
+
+      .topbar{
+        flex-direction:column;
+      }
+
+      .top-actions{
+        justify-content:flex-start;
+      }
+
+      .welcome{
+        grid-template-columns:1fr;
+      }
+
+      .welcome-actions{
+        justify-content:flex-start;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .stats{
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+        gap:9px;
+      }
+
+      .stat{
+        padding:15px;
+        border-radius:16px;
+      }
+
+      .stat-number{
+        font-size:24px;
+      }
+
+      .hero-site{
+        grid-template-columns:1fr;
+      }
+
+      .hero-preview{
+        height:180px;
+      }
+
+      .quick-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
     }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================================
-       MOBILE HEADER
-  ========================================== -->
+  <!-- ========================================================
+       MOBILE TOP
+  ========================================================= -->
 
-  <header class="mobile-header">
+  <div class="mobile-top">
+
     <div class="mobile-brand">
-      <div class="brand-mark">WD</div>
-      <strong>Website Deals</strong>
+      <div class="mobile-mark">WD</div>
+      Website Deals
     </div>
 
-    <button
-      class="menu-btn"
-      id="menuBtn"
-      type="button"
-      aria-label="Open menu"
+    <a
+      class="mobile-site"
+      href="../index.html"
+      target="_blank"
+      rel="noopener"
     >
-      ☰
-    </button>
-  </header>
+      OPEN SITE ↗
+    </a>
+
+  </div>
 
   <div class="app">
 
-    <!-- =========================================
+    <!-- ======================================================
          SIDEBAR
-    ========================================== -->
+    ======================================================= -->
 
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar">
 
       <div class="brand">
-        <div class="brand-mark">WD</div>
+
+        <div class="brand-mark">
+          WD
+        </div>
 
         <div class="brand-copy">
           <strong>Website Deals</strong>
-          <span>Admin Control</span>
+          <span>Admin Control Center</span>
         </div>
+
       </div>
 
-      <div class="nav-label">Management</div>
+      <div class="nav-label">
+        Management
+      </div>
 
       <nav class="nav">
 
         <a
+          class="active"
           href="./dashboard.html"
-          class="nav-link active"
         >
           <span class="nav-icon">⌂</span>
-          <span>Dashboard</span>
+          Dashboard
         </a>
 
-        <a
-          href="./websites.html"
-          class="nav-link"
-        >
+        <a href="./websites.html">
           <span class="nav-icon">▣</span>
-          <span>Websites</span>
+          Websites
         </a>
 
-        <a
-          href="https://orders.websitedeals.com"
-          class="nav-link"
-          target="_blank"
-          rel="noopener"
-        >
+        <a href="./orders.html">
           <span class="nav-icon">◫</span>
-          <span>Orders</span>
+          Orders
         </a>
 
-        <a
-          href="./presentation.html"
-          class="nav-link"
-        >
+        <a href="./presentation.html">
           <span class="nav-icon">▶</span>
-          <span>Presentation</span>
+          Presentation
         </a>
 
-        <a
-          href="./homepage.html"
-          class="nav-link"
-        >
-          <span class="nav-icon">⌂</span>
-          <span>Homepage</span>
+        <a href="./homepage.html">
+          <span class="nav-icon">⌁</span>
+          Homepage
         </a>
 
-        <a
-          href="./banners.html"
-          class="nav-link"
-        >
+        <a href="./banners.html">
           <span class="nav-icon">▤</span>
-          <span>Banners</span>
+          Banners
         </a>
 
-        <a
-          href="./settings.html"
-          class="nav-link"
-        >
+        <a href="./settings.html">
           <span class="nav-icon">⚙</span>
-          <span>Settings</span>
+          Settings
         </a>
 
       </nav>
 
-      <div class="nav-label">Quick Access</div>
+      <div class="nav-label" style="margin-top:18px;">
+        Quick Access
+      </div>
 
       <nav class="nav">
 
         <a
           href="../index.html"
-          class="nav-link"
           target="_blank"
           rel="noopener"
         >
           <span class="nav-icon">↗</span>
-          <span>Open Website</span>
+          Open Website
         </a>
 
         <a
           href="../presentation/index.html"
-          class="nav-link"
           target="_blank"
           rel="noopener"
         >
           <span class="nav-icon">◉</span>
-          <span>Live Presentation</span>
+          Live Presentation
         </a>
 
       </nav>
 
-      <div class="nav-spacer"></div>
+      <div class="sidebar-status">
 
-      <div class="sidebar-bottom">
+        <small>
+          <span class="status-dot"></span>
+          Admin session
+        </small>
 
-        <div class="support-mini">
-          <small>Marketplace</small>
-          <strong>Premium Ready-Made Websites</strong>
-        </div>
-
-        <button
-          class="logout-btn"
-          id="logoutBtn"
-          type="button"
-        >
-          Logout Admin
-        </button>
+        <strong>
+          Website Deals Control Center
+        </strong>
 
       </div>
 
     </aside>
 
-    <!-- =========================================
+    <!-- ======================================================
          MAIN
-    ========================================== -->
+    ======================================================= -->
 
     <main class="main">
 
-      <!-- TOPBAR -->
+      <!-- Topbar -->
 
-      <div class="topbar">
+      <header class="topbar">
 
-        <div class="topbar-left">
-          <small>Website Deals / Admin</small>
-          <strong>Control Center</strong>
+        <div class="top-copy">
+
+          <div class="eyebrow">
+            Control Center
+          </div>
+
+          <h1>
+            Dashboard
+          </h1>
+
+          <p>
+            Manage your digital showroom, websites and presentation
+            experience from one place.
+          </p>
+
         </div>
 
-        <div class="topbar-actions">
+        <div class="top-actions">
+
+          <button
+            class="btn"
+            id="refreshBtn"
+            type="button"
+          >
+            ↻ Refresh
+          </button>
 
           <a
-            class="top-btn"
-            href="https://orders.websitedeals.com"
-            target="_blank"
-            rel="noopener"
+            class="btn"
+            href="./websites.html"
           >
-            ◫ Orders
+            Manage Websites
           </a>
 
           <a
-            class="top-btn"
-            href="../presentation/index.html"
-            target="_blank"
-            rel="noopener"
-          >
-            ▶ Presentation
-          </a>
-
-          <a
-            class="top-btn primary"
+            class="btn btn-primary"
             href="../index.html"
             target="_blank"
             rel="noopener"
@@ -1336,357 +1188,275 @@
 
         </div>
 
-      </div>
+      </header>
 
-      <!-- CONTENT -->
+      <!-- Welcome -->
 
-      <div class="content">
+      <section class="welcome">
 
-        <!-- =====================================
-             WELCOME
-        ====================================== -->
+        <div class="welcome-copy">
 
-        <section class="welcome">
+          <span>
+            Digital Showroom
+          </span>
 
-          <div class="eyebrow">
-            <span class="live-dot"></span>
-            Admin Control Center
-          </div>
+          <h2 id="welcomeTitle">
+            Your Website Deals showroom is ready.
+          </h2>
 
-          <h1>
-            Manage your
-            <span>digital showroom.</span>
-          </h1>
-
-          <p>
-            Website Deals is your premium showcase for ready-made
-            websites. Manage live website previews, packages,
-            presentation settings and public content from one place.
+          <p id="welcomeText">
+            Keep your ready-made websites organized, choose your showcase
+            hero and control the public presentation experience.
           </p>
 
-        </section>
+        </div>
 
-        <!-- =====================================
-             WEBSITE STATISTICS
-        ====================================== -->
+        <div class="welcome-actions">
 
-        <section class="section">
+          <a
+            class="btn btn-primary"
+            href="./websites.html"
+          >
+            + Add Website
+          </a>
 
-          <div class="section-head">
+          <a
+            class="btn"
+            href="./presentation.html"
+          >
+            Presentation
+          </a>
 
-            <div>
-              <h2>Website Statistics</h2>
-              <p>Live data from your Website Deals showcase.</p>
+        </div>
+
+      </section>
+
+      <!-- Stats -->
+
+      <section class="stats">
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Total Websites
+          </span>
+
+          <strong
+            class="stat-number"
+            id="totalWebsites"
+          >
+            0
+          </strong>
+
+          <small class="stat-note">
+            All saved website entries
+          </small>
+
+        </div>
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Active
+          </span>
+
+          <strong
+            class="stat-number"
+            id="activeWebsites"
+          >
+            0
+          </strong>
+
+          <small class="stat-note">
+            Available on public showroom
+          </small>
+
+        </div>
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Showcase
+          </span>
+
+          <strong
+            class="stat-number"
+            id="showcaseWebsites"
+          >
+            0
+          </strong>
+
+          <small class="stat-note">
+            Presentation-ready websites
+          </small>
+
+        </div>
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Hidden
+          </span>
+
+          <strong
+            class="stat-number"
+            id="hiddenWebsites"
+          >
+            0
+          </strong>
+
+          <small class="stat-note">
+            Inactive website entries
+          </small>
+
+        </div>
+
+      </section>
+
+      <!-- Main Grid -->
+
+      <section class="grid">
+
+        <!-- LEFT COLUMN -->
+
+        <div>
+
+          <!-- Hero Website -->
+
+          <section class="panel">
+
+            <div class="panel-head">
+
+              <div>
+                <h2>
+                  Current Hero Website
+                </h2>
+
+                <p>
+                  The first showcase website selected by sort order.
+                </p>
+              </div>
+
+              <a
+                class="small-btn"
+                href="./websites.html"
+              >
+                Manage
+              </a>
+
             </div>
 
-            <a
-              class="section-link"
-              href="./websites.html"
-            >
-              Manage Websites →
-            </a>
-
-          </div>
-
-          <div class="stats">
-
-            <div class="stat lime">
-
-              <div class="stat-icon">▣</div>
-
-              <div class="stat-label">
-                Total Websites
-              </div>
+            <div class="panel-body">
 
               <div
-                class="stat-value"
-                id="totalWebsites"
+                class="hero-site"
+                id="heroSite"
               >
-                0
-              </div>
 
-              <div class="stat-meta">
-                All saved website entries
+                <!-- JS -->
+
               </div>
 
             </div>
 
-            <div class="stat success">
+          </section>
 
-              <div class="stat-icon">✓</div>
+          <!-- Recent Websites -->
 
-              <div class="stat-label">
-                Active
+          <section
+            class="panel"
+            style="margin-top:20px;"
+          >
+
+            <div class="panel-head">
+
+              <div>
+                <h2>
+                  Recent Websites
+                </h2>
+
+                <p>
+                  Latest entries in your showroom inventory.
+                </p>
               </div>
+
+              <a
+                class="small-btn"
+                href="./websites.html"
+              >
+                View All
+              </a>
+
+            </div>
+
+            <div class="panel-body">
 
               <div
-                class="stat-value"
-                id="activeWebsites"
-              >
-                0
-              </div>
+                class="recent-list"
+                id="recentList"
+              ></div>
 
-              <div class="stat-meta">
-                Currently available
+            </div>
+
+          </section>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+
+        <div>
+
+          <!-- Packages -->
+
+          <section class="panel">
+
+            <div class="panel-head">
+
+              <div>
+                <h2>
+                  Package Overview
+                </h2>
+
+                <p>
+                  Website distribution by package.
+                </p>
               </div>
 
             </div>
 
-            <div class="stat danger">
-
-              <div class="stat-icon">−</div>
-
-              <div class="stat-label">
-                Hidden
-              </div>
+            <div class="panel-body">
 
               <div
-                class="stat-value"
-                id="hiddenWebsites"
-              >
-                0
-              </div>
+                class="package-list"
+                id="packageList"
+              ></div>
 
-              <div class="stat-meta">
-                Not publicly active
+            </div>
+
+          </section>
+
+          <!-- Quick Actions -->
+
+          <section
+            class="panel"
+            style="margin-top:20px;"
+          >
+
+            <div class="panel-head">
+
+              <div>
+                <h2>
+                  Quick Actions
+                </h2>
+
+                <p>
+                  Jump directly into important controls.
+                </p>
               </div>
 
             </div>
 
-            <div class="stat warning">
-
-              <div class="stat-icon">★</div>
-
-              <div class="stat-label">
-                Showcase
-              </div>
-
-              <div
-                class="stat-value"
-                id="showcaseWebsites"
-              >
-                0
-              </div>
-
-              <div class="stat-meta">
-                Visible in showroom
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        <!-- =====================================
-             HERO + PACKAGES
-        ====================================== -->
-
-        <section class="section">
-
-          <div class="two-col">
-
-            <!-- HERO WEBSITE -->
-
-            <div class="panel">
-
-              <div class="panel-head">
-
-                <div>
-                  <div class="panel-title">
-                    Current Hero Website
-                  </div>
-
-                  <div class="panel-subtitle">
-                    The first showcase website selected by sorting.
-                  </div>
-                </div>
-
-                <span
-                  class="status-pill active"
-                  id="heroStatus"
-                >
-                  Showcase
-                </span>
-
-              </div>
-
-              <div class="hero-site">
-
-                <div
-                  class="hero-preview"
-                  id="heroPreview"
-                >
-
-                  <div class="browser-bar">
-
-                    <span class="browser-dot"></span>
-                    <span class="browser-dot"></span>
-                    <span class="browser-dot"></span>
-
-                    <div class="browser-address"></div>
-
-                  </div>
-
-                  <div
-                    class="hero-frame"
-                    id="heroFrame"
-                  >
-                    <div class="hero-empty">
-                      <div>
-                        <strong>No Hero Website</strong>
-                        <span>
-                          Add an active showcase website from
-                          Website Management.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="hero-info">
-
-                  <div>
-
-                    <div
-                      class="site-name"
-                      id="heroName"
-                    >
-                      No hero website
-                    </div>
-
-                    <div
-                      class="site-url"
-                      id="heroUrl"
-                    >
-                      Add a website to begin.
-                    </div>
-
-                  </div>
-
-                  <div class="hero-actions">
-
-                    <a
-                      class="small-btn"
-                      href="./websites.html"
-                    >
-                      Manage
-                    </a>
-
-                    <a
-                      class="small-btn primary"
-                      id="heroOpen"
-                      href="../index.html"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      Open Live ↗
-                    </a>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <!-- PACKAGE SUMMARY -->
-
-            <div class="panel">
-
-              <div class="panel-head">
-
-                <div>
-                  <div class="panel-title">
-                    Package Summary
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Website distribution by package.
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="package-list">
-
-                <div class="package-row">
-
-                  <div class="package-badge">
-                    S
-                  </div>
-
-                  <div class="package-info">
-                    <strong>Starter</strong>
-                    <span>৳549 / month</span>
-                  </div>
-
-                  <div
-                    class="package-count"
-                    id="starterCount"
-                  >
-                    0
-                  </div>
-
-                </div>
-
-                <div class="package-row">
-
-                  <div class="package-badge">
-                    B
-                  </div>
-
-                  <div class="package-info">
-                    <strong>Business</strong>
-                    <span>৳999 / month</span>
-                  </div>
-
-                  <div
-                    class="package-count"
-                    id="businessCount"
-                  >
-                    0
-                  </div>
-
-                </div>
-
-                <div class="package-row">
-
-                  <div class="package-badge">
-                    P
-                  </div>
-
-                  <div class="package-info">
-                    <strong>Premium</strong>
-                    <span>৳1,999 / month</span>
-                  </div>
-
-                  <div
-                    class="package-count"
-                    id="premiumCount"
-                  >
-                    0
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="panel-head">
-
-                <div>
-                  <div class="panel-title">
-                    Quick Actions
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Common admin tasks.
-                  </div>
-                </div>
-
-              </div>
+            <div class="panel-body">
 
               <div class="quick-grid">
 
@@ -1694,27 +1464,85 @@
                   class="quick"
                   href="./websites.html"
                 >
-                  <div class="quick-icon">+</div>
-                  <strong>Add Website</strong>
-                  <span>Create showcase entry</span>
+                  <div class="quick-icon">
+                    ▣
+                  </div>
+
+                  <strong>
+                    Websites
+                  </strong>
+
+                  <span>
+                    Add, edit and organize websites.
+                  </span>
                 </a>
 
                 <a
                   class="quick"
                   href="./presentation.html"
                 >
-                  <div class="quick-icon">▶</div>
-                  <strong>Presentation</strong>
-                  <span>Manage live presentation</span>
+                  <div class="quick-icon">
+                    ▶
+                  </div>
+
+                  <strong>
+                    Presentation
+                  </strong>
+
+                  <span>
+                    Control live presentation mode.
+                  </span>
+                </a>
+
+                <a
+                  class="quick"
+                  href="./homepage.html"
+                >
+                  <div class="quick-icon">
+                    ⌁
+                  </div>
+
+                  <strong>
+                    Homepage
+                  </strong>
+
+                  <span>
+                    Control public homepage content.
+                  </span>
+                </a>
+
+                <a
+                  class="quick"
+                  href="./banners.html"
+                >
+                  <div class="quick-icon">
+                    ▤
+                  </div>
+
+                  <strong>
+                    Banners
+                  </strong>
+
+                  <span>
+                    Manage homepage promotional visuals.
+                  </span>
                 </a>
 
                 <a
                   class="quick"
                   href="./settings.html"
                 >
-                  <div class="quick-icon">⚙</div>
-                  <strong>Settings</strong>
-                  <span>Control public experience</span>
+                  <div class="quick-icon">
+                    ⚙
+                  </div>
+
+                  <strong>
+                    Settings
+                  </strong>
+
+                  <span>
+                    Configure showroom behaviour.
+                  </span>
                 </a>
 
                 <a
@@ -1723,214 +1551,125 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  <div class="quick-icon">◫</div>
-                  <strong>Orders</strong>
-                  <span>Open separate order system</span>
+                  <div class="quick-icon">
+                    ◫
+                  </div>
+
+                  <strong>
+                    Orders
+                  </strong>
+
+                  <span>
+                    Open the separate order system.
+                  </span>
                 </a>
 
               </div>
 
             </div>
 
-          </div>
+          </section>
 
-        </section>
+          <!-- System -->
 
-        <!-- =====================================
-             RECENT WEBSITES
-        ====================================== -->
+          <section
+            class="panel"
+            style="margin-top:20px;"
+          >
 
-        <section class="section">
+            <div class="panel-head">
 
-          <div class="section-head">
+              <div>
+                <h2>
+                  System Status
+                </h2>
 
-            <div>
-              <h2>Recent Websites</h2>
-              <p>Latest entries in your showcase library.</p>
-            </div>
-
-            <a
-              class="section-link"
-              href="./websites.html"
-            >
-              View All →
-            </a>
-
-          </div>
-
-          <div class="panel">
-
-            <div
-              class="recent-list"
-              id="recentList"
-            >
-
-              <div class="recent-row">
-
-                <div class="recent-number">
-                  —
-                </div>
-
-                <div class="recent-info">
-                  <strong>Loading websites...</strong>
-                  <span>Please wait</span>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        <!-- =====================================
-             SYSTEM LINKS
-        ====================================== -->
-
-        <section class="section">
-
-          <div class="section-head">
-
-            <div>
-              <h2>Public Experience</h2>
-              <p>Quick access to the customer-facing showroom.</p>
-            </div>
-
-          </div>
-
-          <div class="two-col">
-
-            <div class="panel">
-
-              <div class="panel-head">
-
-                <div>
-                  <div class="panel-title">
-                    Website Deals Showroom
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Main public showcase — not the order system.
-                  </div>
-
-                </div>
-
-                <span class="status-pill active">
-                  PUBLIC
-                </span>
-
-              </div>
-
-              <div class="hero-site">
-
-                <div
-                  class="site-name"
-                  style="font-size:18px;"
-                >
-                  Premium Ready-Made Websites
-                </div>
-
-                <div
-                  class="site-url"
-                  style="max-width:100%;"
-                >
-                  ../index.html
-                </div>
-
-                <div
-                  style="
-                    display:flex;
-                    gap:8px;
-                    margin-top:15px;
-                    flex-wrap:wrap;
-                  "
-                >
-
-                  <a
-                    class="small-btn primary"
-                    href="../index.html"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Open Showroom ↗
-                  </a>
-
-                  <a
-                    class="small-btn"
-                    href="../presentation/index.html"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Live Presentation
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="panel">
-
-              <div class="panel-head">
-
-                <div>
-                  <div class="panel-title">
-                    Separate Order System
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Actual orders are handled externally.
-                  </div>
-
-                </div>
-
-                <span class="status-pill active">
-                  EXTERNAL
-                </span>
-
-              </div>
-
-              <div class="hero-site">
-
-                <div
-                  class="site-name"
-                  style="font-size:18px;"
-                >
-                  Orders Website
-                </div>
-
-                <div
-                  class="site-url"
-                  style="max-width:100%;"
-                >
-                  orders.websitedeals.com
-                </div>
-
-                <p
-                  style="
-                    margin-top:10px;
-                    color:var(--muted);
-                    font-size:10px;
-                    line-height:1.7;
-                  "
-                >
-                  This dashboard does not create fake order
-                  statistics. Use the separate order system for
-                  customer orders and order management.
+                <p>
+                  Local showroom services.
                 </p>
+              </div>
 
-                <div style="margin-top:15px;">
+            </div>
 
-                  <a
-                    class="small-btn primary"
-                    href="https://orders.websitedeals.com"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Open Orders ↗
-                  </a>
+            <div class="panel-body">
+
+              <div class="system-list">
+
+                <div class="system-row">
+
+                  <div class="system-left">
+
+                    <div class="system-icon">
+                      ✓
+                    </div>
+
+                    <div>
+                      <strong>
+                        Website Store
+                      </strong>
+
+                      <small>
+                        Local website data
+                      </small>
+                    </div>
+
+                  </div>
+
+                  <span class="system-ok">
+                    Ready
+                  </span>
+
+                </div>
+
+                <div class="system-row">
+
+                  <div class="system-left">
+
+                    <div class="system-icon">
+                      ✓
+                    </div>
+
+                    <div>
+                      <strong>
+                        Presentation
+                      </strong>
+
+                      <small>
+                        Live showcase engine
+                      </small>
+                    </div>
+
+                  </div>
+
+                  <span class="system-ok">
+                    Ready
+                  </span>
+
+                </div>
+
+                <div class="system-row">
+
+                  <div class="system-left">
+
+                    <div class="system-icon">
+                      ✓
+                    </div>
+
+                    <div>
+                      <strong>
+                        Public Website
+                      </strong>
+
+                      <small>
+                        Main digital showroom
+                      </small>
+                    </div>
+
+                  </div>
+
+                  <span class="system-ok">
+                    Ready
+                  </span>
 
                 </div>
 
@@ -1938,41 +1677,15 @@
 
             </div>
 
-          </div>
+          </section>
 
-        </section>
+        </div>
 
-        <!-- FOOTER -->
-
-        <footer class="footer">
-
-          <div>
-            <strong>Website Deals</strong>
-            — Premium Ready-Made Websites
-          </div>
-
-          <div>
-            Admin Control Center
-          </div>
-
-        </footer>
-
-      </div>
+      </section>
 
     </main>
 
   </div>
-
-  <!-- TOAST -->
-
-  <div
-    class="toast"
-    id="toast"
-  ></div>
-
-  <!-- =========================================
-       STORE
-  ========================================== -->
 
   <script src="../shared/store.js"></script>
 
@@ -1981,511 +1694,614 @@
 
       "use strict";
 
-      /* =====================================
+      /* ========================================================
          AUTH
-      ====================================== */
+      ========================================================= */
 
-      const AUTH_KEY = "websiteDealsAdminAuth";
+      const AUTH_KEY =
+        "websiteDealsAdminAuth";
 
       if (
         sessionStorage.getItem(AUTH_KEY) !== "true"
       ) {
-        window.location.replace("./login.html");
+        window.location.href =
+          "./login.html";
+
         return;
       }
 
-      /* =====================================
-         HELPERS
-      ====================================== */
+      /* ========================================================
+         ELEMENTS
+      ========================================================= */
 
-      const $ = (selector) =>
-        document.querySelector(selector);
+      const $ = (id) =>
+        document.getElementById(id);
 
-      const safe = (value, fallback = "") =>
-        value === undefined ||
-        value === null ||
-        value === ""
-          ? fallback
-          : String(value);
+      const totalWebsites =
+        $("totalWebsites");
 
-      const validUrl = (value) => {
-        try {
-          const url = new URL(value);
-          return (
-            url.protocol === "http:" ||
-            url.protocol === "https:"
-          );
-        } catch {
-          return false;
-        }
-      };
+      const activeWebsites =
+        $("activeWebsites");
 
-      const normalizePackage = (value) => {
+      const showcaseWebsites =
+        $("showcaseWebsites");
 
-        const text = safe(value)
-          .toLowerCase()
-          .trim();
-
-        if (
-          text.includes("premium") ||
-          text.includes("1999")
-        ) {
-          return "premium";
-        }
-
-        if (
-          text.includes("business") ||
-          text.includes("999")
-        ) {
-          return "business";
-        }
-
-        return "starter";
-      };
-
-      /* =====================================
-         TOAST
-      ====================================== */
-
-      let toastTimer = null;
-
-      const toast = (message) => {
-
-        const element = $("#toast");
-
-        if (!element) return;
-
-        element.textContent = message;
-
-        element.classList.add("show");
-
-        clearTimeout(toastTimer);
-
-        toastTimer = setTimeout(() => {
-          element.classList.remove("show");
-        }, 2600);
-      };
-
-      /* =====================================
-         LOAD DATA
-      ====================================== */
-
-      let websites = [];
-
-      try {
-
-        if (
-          window.WDStore &&
-          typeof WDStore.load === "function"
-        ) {
-          websites = WDStore.load() || [];
-        } else {
-          websites = [];
-        }
-
-      } catch (error) {
-
-        console.error(
-          "Website Deals store error:",
-          error
-        );
-
-        websites = [];
-
-        toast(
-          "Could not load website data."
-        );
-      }
-
-      /* =====================================
-         SORT
-      ====================================== */
-
-      const sorted = [...websites].sort(
-        (a, b) => {
-
-          const aSort =
-            Number.isFinite(Number(a.sort))
-              ? Number(a.sort)
-              : 999999;
-
-          const bSort =
-            Number.isFinite(Number(b.sort))
-              ? Number(b.sort)
-              : 999999;
-
-          return aSort - bSort;
-        }
-      );
-
-      /* =====================================
-         STATISTICS
-      ====================================== */
-
-      const total = websites.length;
-
-      const active = websites.filter(
-        (site) => site.status !== false
-      ).length;
-
-      const hidden = total - active;
-
-      const showcase = websites.filter(
-        (site) =>
-          site.status !== false &&
-          site.showcase !== false &&
-          validUrl(site.url)
-      ).length;
-
-      $("#totalWebsites").textContent = total;
-      $("#activeWebsites").textContent = active;
-      $("#hiddenWebsites").textContent = hidden;
-      $("#showcaseWebsites").textContent = showcase;
-
-      /* =====================================
-         PACKAGE COUNTS
-      ====================================== */
-
-      const starter = websites.filter(
-        (site) =>
-          normalizePackage(site.package) === "starter"
-      ).length;
-
-      const business = websites.filter(
-        (site) =>
-          normalizePackage(site.package) === "business"
-      ).length;
-
-      const premium = websites.filter(
-        (site) =>
-          normalizePackage(site.package) === "premium"
-      ).length;
-
-      $("#starterCount").textContent = starter;
-      $("#businessCount").textContent = business;
-      $("#premiumCount").textContent = premium;
-
-      /* =====================================
-         HERO WEBSITE
-      ====================================== */
+      const hiddenWebsites =
+        $("hiddenWebsites");
 
       const heroSite =
-        sorted.find(
-          (site) =>
-            site.status !== false &&
-            site.showcase !== false &&
-            validUrl(site.url)
-        ) || null;
+        $("heroSite");
 
-      const heroName = $("#heroName");
-      const heroUrl = $("#heroUrl");
-      const heroFrame = $("#heroFrame");
-      const heroOpen = $("#heroOpen");
-      const heroStatus = $("#heroStatus");
+      const recentList =
+        $("recentList");
 
-      if (heroSite) {
+      const packageList =
+        $("packageList");
 
-        heroName.textContent =
-          safe(
-            heroSite.name,
-            "Untitled Website"
-          );
+      /* ========================================================
+         HELPERS
+      ========================================================= */
 
-        heroUrl.textContent =
-          safe(heroSite.url);
+      function escapeHTML(value) {
 
-        heroOpen.href = heroSite.url;
-
-        heroStatus.textContent = "SHOWCASE";
-
-        const iframe =
-          document.createElement("iframe");
-
-        iframe.src = heroSite.url;
-
-        iframe.title =
-          safe(
-            heroSite.name,
-            "Website preview"
-          );
-
-        iframe.loading = "lazy";
-
-        iframe.setAttribute(
-          "referrerpolicy",
-          "no-referrer-when-downgrade"
-        );
-
-        iframe.setAttribute(
-          "sandbox",
-          "allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
-        );
-
-        iframe.addEventListener(
-          "error",
-          () => {
-            toast(
-              "The hero website could not be embedded."
-            );
-          }
-        );
-
-        heroFrame.innerHTML = "";
-
-        heroFrame.appendChild(iframe);
-
-      } else {
-
-        heroName.textContent =
-          "No hero website";
-
-        heroUrl.textContent =
-          "Add an active showcase website.";
-
-        heroOpen.href =
-          "./websites.html";
-
-        heroStatus.textContent =
-          "EMPTY";
-
-        heroStatus.className =
-          "status-pill hidden";
-
-      }
-
-      /* =====================================
-         RECENT WEBSITES
-      ====================================== */
-
-      const recentList = $("#recentList");
-
-      if (!websites.length) {
-
-        recentList.innerHTML = `
-          <div class="recent-row">
-            <div class="recent-number">0</div>
-
-            <div class="recent-info">
-              <strong>No websites yet</strong>
-              <span>
-                Add your first showcase website.
-              </span>
-            </div>
-
-            <a
-              class="small-btn primary"
-              href="./websites.html"
-            >
-              Add
-            </a>
-          </div>
-        `;
-
-      } else {
-
-        const recent =
-          [...websites]
-            .reverse()
-            .slice(0, 8);
-
-        recentList.innerHTML =
-          recent
-            .map(
-              (site, index) => {
-
-                const isActive =
-                  site.status !== false;
-
-                const packageName =
-                  normalizePackage(
-                    site.package
-                  );
-
-                return `
-                  <div class="recent-row">
-
-                    <div class="recent-number">
-                      ${String(index + 1).padStart(2, "0")}
-                    </div>
-
-                    <div class="recent-info">
-
-                      <strong>
-                        ${escapeHtml(
-                          safe(
-                            site.name,
-                            "Untitled Website"
-                          )
-                        )}
-                      </strong>
-
-                      <span>
-                        ${packageName.toUpperCase()}
-                        •
-                        ${site.showcase !== false
-                          ? "Showcase"
-                          : "Not Showcase"}
-                      </span>
-
-                    </div>
-
-                    <span
-                      class="status-pill ${
-                        isActive
-                          ? "active"
-                          : "hidden"
-                      }"
-                    >
-                      ${
-                        isActive
-                          ? "ACTIVE"
-                          : "HIDDEN"
-                      }
-                    </span>
-
-                  </div>
-                `;
-              }
-            )
-            .join("");
-      }
-
-      /* =====================================
-         HTML ESCAPE
-      ====================================== */
-
-      function escapeHtml(value) {
-
-        return String(value)
+        return String(value ?? "")
           .replaceAll("&", "&amp;")
           .replaceAll("<", "&lt;")
           .replaceAll(">", "&gt;")
           .replaceAll('"', "&quot;")
           .replaceAll("'", "&#039;");
+
       }
 
-      /* =====================================
-         MOBILE MENU
-      ====================================== */
+      function validUrl(value) {
 
-      const menuBtn = $("#menuBtn");
-      const sidebar = $("#sidebar");
-
-      menuBtn?.addEventListener(
-        "click",
-        () => {
-          sidebar.classList.toggle("open");
+        if (!value) {
+          return false;
         }
-      );
 
-      document
-        .querySelectorAll(".sidebar a")
-        .forEach((link) => {
+        try {
 
-          link.addEventListener(
-            "click",
-            () => {
+          const url =
+            new URL(
+              String(value),
+              window.location.href
+            );
 
-              if (
-                window.innerWidth <= 820
-              ) {
-                sidebar.classList.remove(
-                  "open"
-                );
-              }
-
-            }
+          return (
+            url.protocol === "http:" ||
+            url.protocol === "https:"
           );
+
+        } catch {
+
+          return false;
+
+        }
+
+      }
+
+      function getStore() {
+
+        if (
+          window.WDStore &&
+          typeof WDStore.load === "function"
+        ) {
+          return WDStore;
+        }
+
+        return null;
+      }
+
+      function getWebsites() {
+
+        const store =
+          getStore();
+
+        if (!store) {
+          return [];
+        }
+
+        try {
+
+          const list =
+            store.load();
+
+          return Array.isArray(list)
+            ? list
+            : [];
+
+        } catch {
+
+          return [];
+
+        }
+
+      }
+
+      function packageName(site) {
+
+        const store =
+          getStore();
+
+        if (
+          store &&
+          typeof store.packageLabel === "function"
+        ) {
+          return store.packageLabel(
+            site.package
+          );
+        }
+
+        return (
+          site.packageLabel ||
+          site.package ||
+          "Website"
+        );
+
+      }
+
+      /* ========================================================
+         HERO
+      ========================================================= */
+
+      function findHero(list) {
+
+        const candidates =
+          list.filter(site => {
+
+            return (
+              site &&
+              site.status !== false &&
+              site.showcase !== false &&
+              validUrl(site.url)
+            );
+
+          });
+
+        candidates.sort(
+          (a,b) =>
+            Number(a.sort || 0) -
+            Number(b.sort || 0)
+        );
+
+        return candidates[0] || null;
+
+      }
+
+      function renderHero(list) {
+
+        const hero =
+          findHero(list);
+
+        if (!hero) {
+
+          heroSite.innerHTML = `
+            <div class="empty">
+              <strong>No hero website found</strong>
+              Add an active showcase website with a valid URL.
+            </div>
+          `;
+
+          return;
+        }
+
+        const name =
+          hero.name ||
+          "Untitled Website";
+
+        const pkg =
+          packageName(hero);
+
+        heroSite.innerHTML = `
+
+          <div class="hero-preview">
+
+            <iframe
+              src="${escapeHTML(hero.url)}"
+              title="${escapeHTML(name)}"
+              loading="lazy"
+              sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+            ></iframe>
+
+          </div>
+
+          <div class="hero-info">
+
+            <span class="hero-badge">
+              ★ Current Hero
+            </span>
+
+            <h3>
+              ${escapeHTML(name)}
+            </h3>
+
+            <p>
+              ${escapeHTML(hero.url)}
+            </p>
+
+            <div class="hero-meta">
+
+              <span class="pill">
+                ${escapeHTML(pkg)}
+              </span>
+
+              <span class="pill">
+                Sort ${escapeHTML(hero.sort || 1)}
+              </span>
+
+              <span class="pill">
+                ${hero.status !== false
+                  ? "Active"
+                  : "Hidden"}
+              </span>
+
+              <span class="pill">
+                ${hero.showcase !== false
+                  ? "Showcase"
+                  : "Standard"}
+              </span>
+
+            </div>
+
+            <div class="hero-actions">
+
+              <a
+                class="small-btn"
+                href="./websites.html"
+              >
+                Manage Website
+              </a>
+
+              <a
+                class="small-btn"
+                href="../presentation/index.html?site=${encodeURIComponent(hero.id || "")}"
+                target="_blank"
+                rel="noopener"
+              >
+                Present
+              </a>
+
+              <a
+                class="small-btn"
+                href="${escapeHTML(hero.url)}"
+                target="_blank"
+                rel="noopener"
+              >
+                Open Live ↗
+              </a>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+
+      /* ========================================================
+         PACKAGE STATS
+      ========================================================= */
+
+      function renderPackages(list) {
+
+        const counts = {
+          starter:0,
+          business:0,
+          premium:0
+        };
+
+        list.forEach(site => {
+
+          const pkg =
+            String(
+              site.package ||
+              ""
+            ).toLowerCase();
+
+          if (
+            pkg === "starter"
+          ) {
+            counts.starter++;
+          }
+
+          else if (
+            pkg === "business"
+          ) {
+            counts.business++;
+          }
+
+          else if (
+            pkg === "premium"
+          ) {
+            counts.premium++;
+          }
 
         });
 
-      /* =====================================
-         ESC CLOSE
-      ====================================== */
+        packageList.innerHTML = `
 
-      document.addEventListener(
-        "keydown",
-        (event) => {
+          <div class="package">
+
+            <div class="package-left">
+
+              <div class="package-name">
+                Starter
+              </div>
+
+              <small>
+                Ready-made starter websites
+              </small>
+
+            </div>
+
+            <div class="package-count">
+              ${counts.starter}
+            </div>
+
+          </div>
+
+          <div class="package">
+
+            <div class="package-left">
+
+              <div class="package-name">
+                Business
+              </div>
+
+              <small>
+                Advanced business websites
+              </small>
+
+            </div>
+
+            <div class="package-count">
+              ${counts.business}
+            </div>
+
+          </div>
+
+          <div class="package">
+
+            <div class="package-left">
+
+              <div class="package-name">
+                Premium
+              </div>
+
+              <small>
+                Advanced e-commerce systems
+              </small>
+
+            </div>
+
+            <div class="package-count">
+              ${counts.premium}
+            </div>
+
+          </div>
+
+        `;
+
+      }
+
+      /* ========================================================
+         RECENT
+      ========================================================= */
+
+      function renderRecent(list) {
+
+        if (!list.length) {
+
+          recentList.innerHTML = `
+            <div class="empty">
+              <strong>No websites yet</strong>
+              Your latest website entries will appear here.
+            </div>
+          `;
+
+          return;
+        }
+
+        const recent =
+          [...list]
+            .sort(
+              (a,b) =>
+                Number(a.sort || 999999) -
+                Number(b.sort || 999999)
+            )
+            .slice(0,6);
+
+        recentList.innerHTML =
+          recent
+            .map(site => {
+
+              const name =
+                site.name ||
+                "Untitled Website";
+
+              const image =
+                site.image ||
+                site.thumbnail ||
+                "";
+
+              const packageText =
+                packageName(site);
+
+              const imageHTML =
+                validUrl(image)
+                  ? `
+                    <img
+                      src="${escapeHTML(image)}"
+                      alt=""
+                      onerror="this.style.display='none'"
+                    >
+                  `
+                  : `
+                    WD
+                  `;
+
+              return `
+
+                <div class="recent">
+
+                  <div class="recent-thumb">
+                    ${imageHTML}
+                  </div>
+
+                  <div>
+
+                    <div class="recent-name">
+                      ${escapeHTML(name)}
+                    </div>
+
+                    <div class="recent-package">
+                      ${escapeHTML(packageText)}
+                    </div>
+
+                  </div>
+
+                  <span
+                    class="recent-status ${
+                      site.status !== false
+                        ? "active"
+                        : "hidden"
+                    }"
+                  >
+                    ${
+                      site.status !== false
+                        ? "Active"
+                        : "Hidden"
+                    }
+                  </span>
+
+                </div>
+
+              `;
+
+            })
+            .join("");
+
+      }
+
+      /* ========================================================
+         MAIN RENDER
+      ========================================================= */
+
+      function render() {
+
+        const list =
+          getWebsites();
+
+        const total =
+          list.length;
+
+        const active =
+          list.filter(
+            site =>
+              site.status !== false
+          ).length;
+
+        const showcase =
+          list.filter(
+            site =>
+              site.status !== false &&
+              site.showcase !== false
+          ).length;
+
+        const hidden =
+          total - active;
+
+        totalWebsites.textContent =
+          total;
+
+        activeWebsites.textContent =
+          active;
+
+        showcaseWebsites.textContent =
+          showcase;
+
+        hiddenWebsites.textContent =
+          hidden;
+
+        renderHero(list);
+        renderPackages(list);
+        renderRecent(list);
+
+      }
+
+      /* ========================================================
+         REFRESH
+      ========================================================= */
+
+      const refreshBtn =
+        $("refreshBtn");
+
+      if (refreshBtn) {
+
+        refreshBtn.addEventListener(
+          "click",
+          () => {
+
+            render();
+
+            refreshBtn.textContent =
+              "✓ Refreshed";
+
+            setTimeout(() => {
+
+              refreshBtn.textContent =
+                "↻ Refresh";
+
+            },1200);
+
+          }
+        );
+
+      }
+
+      /* ========================================================
+         STORAGE CHANGE
+      ========================================================= */
+
+      window.addEventListener(
+        "storage",
+        event => {
 
           if (
-            event.key === "Escape"
+            event.key ===
+            "websiteDealsWebsites"
           ) {
-            sidebar.classList.remove(
-              "open"
-            );
+            render();
           }
 
         }
       );
 
-      /* =====================================
-         LOGOUT
-      ====================================== */
-
-      $("#logoutBtn")?.addEventListener(
-        "click",
-        () => {
-
-          const confirmed =
-            window.confirm(
-              "Logout from Website Deals Admin?"
-            );
-
-          if (!confirmed) {
-            return;
-          }
-
-          sessionStorage.removeItem(
-            AUTH_KEY
-          );
-
-          window.location.replace(
-            "./login.html"
-          );
-
-        }
-      );
-
-      /* =====================================
-         STORE CHANGE
-      ====================================== */
+      /* ========================================================
+         WDSTORE CHANGE
+      ========================================================= */
 
       if (
         window.WDStore &&
-        typeof WDStore.onChange === "function"
+        typeof WDStore.onChange ===
+          "function"
       ) {
 
         WDStore.onChange(
-          () => {
-
-            window.location.reload();
-
-          }
+          () => render()
         );
 
       }
 
-      /* =====================================
-         SETTINGS CHANGE
-      ====================================== */
+      /* ========================================================
+         INIT
+      ========================================================= */
 
-      if (
-        window.WDStore &&
-        typeof WDStore.onSettingsChange === "function"
-      ) {
-
-        WDStore.onSettingsChange(
-          () => {
-
-            window.location.reload();
-
-          }
-        );
-
-      }
+      render();
 
     })();
   </script>
 
 </body>
 </html>
+```
