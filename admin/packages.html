@@ -1,703 +1,2521 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080909">
-<title>Packages | Website Deals Admin</title>
+  <meta charset="UTF-8">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-<style>
-:root{
-  --bg:#070808;
-  --panel:#101212;
-  --panel2:#151818;
-  --border:rgba(255,255,255,.08);
-  --text:#f5f7f6;
-  --muted:#929a96;
-  --lime:#b7ff00;
-  --lime2:#d6ff67;
-  --danger:#ff5d6c;
-  --blue:#6ea8ff;
-  --shadow:0 24px 70px rgba(0,0,0,.35);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:
-    radial-gradient(circle at 80% 0%,rgba(183,255,0,.08),transparent 28%),
-    var(--bg);
-  color:var(--text);
-  font-family:Inter,Arial,sans-serif;
-}
-button,input,textarea,select{font:inherit}
-a{color:inherit;text-decoration:none}
+  <meta
+    name="theme-color"
+    content="#080909"
+  >
 
-.layout{display:flex;min-height:100vh}
+  <meta
+    name="description"
+    content="Website Deals Admin — Manage Starter, Business and Premium packages."
+  >
 
-.sidebar{
-  width:255px;
-  position:fixed;
-  inset:0 auto 0 0;
-  background:rgba(10,11,11,.96);
-  border-right:1px solid var(--border);
-  padding:24px 16px;
-  z-index:20;
-}
-.logo{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:4px 10px 25px;
-}
-.logo-mark{
-  width:38px;height:38px;
-  border-radius:12px;
-  background:var(--lime);
-  color:#070808;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-}
-.logo strong{font-family:"Space Grotesk";font-size:16px}
-.logo small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+  <title>Packages | Website Deals Admin</title>
 
-.nav-title{
-  color:#616965;
-  text-transform:uppercase;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:.14em;
-  padding:16px 11px 8px;
-}
-.nav a{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 13px;
-  border-radius:12px;
-  color:#aeb5b1;
-  font-size:13px;
-  font-weight:600;
-  margin:3px 0;
-}
-.nav a:hover{background:#171a1a;color:#fff}
-.nav a.active{
-  background:rgba(183,255,0,.11);
-  color:var(--lime);
-}
-.nav-icon{
-  width:19px;
-  text-align:center;
-  font-size:14px;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.main{
-  width:100%;
-  margin-left:255px;
-  min-width:0;
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-.topbar{
-  height:72px;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 34px;
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:rgba(7,8,8,.84);
-  backdrop-filter:blur(18px);
-}
-.topbar-left h1{
-  font-family:"Space Grotesk";
-  font-size:19px;
-  margin:0;
-}
-.topbar-left p{
-  margin:4px 0 0;
-  color:var(--muted);
-  font-size:11px;
-}
-.top-actions{display:flex;gap:9px}
-.btn{
-  border:1px solid var(--border);
-  background:#141717;
-  color:#fff;
-  border-radius:11px;
-  padding:10px 14px;
-  cursor:pointer;
-  font-weight:700;
-  font-size:12px;
-}
-.btn:hover{border-color:rgba(183,255,0,.4)}
-.btn.primary{
-  background:var(--lime);
-  color:#070808;
-  border-color:var(--lime);
-}
-.btn.danger{
-  color:#ff8993;
-  border-color:rgba(255,93,108,.2);
-}
-.content{padding:34px}
+  <style>
+    :root{
+      --bg:#080909;
+      --bg-soft:#0d0f0f;
+      --card:#111414;
+      --card-2:#151818;
+      --line:rgba(255,255,255,.09);
+      --line-strong:rgba(255,255,255,.14);
 
-.hero{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:25px;
-  margin-bottom:28px;
-}
-.hero h2{
-  margin:0;
-  font-family:"Space Grotesk";
-  font-size:34px;
-  letter-spacing:-.04em;
-}
-.hero p{
-  color:var(--muted);
-  max-width:650px;
-  line-height:1.7;
-  font-size:13px;
-  margin:9px 0 0;
-}
+      --text:#f5f7f5;
+      --muted:#8d9692;
+      --muted-2:#68716d;
 
-.package-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
+      --lime:#b7ff00;
+      --lime-soft:rgba(183,255,0,.10);
+      --lime-border:rgba(183,255,0,.25);
 
-.package{
-  position:relative;
-  background:linear-gradient(180deg,#141818,#0e1010);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:24px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-.package.featured{
-  border-color:rgba(183,255,0,.42);
-}
-.package.featured:before{
-  content:"MOST POPULAR";
-  position:absolute;
-  top:16px;
-  right:16px;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:.1em;
-  background:var(--lime);
-  color:#070808;
-  padding:6px 8px;
-  border-radius:999px;
-}
-.package-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.package-icon{
-  width:46px;height:46px;
-  border-radius:15px;
-  display:grid;
-  place-items:center;
-  background:#1b1f1f;
-  font-size:20px;
-}
-.package h3{
-  font-family:"Space Grotesk";
-  font-size:24px;
-  margin:22px 0 4px;
-}
-.package .desc{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.6;
-  min-height:40px;
-}
-.price{
-  margin:21px 0;
-  display:flex;
-  align-items:flex-end;
-  gap:7px;
-}
-.price strong{
-  font-family:"Space Grotesk";
-  font-size:36px;
-}
-.price span{
-  color:var(--muted);
-  font-size:11px;
-  margin-bottom:7px;
-}
-.features{
-  border-top:1px solid var(--border);
-  padding-top:16px;
-}
-.feature{
-  display:flex;
-  gap:9px;
-  align-items:flex-start;
-  color:#c9cfcc;
-  font-size:12px;
-  line-height:1.5;
-  margin:10px 0;
-}
-.feature i{
-  color:var(--lime);
-  font-style:normal;
-  font-weight:900;
-}
-.package-actions{
-  display:flex;
-  gap:8px;
-  margin-top:20px;
-}
-.package-actions .btn{flex:1}
+      --danger:#ff5d68;
+      --danger-soft:rgba(255,93,104,.10);
 
-.note{
-  margin-top:22px;
-  padding:17px;
-  background:#101414;
-  border:1px solid var(--border);
-  border-radius:15px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.7;
-}
+      --blue:#6ea8ff;
+      --blue-soft:rgba(110,168,255,.10);
 
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(10px);
-  display:none;
-  place-items:center;
-  z-index:50;
-  padding:20px;
-}
-.modal.show{display:grid}
-.modal-box{
-  width:min(600px,100%);
-  background:#111414;
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:24px;
-  box-shadow:0 35px 100px rgba(0,0,0,.5);
-}
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-.modal-head h3{
-  margin:0;
-  font-family:"Space Grotesk";
-}
-.close{
-  width:34px;height:34px;
-  border:1px solid var(--border);
-  background:#171a1a;
-  color:#fff;
-  border-radius:10px;
-  cursor:pointer;
-}
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-.field.full{grid-column:1/-1}
-label{
-  display:block;
-  color:#aab1ad;
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:7px;
-}
-input,textarea,select{
-  width:100%;
-  background:#0b0d0d;
-  border:1px solid var(--border);
-  color:#fff;
-  border-radius:11px;
-  padding:12px;
-  outline:none;
-}
-textarea{min-height:100px;resize:vertical}
-input:focus,textarea:focus,select:focus{
-  border-color:rgba(183,255,0,.55);
-}
-.modal-actions{
-  display:flex;
-  justify-content:flex-end;
-  gap:8px;
-  margin-top:20px;
-}
+      --orange:#ffb454;
+      --orange-soft:rgba(255,180,84,.10);
 
-.toast{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  background:#eaffb0;
-  color:#101300;
-  padding:13px 16px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:800;
-  transform:translateY(20px);
-  opacity:0;
-  pointer-events:none;
-  transition:.25s;
-  z-index:100;
-}
-.toast.show{
-  transform:translateY(0);
-  opacity:1;
-}
+      --radius:22px;
+      --shadow:0 25px 80px rgba(0,0,0,.35);
+    }
 
-@media(max-width:1050px){
-  .package-grid{grid-template-columns:1fr}
-}
-@media(max-width:800px){
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.25s;
-  }
-  .sidebar.open{transform:translateX(0)}
-  .main{margin-left:0}
-  .topbar{padding:0 18px}
-  .content{padding:22px 16px}
-  .menu-btn{display:block!important}
-}
-.menu-btn{display:none}
-@media(max-width:560px){
-  .hero{display:block}
-  .hero h2{font-size:28px}
-  .form-grid{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
-}
-</style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 85% 0%, rgba(183,255,0,.055), transparent 25%),
+        radial-gradient(circle at 10% 80%, rgba(110,168,255,.035), transparent 25%),
+        var(--bg);
+      color:var(--text);
+      font-family:"Inter","Hind Siliguri",sans-serif;
+      overflow-x:hidden;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+      font:inherit;
+    }
+
+    button{
+      cursor:pointer;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    /* =========================
+       APP
+    ========================== */
+
+    .app{
+      min-height:100vh;
+      display:flex;
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================== */
+
+    .sidebar{
+      width:260px;
+      min-height:100vh;
+      position:fixed;
+      inset:0 auto 0 0;
+      z-index:100;
+      border-right:1px solid var(--line);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(18,20,20,.98),
+          rgba(8,9,9,.98)
+        );
+      padding:22px 16px;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:5px 10px 24px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:13px;
+      display:grid;
+      place-items:center;
+      background:var(--lime);
+      color:#080909;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:18px;
+      font-weight:800;
+      box-shadow:0 0 30px rgba(183,255,0,.12);
+    }
+
+    .brand-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:700;
+      font-size:16px;
+      letter-spacing:-.02em;
+    }
+
+    .brand-sub{
+      margin-top:3px;
+      color:var(--muted);
+      font-size:11px;
+    }
+
+    .nav-label{
+      padding:25px 12px 9px;
+      color:#4f5754;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      font-weight:700;
+    }
+
+    .nav{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+
+    .nav a{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-height:44px;
+      padding:0 13px;
+      border-radius:13px;
+      color:#8d9692;
+      font-size:13px;
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .nav a:hover{
+      background:rgba(255,255,255,.045);
+      color:#fff;
+    }
+
+    .nav a.active{
+      color:var(--lime);
+      background:var(--lime-soft);
+      border:1px solid rgba(183,255,0,.08);
+    }
+
+    .nav-icon{
+      width:22px;
+      text-align:center;
+      font-size:16px;
+    }
+
+    .sidebar-bottom{
+      margin-top:auto;
+    }
+
+    .admin-mini{
+      padding:13px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .avatar{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:#1c211e;
+      border:1px solid var(--line-strong);
+      display:grid;
+      place-items:center;
+      color:var(--lime);
+      font-weight:800;
+      font-size:12px;
+    }
+
+    .admin-name{
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .admin-role{
+      color:var(--muted-2);
+      font-size:10px;
+      margin-top:2px;
+    }
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .main{
+      width:calc(100% - 260px);
+      margin-left:260px;
+      min-height:100vh;
+    }
+
+    .topbar{
+      height:76px;
+      position:sticky;
+      top:0;
+      z-index:80;
+      border-bottom:1px solid var(--line);
+      background:rgba(8,9,9,.82);
+      backdrop-filter:blur(20px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 34px;
+    }
+
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .menu-btn{
+      display:none;
+      width:40px;
+      height:40px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--card);
+      color:#fff;
+    }
+
+    .breadcrumb{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .breadcrumb strong{
+      color:#fff;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .top-btn{
+      min-height:40px;
+      padding:0 14px;
+      border:1px solid var(--line);
+      border-radius:11px;
+      background:rgba(255,255,255,.025);
+      color:#b9c0bd;
+      font-size:12px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .top-btn:hover{
+      border-color:var(--lime-border);
+      color:var(--lime);
+    }
+
+    .page{
+      padding:38px 34px 70px;
+      max-width:1600px;
+      margin:auto;
+    }
+
+    /* =========================
+       PAGE HEADER
+    ========================== */
+
+    .page-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:30px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--lime);
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .eyebrow-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--lime);
+      box-shadow:0 0 12px var(--lime);
+    }
+
+    h1{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(30px,4vw,48px);
+      line-height:1;
+      letter-spacing:-.045em;
+    }
+
+    .page-desc{
+      max-width:620px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+      margin-top:13px;
+    }
+
+    .head-actions{
+      display:flex;
+      gap:9px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      min-height:44px;
+      padding:0 17px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--card);
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:var(--line-strong);
+    }
+
+    .btn-primary{
+      background:var(--lime);
+      border-color:var(--lime);
+      color:#080909;
+    }
+
+    .btn-primary:hover{
+      box-shadow:0 10px 30px rgba(183,255,0,.12);
+    }
+
+    /* =========================
+       STATS
+    ========================== */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:13px;
+      margin-bottom:30px;
+    }
+
+    .stat{
+      min-height:118px;
+      padding:19px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+      position:relative;
+      overflow:hidden;
+    }
+
+    .stat::after{
+      content:"";
+      position:absolute;
+      width:100px;
+      height:100px;
+      right:-40px;
+      bottom:-50px;
+      border-radius:50%;
+      background:rgba(183,255,0,.06);
+      filter:blur(5px);
+    }
+
+    .stat-label{
+      color:var(--muted);
+      font-size:11px;
+      font-weight:600;
+    }
+
+    .stat-value{
+      margin-top:9px;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:30px;
+      font-weight:700;
+      letter-spacing:-.04em;
+    }
+
+    .stat-meta{
+      margin-top:5px;
+      color:var(--muted-2);
+      font-size:10px;
+    }
+
+    /* =========================
+       PACKAGE GRID
+    ========================== */
+
+    .package-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .package-card{
+      position:relative;
+      overflow:hidden;
+      min-height:620px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:
+        linear-gradient(
+          160deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.012) 60%
+        );
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .package-card.featured{
+      border-color:rgba(183,255,0,.28);
+    }
+
+    .package-card.premium{
+      border-color:rgba(110,168,255,.20);
+    }
+
+    .package-glow{
+      position:absolute;
+      width:250px;
+      height:250px;
+      top:-130px;
+      right:-80px;
+      border-radius:50%;
+      background:rgba(183,255,0,.07);
+      filter:blur(30px);
+      pointer-events:none;
+    }
+
+    .package-card.premium .package-glow{
+      background:rgba(110,168,255,.08);
+    }
+
+    .package-top{
+      padding:24px 24px 19px;
+      border-bottom:1px solid var(--line);
+      position:relative;
+      z-index:1;
+    }
+
+    .package-title-row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .package-name{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:24px;
+      letter-spacing:-.04em;
+    }
+
+    .package-tag{
+      display:inline-flex;
+      align-items:center;
+      min-height:25px;
+      padding:0 9px;
+      border-radius:999px;
+      background:var(--lime-soft);
+      border:1px solid var(--lime-border);
+      color:var(--lime);
+      font-size:9px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .package-card.premium .package-tag{
+      color:var(--blue);
+      background:var(--blue-soft);
+      border-color:rgba(110,168,255,.25);
+    }
+
+    .package-desc{
+      min-height:48px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.65;
+    }
+
+    .price{
+      display:flex;
+      align-items:flex-end;
+      gap:5px;
+      margin-top:20px;
+    }
+
+    .currency{
+      color:var(--lime);
+      font-size:18px;
+      font-weight:800;
+      margin-bottom:5px;
+    }
+
+    .package-card.premium .currency{
+      color:var(--blue);
+    }
+
+    .price-value{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:42px;
+      font-weight:700;
+      line-height:.9;
+      letter-spacing:-.055em;
+    }
+
+    .price-period{
+      color:var(--muted);
+      font-size:11px;
+      margin-bottom:2px;
+    }
+
+    .package-body{
+      padding:21px 24px;
+      flex:1;
+      position:relative;
+      z-index:1;
+    }
+
+    .feature-heading{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color:#bfc5c2;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:800;
+      margin-bottom:13px;
+    }
+
+    .feature-count{
+      color:var(--muted-2);
+      font-size:9px;
+    }
+
+    .features{
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+      list-style:none;
+    }
+
+    .features li{
+      display:flex;
+      align-items:flex-start;
+      gap:9px;
+      color:#c2c8c5;
+      font-size:11px;
+      line-height:1.45;
+    }
+
+    .check{
+      flex:0 0 auto;
+      width:18px;
+      height:18px;
+      border-radius:6px;
+      display:grid;
+      place-items:center;
+      background:var(--lime-soft);
+      color:var(--lime);
+      border:1px solid rgba(183,255,0,.14);
+      font-size:10px;
+      font-weight:900;
+    }
+
+    .package-card.premium .check{
+      background:var(--blue-soft);
+      color:var(--blue);
+      border-color:rgba(110,168,255,.15);
+    }
+
+    .package-footer{
+      padding:18px 24px 24px;
+      position:relative;
+      z-index:1;
+      border-top:1px solid var(--line);
+    }
+
+    .status-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:12px;
+    }
+
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:#8e9894;
+      font-size:10px;
+      font-weight:700;
+    }
+
+    .status-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--lime);
+      box-shadow:0 0 10px rgba(183,255,0,.5);
+    }
+
+    .status.off .status-dot{
+      background:var(--danger);
+      box-shadow:none;
+    }
+
+    .package-updated{
+      color:var(--muted-2);
+      font-size:9px;
+    }
+
+    .package-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .package-actions button{
+      min-height:40px;
+      border-radius:11px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+      color:#d9dddb;
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .package-actions button:hover{
+      border-color:var(--lime-border);
+      color:var(--lime);
+    }
+
+    .package-actions .edit-btn{
+      background:var(--lime);
+      border-color:var(--lime);
+      color:#080909;
+    }
+
+    /* =========================
+       INFO PANEL
+    ========================== */
+
+    .info-panel{
+      margin-top:22px;
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,.018);
+      display:grid;
+      grid-template-columns:1.5fr 1fr;
+      gap:20px;
+    }
+
+    .info-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:18px;
+      letter-spacing:-.03em;
+    }
+
+    .info-text{
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.7;
+      margin-top:8px;
+    }
+
+    .info-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .info-item{
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(255,255,255,.018);
+    }
+
+    .info-item strong{
+      display:block;
+      font-size:10px;
+      color:#dce1de;
+    }
+
+    .info-item span{
+      display:block;
+      color:var(--muted-2);
+      font-size:9px;
+      margin-top:4px;
+    }
+
+    /* =========================
+       MODAL
+    ========================== */
+
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      z-index:500;
+      background:rgba(0,0,0,.72);
+      backdrop-filter:blur(10px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .modal-backdrop.show{
+      display:flex;
+    }
+
+    .modal{
+      width:min(720px,100%);
+      max-height:90vh;
+      overflow:auto;
+      border:1px solid var(--line-strong);
+      border-radius:24px;
+      background:
+        linear-gradient(
+          145deg,
+          #151818,
+          #0b0d0d
+        );
+      box-shadow:0 40px 120px rgba(0,0,0,.6);
+    }
+
+    .modal-head{
+      padding:22px 24px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+    }
+
+    .modal-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:20px;
+    }
+
+    .modal-close{
+      width:36px;
+      height:36px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:rgba(255,255,255,.03);
+      color:#fff;
+    }
+
+    .modal-body{
+      padding:24px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    .field label{
+      display:block;
+      color:#9ca5a1;
+      font-size:10px;
+      font-weight:800;
+      margin-bottom:7px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:11px;
+      background:#0a0c0c;
+      color:#fff;
+      outline:none;
+      padding:11px 12px;
+      font-size:12px;
+      transition:.2s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color:var(--lime-border);
+      box-shadow:0 0 0 3px rgba(183,255,0,.04);
+    }
+
+    .field textarea{
+      min-height:100px;
+      resize:vertical;
+    }
+
+    .feature-editor{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .feature-row{
+      display:grid;
+      grid-template-columns:1fr 38px;
+      gap:7px;
+    }
+
+    .remove-feature{
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:var(--danger-soft);
+      color:var(--danger);
+    }
+
+    .add-feature{
+      min-height:38px;
+      border:1px dashed var(--line-strong);
+      border-radius:10px;
+      background:transparent;
+      color:var(--lime);
+      font-size:10px;
+      font-weight:800;
+    }
+
+    .modal-foot{
+      padding:18px 24px 24px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:flex-end;
+      gap:9px;
+    }
+
+    /* =========================
+       TOAST
+    ========================== */
+
+    .toast{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      z-index:1000;
+      min-width:250px;
+      max-width:380px;
+      padding:14px 16px;
+      border:1px solid var(--lime-border);
+      border-radius:14px;
+      background:#111414;
+      box-shadow:0 20px 60px rgba(0,0,0,.4);
+      transform:translateY(25px);
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+    }
+
+    .toast.show{
+      transform:translateY(0);
+      opacity:1;
+    }
+
+    .toast strong{
+      display:block;
+      font-size:11px;
+      color:var(--lime);
+    }
+
+    .toast span{
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      margin-top:4px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:1200px){
+      .package-grid{
+        grid-template-columns:1fr;
+      }
+
+      .package-card{
+        min-height:auto;
+      }
+
+      .features{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:900px){
+      .sidebar{
+        transform:translateX(-100%);
+        transition:.25s ease;
+      }
+
+      .sidebar.open{
+        transform:translateX(0);
+      }
+
+      .main{
+        width:100%;
+        margin-left:0;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .stats{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .info-panel{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:620px){
+      .topbar{
+        padding:0 15px;
+      }
+
+      .top-actions .top-btn{
+        display:none;
+      }
+
+      .page{
+        padding:25px 15px 50px;
+      }
+
+      .page-head{
+        display:block;
+      }
+
+      .head-actions{
+        margin-top:18px;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .features{
+        grid-template-columns:1fr;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .info-list{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="layout">
+<div class="app">
 
-<aside class="sidebar" id="sidebar">
-  <div class="logo">
-    <div class="logo-mark">WD</div>
-    <div>
-      <strong>Website Deals</strong>
-      <small>ADMIN PANEL</small>
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-mark">WD</div>
+
+      <div>
+        <div class="brand-title">Website Deals</div>
+        <div class="brand-sub">Premium Admin Panel</div>
+      </div>
     </div>
-  </div>
 
-  <nav class="nav">
-    <div class="nav-title">Workspace</div>
-    <a href="./dashboard.html"><span class="nav-icon">⌂</span>Dashboard</a>
-    <a href="./websites.html"><span class="nav-icon">◫</span>Websites</a>
-    <a href="./packages.html" class="active"><span class="nav-icon">◇</span>Packages</a>
-    <a href="./presentation.html"><span class="nav-icon">▶</span>Presentation</a>
+    <div class="nav-label">Management</div>
 
-    <div class="nav-title">Public</div>
-    <a href="../index.html#websites"><span class="nav-icon">↗</span>Public Showcase</a>
-    <a href="../index.html#packages"><span class="nav-icon">▦</span>Main Website</a>
-    <a href="https://support.websitedeals.com" target="_blank" rel="noopener">
-      <span class="nav-icon">?</span>Support
-    </a>
-  </nav>
-</aside>
+    <nav class="nav">
 
-<main class="main">
+      <a href="./dashboard.html">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
 
-<header class="topbar">
-  <div class="topbar-left">
-    <h1>Package Management</h1>
-    <p>Control the public Starter, Business and Premium offers.</p>
-  </div>
+      <a href="./websites.html">
+        <span class="nav-icon">◫</span>
+        <span>Websites</span>
+      </a>
 
-  <div class="top-actions">
-    <button class="btn menu-btn" onclick="toggleSidebar()">☰</button>
-    <a class="btn" href="../index.html#packages">View Public</a>
-    <button class="btn primary" onclick="openModal()">Edit Packages</button>
-  </div>
-</header>
+      <a href="./packages.html" class="active">
+        <span class="nav-icon">◈</span>
+        <span>Packages</span>
+      </a>
 
-<section class="content">
+      <a href="../presentation/index.html">
+        <span class="nav-icon">▶</span>
+        <span>Presentation</span>
+      </a>
 
-  <div class="hero">
-    <div>
-      <h2>Packages</h2>
-      <p>
-        Keep your three subscription plans clear, premium and easy for clients
-        to understand before they explore the live websites.
-      </p>
+    </nav>
+
+    <div class="nav-label">Public</div>
+
+    <nav class="nav">
+
+      <a href="../index.html">
+        <span class="nav-icon">↗</span>
+        <span>Public Showcase</span>
+      </a>
+
+      <a href="../../index.html">
+        <span class="nav-icon">⌘</span>
+        <span>Main Website</span>
+      </a>
+
+      <a
+        href="https://support.websitedeals.com"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="nav-icon">?</span>
+        <span>Support</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="admin-mini">
+        <div class="avatar">A</div>
+
+        <div>
+          <div class="admin-name">Administrator</div>
+          <div class="admin-role">Website Deals Admin</div>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-  <div class="package-grid" id="packageGrid"></div>
+  </aside>
 
-  <div class="note">
-    <strong style="color:#fff">Admin principle:</strong>
-    This page controls package presentation only. Real website links remain
-    managed from <b>Websites</b>. This keeps the package system simple and
-    prevents unnecessary CMS complexity.
-  </div>
+  <!-- =========================
+       MAIN
+  ========================== -->
 
-</section>
-</main>
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+        <div class="breadcrumb">
+          Admin / <strong>Packages</strong>
+        </div>
+
+      </div>
+
+      <div class="top-actions">
+
+        <a
+          class="top-btn"
+          href="../index.html"
+          target="_blank"
+          rel="noopener"
+        >
+          View Website ↗
+        </a>
+
+        <button
+          class="top-btn"
+          id="logoutBtn"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </header>
+
+    <section class="page">
+
+      <!-- PAGE HEAD -->
+
+      <div class="page-head">
+
+        <div>
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Package Management
+          </div>
+
+          <h1>Packages</h1>
+
+          <p class="page-desc">
+            Manage the three Website Deals subscription packages.
+            Keep pricing, descriptions, features and package status
+            ready for the public package pages.
+          </p>
+
+        </div>
+
+        <div class="head-actions">
+
+          <button
+            class="btn"
+            id="resetBtn"
+          >
+            Reset Defaults
+          </button>
+
+          <button
+            class="btn btn-primary"
+            id="saveAllBtn"
+          >
+            Save All Changes
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- STATS -->
+
+      <div class="stats">
+
+        <div class="stat">
+          <div class="stat-label">Total Packages</div>
+          <div class="stat-value" id="totalPackages">3</div>
+          <div class="stat-meta">Available plans</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Active Plans</div>
+          <div class="stat-value" id="activePackages">3</div>
+          <div class="stat-meta">Currently visible</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Starting Price</div>
+          <div class="stat-value" id="startingPrice">৳549</div>
+          <div class="stat-meta">Per month</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Premium Price</div>
+          <div class="stat-value" id="premiumPrice">৳1,999</div>
+          <div class="stat-meta">Per month</div>
+        </div>
+
+      </div>
+
+      <!-- PACKAGE GRID -->
+
+      <div
+        class="package-grid"
+        id="packageGrid"
+      ></div>
+
+      <!-- INFO -->
+
+      <div class="info-panel">
+
+        <div>
+
+          <div class="info-title">
+            How this package system works
+          </div>
+
+          <p class="info-text">
+            These package settings are stored locally in this admin
+            interface using the same browser storage approach used
+            by the Website Deals showcase. Later, Firebase can be
+            connected without changing the public package design.
+          </p>
+
+        </div>
+
+        <div class="info-list">
+
+          <div class="info-item">
+            <strong>Starter</strong>
+            <span>Entry-level website subscription</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Business</strong>
+            <span>Advanced business website system</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Premium</strong>
+            <span>E-commerce & advanced system</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Billing</strong>
+            <span>Monthly recurring subscription</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
 </div>
 
-<div class="modal" id="modal">
-  <div class="modal-box">
+<!-- =========================
+     EDIT MODAL
+========================== -->
+
+<div
+  class="modal-backdrop"
+  id="modalBackdrop"
+>
+
+  <div class="modal">
+
     <div class="modal-head">
-      <h3>Edit Package</h3>
-      <button class="close" onclick="closeModal()">×</button>
+
+      <div class="modal-title">
+        Edit Package
+      </div>
+
+      <button
+        class="modal-close"
+        id="closeModal"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
     </div>
 
-    <form id="packageForm">
-      <input type="hidden" id="packageId">
+    <div class="modal-body">
 
-      <div class="form-grid">
-        <div class="field">
-          <label>Package Name</label>
-          <input id="packageName" required>
+      <form id="packageForm">
+
+        <input
+          type="hidden"
+          id="editId"
+        >
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Package Name
+            </label>
+
+            <input
+              type="text"
+              id="editName"
+              required
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Badge
+            </label>
+
+            <input
+              type="text"
+              id="editBadge"
+              placeholder="Most Popular"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Price
+            </label>
+
+            <input
+              type="number"
+              id="editPrice"
+              min="0"
+              required
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Billing Period
+            </label>
+
+            <select id="editPeriod">
+
+              <option value="/month">/month</option>
+              <option value="/year">/year</option>
+              <option value="one-time">One Time</option>
+
+            </select>
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              Short Description
+            </label>
+
+            <textarea
+              id="editDescription"
+              required
+            ></textarea>
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              Package Features
+            </label>
+
+            <div
+              class="feature-editor"
+              id="featureEditor"
+            ></div>
+
+            <button
+              type="button"
+              class="add-feature"
+              id="addFeature"
+            >
+              + Add Feature
+            </button>
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Status
+            </label>
+
+            <select id="editStatus">
+
+              <option value="true">Active</option>
+              <option value="false">Hidden</option>
+
+            </select>
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Sort Order
+            </label>
+
+            <input
+              type="number"
+              id="editSort"
+              min="1"
+              value="1"
+            >
+
+          </div>
+
         </div>
 
-        <div class="field">
-          <label>Price / Month</label>
-          <input id="packagePrice" type="number" required>
-        </div>
+      </form>
 
-        <div class="field full">
-          <label>Description</label>
-          <textarea id="packageDesc" required></textarea>
-        </div>
+    </div>
 
-        <div class="field full">
-          <label>Features — one per line</label>
-          <textarea id="packageFeatures" required></textarea>
-        </div>
-      </div>
+    <div class="modal-foot">
 
-      <div class="modal-actions">
-        <button type="button" class="btn" onclick="closeModal()">Cancel</button>
-        <button type="submit" class="btn primary">Save Package</button>
-      </div>
-    </form>
+      <button
+        class="btn"
+        id="cancelBtn"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="btn btn-primary"
+        id="savePackageBtn"
+      >
+        Save Package
+      </button>
+
+    </div>
+
   </div>
+
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  <strong id="toastTitle">
+    Saved
+  </strong>
+
+  <span id="toastMessage">
+    Changes saved successfully.
+  </span>
+</div>
 
 <script>
-const STORAGE_KEY = "websiteDealsPackages";
+  /* =========================================================
+     WEBSITE DEALS — PACKAGE MANAGEMENT
+     Storage Key:
+     websiteDealsPackages
+  ========================================================= */
 
-const defaults = [
-  {
-    id:"starter",
-    name:"Starter",
-    price:"549",
-    description:"A clean, professional website package for individuals and small businesses.",
-    icon:"✦",
-    featured:false,
-    features:[
-      "Complete ready-made website",
-      "Free hosting",
-      "Free SSL",
-      "Firebase integration",
-      "Basic logo",
-      "Responsive design",
-      "Custom domain connection",
-      "Contact form",
-      "Manual payment support",
-      "Basic SEO",
-      "Basic support",
-      "Uptime monitoring"
-    ]
-  },
-  {
-    id:"business",
-    name:"Business",
-    price:"999",
-    description:"A stronger business system with admin tools, analytics and advanced integrations.",
-    icon:"◆",
-    featured:true,
-    features:[
-      "Everything in Starter",
-      "Premium website",
-      "Advanced Firebase",
-      "Admin panel",
-      "Online gateway",
-      "bKash / Nagad / Bank",
-      "Product & service management",
-      "Inquiry / order management",
-      "WhatsApp / Messenger",
-      "Google Maps",
-      "Advanced SEO",
-      "Analytics & Search Console",
-      "Backup & security",
-      "Performance optimization",
-      "Minor customization",
-      "Priority support"
-    ]
-  },
-  {
-    id:"premium",
-    name:"Premium",
-    price:"1999",
-    description:"A powerful Shopify-style business and e-commerce system for serious growth.",
-    icon:"◇",
-    featured:false,
-    features:[
-      "Shopify-style business system",
-      "Free hosting & SSL",
-      "Firebase / MongoDB-ready backend",
-      "Advanced admin dashboard",
-      "High-capacity product management",
-      "FREE stock & inventory management",
-      "Stock in / out & adjustments",
-      "Low-stock alerts",
-      "Variants & SKU",
-      "Coupons & discounts",
-      "Cart & wishlist",
-      "Customer accounts",
-      "Checkout & order tracking",
-      "Shipping & delivery",
-      "Analytics & notifications",
-      "SEO & Search Console",
-      "Backup & security monitoring",
-      "API integration",
-      "Custom workflows",
-      "Dedicated priority support"
-    ]
+  const STORAGE_KEY = "websiteDealsPackages";
+
+  const defaultPackages = [
+
+    {
+      id: "starter",
+      name: "Starter",
+      badge: "Entry",
+      price: 549,
+      period: "/month",
+      description:
+        "A complete ready-made website for individuals, small businesses and local brands.",
+      status: true,
+      sort: 1,
+
+      features: [
+        "Complete ready-made website",
+        "Free hosting",
+        "Free SSL",
+        "Firebase integration",
+        "Basic logo",
+        "Fully responsive design",
+        "Custom domain connection",
+        "Contact form",
+        "Manual payment — bKash / Nagad / Bank",
+        "Basic SEO",
+        "Basic support",
+        "Uptime monitoring"
+      ]
+    },
+
+    {
+      id: "business",
+      name: "Business",
+      badge: "Most Popular",
+      price: 999,
+      period: "/month",
+      description:
+        "A stronger business website with advanced management, inquiries, analytics and integrations.",
+      status: true,
+      sort: 2,
+
+      features: [
+        "Everything in Starter",
+        "Premium website design",
+        "Advanced Firebase",
+        "Admin panel",
+        "Online payment gateway",
+        "bKash / Nagad / Bank",
+        "Product & service management",
+        "Inquiry & order management",
+        "WhatsApp / Messenger",
+        "Google Maps integration",
+        "Advanced SEO",
+        "Analytics",
+        "Search Console",
+        "Automated backup",
+        "Security monitoring",
+        "Performance optimization",
+        "Content updates",
+        "Minor customization",
+        "Priority support"
+      ]
+    },
+
+    {
+      id: "premium",
+      name: "Premium",
+      badge: "Advanced",
+      price: 1999,
+      period: "/month",
+      description:
+        "A powerful Shopify-style e-commerce and business system with inventory, orders, customers and advanced workflows.",
+      status: true,
+      sort: 3,
+
+      features: [
+        "Shopify-style e-commerce system",
+        "Free hosting + SSL",
+        "Firebase / MongoDB-ready backend",
+        "Advanced admin dashboard",
+        "High-capacity product system",
+        "FREE stock & inventory management",
+        "Stock in / out / adjustments",
+        "Low-stock alerts",
+        "Out-of-stock management",
+        "Categories & collections",
+        "Variants & SKU",
+        "Search & filters",
+        "Pricing & sale pricing",
+        "Coupons & discounts",
+        "Cart & wishlist",
+        "Customer accounts",
+        "Checkout",
+        "Payment integration",
+        "Order tracking",
+        "Customer management",
+        "Shipping & delivery",
+        "Analytics",
+        "Email & notifications",
+        "WhatsApp integration",
+        "Advanced SEO",
+        "Search Console",
+        "Automated backup",
+        "Security monitoring",
+        "API integration",
+        "Custom workflows",
+        "Maintenance",
+        "Content updates",
+        "Custom feature development",
+        "Priority / dedicated support"
+      ]
+    }
+
+  ];
+
+
+  /* =========================================================
+     ELEMENTS
+  ========================================================= */
+
+  const packageGrid =
+    document.getElementById("packageGrid");
+
+  const totalPackages =
+    document.getElementById("totalPackages");
+
+  const activePackages =
+    document.getElementById("activePackages");
+
+  const startingPrice =
+    document.getElementById("startingPrice");
+
+  const premiumPrice =
+    document.getElementById("premiumPrice");
+
+  const modalBackdrop =
+    document.getElementById("modalBackdrop");
+
+  const featureEditor =
+    document.getElementById("featureEditor");
+
+  const toast =
+    document.getElementById("toast");
+
+  const toastTitle =
+    document.getElementById("toastTitle");
+
+  const toastMessage =
+    document.getElementById("toastMessage");
+
+
+  /* =========================================================
+     STORAGE
+  ========================================================= */
+
+  function getPackages(){
+
+    try{
+
+      const stored =
+        localStorage.getItem(STORAGE_KEY);
+
+      if(!stored){
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(defaultPackages)
+        );
+
+        return structuredClone(defaultPackages);
+      }
+
+      const parsed =
+        JSON.parse(stored);
+
+      if(!Array.isArray(parsed) || !parsed.length){
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(defaultPackages)
+        );
+
+        return structuredClone(defaultPackages);
+      }
+
+      return parsed;
+
+    }catch(error){
+
+      console.error(error);
+
+      return structuredClone(defaultPackages);
+    }
   }
-];
 
-function getPackages(){
-  try{
-    const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return Array.isArray(saved)&&saved.length ? saved : defaults;
-  }catch{
-    return defaults;
+
+  function savePackages(packages){
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(packages)
+    );
   }
-}
 
-function savePackages(data){
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
-}
 
-function render(){
-  const grid=document.getElementById("packageGrid");
-  grid.innerHTML=getPackages().map(p=>`
-    <article class="package ${p.featured?"featured":""}">
-      <div class="package-top">
-        <div class="package-icon">${p.icon||"◇"}</div>
-      </div>
+  /* =========================================================
+     HELPERS
+  ========================================================= */
 
-      <h3>${escapeHtml(p.name)}</h3>
-      <div class="desc">${escapeHtml(p.description)}</div>
+  function escapeHTML(value){
 
-      <div class="price">
-        <strong>৳${Number(p.price).toLocaleString("en-BD")}</strong>
-        <span>/ month</span>
-      </div>
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
-      <div class="features">
-        ${p.features.map(f=>`
-          <div class="feature">
-            <i>✓</i>
-            <span>${escapeHtml(f)}</span>
+
+  function money(value){
+
+    return Number(value || 0)
+      .toLocaleString("en-BD");
+  }
+
+
+  function showToast(
+    title,
+    message
+  ){
+
+    toastTitle.textContent = title;
+    toastMessage.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer =
+      setTimeout(() => {
+
+        toast.classList.remove("show");
+
+      }, 2800);
+  }
+
+
+  /* =========================================================
+     RENDER
+  ========================================================= */
+
+  function render(){
+
+    const packages =
+      getPackages()
+        .sort((a,b) =>
+          Number(a.sort || 0) -
+          Number(b.sort || 0)
+        );
+
+    packageGrid.innerHTML = "";
+
+    packages.forEach(pkg => {
+
+      const card =
+        document.createElement("article");
+
+      card.className =
+        "package-card " +
+        (pkg.id === "business" ? "featured " : "") +
+        (pkg.id === "premium" ? "premium" : "");
+
+      const features =
+        Array.isArray(pkg.features)
+          ? pkg.features
+          : [];
+
+      const visibleFeatures =
+        features.slice(0, 19);
+
+      card.innerHTML = `
+
+        <div class="package-glow"></div>
+
+        <div class="package-top">
+
+          <div class="package-title-row">
+
+            <div class="package-name">
+              ${escapeHTML(pkg.name)}
+            </div>
+
+            ${
+              pkg.badge
+              ?
+              `
+                <div class="package-tag">
+                  ${escapeHTML(pkg.badge)}
+                </div>
+              `
+              :
+              ""
+            }
+
           </div>
-        `).join("")}
-      </div>
 
-      <div class="package-actions">
-        <button class="btn primary" onclick="editPackage('${p.id}')">Edit</button>
-        <a class="btn" href="../index.html#packages">Preview</a>
-      </div>
-    </article>
-  `).join("");
-}
+          <div class="package-desc">
+            ${escapeHTML(pkg.description)}
+          </div>
 
-function editPackage(id){
-  const p=getPackages().find(x=>x.id===id);
-  if(!p)return;
+          <div class="price">
 
-  document.getElementById("packageId").value=p.id;
-  document.getElementById("packageName").value=p.name;
-  document.getElementById("packagePrice").value=p.price;
-  document.getElementById("packageDesc").value=p.description;
-  document.getElementById("packageFeatures").value=p.features.join("\n");
+            <span class="currency">৳</span>
 
-  openModal();
-}
+            <span class="price-value">
+              ${money(pkg.price)}
+            </span>
 
-function openModal(){
-  document.getElementById("modal").classList.add("show");
-}
+            <span class="price-period">
+              ${escapeHTML(pkg.period)}
+            </span>
 
-function closeModal(){
-  document.getElementById("modal").classList.remove("show");
-}
+          </div>
 
-document.getElementById("packageForm").addEventListener("submit",e=>{
-  e.preventDefault();
+        </div>
 
-  const id=document.getElementById("packageId").value;
-  const data=getPackages();
+        <div class="package-body">
 
-  const item=data.find(p=>p.id===id);
-  if(!item)return;
+          <div class="feature-heading">
 
-  item.name=document.getElementById("packageName").value.trim();
-  item.price=document.getElementById("packagePrice").value;
-  item.description=document.getElementById("packageDesc").value.trim();
-  item.features=document.getElementById("packageFeatures").value
-    .split("\n")
-    .map(x=>x.trim())
-    .filter(Boolean);
+            <span>
+              Included Features
+            </span>
 
-  savePackages(data);
-  closeModal();
+            <span class="feature-count">
+              ${features.length} features
+            </span>
+
+          </div>
+
+          <ul class="features">
+
+            ${visibleFeatures.map(feature => `
+
+              <li>
+
+                <span class="check">
+                  ✓
+                </span>
+
+                <span>
+                  ${escapeHTML(feature)}
+                </span>
+
+              </li>
+
+            `).join("")}
+
+          </ul>
+
+          ${
+            features.length > visibleFeatures.length
+            ?
+            `
+              <div
+                style="
+                  margin-top:12px;
+                  color:#68716d;
+                  font-size:9px;
+                "
+              >
+                + ${features.length - visibleFeatures.length}
+                more features
+              </div>
+            `
+            :
+            ""
+          }
+
+        </div>
+
+        <div class="package-footer">
+
+          <div class="status-row">
+
+            <div class="status ${pkg.status ? "" : "off"}">
+
+              <span class="status-dot"></span>
+
+              ${
+                pkg.status
+                ? "Active on website"
+                : "Hidden from website"
+              }
+
+            </div>
+
+            <div class="package-updated">
+              Order #${pkg.sort || 0}
+            </div>
+
+          </div>
+
+          <div class="package-actions">
+
+            <button
+              class="edit-btn"
+              data-edit="${escapeHTML(pkg.id)}"
+            >
+              Edit Package
+            </button>
+
+            <button
+              data-toggle="${escapeHTML(pkg.id)}"
+            >
+              ${pkg.status ? "Hide" : "Activate"}
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+      packageGrid.appendChild(card);
+
+    });
+
+    updateStats();
+  }
+
+
+  /* =========================================================
+     STATS
+  ========================================================= */
+
+  function updateStats(){
+
+    const packages =
+      getPackages();
+
+    const active =
+      packages.filter(pkg => pkg.status);
+
+    const starter =
+      packages.find(pkg => pkg.id === "starter");
+
+    const premium =
+      packages.find(pkg => pkg.id === "premium");
+
+    totalPackages.textContent =
+      packages.length;
+
+    activePackages.textContent =
+      active.length;
+
+    startingPrice.textContent =
+      starter
+      ? `৳${money(starter.price)}`
+      : "৳0";
+
+    premiumPrice.textContent =
+      premium
+      ? `৳${money(premium.price)}`
+      : "৳0";
+  }
+
+
+  /* =========================================================
+     MODAL
+  ========================================================= */
+
+  let currentFeatures = [];
+
+
+  function openEdit(id){
+
+    const packages =
+      getPackages();
+
+    const pkg =
+      packages.find(item =>
+        item.id === id
+      );
+
+    if(!pkg) return;
+
+    document.getElementById("editId").value =
+      pkg.id;
+
+    document.getElementById("editName").value =
+      pkg.name || "";
+
+    document.getElementById("editBadge").value =
+      pkg.badge || "";
+
+    document.getElementById("editPrice").value =
+      pkg.price || 0;
+
+    document.getElementById("editPeriod").value =
+      pkg.period || "/month";
+
+    document.getElementById("editDescription").value =
+      pkg.description || "";
+
+    document.getElementById("editStatus").value =
+      String(Boolean(pkg.status));
+
+    document.getElementById("editSort").value =
+      pkg.sort || 1;
+
+    currentFeatures =
+      Array.isArray(pkg.features)
+        ? [...pkg.features]
+        : [];
+
+    renderFeatureEditor();
+
+    modalBackdrop.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+
+
+  function closeModal(){
+
+    modalBackdrop.classList.remove("show");
+    document.body.style.overflow = "";
+
+    currentFeatures = [];
+  }
+
+
+  function renderFeatureEditor(){
+
+    featureEditor.innerHTML = "";
+
+    currentFeatures.forEach(
+      (feature,index) => {
+
+        const row =
+          document.createElement("div");
+
+        row.className =
+          "feature-row";
+
+        row.innerHTML = `
+
+          <input
+            type="text"
+            value="${escapeHTML(feature)}"
+            data-feature-index="${index}"
+          >
+
+          <button
+            type="button"
+            class="remove-feature"
+            data-remove-feature="${index}"
+          >
+            ×
+          </button>
+
+        `;
+
+        featureEditor.appendChild(row);
+
+      }
+    );
+
+    featureEditor
+      .querySelectorAll("input")
+      .forEach(input => {
+
+        input.addEventListener(
+          "input",
+          event => {
+
+            const index =
+              Number(
+                event.target
+                  .dataset
+                  .featureIndex
+              );
+
+            currentFeatures[index] =
+              event.target.value;
+
+          }
+        );
+
+      });
+
+    featureEditor
+      .querySelectorAll(
+        "[data-remove-feature]"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const index =
+              Number(
+                button
+                  .dataset
+                  .removeFeature
+              );
+
+            currentFeatures.splice(
+              index,
+              1
+            );
+
+            renderFeatureEditor();
+
+          }
+        );
+
+      });
+
+  }
+
+
+  /* =========================================================
+     SAVE PACKAGE
+  ========================================================= */
+
+  function saveCurrentPackage(){
+
+    const id =
+      document.getElementById("editId").value;
+
+    const packages =
+      getPackages();
+
+    const index =
+      packages.findIndex(pkg =>
+        pkg.id === id
+      );
+
+    if(index === -1){
+
+      showToast(
+        "Error",
+        "Package could not be found."
+      );
+
+      return;
+    }
+
+    const name =
+      document.getElementById("editName").value.trim();
+
+    const price =
+      Number(
+        document.getElementById("editPrice").value
+      );
+
+    const description =
+      document
+        .getElementById("editDescription")
+        .value
+        .trim();
+
+    if(!name){
+
+      showToast(
+        "Missing Name",
+        "Please enter a package name."
+      );
+
+      return;
+    }
+
+    if(price < 0){
+
+      showToast(
+        "Invalid Price",
+        "Price cannot be negative."
+      );
+
+      return;
+    }
+
+    packages[index] = {
+
+      ...packages[index],
+
+      name,
+
+      badge:
+        document
+          .getElementById("editBadge")
+          .value
+          .trim(),
+
+      price,
+
+      period:
+        document
+          .getElementById("editPeriod")
+          .value,
+
+      description,
+
+      status:
+        document
+          .getElementById("editStatus")
+          .value === "true",
+
+      sort:
+        Number(
+          document
+            .getElementById("editSort")
+            .value
+        ) || 1,
+
+      features:
+        currentFeatures
+          .map(item => item.trim())
+          .filter(Boolean)
+
+    };
+
+    savePackages(packages);
+
+    closeModal();
+
+    render();
+
+    showToast(
+      "Package Saved",
+      `${name} has been updated successfully.`
+    );
+  }
+
+
+  /* =========================================================
+     TOGGLE STATUS
+  ========================================================= */
+
+  function togglePackage(id){
+
+    const packages =
+      getPackages();
+
+    const index =
+      packages.findIndex(pkg =>
+        pkg.id === id
+      );
+
+    if(index === -1) return;
+
+    packages[index].status =
+      !packages[index].status;
+
+    savePackages(packages);
+
+    render();
+
+    showToast(
+      "Status Updated",
+      `${packages[index].name} is now ${
+        packages[index].status
+          ? "active"
+          : "hidden"
+      }.`
+    );
+  }
+
+
+  /* =========================================================
+     RESET
+  ========================================================= */
+
+  function resetDefaults(){
+
+    const confirmed =
+      confirm(
+        "Reset all package settings to the Website Deals defaults?"
+      );
+
+    if(!confirmed) return;
+
+    savePackages(
+      structuredClone(defaultPackages)
+    );
+
+    render();
+
+    showToast(
+      "Defaults Restored",
+      "All package settings have been restored."
+    );
+  }
+
+
+  /* =========================================================
+     EVENT DELEGATION
+  ========================================================= */
+
+  packageGrid.addEventListener(
+    "click",
+    event => {
+
+      const editButton =
+        event.target.closest(
+          "[data-edit]"
+        );
+
+      if(editButton){
+
+        openEdit(
+          editButton.dataset.edit
+        );
+
+        return;
+      }
+
+      const toggleButton =
+        event.target.closest(
+          "[data-toggle]"
+        );
+
+      if(toggleButton){
+
+        togglePackage(
+          toggleButton.dataset.toggle
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     BUTTONS
+  ========================================================= */
+
+  document
+    .getElementById("savePackageBtn")
+    .addEventListener(
+      "click",
+      saveCurrentPackage
+    );
+
+
+  document
+    .getElementById("cancelBtn")
+    .addEventListener(
+      "click",
+      closeModal
+    );
+
+
+  document
+    .getElementById("closeModal")
+    .addEventListener(
+      "click",
+      closeModal
+    );
+
+
+  document
+    .getElementById("addFeature")
+    .addEventListener(
+      "click",
+      () => {
+
+        currentFeatures.push(
+          "New feature"
+        );
+
+        renderFeatureEditor();
+
+        const inputs =
+          featureEditor.querySelectorAll(
+            "input"
+          );
+
+        const last =
+          inputs[inputs.length - 1];
+
+        if(last){
+
+          last.focus();
+          last.select();
+
+        }
+
+      }
+    );
+
+
+  document
+    .getElementById("saveAllBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        const packages =
+          getPackages();
+
+        savePackages(packages);
+
+        render();
+
+        showToast(
+          "All Changes Saved",
+          "Package settings are safely stored."
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById("resetBtn")
+    .addEventListener(
+      "click",
+      resetDefaults
+    );
+
+
+  document
+    .getElementById("logoutBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        sessionStorage.removeItem(
+          "websiteDealsAdminLoggedIn"
+        );
+
+        window.location.href =
+          "./login.html";
+
+      }
+    );
+
+
+  document
+    .getElementById("menuBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        document
+          .getElementById("sidebar")
+          .classList.toggle("open");
+
+      }
+    );
+
+
+  modalBackdrop.addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target ===
+        modalBackdrop
+      ){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if(event.key === "Escape"){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     INITIALIZE
+  ========================================================= */
+
   render();
-  toast("Package saved successfully");
-});
 
-function escapeHtml(value){
-  return String(value??"")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-function toast(message){
-  const el=document.getElementById("toast");
-  el.textContent=message;
-  el.classList.add("show");
-  setTimeout(()=>el.classList.remove("show"),2200);
-}
-
-function toggleSidebar(){
-  document.getElementById("sidebar").classList.toggle("open");
-}
-
-render();
 </script>
 
 </body>
 </html>
-```
