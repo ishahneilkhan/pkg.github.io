@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#0b0d0c"
+  >
+
+  <meta
+    name="description"
+    content="Website Deals Admin Homepage Manager"
+  >
+
+  <title>Homepage Manager | Website Deals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #070908;
+      --panel: #0d100f;
+      --panel-2: #111513;
+      --panel-3: #151a17;
+      --border: rgba(255,255,255,.09);
+      --border-strong: rgba(255,255,255,.15);
+      --text: #f5f7f6;
+      --muted: #929b96;
+      --muted-2: #69716d;
+      --lime: #b7ff00;
+      --green: #4ade80;
+      --red: #ff6672;
+      --orange: #ffc857;
+      --blue: #60a5fa;
+      --radius: 20px;
+      --sidebar: 260px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 80% -10%,
+          rgba(183,255,0,.07),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 10% 30%,
+          rgba(255,255,255,.025),
+          transparent 24%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        "Inter",
+        "Hind Siliguri",
+        sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.017) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.017) 1px,
+          transparent 1px
+        );
+      background-size: 40px 40px;
+      opacity: .35;
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 75%
+        );
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    /* =====================================
+       SIDEBAR
+    ====================================== */
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar);
+      padding: 22px 16px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(15,18,16,.98),
+          rgba(8,10,9,.98)
+        );
+      border-right: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px 24px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: var(--lime);
+      color: #071000;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow:
+        0 0 0 5px rgba(183,255,0,.06),
+        0 10px 35px rgba(183,255,0,.12);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+
+    .nav-label {
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      color: var(--muted-2);
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-link {
+      min-height: 44px;
+      padding: 0 13px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      color: #aeb7b2;
+      font-size: 12px;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255,255,255,.045);
+      border-color: var(--border);
+      transform: translateX(2px);
+    }
+
+    .nav-link.active {
+      color: #081000;
+      background: var(--lime);
+      border-color: var(--lime);
+    }
+
+    .nav-icon {
+      width: 18px;
+      text-align: center;
+    }
+
+    .nav-spacer {
+      flex: 1;
+    }
+
+    .sidebar-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+
+    .mini-card {
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .mini-card small {
+      display: block;
+      color: var(--muted-2);
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+    }
+
+    .logout {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid rgba(255,102,114,.18);
+      border-radius: 12px;
+      background: rgba(255,102,114,.05);
+      color: #ff8d97;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .logout:hover {
+      background: rgba(255,102,114,.1);
+      border-color: rgba(255,102,114,.35);
+    }
+
+    /* =====================================
+       MOBILE HEADER
+    ====================================== */
+
+    .mobile-header {
+      display: none;
+      position: sticky;
+      top: 0;
+      height: 64px;
+      padding: 0 16px;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(7,9,8,.9);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      z-index: 900;
+    }
+
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .mobile-brand .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .mobile-brand strong {
+      font-size: 13px;
+    }
+
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: var(--panel);
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* =====================================
+       MAIN
+    ====================================== */
+
+    .main {
+      margin-left: var(--sidebar);
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      min-height: 72px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: rgba(7,9,8,.8);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-title small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .top-title strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 15px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .top-btn {
+      min-height: 38px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(255,255,255,.025);
+      color: #dce2df;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .top-btn:hover {
+      background: rgba(255,255,255,.06);
+      border-color: var(--border-strong);
+    }
+
+    .top-btn.primary {
+      color: #081000;
+      background: var(--lime);
+      border-color: var(--lime);
+    }
+
+    .content {
+      max-width: 1450px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    /* =====================================
+       PAGE HERO
+    ====================================== */
+
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background:
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(183,255,0,.11),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #111612,
+          #0a0d0b
+        );
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -100px;
+      bottom: -120px;
+      border: 1px solid rgba(183,255,0,.08);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 40px rgba(183,255,0,.025),
+        0 0 0 80px rgba(183,255,0,.012);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 9px;
+      border: 1px solid rgba(183,255,0,.16);
+      border-radius: 999px;
+      background: rgba(183,255,0,.05);
+      color: var(--lime);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 10px rgba(183,255,0,.65);
+    }
+
+    .page-hero h1 {
+      max-width: 650px;
+      margin-top: 15px;
+      font-size: clamp(27px, 4vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -.05em;
+    }
+
+    .page-hero h1 span {
+      color: var(--lime);
+    }
+
+    .page-hero p {
+      max-width: 720px;
+      margin-top: 11px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    /* =====================================
+       GRID
+    ====================================== */
+
+    .workspace {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(350px, .85fr);
+      gap: 15px;
+      margin-top: 22px;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: 21px;
+      background: rgba(255,255,255,.025);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      min-height: 65px;
+      padding: 15px 19px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .panel-subtitle {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    /* =====================================
+       FORM
+    ====================================== */
+
+    .form {
+      padding: 20px;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 7px;
+      color: #dfe5e2;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .label span {
+      color: var(--muted-2);
+      font-size: 8px;
+      font-weight: 500;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      outline: none;
+      background: #090c0a;
+      color: #fff;
+      transition: .2s ease;
+    }
+
+    input,
+    select {
+      min-height: 43px;
+      padding: 0 12px;
+      font-size: 11px;
+    }
+
+    textarea {
+      min-height: 95px;
+      padding: 12px;
+      resize: vertical;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #59615d;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(183,255,0,.45);
+      box-shadow:
+        0 0 0 3px rgba(183,255,0,.055);
+    }
+
+    .two-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .field-note {
+      margin-top: 6px;
+      color: var(--muted-2);
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
+    /* =====================================
+       TOGGLES
+    ====================================== */
+
+    .toggle-list {
+      padding: 6px 19px 15px;
+    }
+
+    .toggle-row {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.055);
+    }
+
+    .toggle-row:last-child {
+      border-bottom: 0;
+    }
+
+    .toggle-copy {
+      flex: 1;
+    }
+
+    .toggle-copy strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .toggle-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
+    .switch {
+      position: relative;
+      width: 43px;
+      height: 24px;
+      flex: 0 0 auto;
+    }
+
+    .switch input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      background: #181d1a;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .slider::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 3px;
+      top: 3px;
+      border-radius: 50%;
+      background: #78807b;
+      transition: .2s ease;
+    }
+
+    .switch input:checked + .slider {
+      background: var(--lime);
+      border-color: var(--lime);
+    }
+
+    .switch input:checked + .slider::after {
+      transform: translateX(19px);
+      background: #071000;
+    }
+
+    /* =====================================
+       PREVIEW
+    ====================================== */
+
+    .preview-wrap {
+      padding: 19px;
+    }
+
+    .browser {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow:
+        0 25px 60px rgba(0,0,0,.28);
+    }
+
+    .browser-top {
+      height: 34px;
+      padding: 0 11px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #151816;
+      border-bottom: 1px solid #272c29;
+    }
+
+    .browser-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #5c635f;
+    }
+
+    .browser-url {
+      flex: 1;
+      height: 18px;
+      margin-left: 6px;
+      border-radius: 5px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .site-preview {
+      min-height: 455px;
+      padding: 26px;
+      color: #111;
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #f1f5f3
+        );
+    }
+
+    .preview-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .preview-logo {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .preview-menu {
+      display: flex;
+      gap: 6px;
+    }
+
+    .preview-menu span {
+      width: 32px;
+      height: 5px;
+      border-radius: 99px;
+      background: #d9dfdb;
+    }
+
+    .preview-hero {
+      padding: 65px 0 45px;
+    }
+
+    .preview-badge {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 99px;
+      background: #ecf8d2;
+      color: #4c6700;
+      font-size: 7px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .preview-hero h3 {
+      max-width: 390px;
+      margin-top: 12px;
+      font-size: 34px;
+      line-height: 1.04;
+      letter-spacing: -.055em;
+    }
+
+    .preview-hero h3 span {
+      color: #6d9700;
+    }
+
+    .preview-hero p {
+      max-width: 420px;
+      margin-top: 11px;
+      color: #65706a;
+      font-size: 9px;
+      line-height: 1.7;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 7px;
+      margin-top: 17px;
+      flex-wrap: wrap;
+    }
+
+    .preview-btn {
+      min-height: 30px;
+      padding: 0 11px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 8px;
+      background: #111;
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .preview-btn.light {
+      background: #e9eee9;
+      color: #111;
+    }
+
+    .preview-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-top: 15px;
+    }
+
+    .preview-stat {
+      padding: 12px 8px;
+      border: 1px solid #e1e5e2;
+      border-radius: 9px;
+      background: rgba(255,255,255,.8);
+      text-align: center;
+    }
+
+    .preview-stat strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .preview-stat span {
+      display: block;
+      margin-top: 2px;
+      color: #79827d;
+      font-size: 6px;
+    }
+
+    /* =====================================
+       PREVIEW DETAILS
+    ====================================== */
+
+    .preview-details {
+      padding: 0 19px 19px;
+    }
+
+    .preview-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .info-box {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .info-box small {
+      display: block;
+      color: var(--muted-2);
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .info-box strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    /* =====================================
+       SAVE BAR
+    ====================================== */
+
+    .save-bar {
+      position: sticky;
+      bottom: 18px;
+      z-index: 100;
+      margin-top: 22px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      background: rgba(14,17,15,.94);
+      backdrop-filter: blur(18px);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.35);
+    }
+
+    .save-status {
+      color: var(--muted);
+      font-size: 9px;
+    }
+
+    .save-status strong {
+      color: #fff;
+    }
+
+    .save-actions {
+      display: flex;
+      gap: 7px;
+    }
+
+    .btn {
+      min-height: 39px;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(255,255,255,.035);
+      color: #dfe5e2;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,.07);
+      border-color: var(--border-strong);
+    }
+
+    .btn.primary {
+      color: #071000;
+      background: var(--lime);
+      border-color: var(--lime);
+    }
+
+    .btn.danger {
+      color: #ff8c96;
+      border-color: rgba(255,102,114,.2);
+      background: rgba(255,102,114,.04);
+    }
+
+    /* =====================================
+       NOTICE
+    ====================================== */
+
+    .notice {
+      margin-top: 15px;
+      padding: 13px 15px;
+      border: 1px solid rgba(96,165,250,.16);
+      border-radius: 13px;
+      background: rgba(96,165,250,.045);
+      color: #a8c9f5;
+      font-size: 9px;
+      line-height: 1.65;
+    }
+
+    .notice strong {
+      color: #d3e5ff;
+    }
+
+    /* =====================================
+       TOAST
+    ====================================== */
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 3000;
+      min-width: 240px;
+      max-width: calc(100vw - 40px);
+      padding: 13px 15px;
+      border: 1px solid var(--border-strong);
+      border-radius: 13px;
+      background: rgba(16,19,17,.97);
+      color: #fff;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      font-size: 10px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: .25s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =====================================
+       FOOTER
+    ====================================== */
+
+    .footer {
+      margin-top: 28px;
+      padding: 20px 0 8px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      border-top: 1px solid var(--border);
+      color: var(--muted-2);
+      font-size: 9px;
+    }
+
+    .footer strong {
+      color: #aeb7b2;
+    }
+
+    /* =====================================
+       RESPONSIVE
+    ====================================== */
+
+    @media (max-width: 1100px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      :root {
+        --sidebar: 0px;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: 20px 0 60px rgba(0,0,0,.45);
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .mobile-header {
+        display: flex;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .topbar {
+        display: none;
+      }
+
+      .content {
+        padding: 18px;
+      }
+
+      .page-hero {
+        padding: 24px;
+        border-radius: 21px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .two-fields,
+      .preview-info {
+        grid-template-columns: 1fr;
+      }
+
+      .site-preview {
+        min-height: 430px;
+        padding: 20px;
+      }
+
+      .preview-hero {
+        padding-top: 50px;
+      }
+
+      .preview-hero h3 {
+        font-size: 28px;
+      }
+
+      .preview-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .save-bar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .save-actions {
+        width: 100%;
+      }
+
+      .save-actions .btn {
+        flex: 1;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       MOBILE HEADER
+  ========================================== -->
+
+  <header class="mobile-header">
+
+    <div class="mobile-brand">
+
+      <div class="brand-mark">
+        WD
+      </div>
+
+      <strong>
+        Website Deals
+      </strong>
+
+    </div>
+
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      type="button"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+  </header>
+
+  <!-- =========================================
+       SIDEBAR
+  ========================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="brand">
+
+      <div class="brand-mark">
+        WD
+      </div>
+
+      <div class="brand-copy">
+
+        <strong>
+          Website Deals
+        </strong>
+
+        <span>
+          Admin Control
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="nav-label">
+      Management
+    </div>
+
+    <nav class="nav">
+
+      <a
+        href="./dashboard.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a
+        href="./websites.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▣</span>
+        <span>Websites</span>
+      </a>
+
+      <a
+        href="https://orders.websitedeals.com"
+        class="nav-link"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="nav-icon">◫</span>
+        <span>Orders</span>
+      </a>
+
+      <a
+        href="./presentation.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▶</span>
+        <span>Presentation</span>
+      </a>
+
+      <a
+        href="./homepage.html"
+        class="nav-link active"
+      >
+        <span class="nav-icon">⌂</span>
+        <span>Homepage</span>
+      </a>
+
+      <a
+        href="./banners.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">▤</span>
+        <span>Banners</span>
+      </a>
+
+      <a
+        href="./settings.html"
+        class="nav-link"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+      </a>
+
+    </nav>
+
+    <div class="nav-label">
+      Quick Access
+    </div>
+
+    <nav class="nav">
+
+      <a
+        href="../index.html"
+        class="nav-link"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="nav-icon">↗</span>
+        <span>Open Website</span>
+      </a>
+
+      <a
+        href="../presentation/index.html"
+        class="nav-link"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="nav-icon">◉</span>
+        <span>Live Presentation</span>
+      </a>
+
+    </nav>
+
+    <div class="nav-spacer"></div>
+
+    <div class="sidebar-bottom">
+
+      <div class="mini-card">
+
+        <small>
+          Public Experience
+        </small>
+
+        <strong>
+          Premium Digital Showroom
+        </strong>
+
+      </div>
+
+      <button
+        class="logout"
+        id="logoutBtn"
+        type="button"
+      >
+        Logout Admin
+      </button>
+
+    </div>
+
+  </aside>
+
+  <!-- =========================================
+       MAIN
+  ========================================== -->
+
+  <main class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+      <div class="top-title">
+
+        <small>
+          Website Deals / Admin
+        </small>
+
+        <strong>
+          Homepage Manager
+        </strong>
+
+      </div>
+
+      <div class="top-actions">
+
+        <a
+          class="top-btn"
+          href="./websites.html"
+        >
+          ▣ Websites
+        </a>
+
+        <a
+          class="top-btn"
+          href="./settings.html"
+        >
+          ⚙ Settings
+        </a>
+
+        <a
+          class="top-btn primary"
+          href="../index.html"
+          target="_blank"
+          rel="noopener"
+        >
+          Preview ↗
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+      <!-- =====================================
+           HERO
+      ====================================== -->
+
+      <section class="page-hero">
+
+        <div class="eyebrow">
+
+          <span class="dot"></span>
+
+          Public Homepage Control
+
+        </div>
+
+        <h1>
+          Control the
+          <span>first impression.</span>
+        </h1>
+
+        <p>
+          Manage the public Website Deals homepage messaging,
+          hero section, navigation visibility and showroom
+          experience from one premium control panel.
+        </p>
+
+      </section>
+
+      <!-- =====================================
+           WORKSPACE
+      ====================================== -->
+
+      <section class="workspace">
+
+        <!-- ===================================
+             LEFT: CONTENT FORM
+        ==================================== -->
+
+        <div class="panel">
+
+          <div class="panel-head">
+
+            <div>
+
+              <div class="panel-title">
+                Homepage Content
+              </div>
+
+              <div class="panel-subtitle">
+                Edit the core public-facing homepage copy.
+              </div>
+
+            </div>
+
+            <span
+              class="status-pill"
+              style="
+                padding:5px 8px;
+                border-radius:999px;
+                background:rgba(74,222,128,.07);
+                color:#4ade80;
+                font-size:8px;
+                font-weight:800;
+              "
+            >
+              LIVE DATA
+            </span>
+
+          </div>
+
+          <div class="form">
+
+            <!-- BRAND -->
+
+            <div class="field">
+
+              <div class="label">
+                Brand Name
+                <span>Public identity</span>
+              </div>
+
+              <input
+                type="text"
+                id="brandName"
+                placeholder="Website Deals"
+              >
+
+            </div>
+
+            <!-- SHORT NAME + CURRENCY -->
+
+            <div class="two-fields">
+
+              <div class="field">
+
+                <div class="label">
+                  Short Name
+                  <span>Optional</span>
+                </div>
+
+                <input
+                  type="text"
+                  id="shortName"
+                  placeholder="Website Deals"
+                >
+
+              </div>
+
+              <div class="field">
+
+                <div class="label">
+                  Currency
+                  <span>Display</span>
+                </div>
+
+                <select id="currency">
+
+                  <option value="৳">
+                    ৳ Bangladeshi Taka
+                  </option>
+
+                  <option value="$">
+                    $ US Dollar
+                  </option>
+
+                  <option value="€">
+                    € Euro
+                  </option>
+
+                  <option value="£">
+                    £ Pound
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+            <!-- TAGLINE -->
+
+            <div class="field">
+
+              <div class="label">
+                Tagline
+                <span>Hero supporting text</span>
+              </div>
+
+              <input
+                type="text"
+                id="tagline"
+                placeholder="Premium Ready-Made Websites"
+              >
+
+            </div>
+
+            <!-- META -->
+
+            <div class="field">
+
+              <div class="label">
+                Meta Description
+                <span>SEO</span>
+              </div>
+
+              <textarea
+                id="metaDescription"
+                placeholder="Premium ready-made websites..."
+              ></textarea>
+
+              <div class="field-note">
+                Used as the site's search-engine description
+                when the public homepage reads these settings.
+              </div>
+
+            </div>
+
+            <!-- SUPPORT -->
+
+            <div class="two-fields">
+
+              <div class="field">
+
+                <div class="label">
+                  Support Email
+                  <span>Contact</span>
+                </div>
+
+                <input
+                  type="email"
+                  id="supportEmail"
+                  placeholder="support@example.com"
+                >
+
+              </div>
+
+              <div class="field">
+
+                <div class="label">
+                  WhatsApp
+                  <span>International</span>
+                </div>
+
+                <input
+                  type="text"
+                  id="whatsapp"
+                  placeholder="8801XXXXXXXXX"
+                >
+
+              </div>
+
+            </div>
+
+            <!-- SUPPORT MESSAGE -->
+
+            <div class="field">
+
+              <div class="label">
+                Support Message
+                <span>WhatsApp prefill</span>
+              </div>
+
+              <textarea
+                id="supportMessage"
+                placeholder="Hello, I am interested in a Website Deals website."
+              ></textarea>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ===================================
+             RIGHT: PUBLIC CONTROLS
+        ==================================== -->
+
+        <div>
+
+          <div class="panel">
+
+            <div class="panel-head">
+
+              <div>
+
+                <div class="panel-title">
+                  Homepage Sections
+                </div>
+
+                <div class="panel-subtitle">
+                  Choose what visitors can see publicly.
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="toggle-list">
+
+              <!-- SHOWCASE -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Public Showcase
+                  </strong>
+
+                  <span>
+                    Display ready-made websites on the homepage.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="showcaseEnabled"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+              <!-- AUTO PRESENTATION -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Auto Presentation
+                  </strong>
+
+                  <span>
+                    Allow the showcase presentation to auto-play.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="autoPresentation"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+              <!-- HUMAN CURSOR -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Human Cursor
+                  </strong>
+
+                  <span>
+                    Show subtle cursor movement in presentation mode.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="humanCursor"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+              <!-- PAUSE HOVER -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Pause on Hover
+                  </strong>
+
+                  <span>
+                    Pause showcase animation when the visitor hovers.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="pauseOnHover"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+              <!-- PACKAGES -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Packages Section
+                  </strong>
+
+                  <span>
+                    Show Starter, Business and Premium packages.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="showPackages"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+              <!-- WEBSITES -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Websites Section
+                  </strong>
+
+                  <span>
+                    Show the live website showcase cards.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="showWebsites"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+              <!-- SALAH -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    Salah Section
+                  </strong>
+
+                  <span>
+                    Keep the prayer-time section visible.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="showSalah"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+              <!-- ABOUT -->
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <strong>
+                    About Section
+                  </strong>
+
+                  <span>
+                    Show the Website Deals information section.
+                  </span>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    type="checkbox"
+                    id="showAbout"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- =================================
+               MOTION SETTINGS
+          ================================== -->
+
+          <div
+            class="panel"
+            style="margin-top:15px;"
+          >
+
+            <div class="panel-head">
+
+              <div>
+
+                <div class="panel-title">
+                  Presentation Motion
+                </div>
+
+                <div class="panel-subtitle">
+                  Control the human-like showcase experience.
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="form">
+
+              <div class="two-fields">
+
+                <div class="field">
+
+                  <div class="label">
+                    Scroll Speed
+                    <span>Default medium</span>
+                  </div>
+
+                  <select id="scrollSpeed">
+
+                    <option value="slow">
+                      Slow
+                    </option>
+
+                    <option value="medium">
+                      Medium
+                    </option>
+
+                    <option value="fast">
+                      Fast
+                    </option>
+
+                  </select>
+
+                </div>
+
+                <div class="field">
+
+                  <div class="label">
+                    Reading Pause
+                    <span>Natural rhythm</span>
+                  </div>
+
+                  <select id="readingPause">
+
+                    <option value="short">
+                      Short
+                    </option>
+
+                    <option value="medium">
+                      Medium
+                    </option>
+
+                    <option value="long">
+                      Long
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+              <div class="field">
+
+                <div class="label">
+                  Presentation Mode
+                  <span>Public experience</span>
+                </div>
+
+                <select id="presentationMode">
+
+                  <option value="cinematic">
+                    Cinematic
+                  </option>
+
+                  <option value="clean">
+                    Clean
+                  </option>
+
+                  <option value="minimal">
+                    Minimal
+                  </option>
+
+                </select>
+
+              </div>
+
+              <div class="notice">
+
+                <strong>Recommended:</strong>
+                Medium scroll speed with Medium reading pause
+                gives the showcase a natural human browsing rhythm:
+                smooth chunks, short reading pauses, bottom pause,
+                then a smooth return to the top.
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =====================================
+           LIVE PREVIEW
+      ====================================== -->
+
+      <section
+        class="panel"
+        style="margin-top:15px;"
+      >
+
+        <div class="panel-head">
+
+          <div>
+
+            <div class="panel-title">
+              Live Homepage Preview
+            </div>
+
+            <div class="panel-subtitle">
+              Visual representation of the public Website Deals experience.
+            </div>
+
+          </div>
+
+          <a
+            class="top-btn primary"
+            href="../index.html"
+            target="_blank"
+            rel="noopener"
+          >
+            Open Actual Homepage ↗
+          </a>
+
+        </div>
+
+        <div class="preview-wrap">
+
+          <div class="browser">
+
+            <div class="browser-top">
+
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+
+              <div class="browser-url"></div>
+
+            </div>
+
+            <div class="site-preview">
+
+              <div class="preview-nav">
+
+                <div
+                  class="preview-logo"
+                  id="previewBrand"
+                >
+                  Website Deals
+                </div>
+
+                <div class="preview-menu">
+
+                  <span></span>
+                  <span></span>
+                  <span></span>
+
+                </div>
+
+              </div>
+
+              <div class="preview-hero">
+
+                <div class="preview-badge">
+                  Premium Digital Marketplace
+                </div>
+
+                <h3>
+                  <span id="previewTagline">
+                    Premium Ready-Made Websites
+                  </span>
+                </h3>
+
+                <p>
+                  Explore professionally designed,
+                  responsive websites with live previews,
+                  flexible packages and a premium digital
+                  showroom experience.
+                </p>
+
+                <div class="preview-actions">
+
+                  <div class="preview-btn">
+                    Explore Websites
+                  </div>
+
+                  <div class="preview-btn light">
+                    View Packages
+                  </div>
+
+                </div>
+
+                <div class="preview-strip">
+
+                  <div class="preview-stat">
+                    <strong>100+</strong>
+                    <span>READY WEBSITES</span>
+                  </div>
+
+                  <div class="preview-stat">
+                    <strong>20+</strong>
+                    <span>CATEGORIES</span>
+                  </div>
+
+                  <div class="preview-stat">
+                    <strong>100%</strong>
+                    <span>RESPONSIVE</span>
+                  </div>
+
+                  <div class="preview-stat">
+                    <strong>24/7</strong>
+                    <span>SUPPORT</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="preview-details">
+
+          <div class="preview-info">
+
+            <div class="info-box">
+
+              <small>
+                Public Brand
+              </small>
+
+              <strong id="previewBrand2">
+                Website Deals
+              </strong>
+
+            </div>
+
+            <div class="info-box">
+
+              <small>
+                Tagline
+              </small>
+
+              <strong id="previewTagline2">
+                Premium Ready-Made Websites
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =====================================
+           SAVE BAR
+      ====================================== -->
+
+      <div class="save-bar">
+
+        <div class="save-status">
+
+          <strong id="saveState">
+            Ready
+          </strong>
+
+          <br>
+
+          Homepage settings are stored locally.
+
+        </div>
+
+        <div class="save-actions">
+
+          <button
+            class="btn danger"
+            id="resetBtn"
+            type="button"
+          >
+            Reset Defaults
+          </button>
+
+          <button
+            class="btn"
+            id="refreshBtn"
+            type="button"
+          >
+            Reload
+          </button>
+
+          <button
+            class="btn primary"
+            id="saveBtn"
+            type="button"
+          >
+            Save Homepage
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+
+      <footer class="footer">
+
+        <div>
+          <strong>Website Deals</strong>
+          — Premium Ready-Made Websites
+        </div>
+
+        <div>
+          Homepage Manager
+        </div>
+
+      </footer>
+
+    </div>
+
+  </main>
+
+  <!-- TOAST -->
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+  <!-- STORE -->
+
+  <script src="../shared/store.js"></script>
+
+  <script>
+    (() => {
+
+      "use strict";
+
+      /* =====================================
+         AUTH
+      ====================================== */
+
+      const AUTH_KEY =
+        "websiteDealsAdminAuth";
+
+      if (
+        sessionStorage.getItem(AUTH_KEY) !== "true"
+      ) {
+        window.location.replace(
+          "./login.html"
+        );
+        return;
+      }
+
+      /* =====================================
+         HELPERS
+      ====================================== */
+
+      const $ = (selector) =>
+        document.querySelector(selector);
+
+      const DEFAULT_SETTINGS = {
+        brandName:
+          "Website Deals",
+
+        shortName:
+          "Website Deals",
+
+        tagline:
+          "Premium Ready-Made Websites",
+
+        metaDescription:
+          "Website Deals — Premium ready-made websites, live previews, flexible packages and digital solutions.",
+
+        supportUrl:
+          "https://support.websitedeals.com",
+
+        supportEmail:
+          "",
+
+        whatsapp:
+          "8801705633700",
+
+        supportMessage:
+          "Hello, I am interested in a Website Deals website.",
+
+        showcaseEnabled:
+          true,
+
+        autoPresentation:
+          true,
+
+        humanCursor:
+          true,
+
+        pauseOnHover:
+          true,
+
+        scrollSpeed:
+          "medium",
+
+        readingPause:
+          "medium",
+
+        presentationMode:
+          "cinematic",
+
+        showPackages:
+          true,
+
+        showWebsites:
+          true,
+
+        showSalah:
+          true,
+
+        showAbout:
+          true,
+
+        language:
+          "en",
+
+        currency:
+          "৳",
+
+        deviceMode:
+          "laptop",
+
+        websiteSort:
+          "sort"
+      };
+
+      const cloneDefaults = () =>
+        JSON.parse(
+          JSON.stringify(
+            DEFAULT_SETTINGS
+          )
+        );
+
+      /* =====================================
+         TOAST
+      ====================================== */
+
+      let toastTimer = null;
+
+      function toast(message) {
+
+        const el = $("#toast");
+
+        if (!el) return;
+
+        el.textContent = message;
+
+        el.classList.add("show");
+
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(() => {
+
+          el.classList.remove("show");
+
+        }, 2600);
+
+      }
+
+      /* =====================================
+         GET SETTINGS
+      ====================================== */
+
+      function getSettings() {
+
+        try {
+
+          if (
+            window.WDStore &&
+            typeof WDStore.readSettings ===
+              "function"
+          ) {
+
+            return {
+              ...cloneDefaults(),
+              ...(WDStore.readSettings() || {})
+            };
+
+          }
+
+        } catch (error) {
+
+          console.error(
+            "Settings read error:",
+            error
+          );
+
+        }
+
+        try {
+
+          const raw =
+            localStorage.getItem(
+              "websiteDealsSettings"
+            );
+
+          if (raw) {
+
+            return {
+              ...cloneDefaults(),
+              ...JSON.parse(raw)
+            };
+
+          }
+
+        } catch (error) {
+
+          console.error(
+            "Local settings error:",
+            error
+          );
+
+        }
+
+        return cloneDefaults();
+      }
+
+      let settings =
+        getSettings();
+
+      /* =====================================
+         INPUT MAP
+      ====================================== */
+
+      const textFields = [
+        "brandName",
+        "shortName",
+        "tagline",
+        "metaDescription",
+        "supportEmail",
+        "whatsapp",
+        "supportMessage"
+      ];
+
+      const selectFields = [
+        "currency",
+        "scrollSpeed",
+        "readingPause",
+        "presentationMode"
+      ];
+
+      const toggleFields = [
+        "showcaseEnabled",
+        "autoPresentation",
+        "humanCursor",
+        "pauseOnHover",
+        "showPackages",
+        "showWebsites",
+        "showSalah",
+        "showAbout"
+      ];
+
+      /* =====================================
+         LOAD FORM
+      ====================================== */
+
+      function loadForm() {
+
+        settings =
+          getSettings();
+
+        textFields.forEach(
+          (field) => {
+
+            const el =
+              $("#" + field);
+
+            if (!el) return;
+
+            el.value =
+              settings[field] ?? "";
+
+          }
+        );
+
+        selectFields.forEach(
+          (field) => {
+
+            const el =
+              $("#" + field);
+
+            if (!el) return;
+
+            el.value =
+              settings[field] ??
+              DEFAULT_SETTINGS[field];
+
+          }
+        );
+
+        toggleFields.forEach(
+          (field) => {
+
+            const el =
+              $("#" + field);
+
+            if (!el) return;
+
+            el.checked =
+              settings[field] !== false;
+
+          }
+        );
+
+        updatePreview();
+
+        setSaveState(
+          "Ready"
+        );
+
+      }
+
+      /* =====================================
+         READ FORM
+      ====================================== */
+
+      function readForm() {
+
+        const next = {
+          ...settings
+        };
+
+        textFields.forEach(
+          (field) => {
+
+            const el =
+              $("#" + field);
+
+            if (!el) return;
+
+            next[field] =
+              el.value.trim();
+
+          }
+        );
+
+        selectFields.forEach(
+          (field) => {
+
+            const el =
+              $("#" + field);
+
+            if (!el) return;
+
+            next[field] =
+              el.value;
+
+          }
+        );
+
+        toggleFields.forEach(
+          (field) => {
+
+            const el =
+              $("#" + field);
+
+            if (!el) return;
+
+            next[field] =
+              Boolean(el.checked);
+
+          }
+        );
+
+        return next;
+      }
+
+      /* =====================================
+         PREVIEW
+      ====================================== */
+
+      function updatePreview() {
+
+        const brand =
+          $("#brandName")?.value.trim()
+          ||
+          "Website Deals";
+
+        const tagline =
+          $("#tagline")?.value.trim()
+          ||
+          "Premium Ready-Made Websites";
+
+        $("#previewBrand").textContent =
+          brand;
+
+        $("#previewBrand2").textContent =
+          brand;
+
+        $("#previewTagline").textContent =
+          tagline;
+
+        $("#previewTagline2").textContent =
+          tagline;
+
+      }
+
+      /* =====================================
+         SAVE STATE
+      ====================================== */
+
+      function setSaveState(text) {
+
+        const el =
+          $("#saveState");
+
+        if (el) {
+          el.textContent =
+            text;
+        }
+
+      }
+
+      /* =====================================
+         SAVE
+      ====================================== */
+
+      function saveSettings() {
+
+        const next =
+          readForm();
+
+        try {
+
+          if (
+            window.WDStore &&
+            typeof WDStore.saveSettings ===
+              "function"
+          ) {
+
+            WDStore.saveSettings(
+              next
+            );
+
+          } else {
+
+            localStorage.setItem(
+              "websiteDealsSettings",
+              JSON.stringify(next)
+            );
+
+          }
+
+          settings =
+            next;
+
+          setSaveState(
+            "Saved successfully"
+          );
+
+          toast(
+            "Homepage settings saved."
+          );
+
+          updatePreview();
+
+        } catch (error) {
+
+          console.error(
+            "Settings save error:",
+            error
+          );
+
+          setSaveState(
+            "Save failed"
+          );
+
+          toast(
+            "Could not save homepage settings."
+          );
+
+        }
+
+      }
+
+      /* =====================================
+         RESET
+      ====================================== */
+
+      function resetSettings() {
+
+        const confirmed =
+          window.confirm(
+            "Reset homepage settings to the Website Deals defaults?"
+          );
+
+        if (!confirmed) {
+          return;
+        }
+
+        const defaults =
+          cloneDefaults();
+
+        try {
+
+          if (
+            window.WDStore &&
+            typeof WDStore.saveSettings ===
+              "function"
+          ) {
+
+            WDStore.saveSettings(
+              defaults
+            );
+
+          } else {
+
+            localStorage.setItem(
+              "websiteDealsSettings",
+              JSON.stringify(defaults)
+            );
+
+          }
+
+          settings =
+            defaults;
+
+          loadForm();
+
+          setSaveState(
+            "Defaults restored"
+          );
+
+          toast(
+            "Homepage settings reset."
+          );
+
+        } catch (error) {
+
+          console.error(
+            "Reset error:",
+            error
+          );
+
+          toast(
+            "Could not reset settings."
+          );
+
+        }
+
+      }
+
+      /* =====================================
+         INPUT CHANGE
+      ====================================== */
+
+      [
+        ...textFields,
+        ...selectFields,
+        ...toggleFields
+      ]
+        .forEach(
+          (field) => {
+
+            const el =
+              $("#" + field);
+
+            if (!el) return;
+
+            el.addEventListener(
+              "input",
+              () => {
+
+                updatePreview();
+
+                setSaveState(
+                  "Unsaved changes"
+                );
+
+              }
+            );
+
+            el.addEventListener(
+              "change",
+              () => {
+
+                updatePreview();
+
+                setSaveState(
+                  "Unsaved changes"
+                );
+
+              }
+            );
+
+          }
+        );
+
+      /* =====================================
+         BUTTONS
+      ====================================== */
+
+      $("#saveBtn")?.addEventListener(
+        "click",
+        saveSettings
+      );
+
+      $("#resetBtn")?.addEventListener(
+        "click",
+        resetSettings
+      );
+
+      $("#refreshBtn")?.addEventListener(
+        "click",
+        () => {
+
+          loadForm();
+
+          toast(
+            "Homepage settings reloaded."
+          );
+
+        }
+      );
+
+      /* =====================================
+         MOBILE MENU
+      ====================================== */
+
+      const menuBtn =
+        $("#menuBtn");
+
+      const sidebar =
+        $("#sidebar");
+
+      menuBtn?.addEventListener(
+        "click",
+        () => {
+
+          sidebar.classList.toggle(
+            "open"
+          );
+
+        }
+      );
+
+      document
+        .querySelectorAll(
+          ".sidebar a"
+        )
+        .forEach(
+          (link) => {
+
+            link.addEventListener(
+              "click",
+              () => {
+
+                if (
+                  window.innerWidth <= 820
+                ) {
+
+                  sidebar.classList.remove(
+                    "open"
+                  );
+
+                }
+
+              }
+            );
+
+          }
+        );
+
+      /* =====================================
+         ESCAPE
+      ====================================== */
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            event.key === "Escape"
+          ) {
+
+            sidebar.classList.remove(
+              "open"
+            );
+
+          }
+
+        }
+      );
+
+      /* =====================================
+         LOGOUT
+      ====================================== */
+
+      $("#logoutBtn")?.addEventListener(
+        "click",
+        () => {
+
+          const confirmed =
+            window.confirm(
+              "Logout from Website Deals Admin?"
+            );
+
+          if (!confirmed) {
+            return;
+          }
+
+          sessionStorage.removeItem(
+            AUTH_KEY
+          );
+
+          window.location.replace(
+            "./login.html"
+          );
+
+        }
+      );
+
+      /* =====================================
+         STORE LISTENER
+      ====================================== */
+
+      if (
+        window.WDStore &&
+        typeof WDStore.onSettingsChange ===
+          "function"
+      ) {
+
+        WDStore.onSettingsChange(
+          () => {
+
+            settings =
+              getSettings();
+
+            loadForm();
+
+          }
+        );
+
+      }
+
+      /* =====================================
+         INITIALIZE
+      ====================================== */
+
+      loadForm();
+
+    })();
+  </script>
+
+</body>
+</html>
