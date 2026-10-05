@@ -183,16 +183,32 @@ footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 </div></div>
 <a class="wa" id="waf" href="#" target="_blank" rel="noopener" data-order="a website">💬 WhatsApp</a>
 
+<script src="./shared/store.js"></script>
 <script>
 (function(){
   var NUMBER="8801705633700";
 
   /* ---- EDIT HERE: add your real websites. url = live link ---- */
-  var SITES=[
+  var FALLBACK=[
     {name:"Business Starter",cat:"Business",price:"৳999",url:"",desc:"Home, services, about and contact pages."},
     {name:"Coaching & Institute",cat:"Education",price:"৳2,499",url:"",desc:"Courses, admission form and notice board."},
     {name:"Online Shop",cat:"Shop",price:"৳2,999",url:"",desc:"Product catalogue with WhatsApp ordering."}
   ];
+
+  var SITES=FALLBACK;
+  function loadSites(){
+    try{
+      if(window.WDStore&&typeof WDStore.active==="function"){
+        var list=WDStore.active()||[];
+        if(list.length){
+          SITES=list.map(function(w){return{name:w.name,cat:w.packageLabel||"Website",price:"",url:w.url||"",desc:w.note||"Live website preview. Open it to see the real design."}});
+          return;
+        }
+      }
+    }catch(e){}
+    SITES=FALLBACK;
+  }
+  loadSites();
 
   /* ---- EDIT HERE: prayer times (24h) ---- */
   var PRAYERS=[["Fajr","04:45","🌙"],["Dhuhr","12:05","☀️"],["Asr","16:15","🌤"],["Maghrib","18:00","🌇"],["Isha","19:20","🌙"]];
@@ -215,11 +231,18 @@ footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
   salah();setInterval(salah,60000);
 
   /* website cards */
-  var g=$("grid"),html="";
-  SITES.forEach(function(s,i){
-    html+='<article class="card"><div class="th c'+(i%3)+'">'+s.cat+'</div><div class="b"><h3>'+s.name+'</h3><p>'+s.desc+'</p><div class="price">'+s.price+' <small>one-time</small></div><div class="row"><button class="btn" data-prev="'+i+'">Live preview</button><a class="btn lime" data-order="'+s.name+' ('+s.price+')" href="#">Order</a></div></div></article>';
-  });
-  g.innerHTML=html;
+  var g=$("grid");
+  function renderCards(){
+    var html="";
+    SITES.forEach(function(s,i){
+      var priceHTML=s.price?'<div class="price">'+s.price+' <small>one-time</small></div>':'';
+      var orderName=s.name+(s.price?' ('+s.price+')':'');
+      html+='<article class="card"><div class="th c'+(i%3)+'">'+s.cat+'</div><div class="b"><h3>'+s.name+'</h3><p>'+s.desc+'</p>'+priceHTML+'<div class="row"><button class="btn" data-prev="'+i+'">Live preview</button><a class="btn lime" data-order="'+orderName+'" href="#">Order</a></div></div></article>';
+    });
+    g.innerHTML=html;
+    g.querySelectorAll("[data-order]").forEach(function(a){a.href=wa(a.getAttribute("data-order"));a.target="_blank";a.rel="noopener"});
+  }
+  renderCards();
 
   function emptyHTML(t){return '<div class="empty"><span class="logo">WD</span><h3>Live Preview</h3><p>'+t+'</p></div>'}
 
@@ -245,6 +268,8 @@ footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
   /* first showcase site with a link loads in the laptop */
   for(var k=0;k<SITES.length;k++){if(SITES[k].url){show(k,"hero");break}}
+
+  try{if(window.WDStore&&WDStore.onChange){WDStore.onChange(function(){loadSites();renderCards();for(var k=0;k<SITES.length;k++){if(SITES[k].url){show(k,"hero");break}}})}}catch(e){}
 
   /* whatsapp links */
   document.querySelectorAll("[data-order]").forEach(function(a){a.href=wa(a.getAttribute("data-order"));a.target="_blank";a.rel="noopener"});
