@@ -10,111 +10,128 @@
 
   <meta
     name="theme-color"
-    content="#f7f8f5"
+    content="#f6f7f2"
   >
 
   <meta
     name="description"
-    content="Website Deals — Premium ready-made websites, live website previews and monthly website packages."
+    content="Website Deals — Premium ready-made websites, monthly website packages and live website presentation."
   >
 
-  <title>Website Deals | Premium Ready-Made Websites</title>
+  <meta
+    name="keywords"
+    content="Website Deals, ready made website, website package Bangladesh, website subscription, business website, ecommerce website"
+  >
+
+  <meta name="author" content="Website Deals">
+
+  <link rel="manifest" href="./manifest.json">
+
+  <link
+    rel="icon"
+    href="./favicon.svg"
+    type="image/svg+xml"
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <title>Website Deals | Premium Ready-Made Websites</title>
+
   <style>
-    /* =========================================================
-       WEBSITE DEALS
-       package/index.html
-       Ultra Premium V3
-       ========================================================= */
-
     :root{
-      --bg:#f7f8f5;
-      --bg-soft:#eef1eb;
+      --bg:#f6f7f2;
+      --bg-2:#eef0e9;
       --surface:#ffffff;
-      --surface-2:#f5f6f2;
-
-      --text:#111512;
-      --muted:#6d746e;
-
-      --line:rgba(17,21,18,.10);
-      --line-strong:rgba(17,21,18,.16);
+      --surface-2:#fafbf8;
+      --ink:#0c100d;
+      --muted:#687069;
+      --line:rgba(12,16,13,.10);
+      --line-strong:rgba(12,16,13,.16);
 
       --accent:#b7ff00;
-      --accent-dark:#7fb800;
+      --accent-2:#8ee600;
+      --accent-soft:rgba(183,255,0,.15);
 
-      --black:#090b0a;
-      --black-2:#111412;
+      --dark:#0b0f0c;
+      --dark-2:#131814;
 
-      --success:#16a34a;
-      --danger:#ef4444;
+      --success:#159447;
+      --warning:#e8a100;
+      --danger:#dc4747;
 
-      --shadow-sm:0 10px 30px rgba(16,24,20,.07);
-      --shadow-md:0 24px 70px rgba(16,24,20,.11);
-      --shadow-lg:0 40px 110px rgba(16,24,20,.16);
+      --shadow-sm:
+        0 10px 30px rgba(12,16,13,.06);
+
+      --shadow:
+        0 25px 80px rgba(12,16,13,.10);
+
+      --shadow-lg:
+        0 40px 120px rgba(12,16,13,.16);
 
       --radius-sm:14px;
-      --radius-md:22px;
-      --radius-lg:30px;
-      --radius-xl:38px;
+      --radius:24px;
+      --radius-lg:34px;
 
-      --container:1240px;
+      --container:1320px;
 
-      --ease:cubic-bezier(.22,1,.36,1);
+      --header-h:82px;
     }
 
     *{
+      box-sizing:border-box;
       margin:0;
       padding:0;
-      box-sizing:border-box;
     }
 
     html{
       scroll-behavior:smooth;
+      scroll-padding-top:120px;
     }
 
     body{
       min-height:100vh;
-      overflow-x:hidden;
-
       background:
         radial-gradient(
-          circle at 15% 10%,
-          rgba(183,255,0,.13),
-          transparent 25%
+          circle at 8% 10%,
+          rgba(183,255,0,.10),
+          transparent 28%
         ),
         radial-gradient(
-          circle at 85% 25%,
-          rgba(0,0,0,.035),
-          transparent 25%
+          circle at 92% 18%,
+          rgba(183,255,0,.08),
+          transparent 24%
         ),
         var(--bg);
 
-      color:var(--text);
-
-      font-family:"Inter","Hind Siliguri",sans-serif;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
+      color:var(--ink);
+      font-family:"Inter",sans-serif;
+      overflow-x:hidden;
+      line-height:1.6;
     }
 
-    body,
-    button,
-    input,
-    textarea,
-    select{
-      font-family:"Inter","Hind Siliguri",sans-serif;
+    body.menu-open{
+      overflow:hidden;
     }
 
     a{
       color:inherit;
       text-decoration:none;
+    }
+
+    button,
+    input{
+      font:inherit;
     }
 
     button{
@@ -127,276 +144,187 @@
       display:block;
     }
 
+    ::selection{
+      background:var(--accent);
+      color:#000;
+    }
+
     .container{
       width:min(
-        calc(100% - 36px),
+        calc(100% - 40px),
         var(--container)
       );
       margin-inline:auto;
     }
 
     .section{
-      padding:110px 0;
+      padding:120px 0;
       position:relative;
     }
 
     .section-head{
-      max-width:760px;
-      margin-bottom:46px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:40px;
+      margin-bottom:55px;
     }
 
-    .eyebrow{
+    .section-kicker{
       display:inline-flex;
       align-items:center;
       gap:9px;
-
-      padding:8px 12px;
-
-      border:1px solid var(--line-strong);
-      border-radius:999px;
-
-      background:rgba(255,255,255,.72);
-
-      color:#4f5751;
-
       font-size:11px;
       font-weight:800;
-      letter-spacing:.14em;
+      letter-spacing:.18em;
       text-transform:uppercase;
-
-      box-shadow:var(--shadow-sm);
+      color:#4d554f;
+      margin-bottom:15px;
     }
 
-    .eyebrow-dot{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:var(--accent-dark);
-
-      box-shadow:
-        0 0 0 5px rgba(127,184,0,.10);
+    .section-kicker::before{
+      content:"";
+      width:28px;
+      height:2px;
+      background:var(--accent-2);
+      border-radius:20px;
     }
 
     .section-title{
-      margin-top:18px;
-
-      font-size:
-        clamp(
-          36px,
-          5vw,
-          64px
-        );
-
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(
+        38px,
+        5vw,
+        70px
+      );
       line-height:.98;
       letter-spacing:-.055em;
-      font-weight:800;
+      max-width:780px;
     }
 
-    .section-copy{
-      margin-top:18px;
-
+    .section-description{
+      max-width:570px;
       color:var(--muted);
-
       font-size:16px;
-      line-height:1.75;
-      max-width:680px;
+      line-height:1.8;
     }
 
     /* =========================================================
-       TOP SALAT LIVE BAR
-       ========================================================= */
+       HEADER
+    ========================================================= */
 
-    .salat-live-bar{
-      position:sticky;
-      top:0;
+    .site-header{
+      position:fixed;
       z-index:1000;
-
-      border-bottom:1px solid rgba(17,21,18,.08);
-
-      background:
-        rgba(255,255,255,.88);
-
-      backdrop-filter:
-        blur(22px)
-        saturate(150%);
-
-      -webkit-backdrop-filter:
-        blur(22px)
-        saturate(150%);
+      top:18px;
+      left:0;
+      right:0;
+      pointer-events:none;
     }
 
-    .salat-inner{
-      min-height:46px;
+    .nav-shell{
+      width:min(
+        calc(100% - 28px),
+        1220px
+      );
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
+      margin-inline:auto;
 
-      overflow:hidden;
-    }
-
-    .salat-live-label{
-      flex:0 0 auto;
-
-      display:flex;
-      align-items:center;
-      gap:8px;
-
-      color:#1c241e;
-
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-    }
-
-    .live-dot{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-
-      background:#18a957;
-
-      box-shadow:
-        0 0 0 5px rgba(24,169,87,.10);
-    }
-
-    .prayer-strip{
-      display:flex;
-      align-items:center;
-      gap:7px;
-
-      min-width:0;
-
-      overflow-x:auto;
-      scrollbar-width:none;
-    }
-
-    .prayer-strip::-webkit-scrollbar{
-      display:none;
-    }
-
-    .prayer-pill{
-      flex:0 0 auto;
-
-      display:flex;
-      align-items:center;
-      gap:7px;
-
-      padding:6px 10px;
-
-      border:1px solid var(--line);
-      border-radius:999px;
-
-      background:#fff;
-
-      font-size:11px;
-      white-space:nowrap;
-    }
-
-    .prayer-pill strong{
-      font-weight:800;
-    }
-
-    .prayer-pill span{
-      color:var(--muted);
-    }
-
-    /* =========================================================
-       NAVBAR
-       ========================================================= */
-
-    .navbar{
-      position:sticky;
-      top:46px;
-      z-index:950;
-
-      border-bottom:1px solid rgba(17,21,18,.07);
-
-      background:
-        rgba(247,248,245,.82);
-
-      backdrop-filter:
-        blur(22px)
-        saturate(140%);
-
-      -webkit-backdrop-filter:
-        blur(22px)
-        saturate(140%);
-    }
-
-    .nav-inner{
-      min-height:76px;
+      min-height:68px;
 
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:20px;
+
+      padding:8px 10px 8px 18px;
+
+      border:1px solid rgba(255,255,255,.72);
+
+      background:
+        rgba(255,255,255,.78);
+
+      backdrop-filter:
+        blur(24px)
+        saturate(180%);
+
+      -webkit-backdrop-filter:
+        blur(24px)
+        saturate(180%);
+
+      box-shadow:
+        0 20px 60px rgba(10,15,10,.10);
+
+      border-radius:999px;
+
+      pointer-events:auto;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
-
-      min-width:0;
+      gap:11px;
+      min-width:max-content;
     }
 
     .brand-mark{
-      width:38px;
-      height:38px;
+      width:42px;
+      height:42px;
 
       display:grid;
       place-items:center;
 
-      border-radius:12px;
+      border-radius:14px;
 
-      background:var(--black);
+      background:#0b100c;
       color:var(--accent);
 
-      font-size:15px;
-      font-weight:900;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:14px;
+      font-weight:800;
 
       box-shadow:
-        0 8px 24px rgba(0,0,0,.15);
+        inset 0 0 0 1px rgba(255,255,255,.08),
+        0 8px 20px rgba(0,0,0,.12);
     }
 
-    .brand-text{
-      min-width:0;
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
     }
 
     .brand-name{
-      font-size:14px;
-      font-weight:900;
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:800;
+      font-size:15px;
       letter-spacing:-.02em;
     }
 
     .brand-sub{
-      margin-top:2px;
-
-      color:var(--muted);
-
+      color:#7b827d;
       font-size:9px;
       font-weight:700;
-      letter-spacing:.10em;
+      letter-spacing:.14em;
       text-transform:uppercase;
+      margin-top:4px;
     }
 
-    .nav-links{
+    .main-nav{
       display:flex;
       align-items:center;
-      gap:5px;
+      justify-content:center;
+      gap:4px;
     }
 
     .nav-link{
       position:relative;
 
-      padding:10px 13px;
-
-      color:#515852;
+      padding:10px 15px;
 
       border-radius:999px;
+
+      color:#667069;
 
       font-size:12px;
       font-weight:700;
@@ -408,366 +336,503 @@
 
     .nav-link:hover,
     .nav-link.active{
-      color:var(--text);
-      background:#fff;
+      color:var(--ink);
+      background:#eef0ea;
     }
 
     .nav-link.active::after{
       content:"";
 
       position:absolute;
-      left:50%;
-      bottom:4px;
 
       width:4px;
       height:4px;
 
+      background:var(--accent-2);
+
       border-radius:50%;
 
-      transform:translateX(-50%);
+      left:50%;
+      bottom:5px;
 
-      background:var(--accent-dark);
+      transform:translateX(-50%);
     }
 
-    .nav-cta{
-      display:inline-flex;
+    .nav-live{
+      display:flex;
       align-items:center;
-      gap:8px;
+      gap:7px;
 
-      padding:12px 16px;
+      padding:10px 15px;
 
       border-radius:999px;
 
-      background:var(--black);
+      background:#0b100c;
       color:#fff;
 
-      font-size:11px;
+      font-size:10px;
       font-weight:800;
 
-      box-shadow:
-        0 10px 28px rgba(0,0,0,.14);
-
-      transition:
-        transform .25s var(--ease),
-        box-shadow .25s ease;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
-    .nav-cta:hover{
-      transform:translateY(-2px);
+    .nav-live-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 5px rgba(183,255,0,.12);
+      animation:pulse 2s infinite;
+    }
 
-      box-shadow:
-        0 16px 34px rgba(0,0,0,.18);
+    @keyframes pulse{
+      0%,100%{
+        box-shadow:0 0 0 4px rgba(183,255,0,.10);
+      }
+      50%{
+        box-shadow:0 0 0 8px rgba(183,255,0,.02);
+      }
     }
 
     .mobile-toggle{
       display:none;
 
-      width:42px;
-      height:42px;
+      width:44px;
+      height:44px;
 
-      border-radius:13px;
+      border-radius:50%;
 
-      background:#fff;
-      border:1px solid var(--line);
+      background:#0b100c;
+      color:#fff;
 
-      font-size:18px;
+      font-size:16px;
     }
 
     /* =========================================================
        HERO
-       ========================================================= */
+    ========================================================= */
 
     .hero{
-      min-height:
-        calc(100vh - 122px);
+      min-height:100vh;
+      padding-top:160px;
+      padding-bottom:70px;
 
       display:flex;
       align-items:center;
-
-      padding:
-        80px 0
-        90px;
 
       position:relative;
       overflow:hidden;
     }
 
-    .hero::before{
-      content:"";
-
+    .hero-grid{
       position:absolute;
-      width:700px;
-      height:700px;
+      inset:0;
 
-      top:-300px;
-      right:-250px;
+      opacity:.42;
 
-      border-radius:50%;
+      background-image:
+        linear-gradient(
+          rgba(12,16,13,.045) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(12,16,13,.045) 1px,
+          transparent 1px
+        );
 
-      background:
-        radial-gradient(
-          circle,
-          rgba(183,255,0,.18),
-          transparent 68%
+      background-size:58px 58px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          #000,
+          transparent 78%
         );
 
       pointer-events:none;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:
-        minmax(0, .92fr)
-        minmax(0, 1.08fr);
-
-      gap:70px;
-      align-items:center;
+    .hero-orb{
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+      filter:blur(2px);
     }
 
-    .hero-copy{
+    .hero-orb.one{
+      width:420px;
+      height:420px;
+
+      right:-120px;
+      top:110px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.22),
+          rgba(183,255,0,0) 70%
+        );
+    }
+
+    .hero-orb.two{
+      width:330px;
+      height:330px;
+
+      left:-170px;
+      bottom:80px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.13),
+          rgba(183,255,0,0) 70%
+        );
+    }
+
+    .hero-layout{
       position:relative;
       z-index:2;
+
+      display:grid;
+      grid-template-columns:
+        minmax(0,.9fr)
+        minmax(0,1.1fr);
+
+      align-items:center;
+
+      gap:70px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:3;
+    }
+
+    .hero-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+
+      padding:8px 12px;
+
+      border-radius:999px;
+
+      border:1px solid var(--line);
+
+      background:
+        rgba(255,255,255,.72);
+
+      color:#4e5751;
+
+      font-size:10px;
+      font-weight:800;
+
+      letter-spacing:.15em;
+      text-transform:uppercase;
+
+      box-shadow:
+        0 10px 30px rgba(12,16,13,.04);
+
+      margin-bottom:25px;
+    }
+
+    .hero-eyebrow i{
+      color:#75b900;
+      font-size:9px;
     }
 
     .hero-title{
-      margin-top:22px;
-
-      max-width:700px;
+      font-family:"Space Grotesk",sans-serif;
 
       font-size:
         clamp(
-          46px,
-          7vw,
-          86px
+          54px,
+          6.4vw,
+          96px
         );
 
       line-height:.91;
 
       letter-spacing:-.065em;
 
-      font-weight:900;
+      max-width:760px;
+
+      margin-bottom:28px;
     }
 
-    .hero-title .accent{
-      position:relative;
-      display:inline-block;
+    .hero-title span{
+      color:#6f9d16;
     }
 
-    .hero-title .accent::after{
-      content:"";
-
-      position:absolute;
-
-      left:4px;
-      right:4px;
-      bottom:1px;
-
-      height:9px;
-
-      border-radius:999px;
-
-      background:var(--accent);
-
-      z-index:-1;
-      transform:rotate(-1deg);
-    }
-
-    .hero-copy-text{
+    .hero-description{
       max-width:620px;
 
-      margin-top:25px;
+      color:#667069;
 
-      color:var(--muted);
+      font-size:17px;
 
-      font-size:
-        clamp(15px,1.5vw,18px);
+      line-height:1.85;
 
-      line-height:1.75;
+      margin-bottom:34px;
     }
 
     .hero-actions{
       display:flex;
+      align-items:center;
       flex-wrap:wrap;
       gap:12px;
 
-      margin-top:32px;
+      margin-bottom:38px;
     }
 
     .btn{
+      min-height:52px;
+
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:9px;
+      gap:10px;
 
-      min-height:48px;
+      padding:0 20px;
 
-      padding:0 19px;
-
-      border-radius:15px;
+      border-radius:999px;
 
       font-size:12px;
       font-weight:800;
 
       transition:
-        transform .25s var(--ease),
+        transform .25s ease,
         box-shadow .25s ease,
         background .25s ease;
     }
 
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
     .btn-primary{
-      background:var(--black);
+      background:#0b100c;
       color:#fff;
 
       box-shadow:
-        0 14px 32px rgba(0,0,0,.15);
+        0 14px 35px rgba(0,0,0,.15);
     }
 
     .btn-primary:hover{
-      transform:translateY(-3px);
       box-shadow:
-        0 20px 40px rgba(0,0,0,.20);
+        0 20px 45px rgba(0,0,0,.20);
     }
 
     .btn-secondary{
-      background:#fff;
-      color:var(--text);
-
-      border:1px solid var(--line-strong);
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--line);
+      color:#202620;
     }
 
-    .btn-secondary:hover{
-      transform:translateY(-3px);
-      box-shadow:var(--shadow-sm);
+    .btn-accent{
+      background:var(--accent);
+      color:#071000;
+
+      box-shadow:
+        0 14px 35px rgba(130,180,0,.18);
     }
 
-    .hero-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-
-      margin-top:30px;
-    }
-
-    .hero-meta-item{
+    .hero-proof{
       display:flex;
       align-items:center;
-      gap:7px;
+      flex-wrap:wrap;
+      gap:24px;
+    }
 
-      color:#69716b;
+    .proof-item{
+      display:flex;
+      align-items:center;
+      gap:9px;
 
-      font-size:10px;
+      color:#6d756f;
+
+      font-size:11px;
       font-weight:700;
     }
 
-    .hero-meta-item::before{
-      content:"✓";
+    .proof-item i{
+      width:26px;
+      height:26px;
 
       display:grid;
       place-items:center;
 
-      width:19px;
-      height:19px;
-
       border-radius:50%;
 
-      background:rgba(183,255,0,.55);
-
-      color:#18200e;
+      background:#edf4dd;
+      color:#5b8300;
 
       font-size:10px;
-      font-weight:900;
     }
 
     /* =========================================================
-       LAPTOP
-       ========================================================= */
+       HERO LAPTOP
+    ========================================================= */
 
-    .hero-device{
+    .hero-visual{
       position:relative;
+      min-height:620px;
 
-      width:100%;
-      max-width:700px;
-
-      margin-left:auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .laptop{
       position:relative;
 
-      width:100%;
+      width:min(720px,100%);
+
+      transform:
+        perspective(1800px)
+        rotateY(-7deg)
+        rotateX(2deg);
 
       filter:
         drop-shadow(
-          0 35px 55px rgba(0,0,0,.16)
+          0 45px 55px rgba(12,16,13,.16)
         );
+
+      transition:
+        transform .6s ease;
+    }
+
+    .laptop:hover{
+      transform:
+        perspective(1800px)
+        rotateY(-2deg)
+        rotateX(1deg)
+        translateY(-5px);
     }
 
     .laptop-screen{
       position:relative;
 
-      width:88%;
+      aspect-ratio:16 / 10;
 
-      margin:0 auto;
-
-      padding:10px;
+      padding:12px;
 
       border-radius:
-        22px 22px 10px 10px;
+        24px 24px 11px 11px;
 
       background:
         linear-gradient(
           145deg,
-          #e9ece8,
-          #aeb4af
+          #f8faf7,
+          #d8ddd7
         );
 
+      border:
+        1px solid rgba(0,0,0,.13);
+
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.85);
+        inset 0 0 0 1px rgba(255,255,255,.8);
     }
 
     .screen-bezel{
-      position:relative;
-
-      aspect-ratio:16/10;
+      width:100%;
+      height:100%;
 
       overflow:hidden;
 
-      border-radius:14px;
+      border-radius:15px;
 
-      background:#111;
+      background:#101410;
 
-      border:
-        5px solid #111;
+      position:relative;
     }
 
     .camera-dot{
       position:absolute;
 
-      top:5px;
+      top:7px;
       left:50%;
 
-      width:4px;
-      height:4px;
-
-      transform:translateX(-50%);
+      width:5px;
+      height:5px;
 
       border-radius:50%;
 
-      background:#666;
+      transform:translateX(-50%);
 
+      background:#111;
+
+      z-index:10;
+    }
+
+    .browser-bar{
+      height:34px;
+
+      display:flex;
+      align-items:center;
+      gap:8px;
+
+      padding:0 12px;
+
+      background:#f2f4f0;
+
+      border-bottom:1px solid #dfe3dc;
+
+      position:relative;
       z-index:20;
     }
 
-    .hero-preview{
+    .browser-dots{
+      display:flex;
+      gap:5px;
+    }
+
+    .browser-dot{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#c7ccc5;
+    }
+
+    .browser-address{
+      flex:1;
+
+      height:20px;
+
+      display:flex;
+      align-items:center;
+
+      padding:0 9px;
+
+      border-radius:6px;
+
+      background:#e7ebe5;
+
+      color:#838a84;
+
+      font-size:7px;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .hero-site-viewport{
       position:absolute;
-      inset:0;
+
+      left:0;
+      right:0;
+      top:34px;
+      bottom:0;
 
       overflow:hidden;
 
       background:#fff;
     }
 
-    .hero-preview-camera{
+    .hero-site-camera{
       position:absolute;
 
       left:0;
@@ -775,444 +840,444 @@
 
       width:100%;
 
-      transform:
-        translate3d(
-          0,
-          0,
-          0
-        );
-
       will-change:transform;
     }
 
-    .hero-preview iframe{
+    .hero-site-camera iframe{
       display:block;
 
       width:100%;
-
-      height:1800px;
+      height:7600px;
 
       border:0;
 
       background:#fff;
+    }
+
+    .iframe-fallback{
+      position:absolute;
+
+      inset:20px;
+
+      z-index:30;
+
+      display:none;
+
+      align-items:center;
+      justify-content:center;
+
+      text-align:center;
+
+      padding:25px;
+
+      border-radius:18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.97),
+          rgba(246,248,243,.97)
+        );
+
+      border:1px solid var(--line);
+
+      box-shadow:var(--shadow);
 
       pointer-events:none;
     }
 
-    .preview-shade{
-      position:absolute;
-      inset:0;
+    .iframe-fallback.show{
+      display:flex;
+    }
 
-      pointer-events:none;
+    .fallback-inner{
+      max-width:330px;
+    }
 
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.08),
-          transparent 15%,
-          transparent 85%,
-          rgba(0,0,0,.04)
-        );
+    .fallback-icon{
+      width:54px;
+      height:54px;
 
-      z-index:10;
+      display:grid;
+      place-items:center;
+
+      margin:0 auto 15px;
+
+      border-radius:18px;
+
+      background:#eaf4d8;
+      color:#6e9b00;
+    }
+
+    .fallback-inner h4{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:17px;
+      margin-bottom:7px;
+    }
+
+    .fallback-inner p{
+      color:#737b75;
+      font-size:11px;
+      line-height:1.6;
     }
 
     .laptop-base{
-      position:relative;
+      width:112%;
 
-      width:100%;
-      height:18px;
+      height:19px;
 
-      margin-top:-1px;
+      margin-left:-6%;
+
+      margin-top:-2px;
 
       border-radius:
-        4px 4px 15px 15px;
+        0 0 22px 22px;
 
       background:
         linear-gradient(
-          180deg,
-          #cdd2ce,
-          #919791
+          to bottom,
+          #d6dbd5,
+          #aeb5ae
         );
 
+      border:
+        1px solid rgba(0,0,0,.13);
+
       box-shadow:
-        inset 0 1px rgba(255,255,255,.75);
+        inset 0 2px 0 rgba(255,255,255,.75);
     }
 
     .laptop-base::after{
       content:"";
 
-      position:absolute;
+      display:block;
 
-      left:50%;
-      top:2px;
+      width:18%;
 
-      width:20%;
+      height:5px;
 
-      height:4px;
+      margin:0 auto;
 
-      transform:translateX(-50%);
+      background:#9da59e;
 
-      border-radius:
-        0 0 8px 8px;
-
-      background:#777d78;
+      border-radius:0 0 8px 8px;
     }
 
-    .hero-device-label{
+    .hero-live-card{
       position:absolute;
 
-      left:-15px;
-      bottom:22px;
+      left:10px;
+      bottom:55px;
 
+      width:225px;
+
+      padding:15px;
+
+      border-radius:19px;
+
+      background:
+        rgba(255,255,255,.88);
+
+      border:1px solid rgba(255,255,255,.85);
+
+      backdrop-filter:blur(20px);
+
+      box-shadow:
+        0 25px 60px rgba(12,16,13,.14);
+
+      z-index:30;
+    }
+
+    .live-card-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+
+      margin-bottom:10px;
+    }
+
+    .live-status{
+      display:flex;
+      align-items:center;
+      gap:6px;
+
+      color:#4b554e;
+
+      font-size:9px;
+      font-weight:800;
+
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .live-status i{
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#24a857;
+    }
+
+    .live-package{
+      font-size:9px;
+      font-weight:800;
+      color:#739900;
+    }
+
+    .hero-site-name{
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:700;
+      font-size:14px;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .hero-site-url{
+      color:#858c86;
+      font-size:9px;
+
+      margin-top:4px;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .hero-mini-stack{
+      position:absolute;
+
+      right:-10px;
+      top:85px;
+
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+
+      z-index:40;
+    }
+
+    .mini-card{
       display:flex;
       align-items:center;
       gap:9px;
 
-      padding:11px 14px;
+      padding:9px 11px;
 
-      border:
-        1px solid rgba(17,21,18,.09);
-
-      border-radius:14px;
+      border-radius:13px;
 
       background:
-        rgba(255,255,255,.90);
+        rgba(255,255,255,.88);
 
-      backdrop-filter:blur(16px);
-
-      box-shadow:var(--shadow-md);
-
-      font-size:10px;
-      font-weight:800;
-
-      z-index:30;
-    }
-
-    .hero-device-label span{
-      display:block;
-
-      width:8px;
-      height:8px;
-
-      border-radius:50%;
-
-      background:#18a957;
+      border:1px solid rgba(255,255,255,.9);
 
       box-shadow:
-        0 0 0 5px rgba(24,169,87,.10);
-    }
+        0 15px 35px rgba(12,16,13,.10);
 
-    .hero-floating{
-      position:absolute;
+      backdrop-filter:blur(18px);
 
-      top:10%;
-      right:-22px;
-
-      padding:12px 14px;
-
-      border-radius:15px;
-
-      background:#111;
-      color:#fff;
-
-      box-shadow:var(--shadow-lg);
-
-      font-size:10px;
+      font-size:9px;
       font-weight:800;
 
-      z-index:30;
-
-      animation:
-        floatCard 4s ease-in-out infinite;
+      color:#4f5751;
     }
 
-    @keyframes floatCard{
-      0%,100%{
-        transform:translateY(0);
-      }
-      50%{
-        transform:translateY(-8px);
-      }
+    .mini-card i{
+      width:24px;
+      height:24px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:8px;
+
+      background:#eef5df;
+      color:#719900;
     }
 
     /* =========================================================
-       WEBSITE SHOWCASE
-       ========================================================= */
+       TRUST STRIP
+    ========================================================= */
 
-    .websites-section{
-      padding-top:90px;
-    }
-
-    .website-grid{
-      display:grid;
-
-      grid-template-columns:
-        repeat(3,minmax(0,1fr));
-
-      gap:22px;
-    }
-
-    .website-card{
+    .trust-strip{
       position:relative;
-
-      overflow:hidden;
-
-      border:
-        1px solid var(--line);
-
-      border-radius:28px;
-
-      background:#fff;
-
-      box-shadow:var(--shadow-sm);
-
-      transition:
-        transform .35s var(--ease),
-        box-shadow .35s ease;
-    }
-
-    .website-card:hover{
-      transform:translateY(-8px);
-
-      box-shadow:var(--shadow-md);
-    }
-
-    .website-card-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:15px;
-
-      padding:20px 20px 15px;
-    }
-
-    .website-name{
-      font-size:15px;
-      font-weight:900;
-      letter-spacing:-.025em;
-    }
-
-    .website-package{
-      margin-top:5px;
-
-      color:var(--muted);
-
-      font-size:10px;
-      font-weight:700;
-    }
-
-    .live-badge{
-      flex:0 0 auto;
-
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-
-      padding:6px 9px;
-
-      border-radius:999px;
-
-      background:#effbf3;
-      color:#138a46;
-
-      font-size:9px;
-      font-weight:900;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-    }
-
-    .live-badge::before{
-      content:"";
-
-      width:6px;
-      height:6px;
-
-      border-radius:50%;
-
-      background:#18a957;
-    }
-
-    .preview-shell{
-      margin:
-        0 12px;
-
-      padding:7px;
-
-      border-radius:19px;
-
-      background:#edf0eb;
-
-      border:1px solid rgba(17,21,18,.07);
-    }
-
-    .preview-viewport{
-      position:relative;
-
-      height:360px;
-
-      overflow:hidden;
-
-      border-radius:14px;
-
-      background:#fff;
-
-      box-shadow:
-        inset 0 0 0 1px rgba(17,21,18,.07);
-    }
-
-    .preview-camera{
-      position:absolute;
-
-      left:0;
-      top:0;
-
-      width:100%;
-
-      transform:
-        translate3d(
-          0,
-          0,
-          0
-        );
-
-      will-change:transform;
-    }
-
-    .preview-camera iframe{
-      display:block;
-
-      width:100%;
-
-      height:2100px;
-
-      border:0;
-
-      background:#fff;
-
-      pointer-events:none;
-    }
-
-    .preview-gradient{
-      position:absolute;
-      inset:0;
-
-      pointer-events:none;
-
       z-index:5;
 
+      padding:18px 0;
+
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+
       background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.08),
-          transparent 10%,
-          transparent 90%,
-          rgba(0,0,0,.05)
-        );
+        rgba(255,255,255,.48);
     }
 
-    .fake-cursor{
-      position:absolute;
+    .trust-grid{
+      display:grid;
+      grid-template-columns:
+        repeat(4,1fr);
 
-      width:15px;
-      height:15px;
+      gap:1px;
 
-      z-index:12;
-
-      pointer-events:none;
-
-      border-radius:50%;
-
-      background:#fff;
-
-      border:2px solid #111;
-
-      box-shadow:
-        0 3px 12px rgba(0,0,0,.25);
-
-      opacity:.9;
-
-      transition:
-        left 1.1s var(--ease),
-        top 1.1s var(--ease);
+      background:var(--line);
     }
 
-    .website-card-bottom{
-      padding:16px 20px 20px;
+    .trust-item{
+      min-height:82px;
 
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      justify-content:center;
+      gap:13px;
+
+      background:rgba(246,247,242,.78);
+
+      text-align:left;
     }
 
-    .website-status{
-      color:var(--muted);
+    .trust-icon{
+      width:38px;
+      height:38px;
 
-      font-size:10px;
-      font-weight:700;
-    }
-
-    .explore-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-
-      padding:10px 13px;
+      display:grid;
+      place-items:center;
 
       border-radius:12px;
 
-      background:#111;
-      color:#fff;
+      background:#e9f3d7;
+      color:#628900;
 
-      font-size:10px;
+      font-size:12px;
+    }
+
+    .trust-number{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:21px;
       font-weight:800;
-
-      transition:
-        transform .25s var(--ease),
-        background .25s ease;
+      letter-spacing:-.04em;
     }
 
-    .explore-btn:hover{
-      transform:translateY(-2px);
-      background:#252925;
-    }
-
-    .empty-state{
-      grid-column:1/-1;
-
-      padding:55px 25px;
-
-      text-align:center;
-
-      border:1px dashed var(--line-strong);
-      border-radius:25px;
-
-      background:rgba(255,255,255,.55);
-    }
-
-    .empty-state h3{
-      font-size:20px;
-    }
-
-    .empty-state p{
-      margin-top:8px;
-
-      color:var(--muted);
-
-      font-size:13px;
+    .trust-label{
+      color:#7a827c;
+      font-size:9px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.07em;
     }
 
     /* =========================================================
-       PACKAGE
-       ========================================================= */
+       HOW IT WORKS
+    ========================================================= */
 
-    .package-section{
+    .process-section{
+      background:#fff;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:18px;
+    }
+
+    .process-card{
+      position:relative;
+
+      min-height:330px;
+
+      padding:32px;
+
+      border-radius:var(--radius);
+
+      border:1px solid var(--line);
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff,
+          #f7f8f4
+        );
+
+      overflow:hidden;
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .process-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow);
+    }
+
+    .process-number{
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:90px;
+      line-height:.8;
+
+      color:#e8ebe4;
+
+      font-weight:800;
+
+      position:absolute;
+
+      right:20px;
+      top:20px;
+    }
+
+    .process-icon{
+      width:58px;
+      height:58px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:18px;
+
+      background:#0b100c;
+      color:var(--accent);
+
+      margin-bottom:65px;
+
+      position:relative;
+      z-index:2;
+    }
+
+    .process-card h3{
+      position:relative;
+      z-index:2;
+
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:24px;
+      letter-spacing:-.035em;
+
+      margin-bottom:10px;
+    }
+
+    .process-card p{
+      position:relative;
+      z-index:2;
+
+      color:#737b75;
+
+      font-size:13px;
+      line-height:1.8;
+    }
+
+    /* =========================================================
+       PACKAGES
+    ========================================================= */
+
+    .packages-section{
       background:
         linear-gradient(
           180deg,
-          transparent,
-          rgba(17,21,18,.025)
+          #f6f7f2,
+          #edf0e9
         );
     }
 
@@ -1220,430 +1285,840 @@
       display:grid;
 
       grid-template-columns:
-        repeat(3,minmax(0,1fr));
+        repeat(3,1fr);
 
-      gap:22px;
+      align-items:stretch;
+
+      gap:18px;
     }
 
     .package-card{
       position:relative;
 
-      padding:28px;
+      display:flex;
+      flex-direction:column;
 
-      border:
-        1px solid var(--line);
+      min-height:650px;
+
+      padding:32px;
 
       border-radius:30px;
 
       background:#fff;
 
-      box-shadow:var(--shadow-sm);
+      border:1px solid var(--line);
+
+      box-shadow:
+        0 15px 50px rgba(12,16,13,.05);
+
+      overflow:hidden;
 
       transition:
-        transform .35s var(--ease),
+        transform .35s ease,
         box-shadow .35s ease;
     }
 
     .package-card:hover{
-      transform:translateY(-7px);
-      box-shadow:var(--shadow-md);
+      transform:translateY(-8px);
+      box-shadow:var(--shadow);
     }
 
     .package-card.featured{
-      background:#111;
+      background:#0b100c;
       color:#fff;
 
-      border-color:#111;
+      border-color:#0b100c;
 
       box-shadow:
-        0 30px 70px rgba(0,0,0,.20);
+        0 35px 90px rgba(12,16,13,.22);
     }
 
-    .popular-badge{
+    .package-card.premium{
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #f1f6e7
+        );
+    }
+
+    .package-glow{
       position:absolute;
 
-      top:18px;
-      right:18px;
+      width:260px;
+      height:260px;
+
+      right:-120px;
+      top:-100px;
+
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.20),
+          transparent 68%
+        );
+
+      pointer-events:none;
+    }
+
+    .package-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:15px;
+
+      margin-bottom:30px;
+    }
+
+    .package-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
 
       padding:7px 10px;
 
       border-radius:999px;
 
-      background:var(--accent);
-      color:#111;
+      background:#edf1e9;
+
+      color:#5b635d;
 
       font-size:9px;
-      font-weight:900;
-      letter-spacing:.08em;
+      font-weight:800;
+
       text-transform:uppercase;
+      letter-spacing:.08em;
     }
 
-    .package-label{
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.12em;
-      text-transform:uppercase;
+    .featured .package-badge{
+      background:rgba(183,255,0,.12);
+      color:var(--accent);
+    }
+
+    .package-status{
+      color:#879089;
+      font-size:9px;
+      font-weight:700;
     }
 
     .package-name{
-      margin-top:10px;
+      font-family:"Space Grotesk",sans-serif;
 
-      font-size:27px;
-      font-weight:900;
+      font-size:32px;
+      font-weight:700;
 
-      letter-spacing:-.04em;
+      letter-spacing:-.045em;
+
+      margin-bottom:8px;
     }
 
-    .package-price{
+    .package-summary{
+      color:#788078;
+
+      font-size:12px;
+      line-height:1.7;
+
+      min-height:42px;
+    }
+
+    .featured .package-summary{
+      color:#a9b1aa;
+    }
+
+    .price{
       display:flex;
       align-items:flex-end;
-      gap:5px;
+      gap:7px;
 
-      margin-top:24px;
+      margin:28px 0 26px;
     }
 
-    .package-price strong{
-      font-size:42px;
+    .price strong{
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:51px;
       line-height:.9;
 
       letter-spacing:-.06em;
     }
 
-    .package-price span{
-      margin-bottom:3px;
-
-      color:var(--muted);
-
+    .price span{
+      color:#7d857f;
       font-size:11px;
-      font-weight:700;
+      margin-bottom:4px;
     }
 
-    .featured .package-price span{
-      color:#a9b0aa;
+    .featured .price span{
+      color:#9ca59e;
     }
 
-    .package-description{
-      min-height:66px;
+    .package-divider{
+      width:100%;
+      height:1px;
 
-      margin-top:17px;
+      background:var(--line);
 
-      color:var(--muted);
-
-      font-size:12px;
-      line-height:1.7;
+      margin-bottom:24px;
     }
 
-    .featured .package-description{
-      color:#b5bbb6;
+    .featured .package-divider{
+      background:rgba(255,255,255,.11);
     }
 
-    .package-features{
+    .feature-list{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+
+      flex:1;
+
       list-style:none;
 
-      display:grid;
-      gap:11px;
-
-      margin-top:24px;
+      margin-bottom:30px;
     }
 
-    .package-features li{
+    .feature-list li{
       display:flex;
       align-items:flex-start;
-      gap:9px;
+      gap:10px;
+
+      color:#616a64;
 
       font-size:11px;
       line-height:1.5;
     }
 
-    .package-features li::before{
-      content:"✓";
+    .featured .feature-list li{
+      color:#b3bbb5;
+    }
 
-      flex:0 0 auto;
+    .feature-list i{
+      width:18px;
+      height:18px;
+
+      flex:0 0 18px;
 
       display:grid;
       place-items:center;
 
-      width:19px;
-      height:19px;
+      border-radius:50%;
 
-      margin-top:-1px;
+      background:#edf4df;
+      color:#659100;
+
+      font-size:8px;
+
+      margin-top:1px;
+    }
+
+    .featured .feature-list i{
+      background:rgba(183,255,0,.12);
+      color:var(--accent);
+    }
+
+    .package-button{
+      width:100%;
+    }
+
+    /* =========================================================
+       WEBSITE SHOWCASE
+    ========================================================= */
+
+    .showcase-section{
+      background:#fff;
+    }
+
+    .showcase-toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:20px;
+
+      margin-bottom:25px;
+
+      padding:13px 15px;
+
+      border:1px solid var(--line);
+
+      border-radius:16px;
+
+      background:#fafbf8;
+    }
+
+    .showcase-count{
+      display:flex;
+      align-items:center;
+      gap:9px;
+
+      color:#6f7771;
+
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .showcase-count-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#28a45a;
+    }
+
+    .showcase-note{
+      color:#8a918b;
+      font-size:10px;
+    }
+
+    .website-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:22px;
+    }
+
+    .website-card{
+      position:relative;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff,
+          #f6f8f3
+        );
+
+      border:1px solid var(--line);
+
+      border-radius:30px;
+
+      padding:15px;
+
+      overflow:hidden;
+
+      box-shadow:
+        0 15px 50px rgba(12,16,13,.05);
+
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .website-card:hover{
+      transform:translateY(-7px);
+      box-shadow:var(--shadow);
+    }
+
+    .website-card-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:15px;
+
+      padding:9px 8px 16px;
+    }
+
+    .website-meta{
+      min-width:0;
+    }
+
+    .website-package{
+      display:inline-flex;
+
+      padding:5px 8px;
+
+      border-radius:999px;
+
+      background:#eaf3d8;
+
+      color:#668d0a;
+
+      font-size:8px;
+      font-weight:800;
+
+      letter-spacing:.08em;
+      text-transform:uppercase;
+
+      margin-bottom:7px;
+    }
+
+    .website-name{
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:21px;
+      font-weight:700;
+
+      letter-spacing:-.035em;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .website-url{
+      color:#8a918c;
+
+      font-size:9px;
+
+      margin-top:2px;
+
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+
+      max-width:380px;
+    }
+
+    .website-live{
+      flex:0 0 auto;
+
+      display:flex;
+      align-items:center;
+      gap:6px;
+
+      padding:7px 9px;
+
+      border-radius:999px;
+
+      background:#eef6e4;
+
+      color:#5e8600;
+
+      font-size:8px;
+      font-weight:800;
+
+      text-transform:uppercase;
+    }
+
+    .website-live i{
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:#24a857;
+    }
+
+    .website-screen{
+      position:relative;
+
+      width:100%;
+
+      height:440px;
+
+      overflow:hidden;
+
+      border-radius:21px;
+
+      background:#fff;
+
+      border:1px solid rgba(12,16,13,.09);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.7);
+    }
+
+    .website-browser{
+      position:absolute;
+
+      z-index:15;
+
+      left:0;
+      right:0;
+      top:0;
+
+      height:35px;
+
+      display:flex;
+      align-items:center;
+
+      gap:8px;
+
+      padding:0 12px;
+
+      background:
+        rgba(247,249,245,.96);
+
+      border-bottom:1px solid #e2e6df;
+
+      backdrop-filter:blur(10px);
+    }
+
+    .website-browser-dots{
+      display:flex;
+      gap:4px;
+    }
+
+    .website-browser-dots span{
+      width:6px;
+      height:6px;
 
       border-radius:50%;
 
-      background:rgba(183,255,0,.28);
-
-      color:#25320e;
-
-      font-size:9px;
-      font-weight:900;
+      background:#c6ccc4;
     }
 
-    .featured .package-features li::before{
-      background:var(--accent);
+    .website-address{
+      flex:1;
+
+      height:20px;
+
+      display:flex;
+      align-items:center;
+
+      padding:0 9px;
+
+      background:#e9ece7;
+
+      border-radius:6px;
+
+      color:#818981;
+
+      font-size:7px;
+
+      overflow:hidden;
+      white-space:nowrap;
+      text-overflow:ellipsis;
     }
 
-    .package-btn{
+    .site-camera{
+      position:absolute;
+
+      top:35px;
+      left:0;
+
       width:100%;
 
-      margin-top:27px;
+      will-change:transform;
+    }
+
+    .site-camera iframe{
+      display:block;
+
+      width:100%;
+      height:7600px;
+
+      border:0;
+
+      background:#fff;
+    }
+
+    .screen-overlay{
+      position:absolute;
+
+      z-index:25;
+
+      inset:35px 0 0;
+
+      pointer-events:none;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,.04),
+          transparent 15%,
+          transparent 82%,
+          rgba(255,255,255,.04)
+        );
+    }
+
+    .card-fallback{
+      position:absolute;
+
+      z-index:40;
+
+      inset:55px 20px 20px;
+
+      display:none;
+
+      align-items:center;
+      justify-content:center;
+
+      text-align:center;
+
+      pointer-events:none;
+    }
+
+    .card-fallback.show{
+      display:flex;
+    }
+
+    .card-fallback-box{
+      max-width:320px;
+
+      padding:25px;
+
+      border-radius:18px;
+
+      background:
+        rgba(255,255,255,.94);
+
+      border:1px solid var(--line);
+
+      box-shadow:var(--shadow);
+    }
+
+    .card-fallback-box i{
+      width:48px;
+      height:48px;
+
+      display:grid;
+      place-items:center;
+
+      margin:0 auto 12px;
+
+      border-radius:15px;
+
+      background:#edf4df;
+
+      color:#668d08;
+    }
+
+    .card-fallback-box h4{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:16px;
+      margin-bottom:5px;
+    }
+
+    .card-fallback-box p{
+      color:#7d857e;
+      font-size:10px;
+      line-height:1.6;
+    }
+
+    .website-card-foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:15px;
+
+      padding:15px 7px 2px;
+    }
+
+    .website-scroll-info{
+      display:flex;
+      align-items:center;
+      gap:7px;
+
+      color:#838b84;
+
+      font-size:9px;
+      font-weight:700;
+    }
+
+    .website-scroll-info i{
+      color:#6c9700;
+    }
+
+    .website-actions{
+      display:flex;
+      gap:7px;
+    }
+
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+
+      min-height:35px;
+
+      padding:0 12px;
+
+      border-radius:999px;
+
+      font-size:9px;
+      font-weight:800;
+
+      border:1px solid var(--line);
+
+      background:#fff;
+    }
+
+    .mini-btn:hover{
+      background:#f0f3ed;
+    }
+
+    .mini-btn.primary{
+      background:#0b100c;
+      color:#fff;
+
+      border-color:#0b100c;
+    }
+
+    /* =========================================================
+       EMPTY STATE
+    ========================================================= */
+
+    .empty-state{
+      display:none;
+
+      padding:70px 30px;
+
+      text-align:center;
+
+      border-radius:25px;
+
+      border:1px dashed var(--line-strong);
+
+      background:#fafbf8;
+    }
+
+    .empty-state.show{
+      display:block;
+    }
+
+    .empty-state-icon{
+      width:60px;
+      height:60px;
+
+      display:grid;
+      place-items:center;
+
+      margin:0 auto 15px;
+
+      border-radius:20px;
+
+      background:#edf3e6;
+      color:#6c9408;
+    }
+
+    .empty-state h3{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:23px;
+      margin-bottom:7px;
+    }
+
+    .empty-state p{
+      color:#7d857e;
+      font-size:12px;
     }
 
     /* =========================================================
        ABOUT
-       ========================================================= */
+    ========================================================= */
 
-    .about-grid{
+    .about-section{
+      background:#f6f7f2;
+    }
+
+    .about-layout{
       display:grid;
 
       grid-template-columns:
-        minmax(0,1fr)
-        minmax(0,1fr);
+        .9fr
+        1.1fr;
 
       gap:70px;
 
-      align-items:center;
+      align-items:start;
     }
 
-    .about-title{
+    .about-statement{
+      font-family:"Space Grotesk",sans-serif;
+
       font-size:
         clamp(
           34px,
-          4.7vw,
-          58px
+          4vw,
+          60px
         );
 
       line-height:1;
 
       letter-spacing:-.055em;
+    }
 
-      font-weight:900;
+    .about-statement span{
+      color:#789d2b;
     }
 
     .about-copy{
-      margin-top:20px;
-
-      color:var(--muted);
+      color:#6c756e;
 
       font-size:15px;
-      line-height:1.8;
+      line-height:1.9;
+
+      margin-top:22px;
     }
 
-    .about-points{
+    .principles{
       display:grid;
-      gap:12px;
 
-      margin-top:28px;
-    }
+      grid-template-columns:
+        repeat(2,1fr);
 
-    .about-point{
-      display:flex;
       gap:13px;
 
-      padding:15px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius:17px;
-
-      background:#fff;
+      margin-top:35px;
     }
 
-    .about-point-icon{
-      flex:0 0 auto;
+    .principle{
+      padding:22px;
 
-      width:34px;
-      height:34px;
+      border-radius:20px;
+
+      background:#fff;
+
+      border:1px solid var(--line);
+    }
+
+    .principle-icon{
+      width:35px;
+      height:35px;
 
       display:grid;
       place-items:center;
 
       border-radius:11px;
 
-      background:var(--black);
-      color:var(--accent);
+      background:#eef4df;
 
-      font-size:12px;
-      font-weight:900;
+      color:#668e00;
+
+      margin-bottom:18px;
     }
 
-    .about-point h4{
-      font-size:12px;
-      font-weight:900;
+    .principle h4{
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:15px;
+
+      margin-bottom:5px;
     }
 
-    .about-point p{
-      margin-top:4px;
-
-      color:var(--muted);
+    .principle p{
+      color:#7c847e;
 
       font-size:10px;
-      line-height:1.6;
-    }
 
-    .about-panel{
-      position:relative;
-
-      padding:34px;
-
-      min-height:420px;
-
-      overflow:hidden;
-
-      border-radius:35px;
-
-      background:
-        radial-gradient(
-          circle at 80% 15%,
-          rgba(183,255,0,.22),
-          transparent 35%
-        ),
-        #111;
-
-      color:#fff;
-
-      box-shadow:
-        var(--shadow-lg);
-    }
-
-    .about-panel::before{
-      content:"WD";
-
-      position:absolute;
-
-      right:-30px;
-      bottom:-75px;
-
-      font-size:210px;
-      line-height:1;
-
-      font-weight:900;
-
-      color:rgba(255,255,255,.035);
-
-      letter-spacing:-.1em;
-    }
-
-    .about-panel-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .about-panel-tag{
-      padding:7px 10px;
-
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:999px;
-
-      color:#c3c9c4;
-
-      font-size:9px;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-
-    .about-panel h3{
-      margin-top:70px;
-
-      max-width:480px;
-
-      font-size:
-        clamp(
-          34px,
-          5vw,
-          58px
-        );
-
-      line-height:.95;
-
-      letter-spacing:-.06em;
-    }
-
-    .about-panel h3 span{
-      color:var(--accent);
-    }
-
-    .about-panel-bottom{
-      position:absolute;
-
-      left:34px;
-      right:34px;
-      bottom:30px;
-
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:20px;
-    }
-
-    .about-stat strong{
-      display:block;
-
-      font-size:27px;
-      font-weight:900;
-    }
-
-    .about-stat span{
-      display:block;
-
-      margin-top:3px;
-
-      color:#9fa69f;
-
-      font-size:9px;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+      line-height:1.65;
     }
 
     /* =========================================================
        SUPPORT
-       ========================================================= */
+    ========================================================= */
 
     .support-section{
-      padding-bottom:100px;
-    }
-
-    .support-card{
-      position:relative;
-
-      display:grid;
-
-      grid-template-columns:
-        1.1fr .9fr;
-
-      gap:40px;
-
-      padding:45px;
-
-      overflow:hidden;
-
-      border-radius:36px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #111 0%,
-          #171b18 100%
-        );
+      background:#0b100c;
 
       color:#fff;
 
-      box-shadow:
-        var(--shadow-lg);
+      overflow:hidden;
     }
 
-    .support-card::before{
+    .support-section::before{
       content:"";
 
       position:absolute;
 
-      width:500px;
-      height:500px;
+      width:650px;
+      height:650px;
 
-      right:-200px;
+      right:-220px;
       top:-280px;
 
       border-radius:50%;
@@ -1651,424 +2126,698 @@
       background:
         radial-gradient(
           circle,
-          rgba(183,255,0,.25),
+          rgba(183,255,0,.15),
           transparent 68%
         );
     }
 
-    .support-title{
+    .support-layout{
       position:relative;
+      z-index:2;
+
+      display:grid;
+
+      grid-template-columns:
+        1.2fr
+        .8fr;
+
+      gap:50px;
+
+      align-items:center;
+    }
+
+    .support-title{
+      font-family:"Space Grotesk",sans-serif;
 
       font-size:
         clamp(
-          35px,
-          5vw,
-          62px
+          45px,
+          6vw,
+          82px
         );
 
-      line-height:.95;
+      line-height:.93;
 
-      letter-spacing:-.06em;
+      letter-spacing:-.065em;
 
-      font-weight:900;
+      max-width:760px;
     }
 
-    .support-copy{
-      position:relative;
+    .support-title span{
+      color:var(--accent);
+    }
 
-      max-width:590px;
+    .support-text{
+      color:#9ca59e;
 
-      margin-top:17px;
+      font-size:15px;
 
-      color:#adb4ae;
+      line-height:1.8;
 
-      font-size:14px;
-      line-height:1.75;
+      max-width:620px;
+
+      margin-top:24px;
     }
 
     .support-actions{
-      position:relative;
-
       display:flex;
-      align-items:center;
-      justify-content:flex-end;
+      flex-wrap:wrap;
+      gap:10px;
 
-      gap:12px;
+      margin-top:30px;
+    }
+
+    .support-card{
+      padding:28px;
+
+      border-radius:27px;
+
+      background:
+        rgba(255,255,255,.055);
+
+      border:1px solid rgba(255,255,255,.10);
+
+      backdrop-filter:blur(12px);
+    }
+
+    .support-card-label{
+      color:#89948c;
+
+      font-size:9px;
+      font-weight:800;
+
+      letter-spacing:.14em;
+      text-transform:uppercase;
+
+      margin-bottom:12px;
+    }
+
+    .support-card h3{
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:27px;
+
+      letter-spacing:-.04em;
+
+      margin-bottom:9px;
+    }
+
+    .support-card p{
+      color:#8f9991;
+
+      font-size:11px;
+      line-height:1.7;
+
+      margin-bottom:20px;
     }
 
     .support-link{
       display:flex;
       align-items:center;
-      gap:11px;
+      justify-content:space-between;
 
-      padding:16px 18px;
+      gap:10px;
 
-      border:
-        1px solid rgba(255,255,255,.12);
+      padding:12px 14px;
 
-      border-radius:17px;
+      border-radius:14px;
 
-      background:
-        rgba(255,255,255,.05);
+      background:rgba(255,255,255,.06);
 
-      font-size:11px;
-      font-weight:800;
+      color:#d8ded9;
 
-      transition:
-        transform .25s var(--ease),
-        background .25s ease;
+      font-size:10px;
+      font-weight:700;
     }
 
-    .support-link:hover{
-      transform:translateY(-3px);
-      background:rgba(255,255,255,.09);
-    }
-
-    .support-icon{
-      width:32px;
-      height:32px;
-
-      display:grid;
-      place-items:center;
-
-      border-radius:10px;
-
-      background:var(--accent);
-      color:#111;
-
-      font-weight:900;
+    .support-link i{
+      color:var(--accent);
     }
 
     /* =========================================================
-       SALAH SECTION
-       ========================================================= */
+       SALAH
+    ========================================================= */
 
     .salah-section{
-      background:#eef1eb;
+      background:#f0f2ec;
+    }
+
+    .salah-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+
+      gap:30px;
+
+      margin-bottom:35px;
+    }
+
+    .salah-date{
+      text-align:right;
+
+      color:#778079;
+
+      font-size:10px;
+      font-weight:700;
+
+      text-transform:uppercase;
+      letter-spacing:.1em;
     }
 
     .salah-grid{
       display:grid;
 
       grid-template-columns:
-        1fr 1fr;
+        repeat(5,1fr);
 
-      gap:22px;
+      gap:10px;
     }
 
     .salah-card{
-      padding:24px;
+      padding:22px 18px;
 
-      border:
-        1px solid rgba(17,21,18,.08);
-
-      border-radius:25px;
+      border-radius:20px;
 
       background:#fff;
 
+      border:1px solid var(--line);
+
+      text-align:center;
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .salah-card:hover{
+      transform:translateY(-4px);
       box-shadow:var(--shadow-sm);
     }
 
-    .salah-card-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:15px;
-
-      margin-bottom:20px;
+    .salah-card.next{
+      background:#0b100c;
+      color:#fff;
+      border-color:#0b100c;
     }
 
-    .salah-card-title{
-      font-size:15px;
-      font-weight:900;
-    }
-
-    .salah-card-note{
-      color:var(--muted);
+    .salah-name{
+      color:#747d76;
 
       font-size:9px;
+      font-weight:800;
+
+      text-transform:uppercase;
+      letter-spacing:.1em;
+
+      margin-bottom:10px;
+    }
+
+    .next .salah-name{
+      color:#a4afa6;
+    }
+
+    .salah-time{
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:28px;
       font-weight:700;
+
+      letter-spacing:-.045em;
     }
 
-    .prayer-list{
-      display:grid;
-      gap:8px;
-    }
+    .salah-label{
+      display:none;
 
-    .prayer-row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      margin-top:7px;
 
-      padding:13px 14px;
-
-      border-radius:14px;
-
-      background:#f5f6f3;
-
-      font-size:11px;
-    }
-
-    .prayer-row strong{
-      font-weight:800;
-    }
-
-    .prayer-row span{
-      color:#555d57;
-
-      font-weight:800;
-    }
-
-    .prayer-row.current{
-      background:#111;
-      color:#fff;
-    }
-
-    .prayer-row.current span{
       color:var(--accent);
+
+      font-size:8px;
+      font-weight:800;
+
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .next .salah-label{
+      display:block;
     }
 
     /* =========================================================
        FOOTER
-       ========================================================= */
+    ========================================================= */
 
-    footer{
-      padding:30px 0;
+    .footer{
+      padding:70px 0 30px;
 
-      background:#090b0a;
+      background:#080c09;
+
       color:#fff;
     }
 
-    .footer-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
+    .footer-top{
+      display:grid;
+
+      grid-template-columns:
+        1.2fr
+        .8fr
+        .8fr
+        .8fr;
+
+      gap:45px;
+
+      padding-bottom:55px;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
     }
 
     .footer-brand{
-      font-size:13px;
-      font-weight:900;
+      max-width:350px;
     }
 
-    .footer-copy{
-      margin-top:4px;
+    .footer-brand .brand{
+      margin-bottom:18px;
+    }
 
-      color:#818781;
+    .footer-brand .brand-name{
+      color:#fff;
+    }
 
+    .footer-brand .brand-sub{
+      color:#69726b;
+    }
+
+    .footer-description{
+      color:#7e8981;
+
+      font-size:11px;
+
+      line-height:1.8;
+    }
+
+    .footer-title{
       font-size:9px;
+      font-weight:800;
+
+      letter-spacing:.14em;
+      text-transform:uppercase;
+
+      color:#69726b;
+
+      margin-bottom:18px;
     }
 
     .footer-links{
       display:flex;
-      flex-wrap:wrap;
-      gap:15px;
+      flex-direction:column;
+      gap:10px;
     }
 
     .footer-links a{
-      color:#9da49e;
+      color:#aab1ab;
 
-      font-size:9px;
-      font-weight:700;
+      font-size:11px;
 
       transition:color .2s ease;
     }
 
     .footer-links a:hover{
+      color:var(--accent);
+    }
+
+    .footer-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:20px;
+
+      padding-top:24px;
+
+      color:#5f6861;
+
+      font-size:9px;
+    }
+
+    .footer-credit{
+      color:#707a72;
+    }
+
+    .footer-credit strong{
+      color:#a6afa8;
+    }
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    .mobile-menu{
+      position:fixed;
+
+      z-index:999;
+
+      inset:0;
+
+      display:none;
+
+      background:
+        rgba(8,12,9,.96);
+
+      padding:120px 25px 30px;
+
       color:#fff;
     }
 
+    .mobile-menu.open{
+      display:block;
+    }
+
+    .mobile-nav{
+      display:flex;
+      flex-direction:column;
+
+      gap:5px;
+    }
+
+    .mobile-nav a{
+      padding:17px 0;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+      color:#dce2dc;
+
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:27px;
+      font-weight:600;
+
+      letter-spacing:-.03em;
+    }
+
+    .mobile-nav a span{
+      color:#59645c;
+
+      font-size:10px;
+
+      margin-left:7px;
+    }
+
     /* =========================================================
-       REVEAL
-       ========================================================= */
+       UTILITY
+    ========================================================= */
 
     .reveal{
       opacity:0;
-
-      transform:
-        translateY(25px);
+      transform:translateY(20px);
 
       transition:
         opacity .8s ease,
-        transform .8s var(--ease);
+        transform .8s ease;
     }
 
-    .reveal.show{
+    .reveal.visible{
       opacity:1;
-
-      transform:
-        translateY(0);
+      transform:none;
     }
 
-    /* =========================================================
-       TOAST
-       ========================================================= */
-
-    .toast{
+    .back-top{
       position:fixed;
+
+      z-index:800;
 
       right:20px;
       bottom:20px;
 
-      z-index:2000;
+      width:45px;
+      height:45px;
 
-      max-width:350px;
+      display:grid;
+      place-items:center;
 
-      padding:13px 16px;
+      border-radius:50%;
 
-      border:
-        1px solid rgba(255,255,255,.10);
-
-      border-radius:15px;
-
-      background:#111;
+      background:#0b100c;
       color:#fff;
 
       box-shadow:
-        0 25px 70px rgba(0,0,0,.25);
-
-      font-size:11px;
-      font-weight:700;
+        0 15px 40px rgba(0,0,0,.20);
 
       opacity:0;
-      pointer-events:none;
+      visibility:hidden;
 
-      transform:
-        translateY(15px);
+      transform:translateY(10px);
 
       transition:
-        opacity .3s ease,
-        transform .3s var(--ease);
+        opacity .25s ease,
+        visibility .25s ease,
+        transform .25s ease;
+    }
+
+    .back-top.show{
+      opacity:1;
+      visibility:visible;
+      transform:none;
+    }
+
+    .toast{
+      position:fixed;
+
+      z-index:2000;
+
+      left:50%;
+      bottom:25px;
+
+      transform:
+        translate(-50%,20px);
+
+      opacity:0;
+      visibility:hidden;
+
+      padding:12px 16px;
+
+      border-radius:999px;
+
+      background:#0b100c;
+      color:#fff;
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.22);
+
+      font-size:10px;
+      font-weight:700;
+
+      transition:
+        opacity .25s ease,
+        visibility .25s ease,
+        transform .25s ease;
     }
 
     .toast.show{
       opacity:1;
-      transform:translateY(0);
+      visibility:visible;
+
+      transform:
+        translate(-50%,0);
     }
 
     /* =========================================================
-       MOBILE NAV
-       ========================================================= */
+       RESPONSIVE
+    ========================================================= */
 
-    @media(max-width:900px){
+    @media(max-width:1100px){
 
-      .nav-links{
-        display:none;
-
-        position:absolute;
-
-        left:18px;
-        right:18px;
-        top:70px;
-
-        padding:10px;
-
-        flex-direction:column;
-        align-items:stretch;
-
-        border:
-          1px solid var(--line);
-
-        border-radius:20px;
-
-        background:
-          rgba(255,255,255,.96);
-
-        box-shadow:var(--shadow-md);
+      .hero-layout{
+        grid-template-columns:1fr;
+        gap:20px;
       }
 
-      .nav-links.open{
-        display:flex;
+      .hero-content{
+        text-align:center;
       }
 
-      .nav-link{
-        text-align:left;
+      .hero-title,
+      .hero-description{
+        margin-left:auto;
+        margin-right:auto;
       }
 
-      .nav-cta{
+      .hero-actions,
+      .hero-proof{
+        justify-content:center;
+      }
+
+      .hero-visual{
+        min-height:550px;
+      }
+
+      .laptop{
+        max-width:700px;
+      }
+
+      .package-grid{
+        grid-template-columns:1fr;
+      }
+
+      .package-card{
+        min-height:auto;
+      }
+
+      .about-layout,
+      .support-layout{
+        grid-template-columns:1fr;
+      }
+
+      .salah-grid{
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+
+      .footer-top{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:820px){
+
+      .main-nav,
+      .nav-live{
         display:none;
       }
 
       .mobile-toggle{
-        display:block;
-      }
-
-      .hero-grid{
-        grid-template-columns:1fr;
-        gap:55px;
-      }
-
-      .hero-device{
-        margin:0 auto;
-      }
-
-      .website-grid,
-      .package-grid{
-        grid-template-columns:
-          repeat(2,minmax(0,1fr));
-      }
-
-      .about-grid,
-      .support-card,
-      .salah-grid{
-        grid-template-columns:1fr;
-      }
-
-      .support-actions{
-        justify-content:flex-start;
-      }
-    }
-
-    @media(max-width:620px){
-
-      .container{
-        width:min(
-          calc(100% - 24px),
-          var(--container)
-        );
+        display:grid;
+        place-items:center;
       }
 
       .section{
-        padding:80px 0;
+        padding:90px 0;
       }
 
-      .salat-inner{
-        justify-content:flex-start;
-        gap:12px;
-        padding:0 12px;
+      .section-head{
+        display:block;
       }
 
-      .salat-live-label{
-        font-size:9px;
+      .section-description{
+        margin-top:20px;
       }
 
-      .navbar{
-        top:46px;
+      .process-grid{
+        grid-template-columns:1fr;
       }
 
-      .nav-inner{
-        min-height:68px;
+      .website-grid{
+        grid-template-columns:1fr;
       }
 
-      .brand-sub{
-        display:none;
+      .trust-grid{
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
       .hero{
-        min-height:auto;
-
-        padding:
-          55px 0
-          65px;
+        padding-top:135px;
       }
 
       .hero-title{
         font-size:
           clamp(
-            45px,
-            15vw,
-            68px
+            50px,
+            13vw,
+            76px
           );
+      }
+
+      .hero-visual{
+        min-height:460px;
+      }
+
+      .hero-live-card{
+        left:0;
+        bottom:25px;
+      }
+
+      .hero-mini-stack{
+        right:0;
+        top:25px;
+      }
+
+      .laptop{
+        transform:
+          perspective(1300px)
+          rotateY(-3deg);
+      }
+
+      .laptop:hover{
+        transform:
+          perspective(1300px)
+          rotateY(0)
+          translateY(-4px);
+      }
+
+      .about-layout{
+        gap:35px;
+      }
+
+      .principles{
+        grid-template-columns:1fr;
+      }
+
+      .salah-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:600px){
+
+      .container{
+        width:min(
+          calc(100% - 26px),
+          var(--container)
+        );
+      }
+
+      .site-header{
+        top:10px;
+      }
+
+      .nav-shell{
+        min-height:62px;
+      }
+
+      .brand-mark{
+        width:38px;
+        height:38px;
+        border-radius:12px;
+      }
+
+      .brand-name{
+        font-size:13px;
+      }
+
+      .brand-sub{
+        font-size:7px;
+      }
+
+      .hero{
+        padding-top:110px;
+        padding-bottom:50px;
+      }
+
+      .hero-title{
+        font-size:
+          clamp(
+            44px,
+            15vw,
+            64px
+          );
+      }
+
+      .hero-description{
+        font-size:14px;
       }
 
       .hero-actions{
@@ -2080,50 +2829,153 @@
         width:100%;
       }
 
-      .hero-device-label{
-        left:5px;
-        bottom:10px;
+      .hero-proof{
+        gap:13px;
       }
 
-      .hero-floating{
-        right:0;
+      .proof-item{
+        font-size:9px;
       }
 
-      .website-grid,
-      .package-grid{
+      .hero-visual{
+        min-height:310px;
+      }
+
+      .laptop-screen{
+        padding:7px;
+        border-radius:15px 15px 8px 8px;
+      }
+
+      .screen-bezel{
+        border-radius:10px;
+      }
+
+      .browser-bar{
+        height:23px;
+        padding:0 7px;
+      }
+
+      .browser-address{
+        height:14px;
+        font-size:5px;
+      }
+
+      .hero-site-viewport{
+        top:23px;
+      }
+
+      .laptop-base{
+        height:11px;
+      }
+
+      .hero-live-card{
+        width:175px;
+        padding:10px;
+        bottom:8px;
+      }
+
+      .hero-mini-stack{
+        top:3px;
+        right:-3px;
+      }
+
+      .mini-card{
+        padding:7px;
+        font-size:7px;
+      }
+
+      .mini-card i{
+        width:20px;
+        height:20px;
+      }
+
+      .trust-grid{
         grid-template-columns:1fr;
       }
 
-      .preview-viewport{
-        height:330px;
+      .trust-item{
+        justify-content:flex-start;
+        padding-left:30px;
       }
 
-      .support-card{
-        padding:28px 23px;
+      .website-screen{
+        height:340px;
       }
 
-      .about-panel{
-        min-height:390px;
+      .website-card{
+        border-radius:23px;
       }
 
-      .footer-inner{
+      .website-name{
+        font-size:18px;
+      }
+
+      .website-card-foot{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .website-actions{
+        width:100%;
+      }
+
+      .mini-btn{
+        flex:1;
+      }
+
+      .showcase-toolbar{
+        display:block;
+      }
+
+      .showcase-note{
+        display:block;
+        margin-top:8px;
+      }
+
+      .salah-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .salah-card{
+        padding:19px 10px;
+      }
+
+      .salah-time{
+        font-size:24px;
+      }
+
+      .footer-top{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .footer-bottom{
         flex-direction:column;
         align-items:flex-start;
+      }
+
+      .support-actions{
+        flex-direction:column;
+      }
+
+      .support-actions .btn{
+        width:100%;
       }
     }
 
     @media(prefers-reduced-motion:reduce){
 
-      html{
-        scroll-behavior:auto;
-      }
-
       *,
       *::before,
       *::after{
-        animation-duration:.001ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.001ms !important;
+        scroll-behavior:auto!important;
+        animation:none!important;
+        transition:none!important;
+      }
+
+      .reveal{
+        opacity:1;
+        transform:none;
       }
     }
   </style>
@@ -2132,292 +2984,1024 @@
 <body>
 
   <!-- =======================================================
-       SALAT LIVE — TOP
-       ======================================================= -->
+       HEADER
+  ======================================================== -->
 
-  <div class="salat-live-bar">
-    <div class="container salat-inner">
-
-      <div class="salat-live-label">
-        <span class="live-dot"></span>
-        <span>Salat Live</span>
-      </div>
-
-      <div
-        class="prayer-strip"
-        id="topPrayerStrip"
-      ></div>
-
-    </div>
-  </div>
-
-
-  <!-- =======================================================
-       NAVBAR
-       ======================================================= -->
-
-  <header class="navbar">
-    <div class="container nav-inner">
+  <header class="site-header">
+    <div class="nav-shell">
 
       <a
-        class="brand"
         href="#home"
+        class="brand"
         aria-label="Website Deals Home"
       >
-        <div class="brand-mark">WD</div>
+        <span class="brand-mark">WD</span>
 
-        <div class="brand-text">
-          <div
-            class="brand-name"
-            id="brandName"
-          >
-            Website Deals
-          </div>
-
-          <div
-            class="brand-sub"
-            id="brandTagline"
-          >
-            Premium Ready-Made Websites
-          </div>
-        </div>
+        <span class="brand-copy">
+          <span class="brand-name">Website Deals</span>
+          <span class="brand-sub">Premium Digital Marketplace</span>
+        </span>
       </a>
 
-      <nav
-        class="nav-links"
-        id="navLinks"
-      >
+      <nav class="main-nav" aria-label="Main navigation">
+
         <a
-          class="nav-link active"
           href="#home"
+          class="nav-link active"
+          data-section="home"
         >
           HOME
         </a>
 
         <a
+          href="#website"
           class="nav-link"
-          href="#websites"
+          data-section="website"
         >
           WEBSITE
         </a>
 
         <a
-          class="nav-link"
           href="#about"
+          class="nav-link"
+          data-section="about"
         >
           ABOUT
         </a>
 
         <a
-          class="nav-link"
           href="#support"
+          class="nav-link"
+          data-section="support"
         >
           SUPPORT
         </a>
 
         <a
-          class="nav-link"
           href="#salah"
+          class="nav-link"
+          data-section="salah"
         >
           SALAH
         </a>
+
       </nav>
 
-      <a
-        class="nav-cta"
-        href="#websites"
-      >
-        Explore Websites
-        <span>↗</span>
-      </a>
+      <div class="nav-live">
+        <span class="nav-live-dot"></span>
+        LIVE SHOWCASE
+      </div>
 
       <button
         class="mobile-toggle"
         id="mobileToggle"
-        type="button"
-        aria-label="Open menu"
+        aria-label="Open navigation"
+        aria-expanded="false"
       >
-        ☰
+        <i class="fa-solid fa-bars"></i>
       </button>
 
     </div>
   </header>
 
+  <!-- =======================================================
+       MOBILE MENU
+  ======================================================== -->
+
+  <div
+    class="mobile-menu"
+    id="mobileMenu"
+    aria-hidden="true"
+  >
+
+    <nav class="mobile-nav">
+
+      <a href="#home">
+        HOME
+        <span>01</span>
+      </a>
+
+      <a href="#website">
+        WEBSITE
+        <span>02</span>
+      </a>
+
+      <a href="#about">
+        ABOUT
+        <span>03</span>
+      </a>
+
+      <a href="#support">
+        SUPPORT
+        <span>04</span>
+      </a>
+
+      <a href="#salah">
+        SALAH
+        <span>05</span>
+      </a>
+
+    </nav>
+
+  </div>
 
   <main>
 
     <!-- =====================================================
          HERO
-         ===================================================== -->
+    ====================================================== -->
 
     <section
       class="hero"
       id="home"
+      data-nav-section="home"
     >
-      <div class="container hero-grid">
 
-        <div class="hero-copy reveal">
+      <div class="hero-grid"></div>
 
-          <span class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Premium Website Marketplace
-          </span>
+      <div class="hero-orb one"></div>
+      <div class="hero-orb two"></div>
 
-          <h1 class="hero-title">
-            Your next
-            <span class="accent">
-              website
-            </span>
-            is already built.
-          </h1>
+      <div class="container">
 
-          <p class="hero-copy-text">
-            Choose a ready-made website, see the real live experience,
-            and get your business online without starting everything
-            from zero.
-          </p>
+        <div class="hero-layout">
 
-          <div class="hero-actions">
+          <div class="hero-content reveal">
 
-            <a
-              class="btn btn-primary"
-              href="#websites"
-            >
-              Explore Websites
-              <span>↗</span>
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="#packages"
-            >
-              View Packages
-              <span>↓</span>
-            </a>
-
-          </div>
-
-          <div class="hero-meta">
-
-            <div class="hero-meta-item">
-              Free Hosting
+            <div class="hero-eyebrow">
+              <i class="fa-solid fa-circle"></i>
+              PREMIUM WEBSITE SUBSCRIPTION
             </div>
 
-            <div class="hero-meta-item">
-              Free SSL
+            <h1 class="hero-title">
+              Your website.
+              <span>Live.</span>
+              Premium.
+              Ready to grow.
+            </h1>
+
+            <p class="hero-description">
+              Choose a professionally built website package,
+              see real websites live, and launch your digital
+              presence without starting from zero.
+            </p>
+
+            <div class="hero-actions">
+
+              <a
+                href="#website"
+                class="btn btn-primary"
+              >
+                Explore Websites
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+              <a
+                href="#packages"
+                class="btn btn-secondary"
+              >
+                View Packages
+              </a>
+
             </div>
 
-            <div class="hero-meta-item">
-              Responsive
-            </div>
+            <div class="hero-proof">
 
-            <div class="hero-meta-item">
-              Monthly Plans
-            </div>
+              <div class="proof-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                SSL Ready
+              </div>
 
-          </div>
+              <div class="proof-item">
+                <i class="fa-solid fa-mobile-screen"></i>
+                Mobile First
+              </div>
 
-        </div>
+              <div class="proof-item">
+                <i class="fa-solid fa-bolt"></i>
+                Fast Setup
+              </div>
 
-
-        <!-- HERO LIVE LAPTOP -->
-
-        <div class="hero-device reveal">
-
-          <div class="hero-floating">
-            ● LIVE WEBSITE
-          </div>
-
-          <div class="laptop">
-
-            <div class="laptop-screen">
-
-              <div class="screen-bezel">
-
-                <span class="camera-dot"></span>
-
-                <div
-                  class="hero-preview"
-                  id="heroPreview"
-                >
-                  <div
-                    class="hero-preview-camera"
-                    id="heroCamera"
-                  >
-                    <iframe
-                      id="heroIframe"
-                      title="Live website preview"
-                      loading="eager"
-                      referrerpolicy="strict-origin-when-cross-origin"
-                    ></iframe>
-                  </div>
-
-                  <div class="preview-shade"></div>
-                </div>
-
+              <div class="proof-item">
+                <i class="fa-solid fa-headset"></i>
+                Support
               </div>
 
             </div>
 
-            <div class="laptop-base"></div>
-
           </div>
 
-          <div class="hero-device-label">
-            <span></span>
-            <div>
-              <strong id="heroWebsiteName">
-                Live Website
-              </strong>
-              <small
-                style="
-                  display:block;
-                  margin-top:3px;
-                  color:#737a74;
-                  font-size:8px;
-                  font-weight:700;
-                "
-              >
-                Admin saved preview
-              </small>
+          <div class="hero-visual reveal">
+
+            <div class="laptop">
+
+              <div class="laptop-screen">
+
+                <div class="screen-bezel">
+
+                  <span class="camera-dot"></span>
+
+                  <div class="browser-bar">
+
+                    <div class="browser-dots">
+                      <span class="browser-dot"></span>
+                      <span class="browser-dot"></span>
+                      <span class="browser-dot"></span>
+                    </div>
+
+                    <div
+                      class="browser-address"
+                      id="heroBrowserAddress"
+                    >
+                      website preview
+                    </div>
+
+                  </div>
+
+                  <div class="hero-site-viewport">
+
+                    <div
+                      class="hero-site-camera"
+                      id="heroCamera"
+                    >
+
+                      <iframe
+                        id="heroIframe"
+                        title="Featured Website Preview"
+                        loading="eager"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                      ></iframe>
+
+                    </div>
+
+                    <div
+                      class="iframe-fallback"
+                      id="heroFallback"
+                    >
+
+                      <div class="fallback-inner">
+
+                        <div class="fallback-icon">
+                          <i class="fa-solid fa-globe"></i>
+                        </div>
+
+                        <h4>Website preview unavailable</h4>
+
+                        <p>
+                          This website may prevent embedded previews.
+                          You can still open the real website directly.
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="laptop-base"></div>
+
             </div>
+
+            <div class="hero-live-card">
+
+              <div class="live-card-top">
+
+                <div class="live-status">
+                  <i></i>
+                  LIVE WEBSITE
+                </div>
+
+                <span
+                  class="live-package"
+                  id="heroPackage"
+                >
+                  BUSINESS
+                </span>
+
+              </div>
+
+              <div
+                class="hero-site-name"
+                id="heroSiteName"
+              >
+                Website Deals
+              </div>
+
+              <div
+                class="hero-site-url"
+                id="heroSiteUrl"
+              >
+                website preview
+              </div>
+
+            </div>
+
+            <div class="hero-mini-stack">
+
+              <div class="mini-card">
+                <i class="fa-solid fa-lock"></i>
+                SSL ACTIVE
+              </div>
+
+              <div class="mini-card">
+                <i class="fa-solid fa-database"></i>
+                FIREBASE READY
+              </div>
+
+              <div class="mini-card">
+                <i class="fa-solid fa-chart-line"></i>
+                GROWTH READY
+              </div>
+
+            </div>
+
           </div>
 
         </div>
 
       </div>
+
     </section>
 
+    <!-- =====================================================
+         TRUST
+    ====================================================== -->
+
+    <section class="trust-strip">
+
+      <div class="container">
+
+        <div class="trust-grid">
+
+          <div class="trust-item">
+
+            <div class="trust-icon">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div>
+              <div class="trust-number">100+</div>
+              <div class="trust-label">Ready Websites</div>
+            </div>
+
+          </div>
+
+          <div class="trust-item">
+
+            <div class="trust-icon">
+              <i class="fa-solid fa-grid-2"></i>
+            </div>
+
+            <div>
+              <div class="trust-number">20+</div>
+              <div class="trust-label">Categories</div>
+            </div>
+
+          </div>
+
+          <div class="trust-item">
+
+            <div class="trust-icon">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+
+            <div>
+              <div class="trust-number">100%</div>
+              <div class="trust-label">Responsive</div>
+            </div>
+
+          </div>
+
+          <div class="trust-item">
+
+            <div class="trust-icon">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+
+            <div>
+              <div class="trust-number">24/7</div>
+              <div class="trust-label">Support Ready</div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
 
     <!-- =====================================================
-         WEBSITE CARD VIEW
-         ===================================================== -->
+         HOW IT WORKS
+    ====================================================== -->
 
-    <section
-      class="section websites-section"
-      id="websites"
-    >
+    <section class="section process-section">
+
       <div class="container">
 
         <div class="section-head reveal">
 
-          <span class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Live Website Showcase
-          </span>
+          <div>
 
-          <h2 class="section-title">
-            Real websites.
-            <br>
-            Live inside every card.
-          </h2>
+            <div class="section-kicker">
+              SIMPLE SYSTEM
+            </div>
 
-          <p class="section-copy">
-            Browse the actual websites from the marketplace.
-            Each preview stays inside its card and naturally moves
-            through the page so clients can understand the full
-            website experience at a glance.
+            <h2 class="section-title">
+              From idea to
+              <br>
+              online presence.
+            </h2>
+
+          </div>
+
+          <p class="section-description">
+            No complicated process. Browse real websites,
+            select your package, and move forward with a
+            professional digital presence.
           </p>
+
+        </div>
+
+        <div class="process-grid">
+
+          <article class="process-card reveal">
+
+            <span class="process-number">01</span>
+
+            <div class="process-icon">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+
+            <h3>Explore</h3>
+
+            <p>
+              Browse real website examples and experience
+              the actual visual direction before making
+              a decision.
+            </p>
+
+          </article>
+
+          <article class="process-card reveal">
+
+            <span class="process-number">02</span>
+
+            <div class="process-icon">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+
+            <h3>Choose</h3>
+
+            <p>
+              Select the package that matches your business,
+              service, brand or e-commerce requirements.
+            </p>
+
+          </article>
+
+          <article class="process-card reveal">
+
+            <span class="process-number">03</span>
+
+            <div class="process-icon">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+
+            <h3>Launch</h3>
+
+            <p>
+              Connect your domain, configure your website
+              and move toward a polished online presence.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         PACKAGES
+    ====================================================== -->
+
+    <section
+      class="section packages-section"
+      id="packages"
+    >
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <div class="section-kicker">
+              WEBSITE PACKAGES
+            </div>
+
+            <h2 class="section-title">
+              Pick your level.
+              <br>
+              Build your presence.
+            </h2>
+
+          </div>
+
+          <p class="section-description">
+            Start simple, scale when you need more.
+            Every package is designed around practical
+            business requirements.
+          </p>
+
+        </div>
+
+        <div class="package-grid">
+
+          <!-- STARTER -->
+
+          <article class="package-card reveal">
+
+            <div class="package-glow"></div>
+
+            <div class="package-top">
+
+              <span class="package-badge">
+                STARTER
+              </span>
+
+              <span class="package-status">
+                Essential
+              </span>
+
+            </div>
+
+            <h3 class="package-name">
+              Starter
+            </h3>
+
+            <p class="package-summary">
+              A professional foundation for individuals,
+              small businesses and service providers.
+            </p>
+
+            <div class="price">
+              <strong>৳549</strong>
+              <span>/ month</span>
+            </div>
+
+            <div class="package-divider"></div>
+
+            <ul class="feature-list">
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Complete ready-made website
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Free hosting
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Free SSL
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Firebase integration
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Basic logo
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Fully responsive
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Custom domain connection
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Contact form
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Manual payment support
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Basic SEO
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Basic support
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Uptime monitoring
+              </li>
+
+            </ul>
+
+            <a
+              href="#support"
+              class="btn btn-secondary package-button"
+            >
+              Choose Starter
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+          </article>
+
+          <!-- BUSINESS -->
+
+          <article class="package-card featured reveal">
+
+            <div class="package-glow"></div>
+
+            <div class="package-top">
+
+              <span class="package-badge">
+                MOST POPULAR
+              </span>
+
+              <span class="package-status">
+                Business
+              </span>
+
+            </div>
+
+            <h3 class="package-name">
+              Business
+            </h3>
+
+            <p class="package-summary">
+              A stronger business system with administration,
+              inquiries, payments and growth tools.
+            </p>
+
+            <div class="price">
+              <strong>৳999</strong>
+              <span>/ month</span>
+            </div>
+
+            <div class="package-divider"></div>
+
+            <ul class="feature-list">
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Everything in Starter
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Premium website
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Advanced Firebase
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Admin panel
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Online gateway support
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                bKash / Nagad / Bank
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Product / service management
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Inquiry / order management
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                WhatsApp / Messenger
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Google Maps
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Advanced SEO
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Analytics + Search Console
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Backup + security
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Performance optimization
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Content updates
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Minor customization
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Priority support
+              </li>
+
+            </ul>
+
+            <a
+              href="#support"
+              class="btn btn-accent package-button"
+            >
+              Choose Business
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+          </article>
+
+          <!-- PREMIUM -->
+
+          <article class="package-card premium reveal">
+
+            <div class="package-glow"></div>
+
+            <div class="package-top">
+
+              <span class="package-badge">
+                MOST POWERFUL
+              </span>
+
+              <span class="package-status">
+                Premium
+              </span>
+
+            </div>
+
+            <h3 class="package-name">
+              Premium
+            </h3>
+
+            <p class="package-summary">
+              A powerful Shopify-style business and
+              e-commerce system built for serious growth.
+            </p>
+
+            <div class="price">
+              <strong>৳1,999</strong>
+              <span>/ month</span>
+            </div>
+
+            <div class="package-divider"></div>
+
+            <ul class="feature-list">
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Shopify-style e-commerce system
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Free hosting + SSL
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Firebase / MongoDB backend
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Advanced admin dashboard
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                High-capacity product management
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                FREE stock / inventory management
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Stock in / out / adjustment
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Low-stock alerts
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Categories + collections
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Variants + SKU
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Search + filters
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Pricing + sale pricing
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Coupons
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Cart + wishlist
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Customer accounts
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Checkout + payments
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Order tracking
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Customer management
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Shipping / delivery
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Analytics + notifications
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                WhatsApp integration
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                SEO + Search Console
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Automated backup
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                API integration
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Custom workflows
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Custom feature development
+              </li>
+
+              <li>
+                <i class="fa-solid fa-check"></i>
+                Dedicated priority support
+              </li>
+
+            </ul>
+
+            <a
+              href="#support"
+              class="btn btn-primary package-button"
+            >
+              Choose Premium
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         WEBSITE SHOWCASE
+    ====================================================== -->
+
+    <section
+      class="section showcase-section"
+      id="website"
+      data-nav-section="website"
+    >
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <div class="section-kicker">
+              LIVE WEBSITE SHOWCASE
+            </div>
+
+            <h2 class="section-title">
+              Don't imagine it.
+              <br>
+              See it live.
+            </h2>
+
+          </div>
+
+          <p class="section-description">
+            These cards are powered by the websites saved from
+            the admin panel. Each preview independently moves
+            through the website like a real visitor.
+          </p>
+
+        </div>
+
+        <div class="showcase-toolbar">
+
+          <div class="showcase-count">
+            <span class="showcase-count-dot"></span>
+            <span id="websiteCount">
+              Loading websites...
+            </span>
+          </div>
+
+          <div class="showcase-note">
+            Live preview • Auto-scroll • Independent presentation
+          </div>
 
         </div>
 
@@ -2426,342 +4010,134 @@
           id="websiteGrid"
         ></div>
 
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         PACKAGE
-         ===================================================== -->
-
-    <section
-      class="section package-section"
-      id="packages"
-    >
-      <div class="container">
-
-        <div class="section-head reveal">
-
-          <span class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Monthly Website Packages
-          </span>
-
-          <h2 class="section-title">
-            Pick the plan
-            <br>
-            that fits your business.
-          </h2>
-
-          <p class="section-copy">
-            Start with a ready-made website and choose the service
-            level that matches your business needs.
-          </p>
-
-        </div>
-
-
-        <div class="package-grid">
-
-          <!-- STARTER -->
-
-          <article class="package-card reveal">
-
-            <div class="package-label">
-              01 / Starter
-            </div>
-
-            <h3 class="package-name">
-              Starter
-            </h3>
-
-            <div class="package-price">
-              <strong>৳549</strong>
-              <span>/ month</span>
-            </div>
-
-            <p class="package-description">
-              A simple and professional ready-made website for
-              individuals, small businesses and service providers.
-            </p>
-
-            <ul class="package-features">
-              <li>Complete ready-made website</li>
-              <li>Free hosting</li>
-              <li>Free SSL</li>
-              <li>Firebase integration</li>
-              <li>Basic logo</li>
-              <li>Responsive design</li>
-              <li>Custom domain connection</li>
-              <li>Contact form</li>
-              <li>Basic SEO</li>
-              <li>Basic support</li>
-              <li>Uptime monitoring</li>
-            </ul>
-
-            <a
-              class="btn btn-primary package-btn"
-              href="./starter/index.html"
-            >
-              View Starter
-              <span>↗</span>
-            </a>
-
-          </article>
-
-
-          <!-- BUSINESS -->
-
-          <article
-            class="package-card featured reveal"
-          >
-
-            <span class="popular-badge">
-              Most Popular
-            </span>
-
-            <div class="package-label">
-              02 / Business
-            </div>
-
-            <h3 class="package-name">
-              Business
-            </h3>
-
-            <div class="package-price">
-              <strong>৳999</strong>
-              <span>/ month</span>
-            </div>
-
-            <p class="package-description">
-              A more powerful website system with admin controls,
-              analytics, payment options and business workflows.
-            </p>
-
-            <ul class="package-features">
-              <li>Everything in Starter</li>
-              <li>Premium website</li>
-              <li>Advanced Firebase</li>
-              <li>Admin panel</li>
-              <li>Online gateway integration</li>
-              <li>bKash / Nagad / Bank support</li>
-              <li>Product & service management</li>
-              <li>Inquiry & order management</li>
-              <li>WhatsApp / Messenger</li>
-              <li>Maps integration</li>
-              <li>Advanced SEO</li>
-              <li>Analytics & Search Console</li>
-              <li>Backup & security</li>
-              <li>Performance optimization</li>
-              <li>Minor customization</li>
-              <li>Priority support</li>
-            </ul>
-
-            <a
-              class="btn package-btn"
-              href="./business/index.html"
-              style="
-                background:#b7ff00;
-                color:#111;
-              "
-            >
-              View Business
-              <span>↗</span>
-            </a>
-
-          </article>
-
-
-          <!-- PREMIUM -->
-
-          <article class="package-card reveal">
-
-            <div class="package-label">
-              03 / Premium
-            </div>
-
-            <h3 class="package-name">
-              Premium
-            </h3>
-
-            <div class="package-price">
-              <strong>৳1,999</strong>
-              <span>/ month</span>
-            </div>
-
-            <p class="package-description">
-              A complete Shopify-style business and e-commerce
-              system designed for serious online operations.
-            </p>
-
-            <ul class="package-features">
-              <li>Everything in Business</li>
-              <li>Shopify-style e-commerce system</li>
-              <li>Firebase / MongoDB backend</li>
-              <li>Advanced admin dashboard</li>
-              <li>FREE stock management</li>
-              <li>Stock in / out / adjustments</li>
-              <li>Low-stock alerts</li>
-              <li>Categories & collections</li>
-              <li>Variants & SKU</li>
-              <li>Search & filtering</li>
-              <li>Coupons & sale pricing</li>
-              <li>Cart & wishlist</li>
-              <li>Customer accounts</li>
-              <li>Checkout & payment</li>
-              <li>Order tracking</li>
-              <li>Shipping / delivery</li>
-              <li>Analytics & notifications</li>
-              <li>SEO & Search Console</li>
-              <li>Automated backup</li>
-              <li>API integrations</li>
-              <li>Custom workflows</li>
-              <li>Custom feature development</li>
-              <li>Dedicated priority support</li>
-            </ul>
-
-            <a
-              class="btn btn-primary package-btn"
-              href="./premium/index.html"
-            >
-              View Premium
-              <span>↗</span>
-            </a>
-
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =====================================================
-         ABOUT
-         ===================================================== -->
-
-    <section
-      class="section"
-      id="about"
-    >
-      <div class="container about-grid">
-
-        <div class="reveal">
-
-          <span class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            About Website Deals
-          </span>
-
-          <h2 class="about-title">
-            Built for people
-            who want to
-            <span style="position:relative;">
-              launch.
-            </span>
-          </h2>
-
-          <p class="about-copy">
-            Website Deals is a practical marketplace for ready-made
-            websites. Instead of waiting weeks to build everything
-            from scratch, clients can explore a real website first,
-            choose a package and move forward with a managed monthly
-            website service.
-          </p>
-
-          <div class="about-points">
-
-            <div class="about-point">
-              <div class="about-point-icon">
-                01
-              </div>
-
-              <div>
-                <h4>
-                  See before you buy
-                </h4>
-
-                <p>
-                  Explore real live website previews before making
-                  your decision.
-                </p>
-              </div>
-            </div>
-
-            <div class="about-point">
-              <div class="about-point-icon">
-                02
-              </div>
-
-              <div>
-                <h4>
-                  Ready-made means faster
-                </h4>
-
-                <p>
-                  Start from a polished website instead of building
-                  every screen from zero.
-                </p>
-              </div>
-            </div>
-
-            <div class="about-point">
-              <div class="about-point-icon">
-                03
-              </div>
-
-              <div>
-                <h4>
-                  Managed monthly service
-                </h4>
-
-                <p>
-                  Hosting, maintenance and selected service features
-                  continue while the subscription is active.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="about-panel reveal">
-
-          <div class="about-panel-top">
-
-            <div class="brand-mark">
-              WD
-            </div>
-
-            <div class="about-panel-tag">
-              Digital Marketplace
-            </div>
-
+        <div
+          class="empty-state"
+          id="emptyState"
+        >
+
+          <div class="empty-state-icon">
+            <i class="fa-solid fa-globe"></i>
           </div>
 
           <h3>
-            Launch faster.
-            <br>
-            <span>Grow smarter.</span>
+            Websites are coming soon.
           </h3>
 
-          <div class="about-panel-bottom">
+          <p>
+            Add active showcase websites from the admin panel.
+          </p>
 
-            <div class="about-stat">
-              <strong>100+</strong>
-              <span>Ready Websites</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section
+      class="section about-section"
+      id="about"
+      data-nav-section="about"
+    >
+
+      <div class="container">
+
+        <div class="about-layout">
+
+          <div class="reveal">
+
+            <div class="section-kicker">
+              ABOUT WEBSITE DEALS
             </div>
 
-            <div class="about-stat">
-              <strong>24/7</strong>
-              <span>Marketplace Access</span>
-            </div>
+            <h2 class="about-statement">
+              A website should
+              <span>work for you.</span>
+            </h2>
 
-            <div class="about-stat">
-              <strong>BD</strong>
-              <span>Bangladesh Focused</span>
+          </div>
+
+          <div class="reveal">
+
+            <p class="about-copy">
+              Website Deals is built around a simple idea:
+              professional websites should be easier to
+              discover, easier to understand and easier to
+              launch.
+            </p>
+
+            <p class="about-copy">
+              Instead of showing static screenshots only,
+              the platform presents real websites so clients
+              can experience the actual visual direction before
+              choosing a package.
+            </p>
+
+            <div class="principles">
+
+              <div class="principle">
+
+                <div class="principle-icon">
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+
+                <h4>Real Preview</h4>
+
+                <p>
+                  Experience actual websites instead of
+                  relying only on static mockups.
+                </p>
+
+              </div>
+
+              <div class="principle">
+
+                <div class="principle-icon">
+                  <i class="fa-solid fa-gauge-high"></i>
+                </div>
+
+                <h4>Practical Setup</h4>
+
+                <p>
+                  Packages are structured around real
+                  business needs and growth.
+                </p>
+
+              </div>
+
+              <div class="principle">
+
+                <div class="principle-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h4>Reliable Foundation</h4>
+
+                <p>
+                  Hosting, SSL, integrations and security
+                  are considered from the beginning.
+                </p>
+
+              </div>
+
+              <div class="principle">
+
+                <div class="principle-icon">
+                  <i class="fa-solid fa-arrow-trend-up"></i>
+                </div>
+
+                <h4>Built to Grow</h4>
+
+                <p>
+                  Upgrade from a simple website to a more
+                  advanced system when your business grows.
+                </p>
+
+              </div>
+
             </div>
 
           </div>
@@ -2769,73 +4145,92 @@
         </div>
 
       </div>
-    </section>
 
+    </section>
 
     <!-- =====================================================
          SUPPORT
-         ===================================================== -->
+    ====================================================== -->
 
     <section
       class="section support-section"
       id="support"
+      data-nav-section="support"
     >
+
       <div class="container">
 
-        <div class="support-card reveal">
+        <div class="support-layout">
 
-          <div>
+          <div class="reveal">
 
-            <span class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              Client Support
-            </span>
+            <div class="section-kicker">
+              NEED HELP?
+            </div>
 
             <h2 class="support-title">
-              Need help
-              choosing
-              <span style="color:#b7ff00;">
-                your website?
-              </span>
+              Let's find the
+              <span>right website</span>
+              for you.
             </h2>
 
-            <p class="support-copy">
-              Tell us what kind of business you have and what you
-              need from your website. We can help you choose the
-              right ready-made website and package.
+            <p class="support-text">
+              Not sure which package is right for your business?
+              Tell us what you need and get help choosing the
+              right direction.
             </p>
+
+            <div class="support-actions">
+
+              <a
+                href="https://support.websitedeals.com"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-accent"
+                id="supportButton"
+              >
+                Open Support
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <a
+                href="#website"
+                class="btn btn-secondary"
+              >
+                Browse Websites
+              </a>
+
+            </div>
 
           </div>
 
-          <div class="support-actions">
+          <div class="support-card reveal">
+
+            <div class="support-card-label">
+              WEBSITE DEALS SUPPORT
+            </div>
+
+            <h3>
+              Need a custom direction?
+            </h3>
+
+            <p>
+              We can help you understand the package,
+              website type and next steps before you start.
+            </p>
 
             <a
-              class="support-link"
-              id="supportWebsiteLink"
               href="https://support.websitedeals.com"
               target="_blank"
               rel="noopener"
+              class="support-link"
+              id="supportCardLink"
             >
-              <span class="support-icon">
-                ↗
+              <span id="supportUrlText">
+                support.websitedeals.com
               </span>
 
-              <span>
-                <strong>
-                  Open Support
-                </strong>
-
-                <small
-                  style="
-                    display:block;
-                    margin-top:3px;
-                    color:#858d86;
-                    font-size:8px;
-                  "
-                >
-                  support.websitedeals.com
-                </small>
-              </span>
+              <i class="fa-solid fa-arrow-right"></i>
             </a>
 
           </div>
@@ -2843,182 +4238,277 @@
         </div>
 
       </div>
-    </section>
 
+    </section>
 
     <!-- =====================================================
          SALAH
-         ===================================================== -->
+    ====================================================== -->
 
     <section
       class="section salah-section"
       id="salah"
+      data-nav-section="salah"
     >
+
       <div class="container">
 
-        <div class="section-head reveal">
+        <div class="salah-head reveal">
 
-          <span class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Salah
-          </span>
+          <div>
 
-          <h2 class="section-title">
-            Stay connected
-            <br>
-            with Salah.
-          </h2>
-
-          <p class="section-copy">
-            A simple prayer-time area for the Website Deals
-            presentation wall.
-          </p>
-
-        </div>
-
-
-        <div class="salah-grid">
-
-          <div class="salah-card reveal">
-
-            <div class="salah-card-head">
-
-              <div class="salah-card-title">
-                Today's Prayer Times
-              </div>
-
-              <div
-                class="salah-card-note"
-                id="salahDate"
-              >
-                Bangladesh
-              </div>
-
+            <div class="section-kicker">
+              SALAH
             </div>
 
-            <div
-              class="prayer-list"
-              id="prayerList"
-            ></div>
+            <h2 class="section-title">
+              Pause.
+              <br>
+              Pray.
+              <br>
+              Continue.
+            </h2>
 
           </div>
 
+          <div class="salah-date">
+            Daily Prayer Times
+          </div>
 
-          <div class="salah-card reveal">
+        </div>
 
-            <div class="salah-card-head">
+        <div class="salah-grid">
 
-              <div class="salah-card-title">
-                Salah Reminder
-              </div>
-
-              <div class="salah-card-note">
-                Live status
-              </div>
-
+          <div
+            class="salah-card"
+            data-time="04:45"
+          >
+            <div class="salah-name">
+              Fajr
             </div>
 
-            <div
-              style="
-                padding:28px;
-                border-radius:20px;
-                background:#111;
-                color:#fff;
-              "
-            >
-
-              <div
-                style="
-                  color:#aeb5af;
-                  font-size:10px;
-                  font-weight:700;
-                "
-              >
-                CURRENTLY
-              </div>
-
-              <div
-                id="currentPrayer"
-                style="
-                  margin-top:8px;
-                  font-size:31px;
-                  font-weight:900;
-                  letter-spacing:-.05em;
-                "
-              >
-                Loading...
-              </div>
-
-              <div
-                id="nextPrayer"
-                style="
-                  margin-top:10px;
-                  color:#b7ff00;
-                  font-size:11px;
-                  font-weight:800;
-                "
-              >
-                Loading...
-              </div>
-
+            <div class="salah-time">
+              04:45
             </div>
 
+            <div class="salah-label">
+              NEXT
+            </div>
+          </div>
+
+          <div
+            class="salah-card"
+            data-time="12:05"
+          >
+            <div class="salah-name">
+              Dhuhr
+            </div>
+
+            <div class="salah-time">
+              12:05
+            </div>
+
+            <div class="salah-label">
+              NEXT
+            </div>
+          </div>
+
+          <div
+            class="salah-card"
+            data-time="16:15"
+          >
+            <div class="salah-name">
+              Asr
+            </div>
+
+            <div class="salah-time">
+              16:15
+            </div>
+
+            <div class="salah-label">
+              NEXT
+            </div>
+          </div>
+
+          <div
+            class="salah-card"
+            data-time="18:00"
+          >
+            <div class="salah-name">
+              Maghrib
+            </div>
+
+            <div class="salah-time">
+              18:00
+            </div>
+
+            <div class="salah-label">
+              NEXT
+            </div>
+          </div>
+
+          <div
+            class="salah-card"
+            data-time="19:20"
+          >
+            <div class="salah-name">
+              Isha
+            </div>
+
+            <div class="salah-time">
+              19:20
+            </div>
+
+            <div class="salah-label">
+              NEXT
+            </div>
           </div>
 
         </div>
 
       </div>
+
     </section>
 
   </main>
 
-
   <!-- =======================================================
        FOOTER
-       ======================================================= -->
+  ======================================================== -->
 
-  <footer>
+  <footer class="footer">
 
-    <div class="container footer-inner">
+    <div class="container">
 
-      <div>
-        <div
-          class="footer-brand"
-          id="footerBrand"
-        >
-          Website Deals
+      <div class="footer-top">
+
+        <div class="footer-brand">
+
+          <a
+            href="#home"
+            class="brand"
+          >
+
+            <span class="brand-mark">
+              WD
+            </span>
+
+            <span class="brand-copy">
+              <span class="brand-name">
+                Website Deals
+              </span>
+
+              <span class="brand-sub">
+                Premium Digital Marketplace
+              </span>
+            </span>
+
+          </a>
+
+          <p class="footer-description">
+            Premium ready-made websites, practical monthly
+            packages and live website presentation.
+          </p>
+
         </div>
 
-        <div class="footer-copy">
-          Premium ready-made websites & managed monthly services.
+        <div>
+
+          <div class="footer-title">
+            Explore
+          </div>
+
+          <div class="footer-links">
+
+            <a href="#home">
+              Home
+            </a>
+
+            <a href="#website">
+              Websites
+            </a>
+
+            <a href="#packages">
+              Packages
+            </a>
+
+            <a href="#about">
+              About
+            </a>
+
+          </div>
+
         </div>
+
+        <div>
+
+          <div class="footer-title">
+            Packages
+          </div>
+
+          <div class="footer-links">
+
+            <a href="#packages">
+              Starter
+            </a>
+
+            <a href="#packages">
+              Business
+            </a>
+
+            <a href="#packages">
+              Premium
+            </a>
+
+            <a href="#support">
+              Support
+            </a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="footer-title">
+            Connect
+          </div>
+
+          <div class="footer-links">
+
+            <a
+              href="https://support.websitedeals.com"
+              target="_blank"
+              rel="noopener"
+            >
+              Support Center
+            </a>
+
+            <a href="#salah">
+              Salah
+            </a>
+
+            <a href="#website">
+              Live Showcase
+            </a>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="footer-links">
+      <div class="footer-bottom">
 
-        <a href="#home">
-          Home
-        </a>
+        <div>
+          © <span id="year"></span>
+          Website Deals. All rights reserved.
+        </div>
 
-        <a href="#websites">
-          Websites
-        </a>
-
-        <a href="#packages">
-          Packages
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#support">
-          Support
-        </a>
-
-        <a href="#salah">
-          Salah
-        </a>
+        <div class="footer-credit">
+          Premium websites.
+          <strong>Built for growth.</strong>
+        </div>
 
       </div>
 
@@ -3026,1790 +4516,1821 @@
 
   </footer>
 
+  <!-- BACK TO TOP -->
+
+  <button
+    class="back-top"
+    id="backTop"
+    aria-label="Back to top"
+  >
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <!-- TOAST -->
 
   <div
     class="toast"
     id="toast"
-  ></div>
-
+  >
+    Website presentation ready.
+  </div>
 
   <script>
     /* =========================================================
        WEBSITE DEALS
-       package/index.html
-       JavaScript
-       ========================================================= */
+       PACKAGE / INDEX.HTML
+       PUBLIC FRONTEND ENGINE
+    ========================================================= */
 
-    (() => {
+    const STORAGE_WEBSITES = "websiteDealsWebsites";
+    const STORAGE_SETTINGS = "websiteDealsSettings";
 
-      "use strict";
+    const DEFAULT_SETTINGS = {
+      brandName: "Website Deals",
+      shortName: "Website Deals",
+      tagline: "Premium Ready-Made Websites",
+      metaDescription:
+        "Premium ready-made websites, monthly website packages and live website presentation by Website Deals.",
+      supportUrl:
+        "https://support.websitedeals.com",
+      supportEmail:
+        "support@websitedeals.com",
+      whatsapp: "",
+      supportMessage:
+        "Need help choosing a website? Our support team is ready to help.",
+      showcaseEnabled: true,
+      autoPresentation: true,
+      humanCursor: true,
+      pauseOnHover: true,
+      scrollSpeed: 1,
+      readingPause: 2.5,
+      presentationMode: "natural",
+      showPackages: true,
+      showWebsites: true,
+      showSalah: true,
+      showAbout: true,
+      language: "bn-en",
+      currency: "BDT",
+      deviceMode: "desktop",
+      websiteSort: "manual"
+    };
 
+    const DEFAULT_WEBSITES = [
+      {
+        id:"snk-it-institute",
+        name:"SNK IT Institute",
+        package:"business",
+        packageLabel:"Business Package",
+        url:"https://snkitinstitute.com",
+        status:true,
+        showcase:true,
+        sort:1,
+        note:""
+      },
+      {
+        id:"website-deals",
+        name:"Website Deals",
+        package:"premium",
+        packageLabel:"Premium Package",
+        url:"https://websitedeals.com",
+        status:true,
+        showcase:true,
+        sort:2,
+        note:""
+      }
+    ];
 
-      /* =======================================================
-         DEFAULT SETTINGS
-         ======================================================= */
+    const PACKAGE_META = {
+      starter:{
+        label:"Starter",
+        price:"৳549",
+        className:"starter"
+      },
 
-      const defaultSettings = {
+      business:{
+        label:"Business",
+        price:"৳999",
+        className:"business"
+      },
 
-        brandName:
-          "Website Deals",
+      premium:{
+        label:"Premium",
+        price:"৳1,999",
+        className:"premium"
+      }
+    };
 
-        shortName:
-          "Website Deals",
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-        tagline:
-          "Premium Ready-Made Websites",
+    const activeCameras = new Map();
 
-        metaDescription:
-          "Premium ready-made websites, monthly website packages and live website presentation by Website Deals.",
+    let websiteSettings = {
+      ...DEFAULT_SETTINGS
+    };
 
-        supportUrl:
-          "https://support.websitedeals.com",
+    let websites = [];
 
-        supportEmail:
-          "support@websitedeals.com",
+    let heroSite = null;
 
-        whatsapp:
-          "",
+    /* =========================================================
+       STORAGE
+    ========================================================= */
 
-        supportMessage:
-          "Need help choosing a website? Our support team is ready to help.",
+    function readJSON(key, fallback){
 
-        showcaseEnabled:
-          true,
+      try{
 
-        autoPresentation:
-          true,
+        const raw =
+          localStorage.getItem(key);
 
-        humanCursor:
-          true,
-
-        pauseOnHover:
-          true,
-
-        scrollSpeed:
-          1,
-
-        readingPause:
-          2.5,
-
-        presentationMode:
-          "natural",
-
-        showPackages:
-          true,
-
-        showWebsites:
-          true,
-
-        showSalah:
-          true,
-
-        showAbout:
-          true,
-
-        language:
-          "bn-en",
-
-        currency:
-          "BDT",
-
-        deviceMode:
-          "desktop",
-
-        websiteSort:
-          "manual"
-
-      };
-
-
-      /* =======================================================
-         DEFAULT WEBSITE DATA
-         ======================================================= */
-
-      const defaultWebsites = [
-
-        {
-          id:
-            "snk-it-institute",
-
-          name:
-            "SNK IT Institute",
-
-          package:
-            "business",
-
-          packageLabel:
-            "Business Package",
-
-          url:
-            "https://snkitinstitute.com",
-
-          status:
-            true,
-
-          sort:
-            1
-        },
-
-        {
-          id:
-            "website-deals",
-
-          name:
-            "Website Deals",
-
-          package:
-            "premium",
-
-          packageLabel:
-            "Premium Package",
-
-          url:
-            "https://websitedeals.com",
-
-          status:
-            true,
-
-          sort:
-            2
-        }
-
-      ];
-
-
-      /* =======================================================
-         HELPERS
-         ======================================================= */
-
-      const $ = (selector, root = document) =>
-        root.querySelector(selector);
-
-      const $$ = (selector, root = document) =>
-        Array.from(
-          root.querySelectorAll(selector)
-        );
-
-
-      function safeParse(
-        value,
-        fallback
-      ){
-
-        try{
-
-          return JSON.parse(value);
-
-        }catch{
-
+        if(!raw){
           return fallback;
-
         }
 
+        const parsed =
+          JSON.parse(raw);
+
+        return parsed ?? fallback;
+
+      }catch(error){
+
+        console.warn(
+          "Storage read failed:",
+          key,
+          error
+        );
+
+        return fallback;
+      }
+    }
+
+    function loadSettings(){
+
+      const saved =
+        readJSON(
+          STORAGE_SETTINGS,
+          {}
+        );
+
+      websiteSettings = {
+        ...DEFAULT_SETTINGS,
+        ...(saved || {})
+      };
+    }
+
+    function loadWebsites(){
+
+      const saved =
+        readJSON(
+          STORAGE_WEBSITES,
+          null
+        );
+
+      if(
+        Array.isArray(saved) &&
+        saved.length
+      ){
+
+        websites =
+          saved.map(site => ({
+            ...site,
+
+            status:
+              site.status !== false,
+
+            showcase:
+              site.showcase !== false,
+
+            sort:
+              Number.isFinite(
+                Number(site.sort)
+              )
+                ? Number(site.sort)
+                : 999
+          }));
+
+      }else{
+
+        websites =
+          [...DEFAULT_WEBSITES];
       }
 
+      websites.sort(
+        (a,b) =>
+          Number(a.sort || 999) -
+          Number(b.sort || 999)
+      );
+    }
 
-      function getSettings(){
+    /* =========================================================
+       HELPERS
+    ========================================================= */
 
-        const saved =
-          safeParse(
-            localStorage.getItem(
-              "websiteDealsSettings"
-            ),
-            null
-          );
+    function escapeHTML(value){
 
-        return {
-          ...defaultSettings,
-          ...(saved || {})
-        };
+      return String(
+        value ?? ""
+      )
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+    }
 
+    function normalizeURL(url){
+
+      if(!url){
+        return "";
       }
 
+      const trimmed =
+        String(url).trim();
 
-      function getWebsites(){
-
-        const saved =
-          safeParse(
-            localStorage.getItem(
-              "websiteDealsWebsites"
-            ),
-            null
-          );
-
-        if(
-          !Array.isArray(saved) ||
-          saved.length === 0
-        ){
-
-          return defaultWebsites;
-
-        }
-
-        return saved;
-
+      if(
+        trimmed.startsWith("http://") ||
+        trimmed.startsWith("https://")
+      ){
+        return trimmed;
       }
 
+      return "https://" + trimmed;
+    }
 
-      const settings =
-        getSettings();
+    function getDomain(url){
 
+      try{
 
-      let websites =
-        getWebsites()
-          .filter(site => site && site.status !== false)
-          .sort(
-            (a,b) =>
-              Number(a.sort || 0) -
-              Number(b.sort || 0)
-          );
+        return new URL(
+          normalizeURL(url)
+        ).hostname;
 
+      }catch(error){
 
-      /* =======================================================
-         BRANDING
-         ======================================================= */
+        return String(url || "")
+          .replace(/^https?:\/\//,"")
+          .split("/")[0];
+      }
+    }
 
-      function applyBranding(){
+    function packageLabel(site){
 
-        const brand =
-          settings.brandName ||
-          defaultSettings.brandName;
-
-        const tagline =
-          settings.tagline ||
-          defaultSettings.tagline;
-
-        document.title =
-          `${brand} | ${tagline}`;
-
-        const brandName =
-          $("#brandName");
-
-        const brandTagline =
-          $("#brandTagline");
-
-        const footerBrand =
-          $("#footerBrand");
-
-        if(brandName)
-          brandName.textContent =
-            brand;
-
-        if(brandTagline)
-          brandTagline.textContent =
-            tagline;
-
-        if(footerBrand)
-          footerBrand.textContent =
-            brand;
-
-        const supportLink =
-          $("#supportWebsiteLink");
-
-        if(supportLink){
-
-          supportLink.href =
-            settings.supportUrl ||
-            defaultSettings.supportUrl;
-
-          const small =
-            supportLink.querySelector("small");
-
-          if(small){
-
-            try{
-
-              small.textContent =
-                new URL(
-                  supportLink.href
-                ).hostname;
-
-            }catch{
-
-              small.textContent =
-                supportLink.href;
-
-            }
-
-          }
-
-        }
-
+      if(
+        site.packageLabel &&
+        String(site.packageLabel).trim()
+      ){
+        return site.packageLabel;
       }
 
+      return (
+        PACKAGE_META[site.package]?.label ||
+        "Website Package"
+      );
+    }
 
-      /* =======================================================
-         HERO WEBSITE
-         ======================================================= */
+    function getShowcaseSites(){
 
-      let heroSite =
-        websites[0] ||
-        defaultWebsites[0];
-
-
-      function renderHeroSite(){
-
-        const iframe =
-          $("#heroIframe");
-
-        const name =
-          $("#heroWebsiteName");
-
-        if(!iframe)
-          return;
-
-        if(!heroSite){
-
-          iframe.removeAttribute("src");
-
-          if(name)
-            name.textContent =
-              "Live Website";
-
-          return;
-
-        }
-
-        iframe.src =
-          heroSite.url;
-
-        if(name)
-          name.textContent =
-            heroSite.name ||
-            "Live Website";
-
-      }
-
-
-      /* =======================================================
-         HERO CAMERA
-         ======================================================= */
-
-      let heroAnimationTimer =
-        null;
-
-      let heroPaused =
-        false;
-
-
-      function startHeroCamera(){
-
-        const viewport =
-          $("#heroPreview");
-
-        const camera =
-          $("#heroCamera");
-
-        const iframe =
-          $("#heroIframe");
-
-        if(
-          !viewport ||
-          !camera ||
-          !iframe
+      return websites
+        .filter(site =>
+          site.status !== false &&
+          site.showcase !== false &&
+          site.url
         )
-          return;
+        .sort(
+          (a,b) =>
+            Number(a.sort || 999) -
+            Number(b.sort || 999)
+        );
+    }
 
-        clearTimeout(
-          heroAnimationTimer
+    function getRequestedSite(){
+
+      const params =
+        new URLSearchParams(
+          window.location.search
         );
 
-        const viewportHeight =
-          viewport.clientHeight;
+      const requested =
+        params.get("site");
 
-        const pageHeight =
-          Math.max(
-            iframe.offsetHeight,
-            1200
+      if(!requested){
+        return null;
+      }
+
+      return websites.find(
+        site =>
+          String(site.id) ===
+          String(requested)
+      ) || null;
+    }
+
+    function showToast(message){
+
+      const toast =
+        document.getElementById("toast");
+
+      if(!toast){
+        return;
+      }
+
+      toast.textContent =
+        message;
+
+      toast.classList.add("show");
+
+      clearTimeout(
+        showToast.timer
+      );
+
+      showToast.timer =
+        setTimeout(() => {
+
+          toast.classList.remove(
+            "show"
           );
 
-        const maxTravel =
-          Math.max(
-            0,
-            pageHeight -
-            viewportHeight
+        },2600);
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    function setupHero(){
+
+      const showcaseSites =
+        getShowcaseSites();
+
+      const requested =
+        getRequestedSite();
+
+      heroSite =
+        requested &&
+        requested.status !== false &&
+        requested.showcase !== false
+          ? requested
+          : showcaseSites[0] || null;
+
+      const iframe =
+        document.getElementById(
+          "heroIframe"
+        );
+
+      const camera =
+        document.getElementById(
+          "heroCamera"
+        );
+
+      const name =
+        document.getElementById(
+          "heroSiteName"
+        );
+
+      const url =
+        document.getElementById(
+          "heroSiteUrl"
+        );
+
+      const packageEl =
+        document.getElementById(
+          "heroPackage"
+        );
+
+      const address =
+        document.getElementById(
+          "heroBrowserAddress"
+        );
+
+      const fallback =
+        document.getElementById(
+          "heroFallback"
+        );
+
+      if(!heroSite){
+
+        name.textContent =
+          "Website Deals";
+
+        url.textContent =
+          "Add a showcase website";
+
+        packageEl.textContent =
+          "PREVIEW";
+
+        address.textContent =
+          "No showcase website";
+
+        fallback.classList.add("show");
+
+        return;
+      }
+
+      const siteURL =
+        normalizeURL(
+          heroSite.url
+        );
+
+      name.textContent =
+        heroSite.name ||
+        "Featured Website";
+
+      url.textContent =
+        getDomain(siteURL);
+
+      packageEl.textContent =
+        packageLabel(heroSite)
+          .replace(" Package","")
+          .toUpperCase();
+
+      address.textContent =
+        getDomain(siteURL);
+
+      fallback.classList.remove(
+        "show"
+      );
+
+      iframe.src =
+        siteURL;
+
+      let loaded = false;
+
+      iframe.addEventListener(
+        "load",
+        () => {
+
+          loaded = true;
+
+          fallback.classList.remove(
+            "show"
           );
 
-        if(maxTravel <= 10)
-          return;
+        },
+        {
+          once:true
+        }
+      );
 
-        let position = 0;
+      setTimeout(() => {
 
-        const speed =
-          Math.max(
-            .4,
-            Number(
-              settings.scrollSpeed || 1
-            )
+        if(!loaded){
+
+          fallback.classList.add(
+            "show"
           );
-
-        function cycle(){
-
-          if(heroPaused){
-
-            heroAnimationTimer =
-              setTimeout(
-                cycle,
-                1200
-              );
-
-            return;
-
-          }
-
-          const firstPause =
-            1100 +
-            Math.random() *
-            1800;
-
-          heroAnimationTimer =
-            setTimeout(
-              () => {
-
-                const travel =
-                  Math.min(
-                    maxTravel,
-                    240 +
-                    Math.random() *
-                    360
-                  );
-
-                const duration =
-                  (
-                    3000 +
-                    Math.random() *
-                    3200
-                  ) / speed;
-
-                position =
-                  Math.min(
-                    maxTravel,
-                    position + travel
-                  );
-
-                camera.style.transition =
-                  `transform ${duration}ms cubic-bezier(.22,1,.36,1)`;
-
-                camera.style.transform =
-                  `translate3d(0,-${position}px,0)`;
-
-                if(
-                  position >=
-                  maxTravel - 5
-                ){
-
-                  heroAnimationTimer =
-                    setTimeout(
-                      () => {
-
-                        if(heroPaused){
-
-                          cycle();
-
-                          return;
-
-                        }
-
-                        camera.style.transition =
-                          "transform 4200ms cubic-bezier(.22,1,.36,1)";
-
-                        camera.style.transform =
-                          "translate3d(0,0,0)";
-
-                        position = 0;
-
-                        heroAnimationTimer =
-                          setTimeout(
-                            cycle,
-                            4600
-                          );
-
-                      },
-                      2500 +
-                      Math.random() * 2500
-                    );
-
-                }else{
-
-                  cycle();
-
-                }
-
-              },
-              firstPause
-            );
 
         }
 
-        cycle();
+      },5000);
 
-      }
+      if(
+        !prefersReducedMotion &&
+        websiteSettings.autoPresentation
+      ){
 
+        startCamera(
+          camera,
+          {
+            speedMultiplier:
+              Number(
+                websiteSettings.scrollSpeed
+              ) || 1,
 
-      function setupHeroHover(){
+            pauseMultiplier:
+              Number(
+                websiteSettings.readingPause
+              ) || 2.5,
 
-        const preview =
-          $("#heroPreview");
-
-        if(!preview)
-          return;
-
-        preview.addEventListener(
-          "mouseenter",
-          () => {
-            heroPaused = true;
+            hoverPause:
+              websiteSettings.pauseOnHover
           }
         );
 
-        preview.addEventListener(
-          "mouseleave",
-          () => {
-            heroPaused = false;
-          }
+      }else{
+
+        camera.style.transform =
+          "translate3d(0,0,0)";
+      }
+    }
+
+    /* =========================================================
+       WEBSITE CARDS
+    ========================================================= */
+
+    function renderWebsites(){
+
+      const grid =
+        document.getElementById(
+          "websiteGrid"
         );
 
-      }
-
-
-      /* =======================================================
-         WEBSITE CARDS
-         ======================================================= */
-
-      const cardControllers =
-        new Map();
-
-
-      function packageLabel(
-        site
-      ){
-
-        if(site.packageLabel)
-          return site.packageLabel;
-
-        const labels = {
-          starter:
-            "Starter Package",
-          business:
-            "Business Package",
-          premium:
-            "Premium Package"
-        };
-
-        return labels[
-          site.package
-        ] ||
-        "Website Package";
-
-      }
-
-
-      function createWebsiteCard(
-        site,
-        index
-      ){
-
-        const article =
-          document.createElement("article");
-
-        article.className =
-          "website-card reveal";
-
-        article.dataset.siteId =
-          site.id ||
-          `site-${index}`;
-
-        const safeName =
-          site.name ||
-          "Website";
-
-        const encodedId =
-          encodeURIComponent(
-            site.id ||
-            `site-${index}`
-          );
-
-        article.innerHTML = `
-
-          <div class="website-card-top">
-
-            <div>
-              <div class="website-name">
-                ${escapeHtml(safeName)}
-              </div>
-
-              <div class="website-package">
-                ${escapeHtml(packageLabel(site))}
-              </div>
-            </div>
-
-            <span class="live-badge">
-              LIVE
-            </span>
-
-          </div>
-
-          <div class="preview-shell">
-
-            <div class="preview-viewport">
-
-              <div
-                class="preview-camera"
-                data-camera
-              >
-                <iframe
-                  title="${escapeHtml(safeName)} live preview"
-                  loading="lazy"
-                  src="${escapeAttribute(site.url || "")}"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                ></iframe>
-              </div>
-
-              <div class="preview-gradient"></div>
-
-              ${
-                settings.humanCursor
-                ?
-                `<span class="fake-cursor"></span>`
-                :
-                ""
-              }
-
-            </div>
-
-          </div>
-
-          <div class="website-card-bottom">
-
-            <div class="website-status">
-              Live preview • Auto presentation
-            </div>
-
-            <a
-              class="explore-btn"
-              href="./presentation/index.html?site=${encodedId}"
-            >
-              Explore
-              <span>↗</span>
-            </a>
-
-          </div>
-
-        `;
-
-        return article;
-
-      }
-
-
-      function escapeHtml(
-        value
-      ){
-
-        return String(value)
-          .replace(
-            /&/g,
-            "&amp;"
-          )
-          .replace(
-            /</g,
-            "&lt;"
-          )
-          .replace(
-            />/g,
-            "&gt;"
-          )
-          .replace(
-            /"/g,
-            "&quot;"
-          )
-          .replace(
-            /'/g,
-            "&#039;"
-          );
-
-      }
-
-
-      function escapeAttribute(
-        value
-      ){
-
-        return escapeHtml(
-          value
+      const empty =
+        document.getElementById(
+          "emptyState"
         );
 
+      const count =
+        document.getElementById(
+          "websiteCount"
+        );
+
+      if(
+        !websiteSettings.showcaseEnabled ||
+        !websiteSettings.showWebsites
+      ){
+
+        grid.innerHTML = "";
+
+        empty.classList.remove(
+          "show"
+        );
+
+        count.textContent =
+          "Showcase disabled";
+
+        return;
       }
 
+      const sites =
+        getShowcaseSites();
 
-      function renderWebsiteCards(){
+      count.textContent =
+        `${sites.length} website${sites.length === 1 ? "" : "s"} available`;
 
-        const grid =
-          $("#websiteGrid");
+      if(!sites.length){
 
-        if(!grid)
-          return;
+        grid.innerHTML = "";
 
-        grid.innerHTML =
-          "";
+        empty.classList.add(
+          "show"
+        );
 
-        if(
-          !settings.showcaseEnabled ||
-          !settings.showWebsites
-        ){
+        return;
+      }
 
-          grid.innerHTML = `
+      empty.classList.remove(
+        "show"
+      );
 
-            <div class="empty-state">
-
-              <h3>
-                Website showcase is currently unavailable.
-              </h3>
-
-              <p>
-                Please check back soon.
-              </p>
-
-            </div>
-
-          `;
-
-          return;
-
-        }
-
-        if(!websites.length){
-
-          grid.innerHTML = `
-
-            <div class="empty-state">
-
-              <h3>
-                No live websites added yet.
-              </h3>
-
-              <p>
-                Add your real website link from the admin panel.
-              </p>
-
-            </div>
-
-          `;
-
-          return;
-
-        }
-
-        websites.forEach(
-          (site,index) => {
-
-            grid.appendChild(
+      grid.innerHTML =
+        sites
+          .map(
+            (site,index) =>
               createWebsiteCard(
                 site,
                 index
               )
-            );
+          )
+          .join("");
 
-          }
-        );
+      requestAnimationFrame(() => {
 
-        requestAnimationFrame(
-          () => {
+        document
+          .querySelectorAll(
+            ".site-camera"
+          )
+          .forEach(camera => {
 
-            setupCardAnimations();
+            const id =
+              camera.dataset.siteId;
 
-            revealVisibleElements();
-
-          }
-        );
-
-      }
-
-
-      /* =======================================================
-         HUMAN-LIKE CARD CAMERA
-         ======================================================= */
-
-      function setupCardAnimations(){
-
-        const cards =
-          $$(".website-card");
-
-        cards.forEach(
-          (card,index) => {
-
-            const viewport =
-              $(".preview-viewport",card);
-
-            const camera =
-              $("[data-camera]",card);
-
-            const iframe =
-              $("iframe",card);
-
-            const cursor =
-              $(".fake-cursor",card);
-
-            if(
-              !viewport ||
-              !camera ||
-              !iframe
-            )
-              return;
-
-            const state = {
-
-              timer:null,
-
-              paused:false,
-
-              position:0,
-
-              index,
-
-              maxTravel:0
-
-            };
-
-            cardControllers.set(
-              card,
-              state
-            );
-
-
-            function calculate(){
-
-              const viewportHeight =
-                viewport.clientHeight;
-
-              const pageHeight =
-                Math.max(
-                  iframe.offsetHeight,
-                  1500
-                );
-
-              state.maxTravel =
-                Math.max(
-                  0,
-                  pageHeight -
-                  viewportHeight
-                );
-
-            }
-
-
-            function moveCursor(){
-
-              if(
-                !cursor ||
-                !settings.humanCursor
-              )
-                return;
-
-              const x =
-                18 +
-                Math.random() *
-                Math.max(
-                  20,
-                  viewport.clientWidth - 50
-                );
-
-              const y =
-                35 +
-                Math.random() *
-                Math.max(
-                  30,
-                  viewport.clientHeight - 70
-                );
-
-              cursor.style.left =
-                `${x}px`;
-
-              cursor.style.top =
-                `${y}px`;
-
-            }
-
-
-            function schedule(){
-
-              clearTimeout(
-                state.timer
+            const site =
+              sites.find(
+                item =>
+                  String(item.id) ===
+                  String(id)
               );
 
-              state.timer =
-                setTimeout(
-                  () => {
-
-                    if(state.paused){
-
-                      schedule();
-
-                      return;
-
-                    }
-
-                    calculate();
-
-                    if(
-                      state.maxTravel <= 10
-                    ){
-
-                      state.timer =
-                        setTimeout(
-                          schedule,
-                          2500
-                        );
-
-                      return;
-
-                    }
-
-                    moveCursor();
-
-                    const smallCorrection =
-                      Math.random() < .18;
-
-                    let travel =
-                      smallCorrection
-                      ?
-                      -(35 + Math.random()*55)
-                      :
-                      180 + Math.random()*360;
-
-                    if(
-                      state.position <= 0 &&
-                      travel < 0
-                    ){
-
-                      travel =
-                        250;
-
-                    }
-
-                    let target =
-                      state.position +
-                      travel;
-
-                    target =
-                      Math.max(
-                        0,
-                        Math.min(
-                          state.maxTravel,
-                          target
-                        )
-                      );
-
-                    const duration =
-                      (
-                        2600 +
-                        Math.random() * 4200
-                      ) /
-                      Math.max(
-                        .4,
-                        Number(
-                          settings.scrollSpeed || 1
-                        )
-                      );
-
-                    camera.style.transition =
-                      `transform ${duration}ms cubic-bezier(.22,1,.36,1)`;
-
-                    camera.style.transform =
-                      `translate3d(0,-${target}px,0)`;
-
-                    state.position =
-                      target;
-
-                    if(
-                      state.position >=
-                      state.maxTravel - 5
-                    ){
-
-                      state.timer =
-                        setTimeout(
-                          () => {
-
-                            if(state.paused){
-
-                              schedule();
-
-                              return;
-
-                            }
-
-                            camera.style.transition =
-                              "transform 4200ms cubic-bezier(.22,1,.36,1)";
-
-                            camera.style.transform =
-                              "translate3d(0,0,0)";
-
-                            state.position =
-                              0;
-
-                            moveCursor();
-
-                            state.timer =
-                              setTimeout(
-                                schedule,
-                                4300
-                              );
-
-                          },
-                          2800 +
-                          Math.random() * 3200
-                        );
-
-                    }else{
-
-                      const readingPause =
-                        (
-                          Number(
-                            settings.readingPause || 2.5
-                          ) *
-                          1000
-                        );
-
-                      const randomPause =
-                        readingPause +
-                        Math.random() * 2600;
-
-                      state.timer =
-                        setTimeout(
-                          schedule,
-                          randomPause
-                        );
-
-                    }
-
-                  },
-                  1100 +
-                  Math.random() * 3000 +
-                  index * 450
-                );
-
+            if(!site){
+              return;
             }
 
+            setupCardIframe(
+              site,
+              camera
+            );
 
-            iframe.addEventListener(
-              "load",
-              () => {
+          });
 
-                calculate();
+      });
+    }
 
-                moveCursor();
+    function createWebsiteCard(
+      site,
+      index
+    ){
 
-                schedule();
+      const siteURL =
+        normalizeURL(site.url);
+
+      const packageText =
+        packageLabel(site)
+          .replace(" Package","");
+
+      return `
+        <article
+          class="website-card reveal"
+          data-site-card="${escapeHTML(site.id)}"
+        >
+
+          <div class="website-card-head">
+
+            <div class="website-meta">
+
+              <span class="website-package">
+                ${escapeHTML(packageText)}
+              </span>
+
+              <h3 class="website-name">
+                ${escapeHTML(
+                  site.name ||
+                  "Untitled Website"
+                )}
+              </h3>
+
+              <div class="website-url">
+                ${escapeHTML(
+                  getDomain(siteURL)
+                )}
+              </div>
+
+            </div>
+
+            <div class="website-live">
+              <i></i>
+              LIVE
+            </div>
+
+          </div>
+
+          <div class="website-screen">
+
+            <div class="website-browser">
+
+              <div class="website-browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="website-address">
+                ${escapeHTML(siteURL)}
+              </div>
+
+            </div>
+
+            <div
+              class="site-camera"
+              data-site-id="${escapeHTML(site.id)}"
+              data-index="${index}"
+            >
+
+              <iframe
+                title="${escapeHTML(
+                  site.name ||
+                  "Website Preview"
+                )}"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+
+            </div>
+
+            <div class="screen-overlay"></div>
+
+            <div
+              class="card-fallback"
+              data-fallback="${escapeHTML(site.id)}"
+            >
+
+              <div class="card-fallback-box">
+
+                <i class="fa-solid fa-globe"></i>
+
+                <h4>
+                  Preview unavailable
+                </h4>
+
+                <p>
+                  This website may block embedded previews.
+                  Open the real website using the button below.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="website-card-foot">
+
+            <div class="website-scroll-info">
+              <i class="fa-solid fa-arrows-up-down"></i>
+              Auto presentation
+            </div>
+
+            <div class="website-actions">
+
+              <a
+                href="${escapeHTML(siteURL)}"
+                target="_blank"
+                rel="noopener"
+                class="mini-btn"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                Open Live
+              </a>
+
+              <a
+                href="./presentation/index.html?site=${encodeURIComponent(site.id)}"
+                class="mini-btn primary"
+              >
+                <i class="fa-solid fa-play"></i>
+                Explore
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+      `;
+    }
+
+    function setupCardIframe(
+      site,
+      camera
+    ){
+
+      const iframe =
+        camera.querySelector(
+          "iframe"
+        );
+
+      if(!iframe){
+        return;
+      }
+
+      const fallback =
+        document.querySelector(
+          `[data-fallback="${CSS.escape(String(site.id))}"]`
+        );
+
+      const siteURL =
+        normalizeURL(site.url);
+
+      let loaded = false;
+
+      iframe.addEventListener(
+        "load",
+        () => {
+
+          loaded = true;
+
+          if(fallback){
+            fallback.classList.remove(
+              "show"
+            );
+          }
+
+        },
+        {
+          once:true
+        }
+      );
+
+      iframe.src =
+        siteURL;
+
+      setTimeout(() => {
+
+        if(!loaded && fallback){
+
+          fallback.classList.add(
+            "show"
+          );
+
+        }
+
+      },5200);
+
+      if(
+        prefersReducedMotion ||
+        !websiteSettings.autoPresentation
+      ){
+
+        camera.style.transform =
+          "translate3d(0,0,0)";
+
+        return;
+      }
+
+      startCamera(
+        camera,
+        {
+          speedMultiplier:
+            Number(
+              websiteSettings.scrollSpeed
+            ) || 1,
+
+          pauseMultiplier:
+            Number(
+              websiteSettings.readingPause
+            ) || 2.5,
+
+          hoverPause:
+            websiteSettings.pauseOnHover,
+
+          offset:
+            indexOffset(
+              Number(
+                camera.dataset.index
+              ) || 0
+            )
+        }
+      );
+    }
+
+    function indexOffset(index){
+
+      const variations =
+        [
+          0,
+          .72,
+          1.15,
+          .88,
+          1.32
+        ];
+
+      return (
+        variations[
+          index %
+          variations.length
+        ] || 1
+      );
+    }
+
+    /* =========================================================
+       HUMAN-LIKE CAMERA
+    ========================================================= */
+
+    function startCamera(
+      camera,
+      options={}
+    ){
+
+      if(!camera){
+        return;
+      }
+
+      stopCamera(camera);
+
+      const speed =
+        Math.max(
+          .4,
+          Number(
+            options.speedMultiplier || 1
+          )
+        );
+
+      const pauseMultiplier =
+        Math.max(
+          .5,
+          Number(
+            options.pauseMultiplier || 2.5
+          )
+        );
+
+      const variation =
+        options.offset || 1;
+
+      const viewport =
+        camera.parentElement;
+
+      if(!viewport){
+        return;
+      }
+
+      const viewportHeight =
+        viewport.clientHeight;
+
+      const totalHeight =
+        7600;
+
+      const maxOffset =
+        Math.max(
+          0,
+          totalHeight -
+          viewportHeight -
+          35
+        );
+
+      const topPause =
+        (2200 +
+          Math.random()*1600) *
+        pauseMultiplier *
+        .72;
+
+      const bottomPause =
+        (2800 +
+          Math.random()*1800) *
+        pauseMultiplier;
+
+      const downDuration =
+        (
+          15000 +
+          Math.random()*11000
+        ) /
+        speed *
+        variation;
+
+      const upDuration =
+        (
+          18000 +
+          Math.random()*12000
+        ) /
+        speed *
+        variation;
+
+      const state = {
+        raf:null,
+        startTime:performance.now(),
+        paused:false,
+        manualPause:false,
+        hoverPause:false,
+        topPause,
+        bottomPause,
+        downDuration,
+        upDuration,
+        maxOffset,
+        phase:"top",
+        currentOffset:0,
+        nextPause:randomBetween(
+          18,
+          28
+        ),
+        correction:0
+      };
+
+      activeCameras.set(
+        camera,
+        state
+      );
+
+      if(options.hoverPause){
+
+        const enter = () => {
+          state.hoverPause = true;
+        };
+
+        const leave = () => {
+          state.hoverPause = false;
+        };
+
+        camera.parentElement.addEventListener(
+          "mouseenter",
+          enter
+        );
+
+        camera.parentElement.addEventListener(
+          "mouseleave",
+          leave
+        );
+
+        state.cleanupHover = () => {
+
+          camera.parentElement.removeEventListener(
+            "mouseenter",
+            enter
+          );
+
+          camera.parentElement.removeEventListener(
+            "mouseleave",
+            leave
+          );
+
+        };
+      }
+
+      function tick(now){
+
+        const current =
+          activeCameras.get(
+            camera
+          );
+
+        if(!current){
+          return;
+        }
+
+        if(
+          current.manualPause ||
+          current.hoverPause
+        ){
+
+          current.startTime +=
+            16;
+
+          current.raf =
+            requestAnimationFrame(
+              tick
+            );
+
+          return;
+        }
+
+        const elapsed =
+          now -
+          current.startTime;
+
+        let offset = 0;
+
+        if(
+          current.phase ===
+          "top"
+        ){
+
+          offset = 0;
+
+          if(
+            elapsed >=
+            current.topPause
+          ){
+
+            current.phase =
+              "down";
+
+            current.startTime =
+              now;
+          }
+
+        }else if(
+          current.phase ===
+          "down"
+        ){
+
+          const progress =
+            Math.min(
+              1,
+              elapsed /
+              current.downDuration
+            );
+
+          const eased =
+            easeInOut(
+              progress
+            );
+
+          offset =
+            eased *
+            current.maxOffset;
+
+          if(
+            progress >= 1
+          ){
+
+            current.phase =
+              "bottom";
+
+            current.startTime =
+              now;
+
+            current.currentOffset =
+              current.maxOffset;
+          }
+
+        }else if(
+          current.phase ===
+          "bottom"
+        ){
+
+          offset =
+            current.maxOffset;
+
+          if(
+            elapsed >=
+            current.bottomPause
+          ){
+
+            current.phase =
+              "up";
+
+            current.startTime =
+              now;
+          }
+
+        }else if(
+          current.phase ===
+          "up"
+        ){
+
+          const progress =
+            Math.min(
+              1,
+              elapsed /
+              current.upDuration
+            );
+
+          const eased =
+            easeInOut(
+              progress
+            );
+
+          offset =
+            current.maxOffset *
+            (1 - eased);
+
+          if(
+            progress >= 1
+          ){
+
+            current.phase =
+              "top";
+
+            current.startTime =
+              now;
+
+            offset = 0;
+          }
+        }
+
+        /*
+          Human-like tiny reading corrections.
+          These are intentionally subtle so the movement
+          feels less like a perfectly mechanical carousel.
+        */
+
+        if(
+          current.phase === "down" ||
+          current.phase === "up"
+        ){
+
+          const wobble =
+            Math.sin(
+              now / 950
+            ) * 2.2;
+
+          offset +=
+            wobble;
+
+          offset =
+            Math.max(
+              0,
+              Math.min(
+                current.maxOffset,
+                offset
+              )
+            );
+        }
+
+        camera.style.transform =
+          `translate3d(0,${-offset}px,0)`;
+
+        current.currentOffset =
+          offset;
+
+        current.raf =
+          requestAnimationFrame(
+            tick
+          );
+      }
+
+      state.raf =
+        requestAnimationFrame(
+          tick
+        );
+    }
+
+    function stopCamera(camera){
+
+      const state =
+        activeCameras.get(
+          camera
+        );
+
+      if(!state){
+        return;
+      }
+
+      if(state.raf){
+        cancelAnimationFrame(
+          state.raf
+        );
+      }
+
+      if(state.cleanupHover){
+        state.cleanupHover();
+      }
+
+      activeCameras.delete(
+        camera
+      );
+    }
+
+    function easeInOut(t){
+
+      return t < .5
+        ? 2 * t * t
+        : 1 -
+          Math.pow(
+            -2 * t + 2,
+            2
+          ) / 2;
+    }
+
+    function randomBetween(
+      min,
+      max
+    ){
+
+      return (
+        min +
+        Math.random() *
+        (max - min)
+      );
+    }
+
+    /* =========================================================
+       SETTINGS VISIBILITY
+    ========================================================= */
+
+    function applySettings(){
+
+      const packages =
+        document.getElementById(
+          "packages"
+        );
+
+      const website =
+        document.getElementById(
+          "website"
+        );
+
+      const about =
+        document.getElementById(
+          "about"
+        );
+
+      const support =
+        document.getElementById(
+          "support"
+        );
+
+      const salah =
+        document.getElementById(
+          "salah"
+        );
+
+      if(packages){
+
+        packages.style.display =
+          websiteSettings.showPackages
+            ? ""
+            : "none";
+      }
+
+      if(website){
+
+        website.style.display =
+          websiteSettings.showWebsites &&
+          websiteSettings.showcaseEnabled
+            ? ""
+            : "none";
+      }
+
+      if(about){
+
+        about.style.display =
+          websiteSettings.showAbout
+            ? ""
+            : "none";
+      }
+
+      if(salah){
+
+        salah.style.display =
+          websiteSettings.showSalah
+            ? ""
+            : "none";
+      }
+
+      const supportURL =
+        normalizeURL(
+          websiteSettings.supportUrl ||
+          DEFAULT_SETTINGS.supportUrl
+        );
+
+      const supportButton =
+        document.getElementById(
+          "supportButton"
+        );
+
+      const supportLink =
+        document.getElementById(
+          "supportCardLink"
+        );
+
+      const supportText =
+        document.getElementById(
+          "supportUrlText"
+        );
+
+      if(supportButton){
+        supportButton.href =
+          supportURL;
+      }
+
+      if(supportLink){
+        supportLink.href =
+          supportURL;
+      }
+
+      if(supportText){
+
+        supportText.textContent =
+          getDomain(
+            supportURL
+          );
+      }
+
+      document.title =
+        `${websiteSettings.brandName || "Website Deals"} | ${websiteSettings.tagline || "Premium Ready-Made Websites"}`;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    function setupNavigation(){
+
+      const links =
+        document.querySelectorAll(
+          ".nav-link"
+        );
+
+      const sections =
+        document.querySelectorAll(
+          "[data-nav-section]"
+        );
+
+      const observer =
+        new IntersectionObserver(
+          entries => {
+
+            entries.forEach(
+              entry => {
+
+                if(
+                  entry.isIntersecting
+                ){
+
+                  const id =
+                    entry.target.dataset
+                      .navSection;
+
+                  links.forEach(
+                    link => {
+
+                      link.classList.toggle(
+                        "active",
+                        link.dataset.section ===
+                        id
+                      );
+
+                    }
+                  );
+                }
 
               }
             );
 
-
-            if(
-              settings.pauseOnHover
-            ){
-
-              card.addEventListener(
-                "mouseenter",
-                () => {
-                  state.paused = true;
-                }
-              );
-
-              card.addEventListener(
-                "mouseleave",
-                () => {
-
-                  state.paused = false;
-
-                  schedule();
-
-                }
-              );
-
-            }
-
-
-            window.addEventListener(
-              "resize",
-              calculate
-            );
-
-            calculate();
-
-            schedule();
-
+          },
+          {
+            rootMargin:
+              "-35% 0px -55% 0px"
           }
         );
 
-      }
+      sections.forEach(
+        section =>
+          observer.observe(
+            section
+          )
+      );
+    }
 
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
 
-      /* =======================================================
-         REVEAL ANIMATION
-         ======================================================= */
+    function setupMobileMenu(){
 
-      let revealObserver;
-
-
-      function setupReveal(){
-
-        revealObserver =
-          new IntersectionObserver(
-            entries => {
-
-              entries.forEach(
-                entry => {
-
-                  if(
-                    entry.isIntersecting
-                  ){
-
-                    entry.target.classList.add(
-                      "show"
-                    );
-
-                    revealObserver.unobserve(
-                      entry.target
-                    );
-
-                  }
-
-                }
-              );
-
-            },
-            {
-              threshold:.12
-            }
-          );
-
-        revealVisibleElements();
-
-      }
-
-
-      function revealVisibleElements(){
-
-        $$(".reveal").forEach(
-          element => {
-
-            if(
-              revealObserver
-            ){
-
-              revealObserver.observe(
-                element
-              );
-
-            }
-
-          }
+      const toggle =
+        document.getElementById(
+          "mobileToggle"
         );
 
+      const menu =
+        document.getElementById(
+          "mobileMenu"
+        );
+
+      if(!toggle || !menu){
+        return;
       }
 
+      toggle.addEventListener(
+        "click",
+        () => {
 
-      /* =======================================================
-         MOBILE MENU
-         ======================================================= */
-
-      function setupMobileMenu(){
-
-        const toggle =
-          $("#mobileToggle");
-
-        const nav =
-          $("#navLinks");
-
-        if(
-          !toggle ||
-          !nav
-        )
-          return;
-
-        toggle.addEventListener(
-          "click",
-          () => {
-
-            nav.classList.toggle(
+          const open =
+            menu.classList.toggle(
               "open"
             );
 
-          }
+          document.body.classList.toggle(
+            "menu-open",
+            open
+          );
+
+          toggle.setAttribute(
+            "aria-expanded",
+            String(open)
+          );
+
+          toggle.innerHTML =
+            open
+              ? '<i class="fa-solid fa-xmark"></i>'
+              : '<i class="fa-solid fa-bars"></i>';
+
+          menu.setAttribute(
+            "aria-hidden",
+            String(!open)
+          );
+
+        }
+      );
+
+      menu
+        .querySelectorAll("a")
+        .forEach(link => {
+
+          link.addEventListener(
+            "click",
+            () => {
+
+              menu.classList.remove(
+                "open"
+              );
+
+              document.body.classList.remove(
+                "menu-open"
+              );
+
+              toggle.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+              toggle.innerHTML =
+                '<i class="fa-solid fa-bars"></i>';
+
+            }
+          );
+
+        });
+    }
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    function setupReveal(){
+
+      const items =
+        document.querySelectorAll(
+          ".reveal"
         );
 
+      if(prefersReducedMotion){
 
-        $$(".nav-link").forEach(
-          link => {
+        items.forEach(
+          item =>
+            item.classList.add(
+              "visible"
+            )
+        );
 
-            link.addEventListener(
-              "click",
-              () => {
+        return;
+      }
 
-                nav.classList.remove(
-                  "open"
-                );
+      const observer =
+        new IntersectionObserver(
+          entries => {
+
+            entries.forEach(
+              entry => {
+
+                if(
+                  entry.isIntersecting
+                ){
+
+                  entry.target.classList.add(
+                    "visible"
+                  );
+
+                  observer.unobserve(
+                    entry.target
+                  );
+                }
 
               }
             );
 
+          },
+          {
+            threshold:.08
           }
         );
 
-      }
-
-
-      /* =======================================================
-         NAV ACTIVE STATE
-         ======================================================= */
-
-      function setupActiveNav(){
-
-        const links =
-          $$(".nav-link");
-
-        const sections =
-          [
-            "home",
-            "websites",
-            "about",
-            "support",
-            "salah"
-          ]
-          .map(
-            id =>
-              document.getElementById(id)
+      items.forEach(
+        item =>
+          observer.observe(
+            item
           )
-          .filter(Boolean);
+      );
+    }
 
+    /* =========================================================
+       SALAH NEXT PRAYER
+    ========================================================= */
 
-        const observer =
-          new IntersectionObserver(
-            entries => {
+    function setupSalah(){
 
-              entries.forEach(
-                entry => {
+      const cards =
+        [
+          ...document.querySelectorAll(
+            ".salah-card"
+          )
+        ];
 
-                  if(
-                    entry.isIntersecting
-                  ){
-
-                    links.forEach(
-                      link => {
-
-                        link.classList.toggle(
-                          "active",
-                          link.getAttribute("href") ===
-                          `#${entry.target.id}`
-                        );
-
-                      }
-                    );
-
-                  }
-
-                }
-              );
-
-            },
-            {
-              rootMargin:
-                "-25% 0px -60% 0px",
-              threshold:0
-            }
-          );
-
-
-        sections.forEach(
-          section =>
-            observer.observe(section)
-        );
-
+      if(!cards.length){
+        return;
       }
 
+      const now =
+        new Date();
 
-      /* =======================================================
-         SALAH DATA
-         ======================================================= */
+      const minutesNow =
+        now.getHours() * 60 +
+        now.getMinutes();
 
-      const prayerTimes = [
+      let nextIndex = -1;
 
-        {
-          name:
-            "Fajr",
-          time:
-            "04:45"
-        },
-
-        {
-          name:
-            "Dhuhr",
-          time:
-            "12:05"
-        },
-
-        {
-          name:
-            "Asr",
-          time:
-            "16:15"
-        },
-
-        {
-          name:
-            "Maghrib",
-          time:
-            "18:00"
-        },
-
-        {
-          name:
-            "Isha",
-          time:
-            "19:20"
-        }
-
-      ];
-
-
-      function parseTime(
-        value
+      for(
+        let i=0;
+        i<cards.length;
+        i++
       ){
 
-        const [
-          hours,
-          minutes
-        ] =
-          value
+        const time =
+          cards[i]
+            .dataset
+            .time
             .split(":")
             .map(Number);
 
-        return (
-          hours * 60 +
-          minutes
-        );
+        const minutes =
+          time[0] * 60 +
+          time[1];
 
-      }
-
-
-      function getCurrentPrayer(){
-
-        const now =
-          new Date();
-
-        const currentMinutes =
-          now.getHours() * 60 +
-          now.getMinutes();
-
-        let current =
-          null;
-
-        for(
-          let i = 0;
-          i < prayerTimes.length;
-          i++
+        if(
+          minutes >
+          minutesNow
         ){
 
-          const prayer =
-            prayerTimes[i];
-
-          if(
-            currentMinutes >=
-            parseTime(prayer.time)
-          ){
-
-            current =
-              prayer;
-
-          }
-
+          nextIndex = i;
+          break;
         }
-
-        return current;
-
       }
 
+      cards.forEach(
+        card =>
+          card.classList.remove(
+            "next"
+          )
+      );
 
-      function getNextPrayer(){
+      if(nextIndex >= 0){
 
-        const now =
-          new Date();
-
-        const currentMinutes =
-          now.getHours() * 60 +
-          now.getMinutes();
-
-        for(
-          const prayer of prayerTimes
-        ){
-
-          if(
-            parseTime(prayer.time) >
-            currentMinutes
-          ){
-
-            return prayer;
-
-          }
-
-        }
-
-        return prayerTimes[0];
-
-      }
-
-
-      function renderSalah(){
-
-        const top =
-          $("#topPrayerStrip");
-
-        const list =
-          $("#prayerList");
-
-        if(top){
-
-          top.innerHTML =
-            prayerTimes
-              .map(
-                prayer => `
-
-                  <div class="prayer-pill">
-
-                    <strong>
-                      ${prayer.name}
-                    </strong>
-
-                    <span>
-                      ${prayer.time}
-                    </span>
-
-                  </div>
-
-                `
-              )
-              .join("");
-
-        }
-
-
-        if(list){
-
-          const current =
-            getCurrentPrayer();
-
-          list.innerHTML =
-            prayerTimes
-              .map(
-                prayer => {
-
-                  const isCurrent =
-                    current &&
-                    current.name ===
-                    prayer.name;
-
-                  return `
-
-                    <div
-                      class="
-                        prayer-row
-                        ${isCurrent ? "current" : ""}
-                      "
-                    >
-
-                      <strong>
-                        ${prayer.name}
-                      </strong>
-
-                      <span>
-                        ${prayer.time}
-                      </span>
-
-                    </div>
-
-                  `;
-
-                }
-              )
-              .join("");
-
-        }
-
-
-        const current =
-          getCurrentPrayer();
-
-        const next =
-          getNextPrayer();
-
-        const currentElement =
-          $("#currentPrayer");
-
-        const nextElement =
-          $("#nextPrayer");
-
-        if(currentElement){
-
-          currentElement.textContent =
-            current
-            ?
-            current.name
-            :
-            "Before Fajr";
-
-        }
-
-        if(nextElement){
-
-          nextElement.textContent =
-            next
-            ?
-            `Next: ${next.name} • ${next.time}`
-            :
-            "";
-
-        }
-
-
-        const dateElement =
-          $("#salahDate");
-
-        if(dateElement){
-
-          const now =
-            new Date();
-
-          dateElement.textContent =
-            now.toLocaleDateString(
-              "en-BD",
-              {
-                day:"numeric",
-                month:"short",
-                year:"numeric"
-              }
-            );
-
-        }
-
-      }
-
-
-      /* =======================================================
-         IFRAME FALLBACK NOTICE
-         ======================================================= */
-
-      function setupIframeErrors(){
-
-        document.addEventListener(
-          "error",
-          event => {
-
-            const target =
-              event.target;
-
-            if(
-              target &&
-              target.tagName ===
-              "IFRAME"
-            ){
-
-              showToast(
-                "This website does not allow iframe preview. Use Explore / Open Live to view it directly."
-              );
-
-            }
-
-          },
-          true
+        cards[nextIndex].classList.add(
+          "next"
         );
 
+      }else{
+
+        cards[0].classList.add(
+          "next"
+        );
+      }
+    }
+
+    /* =========================================================
+       BACK TOP
+    ========================================================= */
+
+    function setupBackTop(){
+
+      const button =
+        document.getElementById(
+          "backTop"
+        );
+
+      if(!button){
+        return;
       }
 
+      window.addEventListener(
+        "scroll",
+        () => {
 
-      /* =======================================================
-         TOAST
-         ======================================================= */
-
-      let toastTimer =
-        null;
-
-
-      function showToast(
-        message
-      ){
-
-        const toast =
-          $("#toast");
-
-        if(!toast)
-          return;
-
-        toast.textContent =
-          message;
-
-        toast.classList.add(
-          "show"
-        );
-
-        clearTimeout(
-          toastTimer
-        );
-
-        toastTimer =
-          setTimeout(
-            () => {
-
-              toast.classList.remove(
-                "show"
-              );
-
-            },
-            4500
+          button.classList.toggle(
+            "show",
+            window.scrollY > 700
           );
 
-      }
+        },
+        {
+          passive:true
+        }
+      );
 
+      button.addEventListener(
+        "click",
+        () => {
 
-      /* =======================================================
-         VISIBILITY
-         ======================================================= */
+          window.scrollTo({
+            top:0,
+            behavior:
+              prefersReducedMotion
+                ? "auto"
+                : "smooth"
+          });
+
+        }
+      );
+    }
+
+    /* =========================================================
+       PAGE VISIBILITY
+    ========================================================= */
+
+    function setupVisibility(){
 
       document.addEventListener(
         "visibilitychange",
         () => {
 
-          if(
-            document.hidden
-          ){
+          activeCameras.forEach(
+            state => {
 
-            heroPaused = true;
+              if(
+                document.hidden
+              ){
 
-            cardControllers.forEach(
-              state => {
-                state.paused = true;
-              }
-            );
+                state.manualPause =
+                  true;
 
-          }else{
+              }else{
 
-            heroPaused = false;
-
-            cardControllers.forEach(
-              state => {
-
-                state.paused = false;
+                state.manualPause =
+                  false;
 
               }
-            );
-
-          }
-
-        }
-      );
-
-
-      /* =======================================================
-         SERVICE WORKER
-         ======================================================= */
-
-      function registerServiceWorker(){
-
-        if(
-          "serviceWorker" in navigator
-        ){
-
-          navigator.serviceWorker
-            .register(
-              "./sw.js"
-            )
-            .catch(
-              () => {}
-            );
-
-        }
-
-      }
-
-
-      /* =======================================================
-         INITIALIZE
-         ======================================================= */
-
-      function init(){
-
-        applyBranding();
-
-        renderHeroSite();
-
-        renderWebsiteCards();
-
-        setupHeroHover();
-
-        setupMobileMenu();
-
-        setupActiveNav();
-
-        setupReveal();
-
-        setupIframeErrors();
-
-        renderSalah();
-
-        registerServiceWorker();
-
-
-        const heroIframe =
-          $("#heroIframe");
-
-        if(heroIframe){
-
-          heroIframe.addEventListener(
-            "load",
-            () => {
-
-              setTimeout(
-                startHeroCamera,
-                500
-              );
 
             }
           );
 
-          setTimeout(
-            startHeroCamera,
-            2500
-          );
-
         }
+      );
+    }
 
+    /* =========================================================
+       SERVICE WORKER
+    ========================================================= */
 
-        setInterval(
-          renderSalah,
-          60000
-        );
-
-      }
-
+    function registerServiceWorker(){
 
       if(
-        document.readyState ===
-        "loading"
+        "serviceWorker" in navigator
       ){
 
-        document.addEventListener(
-          "DOMContentLoaded",
-          init
+        window.addEventListener(
+          "load",
+          () => {
+
+            navigator.serviceWorker
+              .register(
+                "./sw.js"
+              )
+              .catch(
+                error => {
+
+                  console.warn(
+                    "Service worker registration failed:",
+                    error
+                  );
+
+                }
+              );
+
+          }
+        );
+      }
+    }
+
+    /* =========================================================
+       YEAR
+    ========================================================= */
+
+    function setupYear(){
+
+      const year =
+        document.getElementById(
+          "year"
         );
 
-      }else{
+      if(year){
 
-        init();
+        year.textContent =
+          new Date()
+            .getFullYear();
+      }
+    }
 
+    /* =========================================================
+       INITIALIZATION
+    ========================================================= */
+
+    function init(){
+
+      loadSettings();
+
+      loadWebsites();
+
+      applySettings();
+
+      setupHero();
+
+      renderWebsites();
+
+      setupNavigation();
+
+      setupMobileMenu();
+
+      setupReveal();
+
+      setupSalah();
+
+      setupBackTop();
+
+      setupVisibility();
+
+      setupYear();
+
+      registerServiceWorker();
+
+      /*
+        If the page is opened with:
+        ?site=website-id
+
+        the requested website becomes the hero website.
+      */
+
+      if(heroSite){
+
+        console.log(
+          "Website Deals hero website:",
+          heroSite.name
+        );
       }
 
-    })();
+      console.log(
+        "Website Deals initialized.",
+        {
+          websites:websites.length,
+          showcase:getShowcaseSites().length,
+          settings:websiteSettings
+        }
+      );
+    }
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      init
+    );
   </script>
 
 </body>
