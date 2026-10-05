@@ -72,6 +72,7 @@
     body{
       min-height:100vh;
       overflow-x:hidden;
+
       background:
         radial-gradient(
           circle at 80% 0%,
@@ -84,8 +85,36 @@
           transparent 25%
         ),
         var(--bg);
+
       color:var(--text);
       font-family:"Inter","Hind Siliguri",sans-serif;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.015) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.015) 1px,
+          transparent 1px
+        );
+
+      background-size:60px 60px;
+
+      mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
     }
 
     a{
@@ -104,26 +133,30 @@
       cursor:pointer;
     }
 
-    /* =====================================================
-       LAYOUT
-    ====================================================== */
+    /* ================================
+       APP
+    ================================= */
 
     .app{
       min-height:100vh;
       display:flex;
     }
 
-    /* =====================================================
+    /* ================================
        SIDEBAR
-    ====================================================== */
+    ================================= */
 
     .sidebar{
       position:fixed;
       inset:0 auto 0 0;
+
       width:260px;
       min-height:100vh;
+
       z-index:100;
+
       padding:22px 16px;
+
       display:flex;
       flex-direction:column;
 
@@ -226,7 +259,9 @@
 
     .nav a.active{
       color:var(--lime);
+
       background:var(--lime-soft);
+
       border:1px solid rgba(183,255,0,.08);
     }
 
@@ -263,6 +298,7 @@
       border-radius:50%;
 
       background:#1c211e;
+
       border:1px solid var(--line-strong);
 
       color:var(--lime);
@@ -282,9 +318,9 @@
       font-size:10px;
     }
 
-    /* =====================================================
+    /* ================================
        MAIN
-    ====================================================== */
+    ================================= */
 
     .main{
       width:calc(100% - 260px);
@@ -298,6 +334,7 @@
 
       position:sticky;
       top:0;
+
       z-index:80;
 
       display:flex;
@@ -307,6 +344,7 @@
       padding:0 34px;
 
       background:rgba(8,9,9,.82);
+
       border-bottom:1px solid var(--line);
 
       backdrop-filter:blur(20px);
@@ -368,15 +406,15 @@
       color:var(--lime);
     }
 
-    /* =====================================================
+    /* ================================
        PAGE
-    ====================================================== */
+    ================================= */
 
     .page{
       width:min(1500px,100%);
       margin:auto;
 
-      padding:38px 34px 70px;
+      padding:38px 34px 80px;
     }
 
     .page-head{
@@ -385,6 +423,7 @@
       justify-content:space-between;
 
       gap:25px;
+
       margin-bottom:28px;
     }
 
@@ -420,13 +459,14 @@
       font-family:"Space Grotesk",sans-serif;
 
       font-size:clamp(30px,4vw,48px);
+
       line-height:1;
 
       letter-spacing:-.05em;
     }
 
     .page-desc{
-      max-width:650px;
+      max-width:700px;
 
       margin-top:13px;
 
@@ -475,18 +515,18 @@
         0 12px 30px rgba(183,255,0,.12);
     }
 
-    /* =====================================================
+    /* ================================
        STATUS
-    ====================================================== */
+    ================================= */
 
     .save-status{
       display:inline-flex;
       align-items:center;
-      gap:7px;
+      gap:8px;
 
-      margin-bottom:24px;
+      margin-bottom:22px;
 
-      padding:9px 12px;
+      padding:9px 13px;
 
       border:1px solid var(--line);
       border-radius:999px;
@@ -516,13 +556,17 @@
       box-shadow:none;
     }
 
-    /* =====================================================
-       SETTINGS GRID
-    ====================================================== */
+    /* ================================
+       GRID
+    ================================= */
 
     .settings-grid{
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+
+      grid-template-columns:
+        minmax(0,1.1fr)
+        minmax(330px,.9fr);
+
       gap:18px;
     }
 
@@ -560,7 +604,9 @@
 
     .card-title{
       font-family:"Space Grotesk",sans-serif;
+
       font-size:17px;
+
       letter-spacing:-.03em;
     }
 
@@ -568,7 +614,9 @@
       margin-top:4px;
 
       color:var(--muted);
+
       font-size:10px;
+
       line-height:1.5;
     }
 
@@ -582,6 +630,7 @@
       border-radius:12px;
 
       background:var(--lime-soft);
+
       border:1px solid rgba(183,255,0,.12);
 
       color:var(--lime);
@@ -593,13 +642,15 @@
       padding:22px;
     }
 
-    /* =====================================================
+    /* ================================
        FORM
-    ====================================================== */
+    ================================= */
 
     .form-grid{
       display:grid;
+
       grid-template-columns:1fr 1fr;
+
       gap:15px;
     }
 
@@ -624,6 +675,7 @@
       color:var(--muted-2);
 
       font-size:9px;
+
       line-height:1.5;
     }
 
@@ -640,6 +692,7 @@
       border-radius:11px;
 
       background:#0a0c0c;
+
       color:#fff;
 
       font-size:12px;
@@ -661,9 +714,9 @@
         0 0 0 3px rgba(183,255,0,.035);
     }
 
-    /* =====================================================
+    /* ================================
        TOGGLES
-    ====================================================== */
+    ================================= */
 
     .toggle-list{
       display:flex;
@@ -764,9 +817,9 @@
       background:#080909;
     }
 
-    /* =====================================================
+    /* ================================
        RANGE
-    ====================================================== */
+    ================================= */
 
     .range-wrap{
       padding:15px;
@@ -775,6 +828,10 @@
       border-radius:14px;
 
       background:rgba(255,255,255,.018);
+    }
+
+    .range-wrap + .range-wrap{
+      margin-top:10px;
     }
 
     .range-top{
@@ -803,17 +860,22 @@
 
     input[type="range"]{
       width:100%;
+
       accent-color:var(--lime);
+
       cursor:pointer;
     }
 
-    /* =====================================================
-       RADIO / OPTIONS
-    ====================================================== */
+    /* ================================
+       OPTIONS
+    ================================= */
 
     .option-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+
+      grid-template-columns:
+        repeat(3,1fr);
+
       gap:9px;
     }
 
@@ -827,10 +889,11 @@
     }
 
     .option label{
-      min-height:76px;
+      min-height:78px;
 
       display:flex;
       flex-direction:column;
+
       align-items:center;
       justify-content:center;
 
@@ -869,12 +932,12 @@
       color:var(--lime);
     }
 
-    /* =====================================================
+    /* ================================
        PREVIEW
-    ====================================================== */
+    ================================= */
 
     .preview-box{
-      min-height:260px;
+      min-height:290px;
 
       display:flex;
       align-items:center;
@@ -896,7 +959,7 @@
 
     .preview-browser{
       width:100%;
-      max-width:560px;
+      max-width:600px;
 
       overflow:hidden;
 
@@ -927,7 +990,9 @@
     .browser-dot{
       width:7px;
       height:7px;
+
       border-radius:50%;
+
       background:#555d59;
     }
 
@@ -957,7 +1022,7 @@
     }
 
     .preview-hero{
-      min-height:100px;
+      min-height:115px;
 
       display:flex;
       align-items:flex-end;
@@ -976,13 +1041,31 @@
 
     .preview-hero h3{
       font-family:"Space Grotesk",sans-serif;
-      font-size:20px;
+
+      font-size:24px;
+
       letter-spacing:-.04em;
+    }
+
+    .preview-tag{
+      color:var(--lime);
+
+      font-size:8px;
+      font-weight:800;
+
+      text-transform:uppercase;
+
+      letter-spacing:.14em;
+
+      margin-bottom:7px;
     }
 
     .preview-lines{
       display:grid;
-      grid-template-columns:1fr 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr 1fr;
+
       gap:8px;
 
       margin-top:12px;
@@ -998,24 +1081,29 @@
       border:1px solid var(--line);
     }
 
-    /* =====================================================
+    /* ================================
        DANGER
-    ====================================================== */
+    ================================= */
 
     .danger-card{
-      border-color:rgba(255,93,104,.16);
+      border-color:
+        rgba(255,93,104,.16);
     }
 
     .danger-card .card-icon{
       background:var(--danger-soft);
+
       color:var(--danger);
-      border-color:rgba(255,93,104,.15);
+
+      border-color:
+        rgba(255,93,104,.15);
     }
 
     .danger-box{
       padding:15px;
 
       border:1px solid rgba(255,93,104,.12);
+
       border-radius:14px;
 
       background:var(--danger-soft);
@@ -1035,12 +1123,13 @@
       color:#9e777a;
 
       font-size:9px;
+
       line-height:1.6;
     }
 
-    /* =====================================================
-       FOOTER ACTIONS
-    ====================================================== */
+    /* ================================
+       SAVE BAR
+    ================================= */
 
     .save-bar{
       margin-top:20px;
@@ -1054,30 +1143,32 @@
       padding:16px 18px;
 
       border:1px solid var(--line);
-      border-radius:17px;
+
+      border-radius:18px;
 
       background:
         linear-gradient(
-          90deg,
-          rgba(183,255,0,.045),
-          rgba(255,255,255,.015)
+          135deg,
+          rgba(183,255,0,.055),
+          rgba(255,255,255,.02)
         );
+
+      box-shadow:var(--shadow);
     }
 
     .save-copy strong{
       display:block;
 
-      color:#e6ebe8;
-
-      font-size:11px;
+      font-size:12px;
+      font-weight:800;
     }
 
     .save-copy span{
       display:block;
 
-      margin-top:3px;
+      margin-top:4px;
 
-      color:var(--muted-2);
+      color:var(--muted);
 
       font-size:9px;
     }
@@ -1085,33 +1176,38 @@
     .save-actions{
       display:flex;
       gap:8px;
+      flex-wrap:wrap;
     }
 
-    /* =====================================================
+    /* ================================
        TOAST
-    ====================================================== */
+    ================================= */
 
     .toast{
       position:fixed;
 
-      right:22px;
-      bottom:22px;
+      right:24px;
+      bottom:24px;
 
-      z-index:1000;
+      z-index:500;
 
-      min-width:260px;
+      min-width:280px;
 
       padding:14px 16px;
 
-      border:1px solid var(--lime-border);
-      border-radius:14px;
+      border:1px solid var(--line-strong);
 
-      background:#111414;
+      border-radius:15px;
+
+      background:
+        rgba(15,18,17,.96);
 
       box-shadow:
-        0 20px 60px rgba(0,0,0,.45);
+        0 25px 70px rgba(0,0,0,.45);
 
-      transform:translateY(25px);
+      transform:
+        translateY(20px);
+
       opacity:0;
 
       pointer-events:none;
@@ -1142,11 +1238,11 @@
       font-size:10px;
     }
 
-    /* =====================================================
-       RESPONSIVE
-    ====================================================== */
+    /* ================================
+       MOBILE
+    ================================= */
 
-    @media(max-width:1050px){
+    @media(max-width:1100px){
 
       .settings-grid{
         grid-template-columns:1fr;
@@ -1155,6 +1251,9 @@
       .settings-card.full{
         grid-column:auto;
       }
+    }
+
+    @media(max-width:850px){
 
       .sidebar{
         transform:translateX(-100%);
@@ -1162,6 +1261,7 @@
 
       .sidebar.open{
         transform:translateX(0);
+        box-shadow:30px 0 80px rgba(0,0,0,.5);
       }
 
       .main{
@@ -1170,31 +1270,29 @@
       }
 
       .menu-btn{
-        display:block;
+        display:grid;
+        place-items:center;
       }
-    }
-
-    @media(max-width:700px){
 
       .topbar{
-        padding:0 15px;
+        padding:0 18px;
       }
 
-      .top-actions .top-btn{
+      .top-actions .top-btn:first-child{
         display:none;
       }
 
       .page{
-        padding:25px 15px 50px;
+        padding:28px 18px 60px;
       }
 
       .page-head{
-        display:block;
+        align-items:flex-start;
+        flex-direction:column;
       }
+    }
 
-      .head-actions{
-        margin-top:18px;
-      }
+    @media(max-width:650px){
 
       .form-grid{
         grid-template-columns:1fr;
@@ -1209,8 +1307,8 @@
       }
 
       .save-bar{
-        align-items:flex-start;
         flex-direction:column;
+        align-items:stretch;
       }
 
       .save-actions{
@@ -1221,2062 +1319,2169 @@
         flex:1;
       }
 
-      .preview-content{
-        padding:14px;
-      }
-
       .preview-lines{
         grid-template-columns:1fr;
       }
 
+      .toast{
+        left:16px;
+        right:16px;
+        min-width:0;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="app">
+  <div class="app">
 
-  <!-- =====================================================
-       SIDEBAR
-  ====================================================== -->
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
 
-  <aside
-    class="sidebar"
-    id="sidebar"
-  >
+    <aside
+      class="sidebar"
+      id="sidebar"
+    >
 
-    <div class="brand">
+      <div class="brand">
 
-      <div class="brand-mark">
-        WD
-      </div>
-
-      <div>
-
-        <div class="brand-title">
-          Website Deals
-        </div>
-
-        <div class="brand-sub">
-          Premium Admin Panel
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="nav-label">
-      Management
-    </div>
-
-    <nav class="nav">
-
-      <a href="./dashboard.html">
-        <span class="nav-icon">⌂</span>
-        <span>Dashboard</span>
-      </a>
-
-      <a href="./websites.html">
-        <span class="nav-icon">◫</span>
-        <span>Websites</span>
-      </a>
-
-      <a href="./packages.html">
-        <span class="nav-icon">◈</span>
-        <span>Packages</span>
-      </a>
-
-      <a href="./presentation.html">
-        <span class="nav-icon">▶</span>
-        <span>Presentation</span>
-      </a>
-
-      <a
-        href="./settings.html"
-        class="active"
-      >
-        <span class="nav-icon">⚙</span>
-        <span>Settings</span>
-      </a>
-
-    </nav>
-
-
-    <div class="nav-label">
-      Public
-    </div>
-
-    <nav class="nav">
-
-      <a
-        href="../index.html"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="nav-icon">↗</span>
-        <span>Public Showcase</span>
-      </a>
-
-      <a
-        href="../../index.html"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="nav-icon">⌘</span>
-        <span>Main Website</span>
-      </a>
-
-      <a
-        href="https://support.websitedeals.com"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="nav-icon">?</span>
-        <span>Support</span>
-      </a>
-
-    </nav>
-
-
-    <div class="sidebar-bottom">
-
-      <div class="admin-mini">
-
-        <div class="avatar">
-          A
+        <div class="brand-mark">
+          WD
         </div>
 
         <div>
-
-          <div class="admin-name">
-            Administrator
+          <div class="brand-title">
+            Website Deals
           </div>
 
-          <div class="admin-role">
-            Website Deals Admin
+          <div class="brand-sub">
+            Admin Control Center
           </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </aside>
-
-
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
-
-  <main class="main">
-
-    <header class="topbar">
-
-      <div class="topbar-left">
-
-        <button
-          class="menu-btn"
-          id="menuBtn"
-          aria-label="Open menu"
-        >
-          ☰
-        </button>
-
-        <div class="breadcrumb">
-          Admin / <strong>Settings</strong>
         </div>
 
       </div>
 
 
-      <div class="top-actions">
+      <div class="nav-label">
+        Workspace
+      </div>
 
-        <a
-          class="top-btn"
-          href="../index.html"
-          target="_blank"
-          rel="noopener"
-        >
-          View Showcase ↗
+      <nav class="nav">
+
+        <a href="./dashboard.html">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
         </a>
 
-        <button
-          class="top-btn"
-          id="logoutBtn"
+        <a href="./websites.html">
+          <span class="nav-icon">▣</span>
+          <span>Websites</span>
+        </a>
+
+        <a href="./orders.html">
+          <span class="nav-icon">▤</span>
+          <span>Orders</span>
+        </a>
+
+        <a href="./presentation.html">
+          <span class="nav-icon">◈</span>
+          <span>Presentation</span>
+        </a>
+
+        <a href="./homepage.html">
+          <span class="nav-icon">⌂</span>
+          <span>Homepage</span>
+        </a>
+
+        <a href="./banners.html">
+          <span class="nav-icon">▰</span>
+          <span>Banners</span>
+        </a>
+
+        <a
+          href="./settings.html"
+          class="active"
         >
-          Logout
-        </button>
+          <span class="nav-icon">⚙</span>
+          <span>Settings</span>
+        </a>
 
+      </nav>
+
+
+      <div class="nav-label">
+        Public
       </div>
 
-    </header>
+      <nav class="nav">
+
+        <a
+          href="../index.html"
+          target="_blank"
+        >
+          <span class="nav-icon">↗</span>
+          <span>Open Website</span>
+        </a>
+
+        <a
+          href="../presentation/index.html"
+          target="_blank"
+        >
+          <span class="nav-icon">▶</span>
+          <span>Live Presentation</span>
+        </a>
+
+      </nav>
 
 
-    <section class="page">
+      <div class="sidebar-bottom">
 
-      <!-- PAGE HEADER -->
+        <div class="admin-mini">
 
-      <div class="page-head">
-
-        <div>
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-dot"></span>
-
-            System Configuration
-
+          <div class="avatar">
+            AD
           </div>
 
-          <h1>
-            Settings
-          </h1>
+          <div>
+            <div class="admin-name">
+              Administrator
+            </div>
 
-          <p class="page-desc">
-            Control your Website Deals branding, public showcase,
-            live website presentation, support information and
-            animation behaviour from one premium control center.
-          </p>
-
-        </div>
-
-
-        <div class="head-actions">
-
-          <button
-            class="btn"
-            id="resetBtn"
-          >
-            Reset
-          </button>
-
-          <button
-            class="btn btn-primary"
-            id="saveTopBtn"
-          >
-            Save Changes
-          </button>
+            <div class="admin-role">
+              Website Deals Admin
+            </div>
+          </div>
 
         </div>
 
       </div>
 
-
-      <!-- SAVE STATUS -->
-
-      <div class="save-status">
-
-        <span
-          class="save-dot"
-          id="saveDot"
-        ></span>
-
-        <span id="saveStatusText">
-          All changes saved
-        </span>
-
-      </div>
+    </aside>
 
 
-      <!-- =================================================
-           SETTINGS
-      ================================================== -->
+    <!-- =========================================
+         MAIN
+    ========================================== -->
 
-      <div class="settings-grid">
+    <main class="main">
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+
+          <div class="breadcrumb">
+            Admin
+            <span> / </span>
+            <strong>Settings</strong>
+          </div>
+
+        </div>
 
 
-        <!-- =================================================
-             BRANDING
-        ================================================== -->
+        <div class="top-actions">
 
-        <section class="settings-card">
+          <button
+            class="top-btn"
+            id="previewTopBtn"
+            type="button"
+          >
+            Open Website
+          </button>
 
-          <div class="card-head">
+          <button
+            class="top-btn"
+            id="logoutBtn"
+            type="button"
+          >
+            Logout
+          </button>
 
-            <div>
+        </div>
 
-              <div class="card-title">
-                Brand & Identity
-              </div>
+      </header>
 
-              <div class="card-sub">
-                Control the public-facing Website Deals identity.
-              </div>
 
+      <section class="page">
+
+        <div class="page-head">
+
+          <div>
+
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              System Configuration
             </div>
 
-            <div class="card-icon">
-              ◉
-            </div>
+            <h1>
+              Settings
+            </h1>
+
+            <p class="page-desc">
+              Control the Website Deals brand, public homepage,
+              live website showcase, presentation behavior,
+              support information and general experience from one place.
+            </p>
 
           </div>
 
 
-          <div class="card-body">
+          <div class="head-actions">
 
-            <div class="form-grid">
+            <button
+              class="btn"
+              id="resetBtn"
+              type="button"
+            >
+              Reset Defaults
+            </button>
 
-              <div class="field">
-
-                <label>
-                  Brand Name
-                </label>
-
-                <input
-                  id="brandName"
-                  type="text"
-                  placeholder="Website Deals"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  Short Name
-                </label>
-
-                <input
-                  id="shortName"
-                  type="text"
-                  placeholder="Website Deals"
-                >
-
-              </div>
-
-
-              <div class="field full">
-
-                <label>
-                  Tagline
-                </label>
-
-                <input
-                  id="tagline"
-                  type="text"
-                  placeholder="Premium Ready-Made Websites"
-                >
-
-              </div>
-
-
-              <div class="field full">
-
-                <label>
-                  Meta Description
-                </label>
-
-                <textarea
-                  id="metaDescription"
-                  placeholder="Premium ready-made websites..."
-                ></textarea>
-
-              </div>
-
-            </div>
+            <button
+              class="btn btn-primary"
+              id="saveTopBtn"
+              type="button"
+            >
+              Save Settings
+            </button>
 
           </div>
 
-        </section>
+        </div>
 
 
-        <!-- =================================================
-             CONTACT
-        ================================================== -->
+        <div class="save-status">
 
-        <section class="settings-card">
+          <span
+            class="save-dot"
+            id="saveDot"
+          ></span>
 
-          <div class="card-head">
-
-            <div>
-
-              <div class="card-title">
-                Contact & Support
-              </div>
-
-              <div class="card-sub">
-                Public support and contact destinations.
-              </div>
-
-            </div>
-
-            <div class="card-icon">
-              ?
-            </div>
-
-          </div>
-
-
-          <div class="card-body">
-
-            <div class="form-grid">
-
-              <div class="field full">
-
-                <label>
-                  Support Website
-                </label>
-
-                <input
-                  id="supportUrl"
-                  type="url"
-                  placeholder="https://support.websitedeals.com"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  Support Email
-                </label>
-
-                <input
-                  id="supportEmail"
-                  type="email"
-                  placeholder="support@websitedeals.com"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  WhatsApp Number
-                </label>
-
-                <input
-                  id="whatsapp"
-                  type="text"
-                  placeholder="+8801XXXXXXXXX"
-                >
-
-              </div>
-
-
-              <div class="field full">
-
-                <label>
-                  Support Message
-                </label>
-
-                <textarea
-                  id="supportMessage"
-                  placeholder="Need help choosing a website?"
-                ></textarea>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             SHOWCASE
-        ================================================== -->
-
-        <section class="settings-card">
-
-          <div class="card-head">
-
-            <div>
-
-              <div class="card-title">
-                Website Showcase
-              </div>
-
-              <div class="card-sub">
-                Configure how real websites appear inside fixed cards.
-              </div>
-
-            </div>
-
-            <div class="card-icon">
-              ◫
-            </div>
-
-          </div>
-
-
-          <div class="card-body">
-
-            <div class="toggle-list">
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Enable Live Showcase
-                  </div>
-
-                  <div class="toggle-desc">
-                    Show real website previews on the public website.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="showcaseEnabled"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Auto Presentation
-                  </div>
-
-                  <div class="toggle-desc">
-                    Automatically animate website previews without clicking.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="autoPresentation"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Human-like Cursor
-                  </div>
-
-                  <div class="toggle-desc">
-                    Display subtle cursor movement during presentation.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="humanCursor"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Pause on Hover
-                  </div>
-
-                  <div class="toggle-desc">
-                    Pause website animation while the visitor hovers over a card.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="pauseOnHover"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PRESENTATION
-        ================================================== -->
-
-        <section class="settings-card">
-
-          <div class="card-head">
-
-            <div>
-
-              <div class="card-title">
-                Presentation Behaviour
-              </div>
-
-              <div class="card-sub">
-                Fine-tune the live website camera animation.
-              </div>
-
-            </div>
-
-            <div class="card-icon">
-              ▶
-            </div>
-
-          </div>
-
-
-          <div class="card-body">
-
-            <div class="range-wrap">
-
-              <div class="range-top">
-
-                <div class="range-title">
-                  Scroll Speed
-                </div>
-
-                <div
-                  class="range-value"
-                  id="speedValue"
-                >
-                  1.0×
-                </div>
-
-              </div>
-
-              <input
-                id="scrollSpeed"
-                type="range"
-                min="0.5"
-                max="2"
-                step="0.1"
-                value="1"
-              >
-
-            </div>
-
-
-            <div
-              style="
-                height:10px;
-              "
-            ></div>
-
-
-            <div class="range-wrap">
-
-              <div class="range-top">
-
-                <div class="range-title">
-                  Reading Pause
-                </div>
-
-                <div
-                  class="range-value"
-                  id="pauseValue"
-                >
-                  2.5s
-                </div>
-
-              </div>
-
-              <input
-                id="readingPause"
-                type="range"
-                min="0"
-                max="6"
-                step="0.5"
-                value="2.5"
-              >
-
-            </div>
-
-
-            <div
-              style="
-                height:14px;
-              "
-            ></div>
-
-
-            <div class="option-grid">
-
-              <div class="option">
-
-                <input
-                  type="radio"
-                  name="presentationMode"
-                  id="modeSmooth"
-                  value="smooth"
-                >
-
-                <label for="modeSmooth">
-
-                  <strong>
-                    Smooth
-                  </strong>
-
-                  <span>
-                    Slow & elegant
-                  </span>
-
-                </label>
-
-              </div>
-
-
-              <div class="option">
-
-                <input
-                  type="radio"
-                  name="presentationMode"
-                  id="modeNatural"
-                  value="natural"
-                  checked
-                >
-
-                <label for="modeNatural">
-
-                  <strong>
-                    Natural
-                  </strong>
-
-                  <span>
-                    Human-like
-                  </span>
-
-                </label>
-
-              </div>
-
-
-              <div class="option">
-
-                <input
-                  type="radio"
-                  name="presentationMode"
-                  id="modeFast"
-                  value="fast"
-                >
-
-                <label for="modeFast">
-
-                  <strong>
-                    Fast
-                  </strong>
-
-                  <span>
-                    Quick showcase
-                  </span>
-
-                </label>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PUBLIC PAGE
-        ================================================== -->
-
-        <section class="settings-card">
-
-          <div class="card-head">
-
-            <div>
-
-              <div class="card-title">
-                Public Website
-              </div>
-
-              <div class="card-sub">
-                Control the main presentation page behaviour.
-              </div>
-
-            </div>
-
-            <div class="card-icon">
-              ↗
-            </div>
-
-          </div>
-
-
-          <div class="card-body">
-
-            <div class="toggle-list">
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Show Package Section
-                  </div>
-
-                  <div class="toggle-desc">
-                    Display Starter, Business and Premium packages.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="showPackages"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Show Websites Section
-                  </div>
-
-                  <div class="toggle-desc">
-                    Display all managed real websites.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="showWebsites"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Show Salah Section
-                  </div>
-
-                  <div class="toggle-desc">
-                    Keep the Salah timing section visible.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="showSalah"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-
-              <div class="toggle-row">
-
-                <div class="toggle-copy">
-
-                  <div class="toggle-title">
-                    Show About Section
-                  </div>
-
-                  <div class="toggle-desc">
-                    Display the Website Deals introduction.
-                  </div>
-
-                </div>
-
-                <label class="switch">
-
-                  <input
-                    id="showAbout"
-                    type="checkbox"
-                  >
-
-                  <span class="slider"></span>
-
-                </label>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             PREVIEW
-        ================================================== -->
-
-        <section class="settings-card">
-
-          <div class="card-head">
-
-            <div>
-
-              <div class="card-title">
-                Interface Preview
-              </div>
-
-              <div class="card-sub">
-                Quick visual representation of your public showcase.
-              </div>
-
-            </div>
-
-            <div class="card-icon">
-              ✦
-            </div>
-
-          </div>
-
-
-          <div class="card-body">
-
-            <div class="preview-box">
-
-              <div class="preview-browser">
-
-                <div class="browser-bar">
-
-                  <span class="browser-dot"></span>
-                  <span class="browser-dot"></span>
-                  <span class="browser-dot"></span>
-
-                  <div class="browser-url">
-                    package.websitedeals.com
-                  </div>
-
-                </div>
-
-
-                <div class="preview-content">
-
-                  <div class="preview-hero">
-
-                    <div>
-
-                      <div
-                        style="
-                          color:#b7ff00;
-                          font-size:8px;
-                          font-weight:800;
-                          letter-spacing:.14em;
-                          text-transform:uppercase;
-                          margin-bottom:7px;
-                        "
-                      >
-                        Premium Digital Marketplace
-                      </div>
-
-                      <h3>
-                        <span id="previewBrand">
-                          Website Deals
-                        </span>
-                      </h3>
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="preview-lines">
-
-                    <div class="preview-line"></div>
-                    <div class="preview-line"></div>
-                    <div class="preview-line"></div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             ADVANCED
-        ================================================== -->
-
-        <section class="settings-card full">
-
-          <div class="card-head">
-
-            <div>
-
-              <div class="card-title">
-                Advanced Settings
-              </div>
-
-              <div class="card-sub">
-                Optional system-level preferences for the showcase experience.
-              </div>
-
-            </div>
-
-            <div class="card-icon">
-              ⚙
-            </div>
-
-          </div>
-
-
-          <div class="card-body">
-
-            <div class="form-grid">
-
-              <div class="field">
-
-                <label>
-                  Default Language
-                </label>
-
-                <select id="language">
-
-                  <option value="bn">
-                    বাংলা
-                  </option>
-
-                  <option value="en">
-                    English
-                  </option>
-
-                  <option value="bn-en">
-                    বাংলা + English
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  Default Currency
-                </label>
-
-                <select id="currency">
-
-                  <option value="BDT">
-                    BDT — ৳
-                  </option>
-
-                  <option value="USD">
-                    USD — $
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  Presentation Device
-                </label>
-
-                <select id="deviceMode">
-
-                  <option value="desktop">
-                    Desktop
-                  </option>
-
-                  <option value="laptop">
-                    Laptop
-                  </option>
-
-                  <option value="tablet">
-                    Tablet
-                  </option>
-
-                  <option value="mobile">
-                    Mobile
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  Default Website Sort
-                </label>
-
-                <select id="websiteSort">
-
-                  <option value="manual">
-                    Manual Order
-                  </option>
-
-                  <option value="name">
-                    Name
-                  </option>
-
-                  <option value="package">
-                    Package
-                  </option>
-
-                </select>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             DANGER
-        ================================================== -->
-
-        <section class="settings-card danger-card full">
-
-          <div class="card-head">
-
-            <div>
-
-              <div class="card-title">
-                Data Controls
-              </div>
-
-              <div class="card-sub">
-                Be careful before clearing local Website Deals settings.
-              </div>
-
-            </div>
-
-            <div class="card-icon">
-              !
-            </div>
-
-          </div>
-
-
-          <div class="card-body">
-
-            <div class="danger-box">
-
-              <strong>
-                Clear local settings
-              </strong>
-
-              <p>
-                This removes the Website Deals settings saved in this
-                browser. Your actual website files are not deleted.
-                Website records and package data are stored separately.
-              </p>
-
-              <button
-                class="btn"
-                id="clearSettingsBtn"
-                style="
-                  margin-top:12px;
-                  color:#ff7a83;
-                  border-color:rgba(255,93,104,.20);
-                  background:rgba(255,93,104,.05);
-                "
-              >
-                Clear Settings
-              </button>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-      </div>
-
-
-      <!-- SAVE BAR -->
-
-      <div class="save-bar">
-
-        <div class="save-copy">
-
-          <strong>
-            Website Deals Configuration
-          </strong>
-
-          <span>
-            Settings are stored locally and can later be connected to Firebase.
+          <span id="saveStatusText">
+            All changes saved
           </span>
 
         </div>
 
 
-        <div class="save-actions">
+        <div class="settings-grid">
 
-          <button
-            class="btn"
-            id="previewBtn"
-          >
-            Open Showcase
-          </button>
+          <!-- =====================================
+               BRANDING
+          ====================================== -->
 
-          <button
-            class="btn btn-primary"
-            id="saveBottomBtn"
-          >
-            Save Settings
-          </button>
+          <section class="settings-card">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Brand & Identity
+                </div>
+
+                <div class="card-sub">
+                  Public-facing Website Deals identity.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                ✦
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="form-grid">
+
+                <div class="field">
+
+                  <label>
+                    Brand Name
+                  </label>
+
+                  <input
+                    id="brandName"
+                    type="text"
+                    placeholder="Website Deals"
+                  >
+
+                </div>
+
+
+                <div class="field">
+
+                  <label>
+                    Short Name
+                  </label>
+
+                  <input
+                    id="shortName"
+                    type="text"
+                    placeholder="Website Deals"
+                  >
+
+                </div>
+
+
+                <div class="field full">
+
+                  <label>
+                    Tagline
+                  </label>
+
+                  <input
+                    id="tagline"
+                    type="text"
+                    placeholder="Premium Ready-Made Websites"
+                  >
+
+                </div>
+
+
+                <div class="field full">
+
+                  <label>
+                    Meta Description
+                  </label>
+
+                  <textarea
+                    id="metaDescription"
+                    placeholder="Website description for search engines..."
+                  ></textarea>
+
+                  <div class="field-note">
+                    Used as the main public website description.
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================================
+               SUPPORT
+          ====================================== -->
+
+          <section class="settings-card">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Support & Contact
+                </div>
+
+                <div class="card-sub">
+                  Where clients can get help.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                ?
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="form-grid">
+
+                <div class="field full">
+
+                  <label>
+                    Support Website
+                  </label>
+
+                  <input
+                    id="supportUrl"
+                    type="url"
+                    placeholder="https://support.websitedeals.com"
+                  >
+
+                </div>
+
+
+                <div class="field">
+
+                  <label>
+                    Support Email
+                  </label>
+
+                  <input
+                    id="supportEmail"
+                    type="email"
+                    placeholder="support@websitedeals.com"
+                  >
+
+                </div>
+
+
+                <div class="field">
+
+                  <label>
+                    WhatsApp Number
+                  </label>
+
+                  <input
+                    id="whatsapp"
+                    type="text"
+                    placeholder="8801XXXXXXXXX"
+                  >
+
+                  <div class="field-note">
+                    International format recommended.
+                  </div>
+
+                </div>
+
+
+                <div class="field full">
+
+                  <label>
+                    Support Message
+                  </label>
+
+                  <textarea
+                    id="supportMessage"
+                    placeholder="Need help choosing a website?"
+                  ></textarea>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================================
+               SHOWCASE
+          ====================================== -->
+
+          <section class="settings-card">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Website Showcase
+                </div>
+
+                <div class="card-sub">
+                  Control live website presentation behavior.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                ◉
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="toggle-list">
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      Enable Showcase
+                    </div>
+
+                    <div class="toggle-desc">
+                      Show saved websites on the public website.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="showcaseEnabled"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      Auto Presentation
+                    </div>
+
+                    <div class="toggle-desc">
+                      Automatically animate website previews.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="autoPresentation"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      Human Cursor
+                    </div>
+
+                    <div class="toggle-desc">
+                      Add subtle cursor movement during presentation.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="humanCursor"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      Pause On Hover
+                    </div>
+
+                    <div class="toggle-desc">
+                      Pause automatic presentation while the user hovers.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="pauseOnHover"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================================
+               PRESENTATION
+          ====================================== -->
+
+          <section class="settings-card">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Presentation Motion
+                </div>
+
+                <div class="card-sub">
+                  Tune the natural website scrolling experience.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                ≋
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="range-wrap">
+
+                <div class="range-top">
+
+                  <div class="range-title">
+                    Scroll Speed
+                  </div>
+
+                  <div
+                    class="range-value"
+                    id="speedValue"
+                  >
+                    1.0×
+                  </div>
+
+                </div>
+
+                <input
+                  id="scrollSpeed"
+                  type="range"
+                  min="0.4"
+                  max="2"
+                  step="0.1"
+                  value="1"
+                >
+
+              </div>
+
+
+              <div class="range-wrap">
+
+                <div class="range-top">
+
+                  <div class="range-title">
+                    Reading Pause
+                  </div>
+
+                  <div
+                    class="range-value"
+                    id="pauseValue"
+                  >
+                    2.5s
+                  </div>
+
+                </div>
+
+                <input
+                  id="readingPause"
+                  type="range"
+                  min="0"
+                  max="8"
+                  step="0.5"
+                  value="2.5"
+                >
+
+              </div>
+
+
+              <div style="height:12px"></div>
+
+
+              <div class="field">
+
+                <label>
+                  Presentation Style
+                </label>
+
+                <div class="option-grid">
+
+                  <div class="option">
+
+                    <input
+                      id="modeNatural"
+                      name="presentationMode"
+                      type="radio"
+                      value="natural"
+                    >
+
+                    <label for="modeNatural">
+
+                      <strong>
+                        Natural
+                      </strong>
+
+                      <span>
+                        Human-like
+                      </span>
+
+                    </label>
+
+                  </div>
+
+
+                  <div class="option">
+
+                    <input
+                      id="modeSmooth"
+                      name="presentationMode"
+                      type="radio"
+                      value="smooth"
+                    >
+
+                    <label for="modeSmooth">
+
+                      <strong>
+                        Smooth
+                      </strong>
+
+                      <span>
+                        Slower motion
+                      </span>
+
+                    </label>
+
+                  </div>
+
+
+                  <div class="option">
+
+                    <input
+                      id="modeFast"
+                      name="presentationMode"
+                      type="radio"
+                      value="fast"
+                    >
+
+                    <label for="modeFast">
+
+                      <strong>
+                        Fast
+                      </strong>
+
+                      <span>
+                        Quick preview
+                      </span>
+
+                    </label>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================================
+               PUBLIC SECTIONS
+          ====================================== -->
+
+          <section class="settings-card">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Public Sections
+                </div>
+
+                <div class="card-sub">
+                  Choose which homepage sections are visible.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                ◫
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="toggle-list">
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      Packages
+                    </div>
+
+                    <div class="toggle-desc">
+                      Show Starter, Business and Premium packages.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="showPackages"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      Website Showcase
+                    </div>
+
+                    <div class="toggle-desc">
+                      Show saved client website cards.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="showWebsites"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      Salah
+                    </div>
+
+                    <div class="toggle-desc">
+                      Show the Salah information section.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="showSalah"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+
+                <div class="toggle-row">
+
+                  <div class="toggle-copy">
+
+                    <div class="toggle-title">
+                      About
+                    </div>
+
+                    <div class="toggle-desc">
+                      Show the Website Deals About section.
+                    </div>
+
+                  </div>
+
+                  <label class="switch">
+
+                    <input
+                      id="showAbout"
+                      type="checkbox"
+                    >
+
+                    <span class="slider"></span>
+
+                  </label>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================================
+               ADVANCED
+          ====================================== -->
+
+          <section class="settings-card">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Advanced
+                </div>
+
+                <div class="card-sub">
+                  Default system preferences.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                ⚙
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="form-grid">
+
+                <div class="field">
+
+                  <label>
+                    Default Language
+                  </label>
+
+                  <select id="language">
+
+                    <option value="bn">
+                      বাংলা
+                    </option>
+
+                    <option value="en">
+                      English
+                    </option>
+
+                    <option value="bn-en">
+                      বাংলা + English
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div class="field">
+
+                  <label>
+                    Default Currency
+                  </label>
+
+                  <select id="currency">
+
+                    <option value="BDT">
+                      BDT — ৳
+                    </option>
+
+                    <option value="USD">
+                      USD — $
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div class="field">
+
+                  <label>
+                    Presentation Device
+                  </label>
+
+                  <select id="deviceMode">
+
+                    <option value="desktop">
+                      Desktop
+                    </option>
+
+                    <option value="laptop">
+                      Laptop
+                    </option>
+
+                    <option value="tablet">
+                      Tablet
+                    </option>
+
+                    <option value="mobile">
+                      Mobile
+                    </option>
+
+                  </select>
+
+                </div>
+
+
+                <div class="field">
+
+                  <label>
+                    Website Sorting
+                  </label>
+
+                  <select id="websiteSort">
+
+                    <option value="manual">
+                      Manual Order
+                    </option>
+
+                    <option value="name">
+                      Name
+                    </option>
+
+                    <option value="package">
+                      Package
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================================
+               PREVIEW
+          ====================================== -->
+
+          <section class="settings-card full">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Live Brand Preview
+                </div>
+
+                <div class="card-sub">
+                  Quick visual representation of the public Website Deals experience.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                ✦
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="preview-box">
+
+                <div class="preview-browser">
+
+                  <div class="browser-bar">
+
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+
+                    <div class="browser-url">
+                      package.websitedeals.com
+                    </div>
+
+                  </div>
+
+
+                  <div class="preview-content">
+
+                    <div class="preview-hero">
+
+                      <div>
+
+                        <div class="preview-tag">
+                          Premium Digital Marketplace
+                        </div>
+
+                        <h3 id="previewBrand">
+                          Website Deals
+                        </h3>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="preview-lines">
+
+                      <div class="preview-line"></div>
+                      <div class="preview-line"></div>
+                      <div class="preview-line"></div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================================
+               DATA CONTROLS
+          ====================================== -->
+
+          <section class="settings-card danger-card full">
+
+            <div class="card-head">
+
+              <div>
+
+                <div class="card-title">
+                  Data Controls
+                </div>
+
+                <div class="card-sub">
+                  Local browser settings management.
+                </div>
+
+              </div>
+
+              <div class="card-icon">
+                !
+              </div>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <div class="danger-box">
+
+                <strong>
+                  Clear local settings
+                </strong>
+
+                <p>
+                  This removes only Website Deals settings saved
+                  in this browser. Website records are not deleted.
+                </p>
+
+                <button
+                  class="btn"
+                  id="clearSettingsBtn"
+                  type="button"
+                  style="
+                    margin-top:12px;
+                    color:#ff7a83;
+                    border-color:rgba(255,93,104,.20);
+                    background:rgba(255,93,104,.05);
+                  "
+                >
+                  Clear Settings
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
 
         </div>
 
-      </div>
 
-    </section>
+        <!-- =====================================
+             SAVE BAR
+        ====================================== -->
 
-  </main>
+        <div class="save-bar">
 
-</div>
+          <div class="save-copy">
 
+            <strong>
+              Website Deals Configuration
+            </strong>
 
-<!-- TOAST -->
+            <span>
+              Changes are stored locally in this browser.
+            </span>
 
-<div
-  class="toast"
-  id="toast"
->
+          </div>
 
-  <strong id="toastTitle">
-    Saved
-  </strong>
 
-  <span id="toastMessage">
-    Settings saved successfully.
-  </span>
+          <div class="save-actions">
 
-</div>
+            <button
+              class="btn"
+              id="previewBtn"
+              type="button"
+            >
+              Open Website
+            </button>
 
+            <button
+              class="btn btn-primary"
+              id="saveBottomBtn"
+              type="button"
+            >
+              Save Settings
+            </button>
 
-<script>
-  /* =========================================================
-     WEBSITE DEALS
-     ADMIN SETTINGS
-  ========================================================= */
+          </div>
 
-  const SETTINGS_KEY =
-    "websiteDealsSettings";
+        </div>
 
+      </section>
 
-  const defaultSettings = {
+    </main>
 
-    brandName:
-      "Website Deals",
+  </div>
 
-    shortName:
-      "Website Deals",
 
-    tagline:
-      "Premium Ready-Made Websites",
+  <!-- =========================================
+       TOAST
+  ========================================== -->
 
-    metaDescription:
-      "Premium ready-made websites, monthly website packages and live website presentation by Website Deals.",
+  <div
+    class="toast"
+    id="toast"
+  >
 
-    supportUrl:
-      "https://support.websitedeals.com",
+    <strong id="toastTitle">
+      Saved
+    </strong>
 
-    supportEmail:
-      "support@websitedeals.com",
+    <span id="toastMessage">
+      Settings saved successfully.
+    </span>
 
-    whatsapp:
-      "",
+  </div>
 
-    supportMessage:
-      "Need help choosing a website? Our support team is ready to help.",
 
+  <script>
 
-    showcaseEnabled:
-      true,
+    /* =========================================
+       AUTH
+    ========================================== */
 
-    autoPresentation:
-      true,
+    const AUTH_KEY =
+      "websiteDealsAdminAuth";
 
-    humanCursor:
-      true,
-
-    pauseOnHover:
-      true,
-
-
-    scrollSpeed:
-      1,
-
-    readingPause:
-      2.5,
-
-    presentationMode:
-      "natural",
-
-
-    showPackages:
-      true,
-
-    showWebsites:
-      true,
-
-    showSalah:
-      true,
-
-    showAbout:
-      true,
-
-
-    language:
-      "bn-en",
-
-    currency:
-      "BDT",
-
-    deviceMode:
-      "desktop",
-
-    websiteSort:
-      "manual"
-
-  };
-
-
-  /* =========================================================
-     DOM
-  ========================================================= */
-
-  const fields = {
-
-    brandName:
-      document.getElementById("brandName"),
-
-    shortName:
-      document.getElementById("shortName"),
-
-    tagline:
-      document.getElementById("tagline"),
-
-    metaDescription:
-      document.getElementById("metaDescription"),
-
-    supportUrl:
-      document.getElementById("supportUrl"),
-
-    supportEmail:
-      document.getElementById("supportEmail"),
-
-    whatsapp:
-      document.getElementById("whatsapp"),
-
-    supportMessage:
-      document.getElementById("supportMessage"),
-
-
-    showcaseEnabled:
-      document.getElementById("showcaseEnabled"),
-
-    autoPresentation:
-      document.getElementById("autoPresentation"),
-
-    humanCursor:
-      document.getElementById("humanCursor"),
-
-    pauseOnHover:
-      document.getElementById("pauseOnHover"),
-
-
-    scrollSpeed:
-      document.getElementById("scrollSpeed"),
-
-    readingPause:
-      document.getElementById("readingPause"),
-
-
-    showPackages:
-      document.getElementById("showPackages"),
-
-    showWebsites:
-      document.getElementById("showWebsites"),
-
-    showSalah:
-      document.getElementById("showSalah"),
-
-    showAbout:
-      document.getElementById("showAbout"),
-
-
-    language:
-      document.getElementById("language"),
-
-    currency:
-      document.getElementById("currency"),
-
-    deviceMode:
-      document.getElementById("deviceMode"),
-
-    websiteSort:
-      document.getElementById("websiteSort")
-
-  };
-
-
-  const saveDot =
-    document.getElementById("saveDot");
-
-  const saveStatusText =
-    document.getElementById("saveStatusText");
-
-  const speedValue =
-    document.getElementById("speedValue");
-
-  const pauseValue =
-    document.getElementById("pauseValue");
-
-  const previewBrand =
-    document.getElementById("previewBrand");
-
-  const toast =
-    document.getElementById("toast");
-
-  const toastTitle =
-    document.getElementById("toastTitle");
-
-  const toastMessage =
-    document.getElementById("toastMessage");
-
-
-  /* =========================================================
-     GET SETTINGS
-  ========================================================= */
-
-  function getSettings(){
-
-    try{
-
-      const stored =
-        localStorage.getItem(
-          SETTINGS_KEY
-        );
-
-      if(!stored){
-
-        const initial =
-          structuredClone(
-            defaultSettings
-          );
-
-        localStorage.setItem(
-          SETTINGS_KEY,
-          JSON.stringify(initial)
-        );
-
-        return initial;
-      }
-
-      const parsed =
-        JSON.parse(stored);
-
-      return {
-        ...structuredClone(defaultSettings),
-        ...parsed
-      };
-
-    }catch(error){
-
-      console.error(error);
-
-      return structuredClone(
-        defaultSettings
-      );
-
+    if(
+      sessionStorage.getItem(AUTH_KEY)
+      !==
+      "true"
+    ){
+      window.location.href =
+        "./login.html";
     }
 
-  }
+
+    /* =========================================
+       SETTINGS
+    ========================================== */
+
+    const SETTINGS_KEY =
+      "websiteDealsSettings";
 
 
-  /* =========================================================
-     SAVE SETTINGS
-  ========================================================= */
-
-  function saveSettings(){
-
-    const settings = {
+    const defaultSettings = {
 
       brandName:
-        fields.brandName.value.trim(),
+        "Website Deals",
 
       shortName:
-        fields.shortName.value.trim(),
+        "Website Deals",
 
       tagline:
-        fields.tagline.value.trim(),
+        "Premium Ready-Made Websites",
 
       metaDescription:
-        fields.metaDescription.value.trim(),
+        "Premium ready-made websites, monthly website packages and live website presentation by Website Deals.",
 
       supportUrl:
-        fields.supportUrl.value.trim(),
+        "https://support.websitedeals.com",
 
       supportEmail:
-        fields.supportEmail.value.trim(),
+        "support@websitedeals.com",
 
       whatsapp:
-        fields.whatsapp.value.trim(),
+        "",
 
       supportMessage:
-        fields.supportMessage.value.trim(),
-
+        "Need help choosing a website? Our support team is ready to help.",
 
       showcaseEnabled:
-        fields.showcaseEnabled.checked,
+        true,
 
       autoPresentation:
-        fields.autoPresentation.checked,
+        true,
 
       humanCursor:
-        fields.humanCursor.checked,
+        true,
 
       pauseOnHover:
-        fields.pauseOnHover.checked,
-
+        true,
 
       scrollSpeed:
-        Number(fields.scrollSpeed.value),
+        1,
 
       readingPause:
-        Number(fields.readingPause.value),
-
+        2.5,
 
       presentationMode:
-        document.querySelector(
-          'input[name="presentationMode"]:checked'
-        )?.value || "natural",
-
+        "natural",
 
       showPackages:
-        fields.showPackages.checked,
+        true,
 
       showWebsites:
-        fields.showWebsites.checked,
+        true,
 
       showSalah:
-        fields.showSalah.checked,
+        true,
 
       showAbout:
-        fields.showAbout.checked,
-
+        true,
 
       language:
-        fields.language.value,
+        "bn-en",
 
       currency:
-        fields.currency.value,
+        "BDT",
 
       deviceMode:
-        fields.deviceMode.value,
+        "desktop",
 
       websiteSort:
-        fields.websiteSort.value
+        "manual"
 
     };
 
 
-    localStorage.setItem(
-      SETTINGS_KEY,
-      JSON.stringify(settings)
-    );
+    /* =========================================
+       DOM
+    ========================================== */
 
+    const fields = {
 
-    markSaved();
+      brandName:
+        document.getElementById("brandName"),
 
-    updatePreview();
+      shortName:
+        document.getElementById("shortName"),
 
-    showToast(
-      "Settings Saved",
-      "Website Deals settings have been updated."
-    );
+      tagline:
+        document.getElementById("tagline"),
 
-  }
+      metaDescription:
+        document.getElementById("metaDescription"),
 
+      supportUrl:
+        document.getElementById("supportUrl"),
 
-  /* =========================================================
-     LOAD SETTINGS
-  ========================================================= */
+      supportEmail:
+        document.getElementById("supportEmail"),
 
-  function loadSettings(){
+      whatsapp:
+        document.getElementById("whatsapp"),
 
-    const settings =
-      getSettings();
+      supportMessage:
+        document.getElementById("supportMessage"),
 
+      showcaseEnabled:
+        document.getElementById("showcaseEnabled"),
 
-    fields.brandName.value =
-      settings.brandName;
+      autoPresentation:
+        document.getElementById("autoPresentation"),
 
-    fields.shortName.value =
-      settings.shortName;
+      humanCursor:
+        document.getElementById("humanCursor"),
 
-    fields.tagline.value =
-      settings.tagline;
+      pauseOnHover:
+        document.getElementById("pauseOnHover"),
 
-    fields.metaDescription.value =
-      settings.metaDescription;
+      scrollSpeed:
+        document.getElementById("scrollSpeed"),
 
+      readingPause:
+        document.getElementById("readingPause"),
 
-    fields.supportUrl.value =
-      settings.supportUrl;
+      showPackages:
+        document.getElementById("showPackages"),
 
-    fields.supportEmail.value =
-      settings.supportEmail;
+      showWebsites:
+        document.getElementById("showWebsites"),
 
-    fields.whatsapp.value =
-      settings.whatsapp;
+      showSalah:
+        document.getElementById("showSalah"),
 
-    fields.supportMessage.value =
-      settings.supportMessage;
+      showAbout:
+        document.getElementById("showAbout"),
 
+      language:
+        document.getElementById("language"),
 
-    fields.showcaseEnabled.checked =
-      Boolean(settings.showcaseEnabled);
+      currency:
+        document.getElementById("currency"),
 
-    fields.autoPresentation.checked =
-      Boolean(settings.autoPresentation);
+      deviceMode:
+        document.getElementById("deviceMode"),
 
-    fields.humanCursor.checked =
-      Boolean(settings.humanCursor);
+      websiteSort:
+        document.getElementById("websiteSort")
 
-    fields.pauseOnHover.checked =
-      Boolean(settings.pauseOnHover);
+    };
 
 
-    fields.scrollSpeed.value =
-      settings.scrollSpeed;
+    const saveDot =
+      document.getElementById("saveDot");
 
-    fields.readingPause.value =
-      settings.readingPause;
+    const saveStatusText =
+      document.getElementById("saveStatusText");
 
+    const speedValue =
+      document.getElementById("speedValue");
 
-    const selectedMode =
-      document.querySelector(
-        `input[name="presentationMode"][value="${settings.presentationMode}"]`
-      );
+    const pauseValue =
+      document.getElementById("pauseValue");
 
-    if(selectedMode){
-      selectedMode.checked = true;
-    }
+    const previewBrand =
+      document.getElementById("previewBrand");
 
+    const toast =
+      document.getElementById("toast");
 
-    fields.showPackages.checked =
-      Boolean(settings.showPackages);
+    const toastTitle =
+      document.getElementById("toastTitle");
 
-    fields.showWebsites.checked =
-      Boolean(settings.showWebsites);
+    const toastMessage =
+      document.getElementById("toastMessage");
 
-    fields.showSalah.checked =
-      Boolean(settings.showSalah);
 
-    fields.showAbout.checked =
-      Boolean(settings.showAbout);
+    /* =========================================
+       SAFE CLONE
+    ========================================== */
 
+    function cloneDefaults(){
 
-    fields.language.value =
-      settings.language;
-
-    fields.currency.value =
-      settings.currency;
-
-    fields.deviceMode.value =
-      settings.deviceMode;
-
-    fields.websiteSort.value =
-      settings.websiteSort;
-
-
-    updateRangeLabels();
-
-    updatePreview();
-
-    markSaved();
-
-  }
-
-
-  /* =========================================================
-     DIRTY STATE
-  ========================================================= */
-
-  function markDirty(){
-
-    saveDot.classList.add("dirty");
-
-    saveStatusText.textContent =
-      "Unsaved changes";
-
-  }
-
-
-  function markSaved(){
-
-    saveDot.classList.remove("dirty");
-
-    saveStatusText.textContent =
-      "All changes saved";
-
-  }
-
-
-  /* =========================================================
-     RANGE
-  ========================================================= */
-
-  function updateRangeLabels(){
-
-    speedValue.textContent =
-      `${Number(fields.scrollSpeed.value).toFixed(1)}×`;
-
-    pauseValue.textContent =
-      `${Number(fields.readingPause.value).toFixed(1)}s`;
-
-  }
-
-
-  /* =========================================================
-     PREVIEW
-  ========================================================= */
-
-  function updatePreview(){
-
-    previewBrand.textContent =
-      fields.brandName.value.trim()
-      ||
-      "Website Deals";
-
-  }
-
-
-  /* =========================================================
-     TOAST
-  ========================================================= */
-
-  function showToast(
-    title,
-    message
-  ){
-
-    toastTitle.textContent =
-      title;
-
-    toastMessage.textContent =
-      message;
-
-    toast.classList.add(
-      "show"
-    );
-
-    clearTimeout(
-      window.toastTimer
-    );
-
-    window.toastTimer =
-      setTimeout(
-        () => {
-
-          toast.classList.remove(
-            "show"
-          );
-
-        },
-        2800
-      );
-
-  }
-
-
-  /* =========================================================
-     RESET
-  ========================================================= */
-
-  function resetSettings(){
-
-    const confirmed =
-      confirm(
-        "Reset Website Deals settings to the default configuration?"
-      );
-
-    if(!confirmed){
-      return;
-    }
-
-    localStorage.setItem(
-      SETTINGS_KEY,
-      JSON.stringify(
-        structuredClone(
+      return JSON.parse(
+        JSON.stringify(
           defaultSettings
         )
-      )
-    );
-
-    loadSettings();
-
-    showToast(
-      "Settings Reset",
-      "Default Website Deals settings restored."
-    );
-
-  }
-
-
-  /* =========================================================
-     CLEAR
-  ========================================================= */
-
-  function clearSettings(){
-
-    const confirmed =
-      confirm(
-        "Clear Website Deals settings from this browser?"
       );
 
-    if(!confirmed){
-      return;
     }
 
-    localStorage.removeItem(
-      SETTINGS_KEY
-    );
 
-    loadSettings();
+    /* =========================================
+       GET SETTINGS
+    ========================================== */
 
-    showToast(
-      "Settings Cleared",
-      "Local settings have been cleared."
-    );
+    function getSettings(){
 
-  }
+      try{
 
-
-  /* =========================================================
-     EVENT LISTENERS
-  ========================================================= */
-
-  Object.values(fields)
-    .forEach(field => {
-
-      field.addEventListener(
-        "input",
-        () => {
-
-          markDirty();
-          updateRangeLabels();
-          updatePreview();
-
-        }
-      );
-
-      field.addEventListener(
-        "change",
-        () => {
-
-          markDirty();
-          updateRangeLabels();
-          updatePreview();
-
-        }
-      );
-
-    });
-
-
-  document
-    .querySelectorAll(
-      'input[name="presentationMode"]'
-    )
-    .forEach(radio => {
-
-      radio.addEventListener(
-        "change",
-        markDirty
-      );
-
-    });
-
-
-  document
-    .getElementById("saveTopBtn")
-    .addEventListener(
-      "click",
-      saveSettings
-    );
-
-
-  document
-    .getElementById("saveBottomBtn")
-    .addEventListener(
-      "click",
-      saveSettings
-    );
-
-
-  document
-    .getElementById("resetBtn")
-    .addEventListener(
-      "click",
-      resetSettings
-    );
-
-
-  document
-    .getElementById("clearSettingsBtn")
-    .addEventListener(
-      "click",
-      clearSettings
-    );
-
-
-  document
-    .getElementById("previewBtn")
-    .addEventListener(
-      "click",
-      () => {
-
-        window.open(
-          "../index.html",
-          "_blank",
-          "noopener"
-        );
-
-      }
-    );
-
-
-  document
-    .getElementById("menuBtn")
-    .addEventListener(
-      "click",
-      () => {
-
-        document
-          .getElementById("sidebar")
-          .classList.toggle(
-            "open"
+        const raw =
+          localStorage.getItem(
+            SETTINGS_KEY
           );
 
-      }
-    );
+        if(!raw){
 
+          const initial =
+            cloneDefaults();
 
-  document
-    .getElementById("logoutBtn")
-    .addEventListener(
-      "click",
-      () => {
+          localStorage.setItem(
+            SETTINGS_KEY,
+            JSON.stringify(initial)
+          );
 
-        sessionStorage.removeItem(
-          "websiteDealsAdminLoggedIn"
+          return initial;
+
+        }
+
+        const parsed =
+          JSON.parse(raw);
+
+        return {
+
+          ...cloneDefaults(),
+
+          ...(parsed || {})
+
+        };
+
+      }catch(error){
+
+        console.error(
+          "Settings read error:",
+          error
         );
 
-        window.location.href =
-          "./login.html";
-
-      }
-    );
-
-
-  /* =========================================================
-     BEFORE LEAVE
-  ========================================================= */
-
-  window.addEventListener(
-    "beforeunload",
-    event => {
-
-      if(
-        saveDot.classList.contains(
-          "dirty"
-        )
-      ){
-
-        event.preventDefault();
-
-        event.returnValue = "";
+        return cloneDefaults();
 
       }
 
     }
-  );
 
 
-  /* =========================================================
-     INIT
-  ========================================================= */
+    /* =========================================
+       BUILD SETTINGS
+    ========================================== */
 
-  loadSettings();
+    function collectSettings(){
 
-</script>
+      return {
+
+        brandName:
+          fields.brandName.value.trim(),
+
+        shortName:
+          fields.shortName.value.trim(),
+
+        tagline:
+          fields.tagline.value.trim(),
+
+        metaDescription:
+          fields.metaDescription.value.trim(),
+
+        supportUrl:
+          fields.supportUrl.value.trim(),
+
+        supportEmail:
+          fields.supportEmail.value.trim(),
+
+        whatsapp:
+          fields.whatsapp.value.trim(),
+
+        supportMessage:
+          fields.supportMessage.value.trim(),
+
+        showcaseEnabled:
+          fields.showcaseEnabled.checked,
+
+        autoPresentation:
+          fields.autoPresentation.checked,
+
+        humanCursor:
+          fields.humanCursor.checked,
+
+        pauseOnHover:
+          fields.pauseOnHover.checked,
+
+        scrollSpeed:
+          Number(
+            fields.scrollSpeed.value
+          ),
+
+        readingPause:
+          Number(
+            fields.readingPause.value
+          ),
+
+        presentationMode:
+          document.querySelector(
+            'input[name="presentationMode"]:checked'
+          )?.value
+          ||
+          "natural",
+
+        showPackages:
+          fields.showPackages.checked,
+
+        showWebsites:
+          fields.showWebsites.checked,
+
+        showSalah:
+          fields.showSalah.checked,
+
+        showAbout:
+          fields.showAbout.checked,
+
+        language:
+          fields.language.value,
+
+        currency:
+          fields.currency.value,
+
+        deviceMode:
+          fields.deviceMode.value,
+
+        websiteSort:
+          fields.websiteSort.value
+
+      };
+
+    }
+
+
+    /* =========================================
+       SAVE
+    ========================================== */
+
+    function saveSettings(){
+
+      const settings =
+        collectSettings();
+
+      localStorage.setItem(
+        SETTINGS_KEY,
+        JSON.stringify(settings)
+      );
+
+      markSaved();
+
+      updatePreview();
+
+      showToast(
+        "Settings Saved",
+        "Website Deals settings have been updated successfully."
+      );
+
+    }
+
+
+    /* =========================================
+       LOAD
+    ========================================== */
+
+    function loadSettings(){
+
+      const settings =
+        getSettings();
+
+
+      fields.brandName.value =
+        settings.brandName;
+
+      fields.shortName.value =
+        settings.shortName;
+
+      fields.tagline.value =
+        settings.tagline;
+
+      fields.metaDescription.value =
+        settings.metaDescription;
+
+      fields.supportUrl.value =
+        settings.supportUrl;
+
+      fields.supportEmail.value =
+        settings.supportEmail;
+
+      fields.whatsapp.value =
+        settings.whatsapp;
+
+      fields.supportMessage.value =
+        settings.supportMessage;
+
+
+      fields.showcaseEnabled.checked =
+        Boolean(
+          settings.showcaseEnabled
+        );
+
+      fields.autoPresentation.checked =
+        Boolean(
+          settings.autoPresentation
+        );
+
+      fields.humanCursor.checked =
+        Boolean(
+          settings.humanCursor
+        );
+
+      fields.pauseOnHover.checked =
+        Boolean(
+          settings.pauseOnHover
+        );
+
+
+      fields.scrollSpeed.value =
+        settings.scrollSpeed;
+
+      fields.readingPause.value =
+        settings.readingPause;
+
+
+      const mode =
+        document.querySelector(
+          `input[name="presentationMode"][value="${settings.presentationMode}"]`
+        );
+
+      if(mode){
+
+        mode.checked = true;
+
+      }
+
+
+      fields.showPackages.checked =
+        Boolean(
+          settings.showPackages
+        );
+
+      fields.showWebsites.checked =
+        Boolean(
+          settings.showWebsites
+        );
+
+      fields.showSalah.checked =
+        Boolean(
+          settings.showSalah
+        );
+
+      fields.showAbout.checked =
+        Boolean(
+          settings.showAbout
+        );
+
+
+      fields.language.value =
+        settings.language;
+
+      fields.currency.value =
+        settings.currency;
+
+      fields.deviceMode.value =
+        settings.deviceMode;
+
+      fields.websiteSort.value =
+        settings.websiteSort;
+
+
+      updateRangeLabels();
+
+      updatePreview();
+
+      markSaved();
+
+    }
+
+
+    /* =========================================
+       DIRTY
+    ========================================== */
+
+    function markDirty(){
+
+      saveDot.classList.add(
+        "dirty"
+      );
+
+      saveStatusText.textContent =
+        "Unsaved changes";
+
+    }
+
+
+    function markSaved(){
+
+      saveDot.classList.remove(
+        "dirty"
+      );
+
+      saveStatusText.textContent =
+        "All changes saved";
+
+    }
+
+
+    /* =========================================
+       RANGE
+    ========================================== */
+
+    function updateRangeLabels(){
+
+      speedValue.textContent =
+        `${Number(fields.scrollSpeed.value).toFixed(1)}×`;
+
+      pauseValue.textContent =
+        `${Number(fields.readingPause.value).toFixed(1)}s`;
+
+    }
+
+
+    /* =========================================
+       PREVIEW
+    ========================================== */
+
+    function updatePreview(){
+
+      previewBrand.textContent =
+        fields.brandName.value.trim()
+        ||
+        "Website Deals";
+
+    }
+
+
+    /* =========================================
+       TOAST
+    ========================================== */
+
+    let toastTimer = null;
+
+
+    function showToast(
+      title,
+      message
+    ){
+
+      toastTitle.textContent =
+        title;
+
+      toastMessage.textContent =
+        message;
+
+      toast.classList.add(
+        "show"
+      );
+
+      clearTimeout(
+        toastTimer
+      );
+
+      toastTimer =
+        setTimeout(
+          () => {
+
+            toast.classList.remove(
+              "show"
+            );
+
+          },
+          2800
+        );
+
+    }
+
+
+    /* =========================================
+       RESET
+    ========================================== */
+
+    function resetSettings(){
+
+      const confirmed =
+        confirm(
+          "Reset Website Deals settings to the default configuration?"
+        );
+
+      if(!confirmed){
+        return;
+      }
+
+      localStorage.setItem(
+        SETTINGS_KEY,
+        JSON.stringify(
+          cloneDefaults()
+        )
+      );
+
+      loadSettings();
+
+      showToast(
+        "Settings Reset",
+        "Default Website Deals configuration restored."
+      );
+
+    }
+
+
+    /* =========================================
+       CLEAR
+    ========================================== */
+
+    function clearSettings(){
+
+      const confirmed =
+        confirm(
+          "Clear Website Deals settings from this browser?"
+        );
+
+      if(!confirmed){
+        return;
+      }
+
+      localStorage.removeItem(
+        SETTINGS_KEY
+      );
+
+      loadSettings();
+
+      showToast(
+        "Settings Cleared",
+        "Local settings have been cleared."
+      );
+
+    }
+
+
+    /* =========================================
+       OPEN PUBLIC SITE
+    ========================================== */
+
+    function openWebsite(){
+
+      window.open(
+        "../index.html",
+        "_blank",
+        "noopener"
+      );
+
+    }
+
+
+    /* =========================================
+       INPUT EVENTS
+    ========================================== */
+
+    Object.values(fields)
+      .forEach(
+        field => {
+
+          field.addEventListener(
+            "input",
+            () => {
+
+              markDirty();
+
+              updateRangeLabels();
+
+              updatePreview();
+
+            }
+          );
+
+
+          field.addEventListener(
+            "change",
+            () => {
+
+              markDirty();
+
+              updateRangeLabels();
+
+              updatePreview();
+
+            }
+          );
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        'input[name="presentationMode"]'
+      )
+      .forEach(
+        radio => {
+
+          radio.addEventListener(
+            "change",
+            markDirty
+          );
+
+        }
+      );
+
+
+    /* =========================================
+       BUTTONS
+    ========================================== */
+
+    document
+      .getElementById(
+        "saveTopBtn"
+      )
+      .addEventListener(
+        "click",
+        saveSettings
+      );
+
+
+    document
+      .getElementById(
+        "saveBottomBtn"
+      )
+      .addEventListener(
+        "click",
+        saveSettings
+      );
+
+
+    document
+      .getElementById(
+        "resetBtn"
+      )
+      .addEventListener(
+        "click",
+        resetSettings
+      );
+
+
+    document
+      .getElementById(
+        "clearSettingsBtn"
+      )
+      .addEventListener(
+        "click",
+        clearSettings
+      );
+
+
+    document
+      .getElementById(
+        "previewBtn"
+      )
+      .addEventListener(
+        "click",
+        openWebsite
+      );
+
+
+    document
+      .getElementById(
+        "previewTopBtn"
+      )
+      .addEventListener(
+        "click",
+        openWebsite
+      );
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================== */
+
+    document
+      .getElementById(
+        "menuBtn"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          document
+            .getElementById(
+              "sidebar"
+            )
+            .classList.toggle(
+              "open"
+            );
+
+        }
+      );
+
+
+    /* =========================================
+       LOGOUT
+    ========================================== */
+
+    document
+      .getElementById(
+        "logoutBtn"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          sessionStorage.removeItem(
+            AUTH_KEY
+          );
+
+          window.location.href =
+            "./login.html";
+
+        }
+      );
+
+
+    /* =========================================
+       CLOSE MOBILE SIDEBAR
+    ========================================== */
+
+    document
+      .querySelectorAll(
+        ".nav a"
+      )
+      .forEach(
+        link => {
+
+          link.addEventListener(
+            "click",
+            () => {
+
+              document
+                .getElementById(
+                  "sidebar"
+                )
+                .classList.remove(
+                  "open"
+                );
+
+            }
+          );
+
+        }
+      );
+
+
+    /* =========================================
+       INITIALIZE
+    ========================================== */
+
+    loadSettings();
+
+  </script>
 
 </body>
 </html>
