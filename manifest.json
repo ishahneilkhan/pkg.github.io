@@ -1,18 +1,32 @@
 {
-  "name": "Website Deals",
+  "name": "Website Deals | Premium Ready-Made Websites",
   "short_name": "Website Deals",
-  "description": "Premium ready-made websites and a live website presentation wall by Website Deals.",
-  "start_url": "./",
+  "description": "Premium ready-made websites, live website presentation and monthly website packages.",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#080909",
-  "theme_color": "#080909",
-  "orientation": "any",
-  "lang": "en-BD",
+  "orientation": "portrait-primary",
+  "background_color": "#080a0a",
+  "theme_color": "#b7ff00",
+  "lang": "en",
   "dir": "ltr",
-  "categories": ["business", "shopping", "productivity"],
+  "categories": [
+    "business",
+    "productivity",
+    "shopping"
+  ],
   "icons": [
-    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
