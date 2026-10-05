@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080909"
+  >
+
+  <meta
+    name="description"
+    content="Website Deals Admin — Premium website marketplace management dashboard."
+  >
+
+  <title>Admin Login | Website Deals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --bg:#070808;
+      --bg2:#0b0d0d;
+      --panel:#111414;
+      --panel2:#151919;
+
+      --lime:#b7ff00;
+      --lime-soft:#dfff88;
+
+      --text:#f5f7f5;
+      --muted:#8f9893;
+
+      --border:rgba(255,255,255,.08);
+      --border-strong:rgba(183,255,0,.25);
+
+      --danger:#ff5d6c;
+
+      --shadow:
+        0 40px 120px rgba(0,0,0,.55);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      overflow:hidden;
+
+      color:var(--text);
+
+      font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(183,255,0,.10),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 85% 80%,
+          rgba(183,255,0,.06),
+          transparent 28%
+        ),
+        linear-gradient(
+          135deg,
+          #060707 0%,
+          #090b0b 50%,
+          #070808 100%
+        );
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    button{
+      border:0;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    /* ================================
+       BACKGROUND
+    ================================= */
+
+    .background{
+      position:fixed;
+      inset:0;
+      overflow:hidden;
+      pointer-events:none;
+    }
+
+    .grid{
+      position:absolute;
+      inset:-30%;
+      opacity:.12;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.05) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.05) 1px,
+          transparent 1px
+        );
+
+      background-size:60px 60px;
+
+      transform:
+        perspective(700px)
+        rotateX(55deg)
+        translateY(30%);
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          transparent,
+          #000 35%,
+          #000 70%,
+          transparent
+        );
+    }
+
+    .orb{
+      position:absolute;
+      width:500px;
+      height:500px;
+
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.10),
+          transparent 68%
+        );
+
+      filter:blur(20px);
+    }
+
+    .orb.one{
+      top:-240px;
+      left:-170px;
+    }
+
+    .orb.two{
+      right:-230px;
+      bottom:-250px;
+    }
+
+    /* ================================
+       PAGE
+    ================================= */
+
+    .page{
+      min-height:100vh;
+
+      display:grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, 560px);
+
+      position:relative;
+      z-index:2;
+    }
+
+    /* ================================
+       BRAND SIDE
+    ================================= */
+
+    .brand-side{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+
+      padding:
+        42px
+        7vw
+        38px
+        7vw;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:13px;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:15px;
+
+      background:var(--lime);
+
+      color:#070808;
+
+      font-family:"Space Grotesk";
+      font-size:14px;
+      font-weight:900;
+
+      box-shadow:
+        0 0 0 7px rgba(183,255,0,.06),
+        0 12px 30px rgba(183,255,0,.12);
+    }
+
+    .brand-name{
+      font-family:"Space Grotesk";
+      font-weight:700;
+      font-size:17px;
+      letter-spacing:-.02em;
+    }
+
+    .brand-sub{
+      margin-top:3px;
+
+      color:var(--muted);
+
+      font-size:10px;
+      font-weight:700;
+
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .brand-content{
+      max-width:650px;
+      margin-top:auto;
+      margin-bottom:auto;
+      padding:60px 0;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+
+      padding:8px 11px;
+
+      border:1px solid var(--border-strong);
+      border-radius:999px;
+
+      color:var(--lime);
+
+      background:
+        rgba(183,255,0,.055);
+
+      font-size:10px;
+      font-weight:800;
+
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .eyebrow-dot{
+      width:7px;
+      height:7px;
+
+      border-radius:50%;
+
+      background:var(--lime);
+
+      box-shadow:
+        0 0 14px rgba(183,255,0,.8);
+    }
+
+    .brand-content h1{
+      margin-top:24px;
+
+      max-width:700px;
+
+      font-family:"Space Grotesk";
+
+      font-size:
+        clamp(42px, 5.3vw, 78px);
+
+      line-height:.98;
+
+      letter-spacing:-.065em;
+    }
+
+    .brand-content h1 span{
+      color:var(--lime);
+    }
+
+    .brand-content p{
+      max-width:580px;
+
+      margin-top:23px;
+
+      color:var(--muted);
+
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .feature-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+
+      margin-top:28px;
+    }
+
+    .feature{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+
+      padding:9px 11px;
+
+      border:1px solid var(--border);
+
+      border-radius:10px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      color:#c6ceca;
+
+      font-size:10px;
+      font-weight:700;
+    }
+
+    .feature i{
+      color:var(--lime);
+      font-style:normal;
+      font-weight:900;
+    }
+
+    .footer-copy{
+      color:#59615d;
+      font-size:10px;
+    }
+
+    /* ================================
+       LOGIN SIDE
+    ================================= */
+
+    .login-side{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:30px;
+    }
+
+    .login-wrap{
+      width:min(100%, 460px);
+    }
+
+    .login-card{
+      position:relative;
+
+      padding:34px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.10);
+
+      border-radius:28px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(20,24,24,.96),
+          rgba(12,15,15,.96)
+        );
+
+      box-shadow:var(--shadow);
+
+      backdrop-filter:blur(30px);
+    }
+
+    .login-card::before{
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      border-radius:28px;
+
+      padding:1px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.22),
+          transparent 35%,
+          transparent 70%,
+          rgba(255,255,255,.06)
+        );
+
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+      -webkit-mask-composite:xor;
+
+      mask-composite:exclude;
+
+      pointer-events:none;
+    }
+
+    .login-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:15px;
+
+      margin-bottom:28px;
+    }
+
+    .login-icon{
+      width:50px;
+      height:50px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:15px;
+
+      background:
+        rgba(183,255,0,.09);
+
+      border:
+        1px solid
+        rgba(183,255,0,.18);
+
+      color:var(--lime);
+
+      font-size:20px;
+    }
+
+    .security{
+      display:flex;
+      align-items:center;
+      gap:6px;
+
+      padding:7px 9px;
+
+      border:1px solid var(--border);
+
+      border-radius:999px;
+
+      color:#8d9791;
+
+      font-size:9px;
+      font-weight:800;
+
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .security-dot{
+      width:6px;
+      height:6px;
+
+      border-radius:50%;
+
+      background:var(--lime);
+    }
+
+    .login-card h2{
+      font-family:"Space Grotesk";
+
+      font-size:29px;
+
+      letter-spacing:-.045em;
+    }
+
+    .login-description{
+      margin-top:8px;
+
+      color:var(--muted);
+
+      font-size:12px;
+      line-height:1.65;
+    }
+
+    .form{
+      margin-top:27px;
+    }
+
+    .field{
+      margin-bottom:17px;
+    }
+
+    .field-label{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      margin-bottom:8px;
+
+      color:#b7bfbb;
+
+      font-size:10px;
+      font-weight:800;
+
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .field-label span{
+      color:#59615d;
+
+      font-size:9px;
+
+      text-transform:none;
+      letter-spacing:0;
+    }
+
+    .input-wrap{
+      position:relative;
+    }
+
+    .input-icon{
+      position:absolute;
+      left:14px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      color:#68716c;
+
+      font-size:13px;
+
+      pointer-events:none;
+    }
+
+    input{
+      width:100%;
+
+      height:51px;
+
+      padding:
+        0
+        45px
+        0
+        40px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.09);
+
+      border-radius:13px;
+
+      outline:none;
+
+      background:#0a0c0c;
+
+      color:#fff;
+
+      font-size:12px;
+
+      transition:
+        border-color .2s,
+        box-shadow .2s,
+        background .2s;
+    }
+
+    input::placeholder{
+      color:#505854;
+    }
+
+    input:focus{
+      border-color:
+        rgba(183,255,0,.42);
+
+      background:#0d1010;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(183,255,0,.045);
+    }
+
+    .password-toggle{
+      position:absolute;
+
+      right:9px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      width:32px;
+      height:32px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:9px;
+
+      background:transparent;
+
+      color:#727b76;
+
+      cursor:pointer;
+
+      font-size:12px;
+    }
+
+    .password-toggle:hover{
+      color:#fff;
+      background:#171b1b;
+    }
+
+    .remember-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      margin-top:4px;
+    }
+
+    .remember{
+      display:flex;
+      align-items:center;
+      gap:8px;
+
+      color:#818a85;
+
+      font-size:10px;
+      cursor:pointer;
+    }
+
+    .remember input{
+      width:15px;
+      height:15px;
+
+      padding:0;
+
+      accent-color:var(--lime);
+    }
+
+    .demo-label{
+      color:#59615d;
+      font-size:9px;
+    }
+
+    .login-button{
+      width:100%;
+
+      height:53px;
+
+      margin-top:22px;
+
+      border-radius:13px;
+
+      background:var(--lime);
+
+      color:#080909;
+
+      font-size:12px;
+      font-weight:900;
+
+      cursor:pointer;
+
+      transition:
+        transform .2s,
+        box-shadow .2s,
+        background .2s;
+    }
+
+    .login-button:hover{
+      transform:translateY(-1px);
+
+      box-shadow:
+        0 14px 35px
+        rgba(183,255,0,.15);
+    }
+
+    .login-button:active{
+      transform:translateY(0);
+    }
+
+    .login-button.loading{
+      opacity:.7;
+      pointer-events:none;
+    }
+
+    .message{
+      display:none;
+
+      margin-top:14px;
+
+      padding:11px 12px;
+
+      border-radius:11px;
+
+      font-size:10px;
+      line-height:1.5;
+      font-weight:700;
+    }
+
+    .message.show{
+      display:block;
+    }
+
+    .message.error{
+      color:#ff9ca6;
+
+      background:
+        rgba(255,93,108,.07);
+
+      border:
+        1px solid
+        rgba(255,93,108,.16);
+    }
+
+    .message.success{
+      color:var(--lime);
+
+      background:
+        rgba(183,255,0,.06);
+
+      border:
+        1px solid
+        rgba(183,255,0,.15);
+    }
+
+    .login-bottom{
+      margin-top:21px;
+
+      padding-top:19px;
+
+      border-top:1px solid var(--border);
+
+      display:flex;
+      justify-content:space-between;
+      gap:15px;
+
+      color:#59615d;
+
+      font-size:9px;
+      line-height:1.5;
+    }
+
+    .back-link{
+      color:#8d9691;
+      transition:.2s;
+    }
+
+    .back-link:hover{
+      color:var(--lime);
+    }
+
+    /* ================================
+       RESPONSIVE
+    ================================= */
+
+    @media(max-width:1050px){
+
+      body{
+        overflow:auto;
+      }
+
+      .page{
+        grid-template-columns:1fr;
+      }
+
+      .brand-side{
+        min-height:auto;
+
+        padding:
+          28px
+          28px
+          0;
+      }
+
+      .brand-content{
+        padding:65px 0 35px;
+      }
+
+      .brand-content h1{
+        max-width:650px;
+        font-size:clamp(42px,8vw,68px);
+      }
+
+      .footer-copy{
+        display:none;
+      }
+
+      .login-side{
+        padding:
+          15px
+          28px
+          50px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .brand-side{
+        padding:20px;
+      }
+
+      .brand-content{
+        padding:48px 0 24px;
+      }
+
+      .brand-content h1{
+        font-size:42px;
+      }
+
+      .brand-content p{
+        font-size:12px;
+      }
+
+      .feature-list{
+        display:none;
+      }
+
+      .login-side{
+        padding:
+          10px
+          20px
+          35px;
+      }
+
+      .login-card{
+        padding:24px 20px;
+        border-radius:22px;
+      }
+
+      .login-card::before{
+        border-radius:22px;
+      }
+
+      .login-card h2{
+        font-size:26px;
+      }
+
+      .security{
+        display:none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background">
+    <div class="grid"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+  </div>
+
+  <main class="page">
+
+    <!-- =========================================
+         BRAND SIDE
+    ========================================== -->
+
+    <section class="brand-side">
+
+      <a
+        class="brand"
+        href="../index.html"
+        aria-label="Website Deals Home"
+      >
+        <div class="brand-mark">
+          WD
+        </div>
+
+        <div>
+          <div class="brand-name">
+            Website Deals
+          </div>
+
+          <div class="brand-sub">
+            Premium Website Marketplace
+          </div>
+        </div>
+      </a>
+
+
+      <div class="brand-content">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Private Admin Workspace
+        </div>
+
+        <h1>
+          Manage your
+          <span>websites.</span>
+        </h1>
+
+        <p>
+          Control your real website showcase, package presentation
+          and live client demonstrations from one clean workspace.
+        </p>
+
+        <div class="feature-list">
+
+          <div class="feature">
+            <i>✓</i>
+            Live Website Showcase
+          </div>
+
+          <div class="feature">
+            <i>✓</i>
+            Package Management
+          </div>
+
+          <div class="feature">
+            <i>✓</i>
+            Presentation Wall
+          </div>
+
+          <div class="feature">
+            <i>✓</i>
+            Client-ready Preview
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-copy">
+        © 2026 Website Deals — Admin Workspace
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         LOGIN SIDE
+    ========================================== -->
+
+    <section class="login-side">
+
+      <div class="login-wrap">
+
+        <div class="login-card">
+
+          <div class="login-top">
+
+            <div class="login-icon">
+              ◈
+            </div>
+
+            <div class="security">
+              <span class="security-dot"></span>
+              Private Area
+            </div>
+
+          </div>
+
+
+          <h2>
+            Welcome back
+          </h2>
+
+          <p class="login-description">
+            Sign in to continue to your Website Deals administration
+            workspace.
+          </p>
+
+
+          <form
+            class="form"
+            id="loginForm"
+            autocomplete="on"
+          >
+
+            <div class="field">
+
+              <div class="field-label">
+                <label for="username">
+                  Username
+                </label>
+
+                <span>
+                  Admin account
+                </span>
+              </div>
+
+              <div class="input-wrap">
+
+                <span class="input-icon">
+                  ◉
+                </span>
+
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  placeholder="Enter admin username"
+                  autocomplete="username"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="field">
+
+              <div class="field-label">
+
+                <label for="password">
+                  Password
+                </label>
+
+                <span>
+                  Secure access
+                </span>
+
+              </div>
+
+              <div class="input-wrap">
+
+                <span class="input-icon">
+                  ◆
+                </span>
+
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Enter admin password"
+                  autocomplete="current-password"
+                  required
+                >
+
+                <button
+                  type="button"
+                  class="password-toggle"
+                  id="passwordToggle"
+                  aria-label="Show password"
+                >
+                  ◉
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="remember-row">
+
+              <label class="remember">
+
+                <input
+                  type="checkbox"
+                  id="remember"
+                >
+
+                <span>
+                  Keep me signed in
+                </span>
+
+              </label>
+
+              <span class="demo-label">
+                Admin access
+              </span>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="login-button"
+              id="loginButton"
+            >
+              Sign In to Admin
+            </button>
+
+
+            <div
+              class="message"
+              id="message"
+            ></div>
+
+          </form>
+
+
+          <div class="login-bottom">
+
+            <span>
+              Protected admin workspace
+            </span>
+
+            <a
+              href="../index.html"
+              class="back-link"
+            >
+              ← Back to Website Deals
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    /*
+      ==========================================
+      WEBSITE DEALS ADMIN LOGIN
+      ==========================================
+
+      Current demo credentials:
+
+      Username:
+      admin
+
+      Password:
+      123456
+
+      Session key:
+      websiteDealsAdminLoggedIn
+
+      This matches the existing admin system.
+
+      IMPORTANT:
+      This is frontend/demo authentication.
+      It is NOT suitable for production security.
+
+      For real production authentication,
+      Firebase Authentication should replace
+      this local credential check.
+    */
+
+
+    const ADMIN_USERNAME = "admin";
+    const ADMIN_PASSWORD = "123456";
+
+    const SESSION_KEY =
+      "websiteDealsAdminLoggedIn";
+
+    const REMEMBER_KEY =
+      "websiteDealsRememberAdmin";
+
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const username =
+      document.getElementById("username");
+
+    const password =
+      document.getElementById("password");
+
+    const remember =
+      document.getElementById("remember");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const message =
+      document.getElementById("message");
+
+    const passwordToggle =
+      document.getElementById("passwordToggle");
+
+
+    /* ==========================================
+       IF ALREADY LOGGED IN
+    ========================================== */
+
+    const existingSession =
+      sessionStorage.getItem(SESSION_KEY);
+
+    if(existingSession === "true"){
+
+      window.location.href =
+        "./dashboard.html";
+
+    }
+
+
+    /* ==========================================
+       REMEMBER USERNAME
+    ========================================== */
+
+    const rememberedUsername =
+      localStorage.getItem(
+        REMEMBER_KEY
+      );
+
+    if(rememberedUsername){
+
+      username.value =
+        rememberedUsername;
+
+      remember.checked =
+        true;
+
+    }
+
+
+    /* ==========================================
+       PASSWORD VISIBILITY
+    ========================================== */
+
+    passwordToggle.addEventListener(
+      "click",
+      function(){
+
+        const isPassword =
+          password.type === "password";
+
+        password.type =
+          isPassword
+            ? "text"
+            : "password";
+
+        passwordToggle.textContent =
+          isPassword
+            ? "◉"
+            : "◌";
+
+        passwordToggle.setAttribute(
+          "aria-label",
+          isPassword
+            ? "Hide password"
+            : "Show password"
+        );
+
+      }
+    );
+
+
+    /* ==========================================
+       MESSAGE
+    ========================================== */
+
+    function showMessage(
+      text,
+      type = "error"
+    ){
+
+      message.textContent =
+        text;
+
+      message.className =
+        "message show " + type;
+
+    }
+
+
+    function hideMessage(){
+
+      message.className =
+        "message";
+
+      message.textContent =
+        "";
+
+    }
+
+
+    /* ==========================================
+       LOGIN
+    ========================================== */
+
+    loginForm.addEventListener(
+      "submit",
+      function(event){
+
+        event.preventDefault();
+
+        hideMessage();
+
+        const enteredUsername =
+          username.value.trim();
+
+        const enteredPassword =
+          password.value;
+
+        if(!enteredUsername){
+
+          showMessage(
+            "Please enter your admin username."
+          );
+
+          username.focus();
+
+          return;
+
+        }
+
+
+        if(!enteredPassword){
+
+          showMessage(
+            "Please enter your admin password."
+          );
+
+          password.focus();
+
+          return;
+
+        }
+
+
+        loginButton.classList.add(
+          "loading"
+        );
+
+        loginButton.textContent =
+          "Checking access…";
+
+
+        setTimeout(
+          function(){
+
+            if(
+              enteredUsername ===
+                ADMIN_USERNAME &&
+              enteredPassword ===
+                ADMIN_PASSWORD
+            ){
+
+              sessionStorage.setItem(
+                SESSION_KEY,
+                "true"
+              );
+
+
+              if(remember.checked){
+
+                localStorage.setItem(
+                  REMEMBER_KEY,
+                  enteredUsername
+                );
+
+              }else{
+
+                localStorage.removeItem(
+                  REMEMBER_KEY
+                );
+
+              }
+
+
+              showMessage(
+                "Access verified. Opening admin workspace…",
+                "success"
+              );
+
+
+              loginButton.textContent =
+                "Access Granted ✓";
+
+
+              setTimeout(
+                function(){
+
+                  window.location.href =
+                    "./dashboard.html";
+
+                },
+                650
+              );
+
+
+            }else{
+
+              loginButton.classList.remove(
+                "loading"
+              );
+
+              loginButton.textContent =
+                "Sign In to Admin";
+
+              showMessage(
+                "Invalid admin username or password."
+              );
+
+              password.value =
+                "";
+
+              password.focus();
+
+            }
+
+          },
+          500
+        );
+
+      }
+    );
+
+
+    /* ==========================================
+       ENTER KEY EXPERIENCE
+    ========================================== */
+
+    [username,password].forEach(
+      function(input){
+
+        input.addEventListener(
+          "keydown",
+          function(event){
+
+            if(event.key === "Enter"){
+
+              loginForm.requestSubmit();
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
