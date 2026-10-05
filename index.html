@@ -3,58 +3,123 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="theme-color"
-    content="#080909"
+    content="#f7f8fb"
   >
 
   <meta
     name="description"
-    id="metaDescription"
-    content="Premium ready-made websites, monthly website packages and live website presentation by Website Deals."
+    content="Website Deals — Premium ready-made websites, monthly website packages and live website presentation."
   >
 
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Website Deals">
+  <meta
+    name="robots"
+    content="index,follow"
+  >
 
   <link rel="manifest" href="./manifest.json">
 
-  <title id="pageTitle">Website Deals | Premium Ready-Made Websites</title>
+  <title>Website Deals | Premium Ready-Made Websites</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
   <style>
+    /* =========================================================
+       WEBSITE DEALS
+       ULTRA PREMIUM PACKAGE SHOWCASE
+       FILE: package/index.html
+       ========================================================= */
+
     :root {
+      --bg: #f7f8fb;
+      --bg-soft: #ffffff;
+      --bg-muted: #eef1f5;
+
+      --text: #111318;
+      --text-soft: #626975;
+      --text-faint: #9097a3;
+
+      --line: rgba(17, 19, 24, .09);
+      --line-strong: rgba(17, 19, 24, .15);
+
+      --brand: #111318;
+      --brand-soft: #242832;
+
+      --lime: #b7ff00;
+      --lime-dark: #8fc900;
+
+      --green: #19a463;
+      --blue: #3478f6;
+      --purple: #7655f6;
+      --orange: #f59e0b;
+      --red: #ef4444;
+
+      --shadow-sm:
+        0 8px 24px rgba(15, 23, 42, .06);
+
+      --shadow:
+        0 24px 70px rgba(15, 23, 42, .10);
+
+      --shadow-xl:
+        0 40px 100px rgba(15, 23, 42, .16);
+
+      --radius-sm: 14px;
+      --radius: 22px;
+      --radius-lg: 30px;
+
+      --container: 1240px;
+
+      --header-height: 78px;
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    html.dark {
       --bg: #080909;
-      --bg-soft: #0d0f10;
-      --panel: #111415;
-      --panel-2: #151819;
-      --border: rgba(255,255,255,.09);
-      --border-strong: rgba(255,255,255,.15);
-      --text: #f5f7f7;
-      --muted: #9da5a5;
-      --green: #b7ff00;
-      --green-soft: rgba(183,255,0,.10);
-      --green-border: rgba(183,255,0,.24);
-      --danger: #ff6464;
-      --shadow: 0 25px 70px rgba(0,0,0,.35);
-      --radius: 24px;
-      --max: 1240px;
+      --bg-soft: #101214;
+      --bg-muted: #17191d;
+
+      --text: #f4f6f8;
+      --text-soft: #a4aab5;
+      --text-faint: #6e7480;
+
+      --line: rgba(255,255,255,.08);
+      --line-strong: rgba(255,255,255,.14);
+
+      --brand: #f4f6f8;
+      --brand-soft: #d9dde4;
+
+      --shadow-sm:
+        0 8px 24px rgba(0,0,0,.20);
+
+      --shadow:
+        0 24px 70px rgba(0,0,0,.32);
+
+      --shadow-xl:
+        0 40px 100px rgba(0,0,0,.45);
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -62,23 +127,41 @@
     }
 
     body {
-      background:
-        radial-gradient(circle at 10% 0%, rgba(183,255,0,.07), transparent 28%),
-        radial-gradient(circle at 90% 15%, rgba(255,255,255,.045), transparent 24%),
-        var(--bg);
-      color: var(--text);
-      font-family: "Inter", "Hind Siliguri", sans-serif;
       min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(183,255,0,.09),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 90% 12%,
+          rgba(118,85,246,.07),
+          transparent 25%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        "Hind Siliguri",
+        sans-serif;
+
+      line-height: 1.6;
       overflow-x: hidden;
+
+      transition:
+        background .35s ease,
+        color .35s ease;
     }
 
-    body.bn {
-      font-family: "Hind Siliguri", "Inter", sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    body,
+    button,
+    a,
+    input,
+    select {
+      -webkit-tap-highlight-color: transparent;
     }
 
     button,
@@ -87,161 +170,321 @@
       font: inherit;
     }
 
-    button {
-      cursor: pointer;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ::selection {
+      background: var(--lime);
+      color: #0a0a0a;
     }
 
     .container {
-      width: min(calc(100% - 40px), var(--max));
-      margin: 0 auto;
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+
+      margin-inline: auto;
     }
 
-    .hidden {
-      display: none !important;
+    /* =========================================================
+       PRELOADER
+       ========================================================= */
+
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+
+      display: grid;
+      place-items: center;
+
+      background: #f7f8fb;
+
+      transition:
+        opacity .7s ease,
+        visibility .7s ease;
     }
 
-    /* =========================
-       TOP STATUS BAR
-    ========================== */
+    html.dark .preloader {
+      background: #080909;
+    }
 
-    .topbar {
-      border-bottom: 1px solid var(--border);
-      background: rgba(8,9,9,.82);
-      backdrop-filter: blur(18px);
+    .preloader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-wrap {
+      text-align: center;
+    }
+
+    .loader-mark {
+      width: 58px;
+      height: 58px;
+
+      margin: 0 auto 18px;
+
+      border-radius: 18px;
+
+      display: grid;
+      place-items: center;
+
+      background: #111318;
+      color: var(--lime);
+
+      box-shadow:
+        0 18px 50px rgba(0,0,0,.16);
+
+      animation:
+        loaderFloat 1.8s ease-in-out infinite;
+    }
+
+    .loader-mark i {
+      font-size: 21px;
+    }
+
+    .loader-line {
+      width: 150px;
+      height: 4px;
+
+      overflow: hidden;
+
+      margin: auto;
+
+      border-radius: 999px;
+
+      background: #e2e5ea;
+    }
+
+    .loader-line span {
+      display: block;
+
+      width: 45%;
+      height: 100%;
+
+      border-radius: inherit;
+
+      background: #111318;
+
+      animation:
+        loaderLine 1.1s ease-in-out infinite;
+    }
+
+    @keyframes loaderFloat {
+      50% {
+        transform: translateY(-7px) rotate(2deg);
+      }
+    }
+
+    @keyframes loaderLine {
+      0% {
+        transform: translateX(-120%);
+      }
+
+      100% {
+        transform: translateX(340%);
+      }
+    }
+
+    /* =========================================================
+       TOP SALAH BAR
+       ========================================================= */
+
+    .salah-bar {
       position: relative;
-      z-index: 100;
+      z-index: 1000;
+
+      background: #111318;
+      color: #fff;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
     }
 
-    .topbar-inner {
+    .salah-inner {
       min-height: 38px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      color: var(--muted);
-      font-size: 12px;
+
+      gap: 20px;
     }
 
-    .salah-items {
+    .salah-left {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .salah-left i {
+      color: var(--lime);
+    }
+
+    .salah-times {
       display: flex;
       align-items: center;
       gap: 18px;
+
       overflow-x: auto;
-      white-space: nowrap;
       scrollbar-width: none;
     }
 
-    .salah-items::-webkit-scrollbar {
+    .salah-times::-webkit-scrollbar {
       display: none;
     }
 
     .salah-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .salah-item strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .live-status {
       display: flex;
       align-items: center;
       gap: 7px;
+
       white-space: nowrap;
+
+      color: rgba(255,255,255,.66);
+
+      font-size: 11px;
+      font-weight: 600;
     }
 
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 14px var(--green);
+    .salah-item strong {
+      color: #fff;
+      font-weight: 800;
     }
 
-    /* =========================
-       NAVIGATION
-    ========================== */
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
 
     .navbar {
       position: sticky;
       top: 0;
-      z-index: 90;
-      border-bottom: 1px solid var(--border);
-      background: rgba(8,9,9,.76);
+      z-index: 900;
+
+      height: var(--header-height);
+
+      background:
+        color-mix(
+          in srgb,
+          var(--bg-soft) 88%,
+          transparent
+        );
+
+      border-bottom: 1px solid var(--line);
+
       backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
     }
 
     .nav-inner {
-      min-height: 76px;
+      height: 100%;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+
+      gap: 24px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 11px;
+
       min-width: max-content;
     }
 
-    .brand-mark {
-      width: 37px;
-      height: 37px;
-      border-radius: 11px;
-      background: var(--green);
-      color: #080909;
+    .brand-icon {
+      width: 39px;
+      height: 39px;
+
       display: grid;
       place-items: center;
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 800;
+
+      border-radius: 12px;
+
+      background: #111318;
+      color: var(--lime);
+
+      box-shadow:
+        0 10px 28px rgba(17,19,24,.16);
+    }
+
+    .brand-icon i {
       font-size: 15px;
-      box-shadow: 0 0 35px rgba(183,255,0,.15);
     }
 
     .brand-text {
       display: flex;
       flex-direction: column;
-      line-height: 1.05;
+      line-height: 1;
     }
 
     .brand-name {
       font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
+
+      font-size: 15px;
+      font-weight: 800;
+
       letter-spacing: -.03em;
     }
 
-    .brand-tagline {
-      color: var(--muted);
-      font-size: 9px;
-      margin-top: 4px;
+    .brand-sub {
+      margin-top: 5px;
+
+      color: var(--text-faint);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: .14em;
       text-transform: uppercase;
-      letter-spacing: .12em;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
+      justify-content: center;
+
       gap: 5px;
     }
 
-    .nav-links a {
+    .nav-link {
+      position: relative;
+
       padding: 10px 13px;
+
       border-radius: 11px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-      transition: .25s ease;
+
+      color: var(--text-soft);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      transition:
+        color .25s ease,
+        background .25s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: rgba(255,255,255,.055);
+    .nav-link:hover,
+    .nav-link.active {
       color: var(--text);
+      background: var(--bg-muted);
     }
 
     .nav-actions {
@@ -250,40 +493,95 @@
       gap: 8px;
     }
 
-    .lang-btn,
-    .menu-btn {
+    .icon-btn {
       width: 40px;
       height: 40px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.035);
-      color: var(--text);
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--line);
       border-radius: 12px;
+
+      background: var(--bg-soft);
+      color: var(--text);
+
+      cursor: pointer;
+
+      transition:
+        transform .25s var(--ease),
+        border-color .25s ease,
+        background .25s ease;
     }
 
-    .lang-btn {
-      font-size: 11px;
-      font-weight: 800;
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
     }
 
-    .menu-btn {
+    .mobile-menu {
       display: none;
-      font-size: 18px;
     }
 
-    /* =========================
+    /* =========================================================
        HERO
-    ========================== */
+       ========================================================= */
 
     .hero {
       position: relative;
-      padding: 95px 0 80px;
+
+      padding:
+        82px 0
+        96px;
+
       overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(183,255,0,.14),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(52,120,246,.08),
+          transparent 26%
+        );
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 650px;
+      height: 650px;
+
+      right: -280px;
+      top: -320px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(17,19,24,.05);
+
+      box-shadow:
+        0 0 0 80px rgba(17,19,24,.018),
+        0 0 0 160px rgba(17,19,24,.014);
     }
 
     .hero-grid {
+      position: relative;
+      z-index: 2;
+
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns:
+        minmax(0, .84fr)
+        minmax(0, 1.16fr);
+
       align-items: center;
+
       gap: 70px;
     }
 
@@ -291,867 +589,2072 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+
       padding: 8px 12px;
-      border: 1px solid var(--green-border);
-      background: var(--green-soft);
-      color: var(--green);
+
+      border:
+        1px solid
+        var(--line);
+
       border-radius: 999px;
-      font-size: 11px;
+
+      background:
+        color-mix(
+          in srgb,
+          var(--bg-soft) 84%,
+          transparent
+        );
+
+      box-shadow: var(--shadow-sm);
+
+      color: var(--text-soft);
+
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: .08em;
+
+      letter-spacing: .1em;
       text-transform: uppercase;
-      margin-bottom: 22px;
     }
 
-    .hero h1 {
-      max-width: 760px;
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--lime);
+
+      box-shadow:
+        0 0 0 5px rgba(183,255,0,.14);
+    }
+
+    .hero-title {
+      margin-top: 22px;
+
+      max-width: 670px;
+
       font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(46px, 7vw, 88px);
-      line-height: .95;
+
+      font-size:
+        clamp(46px, 6vw, 82px);
+
+      line-height: .98;
+
       letter-spacing: -.065em;
     }
 
-    .hero h1 span {
-      color: var(--green);
+    .hero-title .accent {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .accent::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 3%;
+
+      bottom: -8px;
+
+      height: 9px;
+
+      border-radius: 999px;
+
+      background: var(--lime);
+
+      opacity: .8;
+
+      transform:
+        rotate(-1deg);
     }
 
     .hero-copy {
-      max-width: 640px;
-      color: var(--muted);
-      line-height: 1.8;
+      max-width: 570px;
+
+      margin-top: 24px;
+
+      color: var(--text-soft);
+
       font-size: 16px;
-      margin-top: 25px;
+      line-height: 1.8;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
+
       gap: 11px;
+
       margin-top: 30px;
     }
 
     .btn {
-      min-height: 46px;
-      padding: 0 18px;
-      border-radius: 13px;
-      border: 1px solid var(--border);
+      min-height: 48px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      font-size: 13px;
+
+      padding: 0 18px;
+
+      border: 1px solid transparent;
+      border-radius: 14px;
+
+      font-size: 12px;
       font-weight: 800;
-      transition: .25s ease;
+
+      cursor: pointer;
+
+      transition:
+        transform .28s var(--ease),
+        box-shadow .28s ease,
+        background .28s ease,
+        border-color .28s ease;
     }
 
-    .btn-primary {
-      background: var(--green);
-      color: #080909;
-      border-color: var(--green);
+    .btn:hover {
+      transform: translateY(-3px);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(183,255,0,.16);
+    .btn-dark {
+      background: #111318;
+      color: #fff;
+
+      box-shadow:
+        0 15px 30px rgba(17,19,24,.15);
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,.035);
+    .btn-dark:hover {
+      box-shadow:
+        0 20px 40px rgba(17,19,24,.21);
+    }
+
+    .btn-lime {
+      background: var(--lime);
+      color: #10120a;
+
+      box-shadow:
+        0 15px 32px rgba(183,255,0,.18);
+    }
+
+    .btn-outline {
+      border-color: var(--line-strong);
+      background: var(--bg-soft);
       color: var(--text);
     }
 
-    .btn-secondary:hover {
-      border-color: var(--border-strong);
-      background: rgba(255,255,255,.07);
-    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
 
-    .hero-visual {
-      position: relative;
-      min-height: 400px;
-      display: grid;
-      place-items: center;
-    }
+      margin-top: 30px;
 
-    .orb {
-      width: 330px;
-      height: 330px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.3), transparent 12%),
-        radial-gradient(circle at center, rgba(183,255,0,.24), rgba(183,255,0,.025) 55%, transparent 70%);
-      filter: blur(.2px);
-      box-shadow:
-        inset 0 0 80px rgba(183,255,0,.08),
-        0 0 100px rgba(183,255,0,.07);
-      animation: floatOrb 7s ease-in-out infinite;
-    }
+      color: var(--text-faint);
 
-    @keyframes floatOrb {
-      0%,100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.035); }
-    }
-
-    .floating-panel {
-      position: absolute;
-      padding: 17px;
-      border: 1px solid var(--border);
-      background: rgba(17,20,21,.78);
-      backdrop-filter: blur(20px);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      min-width: 175px;
-    }
-
-    .floating-panel.one {
-      left: 0;
-      top: 52px;
-    }
-
-    .floating-panel.two {
-      right: 0;
-      bottom: 50px;
-    }
-
-    .floating-title {
-      font-size: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-
-    .floating-value {
-      margin-top: 7px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 23px;
+      font-size: 11px;
       font-weight: 700;
     }
 
-    .floating-value span {
+    .hero-trust span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-trust i {
       color: var(--green);
     }
 
-    /* =========================
-       SECTION
-    ========================== */
+    /* =========================================================
+       LAPTOP HERO MOCKUP
+       ========================================================= */
 
-    section {
-      scroll-margin-top: 100px;
+    .hero-device-area {
+      position: relative;
+
+      min-height: 510px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
+    .hero-glow {
+      position: absolute;
+
+      width: 470px;
+      height: 280px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          ellipse,
+          rgba(183,255,0,.20),
+          transparent 68%
+        );
+
+      filter: blur(10px);
+
+      pointer-events: none;
+    }
+
+    .laptop {
+      position: relative;
+      z-index: 3;
+
+      width: min(650px, 100%);
+
+      filter:
+        drop-shadow(
+          0 35px 35px
+          rgba(17,19,24,.18)
+        );
+
+      transform:
+        perspective(1400px)
+        rotateX(2deg)
+        rotateY(-4deg);
+
+      transition:
+        transform .7s var(--ease);
+    }
+
+    .hero-device-area:hover .laptop {
+      transform:
+        perspective(1400px)
+        rotateX(1deg)
+        rotateY(-1deg)
+        translateY(-5px);
+    }
+
+    .laptop-lid {
+      position: relative;
+
+      padding: 13px;
+
+      border-radius:
+        24px 24px 13px 13px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #e8eaee,
+          #b8bdc6
+        );
+
+      border:
+        1px solid
+        rgba(0,0,0,.20);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .laptop-bezel {
+      position: relative;
+
+      overflow: hidden;
+
+      aspect-ratio: 16 / 10;
+
+      border-radius: 14px;
+
+      background: #080909;
+
+      border:
+        3px solid #080909;
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+
+    .camera-dot {
+      position: absolute;
+
+      z-index: 20;
+
+      top: 5px;
+      left: 50%;
+
+      width: 4px;
+      height: 4px;
+
+      margin-left: -2px;
+
+      border-radius: 50%;
+
+      background: #353941;
+
+      box-shadow:
+        0 0 0 1px #0b0c0e;
+    }
+
+    .laptop-screen {
+      position: absolute;
+      inset: 0;
+
+      overflow: hidden;
+
+      background: #fff;
+    }
+
+    .hero-preview-camera {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      top: 0;
+
+      height: 260%;
+
+      will-change: transform;
+
+      transform: translateY(0);
+
+      transition:
+        transform 1.4s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .hero-preview-camera iframe {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      border: 0;
+
+      background: #fff;
+    }
+
+    .hero-preview-overlay {
+      position: absolute;
+      inset: 0;
+
+      z-index: 10;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,.10),
+          transparent 12%,
+          transparent 88%,
+          rgba(0,0,0,.04)
+        );
+    }
+
+    .hero-live-badge {
+      position: absolute;
+
+      z-index: 25;
+
+      top: 13px;
+      left: 14px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(17,19,24,.84);
+
+      color: #fff;
+
+      backdrop-filter: blur(12px);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero-live-badge span {
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: #32d583;
+
+      box-shadow:
+        0 0 0 4px rgba(50,213,131,.13);
+    }
+
+    .hero-preview-label {
+      position: absolute;
+
+      z-index: 25;
+
+      right: 14px;
+      top: 13px;
+
+      max-width: 44%;
+
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.88);
+
+      color: #111318;
+
+      font-size: 8px;
+      font-weight: 800;
+
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-blocked {
+      position: absolute;
+      inset: 0;
+
+      z-index: 30;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff,
+          #f1f3f6
+        );
+    }
+
+    .hero-blocked.show {
+      display: flex;
+    }
+
+    .hero-blocked-card {
+      max-width: 310px;
+    }
+
+    .hero-blocked-icon {
+      width: 50px;
+      height: 50px;
+
+      margin: 0 auto 12px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 16px;
+
+      background: #111318;
+      color: var(--lime);
+    }
+
+    .hero-blocked h4 {
+      font-size: 14px;
+    }
+
+    .hero-blocked p {
+      margin-top: 7px;
+
+      color: #6d7480;
+
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .laptop-base {
+      position: relative;
+
+      width: 110%;
+
+      height: 17px;
+
+      margin-left: -5%;
+
+      border-radius:
+        4px 4px 15px 15px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          #dfe2e6,
+          #aeb3bb
+        );
+
+      border:
+        1px solid rgba(0,0,0,.18);
+
+      box-shadow:
+        0 8px 8px rgba(0,0,0,.10),
+        inset 0 1px 0 rgba(255,255,255,.8);
+    }
+
+    .laptop-base::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+      top: 1px;
+
+      width: 22%;
+      height: 3px;
+
+      transform: translateX(-50%);
+
+      border-radius: 0 0 6px 6px;
+
+      background: #9da2aa;
+    }
+
+    .hero-device-meta {
+      position: absolute;
+
+      bottom: -28px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: min(540px, 90%);
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 11px 14px;
+
+      border:
+        1px solid
+        rgba(17,19,24,.08);
+
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,.82);
+
+      box-shadow:
+        0 16px 40px rgba(15,23,42,.08);
+
+      backdrop-filter: blur(18px);
+
+      color: #656c78;
+
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    html.dark .hero-device-meta {
+      background: rgba(16,18,20,.84);
+      border-color: var(--line);
+      color: var(--text-soft);
+    }
+
+    .hero-device-meta strong {
+      color: var(--text);
+    }
+
+    .hero-device-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-device-meta i {
+      color: var(--green);
+    }
+
+    .laptop-empty {
+      position: absolute;
+      inset: 0;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #f0f2f5
+        );
+    }
+
+    .laptop-empty.show {
+      display: flex;
+    }
+
+    .empty-content {
+      max-width: 270px;
+    }
+
+    .empty-icon {
+      width: 52px;
+      height: 52px;
+
+      display: grid;
+      place-items: center;
+
+      margin: 0 auto 13px;
+
+      border-radius: 17px;
+
+      background: #111318;
+      color: var(--lime);
+    }
+
+    .empty-content h3 {
+      font-size: 14px;
+      color: #111318;
+    }
+
+    .empty-content p {
+      margin-top: 7px;
+
+      color: #737b87;
+
+      font-size: 10px;
+    }
+
+    /* =========================================================
+       STATS STRIP
+       ========================================================= */
+
+    .stats-strip {
+      position: relative;
+      z-index: 4;
+
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    .stats-box {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 20px;
+
+      background: var(--bg-soft);
+
+      box-shadow: var(--shadow);
+
+    }
+
+    .stat {
+      position: relative;
+
+      padding: 22px 25px;
+
+      text-align: center;
+    }
+
+    .stat + .stat::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+
+      width: 1px;
+
+      background: var(--line);
+    }
+
+    .stat strong {
+      display: block;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 24px;
+
+      letter-spacing: -.04em;
+    }
+
+    .stat span {
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--text-faint);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       SECTIONS
+       ========================================================= */
+
     .section {
-      padding: 85px 0;
+      padding: 100px 0;
     }
 
     .section-head {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
+
       gap: 30px;
-      margin-bottom: 34px;
+
+      margin-bottom: 38px;
     }
 
     .section-kicker {
-      color: var(--green);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .12em;
+      color: var(--text-faint);
+
+      font-size: 10px;
+      font-weight: 900;
+
+      letter-spacing: .15em;
       text-transform: uppercase;
-      margin-bottom: 9px;
     }
 
     .section-title {
+      margin-top: 7px;
+
       font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(30px, 4vw, 48px);
-      letter-spacing: -.045em;
+
+      font-size:
+        clamp(32px, 4vw, 48px);
+
+      line-height: 1;
+
+      letter-spacing: -.055em;
     }
 
     .section-description {
-      max-width: 580px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 14px;
+      max-width: 470px;
+
+      color: var(--text-soft);
+
+      font-size: 13px;
+      line-height: 1.8;
     }
 
-    /* =========================
+    /* =========================================================
        PACKAGE CARDS
-    ========================== */
+       ========================================================= */
 
     .package-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 17px;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 18px;
     }
 
     .package-card {
       position: relative;
-      padding: 27px;
-      min-height: 510px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012)),
-        var(--panel);
+
       overflow: hidden;
-      transition: .3s ease;
+
+      min-height: 610px;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 27px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 27px;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--bg-soft),
+          color-mix(
+            in srgb,
+            var(--bg-soft) 92%,
+            var(--bg-muted)
+          )
+        );
+
+      box-shadow: var(--shadow-sm);
+
+      transition:
+        transform .35s var(--ease),
+        box-shadow .35s ease,
+        border-color .35s ease;
     }
 
     .package-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(183,255,0,.28);
-      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+      transform: translateY(-8px);
+
+      box-shadow: var(--shadow);
+
+      border-color: var(--line-strong);
     }
 
-    .package-card.featured {
-      border-color: var(--green-border);
-      background:
-        radial-gradient(circle at 100% 0%, rgba(183,255,0,.09), transparent 35%),
-        var(--panel);
+    .package-card.popular {
+      border:
+        1px solid
+        rgba(183,255,0,.58);
+
+      box-shadow:
+        0 25px 70px
+        rgba(183,255,0,.08);
     }
 
-    .popular {
+    .package-card.popular::before {
+      content: "";
+
       position: absolute;
-      right: 18px;
-      top: 18px;
-      padding: 6px 9px;
-      border-radius: 999px;
-      color: #080909;
-      background: var(--green);
-      font-size: 9px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .08em;
+
+      width: 210px;
+      height: 210px;
+
+      right: -100px;
+      top: -100px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.24),
+          transparent 68%
+        );
     }
 
-    .package-label {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 700;
+    .package-badge {
+      position: absolute;
+
+      top: 19px;
+      right: 19px;
+
+      padding: 7px 10px;
+
+      border-radius: 999px;
+
+      background: var(--lime);
+
+      color: #111318;
+
+      font-size: 8px;
+      font-weight: 900;
+
+      letter-spacing: .08em;
       text-transform: uppercase;
-      letter-spacing: .12em;
+    }
+
+    .package-icon {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 15px;
+
+      background: var(--bg-muted);
+
+      color: var(--text);
+
+      margin-bottom: 21px;
+    }
+
+    .package-icon i {
+      font-size: 17px;
     }
 
     .package-name {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 30px;
-      margin-top: 7px;
+
+      font-size: 24px;
+      font-weight: 700;
+
       letter-spacing: -.04em;
+    }
+
+    .package-sub {
+      margin-top: 6px;
+
+      min-height: 42px;
+
+      color: var(--text-soft);
+
+      font-size: 11px;
+      line-height: 1.7;
     }
 
     .package-price {
       display: flex;
       align-items: baseline;
-      gap: 7px;
-      margin: 25px 0 20px;
+      gap: 5px;
+
+      margin-top: 22px;
     }
 
     .package-price strong {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 43px;
-      letter-spacing: -.055em;
+
+      font-size: 40px;
+      line-height: 1;
+
+      letter-spacing: -.06em;
     }
 
     .package-price span {
-      color: var(--muted);
-      font-size: 12px;
+      color: var(--text-faint);
+
+      font-size: 10px;
+      font-weight: 700;
     }
 
-    .package-description {
-      min-height: 50px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.65;
+    .package-divider {
+      height: 1px;
+
+      margin: 24px 0 20px;
+
+      background: var(--line);
     }
 
     .feature-list {
-      list-style: none;
-      margin-top: 23px;
       display: grid;
-      gap: 11px;
-    }
-
-    .feature-list li {
-      display: flex;
       gap: 10px;
+
+      flex: 1;
+    }
+
+    .feature {
+      display: flex;
       align-items: flex-start;
-      color: #dce1e1;
-      font-size: 12px;
-      line-height: 1.45;
+      gap: 9px;
+
+      color: var(--text-soft);
+
+      font-size: 10px;
+      line-height: 1.5;
     }
 
-    .check {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 18px;
-      border-radius: 50%;
-      background: var(--green-soft);
-      border: 1px solid var(--green-border);
+    .feature i {
+      flex: 0 0 auto;
+
+      margin-top: 2px;
+
       color: var(--green);
-      display: grid;
-      place-items: center;
+
       font-size: 9px;
-      margin-top: 1px;
     }
 
-    .package-btn {
-      width: 100%;
+    .package-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 8px;
+
       margin-top: 25px;
     }
 
-    /* =========================
-       WEBSITE SHOWCASE
-    ========================== */
+    .package-actions .btn {
+      width: 100%;
 
-    .showcase-header {
-      margin-bottom: 35px;
+      min-height: 44px;
+
+      padding-inline: 10px;
+
+      font-size: 10px;
     }
 
-    .showcase-info {
+    /* =========================================================
+       WEBSITE SHOWCASE
+       ========================================================= */
+
+    .showcase-section {
+      position: relative;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          color-mix(
+            in srgb,
+            var(--bg-muted) 50%,
+            transparent
+          ),
+          transparent
+        );
+    }
+
+    .showcase-tools {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+
+      gap: 8px;
+
       margin-bottom: 22px;
     }
 
-    .showcase-note {
-      color: var(--muted);
-      font-size: 12px;
+    .search-box {
+      position: relative;
+
+      flex: 1;
     }
 
-    .website-count {
-      color: var(--green);
-      font-weight: 800;
-      font-size: 12px;
+    .search-box i {
+      position: absolute;
+
+      left: 15px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: var(--text-faint);
+
+      font-size: 11px;
+    }
+
+    .search-box input {
+      width: 100%;
+
+      height: 45px;
+
+      padding:
+        0 15px
+        0 39px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 13px;
+
+      outline: none;
+
+      background: var(--bg-soft);
+      color: var(--text);
+
+      font-size: 11px;
+
+      transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .search-box input:focus {
+      border-color:
+        rgba(183,255,0,.7);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(183,255,0,.08);
+    }
+
+    .filter-select {
+      height: 45px;
+
+      min-width: 145px;
+
+      padding: 0 13px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 13px;
+
+      outline: none;
+
+      background: var(--bg-soft);
+      color: var(--text);
+
+      font-size: 10px;
+      font-weight: 700;
     }
 
     .website-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 20px;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 18px;
     }
 
     .website-card {
       position: relative;
-      min-width: 0;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: 24px;
+
       overflow: hidden;
-      box-shadow: 0 20px 55px rgba(0,0,0,.18);
-      transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 25px;
+
+      background: var(--bg-soft);
+
+      box-shadow: var(--shadow-sm);
+
+      transition:
+        transform .35s var(--ease),
+        box-shadow .35s ease;
     }
 
     .website-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(183,255,0,.25);
-      box-shadow: 0 30px 80px rgba(0,0,0,.3);
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
     }
 
-    .website-top {
-      padding: 17px 17px 13px;
+    .website-info {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+
+      gap: 15px;
+
+      padding: 17px 18px 14px;
     }
 
-    .website-name-wrap {
+    .website-title-wrap {
       min-width: 0;
     }
 
-    .website-name {
+    .website-title {
+      overflow: hidden;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
       font-family: "Space Grotesk", sans-serif;
-      font-size: 16px;
+
+      font-size: 14px;
       font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+
+      letter-spacing: -.025em;
     }
 
-    .website-url {
-      color: var(--muted);
-      font-size: 9px;
-      margin-top: 5px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 220px;
+    .website-package {
+      margin-top: 3px;
+
+      color: var(--text-faint);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
-    .live-badge {
+    .live-pill {
+      flex: 0 0 auto;
+
       display: inline-flex;
       align-items: center;
       gap: 6px;
+
       padding: 6px 8px;
-      border: 1px solid var(--green-border);
-      background: var(--green-soft);
-      color: var(--green);
+
       border-radius: 999px;
+
+      background:
+        rgba(25,164,99,.09);
+
+      color: var(--green);
+
       font-size: 8px;
       font-weight: 900;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      flex: 0 0 auto;
+
+      letter-spacing: .06em;
     }
 
-    .live-badge i {
+    .live-pill span {
       width: 5px;
       height: 5px;
-      background: var(--green);
+
       border-radius: 50%;
-      box-shadow: 0 0 9px var(--green);
+
+      background: var(--green);
     }
 
-    /* Fixed viewport */
+    /* fixed card viewport */
     .preview-viewport {
       position: relative;
-      height: 365px;
-      margin: 0 13px;
-      border: 1px solid rgba(255,255,255,.1);
+
+      height: 290px;
+
+      margin:
+        0 12px;
+
+      overflow: hidden;
+
       border-radius: 17px;
-      overflow: hidden;
-      background: #fff;
-      isolation: isolate;
+
+      background: #e9edf2;
+
+      border:
+        1px solid
+        rgba(17,19,24,.10);
+
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.35);
     }
-
-    .browser-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 29px;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 0 9px;
-      background: rgba(12,14,15,.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .browser-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #707777;
-    }
-
-    .browser-address {
-      height: 15px;
-      flex: 1;
-      margin-left: 4px;
-      border-radius: 8px;
-      background: rgba(255,255,255,.08);
-    }
-
-    .preview-stage {
-      position: absolute;
-      top: 29px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    /*
-      Important:
-      The iframe can be cross-origin.
-      Therefore we don't access its DOM or call
-      contentWindow.scrollTo().
-
-      Instead the iframe is rendered taller than
-      the viewport and its wrapper is translated.
-      This creates the visual effect of the page
-      being naturally scrolled inside the fixed card.
-    */
 
     .preview-camera {
       position: absolute;
+
       left: 0;
       top: 0;
+
       width: 100%;
+      height: 1900px;
+
       will-change: transform;
-      transform: translate3d(0,0,0);
+
+      transform: translateY(0);
+
+      transition:
+        transform 1.1s cubic-bezier(.22,.61,.36,1);
     }
 
     .preview-camera iframe {
       display: block;
+
       width: 100%;
-      height: 1900px;
+      height: 100%;
+
       border: 0;
+
       background: #fff;
     }
 
-    .preview-overlay {
+    .preview-shine {
       position: absolute;
       inset: 0;
-      z-index: 12;
+
+      z-index: 5;
+
       pointer-events: none;
+
       background:
         linear-gradient(
-          to bottom,
-          rgba(255,255,255,.02),
-          transparent 8%,
-          transparent 92%,
-          rgba(0,0,0,.06)
+          105deg,
+          rgba(255,255,255,.15),
+          transparent 24%,
+          transparent 76%,
+          rgba(255,255,255,.10)
         );
     }
 
-    .human-cursor {
+    .preview-cursor {
       position: absolute;
-      z-index: 30;
-      width: 17px;
-      height: 17px;
+
+      z-index: 10;
+
+      width: 13px;
+      height: 19px;
+
       pointer-events: none;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,.35));
+
+      filter:
+        drop-shadow(
+          0 2px 3px rgba(0,0,0,.28)
+        );
+
+      opacity: .88;
+
       transition:
-        left 1.2s cubic-bezier(.22,.61,.36,1),
-        top 1.2s cubic-bezier(.22,.61,.36,1);
+        left .8s var(--ease),
+        top .8s var(--ease);
     }
 
-    .human-cursor::before {
+    .preview-cursor::before {
       content: "";
+
       position: absolute;
-      left: 2px;
-      top: 0;
+
+      left: 1px;
+      top: 1px;
+
       width: 0;
       height: 0;
-      border-left: 7px solid #111;
-      border-top: 13px solid transparent;
-      transform: rotate(-25deg);
+
+      border-top: 15px solid #fff;
+      border-right: 8px solid transparent;
+
+      transform: rotate(-10deg);
+
+      filter:
+        drop-shadow(
+          0 0 0 1px #111318
+        );
     }
 
-    .human-cursor::after {
+    .preview-cursor::after {
       content: "";
+
       position: absolute;
-      width: 4px;
-      height: 4px;
+
+      left: -5px;
+      top: -5px;
+
+      width: 22px;
+      height: 22px;
+
       border-radius: 50%;
-      background: rgba(183,255,0,.75);
-      left: 3px;
-      top: 9px;
-      box-shadow: 0 0 9px rgba(183,255,0,.65);
-    }
 
-    .blocked-message {
-      position: absolute;
-      inset: 0;
-      z-index: 50;
-      display: none;
-      place-items: center;
-      text-align: center;
-      padding: 25px;
       background:
-        radial-gradient(circle at center, rgba(183,255,0,.07), transparent 40%),
-        #111415;
+        rgba(183,255,0,.20);
+
+      transform: scale(0);
+
+      transition:
+        transform .2s ease;
     }
 
-    .blocked-message.show {
-      display: grid;
+    .preview-cursor.click::after {
+      transform: scale(1);
     }
 
-    .blocked-inner {
-      max-width: 280px;
+    .preview-bottom-fade {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 70px;
+
+      z-index: 8;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.16),
+          transparent
+        );
     }
 
-    .blocked-icon {
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 14px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
-      color: var(--green);
-      font-size: 21px;
-    }
-
-    .blocked-inner h4 {
-      font-size: 15px;
-      margin-bottom: 7px;
-    }
-
-    .blocked-inner p {
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.6;
-    }
-
-    .website-bottom {
-      padding: 14px 17px 17px;
-    }
-
-    .website-meta {
+    .website-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
+
+      gap: 12px;
+
+      padding: 15px 18px 18px;
     }
 
-    .package-tag {
-      color: var(--green);
-      font-size: 10px;
+    .website-url {
+      max-width: 52%;
+
+      overflow: hidden;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      color: var(--text-faint);
+
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .explore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 9px 12px;
+
+      border-radius: 11px;
+
+      background: #111318;
+      color: #fff;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      transition:
+        transform .25s var(--ease);
+    }
+
+    .explore-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .empty-websites {
+      grid-column: 1 / -1;
+
+      padding: 70px 25px;
+
+      text-align: center;
+
+      border:
+        1px dashed
+        var(--line-strong);
+
+      border-radius: 22px;
+
+      background: var(--bg-soft);
+    }
+
+    .empty-websites i {
+      font-size: 30px;
+      color: var(--text-faint);
+    }
+
+    .empty-websites h3 {
+      margin-top: 14px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 18px;
+    }
+
+    .empty-websites p {
+      max-width: 400px;
+
+      margin: 7px auto 0;
+
+      color: var(--text-soft);
+
+      font-size: 11px;
+    }
+
+    /* =========================================================
+       HOW IT WORKS
+       ========================================================= */
+
+    .steps-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 14px;
+    }
+
+    .step-card {
+      position: relative;
+
+      padding: 23px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 20px;
+
+      background: var(--bg-soft);
+
+      transition:
+        transform .3s var(--ease);
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .step-number {
+      width: 35px;
+      height: 35px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 11px;
+
+      background: var(--bg-muted);
+
+      color: var(--text);
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 11px;
       font-weight: 800;
     }
 
-    .animation-status {
-      color: var(--muted);
-      font-size: 9px;
+    .step-card h3 {
+      margin-top: 18px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 14px;
     }
 
-    .website-actions {
+    .step-card p {
+      margin-top: 7px;
+
+      color: var(--text-soft);
+
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       SALAH SECTION
+       ========================================================= */
+
+    .salah-section {
+      padding-top: 30px;
+    }
+
+    .salah-panel {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 30px;
+
+      border-radius: 27px;
+
+      background: #111318;
+      color: #fff;
+
+      box-shadow: var(--shadow-xl);
+    }
+
+    .salah-panel::before {
+      content: "";
+
+      position: absolute;
+
+      width: 360px;
+      height: 360px;
+
+      right: -130px;
+      top: -180px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.20),
+          transparent 68%
+        );
+    }
+
+    .salah-panel-grid {
+      position: relative;
+      z-index: 2;
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        .7fr 1.3fr;
+
+      gap: 40px;
+
+      align-items: center;
+    }
+
+    .salah-panel h2 {
+      margin-top: 8px;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 35px;
+      line-height: 1;
+
+      letter-spacing: -.05em;
+    }
+
+    .salah-panel p {
+      max-width: 410px;
+
+      margin-top: 12px;
+
+      color: rgba(255,255,255,.56);
+
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .salah-cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
       gap: 8px;
     }
 
-    .website-actions .btn {
-      min-height: 40px;
-      font-size: 11px;
-    }
+    .salah-card {
+      padding: 16px 9px;
 
-    /* =========================
-       EMPTY SHOWCASE
-    ========================== */
+      border:
+        1px solid
+        rgba(255,255,255,.08);
 
-    .empty-state {
-      padding: 70px 20px;
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,.045);
+
       text-align: center;
-      border: 1px dashed var(--border-strong);
-      border-radius: 24px;
-      background: rgba(255,255,255,.018);
     }
 
-    .empty-icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 17px;
-      border-radius: 18px;
-      background: var(--green-soft);
-      color: var(--green);
-      display: grid;
-      place-items: center;
-      font-size: 22px;
+    .salah-card span {
+      display: block;
+
+      color: rgba(255,255,255,.48);
+
+      font-size: 8px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
-    .empty-state h3 {
+    .salah-card strong {
+      display: block;
+
+      margin-top: 5px;
+
+      color: #fff;
+
       font-family: "Space Grotesk", sans-serif;
-      font-size: 22px;
-      margin-bottom: 7px;
+
+      font-size: 15px;
     }
 
-    .empty-state p {
-      color: var(--muted);
-      font-size: 13px;
+    .salah-card.active {
+      border-color:
+        rgba(183,255,0,.45);
+
+      background:
+        rgba(183,255,0,.09);
     }
 
-    /* =========================
+    .salah-card.active strong {
+      color: var(--lime);
+    }
+
+    /* =========================================================
        ABOUT
-    ========================== */
+       ========================================================= */
 
     .about-grid {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 22px;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 18px;
     }
 
     .about-card {
-      border: 1px solid var(--border);
+      padding: 32px;
+
+      border:
+        1px solid
+        var(--line);
+
       border-radius: 25px;
-      background: var(--panel);
-      padding: 30px;
+
+      background: var(--bg-soft);
+
+      box-shadow: var(--shadow-sm);
     }
 
-    .about-card.large {
-      background:
-        radial-gradient(circle at 100% 0%, rgba(183,255,0,.08), transparent 35%),
-        var(--panel);
-    }
-
-    .about-card h3 {
+    .about-card h2 {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 28px;
-      letter-spacing: -.035em;
-      margin-bottom: 15px;
+
+      font-size: 29px;
+
+      letter-spacing: -.045em;
     }
 
     .about-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 13px;
-    }
+      margin-top: 13px;
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 10px;
-      margin-top: 24px;
-    }
+      color: var(--text-soft);
 
-    .stat {
-      padding: 18px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .stat strong {
-      display: block;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 27px;
-    }
-
-    .stat span {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      margin-top: 4px;
-    }
-
-    .process {
-      display: grid;
-      gap: 12px;
-    }
-
-    .process-item {
-      display: flex;
-      gap: 14px;
-      padding: 17px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .process-number {
-      width: 34px;
-      height: 34px;
-      border-radius: 11px;
-      background: var(--green);
-      color: #080909;
-      display: grid;
-      place-items: center;
-      font-size: 11px;
-      font-weight: 900;
-      flex: 0 0 34px;
-    }
-
-    .process-item strong {
-      display: block;
       font-size: 12px;
-      margin-bottom: 4px;
+      line-height: 1.9;
     }
 
-    .process-item span {
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.5;
+    .about-points {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+
+      margin-top: 22px;
     }
 
-    /* =========================
-       SUPPORT
-    ========================== */
+    .about-point {
+      display: flex;
+      align-items: center;
+      gap: 8px;
 
-    .support-card {
+      padding: 12px;
+
+      border-radius: 13px;
+
+      background: var(--bg-muted);
+
+      color: var(--text-soft);
+
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .about-point i {
+      color: var(--green);
+    }
+
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .cta-section {
+      padding-top: 20px;
+      padding-bottom: 100px;
+    }
+
+    .cta {
       position: relative;
-      padding: 45px;
-      border-radius: 28px;
-      border: 1px solid var(--green-border);
-      background:
-        radial-gradient(circle at 85% 20%, rgba(183,255,0,.11), transparent 25%),
-        linear-gradient(145deg, rgba(183,255,0,.055), rgba(255,255,255,.015)),
-        var(--panel);
+
       overflow: hidden;
+
+      padding: 52px 45px;
+
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #111318,
+          #1d2027
+        );
+
+      color: #fff;
+
+      box-shadow: var(--shadow-xl);
     }
 
-    .support-card h2 {
+    .cta::before {
+      content: "";
+
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      right: -180px;
+      top: -220px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(183,255,0,.25),
+          transparent 68%
+        );
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 750px;
+    }
+
+    .cta h2 {
       font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(31px,4vw,52px);
+
+      font-size:
+        clamp(30px, 4vw, 50px);
+
+      line-height: 1;
+
       letter-spacing: -.055em;
-      max-width: 700px;
     }
 
-    .support-card p {
-      color: var(--muted);
-      line-height: 1.75;
-      max-width: 650px;
-      font-size: 14px;
-      margin-top: 15px;
+    .cta p {
+      max-width: 600px;
+
+      margin-top: 12px;
+
+      color: rgba(255,255,255,.58);
+
+      font-size: 12px;
     }
 
-    .support-actions {
+    .cta-actions {
+      position: relative;
+      z-index: 2;
+
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+
+      gap: 9px;
+
       margin-top: 25px;
     }
 
-    /* =========================
+    /* =========================================================
        FOOTER
-    ========================== */
+       ========================================================= */
 
     footer {
-      border-top: 1px solid var(--border);
       padding: 30px 0;
+
+      border-top:
+        1px solid
+        var(--line);
     }
 
     .footer-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 10px;
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+    .footer-copy {
+      color: var(--text-faint);
+
+      font-size: 9px;
+      font-weight: 600;
     }
 
     .footer-links {
       display: flex;
+      align-items: center;
       gap: 15px;
+
+      color: var(--text-soft);
+
+      font-size: 9px;
+      font-weight: 700;
     }
 
     .footer-links a:hover {
       color: var(--text);
     }
 
-    /* =========================
+    /* =========================================================
        TOAST
-    ========================== */
+       ========================================================= */
 
     .toast {
       position: fixed;
-      left: 50%;
-      bottom: 25px;
-      transform: translate(-50%, 120px);
-      z-index: 999;
-      padding: 12px 16px;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: rgba(17,20,21,.94);
-      backdrop-filter: blur(20px);
-      color: var(--text);
-      font-size: 11px;
+
+      z-index: 99990;
+
+      right: 22px;
+      bottom: 22px;
+
+      min-width: 260px;
+
+      padding: 14px 16px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 15px;
+
+      background:
+        color-mix(
+          in srgb,
+          var(--bg-soft) 92%,
+          transparent
+        );
+
       box-shadow: var(--shadow);
-      transition: .3s ease;
-      pointer-events: none;
+
+      backdrop-filter: blur(18px);
+
+      transform:
+        translateY(30px)
+        scale(.97);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        all .35s var(--ease);
     }
 
     .toast.show {
-      transform: translate(-50%, 0);
+      transform:
+        translateY(0)
+        scale(1);
+
+      opacity: 1;
+      visibility: visible;
     }
 
-    /* =========================
-       MOBILE
-    ========================== */
+    .toast-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    @media (max-width: 1050px) {
-      .website-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
+    .toast-icon {
+      width: 31px;
+      height: 31px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      background: rgba(25,164,99,.10);
+      color: var(--green);
+    }
+
+    .toast-text strong {
+      display: block;
+
+      font-size: 10px;
+    }
+
+    .toast-text span {
+      display: block;
+
+      margin-top: 2px;
+
+      color: var(--text-faint);
+
+      font-size: 9px;
+    }
+
+    /* =========================================================
+       REVEAL
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(25px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1100px) {
 
       .hero-grid {
-        gap: 35px;
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+      }
+
+      .hero-device-area {
+        min-height: 470px;
+      }
+
+      .laptop {
+        width: min(700px, 94%);
+      }
+
+      .website-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .steps-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .salah-panel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: grid;
+      }
+
+      .nav-links.open {
+        position: absolute;
+
+        display: flex;
+        flex-direction: column;
+
+        left: 20px;
+        right: 20px;
+        top: calc(100% + 8px);
+
+        padding: 10px;
+
+        border:
+          1px solid
+          var(--line);
+
+        border-radius: 18px;
+
+        background:
+          color-mix(
+            in srgb,
+            var(--bg-soft) 95%,
+            transparent
+          );
+
+        box-shadow: var(--shadow);
+
+        backdrop-filter: blur(22px);
+      }
+
+      .nav-link {
+        width: 100%;
       }
 
       .package-grid {
@@ -1161,95 +2664,111 @@
       .package-card {
         min-height: auto;
       }
-    }
 
-    @media (max-width: 800px) {
-      .container {
-        width: min(calc(100% - 28px), var(--max));
+      .stats-box {
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
-      .nav-links {
-        position: absolute;
-        left: 14px;
-        right: 14px;
-        top: 68px;
+      .stat:nth-child(3)::before {
         display: none;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 10px;
-        border: 1px solid var(--border);
-        background: rgba(13,15,16,.97);
-        backdrop-filter: blur(20px);
-        border-radius: 17px;
       }
 
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 13px;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .hero {
-        padding: 70px 0 55px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        min-height: 300px;
-      }
-
-      .orb {
-        width: 250px;
-        height: 250px;
-      }
-
-      .floating-panel.one {
-        left: 5%;
-        top: 20px;
-      }
-
-      .floating-panel.two {
-        right: 5%;
-        bottom: 20px;
+      .stat:nth-child(3),
+      .stat:nth-child(4) {
+        border-top: 1px solid var(--line);
       }
 
       .about-grid {
         grid-template-columns: 1fr;
       }
-
-      .support-card {
-        padding: 30px 24px;
-      }
-
-      .section {
-        padding: 65px 0;
-      }
     }
 
-    @media (max-width: 620px) {
-      .topbar-inner {
-        min-height: 34px;
+    @media (max-width: 650px) {
+
+      .container {
+        width: min(
+          calc(100% - 26px),
+          var(--container)
+        );
       }
 
-      .live-status {
+      .salah-inner {
+        min-height: 35px;
+      }
+
+      .salah-left {
         display: none;
       }
 
-      .website-grid {
-        grid-template-columns: 1fr;
+      .salah-times {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 14px;
       }
 
-      .preview-viewport {
-        height: 390px;
+      .navbar {
+        height: 68px;
+      }
+
+      .brand-sub {
+        display: none;
+      }
+
+      .hero {
+        padding:
+          55px 0
+          65px;
+      }
+
+      .hero-title {
+        font-size: 46px;
+      }
+
+      .hero-copy {
+        font-size: 13px;
+      }
+
+      .hero-device-area {
+        min-height: 285px;
+      }
+
+      .laptop {
+        width: 100%;
+      }
+
+      .laptop-lid {
+        padding: 7px;
+        border-radius: 14px 14px 8px 8px;
+      }
+
+      .laptop-bezel {
+        border-width: 2px;
+        border-radius: 8px;
+      }
+
+      .laptop-base {
+        height: 10px;
+      }
+
+      .hero-device-meta {
+        display: none;
+      }
+
+      .stats-box {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        padding: 18px 10px;
+      }
+
+      .stat strong {
+        font-size: 20px;
+      }
+
+      .section {
+        padding: 72px 0;
       }
 
       .section-head {
@@ -1257,24 +2776,83 @@
       }
 
       .section-description {
-        margin-top: 12px;
+        margin-top: 15px;
       }
 
-      .hero h1 {
-        font-size: 52px;
+      .showcase-tools {
+        flex-direction: column;
+        align-items: stretch;
       }
 
-      .hero-copy {
-        font-size: 14px;
+      .filter-select {
+        width: 100%;
       }
 
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
+      .website-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-viewport {
+        height: 300px;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .salah-panel {
+        padding: 25px 18px;
+      }
+
+      .salah-cards {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .salah-card:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .about-card {
+        padding: 24px;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 35px 24px;
       }
 
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+
+      .toast {
+        left: 13px;
+        right: 13px;
+        bottom: 13px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -1282,63 +2860,79 @@
 
 <body>
 
-  <!-- =========================
-       SALAH BAR
-  ========================== -->
+  <!-- =======================================================
+       PRELOADER
+       ======================================================= -->
 
-  <div class="topbar" id="salahSection">
-    <div class="container topbar-inner">
-
-      <div class="salah-items">
-
-        <div class="salah-item">
-          <span>Fajr</span>
-          <strong>04:45</strong>
-        </div>
-
-        <div class="salah-item">
-          <span>Dhuhr</span>
-          <strong>12:05</strong>
-        </div>
-
-        <div class="salah-item">
-          <span>Asr</span>
-          <strong>16:15</strong>
-        </div>
-
-        <div class="salah-item">
-          <span>Maghrib</span>
-          <strong>18:00</strong>
-        </div>
-
-        <div class="salah-item">
-          <span>Isha</span>
-          <strong>19:20</strong>
-        </div>
-
+  <div class="preloader" id="preloader">
+    <div class="loader-wrap">
+      <div class="loader-mark">
+        <i class="fa-solid fa-layer-group"></i>
       </div>
 
-      <div class="live-status">
-        <span class="live-dot"></span>
-        <span>Live Showcase</span>
+      <div class="loader-line">
+        <span></span>
       </div>
-
     </div>
   </div>
 
 
-  <!-- =========================
-       NAVBAR
-  ========================== -->
+  <!-- =======================================================
+       SALAH BAR
+       ======================================================= -->
 
-  <nav class="navbar">
+  <div class="salah-bar" id="salahTopBar">
+    <div class="container salah-inner">
+
+      <div class="salah-left">
+        <i class="fa-solid fa-moon"></i>
+        <span>Salah Times</span>
+      </div>
+
+      <div class="salah-times">
+
+        <div class="salah-item">
+          Fajr
+          <strong>04:45</strong>
+        </div>
+
+        <div class="salah-item">
+          Dhuhr
+          <strong>12:05</strong>
+        </div>
+
+        <div class="salah-item">
+          Asr
+          <strong>16:15</strong>
+        </div>
+
+        <div class="salah-item">
+          Maghrib
+          <strong>18:00</strong>
+        </div>
+
+        <div class="salah-item">
+          Isha
+          <strong>19:20</strong>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =======================================================
+       NAVBAR
+       ======================================================= -->
+
+  <header class="navbar">
 
     <div class="container nav-inner">
 
-      <a href="./index.html" class="brand">
+      <a href="#home" class="brand">
 
-        <div class="brand-mark">
-          WD
+        <div class="brand-icon">
+          <i class="fa-solid fa-cubes"></i>
         </div>
 
         <div class="brand-text">
@@ -1346,168 +2940,291 @@
             Website Deals
           </span>
 
-          <span class="brand-tagline" id="brandTagline">
-            Premium Ready-Made Websites
+          <span class="brand-sub">
+            Premium Website Marketplace
           </span>
         </div>
 
       </a>
 
 
-      <div class="nav-links" id="navLinks">
+      <nav class="nav-links" id="navLinks">
 
-        <a href="#home" class="active">
+        <a
+          href="#home"
+          class="nav-link active"
+        >
           Home
         </a>
 
         <a
           href="#packages"
-          data-section-link="packages"
+          class="nav-link"
         >
           Package
         </a>
 
         <a
           href="#websites"
-          data-section-link="websites"
+          class="nav-link"
         >
           Websites
         </a>
 
         <a
-          href="#salahSection"
-          data-section-link="salah"
+          href="#salah"
+          class="nav-link"
         >
           Salah
         </a>
 
         <a
           href="#about"
-          data-section-link="about"
+          class="nav-link"
         >
           About
         </a>
 
         <a
           href="#support"
-          data-section-link="support"
+          class="nav-link"
         >
           Support
         </a>
 
-      </div>
+      </nav>
 
 
       <div class="nav-actions">
 
         <button
-          class="lang-btn"
-          id="langBtn"
-          type="button"
-          title="Change language"
+          class="icon-btn"
+          id="themeToggle"
+          aria-label="Toggle theme"
         >
-          BN
+          <i class="fa-solid fa-moon"></i>
         </button>
 
         <button
-          class="menu-btn"
-          id="menuBtn"
-          type="button"
+          class="icon-btn mobile-menu"
+          id="mobileMenu"
           aria-label="Open menu"
         >
-          ☰
+          <i class="fa-solid fa-bars"></i>
         </button>
 
       </div>
 
     </div>
 
-  </nav>
+  </header>
 
 
-  <!-- =========================
-       HOME / HERO
-  ========================== -->
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
 
-  <main id="home">
+  <main>
 
-    <section class="hero">
+    <section
+      class="hero"
+      id="home"
+    >
 
       <div class="container hero-grid">
 
-        <div>
+        <!-- HERO TEXT -->
 
-          <div class="eyebrow">
-            <span class="live-dot"></span>
-            Premium Website Marketplace
-          </div>
+        <div class="hero-content reveal">
 
-          <h1>
+          <span class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Premium Ready-Made Websites
+          </span>
+
+          <h1 class="hero-title">
             Your website.
             <br>
-            <span>Ready to grow.</span>
+            <span class="accent">
+              Ready to grow.
+            </span>
           </h1>
 
-          <p class="hero-copy" id="heroCopy">
-            Choose a ready-made website package, explore real websites
-            and present your digital presence with a premium live showcase.
+          <p
+            class="hero-copy"
+            id="heroCopy"
+          >
+            Choose a ready-made website, connect your domain,
+            and start growing without waiting months for a
+            website to be built from scratch.
           </p>
 
           <div class="hero-actions">
 
             <a
               href="#packages"
-              class="btn btn-primary"
-              data-section-link="packages"
+              class="btn btn-dark"
             >
-              Explore Packages ↗
+              <i class="fa-solid fa-box-open"></i>
+              Explore Packages
             </a>
 
             <a
               href="#websites"
-              class="btn btn-secondary"
-              data-section-link="websites"
+              class="btn btn-outline"
             >
-              View Websites
+              <i class="fa-solid fa-globe"></i>
+              See Live Websites
             </a>
+
+          </div>
+
+          <div class="hero-trust">
+
+            <span>
+              <i class="fa-solid fa-circle-check"></i>
+              Free SSL
+            </span>
+
+            <span>
+              <i class="fa-solid fa-circle-check"></i>
+              Responsive
+            </span>
+
+            <span>
+              <i class="fa-solid fa-circle-check"></i>
+              Firebase Ready
+            </span>
+
+            <span>
+              <i class="fa-solid fa-circle-check"></i>
+              Custom Domain
+            </span>
 
           </div>
 
         </div>
 
 
-        <div class="hero-visual">
+        <!-- HERO LAPTOP -->
 
-          <div class="orb"></div>
+        <div class="hero-device-area reveal">
 
-          <div class="floating-panel one">
+          <div class="hero-glow"></div>
 
-            <div class="floating-title">
-              Starting From
+          <div class="laptop">
+
+            <div class="laptop-lid">
+
+              <div class="laptop-bezel">
+
+                <div class="camera-dot"></div>
+
+                <div class="laptop-screen">
+
+                  <div
+                    class="hero-preview-camera"
+                    id="heroPreviewCamera"
+                  >
+                    <iframe
+                      id="heroWebsiteFrame"
+                      title="Live Website Preview"
+                      loading="eager"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                    ></iframe>
+                  </div>
+
+                  <div
+                    class="hero-preview-overlay"
+                  ></div>
+
+                  <div class="hero-live-badge">
+                    <span></span>
+                    LIVE PREVIEW
+                  </div>
+
+                  <div
+                    class="hero-preview-label"
+                    id="heroWebsiteLabel"
+                  >
+                    Loading website...
+                  </div>
+
+                  <div
+                    class="laptop-empty"
+                    id="heroEmpty"
+                  >
+                    <div class="empty-content">
+
+                      <div class="empty-icon">
+                        <i class="fa-solid fa-display"></i>
+                      </div>
+
+                      <h3>
+                        Your Website Goes Here
+                      </h3>
+
+                      <p>
+                        Save a real website link from Admin →
+                        Websites and it will automatically
+                        appear here.
+                      </p>
+
+                    </div>
+                  </div>
+
+                  <div
+                    class="hero-blocked"
+                    id="heroBlocked"
+                  >
+                    <div class="hero-blocked-card">
+
+                      <div class="hero-blocked-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                      </div>
+
+                      <h4>
+                        Live Preview Unavailable
+                      </h4>
+
+                      <p>
+                        This website may prevent iframe
+                        embedding. The live website can still
+                        be opened directly.
+                      </p>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
 
-            <div class="floating-value">
-              ৳<span>549</span>
-              <small style="font-size:10px;color:#9da5a5;">
-                /month
-              </small>
-            </div>
+            <div class="laptop-base"></div>
 
           </div>
 
 
-          <div class="floating-panel two">
+          <div class="hero-device-meta">
 
-            <div class="floating-title">
-              Live Websites
-            </div>
+            <span>
+              <i class="fa-solid fa-circle-check"></i>
+              <strong id="heroMetaName">
+                Live Website
+              </strong>
+            </span>
 
-            <div
-              class="floating-value"
-              id="heroWebsiteCount"
-            >
-              00
-            </div>
+            <span>
+              <i class="fa-solid fa-arrows-up-down"></i>
+              Auto Presentation
+            </span>
+
+            <span>
+              <i class="fa-solid fa-arrow-pointer"></i>
+              Natural Motion
+            </span>
 
           </div>
 
@@ -1518,35 +3235,70 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
+         STATS
+         ===================================================== -->
+
+    <section class="stats-strip">
+
+      <div class="container">
+
+        <div class="stats-box">
+
+          <div class="stat">
+            <strong id="statWebsites">00</strong>
+            <span>Ready Websites</span>
+          </div>
+
+          <div class="stat">
+            <strong>20+</strong>
+            <span>Categories</span>
+          </div>
+
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Responsive</span>
+          </div>
+
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Support Ready</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
          PACKAGES
-    ========================== -->
+         ===================================================== -->
 
     <section
       class="section"
       id="packages"
-      data-section="packages"
     >
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div>
-
             <div class="section-kicker">
-              Choose Your Package
+              Choose Your Plan
             </div>
 
             <h2 class="section-title">
-              Simple. Powerful. Ready.
+              Package
             </h2>
-
           </div>
 
           <p class="section-description">
-            Pick the package that matches your business needs.
-            Every package is designed for a professional online presence.
+            Simple monthly website plans for businesses,
+            creators and growing brands. Choose the level
+            you need and get your website ready to launch.
           </p>
 
         </div>
@@ -1554,255 +3306,332 @@
 
         <div class="package-grid">
 
-
           <!-- STARTER -->
 
-          <article class="package-card">
+          <article class="package-card reveal">
 
-            <div class="package-label">
-              Starter
+            <div class="package-icon">
+              <i class="fa-solid fa-rocket"></i>
             </div>
 
             <h3 class="package-name">
               Starter
             </h3>
+
+            <p class="package-sub">
+              A clean, professional website for individuals
+              and small businesses ready to start online.
+            </p>
 
             <div class="package-price">
               <strong>৳549</strong>
               <span>/ month</span>
             </div>
 
-            <p class="package-description">
-              A clean and professional ready-made website for individuals,
-              small businesses and new brands.
-            </p>
+            <div class="package-divider"></div>
 
-            <ul class="feature-list">
+            <div class="feature-list">
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Complete ready-made website
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Free hosting
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Free SSL
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Firebase integration
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Basic logo
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Responsive design
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Custom domain connection
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Contact form
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Basic SEO
-              </li>
+              </div>
 
-            </ul>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Basic support
+              </div>
 
-            <a
-              href="./starter/index.html"
-              class="btn btn-secondary package-btn"
-            >
-              View Starter ↗
-            </a>
+            </div>
+
+            <div class="package-actions">
+
+              <a
+                href="./starter/index.html"
+                class="btn btn-outline"
+              >
+                Details
+              </a>
+
+              <a
+                href="./starter/index.html#get-started"
+                class="btn btn-dark"
+              >
+                Get Website
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
 
           </article>
 
 
           <!-- BUSINESS -->
 
-          <article class="package-card featured">
+          <article class="package-card popular reveal">
 
-            <div class="popular">
+            <span class="package-badge">
               Most Popular
-            </div>
+            </span>
 
-            <div class="package-label">
-              Business
+            <div class="package-icon">
+              <i class="fa-solid fa-chart-line"></i>
             </div>
 
             <h3 class="package-name">
               Business
             </h3>
+
+            <p class="package-sub">
+              A stronger digital system with admin tools,
+              analytics, advanced integrations and growth
+              features.
+            </p>
 
             <div class="package-price">
               <strong>৳999</strong>
               <span>/ month</span>
             </div>
 
-            <p class="package-description">
-              A stronger business system with admin tools,
-              customer inquiries and advanced integrations.
-            </p>
+            <div class="package-divider"></div>
 
-            <ul class="feature-list">
+            <div class="feature-list">
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Everything in Starter
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Premium website
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Premium website design
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Advanced Firebase
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Admin panel
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Online gateway ready
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Product/service management
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Product / service management
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Inquiry/order management
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Inquiry / order management
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                WhatsApp + Messenger
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                WhatsApp / Messenger
+              </div>
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Maps integration
+              </div>
+
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Advanced SEO + Analytics
-              </li>
+              </div>
 
-            </ul>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Backup + Security
+              </div>
 
-            <a
-              href="./business/index.html"
-              class="btn btn-primary package-btn"
-            >
-              View Business ↗
-            </a>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Priority support
+              </div>
+
+            </div>
+
+            <div class="package-actions">
+
+              <a
+                href="./business/index.html"
+                class="btn btn-outline"
+              >
+                Details
+              </a>
+
+              <a
+                href="./business/index.html#get-started"
+                class="btn btn-lime"
+              >
+                Get Website
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
 
           </article>
 
 
           <!-- PREMIUM -->
 
-          <article class="package-card">
+          <article class="package-card reveal">
 
-            <div class="package-label">
-              Premium
+            <div class="package-icon">
+              <i class="fa-solid fa-crown"></i>
             </div>
 
             <h3 class="package-name">
               Premium
             </h3>
 
+            <p class="package-sub">
+              A complete Shopify-style business and
+              e-commerce system built for serious growth.
+            </p>
+
             <div class="package-price">
               <strong>৳1,999</strong>
               <span>/ month</span>
             </div>
 
-            <p class="package-description">
-              A complete Shopify-style e-commerce and business system
-              with advanced management tools.
-            </p>
+            <div class="package-divider"></div>
 
-            <ul class="feature-list">
+            <div class="feature-list">
 
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Everything in Business
+              </div>
+
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Shopify-style system
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Free hosting + SSL
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Firebase / MongoDB backend
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Firebase / MongoDB ready
-              </li>
-
-              <li>
-                <span class="check">✓</span>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
                 Advanced admin dashboard
-              </li>
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Product management
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                FREE stock & inventory management
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                FREE stock & inventory
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Stock in / out / adjustment
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Orders + customers
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Low-stock & out-of-stock alerts
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Coupons + discounts
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Variants + SKU
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Analytics + SEO
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Coupons + sale pricing
+              </div>
 
-              <li>
-                <span class="check">✓</span>
-                Priority support
-              </li>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Cart + wishlist + checkout
+              </div>
 
-            </ul>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Customer + order management
+              </div>
 
-            <a
-              href="./premium/index.html"
-              class="btn btn-secondary package-btn"
-            >
-              View Premium ↗
-            </a>
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Analytics + API integrations
+              </div>
+
+              <div class="feature">
+                <i class="fa-solid fa-check"></i>
+                Priority / dedicated support
+              </div>
+
+            </div>
+
+            <div class="package-actions">
+
+              <a
+                href="./premium/index.html"
+                class="btn btn-outline"
+              >
+                Details
+              </a>
+
+              <a
+                href="./premium/index.html#get-started"
+                class="btn btn-dark"
+              >
+                Get Website
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
 
           </article>
 
@@ -1813,56 +3642,73 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
          WEBSITES
-    ========================== -->
+         ===================================================== -->
 
     <section
-      class="section"
+      class="section showcase-section"
       id="websites"
-      data-section="websites"
     >
 
       <div class="container">
 
-        <div class="showcase-header">
+        <div class="section-head reveal">
 
-          <div class="section-head">
-
-            <div>
-
-              <div class="section-kicker">
-                Live Website Showcase
-              </div>
-
-              <h2 class="section-title">
-                Explore Real Websites.
-              </h2>
-
+          <div>
+            <div class="section-kicker">
+              Live Website Showcase
             </div>
 
-            <p class="section-description">
-              These cards stay fixed while the real website inside each
-              card automatically moves through the page like a natural visitor.
-            </p>
-
+            <h2 class="section-title">
+              Real Websites
+            </h2>
           </div>
 
+          <p class="section-description">
+            These websites are connected from Admin. Each
+            card stays fixed while the live website inside
+            the card naturally moves through the page.
+          </p>
 
-          <div class="showcase-info">
+        </div>
 
-            <span class="showcase-note">
-              Auto presentation • Fixed cards • Live website preview
-            </span>
 
-            <span
-              class="website-count"
-              id="websiteCount"
+        <div class="showcase-tools">
+
+          <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+              type="search"
+              id="websiteSearch"
+              placeholder="Search websites..."
+              autocomplete="off"
             >
-              0 Websites
-            </span>
 
           </div>
+
+          <select
+            class="filter-select"
+            id="packageFilter"
+          >
+            <option value="all">
+              All Packages
+            </option>
+
+            <option value="starter">
+              Starter
+            </option>
+
+            <option value="business">
+              Business
+            </option>
+
+            <option value="premium">
+              Premium
+            </option>
+          </select>
 
         </div>
 
@@ -1870,25 +3716,101 @@
         <div
           class="website-grid"
           id="websiteGrid"
-        ></div>
-
-
-        <div
-          class="empty-state hidden"
-          id="emptyState"
         >
+          <!-- JS -->
+        </div>
 
-          <div class="empty-icon">
-            ◫
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+         ===================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div>
+            <div class="section-kicker">
+              Simple Process
+            </div>
+
+            <h2 class="section-title">
+              Launch in four steps.
+            </h2>
           </div>
 
-          <h3>
-            No websites available
-          </h3>
-
-          <p>
-            Add real website links from the admin website manager.
+          <p class="section-description">
+            No complicated process. Choose a website,
+            choose your package, connect your domain and
+            start using your digital presence.
           </p>
+
+        </div>
+
+
+        <div class="steps-grid">
+
+          <article class="step-card reveal">
+            <div class="step-number">01</div>
+
+            <h3>
+              Choose
+            </h3>
+
+            <p>
+              Select a ready-made website from the live
+              showcase or choose your preferred package.
+            </p>
+          </article>
+
+
+          <article class="step-card reveal">
+            <div class="step-number">02</div>
+
+            <h3>
+              Customize
+            </h3>
+
+            <p>
+              We connect your brand, content, domain and
+              required business information.
+            </p>
+          </article>
+
+
+          <article class="step-card reveal">
+            <div class="step-number">03</div>
+
+            <h3>
+              Connect
+            </h3>
+
+            <p>
+              Hosting, SSL, Firebase and the required
+              integrations are connected according to your
+              package.
+            </p>
+          </article>
+
+
+          <article class="step-card reveal">
+            <div class="step-number">04</div>
+
+            <h3>
+              Grow
+            </h3>
+
+            <p>
+              Your website goes live and remains supported
+              while your monthly service is active.
+            </p>
+          </article>
 
         </div>
 
@@ -1897,166 +3819,173 @@
     </section>
 
 
-    <!-- =========================
+    <!-- =====================================================
+         SALAH
+         ===================================================== -->
+
+    <section
+      class="section salah-section"
+      id="salah"
+    >
+
+      <div class="container">
+
+        <div class="salah-panel reveal">
+
+          <div class="salah-panel-grid">
+
+            <div>
+
+              <div class="section-kicker">
+                Daily Reminder
+              </div>
+
+              <h2>
+                Salah
+              </h2>
+
+              <p>
+                Keep your day connected with your prayers.
+                Times shown here can be updated later from
+                the Website Deals settings system.
+              </p>
+
+            </div>
+
+
+            <div class="salah-cards">
+
+              <div class="salah-card">
+                <span>Fajr</span>
+                <strong>04:45</strong>
+              </div>
+
+              <div class="salah-card">
+                <span>Dhuhr</span>
+                <strong>12:05</strong>
+              </div>
+
+              <div class="salah-card">
+                <span>Asr</span>
+                <strong>16:15</strong>
+              </div>
+
+              <div class="salah-card">
+                <span>Maghrib</span>
+                <strong>18:00</strong>
+              </div>
+
+              <div class="salah-card">
+                <span>Isha</span>
+                <strong>19:20</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
          ABOUT
-    ========================== -->
+         ===================================================== -->
 
     <section
       class="section"
       id="about"
-      data-section="about"
     >
 
       <div class="container">
 
         <div class="about-grid">
 
-
-          <div class="about-card large">
+          <article class="about-card reveal">
 
             <div class="section-kicker">
               About Website Deals
             </div>
 
-            <h3>
-              Websites without the long wait.
-            </h3>
+            <h2>
+              Premium websites,
+              without the waiting.
+            </h2>
 
             <p>
-              Website Deals is built around a simple idea:
-              businesses should be able to choose a professional website,
-              see it live and move forward without unnecessary complexity.
+              Website Deals is a ready-made website
+              marketplace designed to help businesses launch
+              professionally without starting every project
+              from zero.
             </p>
 
-            <div class="stats-grid">
+            <p>
+              Choose a design, select a package, connect your
+              domain and let the website become part of your
+              business system.
+            </p>
 
-              <div class="stat">
-                <strong id="aboutWebsiteCount">
-                  00
-                </strong>
-                <span>
-                  Live Websites
-                </span>
-              </div>
-
-              <div class="stat">
-                <strong>
-                  03
-                </strong>
-                <span>
-                  Main Packages
-                </span>
-              </div>
-
-              <div class="stat">
-                <strong>
-                  100%
-                </strong>
-                <span>
-                  Responsive
-                </span>
-              </div>
-
-              <div class="stat">
-                <strong>
-                  24/7
-                </strong>
-                <span>
-                  Marketplace
-                </span>
-              </div>
-
-            </div>
-
-          </div>
+          </article>
 
 
-          <div class="about-card">
+          <article class="about-card reveal">
 
             <div class="section-kicker">
-              How It Works
+              What You Get
             </div>
 
-            <div class="process">
+            <h2>
+              Built for real business.
+            </h2>
 
-              <div class="process-item">
+            <div class="about-points">
 
-                <div class="process-number">
-                  01
-                </div>
-
-                <div>
-                  <strong>
-                    Choose a package
-                  </strong>
-
-                  <span>
-                    Starter, Business or Premium.
-                  </span>
-                </div>
-
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                Responsive
               </div>
 
-
-              <div class="process-item">
-
-                <div class="process-number">
-                  02
-                </div>
-
-                <div>
-                  <strong>
-                    Explore a real website
-                  </strong>
-
-                  <span>
-                    Watch the website presentation directly inside the showcase.
-                  </span>
-                </div>
-
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                Free SSL
               </div>
 
-
-              <div class="process-item">
-
-                <div class="process-number">
-                  03
-                </div>
-
-                <div>
-                  <strong>
-                    Get your website
-                  </strong>
-
-                  <span>
-                    Choose the website and contact support to start.
-                  </span>
-                </div>
-
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                Custom Domain
               </div>
 
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                Firebase Ready
+              </div>
 
-              <div class="process-item">
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                SEO Ready
+              </div>
 
-                <div class="process-number">
-                  04
-                </div>
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                Analytics
+              </div>
 
-                <div>
-                  <strong>
-                    Launch & grow
-                  </strong>
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                Security
+              </div>
 
-                  <span>
-                    Connect your domain and keep your website active.
-                  </span>
-                </div>
-
+              <div class="about-point">
+                <i class="fa-solid fa-check"></i>
+                Support
               </div>
 
             </div>
 
-          </div>
+          </article>
 
         </div>
 
@@ -2065,51 +3994,62 @@
     </section>
 
 
-    <!-- =========================
-         SUPPORT
-    ========================== -->
+    <!-- =====================================================
+         SUPPORT CTA
+         ===================================================== -->
 
     <section
-      class="section"
+      class="cta-section"
       id="support"
-      data-section="support"
     >
 
       <div class="container">
 
-        <div class="support-card">
+        <div class="cta reveal">
 
-          <div class="section-kicker">
-            Need Help?
-          </div>
+          <div class="cta-content">
 
-          <h2>
-            Not sure which website is right for you?
-          </h2>
+            <div class="section-kicker">
+              Need Help?
+            </div>
 
-          <p id="supportMessage">
-            Need help choosing a website?
-            Our support team is ready to help.
-          </p>
+            <h2>
+              Let’s get your website online.
+            </h2>
 
-          <div class="support-actions">
+            <p id="supportMessage">
+              Need help choosing a website? Our support team
+              is ready to help you choose the right package
+              and website for your business.
+            </p>
 
-            <a
-              href="https://support.websitedeals.com"
-              target="_blank"
-              rel="noopener"
-              class="btn btn-primary"
-              id="supportLink"
-            >
-              Open Support ↗
-            </a>
+            <div class="cta-actions">
 
-            <a
-              href="#websites"
-              class="btn btn-secondary"
-            >
-              Explore Websites
-            </a>
+              <a
+                href="https://support.websitedeals.com"
+                class="btn btn-lime"
+                id="supportButton"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-solid fa-headset"></i>
+                Contact Support
+              </a>
+
+              <a
+                href="#websites"
+                class="btn"
+                style="
+                  background:rgba(255,255,255,.08);
+                  color:#fff;
+                  border-color:rgba(255,255,255,.10);
+                "
+              >
+                Explore Websites
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+            </div>
 
           </div>
 
@@ -2122,20 +4062,20 @@
   </main>
 
 
-  <!-- =========================
+  <!-- =======================================================
        FOOTER
-  ========================== -->
+       ======================================================= -->
 
   <footer>
 
     <div class="container footer-inner">
 
-      <div>
+      <div class="footer-copy">
         © <span id="year"></span>
         <span id="footerBrand">
           Website Deals
-        </span>
-        . All rights reserved.
+        </span>.
+        Premium Ready-Made Websites.
       </div>
 
       <div class="footer-links">
@@ -2156,9 +4096,12 @@
           href="https://support.websitedeals.com"
           target="_blank"
           rel="noopener"
-          id="footerSupport"
         >
           Support
+        </a>
+
+        <a href="./admin/websites.html">
+          Admin
         </a>
 
       </div>
@@ -2168,430 +4111,335 @@
   </footer>
 
 
-  <!-- =========================
+  <!-- =======================================================
        TOAST
-  ========================== -->
+       ======================================================= -->
 
   <div
     class="toast"
     id="toast"
-  ></div>
+  >
+
+    <div class="toast-content">
+
+      <div class="toast-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <div class="toast-text">
+
+        <strong id="toastTitle">
+          Done
+        </strong>
+
+        <span id="toastMessage">
+          Action completed.
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
 
 
   <script>
     /* =========================================================
        WEBSITE DEALS
-       PUBLIC PACKAGE PAGE
-       ADMIN SETTINGS + WEBSITE DATABASE CONNECTION
-    ========================================================= */
+       MAIN JAVASCRIPT
+       FILE: package/index.html
+       ========================================================= */
 
-    const SETTINGS_KEY = "websiteDealsSettings";
-    const WEBSITES_KEY = "websiteDealsWebsites";
+    "use strict";
+
+
+    /* =========================================================
+       STORAGE
+       ========================================================= */
+
+    const WEBSITE_KEY =
+      "websiteDealsWebsites";
+
+    const SETTINGS_KEY =
+      "websiteDealsSettings";
+
+
+    /* =========================================================
+       DEFAULT SETTINGS
+       ========================================================= */
 
     const defaultSettings = {
-      brandName: "Website Deals",
-      shortName: "Website Deals",
-      tagline: "Premium Ready-Made Websites",
+
+      brandName:
+        "Website Deals",
+
+      shortName:
+        "Website Deals",
+
+      tagline:
+        "Premium Ready-Made Websites",
+
       metaDescription:
         "Premium ready-made websites, monthly website packages and live website presentation by Website Deals.",
 
-      supportUrl: "https://support.websitedeals.com",
-      supportEmail: "support@websitedeals.com",
-      whatsapp: "",
+      supportUrl:
+        "https://support.websitedeals.com",
+
+      supportEmail:
+        "support@websitedeals.com",
+
+      whatsapp:
+        "",
+
       supportMessage:
         "Need help choosing a website? Our support team is ready to help.",
 
-      showcaseEnabled: true,
-      autoPresentation: true,
-      humanCursor: true,
-      pauseOnHover: true,
+      showcaseEnabled:
+        true,
 
-      scrollSpeed: 1,
-      readingPause: 2.5,
-      presentationMode: "natural",
+      autoPresentation:
+        true,
 
-      showPackages: true,
-      showWebsites: true,
-      showSalah: true,
-      showAbout: true,
+      humanCursor:
+        true,
 
-      language: "bn-en",
-      currency: "BDT",
+      pauseOnHover:
+        true,
 
-      deviceMode: "desktop",
-      websiteSort: "manual"
+      scrollSpeed:
+        1,
+
+      readingPause:
+        2.5,
+
+      presentationMode:
+        "natural",
+
+      showPackages:
+        true,
+
+      showWebsites:
+        true,
+
+      showSalah:
+        true,
+
+      showAbout:
+        true,
+
+      language:
+        "bn-en",
+
+      currency:
+        "BDT",
+
+      deviceMode:
+        "desktop",
+
+      websiteSort:
+        "manual"
+
     };
 
 
+    /* =========================================================
+       DEFAULT WEBSITES
+       ========================================================= */
+
     const defaultWebsites = [
+
       {
-        id: "snk-it-institute",
-        name: "SNK IT Institute",
-        package: "business",
-        packageLabel: "Business Package",
-        url: "https://snkitinstitute.com",
-        status: true,
-        sort: 1
+        id:
+          "snk-it-institute",
+
+        name:
+          "SNK IT Institute",
+
+        package:
+          "business",
+
+        packageLabel:
+          "Business Package",
+
+        url:
+          "https://snkitinstitute.com",
+
+        status:
+          true,
+
+        sort:
+          1
+
       },
 
       {
-        id: "website-deals",
-        name: "Website Deals",
-        package: "premium",
-        packageLabel: "Premium Package",
-        url: "https://websitedeals.com",
-        status: true,
-        sort: 2
+        id:
+          "website-deals",
+
+        name:
+          "Website Deals",
+
+        package:
+          "premium",
+
+        packageLabel:
+          "Premium Package",
+
+        url:
+          "https://websitedeals.com",
+
+        status:
+          true,
+
+        sort:
+          2
+
       }
+
     ];
 
 
-    let settings = loadSettings();
-    let websites = loadWebsites();
-
-    let browserInstances = [];
-
-
     /* =========================================================
-       SETTINGS
-    ========================================================= */
-
-    function loadSettings() {
-
-      try {
-
-        const saved =
-          JSON.parse(
-            localStorage.getItem(SETTINGS_KEY) || "null"
-          );
-
-        return {
-          ...defaultSettings,
-          ...(saved || {})
-        };
-
-      } catch (error) {
-
-        console.warn("Settings load failed:", error);
-
-        return {
-          ...defaultSettings
-        };
-      }
-    }
-
-
-    /* =========================================================
-       WEBSITES
-    ========================================================= */
-
-    function loadWebsites() {
-
-      try {
-
-        const saved =
-          JSON.parse(
-            localStorage.getItem(WEBSITES_KEY) || "null"
-          );
-
-        if (
-          Array.isArray(saved) &&
-          saved.length
-        ) {
-
-          return saved;
-        }
-
-      } catch (error) {
-
-        console.warn("Website data load failed:", error);
-      }
-
-      return defaultWebsites;
-    }
-
-
-    function saveDefaultsIfNeeded() {
-
-      const existing =
-        localStorage.getItem(WEBSITES_KEY);
-
-      if (!existing) {
-
-        try {
-
-          localStorage.setItem(
-            WEBSITES_KEY,
-            JSON.stringify(defaultWebsites)
-          );
-
-        } catch (error) {
-
-          console.warn("Could not save default websites.");
-        }
-      }
-    }
-
-
-    saveDefaultsIfNeeded();
-
-
-    /* =========================================================
-       BASIC SETTINGS UI
-    ========================================================= */
-
-    function applySettings() {
-
-      document.body.classList.toggle(
-        "bn",
-        settings.language === "bn"
-      );
-
-
-      /* Brand */
-
-      const brandName =
-        settings.brandName ||
-        defaultSettings.brandName;
-
-      const shortName =
-        settings.shortName ||
-        brandName;
-
-      const tagline =
-        settings.tagline ||
-        defaultSettings.tagline;
-
-
-      document.title =
-        brandName +
-        " | Premium Ready-Made Websites";
-
-
-      document
-        .getElementById("pageTitle")
-        .textContent =
-        brandName +
-        " | Premium Ready-Made Websites";
-
-
-      document
-        .getElementById("metaDescription")
-        .setAttribute(
-          "content",
-          settings.metaDescription ||
-          defaultSettings.metaDescription
-        );
-
-
-      document
-        .getElementById("brandName")
-        .textContent =
-        shortName;
-
-
-      document
-        .getElementById("footerBrand")
-        .textContent =
-        brandName;
-
-
-      document
-        .getElementById("brandTagline")
-        .textContent =
-        tagline;
-
-
-      /* Support */
-
-      const supportUrl =
-        settings.supportUrl ||
-        defaultSettings.supportUrl;
-
-
-      const supportLink =
-        document.getElementById("supportLink");
-
-
-      const footerSupport =
-        document.getElementById("footerSupport");
-
-
-      supportLink.href =
-        supportUrl;
-
-
-      footerSupport.href =
-        supportUrl;
-
-
-      document
-        .getElementById("supportMessage")
-        .textContent =
-        settings.supportMessage ||
-        defaultSettings.supportMessage;
-
-
-      /* Section visibility */
-
-      toggleSection(
-        "packages",
-        settings.showPackages
-      );
-
-      toggleSection(
-        "websites",
-        settings.showWebsites
-      );
-
-      toggleSection(
-        "salah",
-        settings.showSalah
-      );
-
-      toggleSection(
-        "about",
-        settings.showAbout
-      );
-
-
-      /* Showcase */
-
-      if (
-        settings.showcaseEnabled === false
-      ) {
-
-        toggleSection(
-          "websites",
-          false
-        );
-
-      }
-
-
-      /* Mobile language button */
-
-      const langBtn =
-        document.getElementById("langBtn");
-
-
-      if (
-        settings.language === "bn"
-      ) {
-
-        langBtn.textContent = "EN";
-
-      } else {
-
-        langBtn.textContent = "BN";
-      }
-    }
-
-
-    function toggleSection(
-      sectionName,
-      visible
+       HELPERS
+       ========================================================= */
+
+    function safeJSON(
+      value,
+      fallback
     ) {
 
-      const section =
-        document.querySelector(
-          `[data-section="${sectionName}"]`
-        );
+      try {
 
+        return JSON.parse(value);
 
-      if (!section) return;
+      } catch (error) {
 
+        return fallback;
 
-      section.classList.toggle(
-        "hidden",
-        visible === false
-      );
+      }
 
-
-      document
-        .querySelectorAll(
-          `[data-section-link="${sectionName}"]`
-        )
-        .forEach(link => {
-
-          link.classList.toggle(
-            "hidden",
-            visible === false
-          );
-
-        });
     }
 
 
-    /* =========================================================
-       WEBSITE SORT
-    ========================================================= */
+    function getSettings() {
 
-    function getSortedWebsites() {
+      const saved =
+        safeJSON(
+          localStorage.getItem(
+            SETTINGS_KEY
+          ),
+          {}
+        );
 
-      const active =
-        websites.filter(
-          site =>
+      return {
+        ...defaultSettings,
+        ...saved
+      };
+
+    }
+
+
+    function getWebsites() {
+
+      const stored =
+        safeJSON(
+          localStorage.getItem(
+            WEBSITE_KEY
+          ),
+          null
+        );
+
+      if (
+        !Array.isArray(stored) ||
+        stored.length === 0
+      ) {
+
+        return [
+          ...defaultWebsites
+        ];
+
+      }
+
+      return stored;
+
+    }
+
+
+    function activeWebsites() {
+
+      return getWebsites()
+        .filter(site => {
+
+          return (
             site &&
             site.status !== false &&
             site.url
-        );
+          );
 
+        });
 
-      const mode =
-        settings.websiteSort ||
-        "manual";
-
-
-      if (mode === "name") {
-
-        return active.sort(
-          (a,b) =>
-            String(a.name || "")
-              .localeCompare(
-                String(b.name || "")
-              )
-        );
-
-      }
-
-
-      if (mode === "package") {
-
-        const order = {
-          starter: 1,
-          business: 2,
-          premium: 3
-        };
-
-
-        return active.sort(
-          (a,b) =>
-            (order[a.package] || 99) -
-            (order[b.package] || 99)
-        );
-      }
-
-
-      return active.sort(
-        (a,b) =>
-          Number(a.sort || 999) -
-          Number(b.sort || 999)
-      );
     }
 
 
-    /* =========================================================
-       PACKAGE LABEL
-    ========================================================= */
+    function normalizeUrl(url) {
 
-    function packageLabel(site) {
-
-      if (site.packageLabel) {
-
-        return site.packageLabel;
+      if (!url) {
+        return "";
       }
 
+      let clean =
+        String(url).trim();
+
+      if (
+        !clean.startsWith("http://") &&
+        !clean.startsWith("https://")
+      ) {
+
+        clean =
+          "https://" + clean;
+
+      }
+
+      return clean;
+
+    }
+
+
+    function escapeHTML(value) {
+
+      return String(
+        value ?? ""
+      )
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    function slug(value) {
+
+      return String(
+        value || ""
+      )
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+    }
+
+
+    function getPackageLabel(site) {
+
+      if (
+        site.packageLabel
+      ) {
+
+        return site.packageLabel;
+
+      }
 
       const labels = {
 
@@ -2606,17 +4454,783 @@
 
       };
 
-
       return (
         labels[site.package] ||
         "Website Package"
       );
+
     }
 
 
     /* =========================================================
-       WEBSITE GRID
-    ========================================================= */
+       TOAST
+       ========================================================= */
+
+    let toastTimer = null;
+
+
+    function showToast(
+      title,
+      message
+    ) {
+
+      const toast =
+        document.getElementById(
+          "toast"
+        );
+
+      const titleEl =
+        document.getElementById(
+          "toastTitle"
+        );
+
+      const messageEl =
+        document.getElementById(
+          "toastMessage"
+        );
+
+      titleEl.textContent =
+        title;
+
+      messageEl.textContent =
+        message;
+
+      toast.classList.add(
+        "show"
+      );
+
+      clearTimeout(
+        toastTimer
+      );
+
+      toastTimer =
+        setTimeout(() => {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        }, 3200);
+
+    }
+
+
+    /* =========================================================
+       THEME
+       ========================================================= */
+
+    function applyTheme(
+      mode
+    ) {
+
+      const isDark =
+        mode === "dark";
+
+      document.documentElement
+        .classList
+        .toggle(
+          "dark",
+          isDark
+        );
+
+      const button =
+        document.getElementById(
+          "themeToggle"
+        );
+
+      if (button) {
+
+        button.innerHTML =
+          isDark
+            ? '<i class="fa-solid fa-sun"></i>'
+            : '<i class="fa-solid fa-moon"></i>';
+
+      }
+
+      localStorage.setItem(
+        "websiteDealsTheme",
+        isDark
+          ? "dark"
+          : "light"
+      );
+
+    }
+
+
+    function initTheme() {
+
+      const saved =
+        localStorage.getItem(
+          "websiteDealsTheme"
+        );
+
+      if (saved) {
+
+        applyTheme(
+          saved
+        );
+
+        return;
+
+      }
+
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+      applyTheme(
+        prefersDark
+          ? "dark"
+          : "light"
+      );
+
+    }
+
+
+    document
+      .getElementById(
+        "themeToggle"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          const isDark =
+            document.documentElement
+              .classList
+              .contains("dark");
+
+          applyTheme(
+            isDark
+              ? "light"
+              : "dark"
+          );
+
+        }
+      );
+
+
+    /* =========================================================
+       SETTINGS
+       ========================================================= */
+
+    function applySettings() {
+
+      const settings =
+        getSettings();
+
+
+      /* BRAND */
+
+      const brandName =
+        document.getElementById(
+          "brandName"
+        );
+
+      const footerBrand =
+        document.getElementById(
+          "footerBrand"
+        );
+
+      if (brandName) {
+
+        brandName.textContent =
+          settings.shortName ||
+          settings.brandName;
+
+      }
+
+      if (footerBrand) {
+
+        footerBrand.textContent =
+          settings.brandName;
+
+      }
+
+
+      /* HERO */
+
+      const heroCopy =
+        document.getElementById(
+          "heroCopy"
+        );
+
+      if (
+        heroCopy &&
+        settings.metaDescription
+      ) {
+
+        heroCopy.textContent =
+          settings.metaDescription;
+
+      }
+
+
+      /* SUPPORT */
+
+      const supportMessage =
+        document.getElementById(
+          "supportMessage"
+        );
+
+      if (
+        supportMessage &&
+        settings.supportMessage
+      ) {
+
+        supportMessage.textContent =
+          settings.supportMessage;
+
+      }
+
+
+      const supportButton =
+        document.getElementById(
+          "supportButton"
+        );
+
+      if (supportButton) {
+
+        supportButton.href =
+          normalizeUrl(
+            settings.supportUrl
+          ) ||
+          "https://support.websitedeals.com";
+
+      }
+
+
+      /* VISIBILITY */
+
+      const packageSection =
+        document.getElementById(
+          "packages"
+        );
+
+      const websiteSection =
+        document.getElementById(
+          "websites"
+        );
+
+      const salahSection =
+        document.getElementById(
+          "salah"
+        );
+
+      const aboutSection =
+        document.getElementById(
+          "about"
+        );
+
+
+      if (
+        packageSection
+      ) {
+
+        packageSection.style.display =
+          settings.showPackages === false
+            ? "none"
+            : "";
+
+      }
+
+
+      if (
+        websiteSection
+      ) {
+
+        websiteSection.style.display =
+          settings.showWebsites === false
+            ? "none"
+            : "";
+
+      }
+
+
+      if (
+        salahSection
+      ) {
+
+        salahSection.style.display =
+          settings.showSalah === false
+            ? "none"
+            : "";
+
+      }
+
+
+      if (
+        aboutSection
+      ) {
+
+        aboutSection.style.display =
+          settings.showAbout === false
+            ? "none"
+            : "";
+
+      }
+
+    }
+
+
+    /* =========================================================
+       HERO LIVE WEBSITE
+       ========================================================= */
+
+    let heroAnimationTimer =
+      null;
+
+    let heroReturnTimer =
+      null;
+
+
+    function getHeroWebsite() {
+
+      const sites =
+        activeWebsites();
+
+      if (!sites.length) {
+
+        return null;
+
+      }
+
+      const sorted =
+        [...sites].sort(
+          (a, b) => {
+
+            return (
+              Number(a.sort || 999) -
+              Number(b.sort || 999)
+            );
+
+          }
+        );
+
+      return sorted[0];
+
+    }
+
+
+    function setHeroEmpty() {
+
+      const empty =
+        document.getElementById(
+          "heroEmpty"
+        );
+
+      const blocked =
+        document.getElementById(
+          "heroBlocked"
+        );
+
+      const camera =
+        document.getElementById(
+          "heroPreviewCamera"
+        );
+
+      const iframe =
+        document.getElementById(
+          "heroWebsiteFrame"
+        );
+
+      empty.classList.add(
+        "show"
+      );
+
+      blocked.classList.remove(
+        "show"
+      );
+
+      camera.style.transform =
+        "translateY(0)";
+
+      iframe.src =
+        "about:blank";
+
+      document.getElementById(
+        "heroWebsiteLabel"
+      ).textContent =
+        "Waiting for website...";
+
+      document.getElementById(
+        "heroMetaName"
+      ).textContent =
+        "Live Website";
+
+    }
+
+
+    function loadHeroWebsite() {
+
+      const site =
+        getHeroWebsite();
+
+      if (!site) {
+
+        setHeroEmpty();
+
+        return;
+
+      }
+
+
+      const settings =
+        getSettings();
+
+      const iframe =
+        document.getElementById(
+          "heroWebsiteFrame"
+        );
+
+      const empty =
+        document.getElementById(
+          "heroEmpty"
+        );
+
+      const blocked =
+        document.getElementById(
+          "heroBlocked"
+        );
+
+      const camera =
+        document.getElementById(
+          "heroPreviewCamera"
+        );
+
+
+      const url =
+        normalizeUrl(
+          site.url
+        );
+
+
+      empty.classList.remove(
+        "show"
+      );
+
+      blocked.classList.remove(
+        "show"
+      );
+
+
+      document.getElementById(
+        "heroWebsiteLabel"
+      ).textContent =
+        site.name ||
+        "Live Website";
+
+
+      document.getElementById(
+        "heroMetaName"
+      ).textContent =
+        site.name ||
+        "Live Website";
+
+
+      camera.style.transform =
+        "translateY(0)";
+
+
+      clearTimeout(
+        heroAnimationTimer
+      );
+
+      clearTimeout(
+        heroReturnTimer
+      );
+
+
+      let loaded = false;
+
+
+      iframe.onload =
+        () => {
+
+          loaded = true;
+
+          startHeroAnimation();
+
+        };
+
+
+      iframe.onerror =
+        () => {
+
+          blocked.classList.add(
+            "show"
+          );
+
+        };
+
+
+      iframe.src =
+        url;
+
+
+      /*
+        Important:
+
+        We DO NOT access iframe.contentWindow.
+
+        That would fail for cross-origin websites.
+
+        Instead, the tall iframe wrapper acts as a
+        "camera". We translate the wrapper vertically,
+        producing a realistic internal page scroll effect.
+      */
+
+
+      setTimeout(() => {
+
+        if (!loaded) {
+
+          /*
+            An iframe does not reliably expose
+            CSP/X-Frame-Options errors through onerror.
+
+            We therefore allow a short period before
+            continuing. The direct Open/Explore links
+            remain available in the showcase.
+          */
+
+          startHeroAnimation();
+
+        }
+
+      }, 5000);
+
+
+      if (
+        settings.autoPresentation === false
+      ) {
+
+        clearTimeout(
+          heroAnimationTimer
+        );
+
+      }
+
+    }
+
+
+    function startHeroAnimation() {
+
+      const settings =
+        getSettings();
+
+      const camera =
+        document.getElementById(
+          "heroPreviewCamera"
+        );
+
+      if (!camera) {
+        return;
+      }
+
+
+      clearTimeout(
+        heroAnimationTimer
+      );
+
+      clearTimeout(
+        heroReturnTimer
+      );
+
+
+      camera.style.transition =
+        "transform 1.2s cubic-bezier(.22,.61,.36,1)";
+
+
+      camera.style.transform =
+        "translateY(0)";
+
+
+      const speed =
+        Math.max(
+          .5,
+          Number(
+            settings.scrollSpeed || 1
+          )
+        );
+
+
+      const pause =
+        Math.max(
+          0,
+          Number(
+            settings.readingPause || 2.5
+          )
+        );
+
+
+      const startDelay =
+        1200 +
+        Math.random() * 1800;
+
+
+      heroAnimationTimer =
+        setTimeout(
+          () => {
+
+            heroScrollStep(
+              0,
+              speed,
+              pause
+            );
+
+          },
+          startDelay
+        );
+
+    }
+
+
+    function heroScrollStep(
+      current,
+      speed,
+      pause
+    ) {
+
+      const camera =
+        document.getElementById(
+          "heroPreviewCamera"
+        );
+
+      if (!camera) {
+        return;
+      }
+
+
+      /*
+        Camera viewport height is roughly
+        100% while camera is 260%.
+
+        We intentionally leave a small safe
+        bottom margin so the final section
+        remains visible.
+      */
+
+      const viewport =
+        camera.parentElement;
+
+      if (!viewport) {
+        return;
+      }
+
+
+      const maxScroll =
+        Math.max(
+          250,
+          camera.offsetHeight -
+          viewport.offsetHeight
+        );
+
+
+      if (
+        current >= maxScroll - 20
+      ) {
+
+        camera.style.transition =
+          "transform 2.8s cubic-bezier(.22,.61,.36,1)";
+
+        camera.style.transform =
+          "translateY(0)";
+
+
+        heroReturnTimer =
+          setTimeout(
+            () => {
+
+              camera.style.transition =
+                "transform 1.2s cubic-bezier(.22,.61,.36,1)";
+
+              heroScrollStep(
+                0,
+                speed,
+                pause
+              );
+
+            },
+            (2800 + pause * 1000)
+          );
+
+        return;
+
+      }
+
+
+      const baseChunk =
+        85 +
+        Math.random() * 145;
+
+
+      const chunk =
+        baseChunk *
+        speed;
+
+
+      const next =
+        Math.min(
+          current + chunk,
+          maxScroll
+        );
+
+
+      const duration =
+        Math.max(
+          800,
+          (900 + Math.random() * 1300) /
+          speed
+        );
+
+
+      camera.style.transition =
+        `transform ${duration}ms cubic-bezier(.22,.61,.36,1)`;
+
+
+      camera.style.transform =
+        `translateY(-${next}px)`;
+
+
+      const readingPause =
+        (
+          pause *
+          1000 *
+          (
+            .65 +
+            Math.random() * .9
+          )
+        );
+
+
+      heroAnimationTimer =
+        setTimeout(
+          () => {
+
+            heroScrollStep(
+              next,
+              speed,
+              pause
+            );
+
+          },
+          duration +
+          readingPause
+        );
+
+    }
+
+
+    /* =========================================================
+       WEBSITE CARDS
+       ========================================================= */
+
+    let websiteCards =
+      [];
+
 
     function renderWebsites() {
 
@@ -2625,1009 +5239,665 @@
           "websiteGrid"
         );
 
-
-      const empty =
-        document.getElementById(
-          "emptyState"
-        );
-
-
-      const list =
-        getSortedWebsites();
-
-
-      browserInstances = [];
-
-
-      grid.innerHTML = "";
-
-
-      const count =
-        list.length;
-
-
-      document
-        .getElementById("websiteCount")
-        .textContent =
-        count +
-        (count === 1 ? " Website" : " Websites");
-
-
-      document
-        .getElementById("heroWebsiteCount")
-        .textContent =
-        String(count).padStart(2,"0");
-
-
-      document
-        .getElementById("aboutWebsiteCount")
-        .textContent =
-        String(count).padStart(2,"0");
-
-
-      if (!count) {
-
-        empty.classList.remove("hidden");
-
+      if (!grid) {
         return;
       }
 
 
-      empty.classList.add("hidden");
-
-
-      list.forEach(
-        (site,index) => {
-
-          grid.appendChild(
-            createWebsiteCard(
-              site,
-              index
-            )
-          );
-
-        }
-      );
-    }
-
-
-    /* =========================================================
-       WEBSITE CARD
-    ========================================================= */
-
-    function createWebsiteCard(
-      site,
-      index
-    ) {
-
-      const card =
-        document.createElement("article");
-
-
-      card.className =
-        "website-card";
-
-
-      card.dataset.siteId =
-        site.id || "";
-
-
-      const safeName =
-        escapeHTML(
-          site.name ||
-          "Website"
-        );
-
-
-      const safeUrl =
-        escapeHTML(
-          site.url
-        );
-
-
-      const packageName =
-        escapeHTML(
-          packageLabel(site)
-        );
-
-
-      card.innerHTML = `
-
-        <div class="website-top">
-
-          <div class="website-name-wrap">
-
-            <div class="website-name">
-              ${safeName}
-            </div>
-
-            <div class="website-url">
-              ${safeUrl}
-            </div>
-
-          </div>
-
-          <div class="live-badge">
-            <i></i>
-            LIVE
-          </div>
-
-        </div>
-
-
-        <div class="preview-viewport">
-
-          <div class="browser-bar">
-
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-
-            <div class="browser-address"></div>
-
-          </div>
-
-
-          <div class="preview-stage">
-
-            <div
-              class="preview-camera"
-              data-camera
-            >
-
-              <iframe
-                src="${safeUrl}"
-                title="${safeName} live website"
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen"
-              ></iframe>
-
-            </div>
-
-
-            <div class="preview-overlay"></div>
-
-            <div
-              class="human-cursor"
-              data-cursor
-            ></div>
-
-
-            <div
-              class="blocked-message"
-              data-blocked
-            >
-
-              <div class="blocked-inner">
-
-                <div class="blocked-icon">
-                  ↗
-                </div>
-
-                <h4>
-                  Live preview unavailable
-                </h4>
-
-                <p>
-                  This website may block iframe previews.
-                  Open the live website instead.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="website-bottom">
-
-          <div class="website-meta">
-
-            <span class="package-tag">
-              ${packageName}
-            </span>
-
-            <span
-              class="animation-status"
-              data-status
-            >
-              Live presentation
-            </span>
-
-          </div>
-
-
-          <div class="website-actions">
-
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-pause
-            >
-              Pause
-            </button>
-
-            <a
-              href="./presentation/index.html?site=${encodeURIComponent(site.id || "")}"
-              class="btn btn-primary"
-            >
-              Explore ↗
-            </a>
-
-          </div>
-
-        </div>
-      `;
-
-
-      const iframe =
-        card.querySelector("iframe");
-
-
-      const camera =
-        card.querySelector("[data-camera]");
-
-
-      const cursor =
-        card.querySelector("[data-cursor]");
-
-
-      const blocked =
-        card.querySelector("[data-blocked]");
-
-
-      const pauseButton =
-        card.querySelector("[data-pause]");
-
-
-      const status =
-        card.querySelector("[data-status]");
-
-
-      const browser =
-        createBrowserController({
-          card,
-          iframe,
-          camera,
-          cursor,
-          blocked,
-          pauseButton,
-          status,
-          index
-        });
-
-
-      browserInstances.push(
-        browser
-      );
-
-
-      return card;
-    }
-
-
-    /* =========================================================
-       HUMAN-LIKE BROWSER CAMERA
-    ========================================================= */
-
-    function createBrowserController({
-      card,
-      iframe,
-      camera,
-      cursor,
-      blocked,
-      pauseButton,
-      status,
-      index
-    }) {
-
-      let running =
-        settings.autoPresentation !== false;
-
-      let stoppedByHover =
-        false;
-
-      let cycleTimer =
-        null;
-
-      let movementTimer =
-        null;
-
-      let destroyed =
-        false;
-
-
-      let currentY =
-        0;
-
-
-      const cameraHeight =
-        1900;
-
-
-      function getViewportHeight() {
-
-        const stage =
-          card.querySelector(
-            ".preview-stage"
-          );
-
-
-        return stage
-          ? stage.clientHeight
-          : 336;
-      }
-
-
-      function getMaxY() {
-
-        return Math.max(
-          0,
-          cameraHeight -
-          getViewportHeight()
-        );
-      }
-
-
-      function setY(
-        y,
-        duration = 0
-      ) {
-
-        currentY =
-          Math.max(
-            0,
-            Math.min(
-              y,
-              getMaxY()
-            )
-          );
-
-
-        camera.style.transition =
-          duration > 0
-            ? `transform ${duration}ms cubic-bezier(.22,.61,.36,1)`
-            : "none";
-
-
-        camera.style.transform =
-          `translate3d(0, -${currentY}px, 0)`;
-      }
-
-
-      function randomBetween(
-        min,
-        max
-      ) {
-
-        return (
-          Math.random() *
-          (max - min)
-        ) + min;
-      }
-
-
-      function clearTimers() {
-
-        clearTimeout(
-          cycleTimer
-        );
-
-        clearTimeout(
-          movementTimer
-        );
-
-        cycleTimer = null;
-        movementTimer = null;
-      }
-
-
-      function moveCursor() {
-
-        if (
-          settings.humanCursor === false
-        ) {
-
-          cursor.style.display =
-            "none";
-
-          return;
-        }
-
-
-        cursor.style.display =
-          "block";
-
-
-        const stage =
-          card.querySelector(
-            ".preview-stage"
-          );
-
-
-        if (!stage) return;
-
-
-        const width =
-          stage.clientWidth;
-
-
-        const height =
-          stage.clientHeight;
-
-
-        const x =
-          randomBetween(
-            25,
-            Math.max(
-              26,
-              width - 35
-            )
-          );
-
-
-        const y =
-          randomBetween(
-            30,
-            Math.max(
-              31,
-              height - 35
-            )
-          );
-
-
-        cursor.style.left =
-          x + "px";
-
-
-        cursor.style.top =
-          y + "px";
-      }
-
-
-      function updateStatus(
-        text
-      ) {
-
-        if (status) {
-
-          status.textContent =
-            text;
-        }
-      }
-
-
-      function scheduleNextMovement() {
-
-        if (
-          destroyed ||
-          !running
-        ) {
-
-          return;
-        }
-
-
-        const maxY =
-          getMaxY();
-
-
-        if (
-          currentY >=
-          maxY - 5
-        ) {
-
-          updateStatus(
-            "Reading at bottom"
-          );
-
-
-          movementTimer =
-            setTimeout(
-              () => {
-
-                if (
-                  !running ||
-                  destroyed
-                ) {
-                  return;
-                }
-
-
-                returnToTop();
-
-              },
-
-              randomBetween(
-                2500,
-                4800
+      const search =
+        (
+          document.getElementById(
+            "websiteSearch"
+          ).value ||
+          ""
+        )
+          .trim()
+          .toLowerCase();
+
+
+      const filter =
+        document.getElementById(
+          "packageFilter"
+        ).value;
+
+
+      const sites =
+        activeWebsites()
+          .filter(site => {
+
+            const matchesSearch =
+              !search ||
+              String(
+                site.name || ""
               )
+                .toLowerCase()
+                .includes(search) ||
+              String(
+                site.url || ""
+              )
+                .toLowerCase()
+                .includes(search);
+
+
+            const matchesPackage =
+              filter === "all" ||
+              String(
+                site.package || ""
+              ).toLowerCase() === filter;
+
+
+            return (
+              matchesSearch &&
+              matchesPackage
             );
 
+          })
+          .sort(
+            (a, b) => {
 
-          return;
-        }
-
-
-        let chunk;
-
-
-        switch (
-          settings.presentationMode
-        ) {
-
-          case "fast":
-
-            chunk =
-              randomBetween(
-                220,
-                410
-              );
-
-            break;
-
-
-          case "smooth":
-
-            chunk =
-              randomBetween(
-                110,
-                230
-              );
-
-            break;
-
-
-          default:
-
-            chunk =
-              randomBetween(
-                150,
-                330
-              );
-        }
-
-
-        const speed =
-          Number(
-            settings.scrollSpeed ||
-            1
-          );
-
-
-        chunk *= speed;
-
-
-        const nextY =
-          Math.min(
-            currentY + chunk,
-            maxY
-          );
-
-
-        const duration =
-          randomBetween(
-            1100,
-            2200
-          ) / speed;
-
-
-        moveCursor();
-
-
-        updateStatus(
-          "Browsing website…"
-        );
-
-
-        setY(
-          nextY,
-          duration
-        );
-
-
-        movementTimer =
-          setTimeout(
-            () => {
+              const settings =
+                getSettings();
 
               if (
-                !running ||
-                destroyed
+                settings.websiteSort ===
+                "name"
               ) {
-                return;
-              }
 
-
-              const pause =
-                Number(
-                  settings.readingPause ||
-                  2.5
-                );
-
-
-              const naturalPause =
-                randomBetween(
-                  650,
-                  1700
-                ) *
-                Math.max(
-                  .5,
-                  pause / 2.5
-                );
-
-
-              updateStatus(
-                "Reading…"
-              );
-
-
-              movementTimer =
-                setTimeout(
-                  scheduleNextMovement,
-                  naturalPause
-                );
-
-            },
-
-            duration + 100
-          );
-      }
-
-
-      function returnToTop() {
-
-        if (
-          destroyed ||
-          !running
-        ) {
-          return;
-        }
-
-
-        updateStatus(
-          "Returning to top…"
-        );
-
-
-        moveCursor();
-
-
-        setY(
-          0,
-          randomBetween(
-            1800,
-            3000
-          )
-        );
-
-
-        movementTimer =
-          setTimeout(
-            () => {
-
-              if (
-                !running ||
-                destroyed
-              ) {
-                return;
-              }
-
-
-              updateStatus(
-                "Starting presentation…"
-              );
-
-
-              movementTimer =
-                setTimeout(
-                  scheduleNextMovement,
-                  randomBetween(
-                    1000,
-                    2300
+                return String(
+                  a.name || ""
+                ).localeCompare(
+                  String(
+                    b.name || ""
                   )
                 );
 
-            },
-
-            3000
-          );
-      }
-
-
-      function start() {
-
-        if (
-          destroyed
-        ) {
-          return;
-        }
-
-
-        clearTimers();
-
-
-        running = true;
-
-
-        pauseButton.textContent =
-          "Pause";
-
-
-        updateStatus(
-          "Starting presentation…"
-        );
-
-
-        const startDelay =
-          randomBetween(
-            700,
-            2200
-          );
-
-
-        cycleTimer =
-          setTimeout(
-            () => {
-
-              if (
-                running &&
-                !destroyed
-              ) {
-
-                scheduleNextMovement();
               }
 
-            },
 
-            startDelay
-          );
-      }
+              if (
+                settings.websiteSort ===
+                "package"
+              ) {
 
+                return String(
+                  a.package || ""
+                ).localeCompare(
+                  String(
+                    b.package || ""
+                  )
+                );
 
-      function pause(
-        reason = "Paused"
-      ) {
-
-        clearTimers();
-
-        running = false;
-
-        pauseButton.textContent =
-          "Resume";
-
-        updateStatus(
-          reason
-        );
-      }
+              }
 
 
-      function toggle() {
-
-        if (running) {
-
-          pause();
-
-        } else {
-
-          start();
-        }
-      }
-
-
-      function onIframeLoad() {
-
-        blocked.classList.remove(
-          "show"
-        );
-
-
-        updateStatus(
-          running
-            ? "Live presentation"
-            : "Paused"
-        );
-
-
-        if (
-          settings.autoPresentation !== false
-        ) {
-
-          start();
-        }
-      }
-
-
-      function onIframeError() {
-
-        blocked.classList.add(
-          "show"
-        );
-
-
-        updateStatus(
-          "Open live website"
-        );
-      }
-
-
-      iframe.addEventListener(
-        "load",
-        onIframeLoad
-      );
-
-
-      iframe.addEventListener(
-        "error",
-        onIframeError
-      );
-
-
-      pauseButton.addEventListener(
-        "click",
-        toggle
-      );
-
-
-      if (
-        settings.pauseOnHover !== false
-      ) {
-
-        card.addEventListener(
-          "mouseenter",
-          () => {
-
-            if (!running) return;
-
-            stoppedByHover =
-              true;
-
-            pause(
-              "Paused on hover"
-            );
-
-          }
-        );
-
-
-        card.addEventListener(
-          "mouseleave",
-          () => {
-
-            if (!stoppedByHover) {
-              return;
-            }
-
-
-            stoppedByHover =
-              false;
-
-
-            start();
-
-          }
-        );
-      }
-
-
-      document.addEventListener(
-        "visibilitychange",
-        () => {
-
-          if (
-            document.hidden
-          ) {
-
-            if (running) {
-
-              pause(
-                "Paused in background"
+              return (
+                Number(a.sort || 999) -
+                Number(b.sort || 999)
               );
 
             }
-
-          } else {
-
-            if (
-              settings.autoPresentation !== false &&
-              !stoppedByHover
-            ) {
-
-              start();
-
-            }
-
-          }
-
-        }
-      );
+          );
 
 
-      /* Initial cursor */
-
-      moveCursor();
+      websiteCards = sites;
 
 
-      /* Start automatically */
-
-      if (
-        settings.autoPresentation !== false
-      ) {
-
-        start();
-
-      } else {
-
-        pause(
-          "Auto presentation off"
+      document.getElementById(
+        "statWebsites"
+      ).textContent =
+        String(
+          activeWebsites().length
+        ).padStart(
+          2,
+          "0"
         );
+
+
+      if (!sites.length) {
+
+        grid.innerHTML = `
+          <div class="empty-websites">
+            <i class="fa-solid fa-globe"></i>
+
+            <h3>
+              No websites found
+            </h3>
+
+            <p>
+              Add a real website from
+              Admin → Websites and it will
+              automatically appear here.
+            </p>
+          </div>
+        `;
+
+        return;
+
       }
 
 
-      return {
+      grid.innerHTML =
+        sites.map(
+          (site, index) => {
 
-        start,
+            const safeName =
+              escapeHTML(
+                site.name ||
+                "Website"
+              );
 
-        pause,
+            const safeUrl =
+              escapeHTML(
+                normalizeUrl(
+                  site.url
+                )
+              );
 
-        destroy() {
+            const packageLabel =
+              escapeHTML(
+                getPackageLabel(
+                  site
+                )
+              );
 
-          destroyed = true;
+            const id =
+              escapeHTML(
+                site.id ||
+                slug(
+                  site.name
+                ) ||
+                `site-${index}`
+              );
 
-          clearTimers();
 
-        }
+            return `
+              <article
+                class="website-card reveal"
+                data-site-id="${id}"
+              >
 
-      };
+                <div class="website-info">
+
+                  <div class="website-title-wrap">
+
+                    <div
+                      class="website-title"
+                      title="${safeName}"
+                    >
+                      ${safeName}
+                    </div>
+
+                    <div class="website-package">
+                      ${packageLabel}
+                    </div>
+
+                  </div>
+
+                  <div class="live-pill">
+                    <span></span>
+                    LIVE
+                  </div>
+
+                </div>
+
+
+                <div
+                  class="preview-viewport"
+                  data-index="${index}"
+                >
+
+                  <div
+                    class="preview-camera"
+                    id="camera-${id}"
+                  >
+
+                    <iframe
+                      src="${safeUrl}"
+                      title="${safeName}"
+                      loading="lazy"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                    ></iframe>
+
+                  </div>
+
+                  <div class="preview-shine"></div>
+
+                  <div
+                    class="preview-cursor"
+                    id="cursor-${id}"
+                  ></div>
+
+                  <div class="preview-bottom-fade"></div>
+
+                </div>
+
+
+                <div class="website-footer">
+
+                  <div
+                    class="website-url"
+                    title="${safeUrl}"
+                  >
+                    ${safeUrl}
+                  </div>
+
+                  <a
+                    class="explore-btn"
+                    href="./presentation/index.html?site=${encodeURIComponent(
+                      site.id ||
+                      slug(site.name)
+                    )}"
+                  >
+                    Explore
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+
+                </div>
+
+              </article>
+            `;
+
+          }
+        ).join("");
+
+
+      initCardAnimations();
+
+      observeReveals();
+
     }
 
 
     /* =========================================================
-       ESCAPE HTML
-    ========================================================= */
+       CARD HUMAN-LIKE ANIMATION
+       ========================================================= */
 
-    function escapeHTML(
-      value
+    const cardAnimationTimers =
+      new Map();
+
+
+    function clearCardTimer(
+      id
     ) {
 
-      return String(
-        value || ""
-      )
-      .replace(
-        /&/g,
-        "&amp;"
-      )
-      .replace(
-        /</g,
-        "&lt;"
-      )
-      .replace(
-        />/g,
-        "&gt;"
-      )
-      .replace(
-        /"/g,
-        "&quot;"
-      )
-      .replace(
-        /'/g,
-        "&#039;"
-      );
+      if (
+        cardAnimationTimers.has(id)
+      ) {
+
+        const timers =
+          cardAnimationTimers.get(id);
+
+        timers.forEach(
+          timer =>
+            clearTimeout(timer)
+        );
+
+        cardAnimationTimers.delete(
+          id
+        );
+
+      }
+
     }
+
+
+    function initCardAnimations() {
+
+      document
+        .querySelectorAll(
+          ".website-card"
+        )
+        .forEach(
+          card => {
+
+            const camera =
+              card.querySelector(
+                ".preview-camera"
+              );
+
+            const viewport =
+              card.querySelector(
+                ".preview-viewport"
+              );
+
+            const cursor =
+              card.querySelector(
+                ".preview-cursor"
+              );
+
+            if (
+              !camera ||
+              !viewport
+            ) {
+
+              return;
+
+            }
+
+
+            const settings =
+              getSettings();
+
+
+            clearCardTimer(
+              card
+            );
+
+
+            camera.style.transform =
+              "translateY(0)";
+
+
+            /*
+              Human-like camera animation.
+
+              The card itself NEVER moves horizontally.
+              Only the internal camera wrapper moves.
+            */
+
+            const state = {
+              position: 0,
+              paused: false,
+              timers: []
+            };
+
+
+            cardAnimationTimers.set(
+              card,
+              state.timers
+            );
+
+
+            function schedule(
+              callback,
+              delay
+            ) {
+
+              const timer =
+                setTimeout(
+                  callback,
+                  delay
+                );
+
+              state.timers.push(
+                timer
+              );
+
+            }
+
+
+            function moveCursor() {
+
+              if (
+                settings.humanCursor === false ||
+                !cursor
+              ) {
+
+                return;
+
+              }
+
+
+              const x =
+                16 +
+                Math.random() *
+                Math.max(
+                  25,
+                  viewport.clientWidth - 40
+                );
+
+
+              const y =
+                25 +
+                Math.random() *
+                Math.max(
+                  35,
+                  viewport.clientHeight - 75
+                );
+
+
+              cursor.style.left =
+                `${x}px`;
+
+              cursor.style.top =
+                `${y}px`;
+
+
+              if (
+                Math.random() < .18
+              ) {
+
+                cursor.classList.add(
+                  "click"
+                );
+
+                setTimeout(
+                  () => {
+
+                    cursor.classList.remove(
+                      "click"
+                    );
+
+                  },
+                  220
+                );
+
+              }
+
+            }
+
+
+            function step() {
+
+              if (
+                state.paused
+              ) {
+
+                schedule(
+                  step,
+                  800
+                );
+
+                return;
+
+              }
+
+
+              const maxScroll =
+                Math.max(
+                  220,
+                  camera.offsetHeight -
+                  viewport.offsetHeight
+                );
+
+
+              if (
+                state.position >=
+                maxScroll - 15
+              ) {
+
+                camera.style.transition =
+                  "transform 2.5s cubic-bezier(.22,.61,.36,1)";
+
+
+                camera.style.transform =
+                  "translateY(0)";
+
+
+                state.position =
+                  0;
+
+
+                moveCursor();
+
+
+                schedule(
+                  step,
+                  2800 +
+                  Number(
+                    settings.readingPause || 2.5
+                  ) *
+                  1000
+                );
+
+                return;
+
+              }
+
+
+              const speed =
+                Math.max(
+                  .5,
+                  Number(
+                    settings.scrollSpeed || 1
+                  )
+                );
+
+
+              const chunk =
+                (
+                  70 +
+                  Math.random() * 155
+                ) *
+                speed;
+
+
+              const next =
+                Math.min(
+                  state.position +
+                  chunk,
+                  maxScroll
+                );
+
+
+              const duration =
+                Math.max(
+                  700,
+                  (
+                    850 +
+                    Math.random() * 1400
+                  ) /
+                  speed
+                );
+
+
+              camera.style.transition =
+                `transform ${duration}ms cubic-bezier(.22,.61,.36,1)`;
+
+
+              camera.style.transform =
+                `translateY(-${next}px)`;
+
+
+              state.position =
+                next;
+
+
+              moveCursor();
+
+
+              const readingPause =
+                (
+                  Number(
+                    settings.readingPause || 2.5
+                  ) *
+                  1000 *
+                  (
+                    .45 +
+                    Math.random() * .8
+                  )
+                );
+
+
+              schedule(
+                step,
+                duration +
+                readingPause
+              );
+
+            }
+
+
+            schedule(
+              step,
+              1100 +
+              Math.random() * 2200
+            );
+
+
+            if (
+              settings.pauseOnHover !== false
+            ) {
+
+              card.addEventListener(
+                "mouseenter",
+                () => {
+
+                  state.paused =
+                    true;
+
+                }
+              );
+
+
+              card.addEventListener(
+                "mouseleave",
+                () => {
+
+                  state.paused =
+                    false;
+
+                }
+              );
+
+            }
+
+          }
+        );
+
+    }
+
+
+    /* =========================================================
+       SEARCH / FILTER
+       ========================================================= */
+
+    document
+      .getElementById(
+        "websiteSearch"
+      )
+      .addEventListener(
+        "input",
+        () => {
+
+          renderWebsites();
+
+        }
+      );
+
+
+    document
+      .getElementById(
+        "packageFilter"
+      )
+      .addEventListener(
+        "change",
+        () => {
+
+          renderWebsites();
+
+        }
+      );
 
 
     /* =========================================================
        MOBILE MENU
-    ========================================================= */
+       ========================================================= */
 
-    const menuBtn =
+    const mobileMenu =
       document.getElementById(
-        "menuBtn"
+        "mobileMenu"
       );
-
 
     const navLinks =
       document.getElementById(
@@ -3635,7 +5905,7 @@
       );
 
 
-    menuBtn.addEventListener(
+    mobileMenu.addEventListener(
       "click",
       () => {
 
@@ -3643,12 +5913,22 @@
           "open"
         );
 
+
+        mobileMenu.innerHTML =
+          navLinks.classList.contains(
+            "open"
+          )
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+
       }
     );
 
 
     navLinks
-      .querySelectorAll("a")
+      .querySelectorAll(
+        "a"
+      )
       .forEach(
         link => {
 
@@ -3660,6 +5940,9 @@
                 "open"
               );
 
+              mobileMenu.innerHTML =
+                '<i class="fa-solid fa-bars"></i>';
+
             }
           );
 
@@ -3668,60 +5951,21 @@
 
 
     /* =========================================================
-       LANGUAGE BUTTON
-    ========================================================= */
-
-    document
-      .getElementById("langBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          settings.language =
-            settings.language === "bn"
-              ? "bn-en"
-              : "bn";
-
-
-          try {
-
-            localStorage.setItem(
-              SETTINGS_KEY,
-              JSON.stringify(settings)
-            );
-
-          } catch (error) {}
-
-
-          applySettings();
-
-          showToast(
-            settings.language === "bn"
-              ? "বাংলা mode enabled"
-              : "English mode enabled"
-          );
-
-        }
-      );
-
-
-    /* =========================================================
-       ACTIVE NAVIGATION
-    ========================================================= */
+       ACTIVE NAV
+       ========================================================= */
 
     const sections =
       document.querySelectorAll(
-        "main section"
+        "main section[id]"
       );
-
 
     const navItems =
       document.querySelectorAll(
-        ".nav-links a"
+        ".nav-link"
       );
 
 
-    const observer =
+    const navObserver =
       new IntersectionObserver(
         entries => {
 
@@ -3739,27 +5983,21 @@
                       "active"
                     );
 
+                    if (
+                      link.getAttribute(
+                        "href"
+                      ) ===
+                      `#${entry.target.id}`
+                    ) {
+
+                      link.classList.add(
+                        "active"
+                      );
+
+                    }
+
                   }
                 );
-
-
-                const id =
-                  entry.target.id;
-
-
-                const active =
-                  document.querySelector(
-                    `.nav-links a[href="#${id}"]`
-                  );
-
-
-                if (active) {
-
-                  active.classList.add(
-                    "active"
-                  );
-
-                }
 
               }
 
@@ -3768,104 +6006,243 @@
 
         },
         {
-          threshold: .35
+          threshold: .18,
+          rootMargin:
+            "-100px 0px -50% 0px"
         }
       );
 
 
     sections.forEach(
-      section =>
-        observer.observe(section)
+      section => {
+
+        navObserver.observe(
+          section
+        );
+
+      }
     );
 
 
     /* =========================================================
-       TOAST
-    ========================================================= */
+       REVEAL OBSERVER
+       ========================================================= */
 
-    function showToast(
-      message
-    ) {
-
-      const toast =
-        document.getElementById(
-          "toast"
-        );
+    let revealObserver;
 
 
-      toast.textContent =
-        message;
+    function observeReveals() {
+
+      if (
+        revealObserver
+      ) {
+
+        document
+          .querySelectorAll(
+            ".reveal"
+          )
+          .forEach(
+            element => {
+
+              if (
+                element.dataset.revealObserved
+              ) {
+
+                return;
+
+              }
+
+              revealObserver.observe(
+                element
+              );
+
+              element.dataset.revealObserved =
+                "true";
+
+            }
+          );
+
+        return;
+
+      }
 
 
-      toast.classList.add(
-        "show"
-      );
+      revealObserver =
+        new IntersectionObserver(
+          entries => {
 
+            entries.forEach(
+              entry => {
 
-      clearTimeout(
-        window.__toastTimer
-      );
+                if (
+                  entry.isIntersecting
+                ) {
 
+                  entry.target.classList.add(
+                    "visible"
+                  );
 
-      window.__toastTimer =
-        setTimeout(
-          () => {
+                  revealObserver.unobserve(
+                    entry.target
+                  );
 
-            toast.classList.remove(
-              "show"
+                }
+
+              }
             );
 
           },
-          2400
+          {
+            threshold: .08
+          }
         );
+
+
+      document
+        .querySelectorAll(
+          ".reveal"
+        )
+        .forEach(
+          element => {
+
+            revealObserver.observe(
+              element
+            );
+
+            element.dataset.revealObserved =
+              "true";
+
+          }
+        );
+
     }
 
 
     /* =========================================================
-       YEAR
-    ========================================================= */
+       AUTO REFRESH WHEN ADMIN CHANGES LOCAL STORAGE
+       ========================================================= */
 
-    document
-      .getElementById("year")
-      .textContent =
-      new Date().getFullYear();
+    let lastWebsiteSnapshot =
+      "";
+
+
+    function websiteSnapshot() {
+
+      try {
+
+        return JSON.stringify(
+          localStorage.getItem(
+            WEBSITE_KEY
+          )
+        );
+
+      } catch (error) {
+
+        return "";
+
+      }
+
+    }
+
+
+    function watchWebsiteChanges() {
+
+      lastWebsiteSnapshot =
+        websiteSnapshot();
+
+
+      setInterval(
+        () => {
+
+          const current =
+            websiteSnapshot();
+
+
+          if (
+            current !==
+            lastWebsiteSnapshot
+          ) {
+
+            lastWebsiteSnapshot =
+              current;
+
+
+            renderWebsites();
+
+            loadHeroWebsite();
+
+            showToast(
+              "Website Updated",
+              "Admin website list has been refreshed."
+            );
+
+          }
+
+        },
+        1800
+      );
+
+    }
 
 
     /* =========================================================
-       STORAGE REFRESH
-       If admin settings are changed in another tab,
-       public page can refresh them automatically.
-    ========================================================= */
+       CROSS TAB STORAGE EVENT
+       ========================================================= */
 
     window.addEventListener(
       "storage",
       event => {
 
         if (
-          event.key ===
-          SETTINGS_KEY
+          event.key === WEBSITE_KEY
         ) {
 
-          settings =
-            loadSettings();
-
-
-          applySettings();
-
-
           renderWebsites();
+
+          loadHeroWebsite();
 
         }
 
 
         if (
-          event.key ===
-          WEBSITES_KEY
+          event.key === SETTINGS_KEY
         ) {
 
-          websites =
-            loadWebsites();
+          applySettings();
 
+          renderWebsites();
+
+          loadHeroWebsite();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       IFRAME VISIBILITY
+       ========================================================= */
+
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+
+        if (
+          document.hidden
+        ) {
+
+          clearTimeout(
+            heroAnimationTimer
+          );
+
+          clearTimeout(
+            heroReturnTimer
+          );
+
+        } else {
+
+          loadHeroWebsite();
 
           renderWebsites();
 
@@ -3876,17 +6253,19 @@
 
 
     /* =========================================================
-       INITIALIZE
-    ========================================================= */
+       YEAR
+       ========================================================= */
 
-    applySettings();
-
-    renderWebsites();
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date()
+        .getFullYear();
 
 
     /* =========================================================
-       PWA SERVICE WORKER
-    ========================================================= */
+       SERVICE WORKER
+       ========================================================= */
 
     if (
       "serviceWorker" in navigator
@@ -3898,30 +6277,10 @@
 
           navigator.serviceWorker
             .register(
-              "./sw.js",
-              {
-                scope: "./"
-              }
-            )
-            .then(
-              registration => {
-
-                console.log(
-                  "Website Deals Service Worker registered.",
-                  registration.scope
-                );
-
-              }
+              "./sw.js"
             )
             .catch(
-              error => {
-
-                console.warn(
-                  "Service Worker registration failed:",
-                  error
-                );
-
-              }
+              () => {}
             );
 
         }
@@ -3931,43 +6290,50 @@
 
 
     /* =========================================================
-       INSTALL PROMPT
-    ========================================================= */
+       INIT
+       ========================================================= */
 
-    let deferredInstallPrompt =
-      null;
+    function init() {
 
+      initTheme();
 
-    window.addEventListener(
-      "beforeinstallprompt",
-      event => {
+      applySettings();
 
-        event.preventDefault();
+      renderWebsites();
 
-        deferredInstallPrompt =
-          event;
+      loadHeroWebsite();
 
-        console.log(
-          "Website Deals can be installed as an app."
-        );
+      observeReveals();
 
-      }
-    );
+      watchWebsiteChanges();
+
+    }
 
 
     window.addEventListener(
-      "appinstalled",
+      "load",
       () => {
 
-        deferredInstallPrompt =
-          null;
+        setTimeout(
+          () => {
 
-        showToast(
-          "Website Deals installed successfully."
+            document
+              .getElementById(
+                "preloader"
+              )
+              .classList.add(
+                "hide"
+              );
+
+          },
+          450
         );
 
       }
     );
+
+
+    init();
 
   </script>
 
