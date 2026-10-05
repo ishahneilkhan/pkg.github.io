@@ -10,1465 +10,1044 @@
 
   <meta
     name="theme-color"
-    content="#070909"
+    content="#080a08"
   >
 
   <meta
     name="description"
-    content="Website Deals — Live Website Presentation"
+    content="Website Deals — Premium live website presentation."
   >
 
   <title>Live Presentation | Website Deals</title>
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
   >
 
   <style>
-    :root {
-      --bg: #070909;
-      --bg-soft: #0d1010;
-      --panel: rgba(18, 22, 21, 0.86);
-      --panel-2: rgba(25, 30, 29, 0.9);
-
-      --line: rgba(255, 255, 255, 0.09);
-      --line-strong: rgba(255, 255, 255, 0.15);
-
-      --text: #f4f7f4;
-      --muted: #9da8a2;
-
-      --lime: #b7ff00;
-      --lime-soft: rgba(183, 255, 0, 0.12);
-
-      --danger: #ff6b6b;
-
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-
-      --shadow:
-        0 40px 100px rgba(0, 0, 0, 0.48);
-
-      --topbar-height: 48px;
+    :root{
+      --lime:#b7ff00;
+      --lime-soft:#d8ff75;
+      --black:#070907;
+      --black-2:#0b0d0b;
+      --panel:#101310;
+      --panel-2:#151815;
+      --line:rgba(255,255,255,.09);
+      --line-strong:rgba(255,255,255,.16);
+      --white:#f8faf5;
+      --muted:#9da59b;
+      --muted-2:#6f776d;
+      --danger:#ff6b6b;
+      --shadow:0 35px 100px rgba(0,0,0,.55);
+      --radius:24px;
+      --topbar:42px;
+      --nav:68px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html{
+      scroll-behavior:smooth;
+      background:var(--black);
     }
 
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      color:var(--white);
       background:
-        radial-gradient(
-          circle at 50% -20%,
-          rgba(183, 255, 0, 0.10),
-          transparent 32%
-        ),
-        radial-gradient(
-          circle at 10% 40%,
-          rgba(255, 255, 255, 0.035),
-          transparent 25%
-        ),
-        var(--bg);
-
-      color: var(--text);
-
-      font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+        radial-gradient(circle at 50% 18%, rgba(183,255,0,.07), transparent 28%),
+        radial-gradient(circle at 15% 85%, rgba(183,255,0,.035), transparent 25%),
+        linear-gradient(180deg,#060806 0%,#090b09 48%,#060806 100%);
+      font-family:"DM Sans",Arial,sans-serif;
     }
 
     button,
-    a {
-      font: inherit;
+    a{
+      font:inherit;
     }
 
-    button {
-      border: 0;
+    button{
+      border:0;
+      cursor:pointer;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    ::selection{
+      color:#000;
+      background:var(--lime);
+    }
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    .ambient{
+      position:fixed;
+      inset:0;
+      z-index:-5;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .ambient::before{
+      content:"";
+      position:absolute;
+      width:600px;
+      height:600px;
+      left:50%;
+      top:10%;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:rgba(183,255,0,.035);
+      filter:blur(100px);
+    }
+
+    .ambient::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:48px 48px;
+      mask-image:linear-gradient(to bottom,black,transparent 85%);
     }
 
     /* =========================================================
        SALAH BAR
     ========================================================= */
 
-    .salah-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-
-      height: var(--topbar-height);
-
-      display: flex;
-      align-items: center;
-
-      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-
-      background:
-        rgba(7, 9, 9, 0.94);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+    .salah-bar{
+      position:fixed;
+      z-index:1000;
+      top:0;
+      left:0;
+      right:0;
+      height:var(--topbar);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 16px;
+      border-bottom:1px solid rgba(255,255,255,.07);
+      background:rgba(5,7,5,.88);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
     }
 
-    .salah-inner {
-      width: min(1400px, calc(100% - 32px));
-      margin: auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
+    .salah-inner{
+      width:min(1200px,100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      overflow-x:auto;
+      scrollbar-width:none;
     }
 
-    .salah-brand {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      color: var(--lime);
-
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-
-      white-space: nowrap;
+    .salah-inner::-webkit-scrollbar{
+      display:none;
     }
 
-    .salah-brand-icon {
-      width: 27px;
-      height: 27px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: var(--lime-soft);
-
-      font-size: 14px;
+    .salah-label{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      flex:0 0 auto;
+      margin-right:6px;
+      color:var(--lime);
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
-    .prayer-list {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
-      overflow-x: auto;
-      scrollbar-width: none;
+    .salah-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--lime);
+      box-shadow:0 0 14px rgba(183,255,0,.65);
     }
 
-    .prayer-list::-webkit-scrollbar {
-      display: none;
+    .prayer{
+      min-width:84px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      padding:5px 9px;
+      border:1px solid transparent;
+      border-radius:999px;
+      color:#858d83;
+      font-size:10px;
+      white-space:nowrap;
+      transition:.25s ease;
     }
 
-    .prayer {
-      min-width: 75px;
-
-      padding: 6px 9px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 7px;
-
-      border: 1px solid transparent;
-      border-radius: 9px;
-
-      color: #9da8a2;
-
-      font-size: 10px;
-      font-weight: 600;
-
-      white-space: nowrap;
+    .prayer strong{
+      color:#b7beb5;
+      font-weight:600;
     }
 
-    .prayer strong {
-      color: #dce2de;
-      font-size: 10px;
+    .prayer.active{
+      color:#061000;
+      background:var(--lime);
+      border-color:var(--lime);
+      box-shadow:0 0 20px rgba(183,255,0,.14);
     }
 
-    .prayer.next {
-      border-color: rgba(183, 255, 0, 0.35);
-      background: rgba(183, 255, 0, 0.10);
-
-      color: var(--lime);
-    }
-
-    .prayer.next strong {
-      color: var(--lime);
-    }
-
-    /* =========================================================
-       PAGE
-    ========================================================= */
-
-    .page {
-      min-height: 100vh;
-      padding-top: var(--topbar-height);
-    }
-
-    .presentation-shell {
-      width: min(1500px, calc(100% - 40px));
-      margin: auto;
-
-      padding:
-        42px
-        0
-        70px;
+    .prayer.active strong{
+      color:#061000;
     }
 
     /* =========================================================
        HEADER
     ========================================================= */
 
-    .presentation-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-
-      gap: 30px;
-
-      margin-bottom: 30px;
+    .header{
+      position:fixed;
+      top:var(--topbar);
+      left:0;
+      right:0;
+      z-index:900;
+      height:var(--nav);
+      display:flex;
+      align-items:center;
+      padding:0 22px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(7,9,7,.72);
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      margin-bottom: 12px;
-
-      color: var(--lime);
-
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .header-inner{
+      width:min(1380px,100%);
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
     }
 
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--lime);
-
-      box-shadow:
-        0 0 0 5px rgba(183, 255, 0, 0.08),
-        0 0 18px rgba(183, 255, 0, 0.45);
-
-      animation: pulse 2s infinite;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      min-width:0;
     }
 
-    @keyframes pulse {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.55;
-        transform: scale(0.85);
-      }
+    .brand-mark{
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      flex:0 0 auto;
+      border-radius:11px;
+      color:#060806;
+      background:var(--lime);
+      font-family:"Space Grotesk",sans-serif;
+      font-size:13px;
+      font-weight:700;
+      box-shadow:0 8px 30px rgba(183,255,0,.13);
     }
 
-    h1 {
-      max-width: 800px;
-
-      font-family:
-        "Space Grotesk",
-        Inter,
-        sans-serif;
-
-      font-size:
-        clamp(34px, 5vw, 72px);
-
-      line-height: 0.98;
-      letter-spacing: -0.055em;
+    .brand-text{
+      min-width:0;
     }
 
-    .header-description {
-      max-width: 560px;
-
-      margin-top: 15px;
-
-      color: var(--muted);
-
-      font-size: 14px;
-      line-height: 1.75;
+    .brand-name{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:-.02em;
     }
 
-    .site-info {
-      flex: 0 0 auto;
-
-      min-width: 270px;
-
-      padding: 17px 19px;
-
-      border: 1px solid var(--line);
-      border-radius: 16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.05),
-          rgba(255,255,255,0.015)
-        );
+    .brand-sub{
+      margin-top:1px;
+      color:#737b72;
+      font-size:9px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
-    .site-info-label {
-      margin-bottom: 5px;
-
-      color: var(--muted);
-
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
 
-    .site-info-name {
-      overflow: hidden;
-
-      color: var(--text);
-
-      font-size: 15px;
-      font-weight: 800;
-
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .header-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:38px;
+      padding:0 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:#cbd0c9;
+      background:rgba(255,255,255,.035);
+      font-size:11px;
+      font-weight:600;
+      transition:.25s ease;
     }
 
-    .site-info-package {
-      display: inline-flex;
+    .header-btn:hover{
+      color:var(--white);
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.07);
+      transform:translateY(-1px);
+    }
 
-      margin-top: 8px;
-      padding: 5px 9px;
+    .header-btn.primary{
+      color:#060806;
+      background:var(--lime);
+      border-color:var(--lime);
+    }
 
-      border-radius: 999px;
-
-      background: var(--lime-soft);
-
-      color: var(--lime);
-
-      font-size: 9px;
-      font-weight: 800;
-      text-transform: uppercase;
+    .header-btn.primary:hover{
+      background:#c9ff43;
+      border-color:#c9ff43;
     }
 
     /* =========================================================
-       STAGE
+       MAIN STAGE
     ========================================================= */
 
-    .stage {
-      position: relative;
-
-      min-height: 720px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding:
-        45px
-        20px
-        70px;
-
-      overflow: hidden;
-
-      border:
-        1px solid var(--line);
-
-      border-radius:
-        var(--radius-xl);
-
-      background:
-        radial-gradient(
-          circle at 50% 35%,
-          rgba(183, 255, 0, 0.07),
-          transparent 31%
-        ),
-        linear-gradient(
-          145deg,
-          #101413,
-          #080a0a 65%
-        );
-
-      box-shadow: var(--shadow);
+    main{
+      min-height:100vh;
+      padding-top:calc(var(--topbar) + var(--nav));
     }
 
-    .stage-grid {
-      position: absolute;
-      inset: 0;
-
-      opacity: 0.25;
-
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,0.035) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.035) 1px,
-          transparent 1px
-        );
-
-      background-size:
-        55px 55px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          transparent,
-          black 20%,
-          black 80%,
-          transparent
-        );
-
-      pointer-events: none;
+    .stage{
+      width:min(1500px,100%);
+      min-height:calc(100vh - var(--topbar) - var(--nav));
+      margin:auto;
+      padding:40px 28px 55px;
+      display:flex;
+      flex-direction:column;
     }
 
-    .glow {
-      position: absolute;
-
-      width: 480px;
-      height: 480px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(183,255,0,0.07),
-          transparent 68%
-        );
-
-      filter: blur(5px);
-
-      pointer-events: none;
+    .stage-head{
+      width:min(1250px,100%);
+      margin:0 auto 28px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:24px;
     }
 
-    .glow-one {
-      left: -220px;
-      top: 10%;
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:11px;
+      color:var(--lime);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
     }
 
-    .glow-two {
-      right: -220px;
-      bottom: 5%;
+    .eyebrow-line{
+      width:25px;
+      height:1px;
+      background:var(--lime);
+      opacity:.7;
+    }
+
+    h1{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(32px,4vw,62px);
+      line-height:.96;
+      letter-spacing:-.055em;
+      font-weight:700;
+    }
+
+    h1 span{
+      color:var(--lime);
+    }
+
+    .stage-description{
+      max-width:510px;
+      color:#8f978d;
+      font-size:13px;
+      line-height:1.7;
     }
 
     /* =========================================================
-       LAPTOP
+       DEVICE PRESENTATION
     ========================================================= */
 
-    .device-wrap {
-      position: relative;
-      z-index: 2;
-
-      width: min(1050px, 90vw);
-
-      perspective: 1400px;
+    .presentation-wrap{
+      width:min(1250px,100%);
+      margin:auto;
     }
 
-    .laptop {
-      position: relative;
-
-      width: 100%;
-
-      transform:
-        rotateX(0deg)
-        rotateY(0deg);
-
-      filter:
-        drop-shadow(
-          0 45px 45px rgba(0,0,0,0.55)
-        );
-    }
-
-    .laptop-screen {
-      position: relative;
-
-      width: 100%;
-
-      padding: 12px;
-
-      border:
-        1px solid rgba(255,255,255,0.19);
-
-      border-bottom: 0;
-
-      border-radius:
-        20px
-        20px
-        8px
-        8px;
-
+    .device-shell{
+      position:relative;
+      width:100%;
+      aspect-ratio:16 / 10;
+      min-height:470px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:3.8% 5.8% 8%;
+      border-radius:32px;
       background:
-        linear-gradient(
-          145deg,
-          #303432,
-          #121515
-        );
-
+        linear-gradient(145deg,#343834 0%,#181b18 24%,#090b09 62%,#292d29 100%);
+      border:1px solid rgba(255,255,255,.13);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.18),
-        inset 0 -2px 5px rgba(0,0,0,0.55);
+        0 45px 100px rgba(0,0,0,.65),
+        0 0 0 1px rgba(255,255,255,.025) inset,
+        0 0 90px rgba(183,255,0,.045);
     }
 
-    .camera {
-      position: absolute;
+    .device-shell::before{
+      content:"";
+      position:absolute;
+      left:7%;
+      right:7%;
+      top:3.3%;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+    }
 
-      top: 4px;
-      left: 50%;
+    .camera-dot{
+      position:absolute;
+      z-index:4;
+      top:1.55%;
+      left:50%;
+      width:7px;
+      height:7px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:#030403;
+      border:1px solid rgba(255,255,255,.13);
+      box-shadow:0 0 8px rgba(0,0,0,.8);
+    }
 
-      width: 7px;
-      height: 7px;
-
-      transform: translateX(-50%);
-
-      border-radius: 50%;
-
-      background: #050606;
-
+    .screen{
+      position:relative;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      border-radius:10px;
+      background:#fff;
       box-shadow:
-        0 0 0 2px rgba(255,255,255,0.05);
-
-      z-index: 10;
+        0 0 0 1px rgba(0,0,0,.75),
+        0 0 0 3px rgba(255,255,255,.035);
     }
 
-    .screen-glass {
-      position: relative;
-
-      height: 590px;
-
-      overflow: hidden;
-
-      border-radius: 11px;
-
-      background: #fff;
-
-      box-shadow:
-        inset 0 0 0 1px rgba(0,0,0,0.25);
-    }
-
-    .screen-loader {
-      position: absolute;
-      inset: 0;
-
-      z-index: 20;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      gap: 15px;
-
+    .screen::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:20;
       background:
-        #f6f8f6;
-
-      color: #151918;
-
-      transition:
-        opacity 0.35s ease,
-        visibility 0.35s ease;
+        linear-gradient(115deg,rgba(255,255,255,.07),transparent 22%,transparent 72%,rgba(255,255,255,.035)),
+        radial-gradient(circle at 50% 0%,rgba(255,255,255,.05),transparent 42%);
+      mix-blend-mode:screen;
     }
 
-    .screen-loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+    .site-camera{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      background:#fff;
     }
 
-    .loader-spinner {
-      width: 38px;
-      height: 38px;
-
-      border:
-        3px solid rgba(0,0,0,0.08);
-
-      border-top-color:
-        #111;
-
-      border-radius: 50%;
-
-      animation:
-        spin 0.9s linear infinite;
+    #siteFrame{
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:7000px;
+      border:0;
+      display:block;
+      background:#fff;
+      transform:translate3d(0,0,0);
+      transform-origin:top left;
+      will-change:transform;
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .screen-loader strong {
-      font-size: 13px;
-    }
-
-    .screen-loader span {
-      max-width: 300px;
-
-      color: #68716c;
-
-      font-size: 11px;
-      line-height: 1.6;
-
-      text-align: center;
-    }
-
-    .iframe-camera {
-      position: absolute;
-      inset: 0;
-
-      overflow: hidden;
-
-      background: white;
-    }
-
-    .live-frame {
-      position: absolute;
-
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 7000px;
-
-      border: 0;
-
-      display: block;
-
-      transform:
-        translate3d(
-          0,
-          0,
-          0
-        );
-
-      transform-origin:
-        top center;
-
-      will-change:
-        transform;
-    }
-
-    .glass-reflection {
-      position: absolute;
-      inset: 0;
-
-      z-index: 15;
-
-      pointer-events: none;
-
+    .device-base{
+      position:absolute;
+      left:18%;
+      right:18%;
+      bottom:-7.5%;
+      height:7%;
+      min-height:22px;
+      border-radius:0 0 24px 24px;
       background:
-        linear-gradient(
-          118deg,
-          rgba(255,255,255,0.12),
-          transparent 17%,
-          transparent 75%,
-          rgba(255,255,255,0.025)
-        );
-
-      opacity: 0.65;
+        linear-gradient(180deg,#373b37,#161916 55%,#080a08);
+      border:1px solid rgba(255,255,255,.11);
+      border-top:0;
+      box-shadow:0 24px 45px rgba(0,0,0,.55);
     }
 
-    .laptop-base {
-      position: relative;
-
-      width: 112%;
-
-      height: 25px;
-
-      margin-left: -6%;
-
-      border-radius:
-        0
-        0
-        20px
-        20px;
-
-      background:
-        linear-gradient(
-          to bottom,
-          #454a48,
-          #202423 45%,
-          #111313
-        );
-
-      box-shadow:
-        0 10px 15px rgba(0,0,0,0.45);
+    .device-base::after{
+      content:"";
+      position:absolute;
+      left:42%;
+      right:42%;
+      top:0;
+      height:4px;
+      border-radius:0 0 5px 5px;
+      background:rgba(255,255,255,.1);
     }
 
-    .laptop-base::before {
-      content: "";
-
-      position: absolute;
-
-      left: 50%;
-      top: 2px;
-
-      width: 25%;
-
-      height: 3px;
-
-      transform: translateX(-50%);
-
-      border-radius: 0 0 5px 5px;
-
-      background:
-        rgba(0,0,0,0.4);
+    .device-logo{
+      position:absolute;
+      left:50%;
+      bottom:-4.9%;
+      transform:translate(-50%,50%);
+      z-index:5;
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:#0a0d09;
+      background:var(--lime);
+      font-family:"Space Grotesk",sans-serif;
+      font-size:9px;
+      font-weight:800;
+      box-shadow:0 5px 20px rgba(0,0,0,.5);
     }
 
     /* =========================================================
        CURSOR
     ========================================================= */
 
-    .human-cursor {
-      position: absolute;
-
-      z-index: 30;
-
-      left: 38%;
-      top: 35%;
-
-      width: 18px;
-      height: 25px;
-
-      opacity: 0;
-
-      pointer-events: none;
-
-      filter:
-        drop-shadow(
-          0 2px 3px rgba(0,0,0,0.55)
-        );
-
-      transition:
-        opacity 0.5s ease;
-
-      will-change:
-        transform,
-        left,
-        top;
+    .cursor{
+      position:absolute;
+      z-index:50;
+      width:17px;
+      height:17px;
+      pointer-events:none;
+      opacity:0;
+      transform:translate3d(0,0,0);
+      transition:opacity .35s ease;
     }
 
-    .human-cursor.visible {
-      opacity: 0.92;
+    .cursor::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:0;
+      width:0;
+      height:0;
+      border-top:14px solid #fff;
+      border-right:7px solid transparent;
+      filter:drop-shadow(0 1px 2px rgba(0,0,0,.8));
+      transform:rotate(-7deg);
     }
 
-    .human-cursor::before {
-      content: "";
-
-      position: absolute;
-
-      left: 1px;
-      top: 0;
-
-      width: 0;
-      height: 0;
-
-      border-top:
-        12px solid #fff;
-
-      border-right:
-        7px solid transparent;
-
-      border-left:
-        1px solid transparent;
-
-      transform:
-        rotate(-10deg);
-
-      filter:
-        drop-shadow(
-          1px 1px 0 #111
-        );
+    .cursor::after{
+      content:"";
+      position:absolute;
+      left:-3px;
+      top:-3px;
+      width:22px;
+      height:22px;
+      border:1px solid rgba(183,255,0,.7);
+      border-radius:50%;
+      opacity:.65;
+      animation:cursorPulse 1.8s ease-in-out infinite;
     }
 
-    .human-cursor::after {
-      content: "";
-
-      position: absolute;
-
-      left: 7px;
-      top: 11px;
-
-      width: 8px;
-      height: 10px;
-
-      background: #fff;
-
-      transform:
-        rotate(-10deg);
-
-      clip-path:
-        polygon(
-          0 0,
-          100% 40%,
-          45% 100%
-        );
-
-      filter:
-        drop-shadow(
-          1px 1px 0 #111
-        );
+    @keyframes cursorPulse{
+      0%,100%{transform:scale(.72);opacity:.15}
+      50%{transform:scale(1);opacity:.7}
     }
 
     /* =========================================================
-       CONTROL PANEL
+       CONTROL BAR
     ========================================================= */
 
-    .controls {
-      position: absolute;
-
-      left: 50%;
-      bottom: 20px;
-
-      z-index: 40;
-
-      transform:
-        translateX(-50%);
-
-      width:
-        min(720px, calc(100% - 30px));
-
-      padding: 9px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 7px;
-
-      border:
-        1px solid rgba(255,255,255,0.12);
-
-      border-radius: 16px;
-
-      background:
-        rgba(7,9,9,0.86);
-
-      backdrop-filter:
-        blur(20px);
-
-      box-shadow:
-        0 20px 45px rgba(0,0,0,0.45);
+    .control-panel{
+      position:relative;
+      width:min(1120px,100%);
+      margin:26px auto 0;
+      padding:13px;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:15px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(16,19,16,.82);
+      box-shadow:0 20px 55px rgba(0,0,0,.28);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
     }
 
-    .control-button {
-      min-height: 38px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 7px;
-
-      padding:
-        0 14px;
-
-      border:
-        1px solid rgba(255,255,255,0.09);
-
-      border-radius: 10px;
-
-      background:
-        rgba(255,255,255,0.045);
-
-      color: #dfe5e1;
-
-      cursor: pointer;
-
-      font-size: 11px;
-      font-weight: 700;
-
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease,
-        color 0.2s ease;
+    .controls-left{
+      display:flex;
+      align-items:center;
+      gap:7px;
     }
 
-    .control-button:hover {
-      transform: translateY(-2px);
-
-      border-color:
-        rgba(183,255,0,0.35);
-
-      background:
-        rgba(183,255,0,0.09);
-
-      color:
-        var(--lime);
+    .control-btn{
+      min-width:40px;
+      height:40px;
+      padding:0 13px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:#d5dad3;
+      background:rgba(255,255,255,.035);
+      font-size:11px;
+      font-weight:700;
+      transition:.22s ease;
     }
 
-    .control-button.primary {
-      background:
-        var(--lime);
-
-      color:
-        #101300;
-
-      border-color:
-        var(--lime);
+    .control-btn:hover{
+      color:#fff;
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.075);
     }
 
-    .control-button.primary:hover {
-      background:
-        #c6ff33;
-
-      color:
-        #101300;
+    .control-btn.primary{
+      color:#071000;
+      background:var(--lime);
+      border-color:var(--lime);
     }
 
-    .control-button svg {
-      width: 14px;
-      height: 14px;
+    .control-btn.primary:hover{
+      background:#caff46;
+      border-color:#caff46;
+    }
+
+    .progress-area{
+      min-width:0;
+    }
+
+    .progress-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:7px;
+      color:#727a71;
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .progress-meta strong{
+      color:#b8c0b6;
+    }
+
+    .progress-track{
+      height:4px;
+      overflow:hidden;
+      border-radius:999px;
+      background:#242824;
+    }
+
+    .progress-fill{
+      width:0%;
+      height:100%;
+      border-radius:inherit;
+      background:var(--lime);
+      box-shadow:0 0 14px rgba(183,255,0,.3);
+      transition:width .15s linear;
+    }
+
+    .controls-right{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:8px;
     }
 
     /* =========================================================
-       STATUS
+       SITE INFO
     ========================================================= */
 
-    .presentation-status {
-      margin-top: 20px;
-
-      display: grid;
-
-      grid-template-columns:
-        1fr
-        auto;
-
-      gap: 15px;
-
-      align-items: center;
+    .site-info{
+      width:min(1120px,100%);
+      margin:18px auto 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
     }
 
-    .progress-wrap {
-      min-width: 0;
+    .site-meta{
+      min-width:0;
     }
 
-    .progress-labels {
-      display: flex;
-      justify-content: space-between;
-
-      margin-bottom: 8px;
-
-      color: var(--muted);
-
-      font-size: 10px;
-      font-weight: 600;
+    .site-package{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-bottom:6px;
+      color:var(--lime);
+      font-size:9px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
 
-    .progress-bar {
-      width: 100%;
-      height: 4px;
-
-      overflow: hidden;
-
-      border-radius: 999px;
-
-      background:
-        rgba(255,255,255,0.08);
+    .site-package::before{
+      content:"";
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:var(--lime);
     }
 
-    .progress-value {
-      width: 0%;
-      height: 100%;
-
-      border-radius: inherit;
-
-      background:
-        var(--lime);
-
-      box-shadow:
-        0 0 12px rgba(183,255,0,0.45);
-
-      transition:
-        width 0.15s linear;
+    .site-name{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:-.025em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 9px 12px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 999px;
-
-      background:
-        rgba(255,255,255,0.035);
-
-      color: var(--muted);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      white-space: nowrap;
+    .site-url{
+      margin-top:3px;
+      color:#6f776e;
+      font-size:10px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .status-dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background:
-        var(--lime);
-
-      box-shadow:
-        0 0 10px rgba(183,255,0,0.5);
+    .site-status{
+      flex:0 0 auto;
+      display:flex;
+      align-items:center;
+      gap:7px;
+      color:#7d857b;
+      font-size:10px;
     }
 
-    .status-dot.paused {
-      background:
-        #f5c84c;
-
-      box-shadow:
-        0 0 10px rgba(245,200,76,0.35);
-    }
-
-    .status-dot.error {
-      background:
-        var(--danger);
-
-      box-shadow:
-        0 0 10px rgba(255,107,107,0.35);
+    .status-light{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--lime);
+      box-shadow:0 0 12px rgba(183,255,0,.55);
     }
 
     /* =========================================================
-       BOTTOM INFO
+       NOTICE
     ========================================================= */
 
-    .bottom-grid {
-      margin-top: 28px;
-
-      display: grid;
-
-      grid-template-columns:
-        1fr
-        1fr
-        1fr;
-
-      gap: 15px;
+    .notice{
+      width:min(1120px,100%);
+      margin:18px auto 0;
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:13px 15px;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:14px;
+      color:#737b72;
+      background:rgba(255,255,255,.022);
+      font-size:10px;
+      line-height:1.65;
     }
 
-    .info-card {
-      min-height: 120px;
-
-      padding: 19px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius:
-        var(--radius-lg);
-
-      background:
-        rgba(255,255,255,0.025);
-    }
-
-    .info-card-label {
-      margin-bottom: 10px;
-
-      color: var(--muted);
-
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .info-card-value {
-      color: var(--text);
-
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.55;
-    }
-
-    .info-card-small {
-      margin-top: 6px;
-
-      color: #7e8883;
-
-      font-size: 10px;
-      line-height: 1.55;
-    }
-
-    /* =========================================================
-       FRAME LIMITATION
-    ========================================================= */
-
-    .frame-notice {
-      margin-top: 18px;
-
-      padding: 12px 15px;
-
-      border:
-        1px solid rgba(255,255,255,0.07);
-
-      border-radius: 12px;
-
-      background:
-        rgba(255,255,255,0.02);
-
-      color: #737d78;
-
-      font-size: 10px;
-      line-height: 1.65;
-
-      text-align: center;
-    }
-
-    /* =========================================================
-       NO WEBSITE
-    ========================================================= */
-
-    .empty-state {
-      position: absolute;
-      inset: 0;
-
-      z-index: 50;
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 30px;
-
-      background:
-        rgba(7,9,9,0.94);
-
-      backdrop-filter:
-        blur(15px);
-
-      text-align: center;
-    }
-
-    .empty-state.show {
-      display: flex;
-    }
-
-    .empty-box {
-      max-width: 460px;
-
-      padding: 30px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 20px;
-
-      background:
-        rgba(255,255,255,0.035);
-    }
-
-    .empty-icon {
-      width: 56px;
-      height: 56px;
-
-      margin: 0 auto 16px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 16px;
-
-      background:
-        var(--lime-soft);
-
-      color:
-        var(--lime);
-
-      font-size: 24px;
-    }
-
-    .empty-box h2 {
-      margin-bottom: 8px;
-
-      font-family:
-        "Space Grotesk",
-        sans-serif;
-
-      font-size: 25px;
-    }
-
-    .empty-box p {
-      color: var(--muted);
-
-      font-size: 12px;
-      line-height: 1.7;
-    }
-
-    .empty-box a {
-      display: inline-flex;
-
-      margin-top: 18px;
-      padding: 10px 15px;
-
-      border-radius: 10px;
-
-      background:
-        var(--lime);
-
-      color:
-        #101300;
-
-      font-size: 11px;
-      font-weight: 800;
+    .notice-icon{
+      flex:0 0 auto;
+      width:20px;
+      height:20px;
+      display:grid;
+      place-items:center;
+      border-radius:7px;
+      color:var(--lime);
+      background:rgba(183,255,0,.08);
+      font-size:10px;
     }
 
     /* =========================================================
        FOOTER
     ========================================================= */
 
-    .page-footer {
-      margin-top: 35px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 20px;
-
-      color: #66706b;
-
-      font-size: 10px;
+    footer{
+      width:min(1250px,100%);
+      margin:35px auto 0;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      color:#60685f;
+      font-size:9px;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 14px;
+    .footer-shortcuts{
+      display:flex;
+      align-items:center;
+      gap:7px;
     }
 
-    .footer-links a:hover {
-      color: var(--lime);
+    kbd{
+      min-width:23px;
+      height:22px;
+      display:inline-grid;
+      place-items:center;
+      padding:0 6px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:6px;
+      color:#9ca39a;
+      background:rgba(255,255,255,.035);
+      font-size:9px;
+      font-family:inherit;
     }
 
     /* =========================================================
-       MOBILE
+       EMPTY / ERROR
     ========================================================= */
 
-    @media (max-width: 900px) {
-      .presentation-shell {
-        width:
-          min(100% - 24px, 1500px);
+    .empty-state{
+      min-height:550px;
+      display:grid;
+      place-items:center;
+      padding:40px;
+      text-align:center;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:rgba(255,255,255,.025);
+    }
 
-        padding-top: 25px;
+    .empty-inner{
+      max-width:520px;
+    }
+
+    .empty-icon{
+      width:70px;
+      height:70px;
+      margin:0 auto 20px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(183,255,0,.18);
+      border-radius:22px;
+      color:var(--lime);
+      background:rgba(183,255,0,.055);
+      font-size:26px;
+    }
+
+    .empty-state h2{
+      margin-bottom:10px;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:28px;
+      letter-spacing:-.035em;
+    }
+
+    .empty-state p{
+      color:#7c847a;
+      font-size:12px;
+      line-height:1.7;
+    }
+
+    .loading{
+      position:absolute;
+      z-index:100;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      transition:opacity .5s ease;
+    }
+
+    .loading.hidden{
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .loader{
+      width:34px;
+      height:34px;
+      border:3px solid #e8ece7;
+      border-top-color:#101410;
+      border-radius:50%;
+      animation:spin .75s linear infinite;
+    }
+
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media(max-width:900px){
+
+      :root{
+        --nav:62px;
       }
 
-      .presentation-header {
-        align-items: flex-start;
-
-        flex-direction: column;
+      .header{
+        padding:0 14px;
       }
 
-      .site-info {
-        width: 100%;
+      .brand-sub{
+        display:none;
       }
 
-      .stage {
-        min-height: 550px;
-
-        padding:
-          30px
-          10px
-          65px;
+      .header-btn span{
+        display:none;
       }
 
-      .screen-glass {
-        height: 390px;
+      .header-btn{
+        width:38px;
+        padding:0;
       }
 
-      .laptop-screen {
-        padding: 7px;
+      .stage{
+        padding:28px 14px 40px;
       }
 
-      .laptop-base {
-        height: 16px;
+      .stage-head{
+        display:block;
+        margin-bottom:22px;
       }
 
-      .controls {
-        overflow-x: auto;
-
-        justify-content: flex-start;
-
-        scrollbar-width: none;
+      .stage-description{
+        margin-top:15px;
       }
 
-      .controls::-webkit-scrollbar {
-        display: none;
+      .device-shell{
+        min-height:390px;
+        border-radius:23px;
       }
 
-      .control-button {
-        flex: 0 0 auto;
+      .control-panel{
+        grid-template-columns:1fr;
       }
 
-      .bottom-grid {
-        grid-template-columns: 1fr;
+      .controls-left,
+      .controls-right{
+        justify-content:center;
+      }
+
+      .progress-area{
+        order:-1;
+      }
+
+      .site-info{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      footer{
+        flex-direction:column;
+        align-items:flex-start;
       }
     }
 
-    @media (max-width: 600px) {
-      :root {
-        --topbar-height: 46px;
+    @media(max-width:600px){
+
+      .salah-bar{
+        justify-content:flex-start;
       }
 
-      .salah-inner {
-        width:
-          calc(100% - 18px);
-
-        gap: 10px;
+      .salah-inner{
+        justify-content:flex-start;
       }
 
-      .salah-brand {
-        font-size: 9px;
+      .salah-label{
+        display:none;
       }
 
-      .salah-brand-icon {
-        width: 24px;
-        height: 24px;
+      .prayer{
+        min-width:78px;
+        padding:5px 8px;
       }
 
-      .prayer {
-        min-width: 69px;
-
-        padding:
-          5px 7px;
-
-        font-size: 9px;
+      .brand-name{
+        font-size:13px;
       }
 
-      .prayer strong {
-        font-size: 9px;
+      .header-actions{
+        gap:5px;
       }
 
-      .presentation-shell {
-        width:
-          calc(100% - 16px);
+      .header-btn{
+        min-height:35px;
+        height:35px;
       }
 
-      h1 {
-        font-size:
-          clamp(34px, 12vw, 54px);
+      h1{
+        font-size:35px;
       }
 
-      .header-description {
-        font-size: 12px;
+      .stage-description{
+        font-size:12px;
       }
 
-      .stage {
-        min-height: 470px;
-
-        border-radius: 20px;
-
-        padding:
-          25px
-          5px
-          62px;
+      .device-shell{
+        aspect-ratio:4 / 3;
+        min-height:260px;
+        padding:5% 6% 10%;
+        border-radius:18px;
       }
 
-      .screen-glass {
-        height: 280px;
-
-        border-radius: 7px;
+      .screen{
+        border-radius:6px;
       }
 
-      .laptop-screen {
-        padding: 5px;
-
-        border-radius:
-          10px
-          10px
-          5px
-          5px;
+      .device-base{
+        bottom:-6%;
+        min-height:14px;
       }
 
-      .camera {
-        width: 5px;
-        height: 5px;
-
-        top: 2px;
+      .device-logo{
+        width:22px;
+        height:22px;
+        font-size:7px;
       }
 
-      .laptop-base {
-        height: 12px;
+      .control-btn{
+        min-width:38px;
+        height:38px;
+        padding:0 10px;
       }
 
-      .controls {
-        width:
-          calc(100% - 14px);
-
-        padding: 6px;
-
-        gap: 5px;
-
-        border-radius: 13px;
+      .control-btn.labelled{
+        flex:1;
       }
 
-      .control-button {
-        min-height: 34px;
-
-        padding:
-          0 10px;
-
-        font-size: 9px;
+      .controls-left,
+      .controls-right{
+        width:100%;
       }
 
-      .presentation-status {
-        grid-template-columns: 1fr;
+      .site-name{
+        font-size:17px;
       }
 
-      .status-pill {
-        justify-self: start;
-      }
-
-      .page-footer {
-        flex-direction: column;
-        align-items: flex-start;
+      .notice{
+        font-size:9px;
       }
     }
   </style>
@@ -1476,536 +1055,372 @@
 
 <body>
 
-  <!-- =======================================================
-       SALAH REMINDER — ALWAYS TOP
-  ======================================================== -->
+  <div class="ambient"></div>
 
+  <!-- =======================================================
+       SALAH TOP BAR
+  ======================================================== -->
   <div class="salah-bar">
     <div class="salah-inner">
 
-      <div class="salah-brand">
-        <span class="salah-brand-icon">🕌</span>
-        <span>NEXT SALAH</span>
+      <div class="salah-label">
+        <span class="salah-dot"></span>
+        Salah
       </div>
 
-      <div
-        class="prayer-list"
-        id="prayerList"
-      >
+      <div class="prayer" data-prayer="Fajr">
+        <span>Fajr</span>
+        <strong>04:45</strong>
+      </div>
 
-        <div
-          class="prayer"
-          data-prayer="Fajr"
-          data-time="04:45"
-        >
-          <span>Fajr</span>
-          <strong>04:45</strong>
-        </div>
+      <div class="prayer" data-prayer="Dhuhr">
+        <span>Dhuhr</span>
+        <strong>12:05</strong>
+      </div>
 
-        <div
-          class="prayer"
-          data-prayer="Dhuhr"
-          data-time="12:05"
-        >
-          <span>Dhuhr</span>
-          <strong>12:05</strong>
-        </div>
+      <div class="prayer" data-prayer="Asr">
+        <span>Asr</span>
+        <strong>16:15</strong>
+      </div>
 
-        <div
-          class="prayer"
-          data-prayer="Asr"
-          data-time="16:15"
-        >
-          <span>Asr</span>
-          <strong>16:15</strong>
-        </div>
+      <div class="prayer" data-prayer="Maghrib">
+        <span>Maghrib</span>
+        <strong>18:00</strong>
+      </div>
 
-        <div
-          class="prayer"
-          data-prayer="Maghrib"
-          data-time="18:00"
-        >
-          <span>Maghrib</span>
-          <strong>18:00</strong>
-        </div>
-
-        <div
-          class="prayer"
-          data-prayer="Isha"
-          data-time="19:20"
-        >
-          <span>Isha</span>
-          <strong>19:20</strong>
-        </div>
-
+      <div class="prayer" data-prayer="Isha">
+        <span>Isha</span>
+        <strong>19:20</strong>
       </div>
 
     </div>
   </div>
 
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+  <header class="header">
+    <div class="header-inner">
 
-  <main class="page">
+      <a
+        class="brand"
+        href="../index.html"
+        aria-label="Back to Website Deals"
+      >
+        <div class="brand-mark">WD</div>
 
-    <div class="presentation-shell">
-
-      <!-- ===================================================
-           HEADER
-      ==================================================== -->
-
-      <header class="presentation-header">
-
-        <div>
-
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Live Website Presentation
-          </div>
-
-          <h1 id="pageTitle">
-            Website Experience
-          </h1>
-
-          <p
-            class="header-description"
-            id="pageDescription"
-          >
-            Explore this website automatically through a smooth,
-            human-like presentation.
-          </p>
-
+        <div class="brand-text">
+          <div class="brand-name">Website Deals</div>
+          <div class="brand-sub">Live Website Presentation</div>
         </div>
+      </a>
 
+      <div class="header-actions">
 
-        <div class="site-info">
-
-          <div class="site-info-label">
-            Currently Presenting
-          </div>
-
-          <div
-            class="site-info-name"
-            id="siteName"
-          >
-            Loading website...
-          </div>
-
-          <div
-            class="site-info-package"
-            id="sitePackage"
-          >
-            Website
-          </div>
-
-        </div>
-
-      </header>
-
-
-      <!-- ===================================================
-           PRESENTATION STAGE
-      ==================================================== -->
-
-      <section class="stage">
-
-        <div class="stage-grid"></div>
-
-        <div class="glow glow-one"></div>
-        <div class="glow glow-two"></div>
-
-
-        <div
-          class="device-wrap"
-          id="deviceWrap"
+        <a
+          class="header-btn"
+          href="../index.html#websites"
+          title="Back to Showcase"
         >
+          ← <span>Showcase</span>
+        </a>
 
-          <div class="laptop">
-
-            <div class="laptop-screen">
-
-              <div class="camera"></div>
-
-              <div class="screen-glass">
-
-                <!-- Loader -->
-
-                <div
-                  class="screen-loader"
-                  id="screenLoader"
-                >
-
-                  <div class="loader-spinner"></div>
-
-                  <strong>
-                    Loading live website
-                  </strong>
-
-                  <span>
-                    Preparing the website preview for presentation.
-                  </span>
-
-                </div>
-
-
-                <!-- Actual iframe camera -->
-
-                <div class="iframe-camera">
-
-                  <iframe
-                    id="liveFrame"
-                    class="live-frame"
-                    title="Live Website Preview"
-                    loading="eager"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allow="fullscreen"
-                  ></iframe>
-
-                  <div class="glass-reflection"></div>
-
-                  <div
-                    class="human-cursor"
-                    id="humanCursor"
-                  ></div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="laptop-base"></div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             EMPTY STATE
-        ================================================== -->
-
-        <div
-          class="empty-state"
-          id="emptyState"
+        <button
+          class="header-btn primary"
+          id="openLiveTop"
+          type="button"
+          title="Open Live Website"
         >
-
-          <div class="empty-box">
-
-            <div class="empty-icon">
-              🌐
-            </div>
-
-            <h2>
-              No Website Selected
-            </h2>
-
-            <p>
-              This presentation could not find a valid website.
-              Add a Live Website URL from Admin → Websites,
-              then open the website presentation again.
-            </p>
-
-            <a href="../admin/websites.html">
-              Open Admin Websites
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             CONTROLS
-        ================================================== -->
-
-        <div class="controls">
-
-          <button
-            type="button"
-            class="control-button primary"
-            id="pauseButton"
-          >
-            <span id="pauseIcon">Ⅱ</span>
-            <span id="pauseText">Pause</span>
-          </button>
-
-          <button
-            type="button"
-            class="control-button"
-            id="restartButton"
-          >
-            ↻
-            Restart
-          </button>
-
-          <button
-            type="button"
-            class="control-button"
-            id="openButton"
-          >
-            ↗
-            Open Live
-          </button>
-
-          <a
-            href="../index.html"
-            class="control-button"
-          >
-            ←
-            Showcase
-          </a>
-
-        </div>
-
-      </section>
-
-
-      <!-- ===================================================
-           PROGRESS
-      ==================================================== -->
-
-      <section class="presentation-status">
-
-        <div class="progress-wrap">
-
-          <div class="progress-labels">
-
-            <span id="progressLabel">
-              Preparing presentation
-            </span>
-
-            <span id="progressPercent">
-              0%
-            </span>
-
-          </div>
-
-          <div class="progress-bar">
-
-            <div
-              class="progress-value"
-              id="progressValue"
-            ></div>
-
-          </div>
-
-        </div>
-
-
-        <div class="status-pill">
-
-          <span
-            class="status-dot"
-            id="statusDot"
-          ></span>
-
-          <span id="statusText">
-            Preparing
-          </span>
-
-        </div>
-
-      </section>
-
-
-      <!-- ===================================================
-           INFO CARDS
-      ==================================================== -->
-
-      <section class="bottom-grid">
-
-        <article class="info-card">
-
-          <div class="info-card-label">
-            Presentation Mode
-          </div>
-
-          <div class="info-card-value">
-            Human-like automatic browsing
-          </div>
-
-          <div class="info-card-small">
-            Smooth scrolling, reading pauses and a natural
-            return-to-top transition.
-          </div>
-
-        </article>
-
-
-        <article class="info-card">
-
-          <div class="info-card-label">
-            Speed
-          </div>
-
-          <div class="info-card-value">
-            Medium
-          </div>
-
-          <div class="info-card-small">
-            Designed to let visitors comfortably see the
-            website instead of rushing through it.
-          </div>
-
-        </article>
-
-
-        <article class="info-card">
-
-          <div class="info-card-label">
-            Keyboard
-          </div>
-
-          <div class="info-card-value">
-            Space · R · Esc
-          </div>
-
-          <div class="info-card-small">
-            Space = Pause/Resume · R = Restart · Esc = Pause
-          </div>
-
-        </article>
-
-      </section>
-
-
-      <!-- ===================================================
-           NOTICE
-      ==================================================== -->
-
-      <div class="frame-notice">
-
-        Live previews depend on the target website allowing
-        iframe embedding. Some websites may block embedding
-        through X-Frame-Options or Content-Security-Policy.
+          ↗ <span>Open Live</span>
+        </button>
 
       </div>
 
+    </div>
+  </header>
 
-      <!-- ===================================================
-           FOOTER
-      ==================================================== -->
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+  <main>
 
-      <footer class="page-footer">
+    <section class="stage">
+
+      <div class="stage-head">
 
         <div>
-          © <span id="footerYear"></span>
-          Website Deals
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            Live Presentation
+          </div>
+
+          <h1>
+            See it.<br>
+            <span>Feel it.</span>
+          </h1>
         </div>
 
-        <div class="footer-links">
+        <p class="stage-description">
+          Explore the website exactly as a real visitor would.
+          The presentation camera moves naturally through the page,
+          pauses for reading, reaches the bottom, then smoothly returns
+          to the top for another cycle.
+        </p>
 
-          <a href="../index.html">
-            Showcase
-          </a>
+      </div>
 
-          <a href="../admin/websites.html">
-            Admin Websites
-          </a>
+      <div class="presentation-wrap" id="presentationWrap">
 
+        <!-- DEVICE -->
+        <div class="device-shell">
+
+          <div class="camera-dot"></div>
+
+          <div class="screen">
+
+            <div class="site-camera">
+
+              <div class="loading" id="loading">
+                <div class="loader"></div>
+              </div>
+
+              <iframe
+                id="siteFrame"
+                title="Live Website Preview"
+                loading="eager"
+                referrerpolicy="strict-origin-when-cross-origin"
+                sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+              ></iframe>
+
+              <div
+                class="cursor"
+                id="cursor"
+                aria-hidden="true"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div class="device-base"></div>
+
+          <div class="device-logo">WD</div>
+
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="control-panel">
+
+          <div class="controls-left">
+
+            <button
+              class="control-btn primary labelled"
+              id="playPause"
+              type="button"
+            >
+              <span id="playIcon">Ⅱ</span>
+              <span id="playText">Pause</span>
+            </button>
+
+            <button
+              class="control-btn"
+              id="restart"
+              type="button"
+              title="Restart presentation"
+            >
+              ↻
+            </button>
+
+          </div>
+
+          <div class="progress-area">
+
+            <div class="progress-meta">
+              <span>Presentation Progress</span>
+              <strong id="progressText">0%</strong>
+            </div>
+
+            <div class="progress-track">
+              <div
+                class="progress-fill"
+                id="progressFill"
+              ></div>
+            </div>
+
+          </div>
+
+          <div class="controls-right">
+
+            <button
+              class="control-btn"
+              id="openLive"
+              type="button"
+            >
+              ↗ Open Live
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- SITE INFO -->
+        <div class="site-info">
+
+          <div class="site-meta">
+
+            <div
+              class="site-package"
+              id="sitePackage"
+            >
+              Website
+            </div>
+
+            <div
+              class="site-name"
+              id="siteName"
+            >
+              Loading website…
+            </div>
+
+            <div
+              class="site-url"
+              id="siteUrl"
+            >
+              Preparing live presentation
+            </div>
+
+          </div>
+
+          <div class="site-status">
+            <span class="status-light"></span>
+            <span id="statusText">Presentation ready</span>
+          </div>
+
+        </div>
+
+        <!-- NOTICE -->
+        <div class="notice">
+
+          <div class="notice-icon">i</div>
+
+          <div>
+            <strong>Live preview note:</strong>
+            Some websites may prevent embedding through
+            <b>X-Frame-Options</b> or Content Security Policy.
+            When that happens, use <b>Open Live</b> to view the
+            website directly. The presentation never attempts to
+            bypass those browser security protections.
+          </div>
+
+        </div>
+
+      </div>
+
+      <footer>
+
+        <div>
+          Website Deals · Premium Ready-Made Websites
+        </div>
+
+        <div class="footer-shortcuts">
+          <span>Shortcuts</span>
+          <kbd>Space</kbd>
+          <kbd>R</kbd>
+          <kbd>Esc</kbd>
         </div>
 
       </footer>
 
-    </div>
+    </section>
 
   </main>
-
 
   <!-- =======================================================
        STORE
   ======================================================== -->
-
   <script src="../shared/store.js"></script>
 
-
   <script>
-    /* =======================================================
-       WEBSITE DEALS — PRESENTATION ENGINE
-    ======================================================== */
-
     (() => {
-
       "use strict";
 
+      /* =====================================================
+         CONFIG
+      ===================================================== */
+
+      const DEFAULT_ORDER_URL =
+        "https://orders.websitedeals.com";
+
+      const DEFAULT_SITE =
+        "https://snkitinstitute.github.io";
+
+      /*
+        Medium-speed human-like presentation.
+
+        The iframe itself is intentionally tall.
+        Because cross-origin iframe DOM scrolling cannot be
+        directly controlled safely, the parent camera moves
+        the iframe with transform().
+      */
+
+      const CONFIG = {
+        speed: 1.18,
+        readingPause: 2600,
+        topPause: 1800,
+        bottomPause: 3200,
+        returnSpeed: 2.25,
+        cursorEnabled: true,
+        restartDelay: 500
+      };
 
       /* =====================================================
-         ELEMENTS
+         DOM
       ===================================================== */
 
       const frame =
-        document.getElementById("liveFrame");
+        document.getElementById("siteFrame");
 
-      const loader =
-        document.getElementById("screenLoader");
+      const loading =
+        document.getElementById("loading");
 
-      const emptyState =
-        document.getElementById("emptyState");
+      const cursor =
+        document.getElementById("cursor");
+
+      const playPause =
+        document.getElementById("playPause");
+
+      const playIcon =
+        document.getElementById("playIcon");
+
+      const playText =
+        document.getElementById("playText");
+
+      const restart =
+        document.getElementById("restart");
+
+      const openLive =
+        document.getElementById("openLive");
+
+      const openLiveTop =
+        document.getElementById("openLiveTop");
+
+      const progressFill =
+        document.getElementById("progressFill");
+
+      const progressText =
+        document.getElementById("progressText");
 
       const siteName =
         document.getElementById("siteName");
 
+      const siteUrl =
+        document.getElementById("siteUrl");
+
       const sitePackage =
         document.getElementById("sitePackage");
 
-      const pageTitle =
-        document.getElementById("pageTitle");
-
-      const pageDescription =
-        document.getElementById("pageDescription");
-
-      const pauseButton =
-        document.getElementById("pauseButton");
-
-      const pauseIcon =
-        document.getElementById("pauseIcon");
-
-      const pauseText =
-        document.getElementById("pauseText");
-
-      const restartButton =
-        document.getElementById("restartButton");
-
-      const openButton =
-        document.getElementById("openButton");
-
-      const humanCursor =
-        document.getElementById("humanCursor");
-
-      const progressValue =
-        document.getElementById("progressValue");
-
-      const progressPercent =
-        document.getElementById("progressPercent");
-
-      const progressLabel =
-        document.getElementById("progressLabel");
-
-      const statusDot =
-        document.getElementById("statusDot");
-
       const statusText =
         document.getElementById("statusText");
-
-
-      /* =====================================================
-         CONSTANTS
-      ===================================================== */
-
-      const MEDIUM_SPEED = 0.95;
-
-      const START_DELAY = 2600;
-
-      const READING_PAUSE_TOP = 3600;
-
-      const READING_PAUSE_MIDDLE = 1500;
-
-      const BOTTOM_PAUSE = 3600;
-
-      const RETURN_DURATION = 2600;
-
-      const CURSOR_MOVE_TIME = 1900;
-
 
       /* =====================================================
          STATE
@@ -2013,1223 +1428,832 @@
 
       let currentSite = null;
 
-      let currentUrl = "";
+      let running = true;
 
-      let paused = false;
-
-      let hiddenByVisibility = false;
+      let destroyed = false;
 
       let animationFrame = null;
 
-      let cycleStarted = false;
+      let lastTime = 0;
 
-      let cycleToken = 0;
+      let cameraY = 0;
 
-      let currentOffset = 0;
+      let phase = "topPause";
 
-      let maxOffset = 0;
+      let phaseStarted = performance.now();
 
-      let cycleStartTime = 0;
+      let returnStarted = false;
 
-      let currentPhase = "Preparing";
+      let cursorX = 42;
+
+      let cursorY = 38;
+
+      let targetCursorX = 42;
+
+      let targetCursorY = 38;
 
       let cursorTimer = null;
 
+      let availableHeight = 5000;
+
+      let viewportHeight = 500;
+
+      let maxCameraY = 4500;
+
+      let presentationCycle = 0;
+
+      let hiddenBeforePause = false;
 
       /* =====================================================
-         HELPERS
+         STORE HELPERS
       ===================================================== */
 
-      function safeUrl(url) {
-
-        if (!url) {
-          return "";
-        }
-
-        try {
-
-          const parsed =
-            new URL(
-              String(url).trim()
-            );
-
-          if (
-            parsed.protocol === "https:" ||
-            parsed.protocol === "http:"
-          ) {
-            return parsed.href;
-          }
-
-        } catch (error) {
-          return "";
-        }
-
-        return "";
+      function getStore(){
+        return window.WDStore || null;
       }
 
+      function safeReadSites(){
 
-      function getQuerySiteId() {
+        const store = getStore();
+
+        if(store && typeof store.load === "function"){
+          try{
+            return store.load() || [];
+          }catch(error){
+            console.warn("WDStore load failed:", error);
+          }
+        }
+
+        try{
+          return JSON.parse(
+            localStorage.getItem("websiteDealsWebsites") || "[]"
+          );
+        }catch(error){
+          return [];
+        }
+      }
+
+      function validUrl(value){
+
+        if(!value){
+          return false;
+        }
+
+        try{
+          const url = new URL(value);
+
+          return (
+            url.protocol === "http:" ||
+            url.protocol === "https:"
+          );
+
+        }catch(error){
+          return false;
+        }
+      }
+
+      function normalizeSite(site){
+
+        if(!site){
+          return null;
+        }
+
+        return {
+          id:
+            String(site.id || ""),
+
+          name:
+            site.name ||
+            "Premium Website",
+
+          package:
+            site.package ||
+            site.packageLabel ||
+            "website",
+
+          packageLabel:
+            site.packageLabel ||
+            site.package ||
+            "Website",
+
+          url:
+            site.url ||
+            "",
+
+          status:
+            site.status !== false,
+
+          showcase:
+            site.showcase !== false,
+
+          sort:
+            Number.isFinite(Number(site.sort))
+              ? Number(site.sort)
+              : 9999,
+
+          note:
+            site.note ||
+            ""
+        };
+      }
+
+      function getShowcaseSites(){
+
+        const list =
+          safeReadSites()
+            .map(normalizeSite)
+            .filter(Boolean)
+            .filter(site =>
+              site.status &&
+              site.showcase &&
+              validUrl(site.url)
+            )
+            .sort((a,b) =>
+              a.sort - b.sort
+            );
+
+        return list;
+      }
+
+      function getHeroSite(){
+
+        const sites =
+          getShowcaseSites();
+
+        if(!sites.length){
+          return null;
+        }
+
+        return sites[0];
+      }
+
+      function findSiteById(id){
+
+        if(!id){
+          return null;
+        }
+
+        const store = getStore();
+
+        if(
+          store &&
+          typeof store.find === "function"
+        ){
+
+          try{
+
+            const found =
+              store.find(id);
+
+            if(found){
+              return normalizeSite(found);
+            }
+
+          }catch(error){
+            console.warn(
+              "WDStore find failed:",
+              error
+            );
+          }
+        }
+
+        const sites =
+          safeReadSites();
+
+        const found =
+          sites.find(site =>
+            String(site.id || "") === String(id)
+          );
+
+        return normalizeSite(found);
+      }
+
+      /* =====================================================
+         QUERY PARAM
+      ===================================================== */
+
+      function getRequestedSite(){
 
         const params =
           new URLSearchParams(
             window.location.search
           );
 
-        return (
-          params.get("site") ||
-          params.get("id") ||
-          ""
-        );
-      }
+        const requestedId =
+          params.get("site");
 
-
-      function getSite() {
-
-        if (
-          !window.WDStore
-        ) {
-          return null;
-        }
-
-
-        const id =
-          getQuerySiteId();
-
-
-        if (id) {
+        if(requestedId){
 
           const found =
-            WDStore.find(id);
+            findSiteById(requestedId);
 
-          if (found) {
+          if(
+            found &&
+            validUrl(found.url)
+          ){
             return found;
           }
-
         }
 
-
-        const hero =
-          WDStore.hero();
-
-        if (hero) {
-          return hero;
-        }
-
-
-        const showcase =
-          WDStore.showcase();
-
-        if (
-          showcase &&
-          showcase.length
-        ) {
-
-          return showcase[0];
-
-        }
-
-
-        const active =
-          WDStore.active();
-
-        if (
-          active &&
-          active.length
-        ) {
-
-          return active[0];
-
-        }
-
-
-        return null;
+        return getHeroSite();
       }
-
-
-      function setStatus(
-        text,
-        type = "live"
-      ) {
-
-        statusText.textContent =
-          text;
-
-        statusDot.classList.remove(
-          "paused",
-          "error"
-        );
-
-        if (
-          type === "paused"
-        ) {
-
-          statusDot.classList.add(
-            "paused"
-          );
-
-        }
-
-        if (
-          type === "error"
-        ) {
-
-          statusDot.classList.add(
-            "error"
-          );
-
-        }
-
-      }
-
-
-      function setProgress(
-        value,
-        label
-      ) {
-
-        const safe =
-          Math.max(
-            0,
-            Math.min(
-              100,
-              value
-            )
-          );
-
-        progressValue.style.width =
-          safe + "%";
-
-        progressPercent.textContent =
-          Math.round(safe) + "%";
-
-        if (label) {
-          progressLabel.textContent =
-            label;
-        }
-
-      }
-
-
-      function clamp(
-        value,
-        min,
-        max
-      ) {
-
-        return Math.max(
-          min,
-          Math.min(
-            max,
-            value
-          )
-        );
-
-      }
-
 
       /* =====================================================
-         SITE UI
+         UI
       ===================================================== */
 
-      function renderSiteInfo(
-        site
-      ) {
+      function setSiteInfo(site){
 
-        const name =
-          site.name ||
-          "Live Website";
+        if(!site){
 
-        const pkg =
+          siteName.textContent =
+            "No showcase website available";
+
+          siteUrl.textContent =
+            "Add an active showcase website from Admin → Websites";
+
+          sitePackage.textContent =
+            "Presentation unavailable";
+
+          statusText.textContent =
+            "Waiting for website";
+
+          return;
+        }
+
+        siteName.textContent =
+          site.name;
+
+        siteUrl.textContent =
+          site.url;
+
+        sitePackage.textContent =
           site.packageLabel ||
           site.package ||
           "Website";
 
-
-        siteName.textContent =
-          name;
-
-        sitePackage.textContent =
-          String(pkg);
-
-
-        pageTitle.textContent =
-          name;
-
-
-        pageDescription.textContent =
-          "Explore " +
-          name +
-          " automatically through a smooth, human-like live presentation.";
-
+        statusText.textContent =
+          "Live presentation ready";
       }
 
-
       /* =====================================================
-         LOAD WEBSITE
+         LOAD FRAME
       ===================================================== */
 
-      function loadWebsite() {
+      function loadSite(site){
 
         currentSite =
-          getSite();
+          site;
 
+        setSiteInfo(site);
 
-        if (
-          !currentSite
-        ) {
+        if(!site || !validUrl(site.url)){
 
-          showEmpty();
-
-          return;
-
-        }
-
-
-        currentUrl =
-          safeUrl(
-            currentSite.url
-          );
-
-
-        if (
-          !currentUrl
-        ) {
-
-          showEmpty();
+          showEmptyState();
 
           return;
-
         }
 
+        loading.classList.remove("hidden");
 
-        renderSiteInfo(
-          currentSite
-        );
-
-
-        emptyState.classList.remove(
-          "show"
-        );
-
-
-        loader.classList.remove(
-          "hidden"
-        );
-
-
-        setStatus(
-          "Loading website"
-        );
-
-
-        frame.onload =
-          handleFrameLoaded;
-
-
-        frame.onerror =
-          handleFrameError;
-
+        statusText.textContent =
+          "Loading live website…";
 
         frame.src =
-          currentUrl;
+          site.url;
 
+        frame.addEventListener(
+          "load",
+          handleFrameLoad,
+          { once:true }
+        );
 
-        openButton.onclick =
+        frame.addEventListener(
+          "error",
           () => {
 
-            window.open(
-              currentUrl,
-              "_blank",
-              "noopener,noreferrer"
+            loading.classList.add(
+              "hidden"
             );
 
-          };
-
-      }
-
-
-      function showEmpty() {
-
-        loader.classList.add(
-          "hidden"
-        );
-
-        emptyState.classList.add(
-          "show"
-        );
-
-        setStatus(
-          "No website",
-          "error"
-        );
-
-        setProgress(
-          0,
-          "No website selected"
-        );
-
-      }
-
-
-      function handleFrameLoaded() {
-
-        loader.classList.add(
-          "hidden"
-        );
-
-
-        setStatus(
-          "Live"
-        );
-
-
-        setProgress(
-          0,
-          "Presentation ready"
-        );
-
-
-        setTimeout(
-          () => {
-
-            calculateDimensions();
-
-            startPresentation();
+            statusText.textContent =
+              "Preview could not load";
 
           },
-          START_DELAY
+          { once:true }
         );
 
       }
 
+      function handleFrameLoad(){
 
-      function handleFrameError() {
+        window.setTimeout(() => {
 
-        loader.classList.add(
-          "hidden"
-        );
-
-
-        setStatus(
-          "Preview unavailable",
-          "error"
-        );
-
-
-        setProgress(
-          0,
-          "Website could not be loaded"
-        );
-
-      }
-
-
-      /* =====================================================
-         DIMENSIONS
-      ===================================================== */
-
-      function calculateDimensions() {
-
-        const camera =
-          document.querySelector(
-            ".screen-glass"
+          loading.classList.add(
+            "hidden"
           );
 
+          statusText.textContent =
+            "Live presentation running";
 
-        if (!camera) {
+          recalculateCamera();
+
+        }, 500);
+
+      }
+
+      function showEmptyState(){
+
+        const parent =
+          document.querySelector(
+            ".presentation-wrap"
+          );
+
+        if(!parent){
           return;
         }
 
+        parent.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-inner">
+              <div class="empty-icon">◈</div>
+              <h2>No showcase website yet</h2>
+              <p>
+                Add an active website with
+                <strong>Showcase</strong> enabled from
+                Admin → Websites, then return here.
+              </p>
+              <br>
+              <a
+                class="header-btn primary"
+                href="../index.html#websites"
+                style="display:inline-flex;"
+              >
+                Back to Showcase
+              </a>
+            </div>
+          </div>
+        `;
+      }
 
-        const viewportHeight =
-          camera.clientHeight;
+      /* =====================================================
+         CAMERA
+      ===================================================== */
 
+      function recalculateCamera(){
 
-        const documentHeight =
-          7000;
+        const screen =
+          document.querySelector(
+            ".screen"
+          );
 
+        if(!screen){
+          return;
+        }
 
-        maxOffset =
+        viewportHeight =
+          screen.clientHeight;
+
+        /*
+          The iframe has a fixed virtual page height.
+          The camera range is the iframe height minus
+          the visible device viewport.
+        */
+
+        availableHeight =
           Math.max(
-            0,
-            documentHeight -
+            5000,
+            frame.offsetHeight ||
+            7000
+          );
+
+        maxCameraY =
+          Math.max(
+            300,
+            availableHeight -
             viewportHeight
           );
 
-
-        currentOffset =
-          clamp(
-            currentOffset,
-            0,
-            maxOffset
-          );
-
+        applyCamera();
       }
 
-
-      window.addEventListener(
-        "resize",
-        () => {
-
-          calculateDimensions();
-
-        }
-      );
-
-
-      /* =====================================================
-         FRAME POSITION
-      ===================================================== */
-
-      function applyOffset(
-        offset
-      ) {
-
-        currentOffset =
-          clamp(
-            offset,
-            0,
-            maxOffset
-          );
-
+      function applyCamera(){
 
         frame.style.transform =
-          "translate3d(0, -" +
-          currentOffset +
-          "px, 0)";
+          `translate3d(0,${-cameraY}px,0)`;
 
-
-        const percent =
-          maxOffset > 0
-            ? (
-                currentOffset /
-                maxOffset
-              ) * 100
+        const progress =
+          maxCameraY > 0
+            ? Math.min(
+                100,
+                Math.max(
+                  0,
+                  (cameraY / maxCameraY) * 100
+                )
+              )
             : 0;
 
+        progressFill.style.width =
+          `${progress}%`;
 
-        setProgress(
-          percent,
-          getPhaseLabel(percent)
-        );
-
+        progressText.textContent =
+          `${Math.round(progress)}%`;
       }
-
-
-      function getPhaseLabel(
-        percent
-      ) {
-
-        if (
-          percent < 4
-        ) {
-          return "Reading top section";
-        }
-
-        if (
-          percent < 30
-        ) {
-          return "Exploring website";
-        }
-
-        if (
-          percent < 65
-        ) {
-          return "Exploring content";
-        }
-
-        if (
-          percent < 92
-        ) {
-          return "Reviewing lower sections";
-        }
-
-        return "Reached bottom";
-      }
-
 
       /* =====================================================
-         PRESENTATION
+         HUMAN-LIKE MOTION
       ===================================================== */
 
-      function startPresentation() {
+      function startPresentation(){
 
-        cycleToken++;
+        running = true;
 
-        const token =
-          cycleToken;
+        playIcon.textContent = "Ⅱ";
+        playText.textContent = "Pause";
 
+        statusText.textContent =
+          "Live presentation running";
 
-        paused = false;
+        lastTime =
+          performance.now();
 
-        cycleStarted = true;
+        phaseStarted =
+          performance.now();
 
-        currentOffset = 0;
-
-        applyOffset(0);
-
-        setPauseButton();
-
-        moveCursorNaturally();
-
-        setStatus(
-          "Reading"
-        );
-
-
-        wait(
-          READING_PAUSE_TOP,
-          token
-        )
-        .then(
-          () => {
-
-            if (
-              !isTokenValid(token)
-            ) {
-              return;
-            }
-
-            return smoothScrollDown(
-              token
-            );
-
-          }
-        )
-        .then(
-          () => {
-
-            if (
-              !isTokenValid(token)
-            ) {
-              return;
-            }
-
-            return pauseAtBottom(
-              token
-            );
-
-          }
-        )
-        .then(
-          () => {
-
-            if (
-              !isTokenValid(token)
-            ) {
-              return;
-            }
-
-            return smoothReturnToTop(
-              token
-            );
-
-          }
-        )
-        .then(
-          () => {
-
-            if (
-              !isTokenValid(token)
-            ) {
-              return;
-            }
-
-            startPresentation();
-
-          }
-        );
-
-      }
-
-
-      function isTokenValid(
-        token
-      ) {
-
-        return (
-          token === cycleToken
-        );
-
-      }
-
-
-      /* =====================================================
-         WAIT
-      ===================================================== */
-
-      function wait(
-        duration,
-        token
-      ) {
-
-        return new Promise(
-          resolve => {
-
-            const started =
-              performance.now();
-
-
-            function check(
-              now
-            ) {
-
-              if (
-                !isTokenValid(
-                  token
-                )
-              ) {
-
-                resolve();
-
-                return;
-
-              }
-
-
-              if (
-                paused ||
-                hiddenByVisibility
-              ) {
-
-                requestAnimationFrame(
-                  check
-                );
-
-                return;
-
-              }
-
-
-              if (
-                now - started >=
-                duration
-              ) {
-
-                resolve();
-
-                return;
-
-              }
-
-
-              requestAnimationFrame(
-                check
-              );
-
-            }
-
-
+        if(!animationFrame){
+          animationFrame =
             requestAnimationFrame(
-              check
+              animate
             );
+        }
 
-          }
-        );
-
+        startCursor();
       }
 
+      function pausePresentation(){
 
-      /* =====================================================
-         SCROLL DOWN
-      ===================================================== */
+        running = false;
 
-      function smoothScrollDown(
-        token
-      ) {
+        playIcon.textContent = "▶";
+        playText.textContent = "Resume";
 
-        return new Promise(
-          resolve => {
+        statusText.textContent =
+          "Presentation paused";
 
-            const start =
-              currentOffset;
+        stopCursor();
+      }
 
-            const target =
-              maxOffset;
+      function togglePresentation(){
 
-            const distance =
-              Math.max(
-                1,
-                target - start
-              );
+        if(running){
+          pausePresentation();
+        }else{
+          startPresentation();
+        }
+      }
 
+      function restartPresentation(){
+
+        running = false;
+
+        cameraY = 0;
+
+        phase = "topPause";
+
+        phaseStarted =
+          performance.now();
+
+        presentationCycle++;
+
+        applyCamera();
+
+        statusText.textContent =
+          "Restarting presentation…";
+
+        setTimeout(() => {
+
+          if(destroyed){
+            return;
+          }
+
+          running = true;
+
+          playIcon.textContent = "Ⅱ";
+          playText.textContent = "Pause";
+
+          statusText.textContent =
+            "Live presentation running";
+
+          lastTime =
+            performance.now();
+
+          phaseStarted =
+            performance.now();
+
+          startCursor();
+
+        }, CONFIG.restartDelay);
+      }
+
+      function animate(now){
+
+        if(destroyed){
+          return;
+        }
+
+        animationFrame =
+          requestAnimationFrame(
+            animate
+          );
+
+        if(!running){
+          lastTime = now;
+          return;
+        }
+
+        const delta =
+          Math.min(
+            50,
+            Math.max(
+              0,
+              now - lastTime
+            )
+          );
+
+        lastTime = now;
+
+        const elapsed =
+          now - phaseStarted;
+
+        if(phase === "topPause"){
+
+          if(
+            elapsed >=
+            CONFIG.topPause
+          ){
+
+            phase =
+              "scroll";
+
+            phaseStarted =
+              now;
+          }
+
+        }else if(phase === "scroll"){
+
+          /*
+            Smooth variable speed creates a less robotic
+            movement than a constant pixel jump.
+          */
+
+          const wave =
+            Math.sin(
+              now / 850
+            ) * 0.16;
+
+          const speed =
+            CONFIG.speed +
+            wave;
+
+          cameraY +=
+            speed *
+            delta;
+
+          if(cameraY >= maxCameraY){
+
+            cameraY =
+              maxCameraY;
+
+            phase =
+              "bottomPause";
+
+            phaseStarted =
+              now;
+
+            statusText.textContent =
+              "Reading the bottom section…";
+          }
+
+        }else if(phase === "bottomPause"){
+
+          if(
+            elapsed >=
+            CONFIG.bottomPause
+          ){
+
+            phase =
+              "return";
+
+            phaseStarted =
+              now;
+
+            returnStarted =
+              true;
+
+            statusText.textContent =
+              "Returning to top…";
+          }
+
+        }else if(phase === "return"){
+
+          /*
+            Return is intentionally faster than the reading
+            journey but still smooth.
+          */
+
+          cameraY -=
+            CONFIG.returnSpeed *
+            delta;
+
+          if(cameraY <= 0){
+
+            cameraY = 0;
+
+            phase =
+              "topPause";
+
+            phaseStarted =
+              now;
+
+            presentationCycle++;
+
+            returnStarted =
+              false;
+
+            statusText.textContent =
+              "Live presentation running";
+          }
+
+        }
+
+        /*
+          Reading pauses every cycle at natural sections.
+          The movement itself remains continuous but gentle.
+        */
+
+        if(
+          phase === "scroll" &&
+          cameraY > 0 &&
+          cameraY < maxCameraY
+        ){
+
+          const sectionSize =
+            maxCameraY / 5;
+
+          const sectionIndex =
+            Math.floor(
+              cameraY / sectionSize
+            );
+
+          const sectionProgress =
+            cameraY %
+            sectionSize;
+
+          if(
+            sectionProgress < 2 &&
+            sectionIndex > 0 &&
+            sectionIndex < 5
+          ){
 
             /*
-              Medium human-like speed.
-
-              The actual duration is based on
-              document distance rather than a
-              tiny fixed animation.
+              Tiny natural slowdown.
             */
-
-            const duration =
-              clamp(
-                distance /
-                MEDIUM_SPEED,
-                14500,
-                28000
-              );
-
-
-            let startedAt =
-              null;
-
-            setStatus(
-              "Exploring"
-            );
-
-
-            function tick(
-              timestamp
-            ) {
-
-              if (
-                !isTokenValid(
-                  token
-                )
-              ) {
-
-                resolve();
-
-                return;
-
-              }
-
-
-              if (
-                paused ||
-                hiddenByVisibility
-              ) {
-
-                animationFrame =
-                  requestAnimationFrame(
-                    tick
-                  );
-
-                return;
-
-              }
-
-
-              if (
-                startedAt === null
-              ) {
-
-                startedAt =
-                  timestamp;
-
-              }
-
-
-              const elapsed =
-                timestamp -
-                startedAt;
-
-
-              const raw =
-                clamp(
-                  elapsed /
-                  duration,
-                  0,
-                  1
-                );
-
-
-              /*
-                Ease in and out.
-
-                This prevents robotic
-                constant-speed movement.
-              */
-
-              const eased =
-                raw < 0.5
-                  ? 2 * raw * raw
-                  : 1 -
-                    Math.pow(
-                      -2 * raw + 2,
-                      2
-                    ) / 2;
-
-
-              const offset =
-                start +
-                (
-                  target -
-                  start
-                ) *
-                eased;
-
-
-              applyOffset(
-                offset
-              );
-
-
-              /*
-                Human reading rhythm:
-                tiny pauses at natural
-                content intervals.
-              */
-
-              const percent =
-                target > 0
-                  ? (
-                      offset /
-                      target
-                    ) * 100
-                  : 0;
-
-
-              if (
-                percent > 25 &&
-                percent < 27
-              ) {
-
-                /*
-                  Small visual slowdown,
-                  not a hard stop.
-                */
-
-              }
-
-
-              if (
-                percent > 53 &&
-                percent < 55
-              ) {
-
-                /*
-                  Another natural slowdown.
-                */
-
-              }
-
-
-              if (
-                raw >= 1
-              ) {
-
-                applyOffset(
-                  target
-                );
-
-                setStatus(
-                  "Bottom reached"
-                );
-
-                resolve();
-
-                return;
-
-              }
-
-
-              animationFrame =
-                requestAnimationFrame(
-                  tick
-                );
-
-            }
-
-
-            animationFrame =
-              requestAnimationFrame(
-                tick
-              );
-
+            cameraY +=
+              speedPause(delta);
           }
-        );
-
-      }
-
-
-      /* =====================================================
-         BOTTOM PAUSE
-      ===================================================== */
-
-      function pauseAtBottom(
-        token
-      ) {
-
-        setStatus(
-          "Reading bottom section"
-        );
-
-
-        moveCursorToBottom();
-
-
-        return wait(
-          BOTTOM_PAUSE,
-          token
-        );
-
-      }
-
-
-      /* =====================================================
-         RETURN TOP
-      ===================================================== */
-
-      function smoothReturnToTop(
-        token
-      ) {
-
-        return new Promise(
-          resolve => {
-
-            const start =
-              currentOffset;
-
-            const target =
-              0;
-
-            let startedAt =
-              null;
-
-
-            setStatus(
-              "Returning to top"
-            );
-
-
-            function tick(
-              timestamp
-            ) {
-
-              if (
-                !isTokenValid(
-                  token
-                )
-              ) {
-
-                resolve();
-
-                return;
-
-              }
-
-
-              if (
-                paused ||
-                hiddenByVisibility
-              ) {
-
-                animationFrame =
-                  requestAnimationFrame(
-                    tick
-                  );
-
-                return;
-
-              }
-
-
-              if (
-                startedAt === null
-              ) {
-
-                startedAt =
-                  timestamp;
-
-              }
-
-
-              const elapsed =
-                timestamp -
-                startedAt;
-
-
-              const raw =
-                clamp(
-                  elapsed /
-                  RETURN_DURATION,
-                  0,
-                  1
-                );
-
-
-              const eased =
-                1 -
-                Math.pow(
-                  1 - raw,
-                  3
-                );
-
-
-              const offset =
-                start +
-                (
-                  target -
-                  start
-                ) *
-                eased;
-
-
-              applyOffset(
-                offset
-              );
-
-
-              if (
-                raw >= 1
-              ) {
-
-                applyOffset(
-                  0
-                );
-
-                setStatus(
-                  "Reading"
-                );
-
-                moveCursorNaturally();
-
-                resolve();
-
-                return;
-
-              }
-
-
-              animationFrame =
-                requestAnimationFrame(
-                  tick
-                );
-
-            }
-
-
-            animationFrame =
-              requestAnimationFrame(
-                tick
-              );
-
-          }
-        );
-
-      }
-
-
-      /* =====================================================
-         PAUSE / RESUME
-      ===================================================== */
-
-      function togglePause() {
-
-        paused =
-          !paused;
-
-
-        setPauseButton();
-
-
-        if (
-          paused
-        ) {
-
-          setStatus(
-            "Paused",
-            "paused"
-          );
-
-          hideCursor();
-
-        } else {
-
-          setStatus(
-            "Live"
-          );
-
-          moveCursorNaturally();
-
         }
 
+        applyCamera();
+
+        animateCursor(now);
       }
 
+      function speedPause(delta){
 
-      function setPauseButton() {
+        /*
+          Small damping movement during section transitions.
+          Keeps the presentation from feeling mechanically fast.
+        */
 
-        if (
-          paused
-        ) {
+        return delta * 0.16;
+      }
 
-          pauseIcon.textContent =
-            "▶";
+      /* =====================================================
+         CURSOR
+      ===================================================== */
 
-          pauseText.textContent =
-            "Resume";
+      function startCursor(){
 
-        } else {
-
-          pauseIcon.textContent =
-            "Ⅱ";
-
-          pauseText.textContent =
-            "Pause";
-
+        if(!CONFIG.cursorEnabled){
+          return;
         }
 
+        cursor.style.opacity =
+          "1";
+
+        if(cursorTimer){
+          return;
+        }
+
+        cursorTimer =
+          setInterval(() => {
+
+            targetCursorX =
+              18 +
+              Math.random() * 64;
+
+            targetCursorY =
+              20 +
+              Math.random() * 62;
+
+          }, 2100);
       }
 
+      function stopCursor(){
 
-      pauseButton.addEventListener(
+        cursor.style.opacity =
+          "0";
+
+        if(cursorTimer){
+
+          clearInterval(
+            cursorTimer
+          );
+
+          cursorTimer = null;
+        }
+      }
+
+      function animateCursor(){
+
+        if(
+          !CONFIG.cursorEnabled ||
+          !running
+        ){
+          return;
+        }
+
+        cursorX +=
+          (targetCursorX - cursorX) *
+          0.035;
+
+        cursorY +=
+          (targetCursorY - cursorY) *
+          0.035;
+
+        cursor.style.left =
+          `${cursorX}%`;
+
+        cursor.style.top =
+          `${cursorY}%`;
+      }
+
+      /* =====================================================
+         OPEN LIVE
+      ===================================================== */
+
+      function openCurrentSite(){
+
+        if(
+          !currentSite ||
+          !validUrl(currentSite.url)
+        ){
+          return;
+        }
+
+        window.open(
+          currentSite.url,
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }
+
+      openLive.addEventListener(
         "click",
-        togglePause
+        openCurrentSite
       );
 
-
-      /* =====================================================
-         RESTART
-      ===================================================== */
-
-      restartButton.addEventListener(
+      openLiveTop.addEventListener(
         "click",
-        () => {
-
-          cycleToken++;
-
-          cancelAnimationFrame(
-            animationFrame
-          );
-
-          paused = false;
-
-          currentOffset = 0;
-
-          applyOffset(0);
-
-          setPauseButton();
-
-          setStatus(
-            "Restarting"
-          );
-
-          hideCursor();
-
-
-          setTimeout(
-            () => {
-
-              if (
-                !paused
-              ) {
-
-                startPresentation();
-
-              }
-
-            },
-            500
-          );
-
-        }
+        openCurrentSite
       );
 
+      /* =====================================================
+         CONTROLS
+      ===================================================== */
+
+      playPause.addEventListener(
+        "click",
+        togglePresentation
+      );
+
+      restart.addEventListener(
+        "click",
+        restartPresentation
+      );
 
       /* =====================================================
-         KEYBOARD
+         KEYBOARD SHORTCUTS
       ===================================================== */
 
       document.addEventListener(
@@ -3237,393 +2261,264 @@
         event => {
 
           /*
-            Don't hijack typing.
+            Do not intercept typing when an input or textarea
+            is focused.
           */
 
           const tag =
-            document.activeElement
-              ?.tagName
-              ?.toLowerCase();
+            event.target &&
+            event.target.tagName
+              ? event.target.tagName.toLowerCase()
+              : "";
 
-
-          if (
+          if(
             tag === "input" ||
-            tag === "textarea"
-          ) {
-
+            tag === "textarea" ||
+            tag === "select"
+          ){
             return;
-
           }
 
-
-          if (
-            event.code === "Space"
-          ) {
+          if(event.code === "Space"){
 
             event.preventDefault();
 
-            togglePause();
+            togglePresentation();
 
+            return;
           }
 
-
-          if (
+          if(
             event.key.toLowerCase() === "r"
-          ) {
+          ){
 
-            restartButton.click();
+            event.preventDefault();
 
+            restartPresentation();
+
+            return;
           }
 
-
-          if (
+          if(
             event.key === "Escape"
-          ) {
+          ){
 
-            if (
-              !paused
-            ) {
+            event.preventDefault();
 
-              paused = true;
-
-              setPauseButton();
-
-              setStatus(
-                "Paused",
-                "paused"
-              );
-
-              hideCursor();
-
-            }
+            pausePresentation();
 
           }
 
         }
       );
 
-
       /* =====================================================
-         VISIBILITY
+         VISIBILITY HANDLING
       ===================================================== */
 
       document.addEventListener(
         "visibilitychange",
         () => {
 
-          if (
-            document.hidden
-          ) {
+          if(document.hidden){
 
-            hiddenByVisibility =
-              true;
+            hiddenBeforePause =
+              running;
+
+            if(running){
+              pausePresentation();
+            }
+
+            statusText.textContent =
+              "Presentation paused while page is hidden";
+
+          }else{
 
             /*
-              We preserve the current
-              presentation position.
-
-              Browsers may throttle background
-              animation automatically.
+              Browser tabs/windows may be throttled while
+              backgrounded or minimized. We intentionally
+              resume only after the page becomes visible.
             */
 
-            cancelAnimationFrame(
-              animationFrame
-            );
+            if(hiddenBeforePause){
 
-          } else {
+              startPresentation();
 
-            hiddenByVisibility =
+            }else{
+
+              statusText.textContent =
+                running
+                  ? "Live presentation running"
+                  : "Presentation paused";
+            }
+
+            hiddenBeforePause =
               false;
 
-            /*
-              Resume rendering from the
-              exact current position.
-            */
+            lastTime =
+              performance.now();
 
-            setStatus(
-              paused
-                ? "Paused"
-                : "Live",
-              paused
-                ? "paused"
-                : "live"
-            );
+            phaseStarted =
+              performance.now();
+          }
 
-            moveCursorNaturally();
+        }
+      );
+
+      /* =====================================================
+         RESIZE
+      ===================================================== */
+
+      window.addEventListener(
+        "resize",
+        () => {
+
+          recalculateCamera();
+
+        }
+      );
+
+      /* =====================================================
+         STORAGE CHANGES
+      ===================================================== */
+
+      window.addEventListener(
+        "storage",
+        event => {
+
+          if(
+            event.key ===
+            "websiteDealsWebsites"
+          ){
+
+            const requested =
+              getRequestedSite();
+
+            if(
+              requested &&
+              currentSite &&
+              String(requested.id) !==
+              String(currentSite.id)
+            ){
+
+              loadSite(
+                requested
+              );
+
+            }else if(
+              requested &&
+              !currentSite
+            ){
+
+              loadSite(
+                requested
+              );
+            }
 
           }
 
         }
       );
 
-
       /* =====================================================
-         HUMAN CURSOR
+         STORE CHANGE SUPPORT
       ===================================================== */
 
-      function hideCursor() {
-
-        humanCursor.classList.remove(
-          "visible"
-        );
-
-      }
-
-
-      function moveCursorNaturally() {
-
-        if (
-          paused ||
-          hiddenByVisibility
-        ) {
-
-          return;
-
-        }
-
-
-        clearTimeout(
-          cursorTimer
-        );
-
-
-        humanCursor.classList.add(
-          "visible"
-        );
-
-
-        const positions = [
-          {
-            left: "27%",
-            top: "28%"
-          },
-          {
-            left: "55%",
-            top: "33%"
-          },
-          {
-            left: "70%",
-            top: "48%"
-          },
-          {
-            left: "42%",
-            top: "57%"
-          },
-          {
-            left: "66%",
-            top: "68%"
-          }
-        ];
-
-
-        const position =
-          positions[
-            Math.floor(
-              Math.random() *
-              positions.length
-            )
-          ];
-
-
-        humanCursor.style.left =
-          position.left;
-
-        humanCursor.style.top =
-          position.top;
-
-
-        cursorTimer =
-          setTimeout(
-            () => {
-
-              if (
-                !paused &&
-                !hiddenByVisibility
-              ) {
-
-                moveCursorNaturally();
-
-              }
-
-            },
-            CURSOR_MOVE_TIME +
-            2600 +
-            Math.random() * 1800
-          );
-
-      }
-
-
-      function moveCursorToBottom() {
-
-        if (
-          paused
-        ) {
-
-          return;
-
-        }
-
-
-        humanCursor.classList.add(
-          "visible"
-        );
-
-
-        humanCursor.style.left =
-          "68%";
-
-        humanCursor.style.top =
-          "76%";
-
-      }
-
-
-      /* =====================================================
-         SALAH HIGHLIGHT
-      ===================================================== */
-
-      function updatePrayer() {
-
-        const now =
-          new Date();
-
-
-        const minutes =
-          now.getHours() * 60 +
-          now.getMinutes();
-
-
-        const prayers =
-          Array.from(
-            document.querySelectorAll(
-              ".prayer"
-            )
-          );
-
-
-        let nextIndex =
-          -1;
-
-
-        let nextMinutes =
-          Infinity;
-
-
-        prayers.forEach(
-          (prayer, index) => {
-
-            const time =
-              prayer.dataset.time;
-
-
-            if (
-              !time
-            ) {
-              return;
-            }
-
-
-            const parts =
-              time.split(":");
-
-
-            const hour =
-              Number(parts[0]);
-
-
-            const minute =
-              Number(parts[1]);
-
-
-            const prayerMinutes =
-              hour * 60 +
-              minute;
-
-
-            let difference =
-              prayerMinutes -
-              minutes;
-
-
-            if (
-              difference < 0
-            ) {
-
-              difference +=
-                24 * 60;
+      try{
+
+        const store =
+          getStore();
+
+        if(
+          store &&
+          typeof store.onChange === "function"
+        ){
+
+          store.onChange(() => {
+
+            const requested =
+              getRequestedSite();
+
+            if(
+              requested &&
+              (
+                !currentSite ||
+                String(requested.id) !==
+                String(currentSite.id)
+              )
+            ){
+
+              loadSite(
+                requested
+              );
 
             }
 
-
-            if (
-              difference <
-              nextMinutes
-            ) {
-
-              nextMinutes =
-                difference;
-
-              nextIndex =
-                index;
-
-            }
-
-          }
-        );
-
-
-        prayers.forEach(
-          prayer => {
-
-            prayer.classList.remove(
-              "next"
-            );
-
-          }
-        );
-
-
-        if (
-          nextIndex >= 0
-        ) {
-
-          prayers[
-            nextIndex
-          ].classList.add(
-            "next"
-          );
+          });
 
         }
 
+      }catch(error){
+
+        console.warn(
+          "Store listener unavailable:",
+          error
+        );
+
       }
-
-
-      updatePrayer();
-
-
-      setInterval(
-        updatePrayer,
-        60000
-      );
-
-
-      /* =====================================================
-         FOOTER YEAR
-      ===================================================== */
-
-      document.getElementById(
-        "footerYear"
-      ).textContent =
-        new Date().getFullYear();
-
 
       /* =====================================================
          INITIALIZE
       ===================================================== */
 
-      loadWebsite();
+      function init(){
 
+        const requested =
+          getRequestedSite();
+
+        if(!requested){
+
+          showEmptyState();
+
+          return;
+        }
+
+        loadSite(
+          requested
+        );
+
+        recalculateCamera();
+
+        startPresentation();
+
+      }
+
+      init();
+
+      /* =====================================================
+         CLEANUP
+      ===================================================== */
+
+      window.addEventListener(
+        "beforeunload",
+        () => {
+
+          destroyed = true;
+
+          if(animationFrame){
+            cancelAnimationFrame(
+              animationFrame
+            );
+          }
+
+          if(cursorTimer){
+            clearInterval(
+              cursorTimer
+            );
+          }
+
+        }
+      );
 
     })();
   </script>
