@@ -1,659 +1,3281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#080909">
-<title>Settings | Website Deals Admin</title>
+  <meta charset="UTF-8">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-<style>
-:root{
-  --bg:#070808;
-  --panel:#101313;
-  --panel2:#151818;
-  --border:rgba(255,255,255,.08);
-  --text:#f4f7f5;
-  --muted:#929a96;
-  --lime:#b7ff00;
-  --red:#ff5d6c;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 75% 0%,rgba(183,255,0,.08),transparent 30%),
-    var(--bg);
-  font-family:Inter,Arial,sans-serif;
-}
-a{text-decoration:none;color:inherit}
-button,input{font:inherit}
+  <meta
+    name="theme-color"
+    content="#080909"
+  >
 
-.sidebar{
-  position:fixed;
-  left:0;top:0;bottom:0;
-  width:255px;
-  background:#0a0b0b;
-  border-right:1px solid var(--border);
-  padding:24px 16px;
-  z-index:20;
-}
-.logo{
-  display:flex;
-  gap:11px;
-  align-items:center;
-  padding:4px 10px 25px;
-}
-.logo-mark{
-  width:38px;height:38px;
-  border-radius:12px;
-  display:grid;
-  place-items:center;
-  background:var(--lime);
-  color:#070808;
-  font-weight:900;
-}
-.logo strong{font-family:"Space Grotesk"}
-.logo small{
-  display:block;
-  color:var(--muted);
-  font-size:10px;
-  margin-top:3px;
-}
-.nav-title{
-  color:#5f6863;
-  text-transform:uppercase;
-  font-size:10px;
-  letter-spacing:.13em;
-  font-weight:800;
-  padding:16px 11px 8px;
-}
-.nav a{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:#aeb5b1;
-  padding:12px;
-  margin:3px 0;
-  border-radius:12px;
-  font-size:13px;
-  font-weight:600;
-}
-.nav a:hover{background:#171a1a;color:#fff}
-.nav a.active{
-  color:var(--lime);
-  background:rgba(183,255,0,.1);
-}
-.nav-icon{width:18px;text-align:center}
+  <meta
+    name="description"
+    content="Website Deals Admin Settings — Manage branding, showcase, presentation and support settings."
+  >
 
-.main{
-  margin-left:255px;
-  min-height:100vh;
-}
-.topbar{
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 34px;
-  border-bottom:1px solid var(--border);
-  background:rgba(7,8,8,.84);
-  backdrop-filter:blur(18px);
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.topbar h1{
-  font-family:"Space Grotesk";
-  margin:0;
-  font-size:19px;
-}
-.topbar p{
-  color:var(--muted);
-  margin:4px 0 0;
-  font-size:11px;
-}
-.actions{display:flex;gap:8px}
-.btn{
-  border:1px solid var(--border);
-  background:#141717;
-  color:#fff;
-  border-radius:11px;
-  padding:10px 14px;
-  font-size:12px;
-  font-weight:700;
-  cursor:pointer;
-}
-.btn.primary{
-  background:var(--lime);
-  color:#080909;
-  border-color:var(--lime);
-}
-.btn.danger{
-  color:#ff8791;
-  border-color:rgba(255,93,108,.2);
-}
+  <title>Settings | Website Deals Admin</title>
 
-.content{
-  padding:34px;
-  max-width:1050px;
-}
-.hero h2{
-  margin:0;
-  font-family:"Space Grotesk";
-  font-size:34px;
-  letter-spacing:-.04em;
-}
-.hero p{
-  margin:9px 0 27px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.7;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-.settings-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-.panel{
-  background:linear-gradient(180deg,#131717,#0e1010);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:21px;
-}
-.panel.full{grid-column:1/-1}
-.panel-head{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  margin-bottom:20px;
-}
-.panel-icon{
-  width:39px;height:39px;
-  border-radius:12px;
-  background:#1a1e1e;
-  display:grid;
-  place-items:center;
-  color:var(--lime);
-}
-.panel h3{
-  font-family:"Space Grotesk";
-  font-size:16px;
-  margin:0;
-}
-.panel p{
-  color:var(--muted);
-  font-size:11px;
-  margin:4px 0 0;
-}
-.field{margin-bottom:15px}
-label{
-  display:block;
-  color:#aeb5b1;
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:7px;
-}
-input{
-  width:100%;
-  border:1px solid var(--border);
-  background:#0b0d0d;
-  color:#fff;
-  border-radius:11px;
-  padding:12px;
-  outline:none;
-}
-input:focus{
-  border-color:rgba(183,255,0,.55);
-}
-.row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  padding:13px 0;
-  border-top:1px solid var(--border);
-}
-.row:first-of-type{border-top:0}
-.row strong{
-  display:block;
-  font-size:12px;
-}
-.row span{
-  display:block;
-  color:var(--muted);
-  font-size:10px;
-  margin-top:3px;
-  line-height:1.5;
-}
-.switch{
-  position:relative;
-  width:44px;height:25px;
-  flex:none;
-}
-.switch input{display:none}
-.slider{
-  position:absolute;
-  inset:0;
-  background:#292e2e;
-  border-radius:999px;
-  cursor:pointer;
-  transition:.2s;
-}
-.slider:before{
-  content:"";
-  position:absolute;
-  width:19px;height:19px;
-  left:3px;top:3px;
-  border-radius:50%;
-  background:#fff;
-  transition:.2s;
-}
-.switch input:checked + .slider{
-  background:var(--lime);
-}
-.switch input:checked + .slider:before{
-  transform:translateX(19px);
-  background:#080909;
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-.domain{
-  display:flex;
-  gap:8px;
-}
-.domain input{flex:1}
-.status{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  color:var(--lime);
-  font-size:10px;
-  font-weight:800;
-}
-.dot{
-  width:7px;height:7px;
-  border-radius:50%;
-  background:var(--lime);
-}
-.footer-actions{
-  margin-top:20px;
-  display:flex;
-  justify-content:flex-end;
-  gap:8px;
-}
+  <style>
+    :root{
+      --bg:#080909;
+      --bg-soft:#0d0f0f;
+      --card:#111414;
+      --card-2:#151818;
 
-.danger-box{
-  border-color:rgba(255,93,108,.16);
-}
-.danger-box .panel-icon{color:#ff6875}
+      --line:rgba(255,255,255,.08);
+      --line-strong:rgba(255,255,255,.14);
 
-.toast{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  background:#eaffb0;
-  color:#101300;
-  padding:13px 16px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:800;
-  opacity:0;
-  transform:translateY(15px);
-  pointer-events:none;
-  transition:.25s;
-  z-index:100;
-}
-.toast.show{
-  opacity:1;
-  transform:translateY(0);
-}
+      --text:#f4f7f4;
+      --muted:#8d9692;
+      --muted-2:#626b67;
 
-@media(max-width:900px){
-  .settings-grid{grid-template-columns:1fr}
-  .panel.full{grid-column:auto}
-}
-@media(max-width:800px){
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.25s;
-  }
-  .sidebar.open{transform:translateX(0)}
-  .main{margin-left:0}
-  .topbar{padding:0 18px}
-  .content{padding:22px 16px}
-  .menu-btn{display:block!important}
-}
-.menu-btn{display:none}
-@media(max-width:560px){
-  .domain{display:block}
-  .domain .btn{margin-top:8px;width:100%}
-}
-</style>
+      --lime:#b7ff00;
+      --lime-soft:rgba(183,255,0,.09);
+      --lime-border:rgba(183,255,0,.25);
+
+      --danger:#ff5d68;
+      --danger-soft:rgba(255,93,104,.09);
+
+      --blue:#72a8ff;
+      --blue-soft:rgba(114,168,255,.09);
+
+      --orange:#ffb65c;
+      --orange-soft:rgba(255,182,92,.09);
+
+      --radius:20px;
+      --shadow:0 25px 80px rgba(0,0,0,.35);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      background:
+        radial-gradient(
+          circle at 80% 0%,
+          rgba(183,255,0,.055),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 10% 80%,
+          rgba(114,168,255,.035),
+          transparent 25%
+        ),
+        var(--bg);
+      color:var(--text);
+      font-family:"Inter","Hind Siliguri",sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+      font:inherit;
+    }
+
+    button{
+      cursor:pointer;
+    }
+
+    /* =====================================================
+       LAYOUT
+    ====================================================== */
+
+    .app{
+      min-height:100vh;
+      display:flex;
+    }
+
+    /* =====================================================
+       SIDEBAR
+    ====================================================== */
+
+    .sidebar{
+      position:fixed;
+      inset:0 auto 0 0;
+      width:260px;
+      min-height:100vh;
+      z-index:100;
+      padding:22px 16px;
+      display:flex;
+      flex-direction:column;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(18,20,20,.98),
+          rgba(8,9,9,.98)
+        );
+
+      border-right:1px solid var(--line);
+
+      transition:.25s ease;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      padding:5px 10px 24px;
+
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:13px;
+
+      background:var(--lime);
+      color:#080909;
+
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:800;
+      font-size:17px;
+
+      box-shadow:
+        0 0 30px rgba(183,255,0,.12);
+    }
+
+    .brand-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:-.02em;
+    }
+
+    .brand-sub{
+      margin-top:3px;
+      color:var(--muted);
+      font-size:10px;
+    }
+
+    .nav-label{
+      padding:25px 12px 9px;
+
+      color:#4f5754;
+
+      font-size:10px;
+      font-weight:800;
+
+      text-transform:uppercase;
+      letter-spacing:.15em;
+    }
+
+    .nav{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+
+    .nav a{
+      min-height:44px;
+
+      display:flex;
+      align-items:center;
+      gap:12px;
+
+      padding:0 13px;
+
+      border-radius:13px;
+
+      color:#8d9692;
+
+      font-size:13px;
+      font-weight:600;
+
+      transition:.2s ease;
+    }
+
+    .nav a:hover{
+      background:rgba(255,255,255,.045);
+      color:#fff;
+    }
+
+    .nav a.active{
+      color:var(--lime);
+      background:var(--lime-soft);
+      border:1px solid rgba(183,255,0,.08);
+    }
+
+    .nav-icon{
+      width:22px;
+      text-align:center;
+      font-size:16px;
+    }
+
+    .sidebar-bottom{
+      margin-top:auto;
+    }
+
+    .admin-mini{
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      padding:13px;
+
+      border:1px solid var(--line);
+      border-radius:16px;
+
+      background:rgba(255,255,255,.025);
+    }
+
+    .avatar{
+      width:34px;
+      height:34px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:50%;
+
+      background:#1c211e;
+      border:1px solid var(--line-strong);
+
+      color:var(--lime);
+
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .admin-name{
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .admin-role{
+      margin-top:2px;
+      color:var(--muted-2);
+      font-size:10px;
+    }
+
+    /* =====================================================
+       MAIN
+    ====================================================== */
+
+    .main{
+      width:calc(100% - 260px);
+      min-height:100vh;
+
+      margin-left:260px;
+    }
+
+    .topbar{
+      height:76px;
+
+      position:sticky;
+      top:0;
+      z-index:80;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      padding:0 34px;
+
+      background:rgba(8,9,9,.82);
+      border-bottom:1px solid var(--line);
+
+      backdrop-filter:blur(20px);
+    }
+
+    .topbar-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .menu-btn{
+      display:none;
+
+      width:40px;
+      height:40px;
+
+      border:1px solid var(--line);
+      border-radius:12px;
+
+      background:var(--card);
+      color:#fff;
+    }
+
+    .breadcrumb{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .breadcrumb strong{
+      color:#fff;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:9px;
+    }
+
+    .top-btn{
+      min-height:40px;
+
+      padding:0 14px;
+
+      border:1px solid var(--line);
+      border-radius:11px;
+
+      background:rgba(255,255,255,.025);
+      color:#b9c0bd;
+
+      font-size:11px;
+      font-weight:800;
+
+      transition:.2s ease;
+    }
+
+    .top-btn:hover{
+      border-color:var(--lime-border);
+      color:var(--lime);
+    }
+
+    /* =====================================================
+       PAGE
+    ====================================================== */
+
+    .page{
+      width:min(1500px,100%);
+      margin:auto;
+
+      padding:38px 34px 70px;
+    }
+
+    .page-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+
+      gap:25px;
+      margin-bottom:28px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+
+      margin-bottom:10px;
+
+      color:var(--lime);
+
+      font-size:10px;
+      font-weight:800;
+
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+
+    .eyebrow-dot{
+      width:6px;
+      height:6px;
+
+      border-radius:50%;
+
+      background:var(--lime);
+
+      box-shadow:
+        0 0 12px var(--lime);
+    }
+
+    h1{
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:clamp(30px,4vw,48px);
+      line-height:1;
+
+      letter-spacing:-.05em;
+    }
+
+    .page-desc{
+      max-width:650px;
+
+      margin-top:13px;
+
+      color:var(--muted);
+
+      font-size:13px;
+      line-height:1.75;
+    }
+
+    .head-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      min-height:44px;
+
+      padding:0 17px;
+
+      border:1px solid var(--line);
+      border-radius:12px;
+
+      background:var(--card);
+      color:#fff;
+
+      font-size:11px;
+      font-weight:800;
+
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:var(--line-strong);
+    }
+
+    .btn-primary{
+      background:var(--lime);
+      border-color:var(--lime);
+      color:#080909;
+    }
+
+    .btn-primary:hover{
+      box-shadow:
+        0 12px 30px rgba(183,255,0,.12);
+    }
+
+    /* =====================================================
+       STATUS
+    ====================================================== */
+
+    .save-status{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+
+      margin-bottom:24px;
+
+      padding:9px 12px;
+
+      border:1px solid var(--line);
+      border-radius:999px;
+
+      background:rgba(255,255,255,.025);
+
+      color:var(--muted);
+
+      font-size:10px;
+      font-weight:700;
+    }
+
+    .save-dot{
+      width:7px;
+      height:7px;
+
+      border-radius:50%;
+
+      background:var(--lime);
+
+      box-shadow:
+        0 0 10px rgba(183,255,0,.45);
+    }
+
+    .save-dot.dirty{
+      background:var(--orange);
+      box-shadow:none;
+    }
+
+    /* =====================================================
+       SETTINGS GRID
+    ====================================================== */
+
+    .settings-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+    }
+
+    .settings-card{
+      border:1px solid var(--line);
+      border-radius:22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.038),
+          rgba(255,255,255,.012)
+        );
+
+      box-shadow:var(--shadow);
+
+      overflow:hidden;
+    }
+
+    .settings-card.full{
+      grid-column:1 / -1;
+    }
+
+    .card-head{
+      padding:20px 22px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:15px;
+
+      border-bottom:1px solid var(--line);
+    }
+
+    .card-title{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:17px;
+      letter-spacing:-.03em;
+    }
+
+    .card-sub{
+      margin-top:4px;
+
+      color:var(--muted);
+      font-size:10px;
+      line-height:1.5;
+    }
+
+    .card-icon{
+      width:38px;
+      height:38px;
+
+      display:grid;
+      place-items:center;
+
+      border-radius:12px;
+
+      background:var(--lime-soft);
+      border:1px solid rgba(183,255,0,.12);
+
+      color:var(--lime);
+
+      font-size:16px;
+    }
+
+    .card-body{
+      padding:22px;
+    }
+
+    /* =====================================================
+       FORM
+    ====================================================== */
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    .field label{
+      display:block;
+
+      margin-bottom:7px;
+
+      color:#9ba39f;
+
+      font-size:10px;
+      font-weight:800;
+    }
+
+    .field-note{
+      margin-top:5px;
+
+      color:var(--muted-2);
+
+      font-size:9px;
+      line-height:1.5;
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width:100%;
+
+      outline:none;
+
+      padding:11px 12px;
+
+      border:1px solid var(--line);
+      border-radius:11px;
+
+      background:#0a0c0c;
+      color:#fff;
+
+      font-size:12px;
+
+      transition:.2s ease;
+    }
+
+    .field textarea{
+      min-height:92px;
+      resize:vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color:var(--lime-border);
+
+      box-shadow:
+        0 0 0 3px rgba(183,255,0,.035);
+    }
+
+    /* =====================================================
+       TOGGLES
+    ====================================================== */
+
+    .toggle-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .toggle-row{
+      min-height:62px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:15px;
+
+      padding:13px 14px;
+
+      border:1px solid var(--line);
+      border-radius:14px;
+
+      background:rgba(255,255,255,.018);
+    }
+
+    .toggle-copy{
+      min-width:0;
+    }
+
+    .toggle-title{
+      color:#e3e7e5;
+
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .toggle-desc{
+      margin-top:4px;
+
+      color:var(--muted-2);
+
+      font-size:9px;
+      line-height:1.5;
+    }
+
+    .switch{
+      position:relative;
+
+      width:44px;
+      height:24px;
+
+      flex:0 0 auto;
+    }
+
+    .switch input{
+      opacity:0;
+      width:0;
+      height:0;
+    }
+
+    .slider{
+      position:absolute;
+      inset:0;
+
+      border-radius:999px;
+
+      background:#262b29;
+
+      border:1px solid var(--line-strong);
+
+      transition:.2s ease;
+    }
+
+    .slider::before{
+      content:"";
+
+      position:absolute;
+
+      width:18px;
+      height:18px;
+
+      left:2px;
+      top:2px;
+
+      border-radius:50%;
+
+      background:#77807b;
+
+      transition:.2s ease;
+    }
+
+    .switch input:checked + .slider{
+      background:var(--lime);
+      border-color:var(--lime);
+    }
+
+    .switch input:checked + .slider::before{
+      transform:translateX(20px);
+      background:#080909;
+    }
+
+    /* =====================================================
+       RANGE
+    ====================================================== */
+
+    .range-wrap{
+      padding:15px;
+
+      border:1px solid var(--line);
+      border-radius:14px;
+
+      background:rgba(255,255,255,.018);
+    }
+
+    .range-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      margin-bottom:13px;
+    }
+
+    .range-title{
+      color:#dfe4e1;
+
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .range-value{
+      color:var(--lime);
+
+      font-family:"Space Grotesk",sans-serif;
+
+      font-size:13px;
+      font-weight:700;
+    }
+
+    input[type="range"]{
+      width:100%;
+      accent-color:var(--lime);
+      cursor:pointer;
+    }
+
+    /* =====================================================
+       RADIO / OPTIONS
+    ====================================================== */
+
+    .option-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:9px;
+    }
+
+    .option{
+      position:relative;
+    }
+
+    .option input{
+      position:absolute;
+      opacity:0;
+    }
+
+    .option label{
+      min-height:76px;
+
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+
+      gap:5px;
+
+      border:1px solid var(--line);
+      border-radius:13px;
+
+      background:rgba(255,255,255,.018);
+
+      color:#9ba39f;
+
+      cursor:pointer;
+
+      text-align:center;
+
+      transition:.2s ease;
+    }
+
+    .option label strong{
+      color:#dfe4e1;
+      font-size:11px;
+    }
+
+    .option label span{
+      color:var(--muted-2);
+      font-size:9px;
+    }
+
+    .option input:checked + label{
+      border-color:var(--lime-border);
+      background:var(--lime-soft);
+    }
+
+    .option input:checked + label strong{
+      color:var(--lime);
+    }
+
+    /* =====================================================
+       PREVIEW
+    ====================================================== */
+
+    .preview-box{
+      min-height:260px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:25px;
+
+      border:1px solid var(--line);
+      border-radius:17px;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(183,255,0,.08),
+          transparent 45%
+        ),
+        #090b0b;
+    }
+
+    .preview-browser{
+      width:100%;
+      max-width:560px;
+
+      overflow:hidden;
+
+      border:1px solid var(--line-strong);
+      border-radius:15px;
+
+      background:#111414;
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.5);
+    }
+
+    .browser-bar{
+      height:34px;
+
+      display:flex;
+      align-items:center;
+
+      gap:7px;
+
+      padding:0 11px;
+
+      border-bottom:1px solid var(--line);
+
+      background:#151818;
+    }
+
+    .browser-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#555d59;
+    }
+
+    .browser-url{
+      flex:1;
+
+      margin-left:4px;
+
+      height:20px;
+
+      display:flex;
+      align-items:center;
+
+      padding:0 9px;
+
+      border-radius:6px;
+
+      background:#0b0d0d;
+
+      color:#59615e;
+
+      font-size:8px;
+    }
+
+    .preview-content{
+      padding:24px;
+    }
+
+    .preview-hero{
+      min-height:100px;
+
+      display:flex;
+      align-items:flex-end;
+
+      padding:18px;
+
+      border-radius:12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(183,255,0,.18),
+          rgba(255,255,255,.03)
+        );
+    }
+
+    .preview-hero h3{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:20px;
+      letter-spacing:-.04em;
+    }
+
+    .preview-lines{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:8px;
+
+      margin-top:12px;
+    }
+
+    .preview-line{
+      height:54px;
+
+      border-radius:9px;
+
+      background:#191d1c;
+
+      border:1px solid var(--line);
+    }
+
+    /* =====================================================
+       DANGER
+    ====================================================== */
+
+    .danger-card{
+      border-color:rgba(255,93,104,.16);
+    }
+
+    .danger-card .card-icon{
+      background:var(--danger-soft);
+      color:var(--danger);
+      border-color:rgba(255,93,104,.15);
+    }
+
+    .danger-box{
+      padding:15px;
+
+      border:1px solid rgba(255,93,104,.12);
+      border-radius:14px;
+
+      background:var(--danger-soft);
+    }
+
+    .danger-box strong{
+      display:block;
+
+      color:#ff8c94;
+
+      font-size:11px;
+    }
+
+    .danger-box p{
+      margin-top:5px;
+
+      color:#9e777a;
+
+      font-size:9px;
+      line-height:1.6;
+    }
+
+    /* =====================================================
+       FOOTER ACTIONS
+    ====================================================== */
+
+    .save-bar{
+      margin-top:20px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:15px;
+
+      padding:16px 18px;
+
+      border:1px solid var(--line);
+      border-radius:17px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(183,255,0,.045),
+          rgba(255,255,255,.015)
+        );
+    }
+
+    .save-copy strong{
+      display:block;
+
+      color:#e6ebe8;
+
+      font-size:11px;
+    }
+
+    .save-copy span{
+      display:block;
+
+      margin-top:3px;
+
+      color:var(--muted-2);
+
+      font-size:9px;
+    }
+
+    .save-actions{
+      display:flex;
+      gap:8px;
+    }
+
+    /* =====================================================
+       TOAST
+    ====================================================== */
+
+    .toast{
+      position:fixed;
+
+      right:22px;
+      bottom:22px;
+
+      z-index:1000;
+
+      min-width:260px;
+
+      padding:14px 16px;
+
+      border:1px solid var(--lime-border);
+      border-radius:14px;
+
+      background:#111414;
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
+
+      transform:translateY(25px);
+      opacity:0;
+
+      pointer-events:none;
+
+      transition:.25s ease;
+    }
+
+    .toast.show{
+      transform:translateY(0);
+      opacity:1;
+    }
+
+    .toast strong{
+      display:block;
+
+      color:var(--lime);
+
+      font-size:11px;
+    }
+
+    .toast span{
+      display:block;
+
+      margin-top:4px;
+
+      color:var(--muted);
+
+      font-size:10px;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+    @media(max-width:1050px){
+
+      .settings-grid{
+        grid-template-columns:1fr;
+      }
+
+      .settings-card.full{
+        grid-column:auto;
+      }
+
+      .sidebar{
+        transform:translateX(-100%);
+      }
+
+      .sidebar.open{
+        transform:translateX(0);
+      }
+
+      .main{
+        width:100%;
+        margin-left:0;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+    }
+
+    @media(max-width:700px){
+
+      .topbar{
+        padding:0 15px;
+      }
+
+      .top-actions .top-btn{
+        display:none;
+      }
+
+      .page{
+        padding:25px 15px 50px;
+      }
+
+      .page-head{
+        display:block;
+      }
+
+      .head-actions{
+        margin-top:18px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .option-grid{
+        grid-template-columns:1fr;
+      }
+
+      .save-bar{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .save-actions{
+        width:100%;
+      }
+
+      .save-actions .btn{
+        flex:1;
+      }
+
+      .preview-content{
+        padding:14px;
+      }
+
+      .preview-lines{
+        grid-template-columns:1fr;
+      }
+
+    }
+  </style>
 </head>
 
 <body>
 
-<aside class="sidebar" id="sidebar">
-  <div class="logo">
-    <div class="logo-mark">WD</div>
-    <div>
-      <strong>Website Deals</strong>
-      <small>ADMIN PANEL</small>
+<div class="app">
+
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="brand">
+
+      <div class="brand-mark">
+        WD
+      </div>
+
+      <div>
+
+        <div class="brand-title">
+          Website Deals
+        </div>
+
+        <div class="brand-sub">
+          Premium Admin Panel
+        </div>
+
+      </div>
+
     </div>
-  </div>
 
-  <nav class="nav">
-    <div class="nav-title">Workspace</div>
-    <a href="./dashboard.html"><span class="nav-icon">⌂</span>Dashboard</a>
-    <a href="./websites.html"><span class="nav-icon">◫</span>Websites</a>
-    <a href="./packages.html"><span class="nav-icon">◇</span>Packages</a>
-    <a href="./presentation.html"><span class="nav-icon">▶</span>Presentation</a>
 
-    <div class="nav-title">Public</div>
-    <a href="../index.html#websites"><span class="nav-icon">↗</span>Public Showcase</a>
-    <a href="../index.html"><span class="nav-icon">▦</span>Main Website</a>
-    <a href="https://support.websitedeals.com" target="_blank" rel="noopener">
-      <span class="nav-icon">?</span>Support
-    </a>
-  </nav>
-</aside>
+    <div class="nav-label">
+      Management
+    </div>
 
-<main class="main">
+    <nav class="nav">
 
-<header class="topbar">
-  <div>
-    <h1>Settings</h1>
-    <p>Control the presentation wall and admin preferences.</p>
-  </div>
+      <a href="./dashboard.html">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
 
-  <div class="actions">
-    <button class="btn menu-btn" onclick="toggleSidebar()">☰</button>
-    <a class="btn" href="../index.html">Main Website</a>
-    <button class="btn primary" onclick="saveSettings()">Save Changes</button>
-  </div>
-</header>
+      <a href="./websites.html">
+        <span class="nav-icon">◫</span>
+        <span>Websites</span>
+      </a>
 
-<section class="content">
+      <a href="./packages.html">
+        <span class="nav-icon">◈</span>
+        <span>Packages</span>
+      </a>
 
-<div class="hero">
-  <h2>System Settings</h2>
-  <p>
-    Simple controls for the Website Deals presentation system.
-    Website links and package content remain managed from their own admin pages.
-  </p>
+      <a href="./presentation.html">
+        <span class="nav-icon">▶</span>
+        <span>Presentation</span>
+      </a>
+
+      <a
+        href="./settings.html"
+        class="active"
+      >
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+      </a>
+
+    </nav>
+
+
+    <div class="nav-label">
+      Public
+    </div>
+
+    <nav class="nav">
+
+      <a
+        href="../index.html"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="nav-icon">↗</span>
+        <span>Public Showcase</span>
+      </a>
+
+      <a
+        href="../../index.html"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="nav-icon">⌘</span>
+        <span>Main Website</span>
+      </a>
+
+      <a
+        href="https://support.websitedeals.com"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="nav-icon">?</span>
+        <span>Support</span>
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <div class="admin-mini">
+
+        <div class="avatar">
+          A
+        </div>
+
+        <div>
+
+          <div class="admin-name">
+            Administrator
+          </div>
+
+          <div class="admin-role">
+            Website Deals Admin
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+        <div class="breadcrumb">
+          Admin / <strong>Settings</strong>
+        </div>
+
+      </div>
+
+
+      <div class="top-actions">
+
+        <a
+          class="top-btn"
+          href="../index.html"
+          target="_blank"
+          rel="noopener"
+        >
+          View Showcase ↗
+        </a>
+
+        <button
+          class="top-btn"
+          id="logoutBtn"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <section class="page">
+
+      <!-- PAGE HEADER -->
+
+      <div class="page-head">
+
+        <div>
+
+          <div class="eyebrow">
+
+            <span class="eyebrow-dot"></span>
+
+            System Configuration
+
+          </div>
+
+          <h1>
+            Settings
+          </h1>
+
+          <p class="page-desc">
+            Control your Website Deals branding, public showcase,
+            live website presentation, support information and
+            animation behaviour from one premium control center.
+          </p>
+
+        </div>
+
+
+        <div class="head-actions">
+
+          <button
+            class="btn"
+            id="resetBtn"
+          >
+            Reset
+          </button>
+
+          <button
+            class="btn btn-primary"
+            id="saveTopBtn"
+          >
+            Save Changes
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- SAVE STATUS -->
+
+      <div class="save-status">
+
+        <span
+          class="save-dot"
+          id="saveDot"
+        ></span>
+
+        <span id="saveStatusText">
+          All changes saved
+        </span>
+
+      </div>
+
+
+      <!-- =================================================
+           SETTINGS
+      ================================================== -->
+
+      <div class="settings-grid">
+
+
+        <!-- =================================================
+             BRANDING
+        ================================================== -->
+
+        <section class="settings-card">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Brand & Identity
+              </div>
+
+              <div class="card-sub">
+                Control the public-facing Website Deals identity.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              ◉
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label>
+                  Brand Name
+                </label>
+
+                <input
+                  id="brandName"
+                  type="text"
+                  placeholder="Website Deals"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Short Name
+                </label>
+
+                <input
+                  id="shortName"
+                  type="text"
+                  placeholder="Website Deals"
+                >
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Tagline
+                </label>
+
+                <input
+                  id="tagline"
+                  type="text"
+                  placeholder="Premium Ready-Made Websites"
+                >
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Meta Description
+                </label>
+
+                <textarea
+                  id="metaDescription"
+                  placeholder="Premium ready-made websites..."
+                ></textarea>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================== -->
+
+        <section class="settings-card">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Contact & Support
+              </div>
+
+              <div class="card-sub">
+                Public support and contact destinations.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              ?
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="form-grid">
+
+              <div class="field full">
+
+                <label>
+                  Support Website
+                </label>
+
+                <input
+                  id="supportUrl"
+                  type="url"
+                  placeholder="https://support.websitedeals.com"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Support Email
+                </label>
+
+                <input
+                  id="supportEmail"
+                  type="email"
+                  placeholder="support@websitedeals.com"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  WhatsApp Number
+                </label>
+
+                <input
+                  id="whatsapp"
+                  type="text"
+                  placeholder="+8801XXXXXXXXX"
+                >
+
+              </div>
+
+
+              <div class="field full">
+
+                <label>
+                  Support Message
+                </label>
+
+                <textarea
+                  id="supportMessage"
+                  placeholder="Need help choosing a website?"
+                ></textarea>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SHOWCASE
+        ================================================== -->
+
+        <section class="settings-card">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Website Showcase
+              </div>
+
+              <div class="card-sub">
+                Configure how real websites appear inside fixed cards.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              ◫
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="toggle-list">
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Enable Live Showcase
+                  </div>
+
+                  <div class="toggle-desc">
+                    Show real website previews on the public website.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="showcaseEnabled"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Auto Presentation
+                  </div>
+
+                  <div class="toggle-desc">
+                    Automatically animate website previews without clicking.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="autoPresentation"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Human-like Cursor
+                  </div>
+
+                  <div class="toggle-desc">
+                    Display subtle cursor movement during presentation.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="humanCursor"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Pause on Hover
+                  </div>
+
+                  <div class="toggle-desc">
+                    Pause website animation while the visitor hovers over a card.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="pauseOnHover"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PRESENTATION
+        ================================================== -->
+
+        <section class="settings-card">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Presentation Behaviour
+              </div>
+
+              <div class="card-sub">
+                Fine-tune the live website camera animation.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              ▶
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="range-wrap">
+
+              <div class="range-top">
+
+                <div class="range-title">
+                  Scroll Speed
+                </div>
+
+                <div
+                  class="range-value"
+                  id="speedValue"
+                >
+                  1.0×
+                </div>
+
+              </div>
+
+              <input
+                id="scrollSpeed"
+                type="range"
+                min="0.5"
+                max="2"
+                step="0.1"
+                value="1"
+              >
+
+            </div>
+
+
+            <div
+              style="
+                height:10px;
+              "
+            ></div>
+
+
+            <div class="range-wrap">
+
+              <div class="range-top">
+
+                <div class="range-title">
+                  Reading Pause
+                </div>
+
+                <div
+                  class="range-value"
+                  id="pauseValue"
+                >
+                  2.5s
+                </div>
+
+              </div>
+
+              <input
+                id="readingPause"
+                type="range"
+                min="0"
+                max="6"
+                step="0.5"
+                value="2.5"
+              >
+
+            </div>
+
+
+            <div
+              style="
+                height:14px;
+              "
+            ></div>
+
+
+            <div class="option-grid">
+
+              <div class="option">
+
+                <input
+                  type="radio"
+                  name="presentationMode"
+                  id="modeSmooth"
+                  value="smooth"
+                >
+
+                <label for="modeSmooth">
+
+                  <strong>
+                    Smooth
+                  </strong>
+
+                  <span>
+                    Slow & elegant
+                  </span>
+
+                </label>
+
+              </div>
+
+
+              <div class="option">
+
+                <input
+                  type="radio"
+                  name="presentationMode"
+                  id="modeNatural"
+                  value="natural"
+                  checked
+                >
+
+                <label for="modeNatural">
+
+                  <strong>
+                    Natural
+                  </strong>
+
+                  <span>
+                    Human-like
+                  </span>
+
+                </label>
+
+              </div>
+
+
+              <div class="option">
+
+                <input
+                  type="radio"
+                  name="presentationMode"
+                  id="modeFast"
+                  value="fast"
+                >
+
+                <label for="modeFast">
+
+                  <strong>
+                    Fast
+                  </strong>
+
+                  <span>
+                    Quick showcase
+                  </span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PUBLIC PAGE
+        ================================================== -->
+
+        <section class="settings-card">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Public Website
+              </div>
+
+              <div class="card-sub">
+                Control the main presentation page behaviour.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              ↗
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="toggle-list">
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Show Package Section
+                  </div>
+
+                  <div class="toggle-desc">
+                    Display Starter, Business and Premium packages.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="showPackages"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Show Websites Section
+                  </div>
+
+                  <div class="toggle-desc">
+                    Display all managed real websites.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="showWebsites"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Show Salah Section
+                  </div>
+
+                  <div class="toggle-desc">
+                    Keep the Salah timing section visible.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="showSalah"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+
+              <div class="toggle-row">
+
+                <div class="toggle-copy">
+
+                  <div class="toggle-title">
+                    Show About Section
+                  </div>
+
+                  <div class="toggle-desc">
+                    Display the Website Deals introduction.
+                  </div>
+
+                </div>
+
+                <label class="switch">
+
+                  <input
+                    id="showAbout"
+                    type="checkbox"
+                  >
+
+                  <span class="slider"></span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PREVIEW
+        ================================================== -->
+
+        <section class="settings-card">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Interface Preview
+              </div>
+
+              <div class="card-sub">
+                Quick visual representation of your public showcase.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              ✦
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="preview-box">
+
+              <div class="preview-browser">
+
+                <div class="browser-bar">
+
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+                  <span class="browser-dot"></span>
+
+                  <div class="browser-url">
+                    package.websitedeals.com
+                  </div>
+
+                </div>
+
+
+                <div class="preview-content">
+
+                  <div class="preview-hero">
+
+                    <div>
+
+                      <div
+                        style="
+                          color:#b7ff00;
+                          font-size:8px;
+                          font-weight:800;
+                          letter-spacing:.14em;
+                          text-transform:uppercase;
+                          margin-bottom:7px;
+                        "
+                      >
+                        Premium Digital Marketplace
+                      </div>
+
+                      <h3>
+                        <span id="previewBrand">
+                          Website Deals
+                        </span>
+                      </h3>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="preview-lines">
+
+                    <div class="preview-line"></div>
+                    <div class="preview-line"></div>
+                    <div class="preview-line"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ADVANCED
+        ================================================== -->
+
+        <section class="settings-card full">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Advanced Settings
+              </div>
+
+              <div class="card-sub">
+                Optional system-level preferences for the showcase experience.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              ⚙
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label>
+                  Default Language
+                </label>
+
+                <select id="language">
+
+                  <option value="bn">
+                    বাংলা
+                  </option>
+
+                  <option value="en">
+                    English
+                  </option>
+
+                  <option value="bn-en">
+                    বাংলা + English
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Default Currency
+                </label>
+
+                <select id="currency">
+
+                  <option value="BDT">
+                    BDT — ৳
+                  </option>
+
+                  <option value="USD">
+                    USD — $
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Presentation Device
+                </label>
+
+                <select id="deviceMode">
+
+                  <option value="desktop">
+                    Desktop
+                  </option>
+
+                  <option value="laptop">
+                    Laptop
+                  </option>
+
+                  <option value="tablet">
+                    Tablet
+                  </option>
+
+                  <option value="mobile">
+                    Mobile
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field">
+
+                <label>
+                  Default Website Sort
+                </label>
+
+                <select id="websiteSort">
+
+                  <option value="manual">
+                    Manual Order
+                  </option>
+
+                  <option value="name">
+                    Name
+                  </option>
+
+                  <option value="package">
+                    Package
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DANGER
+        ================================================== -->
+
+        <section class="settings-card danger-card full">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Data Controls
+              </div>
+
+              <div class="card-sub">
+                Be careful before clearing local Website Deals settings.
+              </div>
+
+            </div>
+
+            <div class="card-icon">
+              !
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+            <div class="danger-box">
+
+              <strong>
+                Clear local settings
+              </strong>
+
+              <p>
+                This removes the Website Deals settings saved in this
+                browser. Your actual website files are not deleted.
+                Website records and package data are stored separately.
+              </p>
+
+              <button
+                class="btn"
+                id="clearSettingsBtn"
+                style="
+                  margin-top:12px;
+                  color:#ff7a83;
+                  border-color:rgba(255,93,104,.20);
+                  background:rgba(255,93,104,.05);
+                "
+              >
+                Clear Settings
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+      </div>
+
+
+      <!-- SAVE BAR -->
+
+      <div class="save-bar">
+
+        <div class="save-copy">
+
+          <strong>
+            Website Deals Configuration
+          </strong>
+
+          <span>
+            Settings are stored locally and can later be connected to Firebase.
+          </span>
+
+        </div>
+
+
+        <div class="save-actions">
+
+          <button
+            class="btn"
+            id="previewBtn"
+          >
+            Open Showcase
+          </button>
+
+          <button
+            class="btn btn-primary"
+            id="saveBottomBtn"
+          >
+            Save Settings
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
 </div>
 
-<div class="settings-grid">
 
-  <section class="panel">
-    <div class="panel-head">
-      <div class="panel-icon">◉</div>
-      <div>
-        <h3>Marketplace Identity</h3>
-        <p>Basic public information.</p>
-      </div>
-    </div>
+<!-- TOAST -->
 
-    <div class="field">
-      <label>Marketplace Name</label>
-      <input id="siteName">
-    </div>
+<div
+  class="toast"
+  id="toast"
+>
 
-    <div class="field">
-      <label>Tagline</label>
-      <input id="tagline">
-    </div>
+  <strong id="toastTitle">
+    Saved
+  </strong>
 
-    <div class="field">
-      <label>Support URL</label>
-      <input id="supportUrl">
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="panel-head">
-      <div class="panel-icon">◌</div>
-      <div>
-        <h3>Presentation Behaviour</h3>
-        <p>Control the live website showcase.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Auto Presentation</strong>
-        <span>Automatically move website previews.</span>
-      </div>
-      <label class="switch">
-        <input type="checkbox" id="autoPresentation">
-        <span class="slider"></span>
-      </label>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Human-like Cursor</strong>
-        <span>Show subtle cursor movement in previews.</span>
-      </div>
-      <label class="switch">
-        <input type="checkbox" id="humanCursor">
-        <span class="slider"></span>
-      </label>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Loop Presentation</strong>
-        <span>Return to the top after reaching the bottom.</span>
-      </div>
-      <label class="switch">
-        <input type="checkbox" id="loopPresentation">
-        <span class="slider"></span>
-      </label>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="panel-head">
-      <div class="panel-icon">↗</div>
-      <div>
-        <h3>Live Website Behaviour</h3>
-        <p>Default actions for client presentation.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Open Live in New Tab</strong>
-        <span>Use the real website URL when Explore is clicked.</span>
-      </div>
-      <label class="switch">
-        <input type="checkbox" id="openLive">
-        <span class="slider"></span>
-      </label>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Show LIVE Badge</strong>
-        <span>Display live status on website cards.</span>
-      </div>
-      <label class="switch">
-        <input type="checkbox" id="liveBadge">
-        <span class="slider"></span>
-      </label>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Pause When Tab Hidden</strong>
-        <span>Reduce presentation activity when the page is hidden.</span>
-      </div>
-      <label class="switch">
-        <input type="checkbox" id="pauseHidden">
-        <span class="slider"></span>
-      </label>
-    </div>
-  </section>
-
-  <section class="panel">
-    <div class="panel-head">
-      <div class="panel-icon">▣</div>
-      <div>
-        <h3>Domain</h3>
-        <p>Primary public package address.</p>
-      </div>
-    </div>
-
-    <div class="field">
-      <label>Package Domain</label>
-      <div class="domain">
-        <input id="domain">
-        <button class="btn" type="button" onclick="openDomain()">Open</button>
-      </div>
-    </div>
-
-    <div class="status">
-      <span class="dot"></span>
-      Settings are stored locally
-    </div>
-  </section>
-
-  <section class="panel full danger-box">
-    <div class="panel-head">
-      <div class="panel-icon">!</div>
-      <div>
-        <h3>Local Data</h3>
-        <p>Manage locally saved Website Deals admin data.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Reset Package Settings</strong>
-        <span>Restore the default package-management settings.</span>
-      </div>
-      <button class="btn danger" onclick="resetSettings()">Reset</button>
-    </div>
-
-    <div class="row">
-      <div>
-        <strong>Clear Saved Website Data</strong>
-        <span>Removes locally stored website records from this browser.</span>
-      </div>
-      <button class="btn danger" onclick="clearWebsites()">Clear</button>
-    </div>
-  </section>
+  <span id="toastMessage">
+    Settings saved successfully.
+  </span>
 
 </div>
 
-<div class="footer-actions">
-  <button class="btn" onclick="loadSettings()">Discard Changes</button>
-  <button class="btn primary" onclick="saveSettings()">Save Settings</button>
-</div>
-
-</section>
-</main>
-
-<div class="toast" id="toast"></div>
 
 <script>
-const SETTINGS_KEY="websiteDealsSettings";
+  /* =========================================================
+     WEBSITE DEALS
+     ADMIN SETTINGS
+  ========================================================= */
 
-const defaults={
-  siteName:"Website Deals",
-  tagline:"Premium Ready-Made Websites",
-  supportUrl:"https://support.websitedeals.com",
-  domain:"https://package.websitedeals.com",
-  autoPresentation:true,
-  humanCursor:true,
-  loopPresentation:true,
-  openLive:true,
-  liveBadge:true,
-  pauseHidden:true
-};
+  const SETTINGS_KEY =
+    "websiteDealsSettings";
 
-function getSettings(){
-  try{
-    const data=JSON.parse(localStorage.getItem(SETTINGS_KEY));
-    return {...defaults,...(data||{})};
-  }catch{
-    return {...defaults};
-  }
-}
 
-function loadSettings(){
-  const s=getSettings();
+  const defaultSettings = {
 
-  document.getElementById("siteName").value=s.siteName;
-  document.getElementById("tagline").value=s.tagline;
-  document.getElementById("supportUrl").value=s.supportUrl;
-  document.getElementById("domain").value=s.domain;
+    brandName:
+      "Website Deals",
 
-  document.getElementById("autoPresentation").checked=!!s.autoPresentation;
-  document.getElementById("humanCursor").checked=!!s.humanCursor;
-  document.getElementById("loopPresentation").checked=!!s.loopPresentation;
-  document.getElementById("openLive").checked=!!s.openLive;
-  document.getElementById("liveBadge").checked=!!s.liveBadge;
-  document.getElementById("pauseHidden").checked=!!s.pauseHidden;
-}
+    shortName:
+      "Website Deals",
 
-function saveSettings(){
-  const data={
-    siteName:document.getElementById("siteName").value.trim(),
-    tagline:document.getElementById("tagline").value.trim(),
-    supportUrl:document.getElementById("supportUrl").value.trim(),
-    domain:document.getElementById("domain").value.trim(),
+    tagline:
+      "Premium Ready-Made Websites",
 
-    autoPresentation:document.getElementById("autoPresentation").checked,
-    humanCursor:document.getElementById("humanCursor").checked,
-    loopPresentation:document.getElementById("loopPresentation").checked,
-    openLive:document.getElementById("openLive").checked,
-    liveBadge:document.getElementById("liveBadge").checked,
-    pauseHidden:document.getElementById("pauseHidden").checked
+    metaDescription:
+      "Premium ready-made websites, monthly website packages and live website presentation by Website Deals.",
+
+    supportUrl:
+      "https://support.websitedeals.com",
+
+    supportEmail:
+      "support@websitedeals.com",
+
+    whatsapp:
+      "",
+
+    supportMessage:
+      "Need help choosing a website? Our support team is ready to help.",
+
+
+    showcaseEnabled:
+      true,
+
+    autoPresentation:
+      true,
+
+    humanCursor:
+      true,
+
+    pauseOnHover:
+      true,
+
+
+    scrollSpeed:
+      1,
+
+    readingPause:
+      2.5,
+
+    presentationMode:
+      "natural",
+
+
+    showPackages:
+      true,
+
+    showWebsites:
+      true,
+
+    showSalah:
+      true,
+
+    showAbout:
+      true,
+
+
+    language:
+      "bn-en",
+
+    currency:
+      "BDT",
+
+    deviceMode:
+      "desktop",
+
+    websiteSort:
+      "manual"
+
   };
 
-  localStorage.setItem(SETTINGS_KEY,JSON.stringify(data));
-  toast("Settings saved successfully");
-}
 
-function resetSettings(){
-  if(!confirm("Restore default settings?"))return;
-  localStorage.setItem(SETTINGS_KEY,JSON.stringify(defaults));
+  /* =========================================================
+     DOM
+  ========================================================= */
+
+  const fields = {
+
+    brandName:
+      document.getElementById("brandName"),
+
+    shortName:
+      document.getElementById("shortName"),
+
+    tagline:
+      document.getElementById("tagline"),
+
+    metaDescription:
+      document.getElementById("metaDescription"),
+
+    supportUrl:
+      document.getElementById("supportUrl"),
+
+    supportEmail:
+      document.getElementById("supportEmail"),
+
+    whatsapp:
+      document.getElementById("whatsapp"),
+
+    supportMessage:
+      document.getElementById("supportMessage"),
+
+
+    showcaseEnabled:
+      document.getElementById("showcaseEnabled"),
+
+    autoPresentation:
+      document.getElementById("autoPresentation"),
+
+    humanCursor:
+      document.getElementById("humanCursor"),
+
+    pauseOnHover:
+      document.getElementById("pauseOnHover"),
+
+
+    scrollSpeed:
+      document.getElementById("scrollSpeed"),
+
+    readingPause:
+      document.getElementById("readingPause"),
+
+
+    showPackages:
+      document.getElementById("showPackages"),
+
+    showWebsites:
+      document.getElementById("showWebsites"),
+
+    showSalah:
+      document.getElementById("showSalah"),
+
+    showAbout:
+      document.getElementById("showAbout"),
+
+
+    language:
+      document.getElementById("language"),
+
+    currency:
+      document.getElementById("currency"),
+
+    deviceMode:
+      document.getElementById("deviceMode"),
+
+    websiteSort:
+      document.getElementById("websiteSort")
+
+  };
+
+
+  const saveDot =
+    document.getElementById("saveDot");
+
+  const saveStatusText =
+    document.getElementById("saveStatusText");
+
+  const speedValue =
+    document.getElementById("speedValue");
+
+  const pauseValue =
+    document.getElementById("pauseValue");
+
+  const previewBrand =
+    document.getElementById("previewBrand");
+
+  const toast =
+    document.getElementById("toast");
+
+  const toastTitle =
+    document.getElementById("toastTitle");
+
+  const toastMessage =
+    document.getElementById("toastMessage");
+
+
+  /* =========================================================
+     GET SETTINGS
+  ========================================================= */
+
+  function getSettings(){
+
+    try{
+
+      const stored =
+        localStorage.getItem(
+          SETTINGS_KEY
+        );
+
+      if(!stored){
+
+        const initial =
+          structuredClone(
+            defaultSettings
+          );
+
+        localStorage.setItem(
+          SETTINGS_KEY,
+          JSON.stringify(initial)
+        );
+
+        return initial;
+      }
+
+      const parsed =
+        JSON.parse(stored);
+
+      return {
+        ...structuredClone(defaultSettings),
+        ...parsed
+      };
+
+    }catch(error){
+
+      console.error(error);
+
+      return structuredClone(
+        defaultSettings
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     SAVE SETTINGS
+  ========================================================= */
+
+  function saveSettings(){
+
+    const settings = {
+
+      brandName:
+        fields.brandName.value.trim(),
+
+      shortName:
+        fields.shortName.value.trim(),
+
+      tagline:
+        fields.tagline.value.trim(),
+
+      metaDescription:
+        fields.metaDescription.value.trim(),
+
+      supportUrl:
+        fields.supportUrl.value.trim(),
+
+      supportEmail:
+        fields.supportEmail.value.trim(),
+
+      whatsapp:
+        fields.whatsapp.value.trim(),
+
+      supportMessage:
+        fields.supportMessage.value.trim(),
+
+
+      showcaseEnabled:
+        fields.showcaseEnabled.checked,
+
+      autoPresentation:
+        fields.autoPresentation.checked,
+
+      humanCursor:
+        fields.humanCursor.checked,
+
+      pauseOnHover:
+        fields.pauseOnHover.checked,
+
+
+      scrollSpeed:
+        Number(fields.scrollSpeed.value),
+
+      readingPause:
+        Number(fields.readingPause.value),
+
+
+      presentationMode:
+        document.querySelector(
+          'input[name="presentationMode"]:checked'
+        )?.value || "natural",
+
+
+      showPackages:
+        fields.showPackages.checked,
+
+      showWebsites:
+        fields.showWebsites.checked,
+
+      showSalah:
+        fields.showSalah.checked,
+
+      showAbout:
+        fields.showAbout.checked,
+
+
+      language:
+        fields.language.value,
+
+      currency:
+        fields.currency.value,
+
+      deviceMode:
+        fields.deviceMode.value,
+
+      websiteSort:
+        fields.websiteSort.value
+
+    };
+
+
+    localStorage.setItem(
+      SETTINGS_KEY,
+      JSON.stringify(settings)
+    );
+
+
+    markSaved();
+
+    updatePreview();
+
+    showToast(
+      "Settings Saved",
+      "Website Deals settings have been updated."
+    );
+
+  }
+
+
+  /* =========================================================
+     LOAD SETTINGS
+  ========================================================= */
+
+  function loadSettings(){
+
+    const settings =
+      getSettings();
+
+
+    fields.brandName.value =
+      settings.brandName;
+
+    fields.shortName.value =
+      settings.shortName;
+
+    fields.tagline.value =
+      settings.tagline;
+
+    fields.metaDescription.value =
+      settings.metaDescription;
+
+
+    fields.supportUrl.value =
+      settings.supportUrl;
+
+    fields.supportEmail.value =
+      settings.supportEmail;
+
+    fields.whatsapp.value =
+      settings.whatsapp;
+
+    fields.supportMessage.value =
+      settings.supportMessage;
+
+
+    fields.showcaseEnabled.checked =
+      Boolean(settings.showcaseEnabled);
+
+    fields.autoPresentation.checked =
+      Boolean(settings.autoPresentation);
+
+    fields.humanCursor.checked =
+      Boolean(settings.humanCursor);
+
+    fields.pauseOnHover.checked =
+      Boolean(settings.pauseOnHover);
+
+
+    fields.scrollSpeed.value =
+      settings.scrollSpeed;
+
+    fields.readingPause.value =
+      settings.readingPause;
+
+
+    const selectedMode =
+      document.querySelector(
+        `input[name="presentationMode"][value="${settings.presentationMode}"]`
+      );
+
+    if(selectedMode){
+      selectedMode.checked = true;
+    }
+
+
+    fields.showPackages.checked =
+      Boolean(settings.showPackages);
+
+    fields.showWebsites.checked =
+      Boolean(settings.showWebsites);
+
+    fields.showSalah.checked =
+      Boolean(settings.showSalah);
+
+    fields.showAbout.checked =
+      Boolean(settings.showAbout);
+
+
+    fields.language.value =
+      settings.language;
+
+    fields.currency.value =
+      settings.currency;
+
+    fields.deviceMode.value =
+      settings.deviceMode;
+
+    fields.websiteSort.value =
+      settings.websiteSort;
+
+
+    updateRangeLabels();
+
+    updatePreview();
+
+    markSaved();
+
+  }
+
+
+  /* =========================================================
+     DIRTY STATE
+  ========================================================= */
+
+  function markDirty(){
+
+    saveDot.classList.add("dirty");
+
+    saveStatusText.textContent =
+      "Unsaved changes";
+
+  }
+
+
+  function markSaved(){
+
+    saveDot.classList.remove("dirty");
+
+    saveStatusText.textContent =
+      "All changes saved";
+
+  }
+
+
+  /* =========================================================
+     RANGE
+  ========================================================= */
+
+  function updateRangeLabels(){
+
+    speedValue.textContent =
+      `${Number(fields.scrollSpeed.value).toFixed(1)}×`;
+
+    pauseValue.textContent =
+      `${Number(fields.readingPause.value).toFixed(1)}s`;
+
+  }
+
+
+  /* =========================================================
+     PREVIEW
+  ========================================================= */
+
+  function updatePreview(){
+
+    previewBrand.textContent =
+      fields.brandName.value.trim()
+      ||
+      "Website Deals";
+
+  }
+
+
+  /* =========================================================
+     TOAST
+  ========================================================= */
+
+  function showToast(
+    title,
+    message
+  ){
+
+    toastTitle.textContent =
+      title;
+
+    toastMessage.textContent =
+      message;
+
+    toast.classList.add(
+      "show"
+    );
+
+    clearTimeout(
+      window.toastTimer
+    );
+
+    window.toastTimer =
+      setTimeout(
+        () => {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },
+        2800
+      );
+
+  }
+
+
+  /* =========================================================
+     RESET
+  ========================================================= */
+
+  function resetSettings(){
+
+    const confirmed =
+      confirm(
+        "Reset Website Deals settings to the default configuration?"
+      );
+
+    if(!confirmed){
+      return;
+    }
+
+    localStorage.setItem(
+      SETTINGS_KEY,
+      JSON.stringify(
+        structuredClone(
+          defaultSettings
+        )
+      )
+    );
+
+    loadSettings();
+
+    showToast(
+      "Settings Reset",
+      "Default Website Deals settings restored."
+    );
+
+  }
+
+
+  /* =========================================================
+     CLEAR
+  ========================================================= */
+
+  function clearSettings(){
+
+    const confirmed =
+      confirm(
+        "Clear Website Deals settings from this browser?"
+      );
+
+    if(!confirmed){
+      return;
+    }
+
+    localStorage.removeItem(
+      SETTINGS_KEY
+    );
+
+    loadSettings();
+
+    showToast(
+      "Settings Cleared",
+      "Local settings have been cleared."
+    );
+
+  }
+
+
+  /* =========================================================
+     EVENT LISTENERS
+  ========================================================= */
+
+  Object.values(fields)
+    .forEach(field => {
+
+      field.addEventListener(
+        "input",
+        () => {
+
+          markDirty();
+          updateRangeLabels();
+          updatePreview();
+
+        }
+      );
+
+      field.addEventListener(
+        "change",
+        () => {
+
+          markDirty();
+          updateRangeLabels();
+          updatePreview();
+
+        }
+      );
+
+    });
+
+
+  document
+    .querySelectorAll(
+      'input[name="presentationMode"]'
+    )
+    .forEach(radio => {
+
+      radio.addEventListener(
+        "change",
+        markDirty
+      );
+
+    });
+
+
+  document
+    .getElementById("saveTopBtn")
+    .addEventListener(
+      "click",
+      saveSettings
+    );
+
+
+  document
+    .getElementById("saveBottomBtn")
+    .addEventListener(
+      "click",
+      saveSettings
+    );
+
+
+  document
+    .getElementById("resetBtn")
+    .addEventListener(
+      "click",
+      resetSettings
+    );
+
+
+  document
+    .getElementById("clearSettingsBtn")
+    .addEventListener(
+      "click",
+      clearSettings
+    );
+
+
+  document
+    .getElementById("previewBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        window.open(
+          "../index.html",
+          "_blank",
+          "noopener"
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById("menuBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        document
+          .getElementById("sidebar")
+          .classList.toggle(
+            "open"
+          );
+
+      }
+    );
+
+
+  document
+    .getElementById("logoutBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        sessionStorage.removeItem(
+          "websiteDealsAdminLoggedIn"
+        );
+
+        window.location.href =
+          "./login.html";
+
+      }
+    );
+
+
+  /* =========================================================
+     BEFORE LEAVE
+  ========================================================= */
+
+  window.addEventListener(
+    "beforeunload",
+    event => {
+
+      if(
+        saveDot.classList.contains(
+          "dirty"
+        )
+      ){
+
+        event.preventDefault();
+
+        event.returnValue = "";
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     INIT
+  ========================================================= */
+
   loadSettings();
-  toast("Settings restored");
-}
 
-function clearWebsites(){
-  if(!confirm("Clear all locally saved website records?"))return;
-
-  localStorage.removeItem("websiteDealsWebsites");
-  toast("Website data cleared");
-}
-
-function openDomain(){
-  const value=document.getElementById("domain").value.trim();
-  if(!value)return;
-  window.open(value,"_blank","noopener");
-}
-
-function toggleSidebar(){
-  document.getElementById("sidebar").classList.toggle("open");
-}
-
-function toast(message){
-  const el=document.getElementById("toast");
-  el.textContent=message;
-  el.classList.add("show");
-  setTimeout(()=>el.classList.remove("show"),2200);
-}
-
-loadSettings();
 </script>
 
 </body>
