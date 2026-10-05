@@ -1,1 +1,86 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<meta name="description" content="Website Deals support — answers about packages, domains, hosting and getting help on WhatsApp.">
+<title>Support | Website Deals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#080909;--surface:#111414;--surface-2:#161919;--text:#f5f7f7;--muted:#9ba4a4;--muted-2:#707979;
+    --lime:#b7ff00;--lime-soft:rgba(183,255,0,.12);--lime-border:rgba(183,255,0,.28);--border:rgba(255,255,255,.09)}
+  body.light{--bg:#f6f8f8;--surface:#fff;--surface-2:#f1f4f4;--text:#101313;--muted:#667070;--muted-2:#879090;--border:rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;font-family:Inter,sans-serif;color:var(--text);
+    background:radial-gradient(circle at 15% 0,rgba(183,255,0,.07),transparent 30%),var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(860px,calc(100% - 32px));margin:0 auto}
+  header{border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;backdrop-filter:blur(20px);background:color-mix(in srgb,var(--bg) 80%,transparent)}
+  .bar{height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:-.03em}
+  .mark{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:var(--lime);color:#000;font-weight:900;font-size:14px}
+  .back{padding:9px 14px;border:1px solid var(--border);border-radius:11px;background:var(--surface);color:var(--muted);font-size:12px;font-weight:700}
+  .back:hover{border-color:var(--lime-border);color:var(--text)}
+  .hero{padding:64px 0 30px}
+  .kicker{color:var(--lime);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+  h1{margin-top:10px;font-size:clamp(34px,6vw,56px);letter-spacing:-.05em;line-height:1}
+  .lead{margin-top:16px;max-width:560px;color:var(--muted);font-size:14px;line-height:1.8}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .btn{min-height:46px;display:inline-flex;align-items:center;padding:0 18px;border-radius:13px;font-size:12px;font-weight:800;transition:.25s}
+  .btn.primary{background:var(--lime);color:#000}.btn.primary:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(183,255,0,.15)}
+  .btn.ghost{border:1px solid var(--border);background:var(--surface)}.btn.ghost:hover{border-color:var(--lime-border)}
+  h2{margin:50px 0 16px;font-size:22px;letter-spacing:-.04em}
+  details{border:1px solid var(--border);border-radius:16px;background:var(--surface);margin-bottom:10px;transition:.2s}
+  details[open]{border-color:var(--lime-border)}
+  summary{list-style:none;cursor:pointer;padding:18px 20px;font-size:13px;font-weight:700;display:flex;justify-content:space-between;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--lime);font-weight:900}
+  details[open] summary::after{content:"–"}
+  details p{padding:0 20px 18px;color:var(--muted);font-size:12px;line-height:1.85}
+  .card{margin:50px 0 70px;padding:28px;border:1px solid var(--lime-border);border-radius:22px;
+    background:linear-gradient(145deg,rgba(183,255,0,.09),rgba(255,255,255,.012))}
+  .card h3{font-size:18px;letter-spacing:-.03em}.card p{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.8}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><span class="mark">WD</span>Website Deals</a>
+  <a class="back" href="../">← Back to site</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">Support</div>
+    <h1>How can we help?</h1>
+    <p class="lead">Find quick answers below, or message us on WhatsApp — it's the fastest way to reach the Website Deals team.</p>
+    <div class="cta">
+      <a class="btn primary" id="waBtn" target="_blank" rel="noopener" href="https://wa.me/8801705633700?text=Hello%20Website%20Deals%2C%20I%20need%20support.">Chat on WhatsApp →</a>
+      <a class="btn ghost" href="tel:+8801705633700">Call 01705633700</a>
+    </div>
+  </section>
+
+  <h2>Common questions</h2>
+  <details><summary>What's included in each package?</summary>
+    <p>Starter (৳549/month) is a complete ready-made website with hosting, SSL, a basic logo and basic SEO. Business (৳999/month) adds an admin panel, advanced Firebase, inquiry/order management and backups. Premium (৳1,999/month) is a full Shopify-style system with inventory, orders, coupons and checkout.</p></details>
+  <details><summary>Can I connect my own domain?</summary>
+    <p>Yes. Every package supports connecting a custom domain. Message us your domain name and we'll guide you through the DNS steps.</p></details>
+  <details><summary>How do I choose a website from the showcase?</summary>
+    <p>Browse the live websites on the home page, press "Order" on the one you like, and the message opens in WhatsApp with the site name already filled in.</p></details>
+  <details><summary>Can the design be customised?</summary>
+    <p>Yes. Ready-made sites can be adjusted with your logo, colours, text and images. Premium also supports custom features — tell us what you need and we'll quote it.</p></details>
+  <details><summary>How do monthly payments work?</summary>
+    <p>Packages are billed monthly. We'll confirm the payment method and invoice details with you on WhatsApp before you start.</p></details>
+  <details><summary>The preview of a website looks blank. Why?</summary>
+    <p>Some websites block being shown inside other pages for security. Use the "Live" button on the card to open the site directly in a new tab.</p></details>
+
+  <div class="card">
+    <h3>Still need a hand?</h3>
+    <p>Tell us what you're trying to do and we'll reply as soon as we can. Include your website name or package so we can help faster.</p>
+  </div>
+</main>
+<script>try{if(localStorage.getItem("websiteDealsTheme")==="light")document.body.classList.add("light")}catch(e){}</script>
+</body>
+</html>

@@ -1,9 +1,12 @@
-const CACHE_NAME = "website-deals-wall-v1";
+const CACHE_NAME = "website-deals-wall-v2";
 
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./manifest.json"
+  "./manifest.json",
+  "./live.html",
+  "./enhance.js",
+  "./icons/icon-192.png"
 ];
 
 self.addEventListener("install", (event) => {

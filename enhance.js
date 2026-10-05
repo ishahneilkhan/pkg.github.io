@@ -334,6 +334,9 @@
   const fl = $(".footer-links a"); if (fl) { const a = document.createElement("a"); a.href = "#contact"; a.textContent = "Contact"; fl.parentElement.insertBefore(a, $$(".footer-links a").pop()); }
   $$(".nav-links a[href^='#']").forEach((a) => a.addEventListener("click", () => $(".nav-links").classList.remove("open")));
 
+  /* ---------- SUPPORT LINKS → local support page ---------- */
+  $$('a[href*="support.websitedeals.com"]').forEach((a) => { a.href = "./support/"; a.removeAttribute("target"); a.removeAttribute("rel"); });
+
   /* ---------- START ---------- */
   loadSalah();
   if ($$(".website-card").length) decorate();   // in case cards rendered first
