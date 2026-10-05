@@ -15,7 +15,7 @@
 
   <meta
     name="description"
-    content="Website Deals Admin — Premium website marketplace management dashboard."
+    content="Website Deals Admin Login — Premium website marketplace management."
   >
 
   <title>Admin Login | Website Deals</title>
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
   >
 
@@ -36,10 +36,11 @@
       --panel2:#151919;
 
       --lime:#b7ff00;
-      --lime-soft:#dfff88;
+      --lime-soft:rgba(183,255,0,.10);
 
       --text:#f5f7f5;
       --muted:#8f9893;
+      --muted2:#5d6661;
 
       --border:rgba(255,255,255,.08);
       --border-strong:rgba(183,255,0,.25);
@@ -73,12 +74,12 @@
 
       background:
         radial-gradient(
-          circle at 15% 20%,
+          circle at 12% 18%,
           rgba(183,255,0,.10),
           transparent 25%
         ),
         radial-gradient(
-          circle at 85% 80%,
+          circle at 88% 82%,
           rgba(183,255,0,.06),
           transparent 28%
         ),
@@ -104,9 +105,9 @@
       text-decoration:none;
     }
 
-    /* ================================
+    /* =========================
        BACKGROUND
-    ================================= */
+    ========================= */
 
     .background{
       position:fixed;
@@ -118,6 +119,7 @@
     .grid{
       position:absolute;
       inset:-30%;
+
       opacity:.12;
 
       background-image:
@@ -150,6 +152,7 @@
 
     .orb{
       position:absolute;
+
       width:500px;
       height:500px;
 
@@ -175,25 +178,26 @@
       bottom:-250px;
     }
 
-    /* ================================
+    /* =========================
        PAGE
-    ================================= */
+    ========================= */
 
     .page{
+      position:relative;
+      z-index:2;
+
       min-height:100vh;
 
       display:grid;
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(420px, 560px);
 
-      position:relative;
-      z-index:2;
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(420px,560px);
     }
 
-    /* ================================
+    /* =========================
        BRAND SIDE
-    ================================= */
+    ========================= */
 
     .brand-side{
       display:flex;
@@ -210,6 +214,7 @@
     .brand{
       display:flex;
       align-items:center;
+
       gap:13px;
     }
 
@@ -237,8 +242,10 @@
 
     .brand-name{
       font-family:"Space Grotesk";
-      font-weight:700;
+
       font-size:17px;
+      font-weight:700;
+
       letter-spacing:-.02em;
     }
 
@@ -256,19 +263,25 @@
 
     .brand-content{
       max-width:650px;
+
       margin-top:auto;
       margin-bottom:auto;
+
       padding:60px 0;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
+
       gap:8px;
 
       padding:8px 11px;
 
-      border:1px solid var(--border-strong);
+      border:
+        1px solid
+        var(--border-strong);
+
       border-radius:999px;
 
       color:var(--lime);
@@ -292,18 +305,19 @@
       background:var(--lime);
 
       box-shadow:
-        0 0 14px rgba(183,255,0,.8);
+        0 0 14px
+        rgba(183,255,0,.8);
     }
 
     .brand-content h1{
-      margin-top:24px;
-
       max-width:700px;
+
+      margin-top:24px;
 
       font-family:"Space Grotesk";
 
       font-size:
-        clamp(42px, 5.3vw, 78px);
+        clamp(42px,5.3vw,78px);
 
       line-height:.98;
 
@@ -322,12 +336,14 @@
       color:var(--muted);
 
       font-size:14px;
+
       line-height:1.8;
     }
 
     .feature-list{
       display:flex;
       flex-wrap:wrap;
+
       gap:9px;
 
       margin-top:28px;
@@ -336,11 +352,14 @@
     .feature{
       display:inline-flex;
       align-items:center;
+
       gap:7px;
 
       padding:9px 11px;
 
-      border:1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
 
       border-radius:10px;
 
@@ -355,21 +374,24 @@
 
     .feature i{
       color:var(--lime);
+
       font-style:normal;
       font-weight:900;
     }
 
     .footer-copy{
       color:#59615d;
+
       font-size:10px;
     }
 
-    /* ================================
+    /* =========================
        LOGIN SIDE
-    ================================= */
+    ========================= */
 
     .login-side{
       display:flex;
+
       align-items:center;
       justify-content:center;
 
@@ -377,7 +399,7 @@
     }
 
     .login-wrap{
-      width:min(100%, 460px);
+      width:min(100%,460px);
     }
 
     .login-card{
@@ -407,7 +429,6 @@
       content:"";
 
       position:absolute;
-
       inset:0;
 
       border-radius:28px;
@@ -438,6 +459,7 @@
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
+
       gap:15px;
 
       margin-bottom:28px;
@@ -467,11 +489,14 @@
     .security{
       display:flex;
       align-items:center;
+
       gap:6px;
 
       padding:7px 9px;
 
-      border:1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
 
       border-radius:999px;
 
@@ -481,6 +506,7 @@
       font-weight:800;
 
       text-transform:uppercase;
+
       letter-spacing:.08em;
     }
 
@@ -507,6 +533,7 @@
       color:var(--muted);
 
       font-size:12px;
+
       line-height:1.65;
     }
 
@@ -540,6 +567,7 @@
       font-size:9px;
 
       text-transform:none;
+
       letter-spacing:0;
     }
 
@@ -549,6 +577,7 @@
 
     .input-icon{
       position:absolute;
+
       left:14px;
       top:50%;
 
@@ -634,6 +663,7 @@
 
     .password-toggle:hover{
       color:#fff;
+
       background:#171b1b;
     }
 
@@ -648,11 +678,13 @@
     .remember{
       display:flex;
       align-items:center;
+
       gap:8px;
 
       color:#818a85;
 
       font-size:10px;
+
       cursor:pointer;
     }
 
@@ -667,6 +699,7 @@
 
     .demo-label{
       color:#59615d;
+
       font-size:9px;
     }
 
@@ -708,6 +741,7 @@
 
     .login-button.loading{
       opacity:.7;
+
       pointer-events:none;
     }
 
@@ -721,7 +755,9 @@
       border-radius:11px;
 
       font-size:10px;
+
       line-height:1.5;
+
       font-weight:700;
     }
 
@@ -752,24 +788,29 @@
     }
 
     .login-bottom{
+      display:flex;
+      justify-content:space-between;
+
+      gap:15px;
+
       margin-top:21px;
 
       padding-top:19px;
 
-      border-top:1px solid var(--border);
-
-      display:flex;
-      justify-content:space-between;
-      gap:15px;
+      border-top:
+        1px solid
+        var(--border);
 
       color:#59615d;
 
       font-size:9px;
+
       line-height:1.5;
     }
 
     .back-link{
       color:#8d9691;
+
       transition:.2s;
     }
 
@@ -777,9 +818,9 @@
       color:var(--lime);
     }
 
-    /* ================================
+    /* =========================
        RESPONSIVE
-    ================================= */
+    ========================= */
 
     @media(max-width:1050px){
 
@@ -806,7 +847,9 @@
 
       .brand-content h1{
         max-width:650px;
-        font-size:clamp(42px,8vw,68px);
+
+        font-size:
+          clamp(42px,8vw,68px);
       }
 
       .footer-copy{
@@ -828,7 +871,10 @@
       }
 
       .brand-content{
-        padding:48px 0 24px;
+        padding:
+          48px
+          0
+          24px;
       }
 
       .brand-content h1{
@@ -851,7 +897,10 @@
       }
 
       .login-card{
-        padding:24px 20px;
+        padding:
+          24px
+          20px;
+
         border-radius:22px;
       }
 
@@ -878,11 +927,10 @@
     <div class="orb two"></div>
   </div>
 
+
   <main class="page">
 
-    <!-- =========================================
-         BRAND SIDE
-    ========================================== -->
+    <!-- BRAND -->
 
     <section class="brand-side">
 
@@ -891,11 +939,13 @@
         href="../index.html"
         aria-label="Website Deals Home"
       >
+
         <div class="brand-mark">
           WD
         </div>
 
         <div>
+
           <div class="brand-name">
             Website Deals
           </div>
@@ -903,26 +953,34 @@
           <div class="brand-sub">
             Premium Website Marketplace
           </div>
+
         </div>
+
       </a>
 
 
       <div class="brand-content">
 
         <div class="eyebrow">
+
           <span class="eyebrow-dot"></span>
+
           Private Admin Workspace
+
         </div>
+
 
         <h1>
           Manage your
           <span>websites.</span>
         </h1>
 
+
         <p>
           Control your real website showcase, package presentation
           and live client demonstrations from one clean workspace.
         </p>
+
 
         <div class="feature-list">
 
@@ -958,9 +1016,7 @@
     </section>
 
 
-    <!-- =========================================
-         LOGIN SIDE
-    ========================================== -->
+    <!-- LOGIN -->
 
     <section class="login-side">
 
@@ -975,8 +1031,11 @@
             </div>
 
             <div class="security">
+
               <span class="security-dot"></span>
+
               Private Area
+
             </div>
 
           </div>
@@ -985,6 +1044,7 @@
           <h2>
             Welcome back
           </h2>
+
 
           <p class="login-description">
             Sign in to continue to your Website Deals administration
@@ -998,9 +1058,12 @@
             autocomplete="on"
           >
 
+            <!-- USERNAME -->
+
             <div class="field">
 
               <div class="field-label">
+
                 <label for="username">
                   Username
                 </label>
@@ -1008,7 +1071,9 @@
                 <span>
                   Admin account
                 </span>
+
               </div>
+
 
               <div class="input-wrap">
 
@@ -1030,6 +1095,8 @@
             </div>
 
 
+            <!-- PASSWORD -->
+
             <div class="field">
 
               <div class="field-label">
@@ -1043,6 +1110,7 @@
                 </span>
 
               </div>
+
 
               <div class="input-wrap">
 
@@ -1073,6 +1141,8 @@
             </div>
 
 
+            <!-- REMEMBER -->
+
             <div class="remember-row">
 
               <label class="remember">
@@ -1088,12 +1158,15 @@
 
               </label>
 
+
               <span class="demo-label">
                 Admin access
               </span>
 
             </div>
 
+
+            <!-- LOGIN -->
 
             <button
               type="submit"
@@ -1137,13 +1210,12 @@
 
 
   <script>
-
     /*
-      ==========================================
+      ============================================
       WEBSITE DEALS ADMIN LOGIN
-      ==========================================
+      ============================================
 
-      Current demo credentials:
+      DEMO LOGIN
 
       Username:
       admin
@@ -1151,26 +1223,22 @@
       Password:
       123456
 
-      Session key:
-      websiteDealsAdminLoggedIn
-
-      This matches the existing admin system.
-
       IMPORTANT:
-      This is frontend/demo authentication.
-      It is NOT suitable for production security.
+      Dashboard uses the same auth key:
 
-      For real production authentication,
-      Firebase Authentication should replace
-      this local credential check.
+      websiteDealsAdminAuth
+
+      Therefore login and dashboard are now
+      synchronized.
     */
 
 
     const ADMIN_USERNAME = "admin";
+
     const ADMIN_PASSWORD = "123456";
 
     const SESSION_KEY =
-      "websiteDealsAdminLoggedIn";
+      "websiteDealsAdminAuth";
 
     const REMEMBER_KEY =
       "websiteDealsRememberAdmin";
@@ -1198,44 +1266,67 @@
       document.getElementById("passwordToggle");
 
 
-    /* ==========================================
-       IF ALREADY LOGGED IN
-    ========================================== */
+    /* ============================================
+       CHECK EXISTING LOGIN
+    ============================================ */
 
-    const existingSession =
-      sessionStorage.getItem(SESSION_KEY);
+    try{
 
-    if(existingSession === "true"){
+      if(
+        sessionStorage.getItem(SESSION_KEY)
+        === "true"
+      ){
 
-      window.location.href =
-        "./dashboard.html";
+        window.location.replace(
+          "./dashboard.html"
+        );
 
-    }
+      }
 
+    }catch(error){
 
-    /* ==========================================
-       REMEMBER USERNAME
-    ========================================== */
-
-    const rememberedUsername =
-      localStorage.getItem(
-        REMEMBER_KEY
+      console.warn(
+        "Session storage unavailable:",
+        error
       );
 
-    if(rememberedUsername){
+    }
 
-      username.value =
-        rememberedUsername;
 
-      remember.checked =
-        true;
+    /* ============================================
+       REMEMBER USERNAME
+    ============================================ */
+
+    try{
+
+      const rememberedUsername =
+        localStorage.getItem(
+          REMEMBER_KEY
+        );
+
+      if(rememberedUsername){
+
+        username.value =
+          rememberedUsername;
+
+        remember.checked =
+          true;
+
+      }
+
+    }catch(error){
+
+      console.warn(
+        "Local storage unavailable:",
+        error
+      );
 
     }
 
 
-    /* ==========================================
-       PASSWORD VISIBILITY
-    ========================================== */
+    /* ============================================
+       PASSWORD TOGGLE
+    ============================================ */
 
     passwordToggle.addEventListener(
       "click",
@@ -1244,15 +1335,18 @@
         const isPassword =
           password.type === "password";
 
+
         password.type =
           isPassword
             ? "text"
             : "password";
 
+
         passwordToggle.textContent =
           isPassword
-            ? "◉"
-            : "◌";
+            ? "◌"
+            : "◉";
+
 
         passwordToggle.setAttribute(
           "aria-label",
@@ -1265,9 +1359,9 @@
     );
 
 
-    /* ==========================================
+    /* ============================================
        MESSAGE
-    ========================================== */
+    ============================================ */
 
     function showMessage(
       text,
@@ -1285,18 +1379,18 @@
 
     function hideMessage(){
 
-      message.className =
-        "message";
-
       message.textContent =
         "";
+
+      message.className =
+        "message";
 
     }
 
 
-    /* ==========================================
+    /* ============================================
        LOGIN
-    ========================================== */
+    ============================================ */
 
     loginForm.addEventListener(
       "submit",
@@ -1306,11 +1400,15 @@
 
         hideMessage();
 
+
         const enteredUsername =
           username.value.trim();
 
         const enteredPassword =
           password.value;
+
+
+        /* USERNAME CHECK */
 
         if(!enteredUsername){
 
@@ -1325,6 +1423,8 @@
         }
 
 
+        /* PASSWORD CHECK */
+
         if(!enteredPassword){
 
           showMessage(
@@ -1338,6 +1438,8 @@
         }
 
 
+        /* LOADING */
+
         loginButton.classList.add(
           "loading"
         );
@@ -1346,37 +1448,87 @@
           "Checking access…";
 
 
+        /* VERIFY */
+
         setTimeout(
           function(){
 
-            if(
+            const valid =
               enteredUsername ===
-                ADMIN_USERNAME &&
+                ADMIN_USERNAME
+              &&
               enteredPassword ===
-                ADMIN_PASSWORD
-            ){
-
-              sessionStorage.setItem(
-                SESSION_KEY,
-                "true"
-              );
+                ADMIN_PASSWORD;
 
 
-              if(remember.checked){
+            if(valid){
 
-                localStorage.setItem(
-                  REMEMBER_KEY,
-                  enteredUsername
+              /*
+                IMPORTANT:
+                This is the SAME key used
+                by dashboard.html.
+              */
+
+              try{
+
+                sessionStorage.setItem(
+                  SESSION_KEY,
+                  "true"
                 );
 
-              }else{
+              }catch(error){
 
-                localStorage.removeItem(
-                  REMEMBER_KEY
+                console.error(
+                  "Could not save session:",
+                  error
+                );
+
+                loginButton.classList.remove(
+                  "loading"
+                );
+
+                loginButton.textContent =
+                  "Sign In to Admin";
+
+                showMessage(
+                  "Your browser is blocking session storage. Please allow site storage and try again."
+                );
+
+                return;
+
+              }
+
+
+              /* REMEMBER USERNAME */
+
+              try{
+
+                if(remember.checked){
+
+                  localStorage.setItem(
+                    REMEMBER_KEY,
+                    enteredUsername
+                  );
+
+                }else{
+
+                  localStorage.removeItem(
+                    REMEMBER_KEY
+                  );
+
+                }
+
+              }catch(error){
+
+                console.warn(
+                  "Could not save remembered username:",
+                  error
                 );
 
               }
 
+
+              /* SUCCESS */
 
               showMessage(
                 "Access verified. Opening admin workspace…",
@@ -1388,14 +1540,20 @@
                 "Access Granted ✓";
 
 
+              /*
+                Small delay gives the user
+                visible confirmation.
+              */
+
               setTimeout(
                 function(){
 
-                  window.location.href =
-                    "./dashboard.html";
+                  window.location.replace(
+                    "./dashboard.html"
+                  );
 
                 },
-                650
+                500
               );
 
 
@@ -1408,9 +1566,11 @@
               loginButton.textContent =
                 "Sign In to Admin";
 
+
               showMessage(
                 "Invalid admin username or password."
               );
+
 
               password.value =
                 "";
@@ -1420,16 +1580,16 @@
             }
 
           },
-          500
+          350
         );
 
       }
     );
 
 
-    /* ==========================================
-       ENTER KEY EXPERIENCE
-    ========================================== */
+    /* ============================================
+       ENTER KEY
+    ============================================ */
 
     [username,password].forEach(
       function(input){
@@ -1438,7 +1598,11 @@
           "keydown",
           function(event){
 
-            if(event.key === "Enter"){
+            if(
+              event.key === "Enter"
+            ){
+
+              event.preventDefault();
 
               loginForm.requestSubmit();
 
