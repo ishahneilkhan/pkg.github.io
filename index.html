@@ -15,12 +15,14 @@
 
   <meta
     name="description"
-    content="Website Deals — Live Website Presentation"
+    content="Website Deals — Premium ready-made websites with monthly plans for businesses, creators and growing brands."
   >
 
-  <title>Live Website Presentation | Website Deals</title>
+  <title>Website Deals | Premium Ready-Made Websites</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
@@ -29,18 +31,22 @@
   <style>
     :root {
       --bg: #080909;
-      --bg2: #0d0f0f;
+      --bg-soft: #0d0f0f;
       --panel: #111414;
-      --panel2: #151818;
+      --panel-2: #151818;
       --border: rgba(255,255,255,.09);
-      --border2: rgba(255,255,255,.17);
+      --border-strong: rgba(255,255,255,.16);
       --text: #f5f7f6;
-      --muted: #929a96;
-      --muted2: #626a66;
+      --muted: #969e9a;
+      --muted-2: #6f7773;
       --lime: #b7ff00;
-      --lime-soft: rgba(183,255,0,.09);
-      --lime-border: rgba(183,255,0,.24);
-      --danger: #ff6262;
+      --lime-soft: rgba(183,255,0,.10);
+      --lime-border: rgba(183,255,0,.25);
+      --white: #ffffff;
+      --danger: #ff6464;
+      --shadow: 0 30px 80px rgba(0,0,0,.38);
+      --radius: 24px;
+      --max: 1240px;
     }
 
     * {
@@ -55,28 +61,40 @@
 
     body {
       min-height: 100vh;
-      overflow: hidden;
       background:
         radial-gradient(
           circle at 50% -10%,
-          rgba(183,255,0,.07),
+          rgba(183,255,0,.08),
           transparent 32%
         ),
         var(--bg);
       color: var(--text);
-      font-family:
-        "Inter",
-        "Hind Siliguri",
-        sans-serif;
+      font-family: "Inter", "Hind Siliguri", sans-serif;
+      overflow-x: hidden;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      font: inherit;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.018) 1px,
+          transparent 1px
+        );
+      background-size: 60px 60px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+      );
     }
 
     a {
@@ -84,1373 +102,2349 @@
       text-decoration: none;
     }
 
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max)
+      );
+      margin: 0 auto;
+    }
+
     /* =========================
-       TOP NAV
+       TOP BAR
     ========================= */
 
     .topbar {
-      height: 68px;
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 1000;
-
-      display: flex;
-      align-items: center;
-
       border-bottom: 1px solid var(--border);
-
-      background:
-        rgba(8,9,9,.88);
-
-      backdrop-filter: blur(22px);
+      background: rgba(8,9,9,.82);
+      backdrop-filter: blur(18px);
     }
 
     .topbar-inner {
-      width: min(
-        calc(100% - 32px),
-        1500px
-      );
-
-      height: 100%;
-      margin: auto;
-
+      min-height: 38px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .topbar-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 12px rgba(183,255,0,.8);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8,9,9,.82);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(22px);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 11px;
-      min-width: 0;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
     .brand-mark {
-      width: 39px;
-      height: 39px;
-
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
-
-      flex: 0 0 39px;
-
-      border-radius: 12px;
-
+      border-radius: 13px;
       background: var(--lime);
       color: #080909;
-
-      font-size: 14px;
       font-weight: 900;
-
+      font-size: 17px;
       box-shadow:
-        0 0 30px rgba(183,255,0,.12);
+        0 0 0 1px rgba(183,255,0,.2),
+        0 10px 30px rgba(183,255,0,.12);
     }
 
     .brand-text {
-      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
     }
 
     .brand-name {
-      display: block;
-
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 900;
-      letter-spacing: -.02em;
+      letter-spacing: -.03em;
     }
 
     .brand-sub {
-      display: block;
-
-      margin-top: 2px;
-
-      color: var(--muted2);
-
-      font-size: 8px;
-      font-weight: 700;
-
-      letter-spacing: .12em;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
 
-    .presentation-info {
-      min-width: 0;
-      flex: 1;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      padding: 7px 10px;
-
-      border: 1px solid var(--lime-border);
-      border-radius: 999px;
-
-      background: var(--lime-soft);
-
-      color: var(--lime);
-
-      font-size: 9px;
-      font-weight: 900;
-
-      letter-spacing: .09em;
-      text-transform: uppercase;
-    }
-
-    .live-dot {
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: var(--lime);
-
-      box-shadow:
-        0 0 10px var(--lime);
-
-      animation: livePulse 1.7s infinite;
-    }
-
-    @keyframes livePulse {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: .45;
-        transform: scale(.72);
-      }
-    }
-
-    .site-name {
-      max-width: 360px;
-
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      color: #cbd1ce;
-
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .nav-btn {
-      min-height: 38px;
-
-      padding: 0 13px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-
-      border: 1px solid var(--border);
-      border-radius: 10px;
-
-      background: rgba(255,255,255,.025);
-
-      color: #d9dedb;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      cursor: pointer;
-
-      transition: .2s ease;
-    }
-
-    .nav-btn:hover {
-      background: rgba(255,255,255,.07);
-      border-color: var(--border2);
-      transform: translateY(-1px);
-    }
-
-    .nav-btn.primary {
-      border-color: var(--lime-border);
-      background: var(--lime);
-      color: #080909;
-    }
-
-    /* =========================
-       MAIN PRESENTATION
-    ========================= */
-
-    .presentation {
-      position: fixed;
-      inset: 68px 0 0 0;
-
-      display: grid;
-      grid-template-columns: 310px 1fr;
-
-      overflow: hidden;
-    }
-
-    /* =========================
-       LEFT CONTROL PANEL
-    ========================= */
-
-    .sidebar {
-      position: relative;
-
-      padding: 25px;
-
-      border-right: 1px solid var(--border);
-
-      background:
-        linear-gradient(
-          180deg,
-          #0d0f0f,
-          #090a0a
-        );
-
-      overflow-y: auto;
-    }
-
-    .sidebar::-webkit-scrollbar {
-      width: 3px;
-    }
-
-    .sidebar::-webkit-scrollbar-thumb {
-      background: #292e2c;
-      border-radius: 10px;
-    }
-
-    .sidebar-label {
-      color: var(--muted2);
-
-      font-size: 9px;
-      font-weight: 900;
-
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .site-title {
-      margin-top: 10px;
-
-      font-size: 25px;
-      line-height: 1.08;
-
-      letter-spacing: -.045em;
-    }
-
-    .site-url {
-      margin-top: 9px;
-
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      color: var(--muted);
-
-      font-size: 10px;
-    }
-
-    .status-box {
-      margin-top: 22px;
-
-      padding: 14px;
-
-      border: 1px solid var(--border);
-      border-radius: 15px;
-
-      background: rgba(255,255,255,.018);
-    }
-
-    .status-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-
-      font-size: 10px;
-    }
-
-    .status-row + .status-row {
-      margin-top: 10px;
-    }
-
-    .status-row span:first-child {
-      color: var(--muted);
-    }
-
-    .status-row span:last-child {
-      color: #dce1de;
-      font-weight: 700;
-    }
-
-    .status-live {
-      color: var(--lime) !important;
-    }
-
-    .controls {
-      margin-top: 27px;
-    }
-
-    .control-title {
-      color: var(--muted2);
-
-      font-size: 9px;
-      font-weight: 900;
-
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .control-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-
-      margin-top: 11px;
-    }
-
-    .control-btn {
-      min-height: 43px;
-
-      border: 1px solid var(--border);
-      border-radius: 11px;
-
-      background: #111414;
-
-      color: #d8ddda;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      cursor: pointer;
-
-      transition: .2s ease;
-    }
-
-    .control-btn:hover {
-      border-color: var(--border2);
-      background: #171a19;
-    }
-
-    .control-btn.active {
-      border-color: var(--lime-border);
-      background: var(--lime-soft);
-      color: var(--lime);
-    }
-
-    .progress-wrap {
-      margin-top: 25px;
-    }
-
-    .progress-label {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      color: var(--muted);
-
-      font-size: 9px;
-    }
-
-    .progress-track {
-      height: 5px;
-
-      margin-top: 9px;
-
-      overflow: hidden;
-
-      border-radius: 999px;
-
-      background: #1c201e;
-    }
-
-    .progress-bar {
-      width: 0%;
-      height: 100%;
-
-      border-radius: inherit;
-
-      background: var(--lime);
-
-      box-shadow:
-        0 0 12px rgba(183,255,0,.35);
-
-      transition: width .15s linear;
-    }
-
-    .hint {
-      margin-top: 27px;
-
-      padding: 14px;
-
-      border: 1px solid var(--border);
-      border-radius: 15px;
-
-      background: rgba(255,255,255,.015);
-
-      color: var(--muted);
-
-      font-size: 10px;
-      line-height: 1.7;
-    }
-
-    .hint strong {
-      color: #dfe4e1;
-    }
-
-    .sidebar-bottom {
-      margin-top: 25px;
-    }
-
-    .back-link {
-      width: 100%;
-
-      min-height: 43px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 1px solid var(--border);
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.025);
-
-      color: #d7ddda;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      transition: .2s ease;
-    }
-
-    .back-link:hover {
-      background: rgba(255,255,255,.07);
-      border-color: var(--border2);
-    }
-
-    /* =========================
-       VIEWPORT
-    ========================= */
-
-    .stage {
-      position: relative;
-
-      min-width: 0;
-      min-height: 0;
-
-      display: flex;
-      flex-direction: column;
-
-      background:
-        radial-gradient(
-          circle at 50% 20%,
-          rgba(183,255,0,.035),
-          transparent 40%
-        ),
-        #070808;
-    }
-
-    .stage-top {
-      height: 50px;
-
-      flex: 0 0 50px;
-
-      padding: 0 18px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      border-bottom: 1px solid var(--border);
-
-      background: rgba(10,11,11,.75);
-    }
-
-    .stage-message {
-      color: var(--muted);
-
-      font-size: 9px;
-    }
-
-    .stage-message strong {
-      color: #d7ddda;
-    }
-
-    .stage-actions {
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .tiny-btn {
-      width: 32px;
-      height: 30px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid var(--border);
-      border-radius: 8px;
-
-      background: rgba(255,255,255,.025);
-
-      color: #c7ceca;
-
-      font-size: 12px;
-
-      cursor: pointer;
+    .nav-links a {
+      color: #aeb5b1;
+      padding: 10px 13px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .2s ease;
     }
 
-    .tiny-btn:hover {
-      background: rgba(255,255,255,.07);
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+      background: rgba(255,255,255,.05);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav-cta {
+      min-height: 42px;
+      padding: 0 17px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 12px;
+      font-weight: 900;
+      transition: .2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(183,255,0,.16);
+    }
+
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      display: none;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 20px;
     }
 
     /* =========================
-       WEBSITE FRAME
+       HERO
     ========================= */
 
-    .frame-area {
+    .hero {
       position: relative;
-
-      flex: 1;
-
-      min-height: 0;
-
-      display: flex;
-      justify-content: center;
-
-      padding: 20px;
-    }
-
-    .browser-shell {
-      position: relative;
-
-      width: min(
-        1200px,
-        100%
-      );
-
-      height: 100%;
-
+      padding: 95px 0 80px;
       overflow: hidden;
-
-      border: 1px solid var(--border2);
-      border-radius: 18px;
-
-      background: #101212;
-
-      box-shadow:
-        0 30px 80px rgba(0,0,0,.45);
     }
 
-    .browser-header {
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: 50%;
+      top: -220px;
+      transform: translateX(-50%);
+      background: rgba(183,255,0,.08);
+      filter: blur(120px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-grid {
       position: relative;
-      z-index: 10;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 60px;
+      align-items: center;
+    }
 
-      height: 43px;
-
-      display: flex;
+    .eyebrow {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 7px 10px;
+      border: 1px solid var(--lime-border);
+      border-radius: 999px;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
-      padding: 0 12px;
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 10px currentColor;
+    }
 
+    .hero h1 {
+      max-width: 760px;
+      margin-top: 23px;
+      font-size: clamp(
+        46px,
+        7vw,
+        82px
+      );
+      line-height: .95;
+      letter-spacing: -.065em;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: var(--lime);
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-description strong {
+      color: #dfe4e1;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 31px;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--lime);
+      color: #080909;
+      box-shadow: 0 15px 35px rgba(183,255,0,.12);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px rgba(183,255,0,.2);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border-strong);
+      background: rgba(255,255,255,.025);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.25);
+      transform: translateY(-3px);
+    }
+
+    .hero-note {
+      margin-top: 17px;
+      color: var(--muted-2);
+      font-size: 11px;
+    }
+
+    /* =========================
+       HERO VISUAL
+    ========================= */
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .browser {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-strong);
+      border-radius: 24px;
+      background: #0d0f0f;
+      box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
+    }
+
+    .browser::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          125deg,
+          rgba(255,255,255,.06),
+          transparent 35%
+        );
+    }
+
+    .browser-top {
+      height: 45px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
       border-bottom: 1px solid var(--border);
-
-      background: #111414;
+      background: #111313;
     }
 
     .browser-dot {
       width: 8px;
       height: 8px;
-
       border-radius: 50%;
-
-      background: #484e4b;
+      background: #555;
     }
 
-    .browser-address {
+    .browser-url {
       flex: 1;
-
-      height: 27px;
-
-      padding: 0 10px;
-
-      display: flex;
-      align-items: center;
-
-      border: 1px solid var(--border);
-      border-radius: 7px;
-
+      margin-left: 8px;
+      padding: 7px 11px;
+      border-radius: 8px;
       background: #090a0a;
-
-      color: #69716d;
-
-      font-size: 8px;
-
+      color: #68716c;
+      font-size: 9px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
 
-    .browser-open {
-      height: 27px;
+    .browser-content {
+      padding: 25px;
+      min-height: 410px;
+    }
 
-      padding: 0 10px;
-
+    .fake-site-nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      gap: 15px;
+    }
 
+    .fake-logo {
+      width: 82px;
+      height: 12px;
+      border-radius: 5px;
+      background: var(--lime);
+    }
+
+    .fake-nav-items {
+      display: flex;
+      gap: 7px;
+    }
+
+    .fake-nav-item {
+      width: 38px;
+      height: 6px;
+      border-radius: 3px;
+      background: #2b302e;
+    }
+
+    .fake-hero {
+      margin-top: 43px;
+      display: grid;
+      grid-template-columns: 1fr .7fr;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .fake-title {
+      width: 90%;
+      height: 28px;
+      border-radius: 8px;
+      background: #e9edea;
+    }
+
+    .fake-title.second {
+      width: 65%;
+      height: 18px;
+      margin-top: 9px;
+      background: #a9b1ad;
+    }
+
+    .fake-copy {
+      width: 88%;
+      height: 8px;
+      margin-top: 20px;
+      border-radius: 4px;
+      background: #343a37;
+    }
+
+    .fake-copy.small {
+      width: 72%;
+      margin-top: 7px;
+    }
+
+    .fake-button {
+      width: 100px;
+      height: 34px;
+      margin-top: 22px;
+      border-radius: 8px;
+      background: var(--lime);
+    }
+
+    .fake-image {
+      min-height: 170px;
+      border-radius: 16px;
       border: 1px solid var(--border);
-      border-radius: 7px;
-
-      background: rgba(255,255,255,.03);
-
-      color: #adb5b1;
-
-      font-size: 8px;
-      font-weight: 800;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.18),
+          rgba(255,255,255,.03)
+        );
     }
 
-    .website-window {
+    .fake-cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .fake-card {
+      height: 80px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #121615;
+    }
+
+    .hero-float {
       position: absolute;
-
-      top: 43px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      overflow: hidden;
-
-      background: #fff;
+      right: -25px;
+      bottom: -24px;
+      min-width: 190px;
+      padding: 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: 17px;
+      background: rgba(17,20,20,.92);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
     }
 
-    /*
-      IMPORTANT:
-      The iframe itself is intentionally made taller than
-      the visible viewport. We move the iframe wrapper
-      vertically to create the browsing/camera effect.
-
-      This works with cross-origin websites because the parent
-      page does not attempt to access iframe DOM content.
-    */
-
-    .camera {
-      position: absolute;
-
-      top: 0;
-      left: 0;
-
-      width: 100%;
-
-      will-change: transform;
-
-      transform: translate3d(
-        0,
-        0,
-        0
-      );
+    .float-label {
+      color: var(--muted);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
     }
 
-    iframe {
-      display: block;
+    .float-price {
+      margin-top: 5px;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
 
-      width: 100%;
+    .float-price span {
+      color: var(--lime);
+    }
 
-      height: 2200px;
-
-      border: 0;
-
-      background: white;
-
-      pointer-events: none;
+    .float-status {
+      margin-top: 6px;
+      color: var(--lime);
+      font-size: 10px;
+      font-weight: 700;
     }
 
     /* =========================
-       FALLBACK
+       STATS
     ========================= */
 
-    .iframe-fallback {
-      position: absolute;
-
-      inset: 0;
-
-      z-index: 30;
-
-      display: none;
-      place-items: center;
-
-      padding: 30px;
-
-      background:
-        radial-gradient(
-          circle at 50% 35%,
-          rgba(183,255,0,.07),
-          transparent 35%
-        ),
-        #090a0a;
+    .stats {
+      padding: 5px 0 35px;
     }
 
-    .iframe-fallback.show {
+    .stats-grid {
       display: grid;
-    }
-
-    .fallback-card {
-      width: min(
-        480px,
-        100%
-      );
-
-      padding: 30px;
-
-      text-align: center;
-
+      grid-template-columns: repeat(4,1fr);
       border: 1px solid var(--border);
       border-radius: 20px;
-
-      background: #111414;
+      overflow: hidden;
+      background: rgba(255,255,255,.018);
     }
 
-    .fallback-icon {
-      width: 48px;
-      height: 48px;
-
-      margin: 0 auto;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 15px;
-
-      background: var(--lime-soft);
-      color: var(--lime);
-
-      font-size: 20px;
+    .stat {
+      min-height: 105px;
+      padding: 23px;
+      border-right: 1px solid var(--border);
     }
 
-    .fallback-card h2 {
-      margin-top: 17px;
-
-      font-size: 21px;
-      letter-spacing: -.03em;
+    .stat:last-child {
+      border-right: 0;
     }
 
-    .fallback-card p {
-      margin-top: 10px;
+    .stat strong {
+      display: block;
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
 
+    .stat span {
+      display: block;
+      margin-top: 6px;
       color: var(--muted);
-
       font-size: 11px;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      scroll-margin-top: 95px;
+    }
+
+    .section {
+      padding: 105px 0;
+    }
+
+    .section-heading {
+      max-width: 750px;
+      margin-bottom: 45px;
+    }
+
+    .section-kicker {
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin-top: 12px;
+      font-size: clamp(34px,5vw,57px);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .section-heading p {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       PACKAGE CARDS
+    ========================= */
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .package-card {
+      position: relative;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+      transition: .25s ease;
+      overflow: hidden;
+    }
+
+    .package-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .package-card.featured {
+      border-color: var(--lime-border);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(183,255,0,.075),
+          rgba(255,255,255,.015)
+        );
+    }
+
+    .popular {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: #080909;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .package-number {
+      color: var(--muted-2);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .package-card h3 {
+      margin-top: 14px;
+      font-size: 23px;
+      letter-spacing: -.04em;
+    }
+
+    .package-price {
+      margin-top: 22px;
+      font-size: 39px;
+      font-weight: 900;
+      letter-spacing: -.06em;
+    }
+
+    .package-price small {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .package-description {
+      min-height: 55px;
+      margin-top: 11px;
+      color: var(--muted);
+      font-size: 12px;
       line-height: 1.7;
     }
 
-    .fallback-btn {
-      margin-top: 20px;
+    .package-features {
+      margin-top: 23px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      list-style: none;
+    }
 
-      min-height: 43px;
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 11px 0;
+      color: #c5cbc7;
+      font-size: 11px;
+      line-height: 1.5;
+    }
 
-      padding: 0 17px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 10px;
-
-      background: var(--lime);
-      color: #080909;
-
-      font-size: 10px;
+    .check {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      display: grid;
+      place-items: center;
+      margin-top: 1px;
+      border-radius: 50%;
+      background: var(--lime-soft);
+      color: var(--lime);
+      font-size: 9px;
       font-weight: 900;
     }
 
-    /* =========================
-       FAKE CURSOR
-    ========================= */
-
-    .fake-cursor {
-      position: absolute;
-
-      z-index: 50;
-
-      width: 18px;
-      height: 18px;
-
-      pointer-events: none;
-
-      opacity: .9;
-
-      filter:
-        drop-shadow(
-          0 3px 6px rgba(0,0,0,.45)
-        );
-
-      transition:
-        transform 900ms
-        cubic-bezier(.2,.8,.2,1);
-    }
-
-    .fake-cursor::before {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      top: 0;
-
-      width: 0;
-      height: 0;
-
-      border-top: 12px solid white;
-      border-right: 7px solid transparent;
-
-      transform:
-        rotate(-8deg);
-    }
-
-    .fake-cursor::after {
-      content: "";
-
-      position: absolute;
-
-      left: 2px;
-      top: 2px;
-
-      width: 0;
-      height: 0;
-
-      border-top: 8px solid #111;
-      border-right: 5px solid transparent;
-
-      transform:
-        rotate(-8deg);
+    .package-button {
+      width: 100%;
+      margin-top: 22px;
     }
 
     /* =========================
-       BOTTOM INFO
+       WORKFLOW
     ========================= */
 
-    .stage-bottom {
-      position: absolute;
-
-      left: 50%;
-      bottom: 16px;
-
-      z-index: 70;
-
-      transform:
-        translateX(-50%);
-
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
-      padding: 7px 10px;
-
-      border: 1px solid rgba(255,255,255,.11);
-      border-radius: 999px;
-
-      background: rgba(8,9,9,.78);
-
-      backdrop-filter: blur(14px);
-
-      color: #b6beb9;
-
-      font-size: 8px;
-
-      pointer-events: none;
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 14px;
     }
 
-    .stage-bottom-dot {
-      width: 5px;
-      height: 5px;
-
-      border-radius: 50%;
-
-      background: var(--lime);
-
-      box-shadow:
-        0 0 9px var(--lime);
+    .workflow-card {
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255,255,255,.018);
     }
 
-    /* =========================
-       LOADING
-    ========================= */
-
-    .loading {
-      position: absolute;
-
-      inset: 0;
-
-      z-index: 40;
-
+    .workflow-icon {
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
-
-      background: #080909;
-
-      transition:
-        opacity .45s ease,
-        visibility .45s ease;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--lime);
+      background: var(--lime-soft);
+      font-weight: 900;
     }
 
-    .loading.hidden {
-      opacity: 0;
-      visibility: hidden;
+    .workflow-card h3 {
+      margin-top: 21px;
+      font-size: 15px;
     }
 
-    .loader {
-      text-align: center;
-    }
-
-    .loader-ring {
-      width: 34px;
-      height: 34px;
-      margin: 0 auto 14px;
-      border: 2px solid rgba(255,255,255,.1);
-      border-top-color: var(--lime);
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-    }
-
-    .loader-text {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .04em;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* =========================
-       EMPTY STATE
-    ========================= */
-
-    .empty {
-      position: absolute;
-      inset: 0;
-      z-index: 60;
-      display: none;
-      place-items: center;
-      padding: 30px;
-      text-align: center;
-      background: #070808;
-    }
-
-    .empty.show { display: grid; }
-
-    .empty h2 { font-size: 20px; letter-spacing: -.03em; }
-
-    .empty p {
-      margin: 10px auto 0;
-      max-width: 340px;
+    .workflow-card p {
+      margin-top: 8px;
       color: var(--muted);
       font-size: 11px;
       line-height: 1.7;
+    }
+
+    /* =========================
+       SHOWCASE
+    ========================= */
+
+    .showcase {
+      position: relative;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(183,255,0,.08),
+          transparent 35%
+        ),
+        #0d0f0f;
+      overflow: hidden;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .showcase h2 {
+      margin-top: 12px;
+      max-width: 650px;
+      font-size: clamp(32px,5vw,56px);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .showcase p {
+      max-width: 620px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .showcase-list {
+      margin-top: 25px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .showcase-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #cdd3cf;
+      font-size: 12px;
+    }
+
+    .showcase-item b {
+      color: var(--lime);
+    }
+
+    .showcase-visual {
+      min-height: 300px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .showcase-screen {
+      width: 100%;
+      max-width: 430px;
+      padding: 11px;
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      background: #080909;
+      box-shadow: 0 25px 70px rgba(0,0,0,.4);
+      transform: rotate(-2deg);
+    }
+
+    .screen-inner {
+      min-height: 250px;
+      padding: 16px;
+      border-radius: 11px;
+      background: #111414;
+    }
+
+    .screen-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .screen-brand {
+      width: 70px;
+      height: 9px;
+      border-radius: 5px;
+      background: var(--lime);
+    }
+
+    .screen-menu {
+      display: flex;
+      gap: 5px;
+    }
+
+    .screen-menu span {
+      width: 22px;
+      height: 5px;
+      border-radius: 3px;
+      background: #343b37;
+    }
+
+    .screen-hero {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr .7fr;
+      gap: 12px;
+    }
+
+    .screen-copy div {
+      height: 10px;
+      margin-bottom: 7px;
+      border-radius: 5px;
+      background: #454c48;
+    }
+
+    .screen-copy div:first-child {
+      width: 90%;
+      height: 19px;
+      background: #e9eeeb;
+    }
+
+    .screen-copy div:nth-child(2) {
+      width: 70%;
+    }
+
+    .screen-copy div:nth-child(3) {
+      width: 82%;
+    }
+
+    .screen-photo {
+      min-height: 105px;
+      border-radius: 10px;
+      background:
+        linear-gradient(
+          140deg,
+          rgba(183,255,0,.3),
+          rgba(255,255,255,.04)
+        );
+    }
+
+    .screen-bottom {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 7px;
+      margin-top: 15px;
+    }
+
+    .screen-bottom div {
+      height: 45px;
+      border-radius: 7px;
+      background: #1a1e1c;
+      border: 1px solid var(--border);
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-title {
+      font-size: clamp(32px,4vw,48px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+
+    .about-copy {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .about-copy + .about-copy {
+      margin-top: 17px;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 11px;
+      margin-top: 25px;
+    }
+
+    .about-point {
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(255,255,255,.018);
+    }
+
+    .about-point strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .about-point span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       SUPPORT
+    ========================= */
+
+    .support {
+      padding-bottom: 110px;
+    }
+
+    .support-box {
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(183,255,0,.08),
+          rgba(255,255,255,.018)
+        );
+    }
+
+    .support-box h2 {
+      font-size: clamp(29px,4vw,45px);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .support-box p {
+      max-width: 600px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #060707;
+    }
+
+    .footer-inner {
+      min-height: 120px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .footer-copy {
+      color: var(--muted-2);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: #858d88;
+      font-size: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--lime);
+    }
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+
+    .back-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 44px;
+      height: 44px;
+      z-index: 900;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 13px;
+      background: rgba(17,20,20,.88);
+      color: var(--lime);
+      backdrop-filter: blur(15px);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: .25s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--border);
+      padding: 12px 20px 20px;
+      background: rgba(8,9,9,.97);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      color: #c2c8c4;
+      font-size: 13px;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: 0;
     }
 
     /* =========================
        RESPONSIVE
     ========================= */
 
-    @media (max-width: 980px) {
-      .presentation-info { display: none; }
-      .presentation {
+    @media (max-width: 1050px) {
+      .hero-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
       }
-      .sidebar {
-        padding: 14px 16px;
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-        max-height: 40%;
+
+      .hero-visual {
+        max-width: 760px;
       }
-      .site-title { font-size: 18px; margin-top: 6px; }
-      .status-box, .hint, .sidebar-bottom { display: none; }
-      .controls { margin-top: 14px; }
-      .control-buttons { grid-template-columns: repeat(4, 1fr); }
-      .progress-wrap { margin-top: 14px; }
-      .frame-area { padding: 10px; }
+
+      .package-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .package-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 520px;
+      }
+
+      .workflow-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase-visual {
+        min-height: auto;
+      }
     }
 
-    @media (max-width: 520px) {
-      .brand-sub, .nav-btn .label { display: none; }
-      .stage-message { display: none; }
+    @media (max-width: 820px) {
+      .nav-links,
+      .nav-actions .nav-cta {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .support-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(
+          calc(100% - 28px),
+          var(--max)
+        );
+      }
+
+      .topbar-right {
+        display: none;
+      }
+
+      .hero {
+        padding: 65px 0 55px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-float {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 14px auto 0;
+        width: fit-content;
+      }
+
+      .browser-content {
+        min-height: 330px;
+        padding: 18px;
+      }
+
+      .fake-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .fake-image {
+        display: none;
+      }
+
+      .fake-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        min-height: 90px;
+        padding: 17px;
+      }
+
+      .stat strong {
+        font-size: 22px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-card:last-child {
+        grid-column: auto;
+        max-width: none;
+      }
+
+      .workflow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase {
+        padding: 23px;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+      }
+
+      .support-box {
+        padding: 28px 22px;
+      }
+
+      .footer-inner {
+        padding: 25px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
 
     @media (prefers-reduced-motion: reduce) {
-      .live-dot, .loader-ring { animation: none; }
-      .camera, .fake-cursor { transition: none !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- TOP NAV -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="./home.html" aria-label="Website Deals home">
+  <!-- =========================
+       TOP BAR
+  ========================= -->
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+
+      <div class="topbar-left">
+        <span class="topbar-dot"></span>
+        <span>Premium ready-made websites • Monthly plans</span>
+      </div>
+
+      <div class="topbar-right">
+        <span>Bangladesh</span>
+        <span>•</span>
+        <span>Online</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <header class="navbar">
+
+    <div class="container nav-inner">
+
+      <a
+        href="./"
+        class="brand"
+        aria-label="Website Deals Home"
+      >
         <span class="brand-mark">WD</span>
+
         <span class="brand-text">
           <span class="brand-name">Website Deals</span>
-          <span class="brand-sub">Live Presentation</span>
+          <span class="brand-sub">Premium Marketplace</span>
         </span>
       </a>
 
-      <div class="presentation-info">
-        <span class="live-pill"><span class="live-dot"></span>Live</span>
-        <span class="site-name" id="topSiteName">Loading…</span>
+      <nav class="nav-links">
+        <a href="../" class="active">Home</a>
+        <a href="../index.html#packages">Package</a>
+        <a href="../index.html#websites">Websites</a>
+        <a href="../index.html#salah">Salah</a>
+        <a href="#about">About</a>
+        <a href="https://support.websitedeals.com">Support</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a
+          href="../index.html#websites"
+          class="nav-cta"
+        >
+          Explore Websites ↗
+        </a>
+
+        <button
+          type="button"
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
       </div>
 
-      <nav class="nav-actions">
-        <a class="nav-btn" href="./home.html#packages">Packages</a>
-        <button class="nav-btn primary" id="fullscreenBtn" type="button">⛶ <span class="label">Fullscreen</span></button>
-      </nav>
     </div>
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+    >
+      <a href="../">Home</a>
+      <a href="../index.html#packages">Package</a>
+      <a href="../index.html#websites">Websites</a>
+      <a href="../index.html#salah">Salah</a>
+      <a href="#about">About</a>
+      <a href="https://support.websitedeals.com">
+        Support
+      </a>
+    </div>
+
   </header>
 
-  <main class="presentation">
+  <main>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-label" id="counterLabel">Website 0 / 0</div>
-      <h1 class="site-title" id="siteTitle">—</h1>
-      <div class="site-url" id="siteUrl">—</div>
+    <!-- =========================
+         HERO
+    ========================= -->
 
-      <div class="status-box">
-        <div class="status-row"><span>Package</span><span id="sitePackage">—</span></div>
-        <div class="status-row"><span>Effect</span><span id="siteEffect">—</span></div>
-        <div class="status-row"><span>Status</span><span class="status-live" id="siteStatus">● Live</span></div>
-      </div>
+    <section class="hero">
 
-      <div class="controls">
-        <div class="control-title">Controls</div>
-        <div class="control-buttons">
-          <button class="control-btn" id="prevBtn" type="button">← Prev</button>
-          <button class="control-btn" id="nextBtn" type="button">Next →</button>
-          <button class="control-btn active" id="playBtn" type="button">⏸ Pause</button>
-          <button class="control-btn" id="restartBtn" type="button">↺ Replay</button>
-        </div>
-      </div>
+      <div class="container hero-grid">
 
-      <div class="progress-wrap">
-        <div class="progress-label"><span>Auto-browsing</span><span id="progressText">0%</span></div>
-        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-      </div>
+        <div>
 
-      <div class="hint">
-        <strong>Shortcuts:</strong> ← → switch sites · Space pause/play · F fullscreen.
-        Sites are managed from the admin panel.
-      </div>
-
-      <div class="sidebar-bottom">
-        <a class="back-link" href="./home.html">← Back to Website Deals</a>
-      </div>
-    </aside>
-
-    <!-- STAGE -->
-    <section class="stage">
-      <div class="stage-top">
-        <div class="stage-message">Now showing: <strong id="stageName">—</strong></div>
-        <div class="stage-actions">
-          <button class="tiny-btn" id="reloadBtn" type="button" title="Reload site" aria-label="Reload site">⟳</button>
-          <a class="tiny-btn" id="openBtn" href="#" target="_blank" rel="noopener" title="Open site" aria-label="Open site">↗</a>
-        </div>
-      </div>
-
-      <div class="frame-area">
-        <div class="browser-shell">
-          <div class="browser-header">
-            <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
-            <div class="browser-address" id="addressBar">—</div>
-            <a class="browser-open" id="openLink" href="#" target="_blank" rel="noopener">Open ↗</a>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Ready-made websites
           </div>
 
-          <div class="website-window" id="windowEl">
-            <div class="camera" id="camera">
-              <iframe id="siteFrame" title="Website preview" loading="eager"
-                referrerpolicy="no-referrer"
-                sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
-            </div>
+          <h1>
+            Your website.
+            <br>
+            <span>Ready to grow.</span>
+          </h1>
 
-            <div class="fake-cursor" id="cursor"></div>
+          <p class="hero-description">
+            Launch a professional online presence without
+            starting everything from zero. Choose a ready-made
+            website, select your monthly package and get your
+            business online faster.
+          </p>
 
-            <div class="iframe-fallback" id="fallback">
-              <div class="fallback-card">
-                <div class="fallback-icon">🌐</div>
-                <h2>Preview unavailable</h2>
-                <p>This website doesn't allow embedding, or is taking too long to load. You can still open it directly.</p>
-                <a class="fallback-btn" id="fallbackBtn" href="#" target="_blank" rel="noopener">Open website ↗</a>
-              </div>
-            </div>
+          <div class="hero-buttons">
 
-            <div class="loading" id="loading">
-              <div class="loader">
-                <div class="loader-ring"></div>
-                <div class="loader-text">Loading website…</div>
-              </div>
-            </div>
+            <a
+              href="../index.html#packages"
+              class="btn btn-primary"
+            >
+              View Packages
+              <span>→</span>
+            </a>
 
-            <div class="empty" id="empty">
-              <div>
-                <h2>No live websites yet</h2>
-                <p>Add a website from the admin panel and mark it as active. It will appear here automatically.</p>
-                <a class="fallback-btn" href="./admin/websites.html">Open admin</a>
-              </div>
-            </div>
+            <a
+              href="../index.html#websites"
+              class="btn btn-secondary"
+            >
+              Explore Websites
+              <span>↗</span>
+            </a>
+
           </div>
 
-          <div class="stage-bottom"><span class="stage-bottom-dot"></span><span id="bottomText">Live presentation</span></div>
+          <p class="hero-note">
+            Starting from ৳549/month • Hosting • SSL • Support
+          </p>
+
         </div>
+
+        <div class="hero-visual">
+
+          <div class="browser">
+
+            <div class="browser-top">
+
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+
+              <div class="browser-url">
+                your-business.com
+              </div>
+
+            </div>
+
+            <div class="browser-content">
+
+              <div class="fake-site-nav">
+
+                <div class="fake-logo"></div>
+
+                <div class="fake-nav-items">
+                  <span class="fake-nav-item"></span>
+                  <span class="fake-nav-item"></span>
+                  <span class="fake-nav-item"></span>
+                  <span class="fake-nav-item"></span>
+                </div>
+
+              </div>
+
+              <div class="fake-hero">
+
+                <div>
+
+                  <div class="fake-title"></div>
+                  <div class="fake-title second"></div>
+
+                  <div class="fake-copy"></div>
+                  <div class="fake-copy small"></div>
+
+                  <div class="fake-button"></div>
+
+                </div>
+
+                <div class="fake-image"></div>
+
+              </div>
+
+              <div class="fake-cards">
+                <div class="fake-card"></div>
+                <div class="fake-card"></div>
+                <div class="fake-card"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="hero-float">
+
+            <div class="float-label">
+              Starting from
+            </div>
+
+            <div class="float-price">
+              ৳<span>549</span>
+              <small>/month</small>
+            </div>
+
+            <div class="float-status">
+              ● Ready to launch
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
+
+    <!-- =========================
+         STATS
+    ========================= -->
+
+    <section class="stats">
+
+      <div class="container">
+
+        <div class="stats-grid">
+
+          <div class="stat">
+            <strong>100+</strong>
+            <span>Ready Websites</span>
+          </div>
+
+          <div class="stat">
+            <strong>20+</strong>
+            <span>Website Categories</span>
+          </div>
+
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Responsive Design</span>
+          </div>
+
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Marketplace Access</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         PACKAGES
+    ========================= -->
+
+    <section
+      class="section"
+      id="packages"
+    >
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            Choose your plan
+          </div>
+
+          <h2>
+            Simple monthly packages.
+            Powerful websites.
+          </h2>
+
+          <p>
+            Start small or build a complete digital business
+            system. Upgrade whenever your business grows.
+          </p>
+
+        </div>
+
+        <div class="package-grid">
+
+          <!-- STARTER -->
+
+          <article class="package-card">
+
+            <div class="package-number">
+              01 / STARTER
+            </div>
+
+            <h3>Starter</h3>
+
+            <div class="package-price">
+              ৳549
+              <small>/month</small>
+            </div>
+
+            <p class="package-description">
+              A clean professional website for individuals,
+              small businesses and new brands.
+            </p>
+
+            <ul class="package-features">
+
+              <li>
+                <span class="check">✓</span>
+                Complete ready-made website
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Free hosting & SSL
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Responsive design
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Basic logo
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Contact form
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Basic SEO
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Basic support
+              </li>
+
+            </ul>
+
+            <a
+              href="../starter/index.html"
+              class="btn btn-secondary package-button"
+            >
+              View Starter
+              <span>→</span>
+            </a>
+
+          </article>
+
+          <!-- BUSINESS -->
+
+          <article class="package-card featured">
+
+            <span class="popular">
+              Most Popular
+            </span>
+
+            <div class="package-number">
+              02 / BUSINESS
+            </div>
+
+            <h3>Business</h3>
+
+            <div class="package-price">
+              ৳999
+              <small>/month</small>
+            </div>
+
+            <p class="package-description">
+              A stronger business website with admin tools,
+              inquiries, analytics and advanced integrations.
+            </p>
+
+            <ul class="package-features">
+
+              <li>
+                <span class="check">✓</span>
+                Everything in Starter
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Premium website design
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Admin panel
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Product/service management
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Inquiry & order management
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                WhatsApp / Messenger
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Analytics & advanced SEO
+              </li>
+
+            </ul>
+
+            <a
+              href="../business/index.html"
+              class="btn btn-primary package-button"
+            >
+              View Business
+              <span>→</span>
+            </a>
+
+          </article>
+
+          <!-- PREMIUM -->
+
+          <article class="package-card">
+
+            <div class="package-number">
+              03 / PREMIUM
+            </div>
+
+            <h3>Premium</h3>
+
+            <div class="package-price">
+              ৳1,999
+              <small>/month</small>
+            </div>
+
+            <p class="package-description">
+              A complete Shopify-style e-commerce and business
+              system for brands ready to scale.
+            </p>
+
+            <ul class="package-features">
+
+              <li>
+                <span class="check">✓</span>
+                Shopify-style system
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Product & inventory management
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Orders & customers
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Cart & checkout
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Coupons & discounts
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Analytics & automation
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Priority support
+              </li>
+
+            </ul>
+
+            <a
+              href="../premium/index.html"
+              class="btn btn-secondary package-button"
+            >
+              View Premium
+              <span>→</span>
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         WORKFLOW
+    ========================= -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div class="section-kicker">
+            How it works
+          </div>
+
+          <h2>
+            From idea to online
+            in a few simple steps.
+          </h2>
+
+          <p>
+            No complicated process. Pick a website,
+            choose your plan and let us handle the technical
+            setup.
+          </p>
+
+        </div>
+
+        <div class="workflow-grid">
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              01
+            </div>
+
+            <h3>Choose a Website</h3>
+
+            <p>
+              Explore the available real websites and
+              select the design that fits your business.
+            </p>
+
+          </article>
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              02
+            </div>
+
+            <h3>Select a Package</h3>
+
+            <p>
+              Choose Starter, Business or Premium based
+              on your current business needs.
+            </p>
+
+          </article>
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              03
+            </div>
+
+            <h3>Connect Your Domain</h3>
+
+            <p>
+              Use your own domain or connect a new domain
+              to your selected website.
+            </p>
+
+          </article>
+
+          <article class="workflow-card">
+
+            <div class="workflow-icon">
+              04
+            </div>
+
+            <h3>Go Live</h3>
+
+            <p>
+              Your website is prepared for launch with
+              hosting, SSL and the selected features.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         LIVE SHOWCASE
+    ========================= -->
+
+    <section
+      class="section"
+      id="websites"
+    >
+
+      <div class="container">
+
+        <div class="showcase">
+
+          <div class="showcase-grid">
+
+            <div>
+
+              <div class="section-kicker">
+                Live website showcase
+              </div>
+
+              <h2>
+                See the real website
+                before you decide.
+              </h2>
+
+              <p>
+                Website Deals includes a dedicated live
+                showcase where real website demos can be
+                presented to clients in a clean, premium
+                card-based experience.
+              </p>
+
+              <div class="showcase-list">
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Real website links
+                </div>
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Live presentation
+                </div>
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Fixed premium cards
+                </div>
+
+                <div class="showcase-item">
+                  <b>✓</b>
+                  Automatic website preview
+                </div>
+
+              </div>
+
+              <div class="hero-buttons">
+
+                <a
+                  href="../index.html#websites"
+                  class="btn btn-primary"
+                >
+                  Explore Live Websites
+                  <span>↗</span>
+                </a>
+
+                <a
+                  href="../admin/websites.html"
+                  class="btn btn-secondary"
+                >
+                  Manage Websites
+                </a>
+
+              </div>
+
+            </div>
+
+            <div class="showcase-visual">
+
+              <div class="showcase-screen">
+
+                <div class="screen-inner">
+
+                  <div class="screen-head">
+
+                    <div class="screen-brand"></div>
+
+                    <div class="screen-menu">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+
+                  </div>
+
+                  <div class="screen-hero">
+
+                    <div class="screen-copy">
+
+                      <div></div>
+                      <div></div>
+                      <div></div>
+
+                    </div>
+
+                    <div class="screen-photo"></div>
+
+                  </div>
+
+                  <div class="screen-bottom">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section
+      class="section"
+      id="about"
+    >
+
+      <div class="container about-grid">
+
+        <div>
+
+          <div class="section-kicker">
+            About Website Deals
+          </div>
+
+          <h2 class="about-title">
+            A simpler way to
+            launch websites.
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p class="about-copy">
+            Website Deals is built around one simple idea:
+            businesses should not need to start from zero
+            every time they need a website.
+          </p>
+
+          <p class="about-copy">
+            Instead, choose a ready-made website, select
+            the right monthly package and focus on your
+            customers while the technical side is managed
+            as part of the service.
+          </p>
+
+          <div class="about-points">
+
+            <div class="about-point">
+              <strong>Ready-made</strong>
+              <span>
+                Start from proven website structures.
+              </span>
+            </div>
+
+            <div class="about-point">
+              <strong>Responsive</strong>
+              <span>
+                Designed for modern screens and devices.
+              </span>
+            </div>
+
+            <div class="about-point">
+              <strong>Managed</strong>
+              <span>
+                Hosting, SSL and support options included.
+              </span>
+            </div>
+
+            <div class="about-point">
+              <strong>Scalable</strong>
+              <span>
+                Upgrade your package as your business grows.
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         SUPPORT
+    ========================= -->
+
+    <section class="support">
+
+      <div class="container">
+
+        <div class="support-box">
+
+          <div>
+
+            <div class="section-kicker">
+              Need help?
+            </div>
+
+            <h2>
+              Let's get your website online.
+            </h2>
+
+            <p>
+              Need help choosing a website, package,
+              domain or setup? Contact the Website Deals
+              support team.
+            </p>
+
+          </div>
+
+          <a
+            href="https://support.websitedeals.com"
+            class="btn btn-primary"
+          >
+            Open Support
+            <span>↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-copy">
+        © <span id="year"></span> Website Deals.
+        Premium ready-made websites.
+      </div>
+
+      <div class="footer-links">
+
+        <a href="../">
+          Home
+        </a>
+
+        <a href="../index.html#packages">
+          Packages
+        </a>
+
+        <a href="../index.html#websites">
+          Websites
+        </a>
+
+        <a href="../starter/index.html">
+          Starter
+        </a>
+
+        <a href="../business/index.html">
+          Business
+        </a>
+
+        <a href="../premium/index.html">
+          Premium
+        </a>
+
+        <a href="https://support.websitedeals.com">
+          Support
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- BACK TO TOP -->
+
+  <button
+    type="button"
+    class="back-top"
+    id="backTop"
+    aria-label="Back to top"
+  >
+    ↑
+  </button>
+
   <script>
-    /* =========================================================
-       CONFIG
-    ========================================================= */
-    const STORAGE_KEY = "websiteDealsWebsites";
-    const SITE_DURATION = 16000;   // ms per website
-    const LOAD_TIMEOUT = 12000;    // ms before showing fallback
-    const FRAME_HEIGHT = 2200;     // must match iframe CSS height
+    /* =========================
+       YEAR
+    ========================= */
 
-    const DEFAULT_WEBSITES = [{
-      id: "snk-it-institute",
-      name: "SNK IT Institute",
-      package: "business",
-      packageLabel: "Business Package",
-      url: "https://snkitinstitute.com",
-      animation: "zoom",
-      status: true,
-      sort: 1
-    }];
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-    const EFFECT_LABELS = { zoom: "Zoom", slide: "Slide", float: "Float" };
 
-    /* =========================================================
-       STATE
-    ========================================================= */
-    let sites = [];
-    let index = 0;
-    let playing = true;
-    let elapsed = 0;
-    let lastTick = 0;
-    let rafId = 0;
-    let loadTimer = 0;
-    let loaded = false;
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
-    const $ = (id) => document.getElementById(id);
-    const els = {
-      frame: $("siteFrame"), camera: $("camera"), win: $("windowEl"),
-      cursor: $("cursor"), fallback: $("fallback"), loading: $("loading"),
-      empty: $("empty"), playBtn: $("playBtn"), bar: $("progressBar"),
-      pct: $("progressText")
-    };
+    const menuBtn =
+      document.getElementById("menuBtn");
 
-    /* =========================================================
-       DATA
-    ========================================================= */
-    function loadSites() {
-      let list = DEFAULT_WEBSITES;
-      try {
-        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-        if (Array.isArray(saved)) list = saved;
-      } catch (e) {}
+    const mobileMenu =
+      document.getElementById("mobileMenu");
 
-      sites = list
-        .filter((s) => s && s.status !== false && s.status !== "false" && /^https?:\/\//i.test(s.url || ""))
-        .sort((a, b) => (Number(a.sort) || 0) - (Number(b.sort) || 0));
-    }
+    menuBtn.addEventListener("click", () => {
 
-    /* =========================================================
-       RENDER
-    ========================================================= */
-    function setText(id, value) { $(id).textContent = value; }
+      const isOpen =
+        mobileMenu.classList.toggle("open");
 
-    function showSite(i) {
-      if (!sites.length) {
-        els.empty.classList.add("show");
-        els.loading.classList.add("hidden");
-        setText("counterLabel", "Website 0 / 0");
-        setText("siteTitle", "No websites");
-        setText("topSiteName", "No websites");
-        return;
-      }
+      menuBtn.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
 
-      els.empty.classList.remove("show");
-      index = (i + sites.length) % sites.length;
-      const site = sites[index];
-
-      elapsed = 0;
-      loaded = false;
-      clearTimeout(loadTimer);
-
-      setText("counterLabel", `Website ${index + 1} / ${sites.length}`);
-      setText("siteTitle", site.name || "Untitled");
-      setText("topSiteName", site.name || "Untitled");
-      setText("stageName", site.name || "Untitled");
-      setText("siteUrl", site.url);
-      setText("addressBar", site.url);
-      setText("sitePackage", site.packageLabel || "Website Package");
-      setText("siteEffect", EFFECT_LABELS[site.animation] || "Zoom");
-      setText("bottomText", `${index + 1} of ${sites.length} · ${site.name || ""}`);
-      document.title = `${site.name || "Live"} | Website Deals`;
-
-      ["openBtn", "openLink", "fallbackBtn"].forEach((id) => { $(id).href = site.url; });
-
-      els.fallback.classList.remove("show");
-      els.loading.classList.remove("hidden");
-      els.camera.style.transform = "translate3d(0,0,0) scale(1)";
-      els.frame.src = "about:blank";
-      requestAnimationFrame(() => { els.frame.src = site.url; });
-
-      loadTimer = setTimeout(() => {
-        if (!loaded) {
-          els.loading.classList.add("hidden");
-          els.fallback.classList.add("show");
-        }
-      }, LOAD_TIMEOUT);
-    }
-
-    els.frame.addEventListener("load", () => {
-      if (els.frame.src === "about:blank" || els.frame.src === "") return;
-      loaded = true;
-      clearTimeout(loadTimer);
-      els.loading.classList.add("hidden");
-      elapsed = 0;
+      menuBtn.textContent =
+        isOpen ? "×" : "☰";
     });
 
-    /* =========================================================
-       CAMERA ANIMATION
-    ========================================================= */
-    const ease = (t) => (t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
-    function applyCamera(t) {
-      const site = sites[index];
-      if (!site || !loaded) return;
+    /* Close mobile menu after click */
 
-      const viewH = els.win.clientHeight;
-      const maxScroll = Math.max(0, FRAME_HEIGHT - viewH);
-      let y = 0, scale = 1, cx = .5, cy = .5;
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(link => {
 
-      switch (site.animation) {
-        case "slide": {
-          // scroll down, then back up
-          const p = t < .5 ? ease(t * 2) : ease(1 - (t - .5) * 2);
-          y = -maxScroll * .55 * p;
-          cx = .2 + .6 * p; cy = .3 + .4 * p;
-          break;
-        }
-        case "float": {
-          y = -(Math.sin(t * Math.PI * 2 - Math.PI / 2) + 1) / 2 * maxScroll * .4
-              - t * maxScroll * .15;
-          scale = 1 + Math.sin(t * Math.PI * 2) * .012;
-          cx = .5 + Math.sin(t * Math.PI * 2) * .25; cy = .45 + Math.cos(t * Math.PI * 2) * .2;
-          break;
-        }
-        default: { // zoom
-          y = -maxScroll * .6 * ease(t);
-          scale = 1 + .08 * Math.sin(Math.min(1, t * 1.15) * Math.PI);
-          cx = .3 + .4 * ease(t); cy = .25 + .5 * ease(t);
-        }
-      }
+        link.addEventListener("click", () => {
 
-      els.camera.style.transformOrigin = "50% 0";
-      els.camera.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0) scale(${scale.toFixed(4)})`;
+          mobileMenu.classList.remove("open");
 
-      const w = els.win.clientWidth;
-      els.cursor.style.transform = `translate(${(cx * w).toFixed(0)}px, ${(cy * viewH).toFixed(0)}px)`;
-    }
+          menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+          );
 
-    /* =========================================================
-       LOOP
-    ========================================================= */
-    function tick(now) {
-      if (!lastTick) lastTick = now;
-      const dt = now - lastTick;
-      lastTick = now;
+          menuBtn.textContent = "☰";
 
-      if (playing && sites.length && (loaded || els.fallback.classList.contains("show"))) {
-        elapsed += dt;
-        const t = Math.min(1, elapsed / SITE_DURATION);
-        applyCamera(t);
-        const pct = Math.round(t * 100);
-        els.bar.style.width = pct + "%";
-        els.pct.textContent = pct + "%";
-        if (elapsed >= SITE_DURATION && sites.length > 1) showSite(index + 1);
-        else if (elapsed >= SITE_DURATION) elapsed = 0;
-      }
-      rafId = requestAnimationFrame(tick);
-    }
+        });
 
-    /* =========================================================
-       CONTROLS
-    ========================================================= */
-    function setPlaying(value) {
-      playing = value;
-      els.playBtn.textContent = playing ? "⏸ Pause" : "▶ Play";
-      els.playBtn.classList.toggle("active", playing);
-    }
-
-    $("prevBtn").onclick = () => showSite(index - 1);
-    $("nextBtn").onclick = () => showSite(index + 1);
-    $("restartBtn").onclick = () => showSite(index);
-    $("reloadBtn").onclick = () => showSite(index);
-    els.playBtn.onclick = () => setPlaying(!playing);
-
-    function toggleFullscreen() {
-      if (document.fullscreenElement) document.exitFullscreen();
-      else document.documentElement.requestFullscreen?.().catch(() => {});
-    }
-    $("fullscreenBtn").onclick = toggleFullscreen;
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") showSite(index + 1);
-      else if (e.key === "ArrowLeft") showSite(index - 1);
-      else if (e.key === " ") { e.preventDefault(); setPlaying(!playing); }
-      else if (e.key.toLowerCase() === "f") toggleFullscreen();
-    });
-
-    // Pick up admin changes live (other tab) and pause when tab is hidden
-    window.addEventListener("storage", (e) => {
-      if (e.key !== STORAGE_KEY) return;
-      const currentId = sites[index]?.id;
-      loadSites();
-      const keep = sites.findIndex((s) => s.id === currentId);
-      showSite(keep >= 0 ? keep : 0);
-    });
-
-    document.addEventListener("visibilitychange", () => { lastTick = 0; });
-
-    /* =========================================================
-       INIT
-    ========================================================= */
-    loadSites();
-    showSite(0);
-    rafId = requestAnimationFrame(tick);
-
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js").catch(() => {});
       });
-    }
+
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+
+    const backTop =
+      document.getElementById("backTop");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.scrollY > 550) {
+
+          backTop.classList.add("show");
+
+        } else {
+
+          backTop.classList.remove("show");
+
+        }
+
+      },
+      { passive: true }
+    );
+
+    backTop.addEventListener(
+      "click",
+      () => {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+
+    /* =========================
+       ACTIVE NAV
+    ========================= */
+
+    const navLinks =
+      document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.forEach(item => {
+          item.classList.remove("active");
+        });
+
+        if (
+          link.getAttribute("href") ===
+          "./home.html"
+        ) {
+          link.classList.add("active");
+        }
+
+      });
+
+    });
   </script>
+
 </body>
 </html>
