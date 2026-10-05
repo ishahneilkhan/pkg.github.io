@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#080909">
+<title>Presentation | Website Deals Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070808;
+  --panel:#101313;
+  --panel2:#151919;
+  --border:rgba(255,255,255,.08);
+  --text:#f4f7f5;
+  --muted:#8e9792;
+  --lime:#b7ff00;
+  --red:#ff5c6c;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 70% 0%,rgba(183,255,0,.08),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.layout{min-height:100vh}
+.sidebar{
+  position:fixed;
+  left:0;top:0;bottom:0;
+  width:255px;
+  padding:24px 16px;
+  background:#0a0b0b;
+  border-right:1px solid var(--border);
+  z-index:20;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:4px 10px 25px;
+}
+.logo-mark{
+  width:38px;height:38px;
+  border-radius:12px;
+  background:var(--lime);
+  color:#070808;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+.logo strong{font-family:"Space Grotesk"}
+.logo small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:3px;
+}
+.nav-title{
+  color:#5f6863;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+  padding:16px 11px 8px;
+  text-transform:uppercase;
+}
+.nav a{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding:12px;
+  margin:3px 0;
+  color:#aeb5b1;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:600;
+}
+.nav a:hover{background:#171a1a;color:#fff}
+.nav a.active{
+  color:var(--lime);
+  background:rgba(183,255,0,.1);
+}
+.nav-icon{width:18px;text-align:center}
+
+.main{
+  margin-left:255px;
+  min-height:100vh;
+}
+.topbar{
+  height:72px;
+  padding:0 34px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(7,8,8,.85);
+  backdrop-filter:blur(18px);
+}
+.topbar h1{
+  font-family:"Space Grotesk";
+  font-size:19px;
+  margin:0;
+}
+.topbar p{
+  color:var(--muted);
+  font-size:11px;
+  margin:4px 0 0;
+}
+.actions{display:flex;gap:8px}
+.btn{
+  border:1px solid var(--border);
+  background:#141717;
+  color:#fff;
+  border-radius:11px;
+  padding:10px 14px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+.btn.primary{
+  background:var(--lime);
+  color:#080909;
+  border-color:var(--lime);
+}
+.content{padding:34px}
+
+.hero h2{
+  font-family:"Space Grotesk";
+  font-size:34px;
+  letter-spacing:-.04em;
+  margin:0;
+}
+.hero p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  max-width:720px;
+  margin:9px 0 28px;
+}
+
+.notice{
+  display:flex;
+  gap:13px;
+  align-items:center;
+  background:#101414;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:15px;
+  margin-bottom:20px;
+  color:#adb5b1;
+  font-size:12px;
+}
+.live-dot{
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--lime);
+  box-shadow:0 0 15px rgba(183,255,0,.6);
+  flex:none;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.card{
+  background:linear-gradient(180deg,#131717,#0e1010);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:18px;
+  overflow:hidden;
+}
+.card-head{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+.card-title{
+  display:flex;
+  gap:11px;
+  align-items:center;
+}
+.site-icon{
+  width:42px;height:42px;
+  border-radius:13px;
+  background:#1b1f1f;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  color:var(--lime);
+}
+.card h3{
+  margin:0;
+  font-family:"Space Grotesk";
+  font-size:17px;
+}
+.url{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:4px;
+  max-width:260px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.badge{
+  background:rgba(183,255,0,.1);
+  border:1px solid rgba(183,255,0,.2);
+  color:var(--lime);
+  border-radius:999px;
+  padding:6px 8px;
+  font-size:9px;
+  font-weight:900;
+}
+.preview{
+  height:310px;
+  border:1px solid var(--border);
+  background:#080909;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+}
+.camera{
+  position:absolute;
+  inset:0;
+  transition:transform 2s cubic-bezier(.22,.61,.36,1);
+}
+iframe{
+  display:block;
+  width:100%;
+  height:1500px;
+  border:0;
+  background:#fff;
+}
+.cursor{
+  position:absolute;
+  width:15px;height:15px;
+  border:2px solid #fff;
+  border-radius:50%;
+  box-shadow:0 2px 10px rgba(0,0,0,.4);
+  pointer-events:none;
+  z-index:3;
+  transition:transform 1s ease;
+}
+.preview-overlay{
+  position:absolute;
+  inset:auto 10px 10px 10px;
+  padding:9px 11px;
+  border-radius:10px;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(10px);
+  color:#dce2df;
+  font-size:10px;
+  display:flex;
+  justify-content:space-between;
+}
+.controls{
+  display:flex;
+  gap:8px;
+  margin-top:13px;
+}
+.controls .btn{flex:1;text-align:center}
+.empty{
+  padding:60px 20px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed var(--border);
+  border-radius:20px;
+  grid-column:1/-1;
+}
+
+@media(max-width:950px){
+  .grid{grid-template-columns:1fr}
+}
+@media(max-width:800px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .topbar{padding:0 18px}
+  .content{padding:22px 16px}
+  .menu-btn{display:block!important}
+}
+.menu-btn{display:none}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="logo">
+    <div class="logo-mark">WD</div>
+    <div>
+      <strong>Website Deals</strong>
+      <small>ADMIN PANEL</small>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-title">Workspace</div>
+    <a href="./dashboard.html"><span class="nav-icon">⌂</span>Dashboard</a>
+    <a href="./websites.html"><span class="nav-icon">◫</span>Websites</a>
+    <a href="./packages.html"><span class="nav-icon">◇</span>Packages</a>
+    <a href="./presentation.html" class="active"><span class="nav-icon">▶</span>Presentation</a>
+
+    <div class="nav-title">Public</div>
+    <a href="../index.html#websites"><span class="nav-icon">↗</span>Public Showcase</a>
+    <a href="../index.html"><span class="nav-icon">▦</span>Main Website</a>
+    <a href="https://support.websitedeals.com" target="_blank" rel="noopener">
+      <span class="nav-icon">?</span>Support
+    </a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+  <div>
+    <h1>Live Presentation</h1>
+    <p>Preview your real websites before showing them to clients.</p>
+  </div>
+
+  <div class="actions">
+    <button class="btn menu-btn" onclick="toggleSidebar()">☰</button>
+    <a class="btn" href="../presentation/index.html">Open Presentation</a>
+    <a class="btn primary" href="./websites.html">Manage Websites</a>
+  </div>
+</header>
+
+<section class="content">
+
+  <div class="hero">
+    <h2>Website Presentation Wall</h2>
+    <p>
+      Every website uses a fixed card with an independent live preview.
+      The preview camera automatically moves through the page to create
+      a natural client-presentation effect.
+    </p>
+  </div>
+
+  <div class="notice">
+    <span class="live-dot"></span>
+    <span>
+      <strong style="color:#fff">Live mode:</strong>
+      Website previews are loaded directly from the real URLs saved in
+      <b>Websites</b>. Sites that block iframe embedding will show their
+      browser/security fallback.
+    </span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+</section>
+</main>
+
+<script>
+const STORAGE_KEY="websiteDealsWebsites";
+
+const defaults=[
+  {
+    id:"snk-it-institute",
+    name:"SNK IT Institute",
+    package:"business",
+    packageLabel:"Business Package",
+    url:"https://snkitinstitute.com",
+    status:true,
+    sort:1
+  }
+];
+
+function getSites(){
+  try{
+    const data=JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(data)&&data.length ? data : defaults;
+  }catch{
+    return defaults;
+  }
+}
+
+function escapeHtml(v){
+  return String(v??"")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function render(){
+  const sites=getSites()
+    .filter(s=>s.status!==false)
+    .sort((a,b)=>(a.sort||0)-(b.sort||0));
+
+  const grid=document.getElementById("grid");
+
+  if(!sites.length){
+    grid.innerHTML=`
+      <div class="empty">
+        No active websites found.<br><br>
+        <a class="btn primary" href="./websites.html">Add Website</a>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML=sites.map((site,index)=>`
+    <article class="card" data-index="${index}">
+      <div class="card-head">
+        <div class="card-title">
+          <div class="site-icon">WD</div>
+          <div>
+            <h3>${escapeHtml(site.name)}</h3>
+            <div class="url">${escapeHtml(site.url)}</div>
+          </div>
+        </div>
+
+        <span class="badge">● LIVE</span>
+      </div>
+
+      <div class="preview" id="preview-${index}">
+        <div class="camera" id="camera-${index}">
+          <iframe
+            src="${escapeHtml(site.url)}"
+            title="${escapeHtml(site.name)}"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="cursor" id="cursor-${index}"></div>
+
+        <div class="preview-overlay">
+          <span>${escapeHtml(site.packageLabel||"Website")}</span>
+          <span>Auto Presentation</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <a class="btn" href="${escapeHtml(site.url)}" target="_blank" rel="noopener">
+          Open Live ↗
+        </a>
+
+        <a class="btn primary"
+           href="../presentation/index.html?site=${encodeURIComponent(site.id)}">
+          Explore Presentation
+        </a>
+      </div>
+    </article>
+  `).join("");
+
+  sites.forEach((site,index)=>startCamera(index));
+}
+
+function startCamera(index){
+  const preview=document.getElementById("preview-"+index);
+  const camera=document.getElementById("camera-"+index);
+  const cursor=document.getElementById("cursor-"+index);
+
+  if(!preview||!camera)return;
+
+  let stopped=false;
+  let cycle=0;
+
+  function wait(ms){
+    return new Promise(resolve=>setTimeout(resolve,ms));
+  }
+
+  async function move(){
+    while(!stopped){
+      const max=Math.max(0,camera.scrollHeight-preview.clientHeight);
+
+      await wait(1000+Math.random()*2500);
+      if(stopped)break;
+
+      const positions=[
+        max*.10,
+        max*.20,
+        max*.33,
+        max*.48,
+        max*.62,
+        max*.76,
+        max*.90,
+        max
+      ];
+
+      for(const position of positions){
+        if(stopped)break;
+
+        const duration=1800+Math.random()*2600;
+        camera.style.transition=`transform ${duration}ms cubic-bezier(.22,.61,.36,1)`;
+        camera.style.transform=`translateY(-${position}px)`;
+
+        cursor.style.transform=
+          `translate(${25+Math.random()*240}px,${40+Math.random()*190}px)`;
+
+        await wait(duration);
+        await wait(500+Math.random()*1700);
+      }
+
+      await wait(2200+Math.random()*2500);
+
+      camera.style.transition="transform 3600ms cubic-bezier(.22,.61,.36,1)";
+      camera.style.transform="translateY(0px)";
+
+      cursor.style.transform="translate(35px,45px)";
+
+      await wait(3700);
+      cycle++;
+    }
+  }
+
+  move();
+
+  preview.addEventListener("mouseenter",()=>{
+    camera.style.transition="transform .4s ease";
+  });
+}
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+}
+
+render();
+</script>
+
+</body>
+</html>
