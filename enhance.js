@@ -274,6 +274,65 @@
   float.innerHTML = '<svg viewBox="0 0 32 32"><path d="M16 4C9.4 4 4 9 4 15.2c0 2.600 1 5 2.600 6.900L5.500 27l5.200-1.600c1.600.7 3.400 1 5.300 1 6.600 0 12-5 12-11.200S22.600 4 16 4z"/><circle cx="11" cy="15.500" r="1.600" fill="#25d366"/><circle cx="16" cy="15.500" r="1.600" fill="#25d366"/><circle cx="21" cy="15.500" r="1.600" fill="#25d366"/></svg>';
   document.body.appendChild(float);
 
+  /* ---------- CONTACT SECTION (sends to WhatsApp) ---------- */
+  const ccss = document.createElement("style");
+  ccss.textContent = `
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
+  .contact-info p{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.85}
+  .contact-lines{display:grid;gap:10px;margin-top:22px}
+  .contact-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid var(--border);
+    border-radius:14px;background:var(--surface-2);font-size:12px;font-weight:700;transition:.2s}
+  .contact-line:hover{border-color:var(--lime-border);color:var(--lime)}
+  .contact-line span{color:var(--muted-2);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .contact-form{display:grid;gap:12px}
+  .field label{display:block;margin-bottom:6px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:12px;
+    background:var(--surface-2);color:var(--text);font-size:13px;outline:none;transition:.2s}
+  .field textarea{min-height:110px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--lime-border);box-shadow:0 0 0 3px var(--lime-soft)}
+  .field.bad input{border-color:var(--danger)}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}`;
+  document.head.appendChild(ccss);
+
+  const contact = document.createElement("section");
+  contact.className = "section"; contact.id = "contact";
+  contact.innerHTML = `<div class="container"><div class="section-head reveal"><div>
+      <div class="section-kicker">Contact</div><h2 class="section-title">Let's launch your website.</h2></div>
+      <p class="section-description">Tell us what you need. Your message opens in WhatsApp, so you get a reply directly from us.</p></div>
+    <div class="contact-grid">
+      <div class="about-card contact-info reveal"><h3>Talk to Website Deals</h3>
+        <p>Pick a package, choose a ready-made website, or ask for a custom build. We'll guide you from demo to launch.</p>
+        <div class="contact-lines">
+          <a class="contact-line" href="https://wa.me/${WA}" target="_blank" rel="noopener"><span>WhatsApp</span>01705633700</a>
+          <a class="contact-line" href="tel:+${WA}"><span>Call</span>01705633700</a>
+        </div></div>
+      <form class="about-card contact-form reveal" id="contactForm" novalidate>
+        <div class="field"><label for="cName">Your name</label><input id="cName" autocomplete="name" placeholder="e.g. Rahim Uddin"></div>
+        <div class="field"><label for="cPkg">Package</label><select id="cPkg">
+          <option>Starter — ৳549/month</option><option selected>Business — ৳999/month</option>
+          <option>Premium — ৳1,999/month</option><option>Not sure yet</option></select></div>
+        <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" placeholder="What kind of business or website do you need?"></textarea></div>
+        <button class="btn btn-primary" type="submit">Send on WhatsApp →</button>
+      </form></div></div>`;
+  ($("#about") || $("main")).after(contact);
+  contact.querySelectorAll(".reveal").forEach((el) => revealIO.observe(el));
+  if (typeof observer !== "undefined") observer.observe(contact);
+
+  $("#contactForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = $("#cName").value.trim();
+    $("#cName").parentElement.classList.toggle("bad", !name);
+    if (!name) return $("#cName").focus();
+    const msg = $("#cMsg").value.trim();
+    window.open(wa(`Hello Website Deals, I'm ${name}.\nPackage: ${$("#cPkg").value}${msg ? "\n" + msg : ""}`), "_blank", "noopener");
+  });
+
+  // nav + footer links
+  const supportLink = $$(".nav-links a").find((a) => /support/i.test(a.textContent));
+  if (supportLink) { const a = document.createElement("a"); a.href = "#contact"; a.textContent = "Contact"; supportLink.before(a); }
+  const fl = $(".footer-links a"); if (fl) { const a = document.createElement("a"); a.href = "#contact"; a.textContent = "Contact"; fl.parentElement.insertBefore(a, $$(".footer-links a").pop()); }
+  $$(".nav-links a[href^='#']").forEach((a) => a.addEventListener("click", () => $(".nav-links").classList.remove("open")));
+
   /* ---------- START ---------- */
   loadSalah();
   if ($$(".website-card").length) decorate();   // in case cards rendered first
