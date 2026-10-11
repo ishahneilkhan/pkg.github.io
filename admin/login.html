@@ -1039,7 +1039,7 @@
               class="field-label"
               for="username"
             >
-              <span>Username</span>
+              <span>Email</span>
             </label>
 
             <div class="input-wrap">
@@ -1055,8 +1055,8 @@
                 class="input"
                 id="username"
                 name="username"
-                type="text"
-                placeholder="Enter admin username"
+                type="email"
+                placeholder="Enter admin email"
                 autocomplete="username"
                 required
               >
@@ -1188,27 +1188,18 @@
   </main>
 
 
+  <script src="../shared/firebase-config.js"></script>
+  <script src="../shared/firebase.js"></script>
   <script>
     /*
       ========================================================
       WEBSITE DEALS ADMIN LOGIN
       ========================================================
 
-      IMPORTANT:
-
-      This is a front-end session gate.
-
-      Change these two values to your own credentials.
-
-      For a production website, do NOT treat hard-coded
-      browser-side credentials as secure authentication.
-
-      A real Firebase/Auth/backend system should be used
-      for production security.
+      Sign-in uses Firebase Authentication (email + password).
+      Create the admin user in Firebase Console ->
+      Authentication -> Users. No credentials live in this file.
     */
-
-    const ADMIN_USERNAME = "admin";
-    const ADMIN_PASSWORD = "admin123";
 
 
     /* ======================================================
@@ -1394,7 +1385,7 @@
         if (!username) {
 
           showMessage(
-            "Please enter your admin username."
+            "Please enter your admin email."
           );
 
           usernameInput.focus();
@@ -1423,30 +1414,31 @@
           professional login experience.
         */
 
-        setTimeout(
-          function () {
+        if (
+          !window.WDFirebase ||
+          !window.WDFirebase.enabled
+        ) {
 
-            const valid =
-              username === ADMIN_USERNAME &&
-              password === ADMIN_PASSWORD;
+          setLoading(false);
 
-            if (!valid) {
+          showMessage(
+            "Firebase is not configured yet. Paste your firebaseConfig into shared/firebase-config.js."
+          );
 
-              setLoading(false);
+          return;
 
-              showMessage(
-                "Invalid admin username or password."
-              );
+        }
 
-              passwordInput.select();
+        window.WDFirebase
+          .signIn(username, password)
+          .then(function (cred) {
 
-              return;
-
-            }
-
+            const email =
+              (cred.user && cred.user.email) || username;
 
             /* ============================================
-               SAVE AUTH SESSION
+               SAVE AUTH SESSION (UI gate only; real
+               protection is Firebase Auth + Firestore rules)
             ============================================ */
 
             sessionStorage.setItem(
@@ -1456,7 +1448,7 @@
 
             sessionStorage.setItem(
               USER_KEY,
-              username
+              email
             );
 
 
@@ -1501,9 +1493,25 @@
               450
             );
 
-          },
-          450
-        );
+          })
+          .catch(function (err) {
+
+            setLoading(false);
+
+            const code =
+              (err && err.code) || "";
+
+            showMessage(
+              /invalid-credential|wrong-password|user-not-found|invalid-email/.test(code)
+                ? "Invalid admin email or password."
+                : /too-many-requests/.test(code)
+                  ? "Too many attempts. Try again later."
+                  : "Sign-in failed. Check your connection and Firebase setup."
+            );
+
+            passwordInput.select();
+
+          });
 
       }
     );

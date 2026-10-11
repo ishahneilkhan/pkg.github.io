@@ -1,0 +1,25 @@
+rules_version = '2';
+
+// Website Deals - Firestore rules.
+// Anyone can READ the published site data (it is shown on the public site).
+// Only the signed-in admin(s) listed below can WRITE it.
+// Admin email is set below. Paste this file into
+// Firebase Console -> Firestore Database -> Rules -> Publish.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email in ["thesnkgraphic@email.com"];
+    }
+
+    match /site/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
