@@ -1,83 +1,211 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Website Deals – Premium Website Showcase</title>
-<meta name="description" content="See ready-made websites live before you choose. Subscription packages with hosting and support."><link rel="manifest" href="./manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./shared/site.css">
-<style>
-.hero{padding:64px 0 30px}.hero .container{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:center}
-.tag{display:inline-flex;align-items:center;gap:8px;background:rgba(183,255,0,.28);padding:7px 14px;border-radius:999px;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#2c3a00}.tag i{width:8px;height:8px;border-radius:50%;background:var(--success)}
-h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.95;letter-spacing:-.06em;font-weight:800;margin:22px 0}h1 em{font-style:normal;color:var(--muted-2)}
-.lead{color:var(--muted);font-size:1.1rem;max-width:34em;line-height:1.75}.cta{display:flex;gap:12px;margin:30px 0 18px;flex-wrap:wrap}
-.note{font-size:.78rem;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:8px}.note i{width:10px;height:10px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(19,138,72,.15)}
-.laptop{position:relative;max-width:680px;margin-left:auto;width:100%}.screen{background:#e6e8e3;border:1px solid #cfd3cb;border-radius:22px 22px 8px 8px;padding:10px;box-shadow:var(--shadow-lg)}
-.display{background:#fff;border:3px solid var(--ink);border-radius:14px;height:410px;overflow:hidden;display:flex;flex-direction:column}
-.bar{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line)}.dots{display:flex;gap:4px}.dots i{width:6px;height:6px;border-radius:50%;background:#c3c8bf}
-.url{flex:1;height:16px;border-radius:99px;background:var(--paper-2);font-size:.62rem;color:var(--muted);padding:0 10px;line-height:16px;overflow:hidden;white-space:nowrap}
-.view{flex:1;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 30%,rgba(183,255,0,.16),transparent 55%)}
-.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;gap:6px}.empty .logo{width:46px;height:46px;margin-bottom:10px}.empty h3{font-size:1rem}.empty p{font-size:.78rem;color:var(--muted);max-width:30em}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;pointer-events:none}.slide.on{opacity:1}
-.cam{width:100%;height:2200px;animation:cam 46s ease-in-out infinite alternate;will-change:transform}.slide:not(.on) .cam{animation-play-state:paused}.view:hover .cam{animation-play-state:paused}
-.cam iframe{width:100%;height:100%;border:0;background:#fff;pointer-events:none}@keyframes cam{0%,6%{transform:translateY(0)}94%,100%{transform:translateY(-1790px)}}
-.base{height:18px;background:linear-gradient(#e4e6e1,#bfc3bb);border-radius:0 0 22px 22px;width:106%;margin-left:-3%;box-shadow:0 20px 30px rgba(16,18,15,.12)}
-.float{position:absolute;right:-14px;bottom:60px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--shadow-md);border:1px solid var(--line);font-size:.7rem;max-width:230px}.float small{display:flex;align-items:center;gap:6px;font-weight:800;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;font-size:.58rem}.float small i{width:8px;height:8px;border-radius:50%;background:var(--success)}.float b{display:block;font-size:.85rem;margin-top:4px}.float span{color:var(--muted-2)}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px;justify-content:center}.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:.74rem;font-weight:700}.chip.on{background:var(--ink);color:var(--lime);border-color:var(--ink)}.chip.pin{background:var(--lime);border-color:var(--lime)}
-.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:24px}.stats .container{display:grid;grid-template-columns:repeat(4,1fr)}.stat{padding:24px 20px;border-left:1px solid var(--line)}.stat:first-child{border-left:0;padding-left:0}.stat b{font-size:1.5rem;letter-spacing:-.03em;display:block}.stat span{font-size:.75rem;color:var(--muted);font-weight:600}
-.banners .container{display:grid;gap:14px;padding-top:40px}.bn{position:relative;overflow:hidden;border-radius:24px;background:var(--ink);color:#fff;padding:30px;background-size:cover;background-position:center}.bn::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,18,15,.95),rgba(16,18,15,.5))}.bn>*{position:relative}.bn small{background:var(--lime);color:var(--ink);padding:4px 10px;border-radius:99px;font-weight:800;font-size:.66rem}.bn h3{font-size:1.7rem;letter-spacing:-.04em;margin:10px 0 6px}.bn p{color:#c9cfc6;max-width:50ch;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}.card{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
-.th{height:190px;position:relative;overflow:hidden;background:var(--paper-2)}.th .cam2{width:333%;height:760px;transform:scale(.3);transform-origin:0 0}.th iframe{width:100%;height:100%;border:0;pointer-events:none;background:#fff}
-.card .b{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}.card h3{font-size:1.15rem}.card .meta{color:var(--muted);font-size:.8rem;font-weight:600}.row{display:flex;gap:8px;flex-wrap:wrap}
-@media(max-width:900px){.hero .container{grid-template-columns:1fr}.laptop{margin:0}.display{height:300px}.float{right:0}.stats .container{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0;padding-left:0}}
-</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Website Deals – Premium Website Showcase</title>
+<meta name="description" content="See ready-made websites live before you choose. Subscription packages with hosting and support.">
+<meta name="theme-color" content="#070808">
+<link rel="manifest" href="./manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./shared/site.css">
+<link rel="stylesheet" href="./shared/luxe.css">
+</head>
+<body>
+
 <div class="salah"><div class="container"><div class="times" id="times"></div><div class="next" id="next"></div></div></div>
-<header class="nav"><div class="container"><a href="#home" class="brand"><span class="logo">WD</span><span><b id="brand">Website Deals</b><small>Premium Website Showcase</small></span></a>
-<nav class="links"><a href="#home" class="on">Home</a><a href="#websites">Website</a><a href="./packages.html">Packages</a><a href="./home/index.html">About</a><a href="#support">Support</a><a href="./wallpaper.html" class="pill">▶ Present</a></nav></div></header>
+
+<header class="nav" id="nav"><div class="container">
+  <a href="#home" class="brand"><span class="logo">WD</span><span><b id="brand">Website Deals</b><small>Premium Website Showcase</small></span></a>
+  <nav class="links" id="links">
+    <a href="#home" class="on">Home</a>
+    <a href="#websites">Websites</a>
+    <a href="./packages.html">Packages</a>
+    <a href="./home/index.html">About</a>
+    <a href="#support">Support</a>
+    <a href="./wallpaper.html" class="pill">▶ Present</a>
+  </nav>
+  <button class="menu" id="menu" aria-label="Menu" aria-expanded="false"><span><i></i><i></i><i></i></span></button>
+</div></header>
+
 <main id="home">
-<section class="hero"><div class="container"><div>
-<span class="tag"><i></i><span id="eyebrow">Live website showcase</span></span>
-<h1 id="h1">See the website. <em>Before you choose it.</em></h1>
-<p class="lead" id="lead">Website Deals is a premium digital showroom for ready-made websites. Explore real website experiences through live previews without repeatedly opening new windows.</p>
-<div class="cta"><a class="btn dark" id="b1" href="#websites">Explore Websites &nbsp;→</a><a class="btn" id="b2" href="./packages.html">View Packages</a></div>
-<p class="note"><i></i>Live previews stay loaded • slow, human-like presentation</p></div>
-<div><div class="laptop"><div class="screen"><div class="display"><div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url" id="url"></div></div>
-<div class="view" id="view"><div class="empty" id="empty"><span class="logo">WD</span><h3>Live Preview</h3><p>Add an active showcase website from the admin panel to display it here.</p></div></div></div></div><div class="base"></div>
-<div class="float"><small><i></i>Live showcase</small><b id="fl">No showcase selected</b><span id="fl2">Add a live website from Admin</span></div></div>
-<div class="chips" id="chips"></div></div></div>
-<div class="stats"><div class="container"><div class="stat"><b>100+</b><span>Ready Website Concepts</span></div><div class="stat"><b>20+</b><span>Business Categories</span></div><div class="stat"><b>100%</b><span>Responsive Experience</span></div><div class="stat"><b>24/7</b><span>Digital Showcase Access</span></div></div></div></section>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="orb a" data-parallax="0.1"></span><span class="orb b" data-parallax="-0.08"></span>
+  <div class="container">
+    <div>
+      <span class="tag"><i></i><span id="eyebrow">Live website showcase</span></span>
+      <h1 id="h1" data-split>See the website. <em>Before you choose it.</em></h1>
+      <p class="lead" id="lead">Website Deals is a premium digital showroom for ready-made websites. Explore real website experiences through live previews without repeatedly opening new windows.</p>
+      <div class="cta">
+        <a class="btn lime wd-mag" id="b1" href="#websites">Explore Websites &nbsp;→</a>
+        <a class="btn wd-mag" id="b2" href="./packages.html">View Packages</a>
+      </div>
+      <p class="note"><i></i>Live previews stay loaded • slow, human-like presentation</p>
+    </div>
+    <div>
+      <div class="laptop" data-reveal="zoom">
+        <div class="screen"><div class="display">
+          <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url" id="url"></div></div>
+          <div class="view" id="view"><div class="empty" id="empty"><span class="logo">WD</span><h3>Live Preview</h3><p>Add an active showcase website from the admin panel to display it here.</p></div></div>
+        </div></div>
+        <div class="base"></div>
+        <div class="float"><small><i></i>Live showcase</small><b id="fl">No showcase selected</b><span id="fl2">Add a live website from Admin</span></div>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="band" aria-label="Highlights"><div id="mq1"></div></div>
+
+<!-- STATS -->
+<section class="stats"><div class="container">
+  <div class="stat"><b data-count>100+</b><span>Ready Website Concepts</span></div>
+  <div class="stat"><b data-count>20+</b><span>Business Categories</span></div>
+  <div class="stat"><b data-count>100%</b><span>Responsive Experience</span></div>
+  <div class="stat"><b data-count>24/7</b><span>Digital Showcase Access</span></div>
+</div></section>
+
 <div class="banners" id="banners"></div>
-<section class="s" id="websites"><div class="container"><h2>Websites ready to go live</h2><p class="sub">Pin any website to the laptop above, or open the full presentation.</p><div class="grid" id="grid"></div></div></section>
-<section class="s" id="packages"><div class="container"><h2>Subscription packages</h2><p class="sub">Monthly plans with hosting, SSL and support included.</p><div class="pks" id="pks"></div></div></section>
-<section class="s" id="support"><div class="container"><h2>Need help choosing?</h2><p class="sub" id="supmsg">Message us on WhatsApp. We reply fast.</p><a class="btn lime" id="supbtn" target="_blank" rel="noopener" href="#">Chat on WhatsApp</a></div></section>
+
+<!-- WEBSITES -->
+<section class="s" id="websites"><div class="container">
+  <div class="eyebrow">01 — Showcase</div>
+  <h2 data-reveal>Websites ready to go live</h2>
+  <p class="sub" data-reveal>Pin any website to the laptop above, or open the full presentation.</p>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<div class="band small" aria-hidden="true"><div id="mq2"></div></div>
+
+<!-- WHY -->
+<section class="s" id="why"><div class="container">
+  <div class="eyebrow">02 — Why us</div>
+  <h2 data-reveal>Everything a modern business site needs</h2>
+  <p class="sub" data-reveal>From first look to going live, every plan is built to be simple, fast and ready to sell.</p>
+  <div class="features">
+    <article class="feat wd-spot"><span class="ic">🖥</span><h3>Live previews</h3><p>Explore real websites in a live browser frame before you choose. No screenshots, no guesswork.</p></article>
+    <article class="feat wd-spot"><span class="ic">⚡</span><h3>Hosting and SSL included</h3><p>Every plan ships with hosting and SSL, so your website is secure and online from day one.</p></article>
+    <article class="feat wd-spot"><span class="ic">🎨</span><h3>Your domain, your brand</h3><p>Connect your own custom domain and get a basic logo to start with your identity.</p></article>
+    <article class="feat wd-spot"><span class="ic">💳</span><h3>bKash, Nagad and bank</h3><p>Pay the way you already do. Local payment methods are supported on every plan.</p></article>
+    <article class="feat wd-spot"><span class="ic">🛠</span><h3>Admin panel and backups</h3><p>Business adds an admin panel, inquiry and order management, and backups.</p></article>
+    <article class="feat wd-spot"><span class="ic">💬</span><h3>Fast WhatsApp support</h3><p>Message us on WhatsApp and we reply fast. Real people, quick answers.</p></article>
+  </div>
+</div></section>
+
+<!-- PROCESS -->
+<section class="s" id="process"><div class="container">
+  <div class="eyebrow">03 — How it works</div>
+  <h2 data-reveal>From first look to live in four steps</h2>
+  <p class="sub" data-reveal>A clear path with no surprises.</p>
+  <div class="steps" data-reveal>
+    <div class="step"><span class="n">01</span><h3>Explore</h3><p>Browse the live websites and pin your favourites to the laptop preview.</p></div>
+    <div class="step"><span class="n">02</span><h3>Choose a plan</h3><p>Pick Starter, Business or Premium, depending on how much you want to run.</p></div>
+    <div class="step"><span class="n">03</span><h3>Confirm on WhatsApp</h3><p>Send us a message and pay by bKash, Nagad or bank transfer.</p></div>
+    <div class="step"><span class="n">04</span><h3>Go live</h3><p>Hosting, SSL and your custom domain are connected and your site is online.</p></div>
+  </div>
+</div></section>
+
+<!-- PACKAGES -->
+<section class="s" id="packages"><div class="container">
+  <div class="eyebrow">04 — Packages</div>
+  <h2 data-reveal>Subscription packages</h2>
+  <p class="sub" data-reveal>Monthly plans with hosting, SSL and support included.</p>
+  <div class="pks" id="pks"></div>
+</div></section>
+
+<!-- FAQ -->
+<section class="s" id="faq"><div class="container">
+  <div class="eyebrow">05 — Questions</div>
+  <h2 data-reveal>Good to know</h2>
+  <div class="faq" data-reveal>
+    <details><summary>What is included in every package?</summary><p>Every plan includes hosting and SSL, a fully responsive design, custom domain connection and support. The packages above list exactly what is added at each level.</p></details>
+    <details><summary>How do I pay?</summary><p>You can pay by bKash, Nagad or bank transfer. Message us on WhatsApp and we will confirm the details with you.</p></details>
+    <details><summary>What is the difference between Starter, Business and Premium?</summary><p>Starter is a complete ready-made website. Business adds an admin panel, advanced Firebase, inquiry and order management, and backups. Premium is a full Shopify-style system with inventory, orders, coupons and checkout.</p></details>
+    <details><summary>Can I see a website before I choose it?</summary><p>Yes. Every showcase website opens in a live preview, so you can scroll through the real thing before you decide.</p></details>
+    <details><summary>How do I ask a question or place an order?</summary><p>Tap the WhatsApp button. We reply fast and can help you pick the right package.</p></details>
+  </div>
+</div></section>
+
+<!-- SUPPORT -->
+<section class="s" id="support"><div class="container">
+  <div class="cta-band" data-reveal="zoom">
+    <div class="eyebrow" style="justify-content:center">Support</div>
+    <h2>Need help choosing?</h2>
+    <p class="sub" id="supmsg">Message us on WhatsApp. We reply fast.</p>
+    <a class="btn lime wd-mag" id="supbtn" target="_blank" rel="noopener" href="#">Chat on WhatsApp</a>
+  </div>
+</div></section>
+
 </main>
-<footer><div class="container"><div><b>Website Deals</b><br><span id="foot">Premium ready-made websites for modern businesses.</span></div><div><span id="copy">© 2026 Website Deals</span> · <a href="./admin/login.html">Admin</a></div></div></footer>
+
+<footer><div class="container">
+  <div class="foot-grid">
+    <div><b>Website Deals</b><br><span id="foot">Premium ready-made websites for modern businesses.</span></div>
+    <div><a href="./packages.html">Packages</a> &nbsp;·&nbsp; <a href="./home/index.html">About</a> &nbsp;·&nbsp; <a href="./support/index.html">Support</a><br><span id="copy">© 2026 Website Deals</span> · <a href="./admin/login.html">Admin</a></div>
+  </div>
+  <div class="wordmark" aria-hidden="true" data-parallax="0.05">Website Deals</div>
+</div></footer>
+
 <a class="wa" id="waf" target="_blank" rel="noopener" href="#">💬 WhatsApp</a>
-<script src="./shared/store.js"></script><script src="./shared/data.js"></script><script src="./shared/packages.js"></script><script src="./shared/salah.js"></script>
+
+<script src="./shared/store.js"></script>
+<script src="./shared/data.js"></script>
+<script src="./shared/cms.js"></script>
+<script src="./shared/packages.js"></script>
+<script src="./shared/salah.js"></script>
+<script src="./shared/fx.js"></script>
 <script>
 (function(){
 var S=window.WDStore,$=function(i){return document.getElementById(i)};
 function jget(k,d){try{var v=window.WDData?WDData.get(k,null):JSON.parse(localStorage.getItem(k)||"null");return v==null?d:v}catch(e){return d}}
-var HP={},ST={},WA="8801705633700";
+var HP={},ST={},SITE={},WA="8801705633700";
 function wa(t){return"https://wa.me/"+WA+"?text="+encodeURIComponent("Hello, I want: "+t)}
+
+/* nav: sticky style + mobile menu */
+var nav=$("nav");function stick(){nav.classList.toggle("stuck",(window.scrollY||0)>24)}stick();addEventListener("scroll",stick,{passive:true});
+$("menu").addEventListener("click",function(){var o=$("links").classList.toggle("open");this.classList.toggle("open",o);this.setAttribute("aria-expanded",o)});
+$("links").addEventListener("click",function(e){if(e.target.closest("a")){$("links").classList.remove("open");$("menu").classList.remove("open")}});
+
+var MQ1=["Ready-made websites","Live previews","Hosting + SSL","Custom domain","bKash · Nagad · Bank","Fast WhatsApp support"];
+var MQ2=["Responsive on every screen","Admin panel","Inquiry and order management","Backups","Advanced SEO","Uptime monitoring"];
+function marquees(){
+  var m=SITE.marquee||{},items=(m.items&&m.items.length)?m.items:MQ1,dur=Math.max(10,+m.duration||44);
+  if(window.WDFx){WDFx.marquee($("mq1"),items,{duration:dur});WDFx.marquee($("mq2"),(m.items2&&m.items2.length)?m.items2:MQ2,{duration:dur*1.25,reverse:true})}
+}
+var mqSig="";
 function applyContent(){
-HP=jget("websiteDealsHomepage",{});ST=jget("websiteDealsSettings",{});
+HP=jget("websiteDealsHomepage",{});ST=jget("websiteDealsSettings",{});SITE=jget("websiteDealsSite",{})||{};
 WA=String(ST.whatsapp||"").replace(/\D/g,"")||"8801705633700";
-/* homepage manager content */
-if(HP.heroTitle){$("h1").textContent=HP.heroTitle}
+function setH(id,t){var el=$(id);if(el&&el.textContent!==t){el.textContent=t;if(el.hasAttribute("data-split")){delete el.dataset.wdSplit;el.classList.remove("wd-split","wd-in")}}}
+if(HP.heroTitle)setH("h1",HP.heroTitle);
 if(HP.heroDescription)$("lead").textContent=HP.heroDescription;if(HP.heroEyebrow)$("eyebrow").textContent=HP.heroEyebrow;
 if(HP.heroPrimaryText){$("b1").textContent=HP.heroPrimaryText;if(HP.heroPrimaryUrl)$("b1").href=HP.heroPrimaryUrl}
 if(HP.heroSecondaryText){$("b2").textContent=HP.heroSecondaryText;if(HP.heroSecondaryUrl)$("b2").href=HP.heroSecondaryUrl}
 if(HP.footerText)$("foot").textContent=HP.footerText;if(HP.copyright)$("copy").textContent=HP.copyright;
-if(ST.brandName)$("brand").textContent=ST.brandName;if(ST.supportMessage)$("supmsg").textContent=ST.supportMessage;
+if(ST.brandName&&!(SITE.brand&&SITE.brand.name))$("brand").textContent=ST.brandName;if(ST.supportMessage)$("supmsg").textContent=ST.supportMessage;
 if(HP.showWebsites===false)$("websites").style.display="none";if(HP.showPackages===false)$("packages").style.display="none";if(HP.showSalah===false)document.querySelector(".salah").style.display="none";if(HP.showSupport===false)$("support").style.display="none";
 $("supbtn").href=wa("a website");$("waf").href=wa("a website");
-/* banners */
 var BN=jget("websiteDealsBanners",[]).filter(function(b){return b&&b.active!==false}).sort(function(a,b){return(a.priority||1)-(b.priority||1)});
-$("banners").innerHTML=BN.length?'<div class="container">'+BN.map(function(b){var img=S.safeUrl(b.imageUrl||"");return'<div class="bn"'+(img?' style="background-image:url(\''+S.esc(img)+'\')"':'')+'>'+(b.badge?'<small>'+S.esc(b.badge)+'</small>':'')+'<h3>'+S.esc(b.title)+'</h3><p>'+S.esc(b.subtitle||"")+'</p><a class="btn lime sm" href="'+S.esc((b.ctaUrl||"#websites").replace(/^\.\.\//,"./"))+'">'+S.esc(b.ctaText||"Explore")+'</a></div>'}).join("")+'</div>':"";
+var bh=BN.length?'<div class="container">'+BN.map(function(b){var img=S.safeUrl(b.imageUrl||"");return'<div class="bn"'+(img?' style="background-image:url(\''+S.esc(img)+'\')"':'')+' data-reveal>'+(b.badge?'<small>'+S.esc(b.badge)+'</small>':'')+'<h3>'+S.esc(b.title)+'</h3><p>'+S.esc(b.subtitle||"")+'</p><a class="btn lime sm" href="'+S.esc((b.ctaUrl||"#websites").replace(/^\.\.\//,"./"))+'">'+S.esc(b.ctaText||"Explore")+'</a></div>'}).join("")+'</div>':"";
+if($("banners").innerHTML!==bh)$("banners").innerHTML=bh;
 WDPackages.render($("pks"),WA);
+[].forEach.call($("pks").children,function(c){c.classList.add("wd-spot");c.setAttribute("data-reveal","up")});
+var sig=JSON.stringify(SITE.marquee||{});if(sig!==mqSig){mqSig=sig;marquees()}
 }
 applyContent();addEventListener("wd:data-ready",function(){applyContent();if(typeof cards==="function"&&sites&&sites.length)cards()});
-/* sites */
-var sites=[],cur=0,pinned=false,timer=null,sig="";
+addEventListener("wd:site-edited",applyContent);addEventListener("storage",function(e){if(!e.key||/^websiteDeals/.test(e.key))applyContent()});
+if(!mqSig)marquees();
+
+/* showcase */
+var sites=[],cur=0,pinned=false,timer=null,sig2="";
 function pkg(s){return S.packageLabel?S.packageLabel(s.package):(s.packageLabel||s.package||"Website")}
 function build(list){
- var n=S.showcase(list);var s2=n.map(function(x){return x.id+x.url}).join("|");if(s2===sig)return;sig=s2;sites=n;
+ var n=S.showcase(list);var s2=n.map(function(x){return x.id+x.url}).join("|");if(s2===sig2)return;sig2=s2;sites=n;
  var view=$("view");[].slice.call(view.querySelectorAll(".slide")).forEach(function(e){e.remove()});
  $("empty").style.display=sites.length?"none":"flex";
  sites.forEach(function(s,i){var d=document.createElement("div");d.className="slide";d.innerHTML='<div class="cam"><iframe src="'+S.esc(s.url)+'" title="'+S.esc(s.name)+'" loading="'+(i?'lazy':'eager')+'" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';view.appendChild(d)});
@@ -90,10 +218,12 @@ function chips(){var h=sites.map(function(s,i){return'<button class="chip" data-
 function restart(){clearInterval(timer);if(!pinned&&sites.length>1)timer=setInterval(function(){show(cur+1)},32000)}
 $("chips").addEventListener("click",function(e){var c=e.target.closest(".chip");if(!c)return;if(c.id==="pin"){pinned=!pinned;c.textContent=pinned?"📌 Pinned":"📍 Auto-rotate";show(cur);restart();return}pinned=true;chips();show(+c.dataset.i);restart()});
 function cards(){
- $("grid").innerHTML=sites.length?sites.map(function(s,i){return'<article class="card"><div class="th"><div class="cam2"><iframe src="'+S.esc(s.url)+'" loading="lazy" title="'+S.esc(s.name)+'"></iframe></div></div><div class="b"><h3>'+S.esc(s.name)+'</h3><div class="meta">'+S.esc(pkg(s))+'</div><div class="row"><button class="btn dark sm" data-pin="'+i+'">Pin to laptop</button><a class="btn sm" target="_blank" rel="noopener" href="'+S.esc(s.url)+'">Open live ↗</a><a class="btn sm" target="_blank" href="./presentation/index.html?site='+encodeURIComponent(s.id)+'">Explore</a><a class="btn lime sm" target="_blank" rel="noopener" href="'+wa(s.name)+'">Order</a></div></div></article>'}).join(""):'<p class="sub">No showcase websites yet. Add one from Admin → Websites.</p>'}
+ $("grid").innerHTML=sites.length?sites.map(function(s,i){return'<article class="card wd-spot" data-reveal style="--d:'+Math.min(i,5)*0.08+'s"><div class="th"><div class="cam2"><iframe src="'+S.esc(s.url)+'" loading="lazy" title="'+S.esc(s.name)+'"></iframe></div></div><div class="b"><h3>'+S.esc(s.name)+'</h3><div class="meta">'+S.esc(pkg(s))+'</div><div class="row"><button class="btn lime sm" data-pin="'+i+'">Pin to laptop</button><a class="btn sm" target="_blank" rel="noopener" href="'+S.esc(s.url)+'">Open live ↗</a><a class="btn sm" target="_blank" href="./presentation/index.html?site='+encodeURIComponent(s.id)+'">Explore</a><a class="btn sm" target="_blank" rel="noopener" href="'+wa(s.name)+'">Order</a></div></div></article>'}).join(""):'<p class="sub">No showcase websites yet. Add one from Admin → Websites.</p>'}
 $("grid").addEventListener("click",function(e){var b=e.target.closest("[data-pin]");if(!b)return;pinned=true;chips();show(+b.dataset.pin);restart();window.scrollTo({top:0,behavior:"smooth"})});
 build(S.list());
 window.addEventListener("wd:sites-changed",function(){build(S.list())});window.addEventListener("storage",function(){build(S.list())});
 })();
-if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(){})});
-</script></body></html>
+if("serviceWorker" in navigator&&!/[?&]wdedit=1/.test(location.search))addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(){})});
+</script>
+</body>
+</html>

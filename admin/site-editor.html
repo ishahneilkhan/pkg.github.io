@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Site Editor | Website Deals Admin</title>
+<script>if(sessionStorage.getItem("websiteDealsAdminAuth")!=="true")location.replace("./login.html")</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070808;--panel:#0e1110;--panel2:#141817;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--text:#f4f6f3;--muted:#98a19b;--lime:#b7ff00;--danger:#ff6b6b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow:hidden}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}
+.top{height:60px;flex:none;display:flex;align-items:center;gap:14px;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(14,17,16,.9)}
+.top .back{padding:8px 12px;border-radius:10px;border:1px solid var(--line2);font-size:.78rem;font-weight:700;color:#d1d8cf}.top .back:hover{border-color:var(--lime);color:#fff}
+.top h1{font-size:1rem;letter-spacing:-.01em}.top h1 small{display:block;font-size:.62rem;font-weight:700;letter-spacing:.16em;color:var(--lime);text-transform:uppercase;margin-bottom:2px}
+.sp{flex:1}
+.dirty{display:none;align-items:center;gap:8px;font-size:.74rem;font-weight:700;color:#ffd166;background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.3);padding:7px 12px;border-radius:999px}.dirty.on{display:flex}
+.dirty i{width:7px;height:7px;border-radius:50%;background:#ffd166}
+.dev{display:flex;gap:4px;padding:4px;border-radius:12px;background:var(--panel2);border:1px solid var(--line)}
+.dev button{padding:7px 12px;border-radius:9px;background:none;border:0;cursor:pointer;font-size:.74rem;font-weight:700;color:var(--muted)}.dev button.on{background:var(--lime);color:#0b0d0c}
+.main{flex:1;display:grid;grid-template-columns:410px 1fr;min-height:0}
+.side{border-right:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-height:0}
+.tabs{display:flex;gap:2px;padding:10px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;padding:9px 13px;border-radius:10px;background:none;border:0;cursor:pointer;font-size:.76rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.tabs button:hover{color:#fff}.tabs button.on{background:rgba(183,255,0,.12);color:var(--lime)}
+.body{flex:1;overflow:auto;padding:20px}
+.pane{display:none}.pane.on{display:block}
+h2{font-size:1.15rem;letter-spacing:-.02em;margin-bottom:6px}.lead{color:var(--muted);font-size:.84rem;line-height:1.6;margin-bottom:20px}
+.f{margin-bottom:18px}.f label{display:block;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.in,select.in,textarea.in{width:100%;padding:12px 14px;border-radius:12px;background:var(--panel2);border:1px solid var(--line2);outline:0;font-size:.9rem}
+.in:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(183,255,0,.14)}textarea.in{min-height:130px;resize:vertical;line-height:1.7}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{padding:10px 14px;border-radius:11px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-size:.78rem;font-weight:700}.btn:hover{border-color:var(--lime)}
+.btn.p{background:var(--lime);border-color:var(--lime);color:#0b0d0c}.btn.d{color:var(--danger)}
+.logo-box{display:flex;align-items:center;gap:14px;padding:14px;border-radius:16px;background:var(--panel2);border:1px dashed var(--line2)}
+.logo-prev{width:72px;height:72px;border-radius:18px;background:#000;border:1px solid var(--line2);display:grid;place-items:center;overflow:hidden;font-weight:800;color:var(--lime);flex:none}.logo-prev img{width:100%;height:100%;object-fit:contain}
+.sw{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.sw button{width:34px;height:34px;border-radius:50%;border:2px solid transparent;cursor:pointer;box-shadow:0 0 0 1px var(--line2)}.sw button.on{border-color:#fff}
+input[type=color]{width:44px;height:36px;padding:0;border:1px solid var(--line2);border-radius:10px;background:none;cursor:pointer}
+.tg{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;border-radius:14px;background:var(--panel2);border:1px solid var(--line);margin-bottom:8px}
+.tg b{font-size:.88rem;display:block}.tg small{color:var(--muted);font-size:.74rem}
+.sw2{position:relative;width:44px;height:26px;flex:none}.sw2 input{opacity:0;position:absolute;inset:0;width:100%;height:100%;cursor:pointer;z-index:2}
+.sw2 span{position:absolute;inset:0;border-radius:99px;background:#2a302d;transition:.25s}.sw2 span::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.25s}
+.sw2 input:checked+span{background:var(--lime)}.sw2 input:checked+span::after{transform:translateX(18px);background:#0b0d0c}
+input[type=range]{width:100%;accent-color:var(--lime)}
+.val{float:right;color:var(--lime);font-weight:800;letter-spacing:0;text-transform:none}
+.help{padding:14px 16px;border-radius:14px;background:rgba(183,255,0,.07);border:1px solid rgba(183,255,0,.22);font-size:.8rem;line-height:1.7;color:#d6dcd3;margin-bottom:18px}.help b{color:var(--lime)}
+.help ul{margin:8px 0 0 18px}
+.stat{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--line)}.stat b{color:#fff}
+.view{display:flex;flex-direction:column;min-height:0;background:radial-gradient(circle at 50% 0,rgba(183,255,0,.06),transparent 60%),#050606}
+.bar{flex:none;display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:.74rem;color:var(--muted)}
+.bar .url{flex:1;padding:7px 12px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.stage{flex:1;overflow:auto;padding:18px;display:flex;justify-content:center;min-height:0}
+.frame{width:100%;max-width:100%;height:100%;min-height:500px;border:1px solid var(--line2);border-radius:16px;background:#fff;transition:width .35s}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(20px);background:#0c0f0e;border:1px solid var(--lime);padding:11px 18px;border-radius:12px;font-size:.8rem;font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:5000}.toast.on{opacity:1;transform:translateX(-50%)}
+@media(max-width:1000px){body{overflow:auto}.main{grid-template-columns:1fr;display:block}.side{border-right:0;border-bottom:1px solid var(--line)}.body{overflow:visible}.stage{height:70vh}.top h1 small{display:none}.dev{display:none}}
+</style>
+</head>
+<body>
+<div class="top">
+  <a class="back" href="./dashboard.html">← Dashboard</a>
+  <h1><small>Admin</small>Site Editor</h1>
+  <span class="sp"></span>
+  <span class="dirty" id="dirty"><i></i>Not published yet. Press Publish.</span>
+  <div class="dev" id="dev"><button data-w="100%" class="on">Desktop</button><button data-w="820px">Tablet</button><button data-w="390px">Mobile</button></div>
+</div>
+
+<div class="main">
+<aside class="side">
+  <div class="tabs" id="tabs">
+    <button data-t="brand" class="on">Logo and brand</button>
+    <button data-t="theme">Colours and fonts</button>
+    <button data-t="motion">Animation</button>
+    <button data-t="marquee">Scrolling text</button>
+    <button data-t="pages">Edit pages</button>
+  </div>
+  <div class="body">
+
+    <section class="pane on" id="p-brand">
+      <h2>Logo and brand</h2>
+      <p class="lead">Change the logo and name everywhere on the site at once: header, footer and browser tab icon.</p>
+      <div class="f"><label>Logo image</label>
+        <div class="logo-box"><div class="logo-prev" id="logoPrev">WD</div>
+          <div><div class="row"><button class="btn p" id="logoPick" type="button">Upload logo</button><button class="btn d" id="logoDel" type="button">Remove</button></div>
+          <p class="lead" style="margin:8px 0 0;font-size:.74rem">PNG, JPG, WebP or SVG. A square image on a transparent background works best. It is shrunk automatically.</p></div></div>
+        <input type="file" id="logoFile" accept="image/*" hidden>
+      </div>
+      <div class="f"><label>Brand name</label><input class="in" id="brandName" placeholder="Website Deals" maxlength="60"></div>
+      <div class="f"><label>Tagline (small text under the name)</label><input class="in" id="brandTag" placeholder="Premium Website Showcase" maxlength="80"></div>
+    </section>
+
+    <section class="pane" id="p-theme">
+      <h2>Colours and fonts</h2>
+      <p class="lead">The accent colour, background and fonts change on every page.</p>
+      <div class="f"><label>Accent colour <span class="val" id="accV"></span></label>
+        <div class="sw" id="accSw"></div>
+        <div class="row"><input type="color" id="acc"><input class="in" id="accT" style="max-width:150px" placeholder="#b7ff00" maxlength="7"></div></div>
+      <div class="f"><label>Background colour <span class="val" id="bgV"></span></label>
+        <div class="sw" id="bgSw"></div>
+        <div class="row"><input type="color" id="bg"><input class="in" id="bgT" style="max-width:150px" placeholder="#070808" maxlength="7"></div></div>
+      <div class="f"><label>Heading font</label><select class="in" id="fh"></select></div>
+      <div class="f"><label>Body font</label><select class="in" id="fb"></select></div>
+      <button class="btn d" id="themeReset" type="button">Reset colours and fonts</button>
+    </section>
+
+    <section class="pane" id="p-motion">
+      <h2>Animation</h2>
+      <p class="lead">Turn each effect on or off. Visitors who prefer reduced motion never see animation.</p>
+      <div id="fxList"></div>
+      <div class="f" style="margin-top:18px"><label>Animation speed <span class="val" id="spV"></span></label><input type="range" id="speed" min="0.5" max="2" step="0.1"></div>
+    </section>
+
+    <section class="pane" id="p-marquee">
+      <h2>Scrolling text</h2>
+      <p class="lead">The moving text bands on the home page. Write one phrase per line.</p>
+      <div class="f"><label>Big band (home page, under the hero)</label><textarea class="in" id="mq1"></textarea></div>
+      <div class="f"><label>Small band (home and packages pages)</label><textarea class="in" id="mq2"></textarea></div>
+      <div class="f"><label>Scroll time <span class="val" id="mqV"></span></label><input type="range" id="mqd" min="15" max="120" step="1"></div>
+      <button class="btn" id="mqReset" type="button">Restore default text</button>
+    </section>
+
+    <section class="pane" id="p-pages">
+      <h2>Edit pages</h2>
+      <div class="help"><b>Click anything in the preview</b> to edit it. A small toolbar appears:
+        <ul><li><b>✎ Text</b> (or double-click) to type new words</li><li><b>🖼 Image</b> to upload a different picture</li><li><b>🔗 Link</b> to change where a button goes</li><li><b>👁 Hide</b> to remove a block from the page</li><li><b>↺ Reset</b> to undo your change on it</li></ul>
+        Press <b>Publish</b> (bottom left) when you are done.</div>
+      <div class="f"><label>Page</label><select class="in" id="pageSel"></select></div>
+      <div class="stat"><span>Text edits on this page</span><b id="cT">0</b></div>
+      <div class="stat"><span>Images replaced</span><b id="cI">0</b></div>
+      <div class="stat"><span>Links changed</span><b id="cL">0</b></div>
+      <div class="stat"><span>Hidden blocks</span><b id="cH">0</b></div>
+      <div class="row" style="margin-top:16px"><button class="btn d" id="pageClear" type="button">Undo all edits on this page</button></div>
+      <p class="lead" style="margin-top:14px;font-size:.74rem">Packages, websites and banners are managed in their own admin pages. Text that appears in several places on a page changes everywhere together.</p>
+    </section>
+
+  </div>
+</aside>
+
+<section class="view">
+  <div class="bar"><span id="modeLbl">Live preview</span><span class="url" id="urlLbl">../index.html</span><button class="btn" id="reload" type="button">↻ Reload</button></div>
+  <div class="stage"><iframe class="frame" id="frame" title="Site preview"></iframe></div>
+</section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../shared/data.js"></script>
+<script src="../shared/admin-publish.js"></script>
+<script>
+(function(){
+"use strict";
+var D=window.WDData,KEY="websiteDealsSite",$=function(i){return document.getElementById(i)};
+var FONTS=["Inter","Playfair Display","Cormorant Garamond","Poppins","Space Grotesk","Manrope","Plus Jakarta Sans","Syne","DM Serif Display","Hind Siliguri"];
+var ACC=["#b7ff00","#d4af37","#22d3ee","#a78bfa","#fb7185","#34d399","#fb923c","#f5f5f5"];
+var BG=["#070808","#0a0b10","#0d0a0a","#08100d","#0b0a12","#101010"];
+var MQ1=["Ready-made websites","Live previews","Hosting + SSL","Custom domain","bKash · Nagad · Bank","Fast WhatsApp support"];
+var MQ2=["Responsive on every screen","Admin panel","Inquiry and order management","Backups","Advanced SEO","Uptime monitoring"];
+var FX=[["reveal","Scroll reveal","Sections and headlines glide in as you scroll"],["marquee","Moving text bands","Infinite scrolling text"],["counters","Number counters","Stats count up when they appear"],["spotlight","Spotlight cards","A soft glow follows the mouse over cards"],["parallax","Parallax","Background shapes drift at a different speed"],["progress","Scroll progress bar","A thin line at the top shows how far you scrolled"],["grain","Film grain","Subtle texture over the whole page"],["cursor","Cursor glow","A glow that follows the mouse (off by default)"]];
+var PAGES=[["Home","index.html"],["Packages","packages.html"],["About","home/index.html"],["Support","support/index.html"],["Starter package","starter/index.html"],["Business package","business/index.html"],["Premium package","premium/index.html"],["Live examples","package/index.html"],["Live preview","live/index.html"],["Presentation","presentation/index.html"],["About (short)","about/index.html"]];
+var tab="brand",page="index.html",cfg=load();
+
+function clone(o){return JSON.parse(JSON.stringify(o||{}))}
+function load(){var c=D.get(KEY,null);return c&&typeof c==="object"?clone(c):{}}
+function save(){cfg.brand=cfg.brand||{};try{localStorage.setItem(KEY,JSON.stringify(cfg))}catch(e){toast("Browser storage is full. Remove some images.");return}
+  $("dirty").classList.add("on");try{window.dispatchEvent(new Event("wd:site-edited"))}catch(e){}}
+function toast(t){var el=$("toast");el.textContent=t;el.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(function(){el.classList.remove("on")},2600)}
+function hex(c){return /^#([0-9a-f]{6})$/i.test(String(c||""))?c:""}
+function ensure(k){cfg[k]=cfg[k]||{};return cfg[k]}
+
+/* ---------- tabs + preview ---------- */
+function setTab(t){tab=t;[].forEach.call($("tabs").children,function(b){b.classList.toggle("on",b.dataset.t===t)});
+  [].forEach.call(document.querySelectorAll(".pane"),function(p){p.classList.toggle("on",p.id==="p-"+t)});frameLoad()}
+$("tabs").addEventListener("click",function(e){var b=e.target.closest("button");if(b)setTab(b.dataset.t)});
+function frameLoad(){
+  var edit=tab==="pages",src="../"+(edit?page:"index.html")+(edit?"?wdedit=1":"");
+  var f=$("frame");if(f.getAttribute("data-src")!==src){f.setAttribute("data-src",src);f.src=src}
+  $("modeLbl").textContent=edit?"Click to edit":"Live preview";$("urlLbl").textContent=src.replace("../","/").replace("?wdedit=1","");
+  counts();
+}
+$("reload").onclick=function(){var f=$("frame");f.src=f.getAttribute("data-src")};
+$("dev").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call($("dev").children,function(x){x.classList.toggle("on",x===b)});$("frame").style.width=b.dataset.w});
+window.addEventListener("message",function(e){if(e.data&&e.data.wd==="dirty"){cfg=load();$("dirty").classList.add("on");counts()}});
+
+/* ---------- brand ---------- */
+function paintLogo(){var l=(cfg.brand||{}).logo;$("logoPrev").innerHTML=l&&/^data:image\//.test(l)?'<img alt="" src="'+l+'">':"WD"}
+function shrink(file,max,cb){var fr=new FileReader();fr.onload=function(){
+  if(file.type==="image/svg+xml"){if(fr.result.length>150000){toast("That SVG is too large.");return}cb(fr.result);return}
+  var im=new Image();im.onload=function(){var sc=Math.min(1,max/Math.max(im.width,im.height)),w=Math.round(im.width*sc),h=Math.round(im.height*sc),cv=document.createElement("canvas");cv.width=w;cv.height=h;cv.getContext("2d").drawImage(im,0,0,w,h);
+    var out=cv.toDataURL("image/webp",.9);if(out.indexOf("data:image/webp")!==0)out=cv.toDataURL("image/png");var q=.8;while(out.length>140000&&q>.3){out=cv.toDataURL("image/webp",q);q-=.15}cb(out)};
+  im.onerror=function(){toast("That file is not a supported image.")};im.src=fr.result};fr.readAsDataURL(file)}
+$("logoPick").onclick=function(){$("logoFile").value="";$("logoFile").click()};
+$("logoFile").onchange=function(){var f=this.files&&this.files[0];if(!f)return;shrink(f,320,function(d){ensure("brand").logo=d;save();paintLogo();toast("Logo updated")})};
+$("logoDel").onclick=function(){if(cfg.brand){delete cfg.brand.logo;delete cfg.brand.favicon}save();paintLogo();toast("Logo removed")};
+$("brandName").oninput=function(){ensure("brand").name=this.value.trim();save()};
+$("brandTag").oninput=function(){ensure("brand").tagline=this.value.trim();save()};
+
+/* ---------- theme ---------- */
+function sw(id,list,key,inp,txt,lab){var h="";list.forEach(function(c){h+='<button type="button" data-c="'+c+'" style="background:'+c+'" title="'+c+'"></button>'});$(id).innerHTML=h;
+  $(id).onclick=function(e){var b=e.target.closest("button");if(b)setC(key,b.dataset.c)};
+  $(inp).oninput=function(){setC(key,this.value)};$(txt).oninput=function(){if(hex(this.value))setC(key,this.value)}}
+function setC(k,v){ensure("theme")[k]=v;save();paintTheme()}
+function paintTheme(){var t=cfg.theme||{};[["accent","acc","accT","accV","accSw","#b7ff00"],["bg","bg","bgT","bgV","bgSw","#070808"]].forEach(function(r){var v=hex(t[r[0]])||r[5];$(r[1]).value=v;if(document.activeElement!==$(r[2]))$(r[2]).value=v;$(r[3]).textContent=v;[].forEach.call($(r[4]).children,function(b){b.classList.toggle("on",b.dataset.c.toLowerCase()===v.toLowerCase())})});
+  $("fh").value=t.fontHeading||"";$("fb").value=t.fontBody||""}
+sw("accSw",ACC,"accent","acc","accT");sw("bgSw",BG,"bg","bg","bgT");
+["fh","fb"].forEach(function(id){var s=$(id),h='<option value="">Default</option>';FONTS.forEach(function(f){h+='<option>'+f+'</option>'});s.innerHTML=h;
+  s.onchange=function(){ensure("theme")[id==="fh"?"fontHeading":"fontBody"]=this.value;save()}});
+$("themeReset").onclick=function(){delete cfg.theme;save();paintTheme();toast("Colours and fonts reset")};
+
+/* ---------- motion ---------- */
+function paintFx(){var fx=cfg.fx||{},h="";FX.forEach(function(r){var on=r[0]==="cursor"?fx.cursor===true:fx[r[0]]!==false;
+  h+='<div class="tg"><div><b>'+r[1]+'</b><small>'+r[2]+'</small></div><label class="sw2"><input type="checkbox" data-k="'+r[0]+'"'+(on?" checked":"")+'><span></span></label></div>'});$("fxList").innerHTML=h;
+  var sp=parseFloat(fx.speed)||1;$("speed").value=sp;$("spV").textContent=sp.toFixed(1)+"×"}
+$("fxList").onchange=function(e){var i=e.target;if(i.dataset.k){var fx=ensure("fx");fx[i.dataset.k]=i.dataset.k==="cursor"?i.checked:i.checked;save()}};
+$("speed").oninput=function(){ensure("fx").speed=parseFloat(this.value);$("spV").textContent=parseFloat(this.value).toFixed(1)+"×";save()};
+
+/* ---------- marquee ---------- */
+function lines(t){return String(t).split(/\n/).map(function(x){return x.trim()}).filter(Boolean).slice(0,24)}
+function paintMq(){var m=cfg.marquee||{};$("mq1").value=(m.items&&m.items.length?m.items:MQ1).join("\n");$("mq2").value=(m.items2&&m.items2.length?m.items2:MQ2).join("\n");var d=+m.duration||44;$("mqd").value=d;$("mqV").textContent=d+"s"}
+$("mq1").oninput=function(){ensure("marquee").items=lines(this.value);save()};
+$("mq2").oninput=function(){ensure("marquee").items2=lines(this.value);save()};
+$("mqd").oninput=function(){ensure("marquee").duration=+this.value;$("mqV").textContent=this.value+"s";save()};
+$("mqReset").onclick=function(){delete cfg.marquee;save();paintMq();toast("Default text restored")};
+
+/* ---------- pages ---------- */
+var ps=$("pageSel"),ph="";PAGES.forEach(function(p){ph+='<option value="'+p[1]+'">'+p[0]+'</option>'});ps.innerHTML=ph;
+ps.onchange=function(){page=this.value;frameLoad()};
+function pkey(p){p=p.replace(/index\.html$/,"");return p||"home"}
+function counts(){var pc=((cfg.pages||{})[pkey(page)])||{};$("cT").textContent=Object.keys(pc.text||{}).length;$("cI").textContent=Object.keys(pc.src||{}).length;$("cL").textContent=Object.keys(pc.href||{}).length;$("cH").textContent=(pc.hide||[]).length}
+$("pageClear").onclick=function(){if(!confirm("Undo every edit on this page?"))return;if(cfg.pages)delete cfg.pages[pkey(page)];save();counts();$("reload").click();toast("Page edits cleared")};
+
+function paintAll(){paintLogo();$("brandName").value=(cfg.brand||{}).name||"";$("brandTag").value=(cfg.brand||{}).tagline||"";paintTheme();paintFx();paintMq();counts()}
+paintAll();
+window.addEventListener("wd:data-ready",function(){if(localStorage.getItem(KEY)==null){cfg=load();paintAll()}});
+$("frame").addEventListener("load",function(){});
+frameLoad();
+})();
+</script>
+</body>
+</html>
