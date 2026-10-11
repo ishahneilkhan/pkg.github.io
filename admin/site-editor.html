@@ -74,6 +74,8 @@ input[type=range]{width:100%;accent-color:var(--lime)}
     <button data-t="theme">Colours and fonts</button>
     <button data-t="motion">Animation</button>
     <button data-t="marquee">Scrolling text</button>
+    <button data-t="checkout">Checkout</button>
+    <button data-t="support">Support team</button>
     <button data-t="pages">Edit pages</button>
   </div>
   <div class="body">
@@ -119,6 +121,28 @@ input[type=range]{width:100%;accent-color:var(--lime)}
       <div class="f"><label>Small band (home and packages pages)</label><textarea class="in" id="mq2"></textarea></div>
       <div class="f"><label>Scroll time <span class="val" id="mqV"></span></label><input type="range" id="mqd" min="15" max="120" step="1"></div>
       <button class="btn" id="mqReset" type="button">Restore default text</button>
+    </section>
+
+    <section class="pane" id="p-checkout">
+      <h2>Checkout and payment</h2>
+      <p class="lead">What customers see when they press Subscribe on a package. Leave a field empty to hide that method.</p>
+      <div class="f"><label>Payment gateway link</label><input class="in" id="ckGw" placeholder="https://your-gateway.com/pay?amount={amount}"></div>
+      <p class="lead" style="font-size:.74rem">Paste your own gateway link. You can use {amount}, {package}, {order}, {name}, {phone} and they are filled in automatically.</p>
+      <div class="f"><label>Gateway button name</label><input class="in" id="ckGl" placeholder="Pay online"></div>
+      <div class="f"><label>bKash number</label><input class="in" id="ckBk" placeholder="01XXXXXXXXX"></div>
+      <div class="f"><label>Nagad number</label><input class="in" id="ckNg" placeholder="01XXXXXXXXX"></div>
+      <div class="f"><label>Bank details</label><textarea class="in" id="ckBn" placeholder="Bank name, account name, account number"></textarea></div>
+      <div class="f"><label>Extra note shown with payment</label><input class="in" id="ckNt" placeholder="Use Send Money. Keep the Transaction ID."></div>
+    </section>
+
+    <section class="pane" id="p-support">
+      <h2>Support team</h2>
+      <p class="lead">Shown live in the Need help section on the home page.</p>
+      <div class="f"><label>Live support site</label><input class="in" id="spUrl" placeholder="https://support.websitesdeal.com"></div>
+      <div class="f"><label>Live team feed (JSON link, optional)</label><input class="in" id="spFeed" placeholder="https://.../team.json"></div>
+      <div class="f"><label>Show the live support page inside the site</label><select class="in" id="spEmb"><option value="1">Yes</option><option value="0">No</option></select></div>
+      <div class="f"><label>Team profiles (one per line: Name | Role | WhatsApp number | Photo link)</label><textarea class="in" id="spPpl" style="min-height:140px" placeholder="Rahim | Sales advisor | 8801XXXXXXXXX | https://..."></textarea></div>
+      <div class="f"><label>Show support block</label><select class="in" id="spShow"><option value="1">Yes</option><option value="0">No</option></select></div>
     </section>
 
     <section class="pane" id="p-pages">
@@ -174,7 +198,7 @@ function setTab(t){tab=t;[].forEach.call($("tabs").children,function(b){b.classL
   [].forEach.call(document.querySelectorAll(".pane"),function(p){p.classList.toggle("on",p.id==="p-"+t)});frameLoad()}
 $("tabs").addEventListener("click",function(e){var b=e.target.closest("button");if(b)setTab(b.dataset.t)});
 function frameLoad(){
-  var edit=tab==="pages",src="../"+(edit?page:"index.html")+(edit?"?wdedit=1":"");
+  var edit=tab==="pages",src="../"+(edit?page:(tab==="support"?"index.html#support":(tab==="checkout"?"packages.html":"index.html")))+(edit?"?wdedit=1":"");
   var f=$("frame");if(f.getAttribute("data-src")!==src){f.setAttribute("data-src",src);f.src=src}
   $("modeLbl").textContent=edit?"Click to edit":"Live preview";$("urlLbl").textContent=src.replace("../","/").replace("?wdedit=1","");
   counts();
@@ -230,7 +254,19 @@ function pkey(p){p=p.replace(/index\.html$/,"");return p||"home"}
 function counts(){var pc=((cfg.pages||{})[pkey(page)])||{};$("cT").textContent=Object.keys(pc.text||{}).length;$("cI").textContent=Object.keys(pc.src||{}).length;$("cL").textContent=Object.keys(pc.href||{}).length;$("cH").textContent=(pc.hide||[]).length}
 $("pageClear").onclick=function(){if(!confirm("Undo every edit on this page?"))return;if(cfg.pages)delete cfg.pages[pkey(page)];save();counts();$("reload").click();toast("Page edits cleared")};
 
-function paintAll(){paintLogo();$("brandName").value=(cfg.brand||{}).name||"";$("brandTag").value=(cfg.brand||{}).tagline||"";paintTheme();paintFx();paintMq();counts()}
+
+/* ---------- checkout + support ---------- */
+function bind(id,obj,key){var e=$(id);e.oninput=function(){var o=ensure(obj);o[key]=this.value.trim();save()}}
+bind("ckGw","checkout","gatewayUrl");bind("ckGl","checkout","gatewayLabel");bind("ckBk","checkout","bkash");bind("ckNg","checkout","nagad");bind("ckNt","checkout","note");
+$("ckBn").oninput=function(){ensure("checkout").bank=this.value.trim();save()};
+bind("spUrl","support","liveUrl");bind("spFeed","support","feedUrl");
+$("spEmb").onchange=function(){ensure("support").embed=this.value==="1";save()};
+$("spShow").onchange=function(){ensure("support").show=this.value==="1";save()};
+$("spPpl").oninput=function(){ensure("support").people=lines(this.value).map(function(l){var a=l.split("|").map(function(x){return x.trim()});return{name:a[0],role:a[1]||"",whatsapp:a[2]||"",photo:a[3]||""}}).filter(function(p){return p.name});save()};
+function paintCk(){var c=cfg.checkout||{},s=cfg.support||{};$("ckGw").value=c.gatewayUrl||"";$("ckGl").value=c.gatewayLabel||"";$("ckBk").value=c.bkash||"";$("ckNg").value=c.nagad||"";$("ckBn").value=c.bank||"";$("ckNt").value=c.note||"";
+ $("spUrl").value=s.liveUrl||"";$("spFeed").value=s.feedUrl||"";$("spEmb").value=s.embed===false?"0":"1";$("spShow").value=s.show===false?"0":"1";
+ $("spPpl").value=(s.people||[]).map(function(p){return[p.name,p.role,p.whatsapp,p.photo].join(" | ")}).join("\n")}
+function paintAll(){paintCk();paintLogo();$("brandName").value=(cfg.brand||{}).name||"";$("brandTag").value=(cfg.brand||{}).tagline||"";paintTheme();paintFx();paintMq();counts()}
 paintAll();
 window.addEventListener("wd:data-ready",function(){if(localStorage.getItem(KEY)==null){cfg=load();paintAll()}});
 $("frame").addEventListener("load",function(){});

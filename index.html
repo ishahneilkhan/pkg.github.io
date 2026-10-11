@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./shared/site.css">
 <link rel="stylesheet" href="./shared/luxe.css">
+<link rel="stylesheet" href="./shared/checkout.css">
 </head>
 <body>
 
@@ -138,6 +139,7 @@
     <h2>Need help choosing?</h2>
     <p class="sub" id="supmsg">Message us on WhatsApp. We reply fast.</p>
     <a class="btn lime wd-mag" id="supbtn" target="_blank" rel="noopener" href="#">Chat on WhatsApp</a>
+    <div class="sup-wrap" id="supwrap"></div>
   </div>
 </div></section>
 
@@ -146,7 +148,7 @@
 <footer><div class="container">
   <div class="foot-grid">
     <div><b>Website Deals</b><br><span id="foot">Premium ready-made websites for modern businesses.</span></div>
-    <div><a href="./packages.html">Packages</a> &nbsp;·&nbsp; <a href="./home/index.html">About</a> &nbsp;·&nbsp; <a href="./support/index.html">Support</a><br><span id="copy">© 2026 Website Deals</span> · <a href="./admin/login.html">Admin</a></div>
+    <div><a href="./packages.html">Packages</a> &nbsp;·&nbsp; <a href="./home/index.html">About</a> &nbsp;·&nbsp; <a href="./support/index.html">Support</a><br><span id="copy">© 2026 Website Deals</span></div>
   </div>
   <div class="wordmark" aria-hidden="true" data-parallax="0.05">Website Deals</div>
 </div></footer>
@@ -157,6 +159,7 @@
 <script src="./shared/data.js"></script>
 <script src="./shared/cms.js"></script>
 <script src="./shared/packages.js"></script>
+<script src="./shared/checkout.js"></script>
 <script src="./shared/salah.js"></script>
 <script src="./shared/fx.js"></script>
 <script>
@@ -178,6 +181,30 @@ function marquees(){
   if(window.WDFx){WDFx.marquee($("mq1"),items,{duration:dur});WDFx.marquee($("mq2"),(m.items2&&m.items2.length)?m.items2:MQ2,{duration:dur*1.25,reverse:true})}
 }
 var mqSig="";
+
+/* support team: admin-defined people and/or live feed from the support site */
+var supSig="",feedCache=null,feedUrl="";
+function supHtml(list,SC){
+  var live=SC.liveUrl||"https://support.websitesdeal.com";
+  var h='<div class="sup-live">Support team online</div>';
+  if(list.length)h+='<div class="sup-grid">'+list.slice(0,8).map(function(p,i){
+    var ph=S.safeUrl?S.safeUrl(p.photo||""):(/^(https?:|data:image\/)/i.test(p.photo||"")?p.photo:"");
+    var w=String(p.whatsapp||p.phone||"").replace(/\D/g,""),init=String(p.name||"?").trim().charAt(0).toUpperCase();
+    return '<div class="sup-p" style="--i:'+i+'"><div class="sup-av"><div'+(ph?' style="background-image:url(\''+S.esc(ph)+'\')"':'')+'>'+(ph?'':S.esc(init))+'</div><i class="sup-on"></i></div><h4>'+S.esc(p.name||"Support")+'</h4><span>'+S.esc(p.role||"Support specialist")+'</span><div class="sup-b">'+(w?'<a target="_blank" rel="noopener" href="https://wa.me/'+w+'?text='+encodeURIComponent("Hello "+(p.name||"")+", I need help choosing a package")+'">Chat</a><a href="tel:+'+w+'">Call</a>':'<a target="_blank" rel="noopener" href="'+S.esc(live)+'">Chat</a>')+'</div></div>'}).join("")+'</div>';
+  if(SC.embed!==false)h+='<div class="sup-embed"><iframe loading="lazy" title="Support team" src="'+S.esc(live)+'/#team" referrerpolicy="no-referrer-when-downgrade"></iframe></div>';
+  h+='<div class="sup-more"><a class="btn sm" target="_blank" rel="noopener" href="'+S.esc(live)+'">Open live support ↗</a></div>';
+  return h;
+}
+function support(){
+  var SC=SITE.support||{},box=$("supwrap");if(!box)return;
+  if(SC.show===false){box.innerHTML="";return}
+  function draw(list){var sig=JSON.stringify([list,SC.liveUrl,SC.embed]);if(sig===supSig)return;supSig=sig;box.innerHTML=supHtml(list,SC)}
+  var base=(SC.people||[]).filter(function(p){return p&&p.name});
+  draw(base);
+  var fu=String(SC.feedUrl||"").trim();
+  if(/^https?:\/\//i.test(fu)&&fu!==feedUrl){feedUrl=fu;fetch(fu,{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){var a=Array.isArray(j)?j:(j.team||j.members||j.people||j.agents||[]);a=a.map(function(x){return{name:x.name||x.displayName||x.fullName,role:x.role||x.title||x.designation,photo:x.photo||x.photoURL||x.image||x.avatar||x.imageUrl,whatsapp:x.whatsapp||x.phone||x.mobile}}).filter(function(x){return x.name});if(a.length){feedCache=a;draw(a)}}).catch(function(){})}
+  else if(feedCache&&!base.length)draw(feedCache);
+}
 function applyContent(){
 HP=jget("websiteDealsHomepage",{});ST=jget("websiteDealsSettings",{});SITE=jget("websiteDealsSite",{})||{};
 WA=String(ST.whatsapp||"").replace(/\D/g,"")||"8801705633700";
@@ -196,6 +223,7 @@ if($("banners").innerHTML!==bh)$("banners").innerHTML=bh;
 WDPackages.render($("pks"),WA);
 [].forEach.call($("pks").children,function(c){c.classList.add("wd-spot");c.setAttribute("data-reveal","up")});
 var sig=JSON.stringify(SITE.marquee||{});if(sig!==mqSig){mqSig=sig;marquees()}
+support();
 }
 applyContent();addEventListener("wd:data-ready",function(){applyContent();if(typeof cards==="function"&&sites&&sites.length)cards()});
 addEventListener("wd:site-edited",applyContent);addEventListener("storage",function(e){if(!e.key||/^websiteDeals/.test(e.key))applyContent()});
