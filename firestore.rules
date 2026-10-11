@@ -24,6 +24,18 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // Checkout orders: the public can only CREATE a new order (fixed fields,
+    // status "new"). Only the admin can read, update or delete them.
+    match /orders/{id} {
+      allow create: if request.resource.data.keys().hasOnly(["order","pkg","price","name","phone","email","biz","method","tx","from","status","createdAt"])
+        && request.resource.data.status == "new"
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.name is string && request.resource.data.name.size() < 120
+        && request.resource.data.phone is string && request.resource.data.phone.size() < 40
+        && request.resource.data.price is number;
+      allow read, update, delete: if isAdmin();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

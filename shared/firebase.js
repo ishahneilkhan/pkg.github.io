@@ -73,7 +73,30 @@
     });
   }
 
+
+  /* Customer orders from the checkout. Anyone can create one; only the admin can read or change them. */
+  function addOrder(o) {
+    return init().then(function (c) {
+      var d = { order: o.order, pkg: o.pkg, price: Number(o.price) || 0, name: o.name, phone: o.phone, email: o.email || "", biz: o.biz || "", method: o.method || "", tx: o.tx || "", from: o.from || "", status: "new", createdAt: c.F.serverTimestamp() };
+      return c.F.setDoc(c.F.doc(c.db, "orders", o.order), d);
+    });
+  }
+  function listOrders() {
+    return init().then(function (c) {
+      return c.F.getDocs(c.F.query(c.F.collection(c.db, "orders"), c.F.orderBy("createdAt", "desc"), c.F.limit(300))).then(function (s) {
+        return s.docs.map(function (d) { var x = d.data(); x.id = d.id; x.ts = x.createdAt && x.createdAt.toMillis ? x.createdAt.toMillis() : 0; delete x.createdAt; return x; });
+      });
+    });
+  }
+  function updateOrder(id, patch) {
+    return init().then(function (c) { return c.F.updateDoc(c.F.doc(c.db, "orders", id), patch); });
+  }
+  function deleteOrder(id) {
+    return init().then(function (c) { return c.F.deleteDoc(c.F.doc(c.db, "orders", id)); });
+  }
+
   window.WDFirebase = {
+    addOrder: addOrder, listOrders: listOrders, updateOrder: updateOrder, deleteOrder: deleteOrder,
     writeMedia: writeMedia,
     readMedia: readMedia,
     enabled: enabled,

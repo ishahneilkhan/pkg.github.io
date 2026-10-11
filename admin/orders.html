@@ -1,8 +1,51 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orders | Website Deals Admin</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#080909;color:#f5f7f6;font-family:Inter,Arial,sans-serif;text-align:center;padding:24px}
-.c{max-width:460px;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:36px;background:#111414}h1{margin:0 0 10px;letter-spacing:-.04em}p{color:#929a96;line-height:1.7;font-size:14px}
-a{display:inline-block;margin:6px;padding:12px 18px;border-radius:12px;font-weight:800;font-size:13px;text-decoration:none;background:#b7ff00;color:#080909}a.g{background:transparent;color:#f5f7f6;border:1px solid rgba(255,255,255,.18)}</style></head>
-<body><div class="c"><h1>Orders</h1><p>Orders and package requests arrive on WhatsApp (01705633700) with the website and package name already filled in.</p>
-<a href="https://web.whatsapp.com/" target="_blank" rel="noopener">Open WhatsApp Web</a><a class="g" href="./dashboard.html">← Dashboard</a></div>
-<script>if(sessionStorage.getItem("websiteDealsAdminAuth")!=="true")location.replace("./login.html")</script><script src="../shared/data.js"></script><script src="../shared/admin-publish.js"></script>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orders | Website Deals Admin</title><meta name="theme-color" content="#090b0a">
+<link rel="stylesheet" href="../shared/admin.css">
+<style>
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.tabs button{padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:.78rem;font-weight:700;color:var(--muted)}.tabs button.on{background:rgba(183,255,0,.12);border-color:var(--line2);color:var(--lime)}
+.srch{width:100%;max-width:340px;padding:11px 15px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;font:inherit;font-size:.85rem;outline:0}.srch:focus{border-color:var(--lime)}
+.bar2{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.oc{display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:16px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}.oc:last-child{border:0}
+.oc b{display:block;font-size:.92rem}.oc small{display:block;color:var(--muted);font-size:.74rem;margin-top:3px}.oc code{color:var(--lime);font-weight:800;cursor:pointer}
+.oc select{padding:9px 10px;border-radius:10px;background:#0b0e0c;color:#fff;border:1px solid var(--line);font:inherit;font-size:.76rem;font-weight:700}
+.oa{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:900px){.oc{grid-template-columns:1fr 1fr}.oa{justify-content:flex-start;grid-column:1/-1}}
+</style></head>
+<body>
+<div id="wdShell" data-active="orders"></div><script src="../shared/admin-shell.js"></script>
+<main class="main">
+  <div class="top fade"><div><div class="eyebrow">Customers</div><h1>Orders</h1><p class="sub">Every checkout from your website. Verify the payment, then update the status.</p></div>
+    <div class="acts"><button class="btn" id="refresh" type="button">↻ Refresh</button><button class="btn" id="csv" type="button">⬇ Export CSV</button></div></div>
+  <div class="bar2"><div class="tabs" id="tabs"></div><input class="srch" id="q" placeholder="Search name, phone, order or transaction ID"></div>
+  <section class="panel fade"><div id="list"><div class="empty">Loading orders…</div></div></section>
+</main>
+<script src="../shared/data.js"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function money(n){return"৳"+Number(n||0).toLocaleString("en-US")}
+var ST=["new","confirmed","done","cancelled"],L=[],F,flt="all",qs="";
+function when(ts){return ts?new Date(ts).toLocaleString("en-GB",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"}):""}
+function tabs(){var c={all:L.length};ST.forEach(function(s){c[s]=L.filter(function(o){return o.status===s}).length});
+  $("tabs").innerHTML=["all"].concat(ST).map(function(s){return'<button type="button" data-s="'+s+'" class="'+(flt===s?"on":"")+'">'+s.charAt(0).toUpperCase()+s.slice(1)+" · "+c[s]+'</button>'}).join("")}
+function draw(){tabs();
+  var q=qs.toLowerCase(),R=L.filter(function(o){return(flt==="all"||o.status===flt)&&(!q||[o.name,o.phone,o.order,o.tx,o.email,o.pkg].join(" ").toLowerCase().indexOf(q)>-1)});
+  $("list").innerHTML=R.length?R.map(function(o){var w=String(o.phone||"").replace(/\D/g,"");if(/^01/.test(w))w="88"+w;
+    return'<div class="oc"><div><b>'+esc(o.name)+'</b><small>'+esc(o.phone)+(o.email?" · "+esc(o.email):"")+'</small><small>'+esc(o.biz||"")+'</small></div><div><b>'+esc(o.pkg)+' · '+money(o.price)+'</b><small>'+esc(o.method||"")+' · from '+esc(o.from||"-")+'</small><small>TrxID <code data-c="'+esc(o.tx)+'">'+esc(o.tx||"-")+'</code></small></div><div><b>'+esc(o.order)+'</b><small>'+when(o.ts)+'</small><select data-id="'+esc(o.id)+'">'+ST.map(function(s){return'<option'+(s===o.status?" selected":"")+'>'+s+'</option>'}).join("")+'</select></div><div class="oa"><a class="btn sm p" target="_blank" rel="noopener" href="https://wa.me/'+w+'?text='+encodeURIComponent("Hello "+o.name+", your order "+o.order+" ("+o.pkg+") is confirmed. Thank you!")+'">WhatsApp</a><button class="btn sm" data-del="'+esc(o.id)+'" type="button">Delete</button></div></div>'}).join(""):'<div class="empty">'+(L.length?"No orders match.":"No orders yet. They appear here as soon as a customer confirms payment.")+'</div>'}
+function load(){
+  $("list").innerHTML='<div class="empty">Loading orders…</div>';
+  WDData.loadFirebase().then(function(f){F=f;if(!f||!f.enabled)throw{message:"Firebase is not configured."};return f.currentUser()}).then(function(u){if(!u)throw{message:"Please sign in again."};return F.listOrders()}).then(function(r){L=r;draw()}).catch(function(e){var m=(e&&e.code)||"";$("list").innerHTML='<div class="empty">'+(/permission/.test(m)?"Firestore rules block orders. Publish the latest <b>firestore.rules</b> from the repo in Firebase Console.":esc((e&&e.message)||"Could not load orders."))+'</div>'})}
+$("tabs").onclick=function(e){var b=e.target.closest("button");if(b){flt=b.dataset.s;draw()}};
+$("q").oninput=function(){qs=this.value;draw()};
+$("refresh").onclick=load;
+$("list").addEventListener("change",function(e){var s=e.target.closest("select");if(!s)return;var o=L.filter(function(x){return x.id===s.dataset.id})[0];F.updateOrder(o.id,{status:s.value}).then(function(){o.status=s.value;tabs()}).catch(function(){alert("Could not update. Check admin sign-in.");load()})});
+$("list").addEventListener("click",function(e){var c=e.target.closest("[data-c]");if(c&&navigator.clipboard){navigator.clipboard.writeText(c.dataset.c);return}
+  var d=e.target.closest("[data-del]");if(d&&confirm("Delete this order permanently?"))F.deleteOrder(d.dataset.del).then(function(){L=L.filter(function(x){return x.id!==d.dataset.del});draw()}).catch(function(){alert("Could not delete.")})});
+$("csv").onclick=function(){var H=["order","status","name","phone","email","pkg","price","method","tx","from","biz","date"];var rows=[H].concat(L.map(function(o){return H.map(function(k){var v=k==="date"?(o.ts?new Date(o.ts).toISOString():""):o[k];return'"'+String(v==null?"":v).replace(/"/g,'""')+'"'})}));
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([rows.map(function(r){return r.join(",")}).join("\n")],{type:"text/csv"}));a.download="orders.csv";a.click()};
+load();
+})();
+</script>
+<script src="../shared/admin-publish.js"></script>
 </body></html>
