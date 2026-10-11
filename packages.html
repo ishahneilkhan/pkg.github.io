@@ -1,9 +1,79 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Packages | Website Deals</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./shared/site.css"></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Packages | Website Deals</title>
+<meta name="description" content="Monthly website plans with hosting, SSL and support. Pay by bKash, Nagad or bank.">
+<meta name="theme-color" content="#070808">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./shared/site.css">
+<link rel="stylesheet" href="./shared/luxe.css">
+</head>
+<body>
 <div class="salah"><div class="container"><div class="times" id="times"></div><div class="next" id="next"></div></div></div>
-<header class="nav"><div class="container"><a href="./index.html" class="brand"><span class="logo">WD</span><span><b>Website Deals</b><small>Premium Website Showcase</small></span></a>
-<nav class="links"><a href="./index.html">Home</a><a href="./index.html#websites">Website</a><a href="./packages.html" class="on">Packages</a><a href="./package/index.html">Live examples</a><a href="./wallpaper.html" class="pill">▶ Present</a></nav></div></header>
-<section class="s"><div class="container"><h2>Subscription packages</h2><p class="sub">Monthly plans with hosting, SSL and support included. Pay by bKash, Nagad or bank.</p><div class="pks" id="pks"></div></div></section>
-<footer><div class="container"><div><b>Website Deals</b><br>Premium website showcase</div><div>WhatsApp: 01705633700</div></div></footer>
-<script src="./shared/data.js"></script><script src="./shared/packages.js"></script><script src="./shared/salah.js"></script>
-<script>function r(){WDPackages.render(document.getElementById("pks"),"8801705633700")}r();addEventListener("wd:data-ready",r)</script></body></html>
+<header class="nav" id="nav"><div class="container">
+  <a href="./index.html" class="brand"><span class="logo">WD</span><span><b>Website Deals</b><small>Premium Website Showcase</small></span></a>
+  <nav class="links" id="links">
+    <a href="./index.html">Home</a>
+    <a href="./index.html#websites">Websites</a>
+    <a href="./packages.html" class="on">Packages</a>
+    <a href="./package/index.html">Live examples</a>
+    <a href="./wallpaper.html" class="pill">▶ Present</a>
+  </nav>
+  <button class="menu" id="menu" aria-label="Menu" aria-expanded="false"><span><i></i><i></i><i></i></span></button>
+</div></header>
+
+<main>
+<section class="s" style="padding-top:90px"><div class="container">
+  <div class="eyebrow">Packages</div>
+  <h2 data-split>Subscription packages</h2>
+  <p class="sub">Monthly plans with hosting, SSL and support included. Pay by bKash, Nagad or bank.</p>
+  <div class="pks" id="pks"></div>
+</div></section>
+
+<div class="band small" aria-hidden="true"><div id="mq"></div></div>
+
+<section class="s"><div class="container">
+  <div class="cta-band" data-reveal="zoom">
+    <div class="eyebrow" style="justify-content:center">Not sure yet?</div>
+    <h2>We will help you pick the right plan</h2>
+    <p class="sub">Message us on WhatsApp. We reply fast.</p>
+    <a class="btn lime wd-mag" id="supbtn" target="_blank" rel="noopener" href="#">Chat on WhatsApp</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="container">
+  <div class="foot-grid">
+    <div><b>Website Deals</b><br><span>Premium website showcase</span></div>
+    <div><a href="./index.html">Home</a> &nbsp;·&nbsp; <a href="./home/index.html">About</a> &nbsp;·&nbsp; <a href="./support/index.html">Support</a><br><span>WhatsApp: 01705633700</span></div>
+  </div>
+  <div class="wordmark" aria-hidden="true">Website Deals</div>
+</div></footer>
+
+<script src="./shared/data.js"></script>
+<script src="./shared/cms.js"></script>
+<script src="./shared/packages.js"></script>
+<script src="./shared/salah.js"></script>
+<script src="./shared/fx.js"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},WA="8801705633700";
+var nav=$("nav");function stick(){nav.classList.toggle("stuck",(window.scrollY||0)>24)}stick();addEventListener("scroll",stick,{passive:true});
+$("menu").addEventListener("click",function(){var o=$("links").classList.toggle("open");this.classList.toggle("open",o);this.setAttribute("aria-expanded",o)});
+function r(){
+  var ST=(window.WDData&&WDData.get("websiteDealsSettings",{}))||{};
+  WA=String(ST.whatsapp||"").replace(/\D/g,"")||WA;
+  WDPackages.render($("pks"),WA);
+  [].forEach.call($("pks").children,function(c){c.classList.add("wd-spot");c.setAttribute("data-reveal","up")});
+  $("supbtn").href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hello, I want help choosing a package");
+  var m=((WDData.get("websiteDealsSite",{})||{}).marquee)||{};
+  if(window.WDFx)WDFx.marquee($("mq"),(m.items2&&m.items2.length)?m.items2:["Hosting + SSL","Custom domain","bKash · Nagad · Bank","Admin panel","Backups","Fast WhatsApp support"],{duration:40});
+}
+r();addEventListener("wd:data-ready",r);addEventListener("wd:site-edited",r);addEventListener("storage",function(e){if(!e.key||/^websiteDeals/.test(e.key))r()});
+})();
+</script>
+</body>
+</html>

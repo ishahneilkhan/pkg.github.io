@@ -61,7 +61,21 @@
     });
   }
 
+  /* Images added in Site Editor are stored as small documents in the "media" collection. */
+  function writeMedia(id, dataUrl) {
+    return init().then(function (c) {
+      return c.F.setDoc(c.F.doc(c.db, "media", id), { data: dataUrl, updatedAt: c.F.serverTimestamp() });
+    });
+  }
+  function readMedia(id) {
+    return init().then(function (c) {
+      return c.F.getDoc(c.F.doc(c.db, "media", id)).then(function (s) { return s.exists() ? (s.data().data || null) : null; });
+    });
+  }
+
   window.WDFirebase = {
+    writeMedia: writeMedia,
+    readMedia: readMedia,
     enabled: enabled,
     init: init,
     currentUser: currentUser,
