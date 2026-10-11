@@ -68,6 +68,7 @@ function done(){
   steps(3);
   var o={order:state.order,pkg:P.name,price:P.price,name:state.name,phone:state.phone,email:state.email,biz:state.biz,method:state.method,tx:state.tx,from:state.from,at:new Date().toISOString()};
   try{var L=JSON.parse(localStorage.getItem("wdOrders")||"[]");L.push(o);localStorage.setItem("wdOrders",JSON.stringify(L.slice(-20)))}catch(e){}
+  try{if(window.WDData)WDData.loadFirebase().then(function(f){if(f&&f.enabled)return f.addOrder(o)}).catch(function(){})}catch(e){}
   var msg="✅ Payment confirmation\nOrder: "+o.order+"\nPackage: "+P.name+" (৳"+P.price+(P.period||"")+")\nMethod: "+o.method+"\nTransaction ID: "+(o.tx||"-")+"\nPaid from: "+(o.from||"-")+"\nName: "+o.name+"\nPhone: "+o.phone+(o.email?"\nEmail: "+o.email:"")+(o.biz?"\nBusiness/domain: "+o.biz:"");
   var url="https://wa.me/"+wa()+"?text="+encodeURIComponent(msg);
   $("#wdcBody").innerHTML='<div class="wdc-step on wdc-ok"><div class="wdc-ring">✓</div><h3>Payment submitted</h3><p class="wdc-sub">Send the confirmation to our team on WhatsApp so we can verify it in minutes.</p><div class="wdc-ord">'+esc(o.order)+'</div><div class="wdc-act"><a class="btn lime" target="_blank" rel="noopener" href="'+url+'">Send confirmation on WhatsApp</a><button class="btn wdc-ghost" id="cl" type="button">Close</button></div></div>';
